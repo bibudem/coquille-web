@@ -1,13 +1,26 @@
 ---
 import DefaultLayout from '../layouts/DefaultLayout.astro'
-import Hero from '../components/Hero.astro'
+import Jumbotron from '../components/Jumbotron.astro'
 import Feature from '../components/Feature.astro'
 import Counter from '../components/Counter.astro'
 import ContentMedia from '../components/ContentMedia.astro'
+import { Icon } from 'astro-icon/components'
 ---
 
 <DefaultLayout title="Home">
-  <Hero><span class="text-gradient">Super</span> Starter for Astro</Hero>
+  <Jumbotron
+    header="Super service!"
+    subHeader="Avec une amorce alléchante. Et des détails croustillants. Et encore d'autres choses super exitantes."
+    imageSrc="https://picsum.photos/400/500"
+  >
+    <a class="button primary text-primary has-icon" href="/obtenir">
+      <Icon name="ion:bookmark-outline" />
+      Obtenir
+    </a>
+    <a class="button" href="https://github.com/markteekman/accessible-astro-starter/blob/main/README.md">
+      Read the Docs
+    </a>
+  </Jumbotron>
   <section class="my-64">
     <div class="container">
       <h2 class="mb-16 text-6xl">Features</h2>
