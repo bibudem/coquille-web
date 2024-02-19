@@ -6,8 +6,8 @@ import icon from "astro-icon"
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://bibudem.github.io',
-  base: '/prototype-web',
+  site: 'https://bibudem-prototype.netlify.app/',
+  // base: '/prototype-web',
   compressHTML: false,
   integrations: [
     mdx(),
