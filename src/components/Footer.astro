@@ -1,15 +1,13 @@
 ---
+import { Image } from 'astro:assets'
+import footerImage from '../assets/img/footer.png'
 const currentYear = new Date().getFullYear()
 ---
 
-<footer>
-  <section class="py-8">
+<footer class="bg-black pb-16 pt-6">
+  <section style="padding: 0 15px;">
     <div class="container">
-      <p>
-        &copy; {currentYear} - Starter Theme for <a href="https://astro.build/">Astro</a>. Made with ❤️ by <a
-          href="https://github.com/markteekman">Mark Teekman</a
-        >.
-      </p>
+      <Image src={footerImage} alt="" />
     </div>
   </section>
 </footer>
