@@ -16,5 +16,8 @@ yarn-error.log*
 # macOS-specific files
 .DS_Store
 
+# Astro related stuff
+.astro
+
 # vscode settings and dictionaries
 .vscode
