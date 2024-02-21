@@ -16,7 +16,8 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     compress({
-      HTML: false
+      HTML: false,
+      Image: false
     })
   ],
 })
