@@ -1,7 +1,7 @@
 {
   "name": "@bibudem/prototype-web",
   "description": "Prototype d'environnement de publication Web",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "homepage": "https://accessible-astro.netlify.app/",
   "scripts": {
     "dev": "astro dev",
