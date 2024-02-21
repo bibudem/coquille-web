@@ -15,9 +15,8 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    // compress({
-    //   HTML: false,
-    //   Image: false
-    // })
+    compress({
+      HTML: false
+    })
   ],
 })
