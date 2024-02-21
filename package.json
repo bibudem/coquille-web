@@ -19,7 +19,6 @@
     "@typescript-eslint/parser": "^5.62.0",
     "accessible-astro-components": "^2.3.5",
     "astro": "^4.4.1",
-    "astro-compress": "^2.2.10",
     "astro-icon": "^1.1.0",
     "eslint": "^8.56.0",
     "eslint-plugin-astro": "^0.23.0",
