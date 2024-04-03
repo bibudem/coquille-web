@@ -49,7 +49,13 @@ Les pages à éditer sont dans le dossier `content/`. Vous pouvez modifier le co
 | `npm run build`   | Build your production site to `./dist/`                           |
 | `npm run preview` | Preview your build locally, before deploying, at `localhost:9000` |
 
-### Composants disponibles
+### Déploiement automatique
+
+Chaque commit sur le dépôt GitHub déclanchera une nouvelle compilation des sources et un déploiement sur Netlify à l'adresse:
+
+[https://bibudem-prototype.netlify.app](https://bibudem-prototype.netlify.app/)
+
+## Composants disponibles
 
 Le prototype utilise la librairie [Material UI](https://mui.com/material-ui/). Tous les composants de cette librairie peuvent être utilisées dans les fichiers markdown (`.mdx`). Les composants suivants sont pré-chargés dans le prototype et peuvent donc être utilisés directement:
 
