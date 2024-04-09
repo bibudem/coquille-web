@@ -4,7 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { responsiveFontSizes, experimental_extendTheme as extendTheme, Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles'
 import tokens from './tokens'
 
-const theme = responsiveFontSizes(extendTheme(tokens))
+export const theme = responsiveFontSizes(extendTheme(tokens))
 
 // const GlobalStyles = withStyles(theme => {
 // 	const isLight = theme.palette.mode === 'light'
