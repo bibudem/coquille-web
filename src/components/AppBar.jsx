@@ -15,7 +15,6 @@ const pages = [
 ]
 
 const Search = styled('div')(({ theme }) => {
-  console.log('theme: %o', theme)
   return {
     position: 'relative',
     borderRadius: 'var(--bib-shape-corner-full)',

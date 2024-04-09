@@ -1,15 +1,8 @@
 import React, { useState } from 'react'
-import { Typography, SwipeableDrawer, Divider as MUIDivider } from '@mui/material'
+import { Box, Divider as MUIDivider, IconButton, List, ListItem, ListItemButton, ListItemText, Typography, SwipeableDrawer } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import Box from '@mui/material/Box'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemText from '@mui/material/ListItemText'
-import { Link } from 'gatsby'
-
-import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
+import Link from '@/components/Link'
 import Close from './Close'
 import LogoBib from '../images/logo-bib.svg'
 
@@ -20,12 +13,6 @@ ${theme.breakpoints.up('sm')} {
 }
 `
 )
-
-// const StyledDiviver = styed(MUIDivider)(
-//   ({theme})=> `
-//   padding
-//   `
-// )
 
 function Divider({ children, ...props }) {
   return (
