@@ -1,6 +1,6 @@
 import { Box, Typography, Stack } from '@mui/material'
 import styled from '@emotion/styled'
-import Link from '@/components/Footer/Link'
+import FooterLink from '@/components/Footer/FooterLink'
 
 function Copyright() {
   const namespaces = {
@@ -12,11 +12,11 @@ function Copyright() {
     <>
       <p {...namespaces} style={{ margin: 0, fontSize: 'inherit', fontWeight: 'inherit', lineHeight: 'inherit' }}>
         <span property="dct:title">Ce site</span> est sous licence{' '}
-        <Link to="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">
+        <FooterLink to="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">
           CC BY 4.0
           <img style={{ height: '1.125em', marginLeft: '3px', verticalAlign: 'text-bottom' }} src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" />
           <img style={{ height: '1.125em', marginLeft: '3px', verticalAlign: 'text-bottom' }} src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" />
-        </Link>
+        </FooterLink>
       </p>
     </>
   )
@@ -55,14 +55,10 @@ export default function () {
         }}
       >
         <FooterNoteContent>
-          <Link color="primary.contrastText" href="#">
-            Politique de confidentialité
-          </Link>
+          <FooterLink to="#">Politique de confidentialité</FooterLink>
         </FooterNoteContent>
         <FooterNoteContent>
-          <Link color="primary.contrastText" href="#">
-            Paramètres des témoins
-          </Link>
+          <FooterLink to="#">Paramètres des témoins</FooterLink>
         </FooterNoteContent>
         <FooterNoteContent>
           <Copyright />

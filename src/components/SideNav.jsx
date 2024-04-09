@@ -52,7 +52,7 @@ function NavList({ children, ...props }) {
 function NavListItem({ href, children, ...props }) {
   return (
     <ListItem disablePadding {...props}>
-      <ListItemButton component={Link} href={href}>
+      <ListItemButton component={Link} to={href}>
         <ListItemText primary={children} />
       </ListItemButton>
     </ListItem>
@@ -68,6 +68,7 @@ const StyledNavHeader = styled(Typography)(
 const StyledLogoLink = styled(Link)(
   ({ theme }) => `
   width: 100px;
+  white-space: nowrap;
 `
 )
 
@@ -83,6 +84,7 @@ function NavHeader({ children, ...props }) {
 
 export default function TemporaryDrawer() {
   const [open, setOpen] = useState(false)
+  const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen)
@@ -93,7 +95,7 @@ export default function TemporaryDrawer() {
       <IconButton size="large" edge="start" aria-label="open drawer" sx={{ mr: 2 }} onClick={toggleDrawer(true)}>
         <MenuIcon />
       </IconButton>
-      <SwipeableDrawer open={open} onClose={toggleDrawer(false)}>
+      <SwipeableDrawer open={open} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)} disableBackdropTransition={!iOS} disableDiscovery={iOS}>
         <Box
           sx={(theme) => ({
             width: '100vw',
@@ -115,7 +117,7 @@ export default function TemporaryDrawer() {
               },
             })}
           >
-            <StyledLogoLink noWrap to="/">
+            <StyledLogoLink to="/">
               <LogoBib style={{ height: '1.5rem' }} />
             </StyledLogoLink>
             <Close />

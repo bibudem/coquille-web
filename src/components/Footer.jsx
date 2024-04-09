@@ -1,17 +1,17 @@
 import * as React from 'react'
+import { IconButton, SvgIcon, useMediaQuery, useTheme } from '@mui/material'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
+import { Block, Send } from '@mui/icons-material'
 
 import FooterNote from '@/components/Footer/FooterNote'
 import SocialMedia from '@/components/Footer/SocialMedia'
-import Link from '@/components/Footer/Link'
+import FooterLink from '@/components/Footer/FooterLink'
 import LogoBibSceauBlanc from '../images/logo-bib-sceau-blanc.svg'
-import { IconButton, SvgIcon, useMediaQuery, useTheme } from '@mui/material'
-import { Send } from '@mui/icons-material'
 
 const logoStyle = {
   // width: '140px',
@@ -72,9 +72,16 @@ export default function Footer() {
             }}
           >
             <Box sx={{ ml: '-15px' }}>
-              <Link to="/" display="block">
+              <FooterLink
+                to="/"
+                sx={{
+                  display: 'block',
+                  width: 175,
+                  height: 175,
+                }}
+              >
                 <SvgIcon component={LogoBibSceauBlanc} inheritViewBox sx={logoStyle} />
-              </Link>
+              </FooterLink>
             </Box>
             <Box flexGrow={1}>
               <Typography variant="body2" fontWeight={600} gutterBottom>
@@ -119,21 +126,11 @@ export default function Footer() {
             <Typography variant="body2" fontWeight={600}>
               Product
             </Typography>
-            <Link color="primary.contrastText" href="#">
-              Features
-            </Link>
-            <Link color="primary.contrastText" href="#">
-              Testimonials
-            </Link>
-            <Link color="primary.contrastText" href="#">
-              Highlights
-            </Link>
-            <Link color="primary.contrastText" href="#">
-              Pricing
-            </Link>
-            <Link color="primary.contrastText" href="#">
-              FAQs
-            </Link>
+            <FooterLink to="#">Features</FooterLink>
+            <FooterLink to="#">Testimonials</FooterLink>
+            <FooterLink to="#">Highlights</FooterLink>
+            <FooterLink to="#">Pricing</FooterLink>
+            <FooterLink to="#">FAQs</FooterLink>
           </Box>
           <Box
             sx={{
@@ -145,15 +142,9 @@ export default function Footer() {
             <Typography variant="body2" fontWeight={600}>
               Company
             </Typography>
-            <Link color="primary.contrastText" href="#">
-              About us
-            </Link>
-            <Link color="primary.contrastText" href="#">
-              Careers
-            </Link>
-            <Link color="primary.contrastText" href="#">
-              Press
-            </Link>
+            <FooterLink to="#">About us</FooterLink>
+            <FooterLink to="#">Careers</FooterLink>
+            <FooterLink to="#">Press</FooterLink>
           </Box>
           <Box
             sx={{
@@ -165,15 +156,9 @@ export default function Footer() {
             <Typography variant="body2" fontWeight={600}>
               Legal
             </Typography>
-            <Link color="primary.contrastText" href="#">
-              Terms
-            </Link>
-            <Link color="primary.contrastText" href="#">
-              Privacy
-            </Link>
-            <Link color="primary.contrastText" href="#">
-              Contact
-            </Link>
+            <FooterLink to="#">Terms</FooterLink>
+            <FooterLink to="#">Privacy</FooterLink>
+            <FooterLink to="#">Contact</FooterLink>
           </Box>
         </Box>
       </Container>

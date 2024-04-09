@@ -5,11 +5,11 @@ import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, 
 import AppBar from '@/components/AppBar'
 import Footer from '@/components/Footer'
 import Link from '@/components/Link'
+import SEO from '@/components/SEO'
 
 const shortcodes = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, Divider, Tab, Tabs } // Provide common components here
-// const shortcodes = { Button, Box } // Provide common components here
 
-export default function PageTemplate({ data, children }) {
+export default function PageTemplate({ children }) {
   return (
     <MDXProvider components={shortcodes}>
       <AppBar />
@@ -28,3 +28,9 @@ export const query = graphql`
     }
   }
 `
+
+export function Head({ pageContext, location }) {
+  const { frontmatter } = pageContext
+  const { pathname } = location
+  return <SEO title={frontmatter?.title} pathname={pathname} />
+}

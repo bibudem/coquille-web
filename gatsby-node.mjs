@@ -5,7 +5,6 @@
  */
 
 import { resolve } from 'node:path'
-import { createFilePath } from 'gatsby-source-filesystem'
 import slugify from '@sindresorhus/slugify'
 
 // Define the template for blog page
@@ -19,19 +18,25 @@ export const createPages = async ({ graphql, actions, reporter, getNode }) => {
 
   // Get all markdown blog pages sorted by date
   const result = await graphql(`
-    query {
-      allMdx {
-        nodes {
-          id
+  query MyQuery {
+    allFile(filter: {sourceInstanceName: {eq: "contenu"}}) {
+      nodes {
+        id
+        name
+        relativeDirectory
+        absolutePath
+        internal {
+          contentFilePath
+        }
+        childMdx {
           frontmatter {
             slug
-          }
-          internal {
-            contentFilePath
+            title
           }
         }
       }
     }
+  }
   `)
 
   if (result.errors) {
@@ -39,7 +44,7 @@ export const createPages = async ({ graphql, actions, reporter, getNode }) => {
     return
   }
 
-  const pages = result.data.allMdx.nodes
+  const pages = result.data.allFile.nodes
 
   // Create blog pages pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -49,15 +54,15 @@ export const createPages = async ({ graphql, actions, reporter, getNode }) => {
     // console.log('node: %o', node)
     // console.log(node.parent)
 
-    const basePath = node.parent ? `/${getNode(node.parent).relativeDirectory}` : ''
-    const path = `${basePath}/${(node.frontmatter.slug ?? slugify(getNode(node.parent).name)).replace(/index$/i, '')}`
+    const basePath = node.relativeDirectory ? `/${node.relativeDirectory}` : ''
+    const path = `${basePath}/${(node.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')}`
 
     createPage({
       // As mentioned above you could also query something else like frontmatter.title above and use a helper function
       // like slugify to create a slug
       path,
       // Provide the path to the MDX content file so webpack can pick it up and transform it into JSX
-      component: `${pageTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+      component: `${pageTemplate}?__contentFilePath=${node.absolutePath}`,
       // You can use the values in this context in
       // our page layout component
       context: { id: node.id },

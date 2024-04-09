@@ -1,5 +1,9 @@
 import { Link as GatsbyLink } from 'gatsby'
 import { Link as MuiLink } from '@mui/material'
+import { unstable_styleFunctionSx } from '@mui/system'
+import styled from '@emotion/styled'
+
+const StyledA = styled('a')(unstable_styleFunctionSx)
 
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
@@ -19,8 +23,8 @@ export default function Link({ children, to, activeClassName, partiallyActive, .
     )
   }
   return (
-    <a href={to} {...other}>
+    <StyledA href={to} {...other}>
       {children}
-    </a>
+    </StyledA>
   )
 }

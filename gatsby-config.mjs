@@ -8,18 +8,23 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
  */
 const config = {
   siteMetadata: {
-    title: `Les bibliothèques / UdeM`,
-    siteUrl: `https://bib.umontreal.ca`
+    title: 'Les bibliothèques / UdeM',
+
+    description: `Example project for the Gatsby Head API`,
+    twitterUsername: `@bibUdeM`,
+    image: `/gatsby-icon.png`,
+    siteUrl: 'https://bib.umontreal.ca',
   },
   trailingSlash: 'never',
   plugins: [
     'gatsby-plugin-provide-react',
     {
-      resolve: `gatsby-plugin-alias-imports`,
+      resolve: 'gatsby-plugin-alias-imports',
       options: {
         alias: {
           '@/components': 'src/components',
-          '@/images': 'src/images'
+          '@/images': 'src/images',
+          '@/hooks': 'src/hooks'
         },
         extensions: [
           'js',
@@ -28,6 +33,30 @@ const config = {
         ],
       }
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'contenu',
+        path: join(__dirname, 'content'),
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: join(__dirname, 'src', 'images')
+      },
+      __key: 'images'
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'personnel',
+        path: join(__dirname, 'data', 'personnel'),
+        ignore: ['**/~$*']
+      },
+    },
+    'gatsby-transformer-excel',
     'gatsby-plugin-react-svg',
     'gatsby-plugin-image',
     'gatsby-plugin-sitemap',
@@ -41,32 +70,7 @@ const config = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: join(__dirname, 'src', 'images')
-      },
-      __key: 'images'
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'pages',
-        path: join(__dirname, 'src', 'pages')
-      },
-      __key: 'pages'
-    },
-    // Add a collection called 'posts' that looks
-    // for files in content/posts
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: 'posts',
-        path: join(__dirname, 'content'),
-      },
-    },
-    {
-      resolve: `gatsby-plugin-webfonts`,
+      resolve: 'gatsby-plugin-webfonts',
       options: {
         fonts: {
           google2: [
