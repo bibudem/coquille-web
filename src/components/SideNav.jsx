@@ -125,7 +125,7 @@ export default function TemporaryDrawer() {
             <Nav aria-label="À propos">
               <NavHeader>À propos</NavHeader>
               <NavList>
-                <NavListItem href="#">Notre équipe</NavListItem>
+                <NavListItem href="/a-propos/notre-equipe.mdx">Notre équipe</NavListItem>
                 <NavListItem href="#">Mission, vision, valeur, objectifs</NavListItem>
                 <NavListItem href="#">Rapports annuels</NavListItem>
                 <NavListItem href="#">Carrières</NavListItem>
