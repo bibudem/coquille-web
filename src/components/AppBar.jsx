@@ -12,6 +12,7 @@ const pages = [
   { url: '/etudes', label: 'Études' },
   { url: '/recherche', label: 'Recherche' },
   { url: '/enseignement', label: 'Enseignement' },
+  { url: '/tests', label: 'Tests' },
 ]
 
 const Search = styled('div')(({ theme }) => {
