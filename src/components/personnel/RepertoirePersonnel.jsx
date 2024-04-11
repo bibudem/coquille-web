@@ -84,7 +84,7 @@ const columns = [
 
 export default function RepertoirePersonnel() {
   const data = useStaticQuery(graphql`
-    query MyQuery {
+    query RepertoirePersonnelQuery {
       allFile(filter: { sourceInstanceName: { eq: "personnel" }, relativeDirectory: { eq: "photos" } }) {
         nodes {
           name

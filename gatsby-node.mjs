@@ -18,7 +18,7 @@ export const createPages = async ({ graphql, actions, reporter, getNode }) => {
 
   // Get all markdown blog pages sorted by date
   const result = await graphql(`
-  query MyQuery {
+  query PagesQuery {
     allFile(filter: {sourceInstanceName: {eq: "contenu"}}) {
       nodes {
         id
