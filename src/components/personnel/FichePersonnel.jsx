@@ -63,19 +63,19 @@ export default function ListePersonnel() {
   const fallbackPicturesFile = data.allFile.nodes.find((node) => node.name === '_profile')
 
   data.allListePersonnelXlsxSheet1.nodes.forEach(({ courriel, disciplines, fonction, nom, photo: photoId, prenom }) => {
-    const _disciplines = disciplines.split(/\s*\|\s*/)
+    disciplines = disciplines.split(/\s*\|\s*/)
 
     photoId = photoId.replace(/\.\w+$/, '')
     const file = data.allFile.nodes.find((node) => node.name === photoId) || fallbackPicturesFile
     const photo = getImage(file.photo)
     const thumb = getImage(file.thumb)
 
-    _disciplines.forEach((discipline) => {
+    disciplines.forEach((discipline) => {
       if (!disciplinesMap.has(discipline)) {
         disciplinesMap.set(discipline, [])
       }
 
-      disciplinesMap.get(discipline).push({ id: `${discipline}#${courriel}`, courriel, discipline, fonction, nom, nomComplet: `${prenom} ${nom}`, photo, thumb, prenom })
+      disciplinesMap.get(discipline).push({ id: `${discipline}#${courriel}`, courriel, discipline, disciplines, fonction, nom, nomComplet: `${prenom} ${nom}`, photo, thumb, prenom })
     })
   })
 
@@ -138,8 +138,24 @@ export default function ListePersonnel() {
                   <Typography variant="subtitle2" color="text.secondary" component="div" sx={{ textTransform: 'uppercase' }}>
                     {value.fonction}
                   </Typography>
-                  <Typography variant="subtitle1" color="text.secondary" component="div">
-                    {value.discipline}
+                  <Typography variant="subtitle1" color="text.secondary" component="div" mt={1}>
+                    {value.disciplines.map((discipline, index) => {
+                      const sep = index ? <>, </> : null
+                      const node =
+                        discipline === value.discipline ? (
+                          <span key={index}>
+                            <strong>{discipline}</strong>
+                          </span>
+                        ) : (
+                          <span key={index}>{discipline}</span>
+                        )
+                      return (
+                        <>
+                          {sep}
+                          {node}
+                        </>
+                      )
+                    })}
                   </Typography>
                 </Grid>
               </Grid>
