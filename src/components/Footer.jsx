@@ -40,6 +40,7 @@ export default function Footer() {
         '*': {
           fontSize: 'inherit',
         },
+        marginTop: '100px',
       }}
     >
       <Container
