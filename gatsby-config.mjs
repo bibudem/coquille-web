@@ -56,9 +56,11 @@ const config = {
         ignore: ['**/~$*']
       },
     },
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     'gatsby-transformer-excel',
     'gatsby-plugin-react-svg',
-    'gatsby-plugin-image',
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',
@@ -67,8 +69,6 @@ const config = {
       }
     },
     'gatsby-plugin-mdx',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-webfonts',
       options: {
