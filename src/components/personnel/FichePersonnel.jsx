@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from 'gatsby'
 import { Box, Button, Card, CardActions, CardContent, Grid, Typography, IconButton, Autocomplete, TextField } from '@mui/material'
 import { EmailRounded } from '@mui/icons-material'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { useState } from 'react'
 
 function disciplinesSort(a, b) {
@@ -20,18 +20,20 @@ function disciplinesSort(a, b) {
 
 export default function ListePersonnel() {
   const [value, setValue] = useState(null)
-  const [personnel, setPersonnel] = useState(null)
   const [inputValue, setInputValue] = useState('')
 
   const data = useStaticQuery(graphql`
-    query MyQuery {
+    query ListePersonnelQuery {
       allFile(filter: { sourceInstanceName: { eq: "personnel" }, relativeDirectory: { eq: "photos" } }) {
         nodes {
           name
           extension
           ext
-          childImageSharp {
-            gatsbyImageData(width: 50, formats: WEBP)
+          thumb: childImageSharp {
+            gatsbyImageData(width: 60, height: 60, formats: WEBP, placeholder: BLURRED, transformOptions: { cropFocus: ENTROPY })
+          }
+          photo: childImageSharp {
+            gatsbyImageData(width: 150, formats: WEBP, placeholder: BLURRED)
           }
           sourceInstanceName
           id
@@ -58,27 +60,28 @@ export default function ListePersonnel() {
   `)
 
   const disciplinesMap = new Map()
-  const fallbackPicture = data.allFile.nodes.find((node) => node.name === '_profile').childImageSharp.gatsbyImageData
+  const fallbackPicturesFile = data.allFile.nodes.find((node) => node.name === '_profile')
 
-  data.allListePersonnelXlsxSheet1.nodes.forEach(({ courriel, disciplines, fonction, nom, photo, prenom }) => {
+  data.allListePersonnelXlsxSheet1.nodes.forEach(({ courriel, disciplines, fonction, nom, photo: photoId, prenom }) => {
     const _disciplines = disciplines.split(/\s*\|\s*/)
 
-    const photoId = photo.replace(/\.\w+$/, '')
-    const photoData = data.allFile.nodes.find((node) => node.name === photoId)?.childImageSharp.gatsbyImageData ?? fallbackPicture
+    photoId = photoId.replace(/\.\w+$/, '')
+    const file = data.allFile.nodes.find((node) => node.name === photoId) || fallbackPicturesFile
+    const photo = getImage(file.photo)
+    const thumb = getImage(file.thumb)
 
     _disciplines.forEach((discipline) => {
       if (!disciplinesMap.has(discipline)) {
         disciplinesMap.set(discipline, [])
       }
 
-      disciplinesMap.get(discipline).push({ id: `${discipline}#${courriel}`, courriel, discipline, fonction, nom, nomComplet: `${prenom} ${nom}`, photo: photoData, prenom })
+      disciplinesMap.get(discipline).push({ id: `${discipline}#${courriel}`, courriel, discipline, fonction, nom, nomComplet: `${prenom} ${nom}`, photo, thumb, prenom })
     })
   })
 
   const personnelByDiscipline = [...disciplinesMap.values()].flat().sort(disciplinesSort)
 
   function onAutocompleteChange(event, newValue) {
-    console.log('newValue: %o', newValue)
     setInputValue(newValue)
   }
 
@@ -101,13 +104,13 @@ export default function ListePersonnel() {
           return option.discipline === value.discipline
         }}
         renderInput={(params) => <TextField {...params} label="Cherchez une discipline..." fullWidth sx={{ mb: 2 }} />}
-        renderOption={(props, { nomComplet, discipline, photo } = option) => {
+        renderOption={(props, { nomComplet, discipline, thumb } = option) => {
           // console.log('props: %o', props)
           return (
             <li {...props}>
               <Grid container gap={2} alignItems="center" flexWrap="nowrap">
-                <Grid item sx={{ display: 'flex', width: 150 }}>
-                  <GatsbyImage image={photo} alt={nomComplet} width={150} height={250} />
+                <Grid item sx={{ display: 'flex' }}>
+                  <GatsbyImage image={thumb} alt={nomComplet} />
                 </Grid>
                 <Grid item sx={{ wordWrap: 'break-word' }}>
                   <Typography variant="body">{nomComplet}</Typography>
@@ -123,10 +126,10 @@ export default function ListePersonnel() {
       {value && (
         <Card>
           <CardContent>
-            <Box sx={{ display: 'flex', flex: '1 0 auto' }}>
+            <Box mb={2} sx={{ display: 'flex', flex: '1 0 auto' }}>
               <Grid container gap={2}>
                 <Grid sx={{ width: 100, height: 150 }}>
-                  <GatsbyImage image={value.photo} alt={value.nomComplet} width={250} height={250} />
+                  <GatsbyImage image={value.photo} alt={value.nomComplet} />
                 </Grid>
                 <Grid sx={{ display: 'flex', flexDirection: 'column' }}>
                   <Typography component="div" variant="h5">
@@ -141,10 +144,13 @@ export default function ListePersonnel() {
                 </Grid>
               </Grid>
             </Box>
-            <Typography>{`Integer consectetur lectus diam, sed pulvinar ante efficitur eu. Curabitur quis felis et erat eleifend eleifend in eu nisi. Nulla gravida turpis congue, luctus ac gravida pellentesque, vehicula id quam.`}</Typography>
+            <Typography variant="body2">{`Integer consectetur lectus diam, sed pulvinar ante efficitur eu. Curabitur quis felis et erat eleifend eleifend in eu nisi. Nulla gravida turpis congue, luctus ac gravida pellentesque, vehicula id quam.`}</Typography>
           </CardContent>
-          <CardActions>
-            <Button>Écrivez-moi!</Button>
+          <CardActions sx={{ justifyContent: 'flex-end' }}>
+            <Button>Action secondaire</Button>
+            <Button variant="contained" disableElevation>
+              Écrivez-moi!
+            </Button>
           </CardActions>
         </Card>
       )}
