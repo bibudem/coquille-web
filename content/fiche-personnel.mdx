@@ -3,10 +3,72 @@ title: Fiche d'employé
 slug: fiche-personnel
 ---
 
-// import FichePersonnel from '@/components/personnel/FichePersonnel.jsx'
+import { Box, Button, Card, CardActions, CardMedia, CardContent, Typography } from '@mui/material'
+import Grid from '@mui/material/Unstable_Grid2'
+import FichePersonnel from '@/components/personnel/FichePersonnel'
 
 # Fiche d'employé
 
-Voici un composant où on peut rechercher un employé et afficher sa fiche à partir d'un fichier `.csv`.
+Voici un composant où on peut rechercher un employé et afficher sa fiche à partir d'un fichier Excell.
 
-{/* <FichePersonnel /> */}
+<Box display="flex" justifyContent="center" alignItems="center">
+  <Grid container spacing={2} my={4}>
+    <Grid xs={6} display="flex" justifyContent="center" alignItems="center">
+      <Typography variant="h2">Nullam vestibulum</Typography>
+      <ul>
+        <li>Curabitur tristique posuere porttitor </li>
+        <li>Duis a nunc fringilla nisl posuere laoreet nec</li>
+        <li>Curabitur ut metus et tortor</li>
+      </ul>
+    </Grid>
+    <Grid xs={6} display="flex" justifyContent="center" alignItems="center">
+      <Card sx={{ maxWidth: 345 }}>
+        <CardMedia component="img" alt="green iguana" height="140" image="https://mui.com/static/images/cards/contemplative-reptile.jpg" />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {`Lizard`}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {`Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica`}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Share</Button>
+          <Button size="small">Learn More</Button>
+        </CardActions>
+      </Card>
+    </Grid>
+  </Grid>
+</Box>
+
+<FichePersonnel />
+
+<Box display="flex" justifyContent="center" alignItems="center">
+  <Grid container spacing={2} my={4}>
+    <Grid xs={6} display="flex" justifyContent="center" alignItems="center">
+      <Card sx={{ maxWidth: 345 }}>
+        <CardMedia component="img" alt="green iguana" height="140" image="https://mui.com/static/images/cards/contemplative-reptile.jpg" />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {`Lizard`}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {`Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica`}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Share</Button>
+          <Button size="small">Learn More</Button>
+        </CardActions>
+      </Card>
+    </Grid>
+    <Grid xs={6} display="flex" justifyContent="center" alignItems="center">
+      <Typography variant="h2">Nullam vestibulum</Typography>
+      <ul>
+        <li>Curabitur tristique posuere porttitor </li>
+        <li>Duis a nunc fringilla nisl posuere laoreet nec</li>
+        <li>Curabitur ut metus et tortor</li>
+      </ul>
+    </Grid>
+  </Grid>
+</Box>
