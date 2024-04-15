@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.1.0](https://github.com/bibudem/prototype-web/compare/v3.0.0...v3.1.0) (2024-04-15)
+
+
+### Features
+
+* Ajout d'un démo d'exploitation de données extraites d'un fichier Excel avec photos: répertoire du personnel ([3e3b8e4](https://github.com/bibudem/prototype-web/commit/3e3b8e4bed38720337131f663a57cb039a915766))
+* Ajout d'un menu temporaire qui pointe vers une page d'expérimentations ([7b710f5](https://github.com/bibudem/prototype-web/commit/7b710f5edf1f1f80a99a8310c95bca61ff3b7288))
+* Suppression de l'action GitHub de déploiement automatique sur Github Pages. ([9226625](https://github.com/bibudem/prototype-web/commit/9226625af6e7418ba55a35c8771e22adf2081ead))
+
+
+### Bug Fixes
+
+* Correction de coquilles dans la syntaxe markdown de la page /a-propos/notre-equipe ([94a8225](https://github.com/bibudem/prototype-web/commit/94a8225c023a4d8547c5b974e270322a1fca0b48))
+* Correction de la construction automatique de la structure du site. ([90c525a](https://github.com/bibudem/prototype-web/commit/90c525a8e03e077f07fd66de1ecf96a750c0f1ed))
+* Suppression des avertissements liés au package react-server-dom-webpack lors de l'installation ([fc3dfad](https://github.com/bibudem/prototype-web/commit/fc3dfadfb5d5bd8bf2db144cef9ef127d9171020))
+* Tableau du répertoire du personnel fonctionnel ([f46ab36](https://github.com/bibudem/prototype-web/commit/f46ab365623259e2f8ba092e90557728a3712bbd))
+
 ## [3.0.0](https://github.com/bibudem/prototype-web/compare/v2.0.0...v3.0.0) (2024-04-03)
 
 
