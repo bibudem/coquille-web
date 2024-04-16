@@ -20,6 +20,7 @@
     "@mui/material": "^5.15.14",
     "@mui/x-data-grid": "^7.1.0",
     "@sindresorhus/slugify": "^2.2.1",
+    "code-bib": "github:bibudem/code-bib",
     "gatsby": "^5.13.3",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-image": "^3.13.1",
@@ -37,7 +38,8 @@
     "postcss": "^8.4.38",
     "postcss-preset-env": "^9.5.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "swr": "^2.2.5"
   },
   "overrides": {
     "xlsx": "https://cdn.sheetjs.com/xlsx-latest/xlsx-latest.tgz",
