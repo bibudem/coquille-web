@@ -61,6 +61,7 @@ const config = {
     'gatsby-transformer-sharp',
     'gatsby-transformer-excel',
     'gatsby-plugin-react-svg',
+    'gatsby-plugin-postcss',
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',
