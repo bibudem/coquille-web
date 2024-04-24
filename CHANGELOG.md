@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.2.0](https://github.com/bibudem/prototype-web/compare/v3.1.0...v3.2.0) (2024-04-24)
+
+
+### Features
+
+* Ajout d'un composant pour la rétroaction usager ([bfa134b](https://github.com/bibudem/prototype-web/commit/bfa134b1c014899f3bb0cde3f89b10df49a64558))
+* La police de base est maintenant Figtree ([34207e3](https://github.com/bibudem/prototype-web/commit/34207e332828c576810170c7880630a3d988ba47))
+* Support expérimental pour PostCSS ([8caf48a](https://github.com/bibudem/prototype-web/commit/8caf48a2b5d14bb57f3f4813d01e8672010c95c6))
+
+
+### Bug Fixes
+
+* Correction d'une propriété du composant RetroactionUsager qui n'était pas obligatoire ([4372407](https://github.com/bibudem/prototype-web/commit/43724070cd415b1864c1bd8936b94e2c3691aecb))
+
 ## [3.1.0](https://github.com/bibudem/prototype-web/compare/v3.0.0...v3.1.0) (2024-04-15)
 
 
