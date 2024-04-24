@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { Container } from '@mui/material'
 
 export default function RetroactionUsager({ formId = '20e7ff6aa4aeadadbea8aa877a806bb9' }) {
@@ -21,8 +20,4 @@ export default function RetroactionUsager({ formId = '20e7ff6aa4aeadadbea8aa877a
       <div id={`form_${formId}`} style={{ display: 'inline-block', height: '258px' }}></div>
     </Container>
   )
-}
-
-RetroactionUsager.propTypes = {
-  formId: PropTypes.string.isRequired,
 }
