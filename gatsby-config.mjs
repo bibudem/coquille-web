@@ -76,7 +76,7 @@ const config = {
         fonts: {
           google2: [
             {
-              family: 'Inter',
+              family: 'Figtree',
               axes: 'wght@300..600',
             },
             // {

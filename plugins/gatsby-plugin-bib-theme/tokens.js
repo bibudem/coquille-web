@@ -10,7 +10,7 @@ export default {
 		}
 	},
 	typography: {
-		fontFamily: 'Inter',
+		fontFamily: 'Figtree',
 		// h1: {
 		// 	fontFamily: mySerif
 		// },
