@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.0](https://github.com/bibudem/prototype-web/compare/v3.2.0...v3.3.0) (2024-04-25)
+
+
+### Features
+
+* Ajout du composant pour les avis ([8f59df3](https://github.com/bibudem/prototype-web/commit/8f59df3760dd780fd2b227f640786db157748b7e))
+
 ## [3.2.0](https://github.com/bibudem/prototype-web/compare/v3.1.0...v3.2.0) (2024-04-24)
 
 
