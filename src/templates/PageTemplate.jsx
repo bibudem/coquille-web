@@ -1,7 +1,7 @@
-import React from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Divider, Tab, Tabs } from '@mui/material'
+import '@bibudem/ui/dist/bib-avis.js'
 import AppBar from '@/components/AppBar'
 import Footer from '@/components/Footer'
 import Link from '@/components/Link'
@@ -14,6 +14,7 @@ export default function PageTemplate({ children }) {
   return (
     <MDXProvider components={shortcodes}>
       <AppBar />
+      <bib-avis bouton-fermer />
       <Container component="main">{children}</Container>
       <RetroactionUsager />
       <Footer />
