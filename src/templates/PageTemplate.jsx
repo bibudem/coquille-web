@@ -1,7 +1,6 @@
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Divider, Tab, Tabs } from '@mui/material'
-import '@bibudem/ui/dist/bib-avis.js'
 import AppBar from '@/components/AppBar'
 import Footer from '@/components/Footer'
 import Link from '@/components/Link'
@@ -35,5 +34,9 @@ export const query = graphql`
 export function Head({ pageContext, location }) {
   const { frontmatter } = pageContext
   const { pathname } = location
-  return <SEO title={frontmatter?.title} pathname={pathname} />
+  return (
+    <SEO title={frontmatter?.title} pathname={pathname}>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-avis.js"></script>
+    </SEO>
+  )
 }
