@@ -42,8 +42,6 @@ export default function HoraireAujourdHui({ bib, service = 'https://api.bib.umon
     return <div>loading...</div>
   }
 
-  console.log(data)
-  // render data
   return (
     <Accordion
       component="span"
@@ -59,15 +57,17 @@ export default function HoraireAujourdHui({ bib, service = 'https://api.bib.umon
       </AccordionSummary>
       <AccordionDetails>
         <table>
-          {data.details.map((horaire, i) => {
-            const fontWeight = i === currentDay ? 'bold' : null
-            return (
-              <tr key={i}>
-                <td style={{ textTransform: 'capitalize', paddingRight: '0.5rem', fontWeight }}>{jours[i]}</td>
-                <td style={{ textTransform: 'capitalize', fontWeight }}>{horaire}</td>
-              </tr>
-            )
-          })}
+          <tbody>
+            {data.details.map((horaire, i) => {
+              const fontWeight = i === currentDay ? 'bold' : null
+              return (
+                <tr key={i}>
+                  <td style={{ textTransform: 'capitalize', paddingRight: '0.5rem', fontWeight }}>{jours[i]}</td>
+                  <td style={{ textTransform: 'capitalize', fontWeight }}>{horaire}</td>
+                </tr>
+              )
+            })}
+          </tbody>
         </table>
 
         {lienHoraires && (
