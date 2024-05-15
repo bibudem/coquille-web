@@ -1,6 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { Box, Button, Card, CardActions, CardContent, Grid, Typography, IconButton, Autocomplete, TextField } from '@mui/material'
-import { EmailRounded } from '@mui/icons-material'
+import { Box, Button, Card, CardActions, CardContent, Grid, Typography, Autocomplete, TextField } from '@mui/material'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { useState } from 'react'
 
@@ -90,7 +89,6 @@ export default function ListePersonnel() {
       <Autocomplete
         value={value}
         onChange={(event, newValue) => {
-          console.log('[onChange] new value: %o', newValue)
           setValue(newValue)
         }}
         inputValue={inputValue}
@@ -105,7 +103,6 @@ export default function ListePersonnel() {
         }}
         renderInput={(params) => <TextField {...params} label="Cherchez une discipline..." fullWidth sx={{ mb: 2 }} />}
         renderOption={(props, { nomComplet, discipline, thumb } = option) => {
-          // console.log('props: %o', props)
           return (
             <li {...props}>
               <Grid container gap={2} alignItems="center" flexWrap="nowrap">
