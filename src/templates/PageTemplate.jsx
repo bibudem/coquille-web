@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Divider, Tab, Tabs, useTheme } from '@mui/material'
-import AppBar from '@/components/AppBar'
+import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Divider, Tab, Tabs, useMediaQuery, useTheme } from '@mui/material'
+import { TopAppBar, BottomAppBar } from '@/components/AppBar'
 import Footer from '@/components/Footer'
 import Link from '@/components/Link'
 import SEO from '@/components/SEO'
@@ -11,19 +11,25 @@ import RetroactionUsager from '@/components/RetroactionUsager'
 const shortcodes = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, Divider, Tab, Tabs } // Provide common components here
 
 export default function PageTemplate({ children }) {
+  const isSmall = useMediaQuery((theme) => theme.breakpoints.down('lg'))
+
   const theme = useTheme()
   console.log('theme: ', theme)
   return (
     <MDXProvider components={shortcodes}>
       {process.env.NODE_ENV !== 'production' && <Debug />}
       <udem-urgence></udem-urgence>
-      <AppBar />
+
+      {!isSmall && <TopAppBar />}
+
       <bib-avis bouton-fermer />
       <Container component="main" role="main">
         {children}
         <RetroactionUsager />
       </Container>
       <Footer />
+
+      {isSmall && <BottomAppBar />}
     </MDXProvider>
   )
 }
