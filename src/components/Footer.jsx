@@ -89,7 +89,7 @@ export default function Footer() {
                 Newsletter
               </Typography>
               <Typography variant="body2" color="primary.contrastText" mb={2}>
-                Subscribe to our newsletter for weekly updates and promotions.
+                S'inscrire à l'infolettre des Bibliothèques
               </Typography>
               <Stack direction="row" spacing={1} useFlexGap>
                 <TextField
