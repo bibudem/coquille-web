@@ -5,12 +5,14 @@ import AppBar from '@/components/AppBar'
 import Footer from '@/components/Footer'
 import Link from '@/components/Link'
 import SEO from '@/components/SEO'
+import Debug from '@/components/Debug'
 
 const shortcodes = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, Divider, Tab, Tabs } // Provide common components here
 
 export default function PageTemplate({ children }) {
   return (
     <MDXProvider components={shortcodes}>
+      {process.env.NODE_ENV !== 'production' && <Debug />}
       <udem-urgence></udem-urgence>
       <AppBar />
       <bib-avis bouton-fermer />
