@@ -21,6 +21,8 @@
     "@mui/x-data-grid": "^7.1.0",
     "@sindresorhus/slugify": "^2.2.1",
     "code-bib": "github:bibudem/code-bib",
+    "color": "^4.2.3",
+    "contrast-color": "^1.0.1",
     "gatsby": "^5.13.3",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-image": "^3.13.1",
