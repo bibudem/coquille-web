@@ -43,12 +43,9 @@ export default function Debug() {
         backgroundColor: 'rgb(255 255 255 / 76%)',
       }}
     >
-      <Box sx={{ padding: '.5em' }}>
+      <Box sx={{ padding: '.5em .35em .35em .5em' }}>
         <Box
           sx={{
-            // color: '#fff',
-            // backgroundColor: '#df0202',
-            // backgroundColor: `hsl(from red calc(h + ${(360 / queries.length) * resolution.i}) s l)`,
             color: resolution.color,
             backgroundColor: resolution.bg,
             borderRadius: '2px',
@@ -58,8 +55,17 @@ export default function Debug() {
         >
           {resolution.key}
         </Box>
-        <Box pt={0.25} sx={{ fontSize: '.9em' }}>
-          {resolution.range}{' '}
+        <Box
+          pt={0.25}
+          sx={{
+            fontSize: '.85em',
+            color: '#000',
+            backgroundColor: '#fff',
+            borderRadius: '0 0 2px 2px',
+            padding: '2px 3px',
+          }}
+        >
+          {resolution.range}
         </Box>
       </Box>
     </Box>
