@@ -5,6 +5,18 @@ export default {
 			palette: {
 				primary: {
 					main: '#0057AC'
+				},
+				udemBleuFonce: {
+					main: '#0B113A',
+					light: 'rgb(59, 64, 97)',
+					dark: 'rgb(7, 11, 40)',
+					contrastText: '#fff'
+				},
+				udemBleuPrincipal: {
+					main: "#0057ac",
+					light: "rgb(51, 120, 188)",
+					dark: "rgb(0, 60, 120)",
+					contrastText: "#fff"
 				}
 			}
 		}
@@ -39,13 +51,16 @@ export default {
 		}
 	},
 	components: {
-		Link: {
-			color: 'red!important'
-		},
 		MuiLink: {
 			defaultProps: {
 				underline: 'hover',
 			},
 		},
+		BibFooter: {
+			styleOverrides: {
+				udem: ({ theme }) => ({
+				})
+			}
+		}
 	},
 }
