@@ -1,6 +1,7 @@
 {
   "conventionalCommits.scopes": [
     "icons",
-    "coquille"
+    "coquille",
+    "theme"
   ]
 }
