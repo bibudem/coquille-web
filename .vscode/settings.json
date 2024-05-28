@@ -2,6 +2,7 @@
   "conventionalCommits.scopes": [
     "icons",
     "coquille",
-    "theme"
+    "theme",
+    "accessibilite"
   ]
 }
