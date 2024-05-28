@@ -65,6 +65,11 @@ export default {
 				underline: 'hover',
 			},
 		},
+		MuiStack: {
+			defaultProps: {
+				useFlexGap: true,
+			},
+		},
 		BibFooter: {
 			styleOverrides: {
 				udem: ({ theme }) => ({
