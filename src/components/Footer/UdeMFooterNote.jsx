@@ -23,12 +23,6 @@ function Copyright() {
   )
 }
 
-function NoteDivider({ children }) {
-  const isSmall = useSmall()
-
-  return isSmall && <Divider orientation="vertical" variant="middle" flexItem sx={{ borderColor: 'currentcolor', opacity: 0.6, paddingInline: 1 }} aria-hidden="true" />
-}
-
 const StyledNoteCell = styled(Grid)(({ theme }) => ({
   [`${theme.breakpoints.down('md')}`]: {
     position: 'relative',
@@ -59,12 +53,12 @@ export function UdeMFooterNote() {
   return (
     <FooterContainer>
       <Box
-        sx={(theme) => ({
+        sx={{
           py: 1.5,
           borderTop: '1px solid currentColor',
           width: '100%',
           fontSize: '.6875rem',
-        })}
+        }}
       >
         <Grid container width="100%" columnGap={{ xs: 1, md: 2 }}>
           <NoteCell xs={12} md={true} order={{ xs: 1, md: 0 }} sx={{ paddingBlockStart: { xs: '1em', md: 0 } }}>
