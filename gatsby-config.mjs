@@ -23,8 +23,9 @@ const config = {
       options: {
         alias: {
           '@/components': 'src/components',
+          '@/hooks': 'src/hooks',
           '@/images': 'src/images',
-          '@/hooks': 'src/hooks'
+          '@/icons': 'src/icons'
         },
         extensions: [
           'js',

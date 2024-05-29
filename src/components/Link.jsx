@@ -25,6 +25,7 @@ const Link = forwardRef(function Link(props, ref) {
       </StyledA>
     )
   }
+
   return (
     <MuiLink ref={ref} component={GatsbyLink} to={to} activeClassName={activeClassName} partiallyActive={partiallyActive} {...other}>
       {children}
