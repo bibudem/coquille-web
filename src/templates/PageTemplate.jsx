@@ -16,7 +16,7 @@ export default function PageTemplate({ children }) {
     <MDXProvider components={shortcodes}>
       {process.env.NODE_ENV !== 'production' && <Debug />}
       <udem-urgence></udem-urgence>
-      {/* <AppBar /> */}
+      <AppBar />
       <bib-avis bouton-fermer />
       <Container component="main" role="main">
         {children}
