@@ -1,5 +1,6 @@
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import adapter from 'gatsby-adapter-netlify'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -7,6 +8,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
  * @type {import('gatsby').GatsbyConfig}
  */
 const config = {
+  adapter: adapter({
+    excludeDatastoreFromEngineFunction: false,
+    imageCDN: false,
+  }),
   siteMetadata: {
     title: 'Les bibliothèques / UdeM',
 
