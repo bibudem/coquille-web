@@ -41,7 +41,7 @@ const BibFooterUdeM = forwardRef(function BibFooterUdeM(props, ref) {
   return (
     <UdeMFooter ref={ref}>
       <FooterContainer>
-        <Box paddingBlock="35px">
+        <Box paddingBlock="35px" width="100%">
           <Grid container width="100%" rowSpacing={2} columnSpacing={{ xs: 1.5, md: 2 }}>
             <Grid xs={12} md={5} display="flex" paddingBlockEnd={{ xs: 3, md: 0 }}>
               <a href="https://www.umontreal.ca" id="awef">
