@@ -1,7 +1,8 @@
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import adapter from 'gatsby-adapter-netlify'
+import GatsbyAdapterNetlifyModule from 'gatsby-adapter-netlify'
 
+const adapter = GatsbyAdapterNetlifyModule.default
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 /**
