@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Divider, Tab, Tabs } from '@mui/material'
+import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Divider, Tab, Tabs, useTheme } from '@mui/material'
 import AppBar from '@/components/AppBar'
 import Footer from '@/components/Footer'
 import Link from '@/components/Link'
@@ -10,13 +10,15 @@ import Debug from '@/components/Debug'
 const shortcodes = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, Divider, Tab, Tabs } // Provide common components here
 
 export default function PageTemplate({ children }) {
+  const theme = useTheme()
+  console.log('theme: ', theme)
   return (
     <MDXProvider components={shortcodes}>
       {process.env.NODE_ENV !== 'production' && <Debug />}
       <udem-urgence></udem-urgence>
-      <AppBar />
+      {/* <AppBar /> */}
       <bib-avis bouton-fermer />
-      <Container component="main">
+      <Container component="main" role="main">
         {children}
 
         <Box component="aside" className="article-footer" sx={{ pt: '2rem' }}>
