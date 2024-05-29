@@ -10,6 +10,7 @@ const StyledButton = styled(ButtonBase)(({ theme }) => ({
   backgroundColor: theme.palette.Button.inheritContainedBg,
   borderRadius: theme.shape.corner.full,
   fontSize: '.875rem',
+  whiteSpace: 'nowrap',
   fontWeight: 600,
   padding: 'var(--_padding-block) var(--_padding-inline-end) var(--_padding-block) calc(var(--_padding-inline-start) + var(--_bullet-size) + var(--_bullet-margin-inline))',
   lineHeight: 1,

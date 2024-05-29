@@ -1,10 +1,6 @@
 import { forwardRef } from 'react'
 import { IconButton, SvgIcon, styled, useMediaQuery, useTheme } from '@mui/material'
-import Box from '@mui/material/Box'
-import Container from '@mui/material/Container'
-import Stack from '@mui/material/Stack'
-import TextField from '@mui/material/TextField'
-import Typography from '@mui/material/Typography'
+import { Box, Stack, TextField, Typography } from '@mui/material'
 
 import FooterLink from './FooterLink'
 import FooterContainer from './FooterContainer'
@@ -30,7 +26,6 @@ const BibFooterLocal = styled('div', {
   backgroundColor: theme.palette.primary.main,
 }))
 
-// export default function FooterBib() {
 const FooterLocal = forwardRef(function FooterLocal(props, ref) {
   const theme = useTheme()
   const isXSmall = useMediaQuery(theme.breakpoints.down('sm'))
