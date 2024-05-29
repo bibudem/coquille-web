@@ -60,6 +60,18 @@ export default {
 		}
 	},
 	components: {
+		MuiCssBaseline: {
+			styleOverrides: (theme) => `
+				:root {
+					--bib-comp-retroaction-usager-size: ${theme.typography.body2.fontSize};
+				}
+				${theme.breakpoints.down('md')} {
+					:root {
+						font-size: 19px;
+					}
+				}
+			`
+		},
 		MuiLink: {
 			defaultProps: {
 				underline: 'hover',
