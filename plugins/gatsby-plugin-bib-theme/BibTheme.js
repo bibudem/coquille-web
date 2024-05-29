@@ -1,14 +1,10 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import CssBaseline from '@mui/material/CssBaseline'
+import { CssBaseline } from '@mui/material'
 import { responsiveFontSizes, experimental_extendTheme as extendTheme, Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles'
 import tokens from './tokens'
 
 export const theme = responsiveFontSizes(extendTheme(tokens))
-
-const ChildrenWithGlobalStyle = ({ children }) => {
-	return <> <GlobalStyles /> {children} </>
-}
 
 export default function BibTheme({ darkMode, children, ...props }) {
 	// take away SSR rendered mode;
@@ -21,10 +17,6 @@ export default function BibTheme({ darkMode, children, ...props }) {
 			{children}
 		</CssVarsProvider>
 	)
-}
-
-ChildrenWithGlobalStyle.propTypes = {
-	children: PropTypes.node
 }
 
 BibTheme.propTypes = {
