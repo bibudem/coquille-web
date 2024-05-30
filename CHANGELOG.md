@@ -1,5 +1,40 @@
 # Changelog
 
+## [3.4.0](https://github.com/bibudem/coquille-web/compare/v3.3.0...v3.4.0) (2024-05-30)
+
+
+### Features
+
+* **accessibilite:** Ajout d'un role explicite sur &lt;main&gt; ([8761066](https://github.com/bibudem/coquille-web/commit/876106698a8aebc4a85c597080fe3a8955391d3b))
+* Ajout d'un composant Debug pour aider le développement ([699aaa6](https://github.com/bibudem/coquille-web/commit/699aaa6cac3bc3238d6226817d63cd021817e2b2))
+* Ajout du composant &lt;bib-retroaction-usager&gt; ([62ccf29](https://github.com/bibudem/coquille-web/commit/62ccf2946ef8d09a8f41e63ef890c63cf74f6110))
+* Amélioration des styles de Debug ([75514a1](https://github.com/bibudem/coquille-web/commit/75514a1c2223656fe2d8453d7dc6640a7906a2c1))
+* **coquille:** Ajout d'un composant RetroactionUsager qui encapsule le custom element bib-retroaction-usager ([0914c04](https://github.com/bibudem/coquille-web/commit/0914c0427467482457fae753a5b2dc9c8d368e5e))
+* **coquille:** Ajout d'un composant RetroactionUsager qui encapsule le custom element bib-retroaction-usager ([9cfd290](https://github.com/bibudem/coquille-web/commit/9cfd290c19783730b31272fba13509bbf8013773))
+* **coquille:** Implémentation initiale du pied de page ([ec8e759](https://github.com/bibudem/coquille-web/commit/ec8e759b9661eefe5edc1eb4da6d6b68fe1065c0))
+* **coquille:** Implémentation préliminaire du pied de page udeM ([23b5979](https://github.com/bibudem/coquille-web/commit/23b5979b1c483fc15a27704599718f41c12e4376))
+* **icons:** Ajout d'une icone flèche droite encerclée ([c7a9552](https://github.com/bibudem/coquille-web/commit/c7a9552a44f83123c91df387f4f007307f0a5efd))
+* **icons:** Ajout du logo carré de l'UdeM "Université de Montréal et du monde". ([b98bfb8](https://github.com/bibudem/coquille-web/commit/b98bfb83d26acd97601f8ae8cc72b6f3917c85ca))
+* Le composant MuiStack utilise maintenant les gap  flex par défaut pour l'espacement entre les boîtes ([bb25223](https://github.com/bibudem/coquille-web/commit/bb252236ccbe7821cfe5c1797e608464ee6e269f))
+* Rotation de la couleur du composant Debug en fonction de l'intervalle de résolution de l'écran ([6615f1d](https://github.com/bibudem/coquille-web/commit/6615f1dfa7cad6b4e014e4a77dada4fa734f1535))
+* **theme:** Ajout de 2 couleurs UdeM: udemBleuFonce et udemBleuPrincipal ([b658795](https://github.com/bibudem/coquille-web/commit/b658795c5e8af0ae1d9f91c2133440620937ad28))
+* **theme:** Changement de la taile de base de police en affichage mobile de 16px à 19px ([d07aec8](https://github.com/bibudem/coquille-web/commit/d07aec8a82baa1aa0321cbb443ce2b71c9140b39))
+* **theme:** Harmonisation de la taille de police du composant bib-retroaction-usager avec le thème ([d07aec8](https://github.com/bibudem/coquille-web/commit/d07aec8a82baa1aa0321cbb443ce2b71c9140b39))
+
+
+### Bug Fixes
+
+* Chargement du script de &lt;bib-avis&gt; via le cdn afin de contourner un bogue ([9e52d23](https://github.com/bibudem/coquille-web/commit/9e52d232f5bd474dd33553eb1e53d3abf666200a))
+* **coquille:** Amélioration du layout du pied de page UdeM en affichage mobile ([9b6e19f](https://github.com/bibudem/coquille-web/commit/9b6e19f2a05c12b6bf0e5a81992c35db5acb4331))
+* **coquille:** Correction du layout du pied de page UdeM ([418e208](https://github.com/bibudem/coquille-web/commit/418e2088da705adb3ae839a40664fc9befe8d440))
+* Correction d'un bogue avec les liens du pied de page UdeM ([43110c4](https://github.com/bibudem/coquille-web/commit/43110c4489d183a420d1ad575becfd7f1c23f6eb))
+* Correction de la structure html de la table utilisée pour le widget Horaire ajourd'hui ([2a49f6d](https://github.com/bibudem/coquille-web/commit/2a49f6da3fb289cb6bcd0489cba49abe4e6ccba6))
+
+
+### Reverts
+
+* **coquille:** Retrait d'un changement commité par erreur ([eef94b8](https://github.com/bibudem/coquille-web/commit/eef94b859796c095544cdfd0a317d3a760a6674d))
+
 ## [3.3.0](https://github.com/bibudem/prototype-web/compare/v3.2.0...v3.3.0) (2024-04-25)
 
 
