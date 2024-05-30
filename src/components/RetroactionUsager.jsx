@@ -1,5 +1,4 @@
 import { Box } from '@mui/material'
-import './test.css'
 
 export default function RetroactionUsager() {
   return (
