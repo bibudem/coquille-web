@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import Link from '@/components/Link'
 import SEO from '@/components/SEO'
 import Debug from '@/components/Debug'
+import RetroactionUsager from '@/components/RetroactionUsager'
 
 const shortcodes = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, Divider, Tab, Tabs } // Provide common components here
 
@@ -20,10 +21,7 @@ export default function PageTemplate({ children }) {
       <bib-avis bouton-fermer />
       <Container component="main" role="main">
         {children}
-
-        <Box component="aside" className="article-footer" sx={{ pt: '2rem' }}>
-          <bib-retroaction-usager />
-        </Box>
+        <RetroactionUsager />
       </Container>
       <Footer />
     </MDXProvider>
