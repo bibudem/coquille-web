@@ -5,7 +5,7 @@ import Link from '@/components/Link'
 import SearchIcon from '@mui/icons-material/Search'
 
 import SideNav from '@/components/SideNav'
-import LogoBib from '../images/logo-bib.svg'
+import LogoBib from '@/images/logo-bib.svg'
 
 const pages = [
   { url: '/espaces', label: 'Espaces' },
@@ -62,7 +62,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 /**
  * Primary search app bar component
  */
-export function TopAppBar() {
+export default function TopAppBar() {
   /**
    * State variables
    */
@@ -133,86 +133,7 @@ export function TopAppBar() {
               }}
             >
               <Link
-                variant="h6"
-                noWrap
-                to="/"
-                sx={{
-                  display: { xs: 'none', sm: 'block', color: 'inherit' },
-                }}
-              >
-                <LogoBib style={{ height: '35px' }} />
-              </Link>
-            </Box>
-            <Stack direction="row" spacing={1}>
-              {pages.map(({ url, label }) => (
-                <Button
-                  href={url}
-                  key={url}
-                  sx={{
-                    my: 2,
-                    // color: 'white',
-                    fontWeight: 600,
-                    display: 'block',
-                    textTransform: 'none',
-                  }}
-                >
-                  {label}
-                </Button>
-              ))}
-            </Stack>
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Search>
-                <SearchIconWrapper>
-                  <SearchIcon color="primary" />
-                </SearchIconWrapper>
-                <StyledInputBase placeholder="Rechercher sur le site..." inputProps={{ 'aria-label': 'search' }} />
-              </Search>
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
-    </>
-  )
-}
-
-/**
- * Primary search app bar component for mobile devices
- */
-export function TopAppBarSm() {
-  const isSmall = useMediaQuery((theme) => theme.breakpoints.down('lg'))
-  const appBarPosition = isSmall ? { top: 'auto', bottom: 0 } : {}
-
-  return (
-    <>
-      {isSmall && <Offset />}
-      <AppBar
-        position={isSmall ? 'fixed' : 'sticky'}
-        elevation={0}
-        sx={{
-          borderBottom: '1px solid silver',
-          bgcolor: 'white',
-          ...appBarPosition,
-        }}
-      >
-        <Container
-          maxWidth="xl"
-          sx={{
-            '&.MuiContainer-maxWidthXl': {
-              maxWidth: '1500px',
-            },
-            py: 0.5,
-          }}
-        >
-          <Toolbar>
-            <SideNav />
-            <Box
-              sx={{
-                flexGrow: 0,
-                mr: 5,
-              }}
-            >
-              <Link
+                aria-label="Accueil"
                 variant="h6"
                 noWrap
                 to="/"

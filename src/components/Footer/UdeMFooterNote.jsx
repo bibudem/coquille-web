@@ -1,6 +1,5 @@
-import { Box, Divider, styled } from '@mui/material'
+import { Box, styled } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
-import { useSmall } from '@/hooks/use-small'
 import FooterLink from './FooterLink'
 import FooterContainer from './FooterContainer'
 import { FONT_OPACITY } from './UdeMFooter'
@@ -16,8 +15,8 @@ function Copyright() {
       <span property="dct:title">Ce site</span> est sous licence{' '}
       <FooterLink to="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">
         CC BY 4.0
-        <img style={{ height: '1.125em', marginLeft: '3px', verticalAlign: 'text-bottom', opacity: FONT_OPACITY }} src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" />
-        <img style={{ height: '1.125em', marginLeft: '3px', verticalAlign: 'text-bottom', opacity: FONT_OPACITY }} src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" />
+        <img role="presentation" style={{ height: '1.125em', marginLeft: '3px', verticalAlign: 'text-bottom', opacity: FONT_OPACITY }} src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" />
+        <img role="presentation" style={{ height: '1.125em', marginLeft: '3px', verticalAlign: 'text-bottom', opacity: FONT_OPACITY }} src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" />
       </FooterLink>
     </p>
   )

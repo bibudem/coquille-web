@@ -1,7 +1,9 @@
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Divider, Tab, Tabs, useMediaQuery, useTheme } from '@mui/material'
-import { TopAppBar, BottomAppBar } from '@/components/AppBar'
+import TopAppBar from '@/components/AppBar/TopAppBar'
+import TopAppBarSm from '@/components/AppBar/TopAppBarSm'
+import BottomAppBarSm from '@/components/AppBar/BottomAppBarSm'
 import Footer from '@/components/Footer'
 import Link from '@/components/Link'
 import SEO from '@/components/SEO'
@@ -20,7 +22,7 @@ export default function PageTemplate({ children }) {
       {process.env.NODE_ENV !== 'production' && <Debug />}
       <udem-urgence></udem-urgence>
 
-      {!isSmall && <TopAppBar />}
+      {isSmall ? <TopAppBarSm /> : <TopAppBar />}
 
       <bib-avis bouton-fermer />
       <Container component="main" role="main">
@@ -28,8 +30,7 @@ export default function PageTemplate({ children }) {
         <RetroactionUsager />
       </Container>
       <Footer />
-
-      {isSmall && <BottomAppBar />}
+      {isSmall && <BottomAppBarSm />}
     </MDXProvider>
   )
 }
@@ -48,10 +49,13 @@ export function Head({ pageContext, location }) {
   const { frontmatter } = pageContext
   const { pathname } = location
   return (
-    <SEO title={frontmatter?.title} pathname={pathname}>
+    <>
+      <html lang="fr" />
+      <title>{frontmatter?.title}</title>
+      <SEO title={frontmatter?.title} pathname={pathname} />
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-avis.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-retroaction-usager.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/udem-urgence.js"></script>
-    </SEO>
+    </>
   )
 }
