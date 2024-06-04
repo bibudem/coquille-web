@@ -31,7 +31,8 @@ const config = {
           '@/components': 'src/components',
           '@/hooks': 'src/hooks',
           '@/images': 'src/images',
-          '@/icons': 'src/icons'
+          '@/icons': 'src/icons',
+          '@/utils': 'src/utils',
         },
         extensions: [
           'js',

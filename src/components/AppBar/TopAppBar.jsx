@@ -1,10 +1,12 @@
-import { AppBar, Box, Button, Container, InputBase, Stack, Toolbar, useMediaQuery } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { AppBar, Box, Button, Container, InputBase, Stack, Toolbar } from '@mui/material'
 import { styled, alpha } from '@mui/material/styles'
-import Link from '@/components/Link'
-
 import SearchIcon from '@mui/icons-material/Search'
 
-import SideNav from '@/components/SideNav'
+import Link from '@/components/Link'
+import SideNav from '@/components/SideNav/SideNav'
+import SideNavContent from '@/components/SideNav/SideNavContent'
+import MenuFab from './MenuFab'
 import LogoBib from '@/images/logo-bib.svg'
 
 const pages = [
@@ -14,8 +16,6 @@ const pages = [
   { url: '/enseignement', label: 'Enseignement' },
   { url: '/tests', label: 'Tests' },
 ]
-
-const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
 
 const Search = styled('div')(({ theme }) => {
   return {
@@ -63,57 +63,38 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
  * Primary search app bar component
  */
 export default function TopAppBar() {
-  /**
-   * State variables
-   */
-  const [anchorEl, setAnchorEl] = React.useState(null) // element that triggered the profile menu
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null) // element that triggered the mobile menu
+  const [open, setOpen] = useState(false)
 
-  const isSmall = useMediaQuery((theme) => theme.breakpoints.down('lg'))
-  const appBarPosition = isSmall ? { top: 'auto', bottom: 0 } : {}
-
-  /**
-   * Determine if the profile menu is open
-   */
-  const isMenuOpen = Boolean(anchorEl)
-
-  /**
-   * Determine if the mobile menu is open
-   */
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
-
-  /**
-   * Handle the opening of the profile menu
-   */
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget)
+  const toggleDrawer = (newState) => () => {
+    setOpen(newState ?? !open)
   }
 
-  /**
-   * Handle the closing of the mobile menu
-   */
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null)
-  }
+  useEffect(() => {
+    function onClose() {
+      setOpen(false)
+    }
 
-  /**
-   * Handle the opening of the mobile menu
-   */
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget)
-  }
+    document.documentElement.addEventListener('close', onClose)
+
+    return () => {
+      document.documentElement.removeEventListener('close', onClose)
+    }
+  }, [])
 
   return (
     <>
-      {isSmall && <Offset />}
       <AppBar
-        position={isSmall ? 'fixed' : 'sticky'}
+        position="sticky"
         elevation={0}
-        sx={{
+        sx={(theme) => ({
           borderBottom: '1px solid silver',
           bgcolor: 'white',
-          ...appBarPosition,
-        }}
+          '.MuiToolbar-root': {
+            [theme.breakpoints.up('sm')]: {
+              minHeight: 89,
+            },
+          },
+        })}
       >
         <Container
           maxWidth="xl"
@@ -125,11 +106,9 @@ export default function TopAppBar() {
           }}
         >
           <Toolbar>
-            <SideNav />
             <Box
               sx={{
                 flexGrow: 0,
-                mr: 5,
               }}
             >
               <Link
@@ -144,9 +123,11 @@ export default function TopAppBar() {
                 <LogoBib style={{ height: '35px' }} />
               </Link>
             </Box>
+            <Box width="15%"></Box>
             <Stack direction="row" spacing={1}>
               {pages.map(({ url, label }) => (
                 <Button
+                  size="large"
                   href={url}
                   key={url}
                   sx={{
@@ -162,7 +143,7 @@ export default function TopAppBar() {
               ))}
             </Stack>
             <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <Box sx={{ display: 'flex', pr: 2 }}>
               <Search>
                 <SearchIconWrapper>
                   <SearchIcon color="primary" />
@@ -170,9 +151,15 @@ export default function TopAppBar() {
                 <StyledInputBase placeholder="Rechercher sur le site..." inputProps={{ 'aria-label': 'search' }} />
               </Search>
             </Box>
+            <Box>
+              <MenuFab onClick={toggleDrawer(true)} />
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>
+      <SideNav open={open} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)}>
+        <SideNavContent />
+      </SideNav>
     </>
   )
 }
