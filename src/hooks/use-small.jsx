@@ -1,7 +1,7 @@
 import { useMediaQuery, useTheme } from '@mui/material'
 
-export function useSmall(mediaQuery) {
+export function useSmall(breakpoint = 'sm') {
   const theme = useTheme()
 
-  return useMediaQuery(mediaQuery || theme.breakpoints.down('sm'))
+  return useMediaQuery(theme.breakpoints.down(breakpoint))
 }

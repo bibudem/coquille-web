@@ -62,6 +62,7 @@ const FooterLocal = forwardRef(function FooterLocal(props, ref) {
             <Box sx={{ ml: '-15px' }}>
               <FooterLink
                 to="/"
+                aria-label="Accueil"
                 sx={{
                   display: 'block',
                 }}
@@ -73,7 +74,7 @@ const FooterLocal = forwardRef(function FooterLocal(props, ref) {
               <Typography variant="body2" fontWeight={600} gutterBottom>
                 Infolettre
               </Typography>
-              <Typography variant="body2" sx={{ opacity: '.7' }}>
+              <Typography variant="body2" sx={{ opacity: '.73' }}>
                 S'inscrire à l'infolettre des Bibliothèques
               </Typography>
               <Stack direction="row" spacing={1} useFlexGap alignItems="center">
@@ -101,7 +102,7 @@ const FooterLocal = forwardRef(function FooterLocal(props, ref) {
                     },
                   })}
                 />
-                <IconButton color="inherit" sx={{ fontSize: '2.2rem', opacity: 0.7 }}>
+                <IconButton color="inherit" aria-label="Envoyer" sx={{ fontSize: '2.2rem', opacity: 0.73 }}>
                   <SvgIcon component={ArrowCircleRight} inheritViewBox />
                 </IconButton>
               </Stack>
