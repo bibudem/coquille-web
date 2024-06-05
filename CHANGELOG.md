@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.5.0](https://github.com/bibudem/coquille-web/compare/v3.4.0...v3.5.0) (2024-06-04)
+
+
+### Features
+
+* **coquille:** AppBar adaptative ([da1d54b](https://github.com/bibudem/coquille-web/commit/da1d54b0425f0e2a1d2d2feb5ceb340ee6f76c2e))
+
+
+### Reverts
+
+* Suppression de fichiers diff commités par erreur ([cddeea2](https://github.com/bibudem/coquille-web/commit/cddeea231ff34265eedfbdd1c0ae4f9b5b4c8f95))
+
 ## [3.4.0](https://github.com/bibudem/coquille-web/compare/v3.3.0...v3.4.0) (2024-05-30)
 
 
