@@ -19,8 +19,8 @@ Nous recommandons d'utiliser l'éditeur de code [Visual Sudio Code (VS Code)](ht
 ## Installation
 
 ```
-git clone https://github.com/bibudem/prototype-web.git
-cd prototype-web
+git clone https://github.com/bibudem/coquille-web.git
+cd coquille-web
 npm install
 ```
 
@@ -53,7 +53,7 @@ Les pages à éditer sont dans le dossier `content/`. Vous pouvez modifier le co
 
 Chaque commit sur le dépôt GitHub déclanchera une nouvelle compilation des sources et un déploiement sur Netlify à l'adresse:
 
-[https://bibudem.netlify.app](https://bibudem.netlify.app/)
+[https://bib-pp.netlify.app](https://bib-pp.netlify.app/)
 
 ## Composants disponibles
 
