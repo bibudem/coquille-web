@@ -61,6 +61,16 @@ export default {
 	},
 	components: {
 		MuiCssBaseline: {
+			/*
+			 * Viewport Width Range: 375px - 1536px
+			 * Font Size Range: 15px - 20px
+			 * Line Height Range: 1.6 - 1.4
+			 * 
+			 * font-size: clamp(0.938rem, 0.431vw + 0.837rem, 1.25rem);
+			 * line-height: clamp(1.5rem, 0.345vw + 1.419rem, 1.75rem);
+			 * 
+			 * @see https://fluidtypography.com/#app-get-started
+			*/
 			styleOverrides: (theme) => `
 				:root {
 					--bib-comp-retroaction-usager-size: ${theme.typography.body2.fontSize};
