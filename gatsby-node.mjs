@@ -32,6 +32,7 @@ export const createPages = async ({ graphql, actions, reporter, getNode }) => {
           frontmatter {
             slug
             title
+            template
           }
         }
       }
@@ -54,6 +55,9 @@ export const createPages = async ({ graphql, actions, reporter, getNode }) => {
     // console.log('node: %o', node)
     // console.log(node.parent)
 
+    const template = node.childMdx?.frontmatter?.template
+    const templateFullPath = template ? resolve(`./src/templates/${template.substring(0, 1).toUpperCase()}${template.substring(1)}Template.jsx`) : pageTemplate
+
     const basePath = node.relativeDirectory ? `/${node.relativeDirectory}` : ''
     const path = `${basePath}/${(node.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')}`
 
@@ -62,74 +66,10 @@ export const createPages = async ({ graphql, actions, reporter, getNode }) => {
       // like slugify to create a slug
       path,
       // Provide the path to the MDX content file so webpack can pick it up and transform it into JSX
-      component: `${pageTemplate}?__contentFilePath=${node.absolutePath}`,
+      component: `${templateFullPath}?__contentFilePath=${node.absolutePath}`,
       // You can use the values in this context in
       // our page layout component
       context: { id: node.id },
     })
   })
 }
-
-/**
- * @type {import('gatsby').GatsbyNode['onCreateNode']}
- */
-// export const onCreateNode = ({ node, actions, getNode }) => {
-//   const { createNodeField } = actions
-//   if (node.internal.type === `Mdx`) {
-//     console.log(getNode(node.parent))
-//     // const slug = node.frontmatter.slug ?? `/${slugify(node.frontmatter.title)}`
-//     const pathBase = node.relativeDirectory
-//     const path = `/${getNode(node.parent).relativeDirectory}/${(node.frontmatter.slug ?? slugify(getNode(node.parent).name)).replace(/index$/i, '')}`
-
-//     createNodeField({
-//       node,
-//       name: `path`,
-//       value: path
-//     })
-//   }
-// }
-
-// /**
-//  * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
-//  */
-// exports.createSchemaCustomization = ({ actions }) => {
-//   const { createTypes } = actions
-
-//   // Explicitly define the siteMetadata {} object
-//   // This way those will always be defined even if removed from gatsby-config.js
-
-//   // Also explicitly define the Markdown frontmatter
-//   // This way the "MarkdownRemark" queries will return `null` even when no
-//   // blog pages are stored inside "content/blog" instead of returning an error
-//   createTypes(`
-//     type SiteSiteMetadata {
-//       author: Author
-//       siteUrl: String
-//       social: Social
-//     }
-
-//     type Author {
-//       name: String
-//       summary: String
-//     }
-
-//     type Social {
-//       twitter: String
-//     }
-
-//     type MarkdownRemark implements Node {
-//       frontmatter: Frontmatter
-//       fields: Fields
-//     }
-
-//     type Frontmatter {
-//       title: String
-//       description: String
-//       date: Date @dateformat
-//     }
-
-//     type Fields {
-//       slug: String
-//     }
-//   `)
-// }

@@ -1,5 +1,4 @@
-import { forwardRef } from 'react'
-import { StaticImage } from 'gatsby-plugin-image'
+import { forwardRef, useEffect, useState } from 'react'
 import { Stack, Typography, Box } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
 import { styled } from '@mui/material/styles'
@@ -37,6 +36,11 @@ function UdeMFooterSectionHeader({ children, ...props }) {
 
 const BibFooterUdeM = forwardRef(function BibFooterUdeM(props, ref) {
   const isSmall = useSmall()
+  const [carreUdeMMondeSize, setCarreUdeMMondeSize] = useState(167)
+
+  useEffect(() => {
+    setCarreUdeMMondeSize(isSmall ? 135 : 167)
+  }, [isSmall])
 
   return (
     <UdeMFooter ref={ref}>
@@ -45,7 +49,7 @@ const BibFooterUdeM = forwardRef(function BibFooterUdeM(props, ref) {
           <Grid container width="100%" rowSpacing={2} columnSpacing={{ xs: 1.5, md: 2 }}>
             <Grid xs={12} md={5} display="flex" paddingBlockEnd={{ xs: 3, md: 0 }}>
               <a href="https://www.umontreal.ca" id="awef">
-                {isSmall ? <StaticImage src="../../images/carre-UdeM_monde-RGB.svg" alt="Université de Montréal et du monde" layout="fixed" width={135} height={135} /> : <StaticImage src="../../images/carre-UdeM_monde-RGB.svg" alt="Université de Montréal et du monde" layout="fixed" width={167} height={167} />}
+                <img src={'/images/carre-UdeM_monde-RGB.svg'} alt="Université de Montréal et du Monde" width={carreUdeMMondeSize} height={carreUdeMMondeSize} />
               </a>
             </Grid>
             <Grid xs={6} md>

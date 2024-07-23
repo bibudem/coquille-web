@@ -40,7 +40,12 @@ export default function Debug() {
         fontSize: '.7rem',
         lineHeight: 1,
         textAlign: 'center',
-        backgroundColor: 'rgb(255 255 255 / 76%)',
+        opacity: 0.45,
+        transition: 'opacity .15s',
+        '&:hover': {
+          opacity: 1,
+          transition: 'opacity .15s',
+        },
       }}
     >
       <Box sx={{ padding: '.5em .35em .35em .5em' }}>
@@ -48,7 +53,7 @@ export default function Debug() {
           sx={{
             color: resolution.color,
             backgroundColor: resolution.bg,
-            borderRadius: '2px',
+            borderRadius: '2px 2px 0 0',
             lineHeight: 1,
             padding: '.325em',
           }}

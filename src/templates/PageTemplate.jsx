@@ -32,6 +32,7 @@ export default function PageTemplate({ children }) {
       </Container>
       <Footer />
       {isSmall && <BottomAppBarSm />}
+      <bib-consent debug server-url="/consent/server"></bib-consent>
     </MDXProvider>
   )
 }
@@ -52,11 +53,11 @@ export function Head({ pageContext, location }) {
   return (
     <>
       <html lang="fr" />
-      <title>{frontmatter?.title}</title>
       <SEO title={frontmatter?.title} pathname={pathname} />
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-avis.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-retroaction-usager.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/udem-urgence.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@next/dist/bib-consent.js"></script>
     </>
   )
 }
