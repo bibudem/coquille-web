@@ -18,6 +18,13 @@ export default function PageTemplate({ children }) {
 
   const theme = useTheme()
   console.log('theme: ', theme)
+
+  const consentEvents = {
+    'bib:consent:ready': (e) => {
+      console.log('==========> consent ready', e)
+    },
+  }
+
   return (
     <MDXProvider components={shortcodes}>
       {process.env.NODE_ENV !== 'production' && <Debug />}
@@ -32,7 +39,7 @@ export default function PageTemplate({ children }) {
       </Container>
       <Footer />
       {isSmall && <BottomAppBarSm />}
-      <bib-consent debug server-url="/consent/server"></bib-consent>
+      <bib-consent debug {...consentEvents}></bib-consent>
     </MDXProvider>
   )
 }
@@ -57,7 +64,7 @@ export function Head({ pageContext, location }) {
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-avis.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-retroaction-usager.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/udem-urgence.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@next/dist/bib-consent.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent.js"></script>
     </>
   )
 }

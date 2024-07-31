@@ -41,14 +41,16 @@ const StyledNoteCell = styled(Grid)(({ theme }) => ({
 }))
 
 function NoteCell({ children, ...props }) {
-  return (
-    <StyledNoteCell {...props} className="ici">
-      {children}
-    </StyledNoteCell>
-  )
+  return <StyledNoteCell {...props}>{children}</StyledNoteCell>
 }
 
 export function UdeMFooterNote() {
+  function handleOnConsentLinkClick(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    document.querySelector('bib-consent')?.showPreferences()
+  }
+
   return (
     <FooterContainer>
       <Box
@@ -73,7 +75,9 @@ export function UdeMFooterNote() {
             <FooterLink to="#">Conditions d'utilisation</FooterLink>
           </NoteCell>
           <NoteCell>
-            <FooterLink to="#">Paramètres des témoins</FooterLink>
+            <FooterLink className="parametres-temoins" component="button" onClick={handleOnConsentLinkClick}>
+              Paramètres des témoins
+            </FooterLink>
           </NoteCell>
           <NoteCell>
             <FooterLink to="#">Accessibilité</FooterLink>

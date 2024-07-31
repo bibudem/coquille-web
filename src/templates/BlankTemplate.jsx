@@ -26,7 +26,6 @@ export const query = graphql`
 `
 
 export function Head({ pageContext, location }) {
-  console.log('pageContext: %o', pageContext)
   const { frontmatter } = pageContext
   const { pathname } = location
   return (
@@ -35,7 +34,7 @@ export function Head({ pageContext, location }) {
       <SEO title={frontmatter?.title} pathname={pathname}>
         <meta name="robots" content="noindex"></meta>
       </SEO>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@next/dist/bib-consent-server.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent-server.js"></script>
     </>
   )
 }
