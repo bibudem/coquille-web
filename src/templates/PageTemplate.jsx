@@ -61,6 +61,8 @@ export function Head({ pageContext, location }) {
     <>
       <html lang="fr" />
       <SEO title={frontmatter?.title} pathname={pathname} />
+      <bib-gtm></bib-gtm>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-gtm.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-avis.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-retroaction-usager.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/udem-urgence.js"></script>
