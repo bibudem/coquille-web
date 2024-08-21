@@ -39,7 +39,7 @@ export default function PageTemplate({ children }) {
       </Container>
       <Footer />
       {isSmall && <BottomAppBarSm />}
-      <bib-consent debug {...consentEvents}></bib-consent>
+      <bib-consent {...consentEvents}></bib-consent>
     </MDXProvider>
   )
 }
