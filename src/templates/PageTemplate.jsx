@@ -39,7 +39,7 @@ export default function PageTemplate({ children }) {
       </Container>
       <Footer />
       {isSmall && <BottomAppBarSm />}
-      <bib-consent {...consentEvents}></bib-consent>
+      <bib-consent server-request-timeout="5000" {...consentEvents}></bib-consent>
     </MDXProvider>
   )
 }
