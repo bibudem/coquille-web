@@ -80,6 +80,11 @@ export function UdeMFooterNote() {
             </FooterLink>
           </NoteCell>
           <NoteCell>
+            <FooterLink component="bib-consent-preferences-btn" sx={{ textDecoration: 'none' }}>
+              Paramètres des témoins
+            </FooterLink>
+          </NoteCell>
+          <NoteCell>
             <FooterLink to="#">Accessibilité</FooterLink>
           </NoteCell>
         </Grid>
