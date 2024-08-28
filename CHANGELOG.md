@@ -1,5 +1,25 @@
 # Changelog
 
+## [3.6.0](https://github.com/bibudem/coquille-web/compare/v3.5.0...v3.6.0) (2024-08-28)
+
+
+### Features
+
+* Ajout d'un bouton pour la gestion des préférences de consentement dans le pied de page ([6dd0f35](https://github.com/bibudem/coquille-web/commit/6dd0f354ce80ffd38e6ea868ea6d78e0899288c7))
+* Ajout d'un lien Teams à la fiche d'un employé. ([027e83e](https://github.com/bibudem/coquille-web/commit/027e83e40dd8b2781d4499a2726e12c64d168f34))
+* Ajout d'une page pour le composant &lt;bib-consent-server&gt; ([9c8ed0d](https://github.com/bibudem/coquille-web/commit/9c8ed0d38e67890dab28554d76af97fcdbf87691))
+* Ajout du composant &lt;bib-gtm&gt; ([e25bb03](https://github.com/bibudem/coquille-web/commit/e25bb031b0bb88aad2475f724ca8321aef05ee83))
+* Ajout du composant bib-consent pour le consentement des témoins. ([6ab3295](https://github.com/bibudem/coquille-web/commit/6ab32952c1dae43ef3007bb982298ae9bf151a53))
+* Changement dans le readme.md de l'URL du site sur Netlify. ([9ed7981](https://github.com/bibudem/coquille-web/commit/9ed7981594a47d313338a42c49be4dfb9faefe35))
+* Suppression de la page pour le composant &lt;bib-consent-server&gt; puisqu'il en existe déjà une. ([4072521](https://github.com/bibudem/coquille-web/commit/407252166593a4d62522021b85608a1a5b052f49))
+
+
+### Bug Fixes
+
+* Augmentation du délai d'attente à 5000ms pour les requêtes au serveur de préférences de consentement. ([a22b879](https://github.com/bibudem/coquille-web/commit/a22b879957d80ef1a4e078c3f298cbdc4b77c881))
+* Correction de l'affichage en mobile. ([9a85f2d](https://github.com/bibudem/coquille-web/commit/9a85f2d20071c80a1d08dacb77182aeb025942d8))
+* Désactivation du mode débogage pour le composant bib-consent ([6b49ca6](https://github.com/bibudem/coquille-web/commit/6b49ca6d56b593100855ff9deb2d5876cd011f15))
+
 ## [3.5.0](https://github.com/bibudem/coquille-web/compare/v3.4.0...v3.5.0) (2024-06-04)
 
 
