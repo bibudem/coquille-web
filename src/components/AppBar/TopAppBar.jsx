@@ -6,7 +6,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import Link from '@/components/Link'
 import SideNav from '@/components/SideNav/SideNav'
 import SideNavContent from '@/components/SideNav/SideNavContent'
-import MenuFab from './MenuFab'
+import MenuFab from './MenuButton'
 import LogoBib from '@/images/logo-bib.svg'
 
 const pages = [

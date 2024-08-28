@@ -1,6 +1,10 @@
-import { AppBar, Box, Container, Slide, Toolbar, useScrollTrigger } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { AppBar, Container, Slide, Toolbar, useScrollTrigger } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import Link from '@/components/Link'
+import SideNavSm from '@/components/SideNav/SideNavSm'
+import SideNavContent from '@/components/SideNav/SideNavContent'
+import MenuButton from './MenuButton'
 import LogoBib from '@/images/logo-bib.svg'
 import LogoUdeM from '@/images/logo-udem.svg'
 
@@ -13,6 +17,7 @@ function HideOnScroll(props) {
   // This is only being set here because the demo is in an iframe.
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
+    threshold: 150,
   })
 
   return (
@@ -26,6 +31,23 @@ function HideOnScroll(props) {
  * Primary search app bar component for mobile devices
  */
 export default function TopAppBarSm(props) {
+  const [open, setOpen] = useState(false)
+
+  const toggleDrawer = (newState) => () => {
+    setOpen(newState ?? !open)
+  }
+
+  useEffect(() => {
+    function onClose() {
+      setOpen(false)
+    }
+
+    document.documentElement.addEventListener('close', onClose)
+
+    return () => {
+      document.documentElement.removeEventListener('close', onClose)
+    }
+  }, [])
   return (
     <>
       <Offset />
@@ -55,16 +77,28 @@ export default function TopAppBarSm(props) {
                 to="/"
                 sx={{
                   display: 'flex',
+                  alignItems: 'flex-end',
                   color: 'inherit',
                 }}
               >
                 <LogoUdeM style={{ height: '33px', marginRight: '20px', color: '#000' }} />
-                <LogoBib style={{ height: '35px' }} />
+                <LogoBib style={{ height: '33px' }} />
               </Link>
+              <MenuButton
+                onClick={toggleDrawer(true)}
+                sx={{
+                  position: 'absolute',
+                  zIndex: 1,
+                  right: 16,
+                }}
+              />
             </Toolbar>
           </Container>
         </AppBar>
       </HideOnScroll>
+      <SideNavSm open={open} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)}>
+        <SideNavContent />
+      </SideNavSm>
     </>
   )
 }

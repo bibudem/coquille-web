@@ -3,7 +3,6 @@ import { MDXProvider } from '@mdx-js/react'
 import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Divider, Tab, Tabs, useTheme } from '@mui/material'
 import TopAppBar from '@/components/AppBar/TopAppBar'
 import TopAppBarSm from '@/components/AppBar/TopAppBarSm'
-import BottomAppBarSm from '@/components/AppBar/BottomAppBarSm'
 import Footer from '@/components/Footer'
 import Link from '@/components/Link'
 import SEO from '@/components/SEO'
@@ -15,15 +14,6 @@ const shortcodes = { Link, Accordion, AccordionDetails, AccordionSummary, Button
 
 export default function PageTemplate({ children }) {
   const isSmall = useSmall('lg')
-
-  const theme = useTheme()
-  console.log('theme: ', theme)
-
-  const consentEvents = {
-    'bib:consent:ready': (e) => {
-      console.log('==========> consent ready', e)
-    },
-  }
 
   return (
     <MDXProvider components={shortcodes}>
@@ -38,8 +28,8 @@ export default function PageTemplate({ children }) {
         <RetroactionUsager />
       </Container>
       <Footer />
-      {isSmall && <BottomAppBarSm />}
-      <bib-consent server-request-timeout="5000" {...consentEvents}></bib-consent>
+
+      <bib-consent server-request-timeout="5000"></bib-consent>
     </MDXProvider>
   )
 }
