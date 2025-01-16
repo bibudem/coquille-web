@@ -22,7 +22,8 @@ export default function PageTemplate({ children }) {
 
       {isSmall ? <TopAppBarSm /> : <TopAppBar />}
 
-      <bib-avis bouton-fermer />
+      {/* <bib-avis bouton-fermer /> */}
+
       <Container component="main" role="main">
         {children}
         <RetroactionUsager />
@@ -53,7 +54,7 @@ export function Head({ pageContext, location }) {
       <SEO title={frontmatter?.title} pathname={pathname} />
       <bib-gtm></bib-gtm>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-gtm.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-avis.js"></script>
+      {/* <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-avis.js"></script> */}
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-retroaction-usager.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/udem-urgence.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent.js"></script>
