@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Divider, Tab, Tabs, useTheme } from '@mui/material'
+import Grid from '@mui/material/Unstable_Grid2'
 import TopAppBar from '@/components/AppBar/TopAppBar'
 import TopAppBarSm from '@/components/AppBar/TopAppBarSm'
 import Footer from '@/components/Footer'
@@ -8,15 +9,16 @@ import Link from '@/components/Link'
 import SEO from '@/components/SEO'
 import Debug from '@/components/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
+import Section from '@/components/Section/Section'
 import { useSmall } from '@/hooks/use-small'
 
-const shortcodes = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, Divider, Tab, Tabs } // Provide common components here
+const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, Divider, Grid, Section, Tab, Tabs } // Provide common components here
 
 export default function PageTemplate({ children }) {
   const isSmall = useSmall('lg')
 
   return (
-    <MDXProvider components={shortcodes}>
+    <MDXProvider components={components}>
       {process.env.NODE_ENV !== 'production' && <Debug />}
       <udem-urgence></udem-urgence>
 

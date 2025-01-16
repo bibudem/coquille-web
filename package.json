@@ -23,6 +23,7 @@
     "code-bib": "github:bibudem/code-bib",
     "color": "^4.2.3",
     "contrast-color": "^1.0.1",
+    "dotenv": "^16.4.5",
     "gatsby": "^5.13.3",
     "gatsby-adapter-netlify": "^1.1.6",
     "gatsby-plugin-alias-imports": "^1.0.5",

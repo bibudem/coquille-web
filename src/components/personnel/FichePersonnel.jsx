@@ -86,6 +86,7 @@ export default function ListePersonnel() {
 
   return (
     <Box width={{ xs: '100%', md: 400 }} mx="auto" my={5}>
+      {process.env.JSDELIVR_SERVICE_URL}
       <Autocomplete
         value={value}
         onChange={(event, newValue) => {
