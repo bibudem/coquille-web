@@ -34,7 +34,7 @@ npm run dev
 
 Puis ouvrez un navigateur à l'URL suivante:
 
-http://localhost:8000
+[http://localhost:8000](http://localhost:8000)
 
 Dans VS Code, allez dans `File > Open Folder...`, puis dirigez vous vers votre dossier `prototype-web` local du projet.
 
