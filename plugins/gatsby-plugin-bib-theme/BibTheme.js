@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { CssBaseline } from '@mui/material'
-import { responsiveFontSizes, experimental_extendTheme as extendTheme, Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles'
+import { Experimental_CssVarsProvider as CssVarsProvider, extendTheme, responsiveFontSizes } from '@mui/material/styles'
 import tokens from './tokens'
 
 export const theme = responsiveFontSizes(extendTheme(tokens))

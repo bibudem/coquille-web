@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Divider, Tab, Tabs, useTheme } from '@mui/material'
-import Grid from '@mui/material/Unstable_Grid2'
+import Grid from '@mui/material/Grid2'
 import TopAppBar from '@/components/AppBar/TopAppBar'
 import TopAppBarSm from '@/components/AppBar/TopAppBarSm'
 import Footer from '@/components/Footer'

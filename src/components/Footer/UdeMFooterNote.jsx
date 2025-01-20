@@ -1,5 +1,5 @@
 import { Box, styled } from '@mui/material'
-import Grid from '@mui/material/Unstable_Grid2'
+import Grid from '@mui/material/Grid2'
 import FooterLink from './FooterLink'
 import FooterContainer from './FooterContainer'
 import { FONT_OPACITY } from './UdeMFooter'
