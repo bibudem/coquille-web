@@ -88,10 +88,10 @@ const config = {
               family: 'Figtree',
               axes: 'wght@300..600',
             },
-            // {
-            //   family: 'Open Sans Condensed',
-            //   variants: ['300', '700'],
-            // },
+            {
+              family: 'Lora',
+              axes: 'wght@400..700',
+            },
           ],
         },
       },
