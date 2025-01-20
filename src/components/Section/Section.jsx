@@ -7,6 +7,7 @@ const colors = {
   'rose-100': { bg: '#fcf3f1' },
   'rose-300': { bg: '#fee1de' },
   'vert-foncé-600': { bg: '#024224', fg: '#fff' },
+  rien: { bg: 'red' },
 }
 
 const StyledSection = styled('section')(({ theme }) => ({
@@ -20,10 +21,8 @@ const StyledSection = styled('section')(({ theme }) => ({
 }))
 
 export default function Section({ children, sx, fond = 'bleu-50', ...props }) {
-  console.log('fond: %s, %o', fond, colors[fond])
-
-  if (!Reflect.has(colors, fond)) {
-    throw new Error(`La couleur ${fond} n'est pas définie dans la liste des couleurs.`)
+  if (typeof colors[fond] === 'undefined') {
+    throw new Error(`La couleur \`${fond}\` n'est pas définie dans la liste des couleurs du composant Section.`)
   }
 
   return (
@@ -34,7 +33,7 @@ export default function Section({ children, sx, fond = 'bleu-50', ...props }) {
       sx={{
         ...sx,
         backgroundColor: colors[fond].bg,
-        color: Reflect.has(colors[fond], 'fg') ? colors[fond].fg : null,
+        color: typeof colors[fond] !== 'undefined' ? colors[fond].fg : null,
       }}
     />
   )

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { CssBaseline } from '@mui/material'
-import { Experimental_CssVarsProvider as CssVarsProvider, extendTheme, responsiveFontSizes } from '@mui/material/styles'
+import { ThemeProvider, extendTheme, responsiveFontSizes } from '@mui/material/styles'
 import tokens from './tokens'
 
 export const theme = responsiveFontSizes(extendTheme(tokens))
@@ -12,10 +12,10 @@ export default function BibTheme({ darkMode, children, ...props }) {
 		document.body.className = ''
 	}, [])
 	return (
-		<CssVarsProvider theme={theme} {...props}>
+		<ThemeProvider theme={theme} {...props}>
 			<CssBaseline enableColorScheme />
 			{children}
-		</CssVarsProvider>
+		</ThemeProvider>
 	)
 }
 
