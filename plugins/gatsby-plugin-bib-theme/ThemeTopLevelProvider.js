@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import BibTheme from './BibTheme'
 import LightDarkContext from './LightDarkContext'
 
@@ -23,9 +23,9 @@ function ThemeTopLevelProvider({ children, initTheme }) {
 	)
 }
 
-ThemeTopLevelProvider.propTypes = {
-	children: PropTypes.node,
-	initTheme: PropTypes.string.isRequired
-}
+// ThemeTopLevelProvider.propTypes = {
+// 	children: PropTypes.node,
+// 	initTheme: PropTypes.string.isRequired
+// }
 
 export default ThemeTopLevelProvider

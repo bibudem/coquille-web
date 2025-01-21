@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import ThemeTopLevelProvider from './ThemeTopLevelProvider';
+import React from 'react'
+// import PropTypes from 'prop-types';
+import ThemeTopLevelProvider from './ThemeTopLevelProvider'
 
-const theme = localStorage.getItem('theme');
-const initTheme = theme === 'light' || theme === 'dark' ? theme : 'light';
+const theme = localStorage.getItem('theme')
+const initTheme = theme === 'light' || theme === 'dark' ? theme : 'light'
 
 export const wrapRootElement = ({ element }) =>
 	<ThemeTopLevelProvider initTheme={initTheme}>
 		{element}
-	</ThemeTopLevelProvider>;
+	</ThemeTopLevelProvider>
 
-wrapRootElement.propTypes = {
-	element: PropTypes.node
-};
+// wrapRootElement.propTypes = {
+// 	element: PropTypes.node
+// };

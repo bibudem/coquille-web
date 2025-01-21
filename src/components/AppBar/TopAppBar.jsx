@@ -6,8 +6,8 @@ import SearchIcon from '@mui/icons-material/Search'
 import Link from '@/components/Link'
 import SideNav from '@/components/SideNav/SideNav'
 import SideNavContent from '@/components/SideNav/SideNavContent'
-import MenuFab from './MenuButton'
 import LogoBib from '@/images/logo-bib.svg'
+import MenuFab from './MenuButton'
 
 const pages = [
   { url: '/espaces', label: 'Espaces' },

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { CssBaseline } from '@mui/material'
 import { ThemeProvider, extendTheme, responsiveFontSizes } from '@mui/material/styles'
 import tokens from './tokens'
@@ -19,7 +19,7 @@ export default function BibTheme({ darkMode, children, ...props }) {
 	)
 }
 
-BibTheme.propTypes = {
-	darkMode: PropTypes.bool.isRequired,
-	children: PropTypes.node
-}
+// BibTheme.propTypes = {
+// 	darkMode: PropTypes.bool.isRequired,
+// 	children: PropTypes.node
+// }

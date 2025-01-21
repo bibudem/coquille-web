@@ -20,9 +20,14 @@ const StyledSection = styled('section')(({ theme }) => ({
   gap: '6.81331rem',
 }))
 
-export default function Section({ children, sx, fond = 'bleu-50', ...props }) {
+export default function Section({ children, sx, fond = 'bleu-50', image, ...props }) {
   if (typeof colors[fond] === 'undefined') {
     throw new Error(`La couleur \`${fond}\` n'est pas définie dans la liste des couleurs du composant Section.`)
+  }
+
+  const styles = {}
+
+  if (image) {
   }
 
   return (
