@@ -31,7 +31,7 @@ const FooterLocal = forwardRef(function FooterLocal(props, ref) {
   const isXSmall = useMediaQuery(theme.breakpoints.down('sm'))
 
   return (
-    <BibFooterLocal ref={ref}>
+    (<BibFooterLocal ref={ref}>
       <FooterContainer
         sx={{
           flexDirection: {
@@ -86,10 +86,6 @@ const FooterLocal = forwardRef(function FooterLocal(props, ref) {
                   fullWidth
                   aria-label="Entrez votre adresse courriel"
                   placeholder="Votre adresse courriel"
-                  inputProps={{
-                    autoComplete: 'off',
-                    'aria-label': 'Entrez votre adresse courriel',
-                  }}
                   sx={(theme) => ({
                     minWidth: {
                       md: 285,
@@ -101,6 +97,12 @@ const FooterLocal = forwardRef(function FooterLocal(props, ref) {
                       opacity: theme.vars.opacity.inputUnderline,
                     },
                   })}
+                  slotProps={{
+                    htmlInput: {
+                      autoComplete: 'off',
+                      'aria-label': 'Entrez votre adresse courriel',
+                    }
+                  }}
                 />
                 <IconButton color="inherit" aria-label="Envoyer" sx={{ fontSize: '2.2rem', opacity: 0.73 }}>
                   <SvgIcon component={ArrowCircleRight} inheritViewBox />
@@ -158,8 +160,8 @@ const FooterLocal = forwardRef(function FooterLocal(props, ref) {
           )}
         </Box>
       </FooterContainer>
-    </BibFooterLocal>
-  )
+    </BibFooterLocal>)
+  );
 })
 // }
 
