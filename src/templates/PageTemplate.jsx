@@ -11,8 +11,9 @@ import Debug from '@/components/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
 import Section from '@/components/Section/Section'
 import { useSmall } from '@/hooks/use-small'
+import { Hero, Bloc } from '../components/dummy-components'
 
-const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, Divider, Grid, Section, Tab, Tabs } // Provide common components here
+const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, Divider, Grid, Section, Tab, Tabs, /* Dummies: */ Hero, Bloc } // Provide common components here
 
 export default function PageTemplate({ children }) {
   const isSmall = useSmall('lg')
