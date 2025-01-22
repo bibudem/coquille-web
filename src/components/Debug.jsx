@@ -25,7 +25,7 @@ export default function Debug() {
 
   useEffect(() => {
     const newResolution = queries.find((query) => query.match)
-    if (resolution.key !== newResolution.key) {
+    if (resolution && resolution.key !== newResolution.key) {
       setResolution(newResolution)
     }
   }, queries)
