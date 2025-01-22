@@ -12,9 +12,8 @@ const colors = {
 
 const StyledSection = styled('section')(({ theme }) => ({
   padding: theme.spacing(2),
-  margin: '0 auto',
-  // padding: 3,
-  display: 'inline-flex',
+  margin: '0',
+  display: 'flex',
   padding: '3.5rem 5.19rem 4.31rem 4.75rem',
   alignItems: 'flex-start',
   gap: '6.81331rem',

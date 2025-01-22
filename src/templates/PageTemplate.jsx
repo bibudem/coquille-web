@@ -51,6 +51,7 @@ export const query = graphql`
 export function Head({ pageContext, location }) {
   const { frontmatter } = pageContext
   const { pathname } = location
+
   return (
     <>
       <html lang="fr" />

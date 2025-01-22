@@ -50,13 +50,13 @@ export default {
 	},
 	shape: {
 		corner: {
-			'extra-large': '28px',
-			'extra-small': '4px',
 			full: '9999px',
-			large: '16px',
-			medium: '12px',
+			large: '24px',
+			medium: '16px',
+			small: '12px',
+			'extra-small': '8px',
+			'extra-extra-small': '4px',
 			none: '0',
-			small: '8px'
 		}
 	},
 	components: {
