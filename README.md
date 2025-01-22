@@ -42,9 +42,9 @@ Les pages à éditer sont dans le dossier `content/`. Vous pouvez modifier le co
 
 ### Autres commandes
 
-| Commande          | Action                                                            |
-| :---------------- | :---------------------------------------------------------------- |
-| `npm install`     | Installs dependencies                                             |
+| Commande            | Action                                                              |
+| :------------------ | :------------------------------------------------------------------ |
+| `npm install`     | Installs dependencies                                               |
 | `npm run dev`     | Starts local dev server at `localhost:8000`                       |
 | `npm run build`   | Build your production site to `./dist/`                           |
 | `npm run preview` | Preview your build locally, before deploying, at `localhost:9000` |
@@ -64,6 +64,7 @@ Le prototype utilise la librairie [Material UI](https://mui.com/material-ui/). T
 - [Button](https://mui.com/material-ui/react-button/)
 - [Box](https://mui.com/material-ui/react-box/)
 - [Divider](https://mui.com/material-ui/react-divider/)
+- [Grid v2](https://mui.com/material-ui/react-grid2/)
 - [Tabs, Tab](https://mui.com/material-ui/react-tabs/)
 
 Les autres composants de la librairie doivent être importées pour être utilisées:
