@@ -13,20 +13,24 @@ const colors = {
 const StyledSection = styled('section')(({ theme }) => ({
   padding: theme.spacing(2),
   margin: '0',
-  display: 'flex',
+  display: 'block',
   padding: '3.5rem 5.19rem 4.31rem 4.75rem',
-  alignItems: 'flex-start',
-  gap: '6.81331rem',
 }))
 
-export default function Section({ children, sx, fond = 'bleu-50', image, ...props }) {
-  if (typeof colors[fond] === 'undefined') {
-    throw new Error(`La couleur \`${fond}\` n'est pas définie dans la liste des couleurs du composant Section.`)
-  }
-
+export default function Section({ children, sx, fond, image, ...props }) {
   const styles = {}
 
   if (image) {
+    //
+  } else if (fond) {
+    if (typeof colors[fond] !== 'undefined' && !Reflect.has(colors[fond], 'bg')) {
+      throw new Error(`La couleur \`${fond}\` n'est pas définie dans la liste des couleurs du composant Section.`)
+    }
+
+    styles.backgroundColor = colors[fond].bg
+    if (colors[fond]?.fg) {
+      styles.color = colors[fond].fg
+    }
   }
 
   return (
@@ -35,9 +39,8 @@ export default function Section({ children, sx, fond = 'bleu-50', image, ...prop
       children={children}
       className={`section section--${fond}`}
       sx={{
+        ...styles,
         ...sx,
-        backgroundColor: colors[fond].bg,
-        color: typeof colors[fond] !== 'undefined' ? colors[fond].fg : null,
       }}
     />
   )
