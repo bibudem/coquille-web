@@ -1,7 +1,15 @@
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Divider, Tab, Tabs, useTheme } from '@mui/material'
+import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Tab, Tabs } from '@mui/material'
+import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid2'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemText from '@mui/material/ListItemText'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import Typography from '@mui/material/Typography'
+
 import TopAppBar from '@/components/AppBar/TopAppBar'
 import TopAppBarSm from '@/components/AppBar/TopAppBarSm'
 import Footer from '@/components/Footer'
@@ -10,10 +18,13 @@ import SEO from '@/components/SEO'
 import Debug from '@/components/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
 import Section from '@/components/Section/Section'
+
+import CommentIcon from '@mui/icons-material/Comment'
+
 import { useSmall } from '@/hooks/use-small'
 import { Hero, Bloc } from '../components/dummy-components'
 
-const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, Divider, Grid, Section, Tab, Tabs, /* Dummies: */ Hero, Bloc } // Provide common components here
+const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, Divider, Grid, List, ListItem, ListItemText, ListItemButton, ListItemButton, ListItemIcon, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
 
 export default function PageTemplate({ children }) {
   const isSmall = useSmall('lg')

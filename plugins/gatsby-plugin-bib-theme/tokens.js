@@ -36,20 +36,32 @@ export default {
 	},
 	typography: {
 		fontFamily: 'Figtree',
-		// h1: {
-		// 	fontFamily: mySerif
-		// },
-		// h2: {
-		// 	fontFamily: mySerif
-		// },
-		// h3: {
-		// 	fontFamily: mySerif
-		// },
-		// h4: {
-		// 	fontFamily: mySerif
-		// },
+		h1: {
+			fontSize: '3.2rem',
+			fontWeight: 600,
+		},
+		h2: {
+			fontSize: '2.4rem',
+			fontWeight: 500,
+		},
+		h3: {
+			fontSize: '1.8667rem',
+			fontWeight: 500,
+		},
+		h4: {
+			fontSize: '1.4667rem',
+			fontWeight: 500,
+		},
+		h5: {
+			fontSize: '1.2667rem',
+			fontWeight: 500,
+		},
+		h6: {
+			fontSize: '1.0667rem',
+			fontWeight: 500,
+		},
 		// body1: {
-		// 	fontFamily: mySans
+		// 	fontSize: '1.4667rem',
 		// }
 	},
 	shape: {
