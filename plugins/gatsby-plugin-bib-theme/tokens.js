@@ -26,7 +26,11 @@ export default {
 					light: "rgb(51, 120, 188)",
 					dark: "rgb(0, 60, 120)",
 					contrastText: "#fff"
-				}
+				},
+				background: {
+					default: '#f8fafb',
+					paper: '#f8fafb'
+				},
 			}
 		}
 	},
