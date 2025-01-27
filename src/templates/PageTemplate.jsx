@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Tab, Tabs } from '@mui/material'
+import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Tab, Tabs, useTheme } from '@mui/material'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid2'
 import List from '@mui/material/List'
@@ -9,6 +9,7 @@ import ListItemText from '@mui/material/ListItemText'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Typography from '@mui/material/Typography'
+import { IconContext } from '@phosphor-icons/react'
 
 import TopAppBar from '@/components/AppBar/TopAppBar'
 import TopAppBarSm from '@/components/AppBar/TopAppBarSm'
@@ -28,23 +29,33 @@ const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button
 
 export default function PageTemplate({ children }) {
   const isSmall = useSmall('lg')
+  const theme = useTheme()
+
+  console.log(theme)
 
   return (
     <MDXProvider components={components}>
-      {process.env.NODE_ENV !== 'production' && <Debug />}
-      <udem-urgence></udem-urgence>
+      <IconContext.Provider
+        value={{
+          size: '2rem',
+          color: theme.palette.grey['700'],
+        }}
+      >
+        {process.env.NODE_ENV !== 'production' && <Debug />}
+        <udem-urgence></udem-urgence>
 
-      {isSmall ? <TopAppBarSm /> : <TopAppBar />}
+        {isSmall ? <TopAppBarSm /> : <TopAppBar />}
 
-      {/* <bib-avis bouton-fermer /> */}
+        {/* <bib-avis bouton-fermer /> */}
 
-      <Container component="main" role="main">
-        {children}
-        <RetroactionUsager />
-      </Container>
-      <Footer />
+        <Container component="main" role="main">
+          {children}
+          <RetroactionUsager />
+        </Container>
+        <Footer />
 
-      <bib-consent server-request-timeout="5000"></bib-consent>
+        <bib-consent server-request-timeout="5000"></bib-consent>
+      </IconContext.Provider>
     </MDXProvider>
   )
 }
