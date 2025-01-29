@@ -31,8 +31,8 @@ const config = {
         alias: {
           '@/components': 'src/components',
           '@/hooks': 'src/hooks',
-          '@/images': 'src/images',
           '@/icons': 'src/icons',
+          '@/images': 'src/images',
           '@/utils': 'src/utils',
         },
         extensions: [
