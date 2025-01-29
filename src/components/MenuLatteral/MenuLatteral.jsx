@@ -34,9 +34,15 @@ export default function MenuLatteral() {
         justifyContent: 'center',
         width: '4rem',
         zIndex: theme.zIndex.drawer,
+        pointerEvents: 'none',
       })}
     >
-      <StyledNav component="ul">
+      <StyledNav
+        component="ul"
+        sx={{
+          pointerEvents: 'auto',
+        }}
+      >
         <StyledNavItem>
           <a href="https://umontreal.on.worldcat.org/discovery?lang=fr">
             <SofiaIcon color="#fff" />

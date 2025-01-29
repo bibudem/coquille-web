@@ -1,5 +1,6 @@
 import { IconButton, SvgIcon } from '@mui/material'
 import Menu from '@/icons/menu_24dp_FILL0_wght400_GRAD0_opsz48.svg'
+import { List } from '@phosphor-icons/react'
 
 const fabStyles = {
   width: 50,
@@ -21,7 +22,7 @@ export default function MenuFab({ sx, ...props }) {
       }}
       {...props}
     >
-      <SvgIcon component={Menu} inheritViewBox sx={{ ...iconStyles }} />
+      <SvgIcon component={List} inheritViewBox sx={{ ...iconStyles }} />
     </IconButton>
   )
 }

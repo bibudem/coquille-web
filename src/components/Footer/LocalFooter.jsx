@@ -5,7 +5,6 @@ import { Box, Stack, TextField, Typography } from '@mui/material'
 import FooterLink from './FooterLink'
 import FooterContainer from './FooterContainer'
 import LogoBibSceauBlanc from '@/images/logo-bib-sceau-blanc.svg'
-import ArrowCircleRight from '@/icons/arrow_circle_right_24dp_FILL0_wght300_GRAD0_opsz24.svg'
 
 const logoStyle = {
   height: {
@@ -31,7 +30,7 @@ const FooterLocal = forwardRef(function FooterLocal(props, ref) {
   const isXSmall = useMediaQuery(theme.breakpoints.down('sm'))
 
   return (
-    (<BibFooterLocal ref={ref}>
+    <BibFooterLocal ref={ref}>
       <FooterContainer
         sx={{
           flexDirection: {
@@ -101,12 +100,9 @@ const FooterLocal = forwardRef(function FooterLocal(props, ref) {
                     htmlInput: {
                       autoComplete: 'off',
                       'aria-label': 'Entrez votre adresse courriel',
-                    }
+                    },
                   }}
                 />
-                <IconButton color="inherit" aria-label="Envoyer" sx={{ fontSize: '2.2rem', opacity: 0.73 }}>
-                  <SvgIcon component={ArrowCircleRight} inheritViewBox />
-                </IconButton>
               </Stack>
             </Box>
           </Box>
@@ -160,8 +156,8 @@ const FooterLocal = forwardRef(function FooterLocal(props, ref) {
           )}
         </Box>
       </FooterContainer>
-    </BibFooterLocal>)
-  );
+    </BibFooterLocal>
+  )
 })
 // }
 

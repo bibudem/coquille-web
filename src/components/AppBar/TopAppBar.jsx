@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { AppBar, Box, Button, Container, InputBase, Stack, Toolbar } from '@mui/material'
-import { styled, alpha } from '@mui/material/styles'
-import SearchIcon from '@mui/icons-material/Search'
+import { AppBar, Box, Button, Container, InputBase, Stack, SvgIcon, Toolbar } from '@mui/material'
+import { styled, alpha, useTheme } from '@mui/material/styles'
+import { MagnifyingGlass } from '@phosphor-icons/react'
 
 import Link from '@/components/Link'
 import SideNav from '@/components/SideNav/SideNav'
@@ -64,6 +64,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
  */
 export default function TopAppBar() {
   const [open, setOpen] = useState(false)
+  const theme = useTheme()
 
   const toggleDrawer = (newState) => () => {
     setOpen(newState ?? !open)
@@ -146,7 +147,7 @@ export default function TopAppBar() {
             <Box sx={{ display: 'flex', pr: 2 }}>
               <Search>
                 <SearchIconWrapper>
-                  <SearchIcon color="primary" />
+                  <MagnifyingGlass color={theme.palette.primary.main} size={24} />
                 </SearchIconWrapper>
                 <StyledInputBase placeholder="Rechercher sur le site..." inputProps={{ 'aria-label': 'search' }} />
               </Search>
