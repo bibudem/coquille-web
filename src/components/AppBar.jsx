@@ -166,7 +166,7 @@ export function TopAppBar() {
                 <SearchIconWrapper>
                   <SearchIcon color="primary" />
                 </SearchIconWrapper>
-                <StyledInputBase placeholder="Rechercher sur le site..." inputProps={{ 'aria-label': 'search' }} />
+                <StyledInputBase placeholder="#Rechercher sur le site..." inputProps={{ 'aria-label': 'search' }} />
               </Search>
             </Box>
           </Toolbar>

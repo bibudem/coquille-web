@@ -1,5 +1,4 @@
 import { IconButton, SvgIcon } from '@mui/material'
-import Menu from '@/icons/menu_24dp_FILL0_wght400_GRAD0_opsz48.svg'
 import { List } from '@phosphor-icons/react'
 
 const fabStyles = {
