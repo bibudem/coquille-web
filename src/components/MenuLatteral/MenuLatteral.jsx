@@ -1,6 +1,6 @@
-import { Paper, Stack, styled, Typography } from '@mui/material'
-import { CalendarPlus, Chats, ClockCountdown, VectorThree } from '@phosphor-icons/react'
-import * as styles from './MenuLatteral.module.css'
+import { Stack, styled, Typography } from '@mui/material'
+import { CalendarPlus, Chats, ClockCountdown, Lifebuoy } from '@phosphor-icons/react'
+import { SofiaIcon } from '@/components/CustomIcons/CustomIcons'
 
 const StyledNav = styled(Stack)(({ theme }) => ({
   margin: 0,
@@ -15,7 +15,10 @@ const StyledNav = styled(Stack)(({ theme }) => ({
 const StyledNavItem = styled('li')(({ theme }) => ({}))
 
 export default function MenuLatteral() {
-  console.log('styles:', styles)
+  function handleClick(event) {
+    alert('Action à définir')
+  }
+
   return (
     <Stack
       direction="column"
@@ -30,36 +33,36 @@ export default function MenuLatteral() {
         bottom: 0,
         justifyContent: 'center',
         width: '4rem',
-        zIndex: 1000,
+        zIndex: theme.zIndex.drawer,
       })}
     >
       <StyledNav component="ul">
         <StyledNavItem>
-          <a href="#">
-            <ClockCountdown color="#fff" size={24} />
+          <a href="https://umontreal.on.worldcat.org/discovery?lang=fr">
+            <SofiaIcon color="#fff" />
             <Typography sx={{ display: 'none' }}>Sofia</Typography>
           </a>
         </StyledNavItem>
         <StyledNavItem>
-          <a href="#">
+          <a href="/horaires">
             <ClockCountdown color="#fff" size={24} />
             <Typography sx={{ display: 'none' }}>Horaires</Typography>
           </a>
         </StyledNavItem>
         <StyledNavItem>
-          <a href="#">
+          <a href="https://calendrier.bib.umontreal.ca/r">
             <CalendarPlus color="#fff" size={24} />
             <Typography sx={{ display: 'none' }}>Réserver une salle</Typography>
           </a>
         </StyledNavItem>
         <StyledNavItem>
-          <a href="#">
-            <ClockCountdown color="#fff" size={24} />
+          <a href="#" onClick={handleClick}>
+            <Lifebuoy color="#fff" size={24} />
             <Typography sx={{ display: 'none' }}>Soutien informatique</Typography>
           </a>
         </StyledNavItem>
         <StyledNavItem>
-          <a href="#">
+          <a href="#" onClick={handleClick}>
             <Chats color="#fff" size={24} />
             <Typography sx={{ display: 'none' }}>Clavarder</Typography>
           </a>
