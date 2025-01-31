@@ -60,6 +60,11 @@ export default {
 		MuiDivider: {
 			defaultProps: {
 				color: '#c3ccd5',
+			},
+			styleOverrides: {
+				root: {
+					margin: '1rem 0',
+				}
 			}
 		},
 		MuiLink: {
