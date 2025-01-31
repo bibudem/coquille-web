@@ -57,6 +57,11 @@ export default {
 				}
 			`
 		},
+		MuiDivider: {
+			defaultProps: {
+				color: '#c3ccd5',
+			}
+		},
 		MuiLink: {
 			defaultProps: {
 				underline: 'hover',
@@ -85,6 +90,7 @@ export default {
 			none: '0',
 		}
 	},
+	spacing: 8, 
 	typography: {
 		fontFamily: 'Figtree',
 		fontSize: 16,
