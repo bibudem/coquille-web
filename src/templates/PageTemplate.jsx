@@ -15,6 +15,7 @@ import TopAppBar from '@/components/AppBar/TopAppBar'
 import TopAppBarSm from '@/components/AppBar/TopAppBarSm'
 import MenuLatteral from '@/components/MenuLatteral/MenuLatteral'
 import Footer from '@/components/Footer'
+import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs'
 import Link from '@/components/Link'
 import SEO from '@/components/SEO'
 import Debug from '@/components/Debug'
@@ -28,11 +29,17 @@ import { Hero, Bloc } from '@/components/dummy-components'
 
 const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, Divider, Grid, List, ListItem, ListItemText, ListItemButton, ListItemButton, ListItemIcon, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
 
-export default function PageTemplate({ children }) {
+export default function PageTemplate({ pageContext, children, ...rest }) {
   const isSmall = useSmall('lg')
   const theme = useTheme()
 
-  console.log(theme)
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext
+
+  console.log('theme:', theme)
+  console.log('children:', children)
+  console.log('rest:', rest)
 
   return (
     <MDXProvider components={components}>
@@ -51,10 +58,12 @@ export default function PageTemplate({ children }) {
 
         <MenuLatteral />
 
-        <Container component="main" role="main">
+        <Breadcrumbs crumbs={crumbs} />
+
+        <main role="main">
           {children}
           <RetroactionUsager />
-        </Container>
+        </main>
         <Footer />
 
         <bib-consent server-request-timeout="5000"></bib-consent>
