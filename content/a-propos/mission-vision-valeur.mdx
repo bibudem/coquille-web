@@ -3,50 +3,159 @@ title: Mission, vision, valeurs et objectifs
 slug: mission-vision-valeur
 ---
 
+import { DoorOpen, Handshake, Heart, Mountains } from '@phosphor-icons/react'
+
+<Section>
+
 # Mission, vision, valeurs et objectifs
 
 ## Planification stratégique
 
-La planification stratégique 2023-2028 des Bibliothèques de l'UdeM présente des objectifs ambitieux, ainsi que des moyens concrets pour y arriver. Cette planification a été établie avec plusieurs actrices et acteurs clés lors d’ateliers de cocréation. Y ont participé :
+La planification stratégique 2023-2028 des Bibliothèques de l'UdeM présente des objectifs ambitieux, ainsi que des moyens concrets pour y arriver.
+
+Cette planification a été établie avec plusieurs actrices et acteurs clés lors d’ateliers de cocréation. Y ont participé :
 
 - des membres de l'équipe des Bibliothèques ;
 - des membres du corps enseignant ;
 - des étudiantes et étudiants ;
 - des membres des équipes de recherche ;
 - des donatrices et donateurs ;
-- d'autres membres de la communauté universitaire.  Le but des ateliers était de mettre à jour la vision, la mission et la valeur des Bibliothèques, en plus de définir une série d'objectifs pour les concrétiser d'ici 2028.
+- d'autres membres de la communauté universitaire. Le but des ateliers était de mettre à jour la vision, la mission et la valeur des Bibliothèques, en plus de définir une série d'objectifs pour les concrétiser d'ici 2028.
+
+<Divider />
 
 ## Notre mission
 
-<Section cube icône à droite cube vert pâle avec target vert foncé>
-  Les Bibliothèques assurent à la communauté de l’UdeM : * des services évolutifs pour exploiter l’information; * des ressources et des services pertinents en soutien à l’apprentissage, à l’enseignement et à la recherche; * un appui solide à la diffusion et au rayonnement des savoirs passés et futurs; * des lieux propices pour apprendre, créer et interagir.
-</Section>
 
-## Notre mission
+Les Bibliothèques assurent à la communauté de l’UdeM : 
 
-<Section cube icône à droite cube bleu pâle avec binocular Bleu UdeM>
-  Au coeur de la vie universitaire et fortes d’une équipe engagée, les bibliothèques de l’Université de Montréal comptent parmi les grandes bibliothèques de recherche de langue française. Elles sont un partenaire essentiel au rayonnement des savoirs. Audacieuses, inclusives et accessibles, elles sont un vibrant milieu de vie où les membres de la communauté UdeM se rencontrent et se rassemblent autour d'expériences de découverte et de création riches et stimulantes.
-</Section>
+- des services évolutifs pour exploiter l’information ;
+- des ressources et des services pertinents en soutien à l’apprentissage, à l’enseignement et à la recherche ;
+- un appui solide à la diffusion et au rayonnement des savoirs passés et futurs ;
+- des lieux propices pour apprendre, créer et interagir.
+
+<Divider />
+
+## Notre vision
+
+Au coeur de la vie universitaire et fortes d’une équipe engagée, les bibliothèques de l’Université de Montréal comptent parmi les grandes bibliothèques de recherche de langue française. Elles sont un partenaire essentiel au rayonnement des savoirs. Audacieuses, inclusives et accessibles, elles sont un vibrant milieu de vie où les membres de la communauté UdeM se rencontrent et se rassemblent autour d'expériences de découverte et de création riches et stimulantes.
+
+<Divider />
+
 
 ## Valeurs
 
-<Section cubes-4 rose pâle avec icônes></Section>
+<Grid container spacing={2}>
+  <Grid size={{ xs: 12, md: 6 }}>
+    <Box
+      sx={{
+        p:2,
+        bgcolor: '#FEE1DE',
+        borderRadius: '1rem',
+        height: '100%',
+      }}
+    >
+      <Grid container
+        sx={{
+          alignItems: "center",
+        }}
+      >
+        <Grid size="grow">
+          <Typography variant="h3">Passion</Typography>
+        </Grid>
+        <Grid size="auto">
+          <Heart color='#F04E24' size={50} />
+        </Grid>
+      </Grid>
 
-<Section icône coeur>
-  ### Passion C’est la passion d’apprendre, d’explorer, d’innover et de découvrir qui unit les bibliothèques à la communauté de l’Université de Montréal. C’est aussi la passion de transmettre ses connaissances et de se dépasser qui motive notre équipe à être à l’écoute de ses usagères et usagers afin d’évoluer avec les avancées de leurs milieux. C’est cette passion de contribuer au développement de la recherche et de l’enseignement qui fait des bibliothèques de l’Université de Montréal des actrices incontournables dans le rayonnement des savoirs.
-</Section>
+      C’est la passion d’apprendre, d’explorer, d’innover et de découvrir qui unit les bibliothèques à la communauté de l’Université de Montréal. C’est aussi la passion de transmettre ses connaissances et de se dépasser qui motive notre équipe à être à l’écoute de ses usagères et usagers afin d’évoluer avec les avancées de leurs milieux. C’est cette passion de contribuer au développement de la recherche et de l’enseignement qui fait des bibliothèques de l’Université de Montréal des actrices incontournables dans le rayonnement des savoirs.
+      
+    </Box>
+  </Grid>
+  <Grid size={{ xs: 12, md: 6 }}>
+    <Box
+      sx={{
+        p:2,
+        bgcolor: '#FEE1DE',
+        borderRadius: '1rem',
+        height: '100%',
+      }}
+    >
+      <Grid container
+        sx={{
+          alignItems: "center",
+        }}
+      >
+        <Grid size="grow">
+          <Typography variant="h3">Courage</Typography>
+        </Grid>
+        <Grid size="auto">
+          <Mountains color='#F04E24' size={50} />
+        </Grid>
+      </Grid>
+        
+      C’est en acceptant les risques inhérents aux processus de découverte que des solutions porteuses aux problèmes du monde sont trouvées. Les bibliothèques de l’Université de Montréal sont convaincues de l’importance de repousser les frontières de la création et de la pensée. Avec résilience et volonté, elles ont le courage de faire évoluer leurs pratiques et d’en explorer de nouvelles au fil des défis qui se présentent. En adéquation avec les valeurs d’une société en pleine transformation, elles osent faire des propositions audacieuses, originales et avant-gardistes.
 
-<Section icône mountains-1>
-  ### Courage C’est en acceptant les risques inhérents aux processus de découverte que des solutions porteuses aux problèmes du monde sont trouvées. Les bibliothèques de l’Université de Montréal sont convaincues de l’importance de repousser les frontières de la création et de la pensée. Avec résilience et volonté, elles ont le courage de faire évoluer leurs pratiques et d’en explorer de nouvelles au fil des défis qui se présentent. En adéquation avec les valeurs d’une société en pleine transformation, elles osent faire des propositions audacieuses, originales et avant-gardistes.
-</Section>
+    </Box>
 
-<Section icône door-open-1>
-  ### Ouverture Accessibles, responsables et à l’écoute, les bibliothèques de l’Université de Montréal placent l’ouverture et la liberté au coeur de leur approche envers leurs communautés, qu’elles soient entre les murs de l’établissement ou à travers le monde. Soucieuses des inégalités sociales et des réalités des personnes issues de la diversité, les bibliothèques de l’Université de Montréal se veulent un milieu de vie inclusif, engagé, stimulant et rassembleur.
-</Section>
+  </Grid>
+  <Grid size={{ xs: 12, md: 6 }}>
+    <Box
+      sx={{
+        p:2,
+        bgcolor: '#FEE1DE',
+        borderRadius: '1rem',
+        height: '100%',
+      }}
+    >
+      <Grid container
+        sx={{
+          alignItems: "center",
+        }}
+      >
+        <Grid size="grow">
+          <Typography variant="h3">Ouverture</Typography>
+        </Grid>
+        <Grid size="auto">
+          <DoorOpen color='#F04E24' size={50} />
+        </Grid>
+      </Grid>
+        
+      Accessibles, responsables et à l’écoute, les bibliothèques de l’Université de Montréal placent l’ouverture et la liberté au coeur de leur approche envers leurs communautés, qu’elles soient entre les murs de l’établissement ou à travers le monde. Soucieuses des inégalités sociales et des réalités des personnes issues de la diversité, les bibliothèques de l’Université de Montréal se veulent un milieu de vie inclusif, engagé, stimulant et rassembleur.
 
-<Section icône coeur>
-  ### Collaboration Les bibliothèques de l’Université de Montréal sont des interlocutrices incontournables pour le déploiement des connaissances. Collaboratrices, elles sont attentives aux besoins de leurs communautés et participent aux efforts des pairs pour l’avancement de la recherche et de l’enseignement. Joueuses d’équipe, elles contribuent de par leurs expertises à la mutualisation de ressources, au décloisonnement des savoirs ainsi qu’à l’accès à l’information
-</Section>
+    </Box>
+
+  </Grid>
+  <Grid size={{ xs: 12, md: 6 }}>
+    <Box
+      sx={{
+        p:2,
+        bgcolor: '#FEE1DE',
+        borderRadius: '1rem'
+      }}
+    >
+      <Grid container
+        sx={{
+          alignItems: "center",
+        }}
+      >
+        <Grid size="grow">
+          <Typography variant="h3">Collaboration</Typography>
+        </Grid>
+        <Grid size="auto">
+          <Handshake color='#F04E24' size={50} />
+        </Grid>
+      </Grid>
+        
+      Les bibliothèques de l’Université de Montréal sont des interlocutrices incontournables pour le déploiement des connaissances. Collaboratrices, elles sont attentives aux besoins de leurs communautés et participent aux efforts des pairs pour l’avancement de la recherche et de l’enseignement. Joueuses d’équipe, elles contribuent de par leurs expertises à la mutualisation de ressources, au décloisonnement des savoirs ainsi qu’à l’accès à l’information.
+
+    </Box>
+
+  </Grid>
+
+</Grid>
+
+<Divider />
 
 ## Objectifs
 
@@ -121,3 +230,5 @@ Faire rayonner les activités et l’expertise des bibliothèques de l’UdeM.
 - Se positionner comme une organisation engagée.
 
 </details>
+
+</Section>
