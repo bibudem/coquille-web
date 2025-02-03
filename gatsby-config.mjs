@@ -1,8 +1,9 @@
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import GatsbyAdapterNetlifyModule from 'gatsby-adapter-netlify'
+import { webpack as PigmentPlugin } from '@pigment-css/unplugin'
 import 'dotenv/config'
-import tokens from './plugins/gatsby-plugin-bib-theme/tokens.js'
+import { theme, tokens } from './plugins/gatsby-plugin-bib-theme/tokens.js'
 
 const adapter = GatsbyAdapterNetlifyModule.default
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -26,6 +27,10 @@ const config = {
   trailingSlash: 'never',
   plugins: [
     'gatsby-plugin-provide-react',
+    PigmentPlugin({
+      theme,
+      transformLibraries: ['@mui/material'],
+    }),
     {
       resolve: 'gatsby-plugin-alias-imports',
       options: {

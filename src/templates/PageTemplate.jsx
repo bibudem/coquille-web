@@ -26,6 +26,7 @@ import CommentIcon from '@mui/icons-material/Comment'
 
 import { useSmall } from '@/hooks/use-small'
 import { Hero, Bloc } from '@/components/dummy-components'
+import '@pigment-css/react/styles.css'
 
 const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, Divider, Grid, List, ListItem, ListItemText, ListItemButton, ListItemButton, ListItemIcon, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
 

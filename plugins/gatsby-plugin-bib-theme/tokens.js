@@ -1,4 +1,6 @@
-export default {
+import { extendTheme } from '@pigment-css/unplugin'
+
+export const tokens = {
 	breakpoints: {
 		values: {
 			xs: 0,
@@ -95,7 +97,7 @@ export default {
 			none: '0',
 		}
 	},
-	spacing: 8, 
+	spacing: 8,
 	typography: {
 		fontFamily: 'Figtree',
 		fontSize: 16,
@@ -129,3 +131,5 @@ export default {
 		// }
 	},
 }
+
+export const theme = extendTheme(tokens)

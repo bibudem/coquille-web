@@ -1,3 +1,4 @@
 {
-  "name": "gatsby-plugin-bib-theme"
+  "name": "gatsby-plugin-bib-theme",
+  "type": "module"
 }
