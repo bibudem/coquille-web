@@ -78,7 +78,9 @@ Le prototype utilise la librairie [Material UI](https://mui.com/material-ui/). T
 - [Box](https://mui.com/material-ui/react-box/)
 - [Divider](https://mui.com/material-ui/react-divider/)
 - [Grid v2](https://mui.com/material-ui/react-grid2/)
+- [List, ListItem, ListItemText, ListItemButton, ListItemIcon](https://mui.com/material-ui/react-list/)
 - [Tabs, Tab](https://mui.com/material-ui/react-tabs/)
+- [Typography](https://mui.com/material-ui/react-typography/)
 
 Les autres composants de la librairie doivent être importées pour être utilisées:
 
@@ -89,9 +91,9 @@ une-page.mdx
 title: Une page
 ---
 
-import {Card, CardContent, CardMedia, CardActionArea, Typography }  from '@mui/material'
+import {Card, CardContent, CardMedia, CardActionArea }  from '@mui/material'
 
-# Un titre
+# Exemple React utilisant le composant Typography et d'autres composants importés localement
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hendrerit dolor magna eget est lorem.
 
