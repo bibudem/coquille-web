@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import { AppBar, Box, Button, Container, InputBase, Stack, SvgIcon, Toolbar } from '@mui/material'
-import { styled, alpha, useTheme } from '@mui/material/styles'
-import { MagnifyingGlass } from '@phosphor-icons/react'
+import { AppBar, Box, Button, Container, Stack, Toolbar } from '@mui/material'
+import { styled, useTheme } from '@mui/material/styles'
 
 import Link from '@/components/Link'
 import SideNav from '@/components/SideNav/SideNav'
@@ -14,49 +13,17 @@ const pages = [
   { url: '/etudes', label: 'Études' },
   { url: '/recherche', label: 'Recherche' },
   { url: '/enseignement', label: 'Enseignement' },
+  { url: '/engagement', label: 'Engagement' },
   { url: '/tests', label: 'Tests' },
 ]
 
-const Search = styled('div')(({ theme }) => {
-  return {
-    position: 'relative',
-    borderRadius: 'var(--bib-shape-corner-full)',
-    backgroundColor: alpha(theme.palette.primary.main, 0.0875),
-    '&:hover': {
-      backgroundColor: alpha(theme.palette.primary.main, 0.15),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
-  }
-})
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}))
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  // color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    },
-  },
+const StyledButton = styled(Button)(({ theme }) => ({
+  my: 2,
+  color: theme.palette.text.primary,
+  fontSize: '0.875rem',
+  fontWeight: 400,
+  display: 'block',
+  textTransform: 'none',
 }))
 
 /**
@@ -124,34 +91,19 @@ export default function TopAppBar() {
                 <LogoBib style={{ height: '35px' }} />
               </Link>
             </Box>
-            <Box width="15%"></Box>
-            <Stack direction="row" spacing={1}>
-              {pages.map(({ url, label }) => (
-                <Button
-                  size="large"
-                  href={url}
-                  key={url}
-                  sx={{
-                    my: 2,
-                    // color: 'white',
-                    fontWeight: 600,
-                    display: 'block',
-                    textTransform: 'none',
-                  }}
-                >
-                  {label}
-                </Button>
-              ))}
-            </Stack>
             <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: 'flex', pr: 2 }}>
-              <Search>
-                <SearchIconWrapper>
-                  <MagnifyingGlass color={theme.palette.primary.main} size={24} />
-                </SearchIconWrapper>
-                <StyledInputBase placeholder="Rechercher sur le site..." inputProps={{ 'aria-label': 'search' }} />
-              </Search>
-            </Box>
+            <Stack direction="row" spacing={1}>
+              {pages.map(({ url, label }) => {
+                return (
+                  <StyledButton size="large" href={url} key={url}>
+                    {label}
+                  </StyledButton>
+                )
+              })}
+              <Button variant="contained" disableElevation size="large" href="/connexion" sx={{ bgcolor: 'udemBleuFonce.main' }}>
+                Je donne
+              </Button>
+            </Stack>
             <Box>
               <MenuFab onClick={toggleDrawer(true)} />
             </Box>
