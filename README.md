@@ -42,18 +42,31 @@ Les pages à éditer sont dans le dossier `content/`. Vous pouvez modifier le co
 
 ### Autres commandes
 
-| Commande            | Action                                                              |
-| :------------------ | :------------------------------------------------------------------ |
-| `npm install`     | Installs dependencies                                               |
+| Commande          | Action                                                            |
+| :---------------- | :---------------------------------------------------------------- |
+| `npm install`     | Installs dependencies                                             |
 | `npm run dev`     | Starts local dev server at `localhost:8000`                       |
 | `npm run build`   | Build your production site to `./dist/`                           |
 | `npm run preview` | Preview your build locally, before deploying, at `localhost:9000` |
 
 ### Déploiement automatique
 
-Chaque commit sur le dépôt GitHub déclanchera une nouvelle compilation des sources et un déploiement sur Netlify à l'adresse:
+Rafraîchissez cette page pour une mise à jour du statut de déploiement.
 
-[https://bib-pp.netlify.app](https://bib-pp.netlify.app/)
+| Environnement  |                                                                             Statut de déploiement                                                                             |
+| :------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| pre-production |    [![Netlify Status](https://api.netlify.com/api/v1/badges/fdb2105f-7cc4-4336-88c6-e5c09c794d74/deploy-status)](https://app.netlify.com/sites/bib-pp/deploys?branch=main)    |
+|   production   | [![Netlify Status](https://api.netlify.com/api/v1/badges/fdb2105f-7cc4-4336-88c6-e5c09c794d74/deploy-status)](https://app.netlify.com/sites/bib-pp/deploys?branch=production) |
+
+Chaque commit sur le dépôt GitHub déclanchera une nouvelle compilation des sources de la branche `main` et un déploiement sur Netlify à l'adresse:
+
+[https://bib-pp.umontreal.ca](https://bib-pp.umontreal.ca/)
+
+Les commits dans la branche production déclanchent un déploiement sur Netlify à l'adresse:
+
+[https://bib-prod.umontreal.ca](https://bib-prod.umontreal.ca)\*
+
+\* Adresse temporaire. Elle sera remplacée le jour du lancement du site par [https://bib.umontreal.ca](https://bib.umontreal.ca).
 
 ## Composants disponibles
 
