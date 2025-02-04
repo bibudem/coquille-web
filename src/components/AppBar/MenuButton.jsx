@@ -1,5 +1,5 @@
-import { IconButton, SvgIcon } from '@mui/material'
-import { List } from '@phosphor-icons/react'
+import { IconButton } from '@mui/material'
+import { BurgerIcon } from '@/components/CustomIcons'
 
 const fabStyles = {
   width: 50,
@@ -21,7 +21,7 @@ export default function MenuFab({ sx, ...props }) {
       }}
       {...props}
     >
-      <SvgIcon component={List} inheritViewBox sx={{ ...iconStyles }} />
+      <BurgerIcon sx={{ ...iconStyles }} />
     </IconButton>
   )
 }

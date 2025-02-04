@@ -1,6 +1,6 @@
 import { Stack, styled, Typography } from '@mui/material'
 import { CalendarPlus, Chats, ClockCountdown, Lifebuoy } from '@phosphor-icons/react'
-import { SofiaIcon } from '@/components/CustomIcons/CustomIcons'
+import { SofiaIcon } from '@/components/CustomIcons'
 
 const StyledNav = styled(Stack)(({ theme }) => ({
   margin: 0,
