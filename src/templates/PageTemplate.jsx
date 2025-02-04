@@ -32,7 +32,7 @@ const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button
 export default function PageTemplate({ pageContext, children, ...rest }) {
   const isSmall = useSmall('lg')
   const theme = useTheme()
-
+  console.log('pageContext:', pageContext)
   const {
     breadcrumb: { crumbs },
   } = pageContext
@@ -50,6 +50,7 @@ export default function PageTemplate({ pageContext, children, ...rest }) {
         }}
       >
         {process.env.NODE_ENV !== 'production' && <Debug />}
+
         <udem-urgence></udem-urgence>
 
         {isSmall ? <TopAppBarSm /> : <TopAppBar />}

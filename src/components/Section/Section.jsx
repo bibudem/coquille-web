@@ -1,4 +1,4 @@
-import { styled } from '@mui/material'
+import { Container, styled } from '@mui/material'
 
 const colors = {
   'bleu-50': { bg: '#eef4f7' },
@@ -17,11 +17,13 @@ const StyledSection = styled('section')(({ theme }) => ({
   padding: '3.5rem 5.19rem 4.31rem 4.75rem',
 }))
 
-export default function Section({ children, sx, fond, image, ...props }) {
+export default function Section({ children, sx, fond, image, fullWidth, ...props }) {
   const styles = {}
 
+  console.log('image:', image)
+
   if (image) {
-    //
+    styles.backgroundImage = `url(${image.props.src})`
   } else if (fond) {
     if (typeof colors[fond] !== 'undefined' && !Reflect.has(colors[fond], 'bg')) {
       throw new Error(`La couleur \`${fond}\` n'est pas définie dans la liste des couleurs du composant Section.`)
@@ -33,15 +35,22 @@ export default function Section({ children, sx, fond, image, ...props }) {
     }
   }
 
+  if (fullWidth) {
+    // styles.outline = '1px solid red'
+  }
+
   return (
-    <StyledSection
+    <Container
+      maxWidth={fullWidth ? 'none' : undefined}
       {...props}
-      children={children}
-      className={`section section--${fond}`}
+      component="section"
       sx={{
+        paddingInline: 0,
         ...styles,
         ...sx,
       }}
-    />
+    >
+      {children}
+    </Container>
   )
 }
