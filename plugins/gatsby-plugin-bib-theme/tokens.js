@@ -1,3 +1,5 @@
+import { theme } from './BibTheme.js'
+
 export default {
 	breakpoints: {
 		values: {
@@ -38,6 +40,24 @@ export default {
 		}
 	},
 	components: {
+		MuiButton: {
+			styleOverrides: {
+				root: ({ theme }) => ({
+					borderRadius: theme.shape.corner.full,
+					textTransform: 'none',
+					fontSize: '0.875rem',
+					fontWeight: 400,
+					variants: [
+						{
+							props: { variant: 'contained' },
+							style: {
+								color: '#fafdfe'
+							}
+						}
+					]
+				})
+			}
+		},
 		MuiCssBaseline: {
 			/*
 			 * Viewport Width Range: 375px - 1536px
