@@ -13,10 +13,13 @@ export default {
 		light: {
 			palette: {
 				primary: {
-					main: '#0057AC'
+					main: '#0057ac'
+				},
+				orange: {
+					main: '#ffc0cb',
 				},
 				udemBleuFonce: {
-					main: '#0B113A',
+					main: '#0b113a',
 					light: 'rgb(59, 64, 97)',
 					dark: 'rgb(7, 11, 40)',
 					contrastText: '#fff'
@@ -49,11 +52,6 @@ export default {
 			styleOverrides: (theme) => `
 				:root {
 					--bib-comp-retroaction-usager-size: ${theme.typography.body2.fontSize};
-				}
-				${theme.breakpoints.down('md')} {
-					:root {
-						font-size: 19px;
-					}
 				}
 			`
 		},
@@ -95,7 +93,7 @@ export default {
 			none: '0',
 		}
 	},
-	spacing: 8, 
+	spacing: 8,
 	typography: {
 		fontFamily: 'Figtree',
 		fontSize: 16,
