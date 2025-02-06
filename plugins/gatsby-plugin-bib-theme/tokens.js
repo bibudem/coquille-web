@@ -1,5 +1,3 @@
-import { theme } from './BibTheme.js'
-
 export default {
 	breakpoints: {
 		values: {

@@ -1,0 +1,53 @@
+{
+  "name": "gatsby-plugin-bib-secondary-nav",
+  "author": "Paul Scanlon <pauliescanlon@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaulieScanlon/gatsby-mdx-routes.git"
+  },
+  "version": "0.0.11",
+  "type": "commonjs",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "publish": "npm run build && npm login",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "npm run build:types && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir . --extensions \".js,.ts,.tsx\" --source-maps inline",
+    "build:watch": "babel src --out-dir . --extensions \".js,.ts,.tsx\" --watch",
+    "tsc": "tsc"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/node": "^13.1.7",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "prettier": "^1.19.1",
+    "typescript": "^3.7.5"
+  },
+  "peerDependencies": {
+    "gatsby": "^5.14.1",
+    "react": "^18.2.0"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-mdx"
+  ],
+  "description": "Routes and Recursive Navigation menus for Mdx files",
+  "bugs": {
+    "url": "https://github.com/PaulieScanlon/gatsby-mdx-routes/issues"
+  },
+  "homepage": "https://github.com/PaulieScanlon/gatsby-mdx-routes#readme"
+}
