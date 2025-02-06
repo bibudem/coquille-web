@@ -73,8 +73,8 @@ const config = {
           formats: [`auto`, `webp`],
           placeholder: `dominantColor`,
           quality: 50,
-          // breakpoints: [750, 1080, 1366, 1920],
-          breakpoints: Object.values(tokens.breakpoints.values).filter(item => item !== 0),
+          breakpoints: [600, 900, 1200, 1536],
+          // breakpoints: Object.values(tokens.breakpoints.values).filter(item => item !== 0),
           backgroundColor: `transparent`,
           blurredOptions: {},
           jpgOptions: {},
@@ -96,6 +96,7 @@ const config = {
         icon: 'src/images/logo-bib-icon.svg'
       }
     },
+    'gatsby-plugin-bib-secondary-nav',
     'gatsby-plugin-mdx',
     {
       resolve: 'gatsby-plugin-webfonts',
