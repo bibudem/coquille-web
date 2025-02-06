@@ -2,7 +2,7 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import GatsbyAdapterNetlifyModule from 'gatsby-adapter-netlify'
 import 'dotenv/config'
-import tokens from './plugins/gatsby-plugin-bib-theme/tokens.js'
+// import tokens from './plugins/gatsby-plugin-bib-theme/tokens.js'
 
 const adapter = GatsbyAdapterNetlifyModule.default
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -73,8 +73,8 @@ const config = {
           formats: [`auto`, `webp`],
           placeholder: `dominantColor`,
           quality: 50,
-          // breakpoints: [750, 1080, 1366, 1920],
-          breakpoints: Object.values(tokens.breakpoints.values).filter(item => item !== 0),
+          breakpoints: [600, 900, 1200, 1536],
+          // breakpoints: Object.values(tokens.breakpoints.values).filter(item => item !== 0),
           backgroundColor: `transparent`,
           blurredOptions: {},
           jpgOptions: {},
