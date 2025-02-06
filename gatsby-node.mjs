@@ -18,26 +18,26 @@ export const createPages = async ({ graphql, actions, reporter, getNode }) => {
 
   // Get all markdown pages
   const result = await graphql(`
-  query PagesQuery {
-    allFile(filter: {sourceInstanceName: {eq: "contenu"}}) {
-      nodes {
-        id
-        name
-        relativeDirectory
-        absolutePath
-        internal {
-          contentFilePath
-        }
-        childMdx {
-          frontmatter {
-            slug
-            title
-            template
+    query PagesQuery {
+      allFile(filter: {sourceInstanceName: {eq: "contenu"}}) {
+        nodes {
+          id
+          name
+          relativeDirectory
+          absolutePath
+          internal {
+            contentFilePath
+          }
+          childMdx {
+            frontmatter {
+              slug
+              title
+              template
+            }
           }
         }
       }
     }
-  }
   `)
 
   if (result.errors) {

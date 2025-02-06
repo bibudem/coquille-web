@@ -29,8 +29,10 @@ import IconInSquare from '@/components/IconInSquare'
 
 import CommentIcon from '@mui/icons-material/Comment'
 
+// import { MdxRoutes } from '../../plugins/gatsby-plugin-bib-secondary-nav.OLD/components/MdxRoutes/MdxRoutes'
 import { useSmall } from '@/hooks/use-small'
 import { Hero, Bloc } from '@/components/dummy-components'
+import { SecondaryNav } from '@/components/SecondaryNav/SecondaryNav'
 
 const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, CallToAction1, CallToAction2, Carousel, Divider, Grid, IconInSquare, List, ListItem, ListItemText, ListItemButton, ListItemButton, ListItemIcon, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
 
@@ -70,7 +72,26 @@ export default function PageTemplate({ pageContext, children, ...rest }) {
         <Breadcrumbs crumbs={crumbs} />
 
         <main role="main">
+          {/* <SecondaryNav /> */}
+          {/* <nav>
+            <MdxRoutes>
+              {(routes, _) => {
+                console.log('routes:', routes)
+                return (
+                  <ul>
+                    {routes.map((route, index) => (
+                      <li key={index}>
+                        <Link to={route.slug}>{route.navigationLabel}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                )
+              }}
+            </MdxRoutes>
+          </nav> */}
+
           {children}
+
           <RetroactionUsager />
         </main>
         <Footer />
