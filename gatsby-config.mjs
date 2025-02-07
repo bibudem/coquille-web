@@ -36,11 +36,11 @@ const config = {
           '@/images': 'src/images',
           '@/utils': 'src/utils',
         },
-        extensions: [
-          'js',
-          'jsx',
-          'mdx'
-        ],
+        // extensions: [
+        //   'js',
+        //   'jsx',
+        //   'mdx'
+        // ],
       }
     },
     {
