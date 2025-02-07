@@ -1,17 +1,18 @@
-const fs = require('fs')
+import fs from 'node:fs'
 
 const readFile = path => {
   let result
 
   try {
     result = fs.readFileSync(path, 'utf8')
-  } catch (e) {
-    console.log(e)
+  } catch (error) {
+    console.log('Error reading file `%s` from disk.', path, error)
+    console.log(error)
     result = ''
   }
 
   return result
 }
 
-module.exports = readFile;
+export default readFile
 
