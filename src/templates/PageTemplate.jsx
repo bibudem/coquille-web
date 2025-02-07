@@ -29,7 +29,6 @@ import IconInSquare from '@/components/IconInSquare'
 
 import CommentIcon from '@mui/icons-material/Comment'
 
-// import { MdxRoutes } from '../../plugins/gatsby-plugin-bib-secondary-nav.OLD/components/MdxRoutes/MdxRoutes'
 import { useSmall } from '@/hooks/use-small'
 import { Hero, Bloc } from '@/components/dummy-components'
 import { SecondaryNav } from '@/components/SecondaryNav/SecondaryNav'
@@ -72,23 +71,7 @@ export default function PageTemplate({ pageContext, children, ...rest }) {
         <Breadcrumbs crumbs={crumbs} />
 
         <main role="main">
-          {/* <SecondaryNav /> */}
-          {/* <nav>
-            <MdxRoutes>
-              {(routes, _) => {
-                console.log('routes:', routes)
-                return (
-                  <ul>
-                    {routes.map((route, index) => (
-                      <li key={index}>
-                        <Link to={route.slug}>{route.navigationLabel}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                )
-              }}
-            </MdxRoutes>
-          </nav> */}
+          <SecondaryNav />
 
           {children}
 
