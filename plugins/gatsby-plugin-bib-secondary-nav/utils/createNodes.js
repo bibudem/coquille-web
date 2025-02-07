@@ -1,3 +1,5 @@
+import { ID_PREFIX, NODE_TYPE } from '../constants.js'
+
 const createNodes = (
   sortedLinks,
   getNode,
@@ -7,7 +9,7 @@ const createNodes = (
 ) =>
   sortedLinks.forEach(link => {
     const nodeContent = JSON.stringify(link)
-    const id = `dynamical-nav-${link.path}`
+    const id = `${ID_PREFIX}${link.path}`
 
     const parentId = `${id
       .split("/")
@@ -19,7 +21,7 @@ const createNodes = (
       id,
       parent: parent && parentId,
       internal: {
-        type: `SiteNavigation`,
+        type: NODE_TYPE,
         content: nodeContent,
         contentDigest: createContentDigest(link)
       }

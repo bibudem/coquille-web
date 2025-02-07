@@ -1,9 +1,7 @@
 import directoryTree from 'directory-tree'
 
-// export default () => directoryTree('content', { extensions: /\.mdx?$/ })
-
 export default () => {
 
 
-  return directoryTree('content', { extensions: /\.mdx?$/ })
+  return directoryTree('content', { extensions: /\.mdx?$/, attributes: ['type'], normalizePath: true, exclude: [/^\/consent\/i/] })
 }

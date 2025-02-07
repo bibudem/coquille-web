@@ -6,7 +6,7 @@ const getPageAttrs = path => {
   const { data } = matter(content)
 
   if (data) {
-    const { title: pageTitle, navTitle, order } = data
+    const { title: pageTitle, navTitle, order = null } = data
     const title = navTitle || pageTitle
 
     return title ? { title, order } : undefined
