@@ -1,18 +1,25 @@
 import { Box } from '@mui/material'
-// import { Navigation, loadNavigation } from 'gatsby-dynamical-navigation'
+// import { MdxRoutes } from '../../../plugins/gatsby-plugin-bib-secondary-nav/components/MdxRoutes.js'
 
 export function SecondaryNav({ children, ...props }) {
-  // loadNavigation((navigation) => {
-  //   console.log('navigation:', navigation)
-  // })
-
   return (
     <Box {...props} sx={{ outline: '1px solid red' }}>
-      {/* <Navigation
-        root="/content" //vertex path of displayed navigation
-        target="/toto" //bottom path of displayed navigation (usually location)
-        // loader={React component} // optional. Component that will be displayed until the navigation is loaded
-      /> */}
+      <nav>
+        {/* <MdxRoutes>
+          {(routes, _) => {
+            console.log('routes:', routes)
+            return (
+              <ul>
+                {routes.map((route, index) => (
+                  <li key={index}>
+                    <Link to={route.slug}>{route.navigationLabel}</Link>
+                  </li>
+                ))}
+              </ul>
+            )
+          }}
+        </MdxRoutes> */}
+      </nav>
     </Box>
   )
 }
