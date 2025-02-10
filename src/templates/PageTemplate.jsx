@@ -9,6 +9,7 @@ import ListItemText from '@mui/material/ListItemText'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Typography from '@mui/material/Typography'
+import Carousel from 'react-material-ui-carousel'
 import { IconContext } from '@phosphor-icons/react'
 
 import TopAppBar from '@/components/AppBar/TopAppBar'
@@ -28,7 +29,7 @@ import CommentIcon from '@mui/icons-material/Comment'
 import { useSmall } from '@/hooks/use-small'
 import { Hero, Bloc } from '@/components/dummy-components'
 
-const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, CallToAction, Divider, Grid, List, ListItem, ListItemText, ListItemButton, ListItemButton, ListItemIcon, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
+const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, CallToAction, Carousel, Divider, Grid, List, ListItem, ListItemText, ListItemButton, ListItemButton, ListItemIcon, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
 
 export default function PageTemplate({ pageContext, children, ...rest }) {
   const isSmall = useSmall('lg')
