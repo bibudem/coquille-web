@@ -44,6 +44,7 @@ export default {
 			styleOverrides: {
 				root: ({ theme }) => ({
 					borderRadius: theme.shape.corner.full,
+					lineHeight: 1,
 					textTransform: 'none',
 					fontSize: '0.875rem',
 					fontWeight: 400,
@@ -51,7 +52,8 @@ export default {
 						{
 							props: { variant: 'contained' },
 							style: {
-								color: '#fafdfe'
+								color: '#fafdfe',
+								boxShadow: 'none',
 							}
 						}
 					]
