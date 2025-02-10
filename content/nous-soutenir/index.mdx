@@ -5,13 +5,14 @@ slug: index
 
 import { FlowerTulip } from '@phosphor-icons/react'
 
+<Section>
+
 # Nous soutenir
+
+</Section>
 
 <Section
   fond="bleu-200"
-  sx={{
-    py: '96px'
-  }}
 >
   <Grid
     container 
@@ -20,35 +21,35 @@ import { FlowerTulip } from '@phosphor-icons/react'
     }}
   >
 
-  <Grid size={3}>
-    <Grid container
-      sx={{
-        justifyContent: "center",
-      }}
-    >
-    <Grid>
-      <Box
+    <Grid size={3}>
+      <Grid container
         sx={{
-          display: 'flex',
-          backgroundColor: '#52B782',
-          borderRadius: '5px',
-          padding: '53px',
+          justifyContent: "center",
         }}
       >
-        <FlowerTulip color='#024244' size={84} />
-      </Box>
+        <Grid>
+          <Box
+            sx={{
+              display: 'flex',
+              backgroundColor: '#52B782',
+              borderRadius: '5px',
+              padding: '53px',
+            }}
+          >
+            <FlowerTulip color='#024244' size={84} />
+          </Box>
+        </Grid>
+      </Grid>
     </Grid>
-  </Grid>
-</Grid>
 
-<Grid size={9}>
-    <Typography component="h2" variant="h2">Cultiver la curiosité</Typography>
-    
-    Véritable milieu de vie où se rencontre et se ressemble la communauté universitaire, les Bibliothèques de l’Université de Montréal sont des partenaires essentiels au rayonnement des savoirs. Lieu où l’on cultive la curiosité, elles comptent parmi les grandes bibliothèques de recherche de langue française. En soutenant les Bibliothèques de l’Université de Montréal, vous contribuez directement à multiplier les opportunités d'apprentissage et de recherche pour les générations futures. Que ce soit en contribuant à la modernisation des espaces offerts ou à la démocratisation des savoirs, chaque don représente un pas de plus vers une science accessible et ouverte, à la communauté UdeM et aux jeunes de demain.
+    <Grid size={9}> 
+      <Typography component="h2" variant="h2">Cultiver la curiosité</Typography>
+      
+      Véritable milieu de vie où se rencontre et se ressemble la communauté universitaire, les Bibliothèques de l’Université de Montréal sont des partenaires essentiels au rayonnement des savoirs. Lieu où l’on cultive la curiosité, elles comptent parmi les grandes bibliothèques de recherche de langue française. En soutenant les Bibliothèques de l’Université de Montréal, vous contribuez directement à multiplier les opportunités d'apprentissage et de recherche pour les générations futures. Que ce soit en contribuant à la modernisation des espaces offerts ou à la démocratisation des savoirs, chaque don représente un pas de plus vers une science accessible et ouverte, à la communauté UdeM et aux jeunes de demain.
 
-    <Button primaire foncé>
-      Faire un don maintenant
-    </Button>
+      <Button variant="contained" color="udemBleuFonce" sx={{mt: 8}} >
+        Faire un don maintenant
+      </Button>
 
     </Grid>
 
@@ -58,7 +59,13 @@ import { FlowerTulip } from '@phosphor-icons/react'
 <Section fond="vert-foncé-600">
   <Hero cartes photo>
 
-    ### Fonds des livres rares de l'UdeM [Découvrir la campagne](https://bib.umontreal.ca/) ### Revitalisation de la Bibliothèque de la santé [Découvrir la campagne](https://bib.umontreal.ca/)
+    ### Fonds des livres rares de l'UdeM
+    
+    [Découvrir la campagne](https://bib.umontreal.ca/)
+    
+    ### Revitalisation de la Bibliothèque de la santé
+    
+    [Découvrir la campagne](https://bib.umontreal.ca/)
 
   </Hero>
 </Section>
@@ -66,7 +73,12 @@ import { FlowerTulip } from '@phosphor-icons/react'
 <Section fond="bleu-50">
   <Hero icône>
 
-    ## Des services pour la communauté de l’UdeM+, même après le dipôme! Après la fin de vos études à l’UdeM, HEC Montréal et Polytechnique Montréal, les bibliothèques continuent de vous accueillir!  - Emprunt gratuit de la collection imprimée  - Accès sur place aux ressources électroniques
+    ## Des services pour la communauté de l’UdeM+, même après le dipôme!
+    
+    Après la fin de vos études à l’UdeM, HEC Montréal et Polytechnique Montréal, les bibliothèques continuent de vous accueillir!
+    
+    - Emprunt gratuit de la collection imprimée  
+    - Accès sur place aux ressources électroniques
 
     <Button secondaire foncé>
       Voir les modalités
@@ -99,7 +111,9 @@ Merci pour votre collaboration précieuse et votre engagement continu. Votre sou
 <Section fond="rose-100">
   <Hero cartes photo info en hover>
 
-    ### cabine insonorisé ### Achats de livres
+    ### cabine insonorisé
+    
+    ### Achats de livres
 
   </Hero>
 </Section>
@@ -108,7 +122,9 @@ Merci pour votre collaboration précieuse et votre engagement continu. Votre sou
   <Hero icône>
 
 
-    ## Don de livres Les Bibliothèques accueillent avec intérêt les propositions de don de collections spéciales ou d'ouvrages ayant une valeur unique pour enrichir nos collections. Pour assurer une intégration harmonieuse aux ressources existantes, nous vous invitons à consulter notre politique de don avant de soumettre votre offre.
+    ## Don de livres
+    
+    Les Bibliothèques accueillent avec intérêt les propositions de don de collections spéciales ou d'ouvrages ayant une valeur unique pour enrichir nos collections. Pour assurer une intégration harmonieuse aux ressources existantes, nous vous invitons à consulter notre politique de don avant de soumettre votre offre.
 
     <Button secondaire foncé>
       Voir les modalités

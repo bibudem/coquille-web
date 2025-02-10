@@ -1,4 +1,4 @@
-import { Container, styled } from '@mui/material'
+import { Box, Container, styled } from '@mui/material'
 
 const colors = {
   'bleu-50': { bg: '#eef4f7' },
@@ -10,15 +10,16 @@ const colors = {
   rien: { bg: 'red' },
 }
 
-const StyledSection = styled('section')(({ theme }) => ({
-  padding: theme.spacing(2),
-  margin: '0',
-  display: 'block',
-  padding: '3.5rem 5.19rem 4.31rem 4.75rem',
+const SectionRoot = styled('section', {
+  name: 'BibSection',
+  slot: 'root',
+})(({ theme }) => ({
 }))
 
-export default function Section({ children, sx, fond, image, fullWidth, ...props }) {
-  const styles = {}
+export default function Section({ children, sx, fond, image, fixedWidth, action, ...props }) {
+  const styles = {
+    py: '96px'
+  }
 
   console.log('image:', image)
 
@@ -35,22 +36,46 @@ export default function Section({ children, sx, fond, image, fullWidth, ...props
     }
   }
 
-  if (fullWidth) {
-    // styles.outline = '1px solid red'
+  if (fixedWidth) {
+    styles.outline = '1px solid red'
+  } else {
+    styles.maxWidth = 'unset'
   }
 
-  return (
+  return fixedWidth ? (
     <Container
-      maxWidth={fullWidth ? 'none' : undefined}
+      maxWidth={fixedWidth ? 'none' : undefined}
       {...props}
-      component="section"
+      component={fixedWidth ? Container : SectionRoot}
       sx={{
-        paddingInline: 0,
+        // paddingInline: 0,
         ...styles,
         ...sx,
       }}
     >
-      {children}
+        {children}
     </Container>
+  ) : (
+    <SectionRoot
+      maxWidth={fixedWidth ? 'none' : undefined}
+      {...props}
+      component={fixedWidth ? Container : SectionRoot}
+      sx={{
+        // paddingInline: 0,
+        ...styles,
+        ...sx,
+      }}
+    >
+      <Container>
+        {children}
+        {
+          action && (
+            <Box  sx={{mt: 4}}>
+              {action}
+            </Box>
+          )
+        }
+      </Container>
+    </SectionRoot>
   )
 }
