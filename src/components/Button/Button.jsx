@@ -4,12 +4,12 @@ import isInternalLink from '../../utils/internLink.js'
 
 const config = {
   primary: {
-    color: 'primary',
+    color: 'udemBleuFonce.main',
     variant: 'contained',
     disableElevation: true,
   },
   secondary: {
-    color: 'primary.main',
+    color: 'udemBleuFonce.main',
     variant: 'outlined',
   },
 }
@@ -24,7 +24,7 @@ export default function Button({ children, sx, primary, secondary, color, varian
   }
 
   const props = {
-    color: color || (primary ? 'primary' : 'secondary'),
+    color: color || config[primary ? 'primary' : 'secondary'].color,
     variant: variant || (primary || secondary ? config[primary ? 'primary' : 'secondary'].variant : 'text'),
     disableElevation: disableElevation || (primary ? config.primary.disableElevation : false),
     disableEndIcon: typeof disableEndIcon === 'undefined' ? disableEndIcon : true,
