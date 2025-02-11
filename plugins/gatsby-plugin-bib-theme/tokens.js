@@ -48,6 +48,7 @@ export default {
 					textTransform: 'none',
 					fontSize: '0.875rem',
 					fontWeight: 400,
+					minHeight: '3.125rem', // 50px
 					variants: [
 						{
 							props: { variant: 'contained' },
@@ -56,7 +57,14 @@ export default {
 								boxShadow: 'none',
 							}
 						}
-					]
+					],
+					'.MuiButton-icon svg': {
+						fill: 'currentColor',
+					},
+					// In case mdx, it can generate a <p> tag for the textual content inside the <button></button>
+					'p': {
+						margin: 0,
+					}
 				})
 			}
 		},
