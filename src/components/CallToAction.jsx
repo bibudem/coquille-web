@@ -17,10 +17,14 @@ export default function CallToAction({ data, align = 'left', image, sx, children
   }
 
   const columns = [
-    <Grid size={{ xs: 12, md: 6 }} key="content">
+    <Grid size={{ xs: 12, md: 5 }} key="content">
       {children}
     </Grid>,
   ]
+
+  columns[align === 'left' ? 'push' : 'unshift'](
+    <Grid size={1}></Grid>
+  )
 
   columns[align === 'left' ? 'push' : 'unshift'](
     <Grid
@@ -38,11 +42,12 @@ export default function CallToAction({ data, align = 'left', image, sx, children
   return (
     <Grid
       container
-      spacing={10}
+      spacing={0}
       sx={{
         alignItems: 'center',
         '.MuiTypography-h2': {
           fontFamily: 'Figtree',
+          fontSize: '3.8125rem',
         },
         ...sx,
       }}
