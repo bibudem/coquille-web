@@ -6,7 +6,7 @@ const colors = {
   'bleu-600': { bg: '#00407f', fg: '#fff' },
   'rose-100': { bg: '#fcf3f1' },
   'rose-300': { bg: '#fee1de' },
-  'vert-foncé-600': { bg: '#024224', fg: '#fff' },
+  'vert-foncé-600': { bg: '#024244', fg: '#fff' },
   rien: { bg: 'red' },
 }
 
