@@ -48,6 +48,10 @@ export default function CallToAction({ data, align = 'left', image, sx, children
         '.MuiTypography-h2': {
           fontFamily: 'Figtree',
           fontSize: '3.8125rem',
+          marginBottom: '2rem'
+        },
+        '.MuiButton-root:first-of-type': {
+            marginTop: '2rem',
         },
         ...sx,
       }}
