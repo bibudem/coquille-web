@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Tab, Tabs, useTheme } from '@mui/material'
+import { Accordion, AccordionDetails, AccordionSummary, Box, Container, Tab, Tabs, useTheme } from '@mui/material'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid2'
 import List from '@mui/material/List'
@@ -23,6 +23,7 @@ import Debug from '@/components/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
 import Section from '@/components/Section/Section'
 import CallToAction from '@/components/CallToAction'
+import Button from '@/components/Button/Button'
 
 import CommentIcon from '@mui/icons-material/Comment'
 
@@ -34,14 +35,17 @@ const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button
 export default function PageTemplate({ pageContext, children, ...rest }) {
   const isSmall = useSmall('lg')
   const theme = useTheme()
+
+  if (typeof window !== "undefined"){
+    window.bib = window.bib || {}
+    window.bib.theme = theme
+    console.log('window.bib.theme:', window.bib.theme)
+  }
+
   console.log('pageContext:', pageContext)
   const {
     breadcrumb: { crumbs },
   } = pageContext
-
-  console.log('theme:', theme)
-  console.log('children:', children)
-  console.log('rest:', rest)
 
   return (
     <MDXProvider components={components}>
