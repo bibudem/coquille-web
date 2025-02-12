@@ -2,6 +2,7 @@
 title: Espaces
 slug: espaces
 ---
+import imageAccessible from "../images/marguerite-youville-espace.webp"
 
 # Espaces
 
@@ -51,12 +52,14 @@ Display : De l'espace pour réfléchir, découvrir et s'enrichir
 </Section>
 
 <Section fond="vert-foncé-600">
-  <Hero image texte gauche>
-    ## Des lieux accessibles La Bibliothèque des lettres et sciences humaines et la bibliothèque des sciences offrent chacune une salle mettant à votre disposition des équipements et des logiciels spécialisés afin d’adapter l’expérience en bibliothèque à vos besoins et de vous accompagner dans votre réussite.
-    <Button primaire interne>
-      En savoir plus
-    </Button>
-  </Hero>
+  <CallToAction1 image={imageAccessible}>
+    <Typography component='h2' variant='h2'> Des lieux accessibles</Typography>
+    
+    La Bibliothèque des lettres et sciences humaines et la bibliothèque des sciences offrent chacune une salle mettant à votre disposition des équipements et des logiciels spécialisés afin d’adapter l’expérience en bibliothèque à vos besoins et de vous accompagner dans votre réussite.
+    
+    <Button primary href='../accessibilite'>En savoir plus</Button>
+
+  </CallToAction1>
 </Section>
 
 <Section fond="bleu-200">
