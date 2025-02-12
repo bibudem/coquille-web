@@ -1,7 +1,7 @@
 import { styled } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 
-export default function CallToAction({ leftColl, rightColl, sx, children, ...props }) {
+export default function CallToAction2({ leftColl, rightColl, sx, children, ...props }) {
   // if (!['left', 'right'].includes(align)) {
   //   throw new Error(`Invalid align property: ${align}. Muse be one of: \`left\` (default) or \`right\``)
   // }
