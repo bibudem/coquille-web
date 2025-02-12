@@ -22,7 +22,7 @@ import SEO from '@/components/SEO'
 import Debug from '@/components/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
 import Section from '@/components/Section/Section'
-import CallToAction1 from '@/components/CallToAction/CallToAction1'
+import CallToAction1 from '@/components/CallToAction1'
 import Button from '@/components/Button/Button'
 
 import CommentIcon from '@mui/icons-material/Comment'
