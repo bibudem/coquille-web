@@ -22,7 +22,7 @@ import SEO from '@/components/SEO'
 import Debug from '@/components/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
 import Section from '@/components/Section/Section'
-import CallToAction from '@/components/CallToAction'
+import CallToAction1 from '@/components/CallToAction/CallToAction1'
 import Button from '@/components/Button/Button'
 
 import CommentIcon from '@mui/icons-material/Comment'
@@ -30,7 +30,7 @@ import CommentIcon from '@mui/icons-material/Comment'
 import { useSmall } from '@/hooks/use-small'
 import { Hero, Bloc } from '@/components/dummy-components'
 
-const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, CallToAction, Carousel, Divider, Grid, List, ListItem, ListItemText, ListItemButton, ListItemButton, ListItemIcon, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
+const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, CallToAction1, Carousel, Divider, Grid, List, ListItem, ListItemText, ListItemButton, ListItemButton, ListItemIcon, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
 
 export default function PageTemplate({ pageContext, children, ...rest }) {
   const isSmall = useSmall('lg')
