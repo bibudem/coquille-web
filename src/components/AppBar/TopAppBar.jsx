@@ -101,7 +101,7 @@ export default function TopAppBar() {
                   </StyledButton>
                 )
               })}
-              <Button variant="contained" disableElevation size="large" href="/connexion" sx={{ bgcolor: 'udemBleuFonce.main' }}>
+              <Button variant="contained" disableElevation size="large" href="/connexion" sx={{ bgcolor: 'bleuFonce.main' }}>
                 Je donne
               </Button>
             </Stack>

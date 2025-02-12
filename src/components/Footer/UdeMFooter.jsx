@@ -14,8 +14,8 @@ const UdeMFooter = styled('div', {
   name: 'BibFooter',
   slot: 'udem',
 })(({ theme }) => ({
-  backgroundColor: theme.palette.udemBleuFonce.main,
-  color: `rgb(${theme.palette.udemBleuFonce.contrastTextChannel} / ${FONT_OPACITY})`,
+  backgroundColor: theme.palette.bleuFonce.main,
+  color: `rgb(${theme.palette.bleuFonce.contrastTextChannel} / ${FONT_OPACITY})`,
 }))
 
 function UdeMFooterSectionHeader({ children, ...props }) {

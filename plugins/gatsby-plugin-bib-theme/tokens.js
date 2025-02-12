@@ -20,13 +20,13 @@ export default {
 				orange: {
 					main: '#ffc0cb',
 				},
-				udemBleuFonce: {
+				bleuFonce: {
 					main: '#0b113a',
 					light: 'rgb(59, 64, 97)',
 					dark: 'rgb(7, 11, 40)',
 					contrastText: '#fff'
 				},
-				udemBleuPrincipal: {
+				bleuPrincipal: {
 					main: "#0057ac",
 					light: "rgb(51, 120, 188)",
 					dark: "rgb(0, 60, 120)",
