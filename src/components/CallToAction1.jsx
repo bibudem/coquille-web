@@ -45,9 +45,11 @@ export default function CallToAction({ data, align = 'left', image, sx, children
       spacing={0}
       sx={{
         alignItems: 'center',
-        '.MuiTypography-h2': {
+        '.MuiTypography-h2, .MuiTypography-h3': {
           fontFamily: 'Figtree',
           fontSize: '3.8125rem',
+          fontWeight: 400,
+          lineHeight: 1.2,
           marginBottom: '2rem'
         },
         '.MuiButton-root:first-of-type': {
