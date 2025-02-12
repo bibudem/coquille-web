@@ -7,7 +7,7 @@
 import { resolve } from 'node:path'
 import slugify from '@sindresorhus/slugify'
 
-// Define the template for blog page
+// Define the template for pages
 const pageTemplate = resolve('./src/templates/PageTemplate.jsx')
 
 /**
@@ -16,7 +16,7 @@ const pageTemplate = resolve('./src/templates/PageTemplate.jsx')
 export const createPages = async ({ graphql, actions, reporter, getNode }) => {
   const { createPage } = actions
 
-  // Get all markdown blog pages sorted by date
+  // Get all markdown pages
   const result = await graphql(`
   query PagesQuery {
     allFile(filter: {sourceInstanceName: {eq: "contenu"}}) {
