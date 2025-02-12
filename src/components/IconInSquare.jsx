@@ -1,9 +1,15 @@
 import { useTheme } from '@mui/material'
 import Grid from '@mui/material/Grid2'
+import { darken } from '@mui/material/styles'
+
+const DARKEN_FACTOR = .8
 
 export default function IconInSquare({ icon, color, sx }) {
   const theme = useTheme()
-  const bgColor = Reflect.has(theme.palette, color) ? theme.palette[color].main : 'transparent'
+  const hasColor = Reflect.has(theme.palette, color)
+  const bgcolor = hasColor ? theme.palette[color].main : typeof color === 'undefined' ? 'transparent' : color
+  const iconColor = hasColor ? darken(theme.palette[color].main, DARKEN_FACTOR) : typeof color === 'undefined' ? 'transparent' : darken(color, DARKEN_FACTOR)
+
   return (
     <Grid
       container
@@ -11,11 +17,11 @@ export default function IconInSquare({ icon, color, sx }) {
       sx={{
         alignItems: 'center',
         justifyContent: 'center',
-        outline: '1px solid red',
         borderRadius: theme.shape.corner.small,
-        bgColor,
+        bgcolor,
         width: '10.875rem',
         height: '11.875rem',
+        marginInline: 'auto',
         ...sx,
       }}
     >
@@ -24,6 +30,7 @@ export default function IconInSquare({ icon, color, sx }) {
           svg: {
             width: '5.25rem',
             height: '5.25rem',
+            fill: iconColor
           },
         }}
       >
