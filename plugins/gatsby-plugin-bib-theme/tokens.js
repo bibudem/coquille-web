@@ -1,4 +1,25 @@
-import { theme } from './BibTheme.js'
+import { alpha, getContrastRatio } from '@mui/material/styles'
+
+const jauneBase = '#ffca40'
+const jauneMain = alpha(jauneBase, .7)
+
+const jaunePaleBase = '#ffe8ac'
+const jaunePaleMain = alpha(jaunePaleBase, .7)
+
+const orangeBase = '#ffc0cb'
+const orangeMain = alpha(orangeBase, .7)
+
+const roseBase = '#fee1de'
+const roseMain = alpha(roseBase, .7)
+
+const rougeOrangeBase = '#f04e24'
+const rougeOrangeMain = alpha(rougeOrangeBase, .7)
+
+const vertPaleBase = '#52b782'
+const vertPaleMain = alpha(vertPaleBase, .7)
+
+const vertFonceBase = '#024244'
+const vertFonceMain = alpha(vertFonceBase, .7)
 
 export default {
 	breakpoints: {
@@ -17,9 +38,6 @@ export default {
 				primary: {
 					main: '#0057ac'
 				},
-				orange: {
-					main: '#ffc0cb',
-				},
 				bleuFonce: {
 					main: '#0b113a',
 					light: 'rgb(59, 64, 97)',
@@ -31,6 +49,48 @@ export default {
 					light: "rgb(51, 120, 188)",
 					dark: "rgb(0, 60, 120)",
 					contrastText: "#fff"
+				},
+				jaune: {
+					main: jauneMain,
+					light: alpha(jauneBase, .5),
+					dark: alpha(jauneBase, .9),
+					contrastText: getContrastRatio(jauneMain, '#fff') > 4.5 ? '#fff' : '#111'
+				},
+				jaunePale: {
+					main: jaunePaleMain,
+					light: alpha(jaunePaleBase, .5),
+					dark: alpha(jaunePaleBase, .9),
+					contrastText: getContrastRatio(jaunePaleMain, '#fff') > 4.5 ? '#fff' : '#111'
+				},
+				orange: {
+					main: orangeMain,
+					light: alpha(orangeBase, .5),
+					dark: alpha(orangeBase, .9),
+					contrastText: getContrastRatio(orangeMain, '#fff') > 4.5 ? '#fff' : '#111'
+				},
+				rose: {
+					main: roseMain,
+					light: alpha(roseBase, .5),
+					dark: alpha(roseBase, .9),
+					contrastText: getContrastRatio(roseMain, '#fff') > 4.5 ? '#fff' : '#111'
+				},
+				rougeOrange: {
+					main: rougeOrangeMain,
+					light: alpha(rougeOrangeBase, .5),
+					dark: alpha(rougeOrangeBase, .9),
+					contrastText: getContrastRatio(rougeOrangeMain, '#fff') > 4.5 ? '#fff' : '#111'
+				},
+				vertFonce: {
+					main: vertFonceMain,
+					light: alpha(vertFonceBase, .5),
+					dark: alpha(vertFonceBase, .9),
+					contrastText: getContrastRatio(vertFonceMain, '#fff') > 4.5 ? '#fff' : '#111'
+				},
+				vertPale: {
+					main: vertPaleMain,
+					light: alpha(vertPaleBase, .5),
+					dark: alpha(vertPaleBase, .9),
+					contrastText: getContrastRatio(vertPaleMain, '#fff') > 4.5 ? '#fff' : '#111'
 				},
 				background: {
 					default: '#f8fafb',
@@ -152,6 +212,30 @@ export default {
 			fontSize: '1.0667rem',
 			fontWeight: 500,
 		},
+		display1: {
+			fontFamily: 'Figtree',
+			fontSize: '6.6875rem',
+			fontWeight: 600,
+			lineHeight: '112%'
+		},
+		display2: {
+			fontFamily: 'Figtree',
+			fontSize: '6.0625rem',
+			fontWeight: 500,
+			lineHeight: '110%'
+		},
+		display3: {
+			fontFamily: 'Figtree',
+			fontSize: '5.4375rem',
+			fontWeight: 500,
+			lineHeight: '120%'
+		},
+		display4: {
+			fontFamily: 'Figtree',
+			fontSize: '4.8124rem',
+			fontWeight: 400,
+			lineHeight: '120%'
+		}
 		// body1: {
 		// 	fontSize: '1.4667rem',
 		// }
