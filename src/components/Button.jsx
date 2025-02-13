@@ -61,8 +61,6 @@ export default function Button({ primary, secondary, ...props }) {
     }
   }
 
-  console.log('buttonProps:', buttonProps)
-
   return (
     <MuiButton
       children={children}
