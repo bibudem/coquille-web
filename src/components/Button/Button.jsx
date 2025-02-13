@@ -45,7 +45,7 @@ export default function Button({ sx, primary, secondary, color, variant, disable
     // props.rel = 'noopener'
   }
 
-  console.log('props:', props)
+  // console.log('props:', props)
 
   return (
     <MuiButton
