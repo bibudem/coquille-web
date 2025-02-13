@@ -1,4 +1,4 @@
-import { Box, Container, styled } from '@mui/material'
+import { Container, styled } from '@mui/material'
 import { secondaryColors } from '../../plugins/gatsby-plugin-bib-theme/tokens.js'
 
 function getsecondaryColor(color) {
@@ -7,16 +7,6 @@ function getsecondaryColor(color) {
   }
 
   return secondaryColors[color]
-}
-
-const colors = {
-  'bleu-50': { bg: '#eef4f7', fg: 'inherit' },
-  'bleu-200': { bg: '#cce2f3', fg: 'inherit' },
-  'bleu-600': { bg: '#00407f', fg: '#fff' },
-  'rose-100': { bg: '#fcf3f1', fg: 'inherit' },
-  'rose-300': { bg: '#fee1de', fg: 'inherit' },
-  'vert-foncé-600': { bg: '#024244', fg: '#fff' },
-  rien: { bg: 'red' },
 }
 
 const baseStyles = {
@@ -43,7 +33,7 @@ const SectionRoot = styled('div', {
  * @returns {JSX.Element} Le composant section rendu.
  */
 export default function Section({ bg, image, fixedWidth, children, sx, ...rest }) {
-  console.log('bg:', bg)
+
   if (image) {
     baseStyles.backgroundImage = `url(${image.props.src})`
   } else if (bg) {
