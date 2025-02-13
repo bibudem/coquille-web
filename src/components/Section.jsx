@@ -1,17 +1,28 @@
 import { Box, Container, styled } from '@mui/material'
+import { secondaryColors } from '../../plugins/gatsby-plugin-bib-theme/tokens.js'
+
+function getsecondaryColor(color) {
+  if (!Reflect.has(secondaryColors, color)) {
+    throw new Error(`La couleur \`${color}\` utilisée dans le composant Section n'existe pas dans le thème.`)
+  }
+
+  return secondaryColors[color]
+}
 
 const colors = {
-  'bleu-50': { bg: '#eef4f7' },
-  'bleu-200': { bg: '#cce2f3' },
+  'bleu-50': { bg: '#eef4f7', fg: 'inherit' },
+  'bleu-200': { bg: '#cce2f3', fg: 'inherit' },
   'bleu-600': { bg: '#00407f', fg: '#fff' },
-  'rose-100': { bg: '#fcf3f1' },
-  'rose-300': { bg: '#fee1de' },
+  'rose-100': { bg: '#fcf3f1', fg: 'inherit' },
+  'rose-300': { bg: '#fee1de', fg: 'inherit' },
   'vert-foncé-600': { bg: '#024244', fg: '#fff' },
   rien: { bg: 'red' },
 }
 
 const baseStyles = {
   py: '96px',
+  backgroundColor: 'transparent',
+  color: 'inherit',
 }
 
 const SectionRoot = styled('div', {
@@ -23,27 +34,22 @@ const SectionRoot = styled('div', {
  * Composant Section qui affiche une section avec une image de fond optionnelle, une couleur et une largeur fixe.
  *
  * @param {Object} props - Les propriétés du composant.
- * @param {string} [props.fond] - Le nom de la couleur à employer ou une valeur css pour la couleur de fond. La couleur de l'icône sera déterminée en fonction de la couleur de fond.
+ * @param {string} [props.bg] - Le nom de la couleur ou une valeur css à employer pour la couleur de fond. La couleur de l'icône sera déterminée en fonction de la couleur de fond.
  * @param {React.ReactElement} [props.image] - L'élément image à utiliser comme image de fond.
  * @param {boolean} [props.fixedWidth] - Indicateur pour déterminer si la section doit avoir une largeur fixe.
- * @param {React.ReactNode} [props.action] - L'élément action à afficher en bas de la section.
  *
  * @throws {Error} Si la clé de la couleur de fond spécifiée n'est pas définie dans l'objet colors.
  *
  * @returns {JSX.Element} Le composant section rendu.
  */
-export default function Section({ children, sx, fond, image, fixedWidth, action, ...rest }) {
+export default function Section({ bg, image, fixedWidth, children, sx, ...rest }) {
+  console.log('bg:', bg)
   if (image) {
     baseStyles.backgroundImage = `url(${image.props.src})`
-  } else if (fond) {
-    if (typeof colors[fond] !== 'undefined' && !Reflect.has(colors[fond], 'bg')) {
-      throw new Error(`La couleur \`${fond}\` n'est pas définie dans la liste des couleurs du composant Section.`)
-    }
-
-    baseStyles.backgroundColor = colors[fond].bg
-    if (colors[fond]?.fg) {
-      baseStyles.color = colors[fond].fg
-    }
+  } else if (bg) {
+    const color = getsecondaryColor(bg)
+    baseStyles.backgroundColor = color.main
+    baseStyles.color = color.contrastText
   }
 
   if (fixedWidth) {
@@ -74,10 +80,7 @@ export default function Section({ children, sx, fond, image, fixedWidth, action,
         ...sx,
       }}
     >
-      <Container>
-        {children}
-        {action && <Box sx={{ mt: 4 }}>{action}</Box>}
-      </Container>
+      <Container>{children}</Container>
     </SectionRoot>
   )
 }

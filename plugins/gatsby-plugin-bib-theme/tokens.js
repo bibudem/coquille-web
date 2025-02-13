@@ -1,4 +1,13 @@
-import { alpha, getContrastRatio } from '@mui/material/styles'
+import { alpha, darken, lighten, getContrastRatio } from '@mui/material/styles'
+
+const LIGHTEN_FACTOR = .4
+const DARKEN_FACTOR = .3
+const CONTRAST_TEXT_THRESHOLD = 4.5
+const CONTRAST_TEXT_LIGHT = '#fff'
+const CONTRAST_TEXT_DARK = '#111'
+
+const bleu200 = '#cce2f3'
+const bleu600 = '#00407f'
 
 const jauneBase = '#ffca40'
 const jauneMain = alpha(jauneBase, .7)
@@ -21,6 +30,75 @@ const vertPaleMain = alpha(vertPaleBase, .7)
 const vertFonceBase = '#024244'
 const vertFonceMain = alpha(vertFonceBase, .7)
 
+function getContrastColor(color) {
+	return getContrastRatio(color, '#fff') > CONTRAST_TEXT_THRESHOLD ? CONTRAST_TEXT_LIGHT : CONTRAST_TEXT_DARK
+}
+
+export const secondaryColors = {
+	bleuPrincipal: {
+		main: '#0057ac',
+		light: 'rgb(51, 120, 188)',
+		dark: 'rgb(0, 60, 120)',
+		contrastText: CONTRAST_TEXT_LIGHT
+	},
+	bleu200: {
+		main: bleu200,
+		// light: 'rgb(59, 64, 97)',
+		// dark: 'rgb(7, 11, 40)',
+		light: lighten(bleu200, LIGHTEN_FACTOR),
+		dark: darken(bleu200, DARKEN_FACTOR),
+		contrastText: getContrastColor(bleu200)
+	},
+	bleu600: {
+		main: bleu600,
+		light: lighten(bleu600, LIGHTEN_FACTOR),
+		dark: darken(bleu600, DARKEN_FACTOR),
+		contrastText: getContrastColor(bleu600)
+	},
+	jaune: {
+		main: jauneMain,
+		light: alpha(jauneBase, .5),
+		dark: alpha(jauneBase, .9),
+		contrastText: getContrastColor(jauneMain)
+	},
+	jaunePale: {
+		main: jaunePaleMain,
+		light: alpha(jaunePaleBase, .5),
+		dark: alpha(jaunePaleBase, .9),
+		contrastText: getContrastColor(jaunePaleMain)
+	},
+	orange: {
+		main: orangeMain,
+		light: alpha(orangeBase, .5),
+		dark: alpha(orangeBase, .9),
+		contrastText: getContrastColor(orangeMain)
+	},
+	rose: {
+		main: roseMain,
+		light: alpha(roseBase, .5),
+		dark: alpha(roseBase, .9),
+		contrastText: getContrastColor(roseMain)
+	},
+	rougeOrange: {
+		main: rougeOrangeMain,
+		light: alpha(rougeOrangeBase, .5),
+		dark: alpha(rougeOrangeBase, .9),
+		contrastText: getContrastColor(rougeOrangeMain)
+	},
+	vertFonce: {
+		main: vertFonceMain,
+		light: alpha(vertFonceBase, .5),
+		dark: alpha(vertFonceBase, .9),
+		contrastText: getContrastColor(vertFonceMain)
+	},
+	vertPale: {
+		main: vertPaleMain,
+		light: alpha(vertPaleBase, .5),
+		dark: alpha(vertPaleBase, .9),
+		contrastText: getContrastColor(vertPaleMain)
+	}
+}
+
 export default {
 	breakpoints: {
 		values: {
@@ -42,56 +120,9 @@ export default {
 					main: '#0b113a',
 					light: 'rgb(59, 64, 97)',
 					dark: 'rgb(7, 11, 40)',
-					contrastText: '#fff'
+					contrastText: CONTRAST_TEXT_LIGHT
 				},
-				bleuPrincipal: {
-					main: "#0057ac",
-					light: "rgb(51, 120, 188)",
-					dark: "rgb(0, 60, 120)",
-					contrastText: "#fff"
-				},
-				jaune: {
-					main: jauneMain,
-					light: alpha(jauneBase, .5),
-					dark: alpha(jauneBase, .9),
-					contrastText: getContrastRatio(jauneMain, '#fff') > 4.5 ? '#fff' : '#111'
-				},
-				jaunePale: {
-					main: jaunePaleMain,
-					light: alpha(jaunePaleBase, .5),
-					dark: alpha(jaunePaleBase, .9),
-					contrastText: getContrastRatio(jaunePaleMain, '#fff') > 4.5 ? '#fff' : '#111'
-				},
-				orange: {
-					main: orangeMain,
-					light: alpha(orangeBase, .5),
-					dark: alpha(orangeBase, .9),
-					contrastText: getContrastRatio(orangeMain, '#fff') > 4.5 ? '#fff' : '#111'
-				},
-				rose: {
-					main: roseMain,
-					light: alpha(roseBase, .5),
-					dark: alpha(roseBase, .9),
-					contrastText: getContrastRatio(roseMain, '#fff') > 4.5 ? '#fff' : '#111'
-				},
-				rougeOrange: {
-					main: rougeOrangeMain,
-					light: alpha(rougeOrangeBase, .5),
-					dark: alpha(rougeOrangeBase, .9),
-					contrastText: getContrastRatio(rougeOrangeMain, '#fff') > 4.5 ? '#fff' : '#111'
-				},
-				vertFonce: {
-					main: vertFonceMain,
-					light: alpha(vertFonceBase, .5),
-					dark: alpha(vertFonceBase, .9),
-					contrastText: getContrastRatio(vertFonceMain, '#fff') > 4.5 ? '#fff' : '#111'
-				},
-				vertPale: {
-					main: vertPaleMain,
-					light: alpha(vertPaleBase, .5),
-					dark: alpha(vertPaleBase, .9),
-					contrastText: getContrastRatio(vertPaleMain, '#fff') > 4.5 ? '#fff' : '#111'
-				},
+				...secondaryColors,
 				background: {
 					default: '#f8fafb',
 					paper: '#f8fafb'

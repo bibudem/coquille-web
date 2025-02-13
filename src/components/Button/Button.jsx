@@ -18,9 +18,13 @@ const commonIconProps = {
   size: 24,
 }
 
-export default function Button({ children, sx, primary, secondary, color, variant, disableElevation, disableEndIcon, endIcon, href, ...rest }) {
+export default function Button({ sx, primary, secondary, color, variant, disableElevation, disableEndIcon, endIcon, href, children, ...rest }) {
   if (primary && secondary) {
     throw new Error('The primary and secondary props are mutually exclusive.')
+  }
+
+  if (primary === undefined && secondary === undefined) {
+    primary = true
   }
 
   const props = {
