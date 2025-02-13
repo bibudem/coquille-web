@@ -1,15 +1,15 @@
 import { Button as MuiButton } from '@mui/material'
 import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
-import isInternalLink from '../../utils/internLink.js'
+import isInternalLink from '../utils/internLink.js'
 
 const config = {
   primary: {
-    color: 'bleuFonce.main',
+    color: 'bleuFonce',
     variant: 'contained',
     disableElevation: true,
   },
   secondary: {
-    color: 'bleuFonce.main',
+    color: 'bleuFonce',
     variant: 'outlined',
   },
 }
@@ -60,6 +60,8 @@ export default function Button({ primary, secondary, ...props }) {
       buttonProps.rel = 'noopener'
     }
   }
+
+  console.log('buttonProps:', buttonProps)
 
   return (
     <MuiButton

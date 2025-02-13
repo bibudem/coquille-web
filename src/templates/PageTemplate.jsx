@@ -24,7 +24,7 @@ import RetroactionUsager from '@/components/RetroactionUsager'
 import Section from '@/components/Section'
 import CallToAction1 from '@/components/CallToAction1'
 import CallToAction2 from '@/components/CallToAction2'
-import Button from '@/components/Button/Button'
+import Button from '@/components/Button'
 import IconInSquare from '@/components/IconInSquare'
 
 import CommentIcon from '@mui/icons-material/Comment'
