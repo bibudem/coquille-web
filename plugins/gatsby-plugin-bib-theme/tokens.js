@@ -1,5 +1,9 @@
 import { darken, lighten, getContrastRatio } from '@mui/material/styles'
 
+//
+// Liste des couleurs secondaires
+//
+
 const bleu200 = '#cce2f3'
 const bleu600 = '#00407f'
 const jaune = '#ffca40'
