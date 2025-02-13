@@ -1,10 +1,4 @@
-import { alpha, darken, lighten, getContrastRatio } from '@mui/material/styles'
-
-const LIGHTEN_FACTOR = .4
-const DARKEN_FACTOR = .3
-const CONTRAST_TEXT_THRESHOLD = 4.5
-const CONTRAST_TEXT_LIGHT = '#fff'
-const CONTRAST_TEXT_DARK = '#111'
+import { darken, lighten, getContrastRatio } from '@mui/material/styles'
 
 const bleu200 = '#cce2f3'
 const bleu600 = '#00407f'
@@ -16,6 +10,12 @@ const rose500 = '#f4bdb7'
 const rougeOrange = '#f04e24'
 const vertPale = '#52b782'
 const vertFonce = '#024244'
+
+const LIGHTEN_FACTOR = .4
+const DARKEN_FACTOR = .3
+const CONTRAST_TEXT_THRESHOLD = 4.5
+const CONTRAST_TEXT_LIGHT = '#fff'
+const CONTRAST_TEXT_DARK = '#111'
 
 function getContrastColor(color) {
 	return getContrastRatio(color, '#fff') > CONTRAST_TEXT_THRESHOLD ? CONTRAST_TEXT_LIGHT : CONTRAST_TEXT_DARK
