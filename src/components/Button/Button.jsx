@@ -18,7 +18,22 @@ const commonIconProps = {
   size: 24,
 }
 
-export default function Button({ sx, primary, secondary, color, variant, disableElevation, disableEndIcon, endIcon, href, children, ...rest }) {
+/**
+ * Button component that renders a Material-UI Button with additional props and logic.
+ *
+ * Besides the props of the Material-UI Button component, this component also supports the following props:
+ *
+ * @param {Object} props - The properties object.
+ * @param {boolean} [props.primary] - If true, applies primary styling to the button.
+ * @param {boolean} [props.secondary] - If true, applies secondary styling to the button.
+ *
+ * @throws {Error} Throws an error if both primary and secondary props are provided.
+ *
+ * @returns {JSX.Element} The rendered Material-UI Button component.
+ */
+export default function Button({ primary, secondary, ...props }) {
+  const { children, color, endIcon, disableElevation, disableEndIcon, href, sx, variant, ...rest } = props
+
   if (primary && secondary) {
     throw new Error('The primary and secondary props are mutually exclusive.')
   }
@@ -27,25 +42,24 @@ export default function Button({ sx, primary, secondary, color, variant, disable
     primary = true
   }
 
-  const props = {
+  const buttonProps = {
     color: color || config[primary ? 'primary' : 'secondary'].color,
     variant: variant || (primary || secondary ? config[primary ? 'primary' : 'secondary'].variant : 'text'),
     disableElevation: disableElevation || (primary ? config.primary.disableElevation : false),
-    disableEndIcon: typeof disableEndIcon === 'undefined' ? disableEndIcon : true,
     ...rest,
   }
 
   if (typeof href === 'string') {
-    if (!!!disableEndIcon) {
-      const linkIsInternal = isInternalLink(href)
-      console.log('linkIsInternal:', linkIsInternal)
-      props.endIcon = endIcon ?? (linkIsInternal ? <ArrowRight {...commonIconProps} /> : <ArrowUpRight {...commonIconProps} />)
-    }
-    // props.href = href
-    // props.rel = 'noopener'
-  }
+    const linkIsInternal = isInternalLink(href)
 
-  // console.log('props:', props)
+    if (!disableEndIcon) {
+      buttonProps.endIcon = endIcon ?? (linkIsInternal ? <ArrowRight {...commonIconProps} /> : <ArrowUpRight {...commonIconProps} />)
+    }
+
+    if (!linkIsInternal) {
+      buttonProps.rel = 'noopener'
+    }
+  }
 
   return (
     <MuiButton
@@ -53,7 +67,7 @@ export default function Button({ sx, primary, secondary, color, variant, disable
       sx={{
         ...sx,
       }}
-      {...props}
+      {...buttonProps}
     />
   )
 }
