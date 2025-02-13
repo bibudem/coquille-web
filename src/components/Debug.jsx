@@ -9,7 +9,6 @@ export default function Debug() {
   const cc = new ContrastColor()
   const queriesLength = theme.breakpoints.keys.length
   const queries = theme.breakpoints.keys.map((key, i) => {
-    // `hsl(from red calc(h + ${(360 / queries.length) * resolution.i}) s l)`
     const bg = Color('#ff0000')
       .rotate((360 / queriesLength) * i)
       .hex()
@@ -25,7 +24,7 @@ export default function Debug() {
 
   useEffect(() => {
     const newResolution = queries.find((query) => query.match)
-    if (resolution && resolution.key !== newResolution.key) {
+    if (resolution?.key !== newResolution.key) {
       setResolution(newResolution)
     }
   }, queries)
@@ -40,7 +39,7 @@ export default function Debug() {
         fontSize: '.7rem',
         lineHeight: 1,
         textAlign: 'center',
-        opacity: 0.45,
+        opacity: 0.65,
         transition: 'opacity .15s',
         '&:hover': {
           opacity: 1,
