@@ -1,22 +1,19 @@
-import { styled } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 
-export default function CallToAction2({ leftColl, rightColl, sx, children, ...props }) {
-  // if (!['left', 'right'].includes(align)) {
-  //   throw new Error(`Invalid align property: ${align}. Muse be one of: \`left\` (default) or \`right\``)
-  // }
+/**
+ * Le composant CallToAction2 affiche une mise en page à deux colonnes avec un contenu personnalisable.
+ *
+ * @param {Object} props - Les propriétés du composant.
+ * @param {React.ReactNode} props.leftColl - Le contenu à afficher dans la colonne de gauche.
+ * @param {React.ReactNode} props.rightColl - Le contenu à afficher dans la colonne de droite.
+ * @param {Object} [props.rest] - Propriétés supplémentaires à passer au conteneur Grid.
+ *
+ * @returns {JSX.Element} Le composant CallToAction2 rendu.
+ */
+export default function CallToAction2({ leftColl, rightColl, sx, children, ...rest }) {
+  const leftCollContainer = <Grid size={{ xs: 12, md: 3 }}>{leftColl}</Grid>
 
-  const leftCollContainer = (
-    <Grid size={{ xs: 12, md: 3 }}>
-      {leftColl}
-    </Grid>
-  )
-  
-  const rightCollContainer = (
-    <Grid size={{ xs: 12, md: 8 }}>
-      {rightColl}
-    </Grid>
-  )
+  const rightCollContainer = <Grid size={{ xs: 12, md: 8 }}>{rightColl}</Grid>
 
   return (
     <Grid
@@ -29,14 +26,14 @@ export default function CallToAction2({ leftColl, rightColl, sx, children, ...pr
           fontSize: '3.8125rem',
           fontWeight: 400,
           lineHeight: 1.2,
-          marginBottom: '2rem'
+          marginBottom: '2rem',
         },
         '.MuiButton-root:first-of-type': {
-            marginTop: '2rem',
+          marginTop: '2rem',
         },
         ...sx,
       }}
-      {...props}
+      {...rest}
     >
       {leftCollContainer}
       {rightCollContainer}
