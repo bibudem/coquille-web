@@ -3,7 +3,7 @@ title: Nous soutenir
 slug: index
 ---
 
-import { FlowerTulip, Heart } from '@phosphor-icons/react'
+import { FlowerTulip, Heart, BookOpenText, GraduationCap } from '@phosphor-icons/react'
 
 
 <Section>
@@ -49,14 +49,19 @@ import { FlowerTulip, Heart } from '@phosphor-icons/react'
 
 <Section bg='bleu200'>
   <CallToAction2 
-    leftColl={<IconInSquare color='bleu600' icon={<FlowerTulip color="white" />} />}
+    leftColl={<IconInSquare color='bleu600' icon={<GraduationCap color="white" />} />}
     rightColl={
       <>
         <Typography component="h2" variant="h2">Des services pour la communauté de l’UdeM+, même après le dipôme!</Typography>
         
          <Typography>Après la fin de vos études à l’UdeM, HEC Montréal et Polytechnique Montréal, les bibliothèques continuent de vous accueillir! Emprunt gratuit de la collection imprimée. Accès sur place aux ressources électroniques</Typography>
 
-        <Button href="" variant="contained" color="bleuFonce">Voir les modalités</Button>
+         <List>
+          <ListItem >Emprunt gratuit de la collection imprimée</ListItem>
+          <ListItem>Accès sur place aux ressources électroniques</ListItem>
+        </List>
+
+        <Button href="" variant="contained" color="bleuFonce">Voir la politique</Button>
       </>
       }
   />
@@ -70,14 +75,14 @@ import { FlowerTulip, Heart } from '@phosphor-icons/react'
     rightColl={
       <>
         <Typography component="h2" variant="h2">Remerciements</Typography>
-        
-<Typography component="p" variant="p">Un immense merci à toutes les personnes qui ont contribué à la réussite de la mission des Bibliothèques de l’Université de Montréal
+     
+     <Typography component="p" variant="p">Un immense merci à toutes les personnes qui ont contribué à la réussite de la mission des Bibliothèques de l’Université de Montréal</Typography>  
 
-En particulier, nous souhaitont remercier chaleureusement les généreux donateurs et donatrices, dont le soutien financier a été essentiel à la concrétisation de projets novateurs et à la création d’opportunités exceptionnelles pour de la communauté universitaire.
+     <Typography>En particulier, nous souhaitont remercier chaleureusement les généreux donateurs et donatrices, dont le soutien financier a été essentiel à la concrétisation de projets novateurs et à la création d’opportunités exceptionnelles pour de la communauté universitaire.</Typography>
 
-La confiance des étudiantes et étudiants de l’Université de Montréal, exprimée à travers le Fonds de l'amélioration de la vie étudiante et les frais d'amélioration des services technologiques et informatiques et des collections des bibliothèques (STIC), est une source inépuisable de motivation. Leur engagement a permis la mise en œuvre de nombreuses initiatives stimulantes, adaptées aux besoins évolutifs de la communauté. Entre autres projets réalisés grâce à leur soutien, on compte la création d’ateliers de fabrication numérique, l’enrichissement des collections des bibliothèques, l’achat d’équipement de travail actif et de cabines insonorisées pour le travail individuel et d’équipe, et le renouvellement de plusieurs places de travail à travers le réseau.
+     <Typography>La confiance des étudiantes et étudiants de l’Université de Montréal, exprimée à travers le Fonds de l'amélioration de la vie étudiante et les frais d'amélioration des services technologiques et informatiques et des collections des bibliothèques (STIC), est une source inépuisable de motivation. Leur engagement a permis la mise en œuvre de nombreuses initiatives stimulantes, adaptées aux besoins évolutifs de la communauté. Entre autres projets réalisés grâce à leur soutien, on compte la création d’ateliers de fabrication numérique, l’enrichissement des collections des bibliothèques, l’achat d’équipement de travail actif et de cabines insonorisées pour le travail individuel et d’équipe, et le renouvellement de plusieurs places de travail à travers le réseau.</Typography>
 
-Merci pour votre collaboration précieuse et votre engagement continu. Votre soutien joue un rôle fondamental dans la construction d'un environnement universitaire enrichissant pour tous et toutes.</Typography>
+     <Typography>Merci pour votre collaboration précieuse et votre engagement continu. Votre soutien joue un rôle fondamental dans la construction d'un environnement universitaire enrichissant pour tous et toutes.</Typography>
       </>
       }
   />
@@ -94,15 +99,18 @@ Merci pour votre collaboration précieuse et votre engagement continu. Votre sou
   </Hero>
 </Section>
 
-<Section bg='bleuPrincipal'>
-  <Hero icône>
+<Section bg='bleu200'>
+  <CallToAction2 
+    leftColl={<IconInSquare color='vertFonce' icon={<BookOpenText color="white" />} />}
+    rightColl={
+      <>
+        <Typography component="h2" variant="h2">Don de livres</Typography>
+        
+         <Typography>Les Bibliothèques accueillent avec intérêt les propositions de don de collections spéciales ou d'ouvrages ayant une valeur unique pour enrichir nos collections. Pour assurer une intégration harmonieuse aux ressources existantes, nous vous invitons à consulter notre politique de don avant de soumettre votre offre.</Typography>
 
-    ## Don de livres
-
-    Les Bibliothèques accueillent avec intérêt les propositions de don de collections spéciales ou d'ouvrages ayant une valeur unique pour enrichir nos collections. Pour assurer une intégration harmonieuse aux ressources existantes, nous vous invitons à consulter notre politique de don avant de soumettre votre offre.
-
-    <Button secondary foncé>Voir les modalités</Button>
-
-  </Hero>
-
+        <Button href="" variant="contained" color="bleuFonce">Voir les modalités</Button>
+      </>
+      }
+  />
+  
 </Section>
