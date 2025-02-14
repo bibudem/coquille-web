@@ -3,7 +3,8 @@ title: Nous soutenir
 slug: index
 ---
 
-import { FlowerTulip } from '@phosphor-icons/react'
+import { FlowerTulip, Heart, BookOpenText, GraduationCap } from '@phosphor-icons/react'
+
 
 <Section>
 
@@ -12,15 +13,17 @@ import { FlowerTulip } from '@phosphor-icons/react'
 </Section>
 
 <Section
-  fond="bleu-200"
+  fond="bleu200"
 >
   <CallToAction2 
-    leftColl={<IconInSquare color='rougeOrange' icon={<FlowerTulip color="blue" />} />}
+    leftColl={<IconInSquare color='vertPale' icon={<FlowerTulip color="vertFonce" />} />}
     rightColl={
       <>
         <Typography component="h2" variant="h2">Cultiver la curiosité</Typography>
         
-         <Typography>Véritable milieu de vie où se rencontre et se ressemble la communauté universitaire, les Bibliothèques de l’Université de Montréal sont des partenaires essentiels au rayonnement des savoirs. Lieu où l’on cultive la curiosité, elles comptent parmi les grandes bibliothèques de recherche de langue française. En soutenant les Bibliothèques de l’Université de Montréal, vous contribuez directement à multiplier les opportunités d'apprentissage et de recherche pour les générations futures. Que ce soit en contribuant à la modernisation des espaces offerts ou à la démocratisation des savoirs, chaque don représente un pas de plus vers une science accessible et ouverte, à la communauté UdeM et aux jeunes de demain.</Typography>
+         <Typography gutterBottom>Véritable milieu de vie où se rencontre et se ressemble la communauté universitaire, les Bibliothèques de l’Université de Montréal sont des partenaires essentiels au rayonnement des savoirs. Lieu où l’on cultive la curiosité, elles comptent parmi les grandes bibliothèques de recherche de langue française.</Typography>
+         <Typography gutterBottom>En soutenant les Bibliothèques de l’Université de Montréal, vous contribuez directement à multiplier les opportunités d'apprentissage et de recherche pour les générations futures.</Typography>
+         <Typography gutterBottom>Que ce soit en contribuant à la modernisation des espaces offerts ou à la démocratisation des savoirs, chaque don représente un pas de plus vers une science accessible et ouverte, à la communauté UdeM et aux jeunes de demain.</Typography>
 
         <Button href="" variant="contained" color="bleuFonce">Faire un don maintenant</Button>
       </>
@@ -28,47 +31,6 @@ import { FlowerTulip } from '@phosphor-icons/react'
 
 />
 
-</Section>
-
-<Section>
-  <Grid
-    container 
-    spacing='20px' 
-    sx={{
-    }}
-  >
-
-    <Grid size={3}>
-      <Grid container
-        sx={{
-          justifyContent: "center",
-        }}
-      >
-        <Grid>
-          <Box
-            sx={{
-              display: 'flex',
-              backgroundColor: '#52B782',
-              borderRadius: '5px',
-              padding: '53px',
-            }}
-          >
-            <FlowerTulip color='#024244' size={84} />
-          </Box>
-        </Grid>
-      </Grid>
-    </Grid>
-
-    <Grid size={9}>
-      <Typography component="h2" variant="h2">Cultiver la curiosité</Typography>
-
-      Véritable milieu de vie où se rencontre et se ressemble la communauté universitaire, les Bibliothèques de l’Université de Montréal sont des partenaires essentiels au rayonnement des savoirs. Lieu où l’on cultive la curiosité, elles comptent parmi les grandes bibliothèques de recherche de langue française. En soutenant les Bibliothèques de l’Université de Montréal, vous contribuez directement à multiplier les opportunités d'apprentissage et de recherche pour les générations futures. Que ce soit en contribuant à la modernisation des espaces offerts ou à la démocratisation des savoirs, chaque don représente un pas de plus vers une science accessible et ouverte, à la communauté UdeM et aux jeunes de demain.
-
-      <Button href="" variant="contained" color="bleuFonce" sx={{mt: 8}} >Faire un don maintenant</Button>
-
-    </Grid>
-
-  </Grid>
 </Section>
 
 <Section bg='vertFonce'>
@@ -85,41 +47,49 @@ import { FlowerTulip } from '@phosphor-icons/react'
   </Hero>
 </Section>
 
-<Section bg='bleuPrincipal'>
-  <Hero icône>
+<Section bg='bleu200'>
+  <CallToAction2 
+    leftColl={<IconInSquare color='bleu600' icon={<GraduationCap color="white" />} />}
+    rightColl={
+      <>
+        <Typography component="h2" variant="h2">Des services pour la communauté de l’UdeM+, même après le dipôme!</Typography>
+        
+         <Typography>Après la fin de vos études à l’UdeM, HEC Montréal et Polytechnique Montréal, les bibliothèques continuent de vous accueillir! Emprunt gratuit de la collection imprimée. Accès sur place aux ressources électroniques</Typography>
 
-    ## Des services pour la communauté de l’UdeM+, même après le dipôme!
+         <List>
+          <ListItem >Emprunt gratuit de la collection imprimée</ListItem>
+          <ListItem>Accès sur place aux ressources électroniques</ListItem>
+        </List>
 
-    Après la fin de vos études à l’UdeM, HEC Montréal et Polytechnique Montréal, les bibliothèques continuent de vous accueillir!
-
-    - Emprunt gratuit de la collection imprimée 
-    - Accès sur place aux ressources électroniques
-
-    <Button secondary foncé>Voir les modalités</Button>
-
-  </Hero>
+        <Button href="" variant="contained" color="bleuFonce">Voir la politique</Button>
+      </>
+      }
+  />
+  
 </Section>
 
 <Section bg='rose300'>
-<Hero icône>
 
-## Remerciements
+<CallToAction2 
+    leftColl={<IconInSquare color='rose500' icon={<Heart color='orange' />} />}
+    rightColl={
+      <>
+        <Typography component="h2" variant="h2">Remerciements</Typography>
+     
+     <Typography component="p" variant="p">Un immense merci à toutes les personnes qui ont contribué à la réussite de la mission des Bibliothèques de l’Université de Montréal</Typography>  
 
-Un immense merci à toutes les personnes qui ont contribué à la réussite de la mission des Bibliothèques de l’Université de Montréal.
+     <Typography>En particulier, nous souhaitont remercier chaleureusement les généreux donateurs et donatrices, dont le soutien financier a été essentiel à la concrétisation de projets novateurs et à la création d’opportunités exceptionnelles pour de la communauté universitaire.</Typography>
 
-En particulier, nous souhaitont remercier chaleureusement les généreux donateurs et donatrices, dont le soutien financier a été essentiel à la concrétisation de projets novateurs et à la création d’opportunités exceptionnelles pour de la communauté universitaire.
+     <Typography>La confiance des étudiantes et étudiants de l’Université de Montréal, exprimée à travers le Fonds de l'amélioration de la vie étudiante et les frais d'amélioration des services technologiques et informatiques et des collections des bibliothèques (STIC), est une source inépuisable de motivation. Leur engagement a permis la mise en œuvre de nombreuses initiatives stimulantes, adaptées aux besoins évolutifs de la communauté. Entre autres projets réalisés grâce à leur soutien, on compte la création d’ateliers de fabrication numérique, l’enrichissement des collections des bibliothèques, l’achat d’équipement de travail actif et de cabines insonorisées pour le travail individuel et d’équipe, et le renouvellement de plusieurs places de travail à travers le réseau.</Typography>
 
-La confiance des étudiantes et étudiants de l’Université de Montréal, exprimée à travers le Fonds de l'amélioration de la vie étudiante et les frais d'amélioration des services technologiques et informatiques et des collections des bibliothèques (STIC), est une source inépuisable de motivation. Leur engagement a permis la mise en œuvre de nombreuses initiatives stimulantes, adaptées aux besoins évolutifs de la communauté. Entre autres projets réalisés grâce à leur soutien, on compte la création d’ateliers de fabrication numérique, l’enrichissement des collections des bibliothèques, l’achat d’équipement de travail actif et de cabines insonorisées pour le travail individuel et d’équipe, et le renouvellement de plusieurs places de travail à travers le réseau.
-
-Merci pour votre collaboration précieuse et votre engagement continu. Votre soutien joue un rôle fondamental dans la construction d'un environnement universitaire enrichissant pour tous et toutes.
-
-<Button primary foncé>Voir les modalités</Button>
-
-</Hero>
+     <Typography>Merci pour votre collaboration précieuse et votre engagement continu. Votre soutien joue un rôle fondamental dans la construction d'un environnement universitaire enrichissant pour tous et toutes.</Typography>
+      </>
+      }
+  />
 
 </Section>
 
-<Section bg="rose-100">
+<Section bg="rose300">
   <Hero cartes photo info en hover>
 
     ### cabine insonorisé
@@ -129,15 +99,18 @@ Merci pour votre collaboration précieuse et votre engagement continu. Votre sou
   </Hero>
 </Section>
 
-<Section bg='bleuPrincipal'>
-  <Hero icône>
+<Section bg='bleu200'>
+  <CallToAction2 
+    leftColl={<IconInSquare color='vertFonce' icon={<BookOpenText color="white" />} />}
+    rightColl={
+      <>
+        <Typography component="h2" variant="h2">Don de livres</Typography>
+        
+         <Typography>Les Bibliothèques accueillent avec intérêt les propositions de don de collections spéciales ou d'ouvrages ayant une valeur unique pour enrichir nos collections. Pour assurer une intégration harmonieuse aux ressources existantes, nous vous invitons à consulter notre politique de don avant de soumettre votre offre.</Typography>
 
-    ## Don de livres
-
-    Les Bibliothèques accueillent avec intérêt les propositions de don de collections spéciales ou d'ouvrages ayant une valeur unique pour enrichir nos collections. Pour assurer une intégration harmonieuse aux ressources existantes, nous vous invitons à consulter notre politique de don avant de soumettre votre offre.
-
-    <Button secondary foncé>Voir les modalités</Button>
-
-  </Hero>
-
+        <Button href="" variant="contained" color="bleuFonce">Voir les modalités</Button>
+      </>
+      }
+  />
+  
 </Section>
