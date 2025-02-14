@@ -1,13 +1,6 @@
-import { Container, styled } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { Box, Container } from '@mui/material'
 import { secondaryColors } from '../../plugins/gatsby-plugin-bib-theme/tokens.js'
-
-function getsecondaryColor(color) {
-  if (!Reflect.has(secondaryColors, color)) {
-    throw new Error(`La couleur \`${color}\` utilisée dans le composant Section n'existe pas dans le thème.`)
-  }
-
-  return secondaryColors[color]
-}
 
 const baseStyles = {
   py: '96px',
@@ -15,16 +8,11 @@ const baseStyles = {
   color: 'inherit',
 }
 
-const SectionRoot = styled('div', {
-  name: 'BibSection',
-  slot: 'root',
-})(({ theme }) => ({}))
-
 /**
  * Composant Section qui affiche une section avec une image de fond optionnelle, une couleur et une largeur fixe.
  *
  * @param {Object} props - Les propriétés du composant.
- * @param {string} [props.bg] - Le nom de la couleur ou une valeur css à employer pour la couleur de fond. La couleur de l'icône sera déterminée en fonction de la couleur de fond.
+ * @param {string} [props.bg] - Le nom de la couleur secondaire employer pour la couleur de fond.
  * @param {React.ReactElement} [props.image] - L'élément image à utiliser comme image de fond.
  * @param {boolean} [props.fixedWidth] - Indicateur pour déterminer si la section doit avoir une largeur fixe.
  *
@@ -32,45 +20,78 @@ const SectionRoot = styled('div', {
  *
  * @returns {JSX.Element} Le composant section rendu.
  */
-export default function Section({ bg, image, fixedWidth, children, sx, ...rest }) {
+export default function Section({ bg, image, fixedWidth = false, ...rest }) {
+  const { children, sx, ...props } = rest
 
   if (image) {
-    baseStyles.backgroundImage = `url(${image.props.src})`
-  } else if (bg) {
-    const color = getsecondaryColor(bg)
-    baseStyles.backgroundColor = color.main
-    baseStyles.color = color.contrastText
+    throw new Error("La propriété `image` n'est pas encore implémentée.")
   }
 
-  if (fixedWidth) {
-    //
-  } else {
-    baseStyles.maxWidth = 'unset'
-  }
+  const [styles, setStyles] = useState(baseStyles)
+  console.log('secondaryColors', secondaryColors)
+
+  useEffect(() => {
+    function getsecondaryColor(color) {
+      if (bg && !Reflect.has(secondaryColors, color)) {
+        throw new Error(`La couleur \`${color}\` utilisée dans le composant Section n'existe pas dans le thème.`)
+      }
+
+      return secondaryColors[color]
+    }
+
+    console.log('bg', bg)
+
+    if (bg) {
+      const color = getsecondaryColor(bg)
+      console.log('yep:', bg)
+      console.log('color:', color)
+      setStyles((oldStyles) => ({
+        ...oldStyles,
+        backgroundColor: color.main,
+        color: color.contrastText,
+      }))
+    }
+  }, [bg])
+
+  useEffect(() => {
+    if (!fixedWidth) {
+      setStyles((oldStyles) => ({
+        ...oldStyles,
+        maxWidth: 'unset',
+      }))
+    }
+  }, [fixedWidth])
+
+  // if (image) {
+  //   console.log('image', image)
+  //   baseStyles.backgroundImage = `url(${image})`
+  //   baseStyles.backgroundSize = 'cover'
+  //   baseStyles.backgroundPosition = 'center'
+  //   baseStyles.backgroundRepeat = 'no-repeat'
+  // }
 
   return fixedWidth ? (
     <Container
-      maxWidth={fixedWidth ? 'none' : undefined}
-      {...rest}
-      component={fixedWidth ? Container : SectionRoot}
+      maxWidth="xl"
+      {...props}
       sx={{
-        ...baseStyles,
+        ...styles,
         ...sx,
       }}
     >
       {children}
     </Container>
   ) : (
-    <SectionRoot
-      maxWidth={fixedWidth ? 'none' : undefined}
-      {...rest}
-      component={fixedWidth ? Container : SectionRoot}
+    <Box
       sx={{
-        ...baseStyles,
+        ...styles,
         ...sx,
+        outline: '1px dotted blue',
       }}
     >
-      <Container>{children}</Container>
-    </SectionRoot>
+      <Container maxWidth="xl" {...props}>
+        {children}
+      </Container>
+    </Box>
   )
 }
