@@ -70,7 +70,7 @@ export default {
 		light: {
 			palette: {
 				primary: {
-					main: '#0057ac'
+					main: '#0b113a'
 				},
 				bleuFonce: {
 					main: '#0b113a',
