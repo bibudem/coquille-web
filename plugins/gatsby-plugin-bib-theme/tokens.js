@@ -4,6 +4,7 @@ import { darken, lighten, getContrastRatio } from '@mui/material/styles'
 // Liste des couleurs secondaires
 //
 
+const bleu100 = '#e5f0f8'
 const bleu200 = '#cce2f3'
 const bleu600 = '#00407f'
 const jaune = '#ffca40'
@@ -41,6 +42,7 @@ export const secondaryColors = {
 		dark: 'rgb(0, 60, 120)',
 		contrastText: CONTRAST_TEXT_LIGHT
 	},
+	bleu100: getColorPalette(bleu100),
 	bleu200: getColorPalette(bleu200),
 	bleu600: getColorPalette(bleu600),
 	jaune: getColorPalette(jaune),
