@@ -16,7 +16,7 @@ export const recursiveMenu = routes => {
       if (items[index].id && items[index].id !== item.parent) {
         const { paths } = item
         items.push({
-          navigationLabel: item.parent && item.parent.replace(/-/g, " "),
+          navTitle: item.parent && item.parent.replace(/-/g, " "),
           id: item.parent,
           slug: null,
           paths: null,
@@ -26,7 +26,7 @@ export const recursiveMenu = routes => {
 
       return items
     }, [])
-    .filter(route => route.navigationLabel)
+    .filter(route => route.navTitle)
 
   const createRecursiveMenu = (array, parent) => {
     let result = []

@@ -1,7 +1,21 @@
 import { Box } from '@mui/material'
+import { graphql, useStaticQuery } from 'gatsby'
 // import { MdxRoutes } from '../../../plugins/gatsby-plugin-bib-secondary-nav/components/MdxRoutes.js'
 
 export function SecondaryNav({ children, ...props }) {
+  const data = useStaticQuery(graphql`
+    query NavQuery {
+      allSiteNavigation {
+        edges {
+          node {
+            id
+          }
+        }
+      }
+    }
+  `)
+
+  console.log('SecondaryNav:', data)
   return (
     <Box {...props} sx={{ outline: '1px solid red' }}>
       <nav>

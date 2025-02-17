@@ -18,7 +18,8 @@ exports.MdxRoutes = ({
             frontmatter {
               title
               slug
-              navigationLabel
+              navTitle
+              order
             }
           }
         }
@@ -32,7 +33,7 @@ exports.MdxRoutes = ({
   const sortOrder = array => {
     if (navigationOrder) {
       return array.sort((a, b) => {
-        return navigationOrder.indexOf(a.navigationLabel) - navigationOrder.indexOf(b.navigationLabel)
+        return navigationOrder.indexOf(a.navTitle) - navigationOrder.indexOf(b.navTitle)
       })
     }
 
@@ -51,7 +52,7 @@ exports.MdxRoutes = ({
       fields
     } = data.node
     return {
-      navigationLabel: frontmatter.navigationLabel ? frontmatter.navigationLabel : frontmatter.title,
+      navTitle: frontmatter.navTitle ? frontmatter.navTitle : frontmatter.title,
       slug: fields.slug
     }
   })

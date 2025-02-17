@@ -4,4 +4,4 @@
 
 export const NODE_TYPE = 'SiteNavigation'
 
-export const ID_PREFIX = 'dynamical-nav-'
+export const ID_PREFIX = 'secondary-nav-'
