@@ -5,8 +5,8 @@ import { SofiaIcon } from '@/components/CustomIcons'
 const StyledNav = styled(Stack)(({ theme }) => ({
   margin: 0,
   padding: 20,
-  backgroundColor: theme.vars.palette.primary.main, // var(--mui-palette-primary-main)
-  color: theme.vars.palette.primary.contrastText,
+  backgroundColor: theme.vars.palette.bleuPrincipal.main, // var(--mui-palette-primary-main)
+  color: theme.vars.palette.bleuPrincipal.contrastText,
   borderRadius: '12px 0 0 12px',
   listStyle: 'none',
   gap: 15.69,

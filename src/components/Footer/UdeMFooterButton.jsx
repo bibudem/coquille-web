@@ -6,7 +6,7 @@ const StyledButton = styled(ButtonBase)(({ theme }) => ({
   '--_padding-block': '.785em',
   '--_padding-inline-start': '1.0667em',
   '--_padding-inline-end': '1.3333em',
-  color: theme.palette.udemBleuFonce.main,
+  color: theme.palette.bleuFonce.main,
   backgroundColor: theme.palette.Button.inheritContainedBg,
   borderRadius: theme.shape.corner.full,
   fontSize: '.875rem',
@@ -20,7 +20,7 @@ const StyledButton = styled(ButtonBase)(({ theme }) => ({
     left: 'calc(var(--_padding-inline-start))',
     width: 'var(--_bullet-size)',
     height: 'var(--_bullet-size)',
-    backgroundColor: theme.palette.udemBleuFonce.main,
+    backgroundColor: theme.palette.bleuFonce.main,
   },
   '&:hover': {
     backgroundColor: theme.palette.Button.inheritContainedHoverBg,

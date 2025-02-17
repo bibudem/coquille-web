@@ -18,6 +18,7 @@ const pages = [
 ]
 
 const StyledButton = styled(Button)(({ theme }) => ({
+  alignContent: 'center',
   my: 2,
   color: theme.palette.text.primary,
   fontSize: '0.875rem',
@@ -92,7 +93,7 @@ export default function TopAppBar() {
               </Link>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
-            <Stack direction="row" spacing={1}>
+            <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
               {pages.map(({ url, label }) => {
                 return (
                   <StyledButton size="large" href={url} key={url}>
@@ -100,7 +101,7 @@ export default function TopAppBar() {
                   </StyledButton>
                 )
               })}
-              <Button variant="contained" disableElevation size="large" href="/connexion" sx={{ bgcolor: 'udemBleuFonce.main' }}>
+              <Button variant="contained" disableElevation size="large" href="/connexion" sx={{ bgcolor: 'bleuFonce.main' }}>
                 Je donne
               </Button>
             </Stack>

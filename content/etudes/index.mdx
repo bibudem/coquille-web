@@ -3,17 +3,11 @@ title: Études
 slug: etudes
 ---
 
+import { Card, CardContent, CardMedia } from '@mui/material'
 import { Horse, Heart, Cube } from '@phosphor-icons/react'
 import { SofiaIcon } from '@/components/CustomIcons'
 import { StaticImage } from 'gatsby-plugin-image'
-
-<Section fullWidth sx={{paddingInline: 0}}>
-
-ici: <StaticImage src="hero.jpg" alt="Études" placeholder="blurred" layout="fullWidth" />
-
-là:
-
-</Section>
+import imageBienvenue from '../images/espaces-montage.webp'
 
 <Section>
 # Études
@@ -23,39 +17,51 @@ Display: On inspire la réussite
 </Section>
 
 <Section>
-  ## Ceci est un titre 2
 
-Ceci est une icône de la librairie <code>@phosphor-icons/react</code>: <SofiaIcon />
+  <Carousel autoPlay={false}>
+
+    <Card>
+      <CardContent>
+        <Typography component="h3" variant="h3">Des outils essentiels pour vos travaux</Typography>
+
+      Dans le torrent d’information disponible en ligne et sur nos rayons, par où commencer l’exploration? Nos experts ont conçu des guides et sélectionné les ressources les plus pratiques pour vous. Profitez-en!
+
+    </CardContent>
+    </Card>
+    <Bloc>
+
+      ### Citer ses sources
+
+      [Explorer la citation](https://libguides.bib.umontreal.ca/c.php?g=739631)
+
+    </Bloc>
+    <Bloc>
+
+      ### Ressources par discipline
+
+      [Explorer par discipline](https://libguides.bib.umontreal.ca/c.php?g=739631)
+
+    </Bloc>
+    <Bloc>
+
+      ### Trouver et évaluer la fiabilité des sources
+
+      [Explorer le repérage et l'évaluation de sources](https://libguides.bib.umontreal.ca/c.php?g=739631)
+
+    </Bloc>
+    <Bloc>
+
+      ### Rédiger
+
+      [Explorer la rédaction](https://libguides.bib.umontreal.ca/c.php?g=739631)
+
+    </Bloc>
+
+    </Carousel>
 
 </Section>
 
-<Section>
-  <Hero cartes icônes avec lien carte lien-dessous>
-
-    ## Des outils essentiels pour vos travaux
-
-    Dans le torrent d’information disponible en ligne et sur nos rayons, par où commencer l’exploration? Nos experts ont conçu des guides et sélectionné les ressources les plus pratiques pour vous. Profitez-en!
-
-    ### Citer ses sources
-
-    [Explorer la citation](https://libguides.bib.umontreal.ca/c.php?g=739631)
-
-    ### Ressources par discipline
-
-    [Explorer par discipline](https://libguides.bib.umontreal.ca/c.php?g=739631)
-
-    ### Trouver et évaluer la fiabilité des sources
-
-    [Explorer le repérage et l'évaluation de sources](https://libguides.bib.umontreal.ca/c.php?g=739631)
-
-    ### Rédiger
-
-    [Explorer la rédaction](https://libguides.bib.umontreal.ca/c.php?g=739631)
-
-  </Hero>
-</Section>
-
-<Section fond="bleu-50">
+<Section bg='bleuPrincipal'>
 
 ## Profiter de nos formations gratuites, c'est payant
 
@@ -65,7 +71,7 @@ Consultez notre calendrier de formations - il y en a pour tous les goûts, tous 
 
 </Section>
 
-<Section fond="vert-foncé-600">
+<Section bg='vertFonce'>
 
     ## Des services personnalisés
 
@@ -153,7 +159,7 @@ Consultez notre calendrier de formations - il y en a pour tous les goûts, tous 
 
 </Section>
 
-<Section fond="bleu-50">
+<Section bg='bleuPrincipal'>
   <Hero cartes icônes avec lien carte lien-dessous>
     ## Problème informatique?
     
@@ -167,16 +173,12 @@ Consultez notre calendrier de formations - il y en a pour tous les goûts, tous 
     
     ### Connexion à distance aux logiciel Consulter la documentation
 
-    <Button primaire externe>
-
-      Voir le studio
-
-    </Button>
+    <Button primary>Voir le studio</Button>
 
   </Hero>
 </Section>
 
-<Section fond="bleu-200">
+<Section bg='bleu200'>
   <Hero cartes icônes avec lien carte>
 
     ## On a votre bien-être à coeur
@@ -196,16 +198,13 @@ Consultez notre calendrier de formations - il y en a pour tous les goûts, tous 
   </Hero>
 </Section>
 
-<Section fond="bleu-50">
-  <Hero image texte gauche>
+<Section bg='bleuPrincipal'>
+  <CallToAction1 image={imageBienvenue}>
 
-    ## Bienvenue chez vous!
+    <Typography component='h2' variant='h2'>Bienvenue chez vous!</Typography>
 
     Offrir des lieux communs qui répondent à des besoins individuels, c’était l’idée à la base de la conception de nos espaces multifonctionnels! Salons de détente, cabines individuelles insonorisées, salles de réunion, découvrez les espaces qui vous sont offerts sur les campus!
 
-    <Button primaire interne>
-      Découvrir les espaces
-    </Button>
-
-  </Hero>
+<Button primary href='../espaces/'>Découvrir les espaces</Button>
+  </CallToAction1>
 </Section>

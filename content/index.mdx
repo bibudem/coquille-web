@@ -3,6 +3,11 @@ title: Les bibliothèques / UdeM
 slug: index
 ---
 
+import imageEspace from './images/image-arret-bibliothecaire.webp'
+import imageRecherche from './images/recherche-accueil.webp'
+import imageEnseignement from './images/enseignement-accueil.webp'
+import imageCollections from './images/collections-speciales-montage.webp'
+
 <Section> 
 # Les bibliothèques / UdeM
 
@@ -12,7 +17,7 @@ Display : Curiosité illimitée Julia Géréreux Randall Bibliothécaire Science
 
 <Section>recherche Sofia</Section>
 
-<Section fond="bleu-50">
+<Section bg='bleuPrincipal'>
 
 ## Quoi de neuf
 
@@ -20,48 +25,46 @@ Display : Curiosité illimitée Julia Géréreux Randall Bibliothécaire Science
 </Bloc>
 </Section>
 
-<Section fond="bleu-200">
+<Section bg='bleu200'>
 
 ## Mille et une façons d’apprendre
 
-Quels que soient vos besoins, vous découvrirez ici de multiples méthodes d’apprentissage facilement accessibles. Trouvez celle qui vous convient! 
+Quels que soient vos besoins, vous découvrirez ici de multiples méthodes d’apprentissage facilement accessibles. Trouvez celle qui vous convient!
 
 <Hero cartes bleues icônes>
 
 Ressources et conseils préparés par nos spécialistes [Voir la boîte à outil](https://libguides.bib.umontreal.ca/c.php?g=739631) Capsules vidéos et webinaires [Accédez à YouTube](https://www.youtube.com/@BibliothequesUdeM) Services Accessibilité [En savoir plus](bib.umontreal.ca) Soutien personnalisé avec nos spécialistes [Prendre rendez-vous](bib.umontreal.ca)
 
-<Button primaire foncé>
-  Découvrir les services pour la communauté étudiante
-</Button>
+<Button primary foncé>Découvrir les services pour la communauté étudiante</Button>
 </Hero>
 
 </Section>
 
-<Section fond="bleu-50">
+<Section bg='bleuPrincipal'>
 
-  ## Nos formations 
-  
+## Nos formations
+
   <Bloc formations pompé></Bloc>
 </Section>
 
-<Section fond="vert-foncé-600">
-  <Hero image texte droite>
-    ## Tout le monde s’y retrouve
+<Section bg='vertFonce'>
+  <CallToAction1 image={imageEspace} align="right">
+    <Typography component='h2' variant='h2'>Tout le monde s’y retrouve</Typography>
     
     Choisissez votre espace selon vos besoins du moment : horaires étendus, accès autonome, création numérique, travail en cabine silencieuse, salon de détente... Le vaste réseau des bibliothèques de l’UdeM, avec leur personnalité, leurs espaces et leurs particularités bien à elles.
 
-    <Button primaire pâle>
-      Découvrir nos espaces
-    </Button>
+    <Button primary href='/espaces/'>Découvrir nos espaces</Button>
 
-  </Hero>
+  </CallToAction1>
 </Section>
 
-<Section fond="bleu-50">
+<Section bg='bleuPrincipal'>
 
-<Hero image texte gauche>
+<CallToAction1 image={imageRecherche}>
 
-## Soutenir votre recherche pour aller plus loin
+<Typography component="h2" variant="h2">
+  Soutenir votre recherche pour aller plus loin
+</Typography>
 
 Notre équipe de spécialistes s’affaire pour vous donner les moyens de faire vos recherche dans les meilleures conditions:Libre accès
 
@@ -70,44 +73,41 @@ Notre équipe de spécialistes s’affaire pour vous donner les moyens de faire 
 - Revues systématiques
 - etc.
 
-<Button primaire foncé>
-  Explorer les services pour la recherche
-</Button>
+<Button primary href="/recherche/">Explorer les services pour la recherche</Button>
 
-</Hero>
+</CallToAction1>
 
 </Section>
 
-<Section fond="bleu-200">
-  <Hero image texte droite>
+<Section bg='bleu200'>
 
-    ## Partenaires en matière d’enseignement
-    
-    Que ce soit en participant à vos cours par des formations ou une implication à StudiUM, en vous aidant à donner accès à de la documentation et à produire vos déclaration dans Savia, notre équipe est là pour vous appuyer dans votre enseignement.
+<CallToAction1 image={imageEnseignement} align='right'>
 
-    <Button primaire foncé>
-      Découvrir les services pour l’enseignement
-    </Button>
+<Typography component="h2" variant="h2">
+  Partenaire en matière d'enseignement
+</Typography>
+Que ce soit en participant à vos cours par des formations ou une implication à StudiUM, en vous aidant à donner accès à de la documentation et à produire vos déclaration dans Savia, notre équipe est là pour vous appuyer dans votre enseignement.
 
-  </Hero>
+    <Button primary href='/enseignement/'>Découvrir les services pour l’enseignement</Button>
+
+  </CallToAction1>
+  
 </Section>
 
-<Section fond="bleu-50">
+<Section bg='bleuPrincipal'>
 
-  <Hero image texte gauche>
+  <CallToAction1 image={imageCollections}>
 
-    ## Découvrez nos pièces uniques
-    
+    <Typography component='h2' variant='h2'>Découvrez nos pièces uniques</Typography>
+
     Nos collections spéciales forment de véritables laboratoires de recherche et de découverte. Parcourir les différents fonds, c’est découvrir le passé à travers nos livres rares et anciens, nos artefacts et nos collections d’images.
 
-    <Button primaire foncé>
-      Accéder aux collections spéciales
-    </Button>
+    <Button primary href='https://calypso.bib.umontreal.ca/'>Accéder aux collections spéciales</Button>
 
-  </Hero>
+  </CallToAction1>
 </Section>
 
-<Section image="">
+<Section>
 
 <Hero image texte droite image full>
 
@@ -115,9 +115,7 @@ Notre équipe de spécialistes s’affaire pour vous donner les moyens de faire 
 
 Notre équipe est résolument engagées dans le développement d’un accès universel aux savoirs, par le soutien à la Politique sur le libre accès aux publications savantes et par le financement de la publication de monographies savantes en libre accès, sans parler du soutien à de multiples outils et initiatives.
 
-<Button primaire foncé>
-  Découvrir nos engagements
-</Button>
+<Button primary href="/engagements/">Découvrir nos engagements</Button>
 
 </Hero>
 

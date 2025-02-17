@@ -1,4 +1,8 @@
 {
+  "editor.wordWrap": "on",
+  "[mdx]": {
+    "editor.formatOnSave": false
+  },
   "conventionalCommits.scopes": [
     "icons",
     "coquille",
