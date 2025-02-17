@@ -31,10 +31,11 @@ import CommentIcon from '@mui/icons-material/Comment'
 
 import { useSmall } from '@/hooks/use-small'
 import { Hero, Bloc } from '@/components/dummy-components'
+// import { SecondaryNav } from '@/components/SecondaryNav/SecondaryNav'
 
 const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, CallToAction1, CallToAction2, Carousel, Divider, Grid, IconInSquare, List, ListItem, ListItemText, ListItemButton, ListItemButton, ListItemIcon, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
 
-export default function PageTemplate({ pageContext, children, ...rest }) {
+export default function PageTemplate({ pageContext, children, data, ...rest }) {
   const isSmall = useSmall('lg')
   const theme = useTheme()
 
@@ -44,7 +45,9 @@ export default function PageTemplate({ pageContext, children, ...rest }) {
     console.log('window.bib.theme:', window.bib.theme)
   }
 
-  console.log('pageContext:', pageContext)
+  // console.log('pageContext:', pageContext)
+  console.log('data:', data)
+
   const {
     breadcrumb: { crumbs },
   } = pageContext
@@ -68,6 +71,8 @@ export default function PageTemplate({ pageContext, children, ...rest }) {
         <MenuLatteral />
 
         <Breadcrumbs crumbs={crumbs} />
+
+        {/* <SecondaryNav /> */}
 
         <main role="main">
           {children}

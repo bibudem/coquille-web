@@ -32,6 +32,8 @@ export const createPages = async ({ graphql, actions, reporter, getNode }) => {
             frontmatter {
               slug
               title
+              navTitle
+              order
               template
             }
           }
