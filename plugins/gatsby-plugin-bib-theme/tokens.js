@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { darken, lighten, getContrastRatio } from '@mui/material/styles'
 
 //
@@ -62,8 +61,6 @@ export const secondaryColors = {
 	vertPale: getColorPalette(vertPale),
 }
 
-=======
->>>>>>> aa659ef (wip)
 export default {
 	breakpoints: {
 		values: {
