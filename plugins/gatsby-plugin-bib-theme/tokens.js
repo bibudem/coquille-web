@@ -42,6 +42,12 @@ export const secondaryColors = {
 		dark: 'rgb(0, 60, 120)',
 		contrastText: CONTRAST_TEXT_LIGHT
 	},
+	bleuFonce: {
+		main: '#0b113a',
+		light: 'rgb(59, 64, 97)',
+		dark: 'rgb(7, 11, 40)',
+		contrastText: CONTRAST_TEXT_LIGHT
+	},
 	bleu100: getColorPalette(bleu100),
 	bleu200: getColorPalette(bleu200),
 	bleu600: getColorPalette(bleu600),
@@ -70,13 +76,7 @@ export default {
 		light: {
 			palette: {
 				primary: {
-					main: '#0b113a'
-				},
-				bleuFonce: {
-					main: '#0b113a',
-					light: 'rgb(59, 64, 97)',
-					dark: 'rgb(7, 11, 40)',
-					contrastText: CONTRAST_TEXT_LIGHT
+					main: '#0057ac'
 				},
 				...secondaryColors,
 				background: {
