@@ -1,32 +1,24 @@
-let currentNavigation = null
-let requestPromise = null
+import { readFileSync } from 'fs'
+import { SITE_NAVIGATION_FILE_PATH } from '../constants.js'
 
-const loadNavigation = callback => {
+console.log('SITE_NAVIGATION_FILE_PATH:', SITE_NAVIGATION_FILE_PATH)
+
+let currentNavigation = null
+let requestSync = null
+
+const loadNavigation = async callback => {
   if (currentNavigation) {
     callback(currentNavigation)
     return
   }
 
-  if (requestPromise) {
-    requestPromise = requestPromise.then(navigation => {
-      callback(navigation)
-      return navigation
-    })
+  requestSync = readFileSync(SITE_NAVIGATION_FILE_PATH, 'utf8')
+  const navigation = JSON.parse(requestSync)
 
-    return
-  }
+  currentNavigation = navigation
+  callback(navigation)
 
-  if (typeof window !== "undefined") {
-    requestPromise = window
-      .fetch("/site-navigation.json")
-      .then(data => data.json())
-      .then(navigation => {
-        currentNavigation = navigation
-        callback(navigation)
-
-        return navigation
-      })
-  }
+  return navigation
 }
 
 export default loadNavigation

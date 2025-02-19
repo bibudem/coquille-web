@@ -72,6 +72,7 @@ export const createPages = async ({ graphql, actions, reporter, getNode }) => {
       // You can use the values in this context in
       // our page layout component
       context: { id: node.id },
+      path2: path
     })
   })
 }

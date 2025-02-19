@@ -8,15 +8,15 @@ const markRoots = (getNodes, createNodeField) => {
   nodes
     .filter(({ internal: { type } }) => type === 'Mdx')
     .forEach(node => {
-      console.log('### node:', JSON.stringify(node, null, 2))
-      if (!node.parent || node.children.length) {
-        console.log('node:', JSON.stringify(node, null, 2))
-        createNodeField({
-          node,
-          name: "isRoot",
-          value: true
-        })
-      }
+      // console.log('### node:', JSON.stringify(node, null, 2))
+      // if (!node.parent || node.children.length) {
+      // console.log('node:', JSON.stringify(node, null, 2))
+      createNodeField({
+        node,
+        name: "isRoot",
+        value: true
+      })
+      // }
     })
 }
 

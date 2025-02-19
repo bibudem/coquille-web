@@ -1,19 +1,19 @@
-"use strict";
+"use strict"
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault")
 Object.defineProperty(exports, "__esModule", {
   value: true
-});
-exports.shouldOnCreateNode = exports.resolvableExtensions = exports.preprocessSource = exports.pluginOptionsSchema = exports.onPluginInit = exports.onCreateWebpackConfig = exports.onCreatePage = exports.onCreateNode = exports.createSchemaCustomization = void 0;
-var _path = _interopRequireDefault(require("path"));
-var _fsExtra = _interopRequireDefault(require("fs-extra"));
-var _parseComponentPath = require("gatsby-core-utils/parse-component-path");
-var _pluginOptions = require("./plugin-options");
-var _frontmatter = require("./frontmatter");
-var _compileMdx = require("./compile-mdx");
-var _remarkInferTocMeta = _interopRequireDefault(require("./remark-infer-toc-meta"));
-var _errorUtils = require("./error-utils");
-var _cacheHelpers = require("./cache-helpers");
+})
+exports.shouldOnCreateNode = exports.resolvableExtensions = exports.preprocessSource = exports.pluginOptionsSchema = exports.onPluginInit = exports.onCreateWebpackConfig = exports.onCreatePage = exports.onCreateNode = exports.createSchemaCustomization = void 0
+var _path = _interopRequireDefault(require("path"))
+var _fsExtra = _interopRequireDefault(require("fs-extra"))
+var _parseComponentPath = require("gatsby-core-utils/parse-component-path")
+var _pluginOptions = require("./plugin-options")
+var _frontmatter = require("./frontmatter")
+var _compileMdx = require("./compile-mdx")
+var _remarkInferTocMeta = _interopRequireDefault(require("./remark-infer-toc-meta"))
+var _errorUtils = require("./error-utils")
+var _cacheHelpers = require("./cache-helpers")
 /**
  * Add support for MDX files including using Gatsby layout components
  */
@@ -27,7 +27,7 @@ const onCreateWebpackConfig = async ({
   cache,
   store
 }, pluginOptions) => {
-  const options = (0, _pluginOptions.defaultOptions)(pluginOptions);
+  const options = (0, _pluginOptions.defaultOptions)(pluginOptions)
   const mdxOptions = await (0, _pluginOptions.enhanceMdxOptions)(pluginOptions, {
     getNode,
     getNodesByType,
@@ -35,21 +35,21 @@ const onCreateWebpackConfig = async ({
     reporter,
     cache,
     store
-  });
+  })
   const mdxLoaderOptions = {
     options: mdxOptions,
     reporter,
     cache,
     getNode
-  };
+  }
   const layoutLoaderOptions = {
     options,
     nodeExists: async function nodeExists(absolutePath) {
-      const entry = await cache.get((0, _cacheHelpers.createFileToMdxCacheKey)(absolutePath));
-      return !!entry;
+      const entry = await cache.get((0, _cacheHelpers.createFileToMdxCacheKey)(absolutePath))
+      return !!entry
     },
     reporter
-  };
+  }
   actions.setWebpackConfig({
     module: {
       rules: [{
@@ -79,20 +79,20 @@ const onCreateWebpackConfig = async ({
         }]
       }]
     }
-  });
-};
+  })
+}
 
 /**
  * Add the MDX extensions as resolvable. This is how the page creator
  * determines which files in the pages/ directory get built as pages.
  */
-exports.onCreateWebpackConfig = onCreateWebpackConfig;
-const resolvableExtensions = (_data, pluginOptions) => (0, _pluginOptions.defaultOptions)(pluginOptions).extensions;
+exports.onCreateWebpackConfig = onCreateWebpackConfig
+const resolvableExtensions = (_data, pluginOptions) => (0, _pluginOptions.defaultOptions)(pluginOptions).extensions
 
 /**
  * Convert MDX to JSX so that Gatsby can extract the GraphQL queries and render the pages.
  */
-exports.resolvableExtensions = resolvableExtensions;
+exports.resolvableExtensions = resolvableExtensions
 const preprocessSource = async ({
   filename,
   getNode,
@@ -102,13 +102,13 @@ const preprocessSource = async ({
   cache,
   store
 }, pluginOptions) => {
-  const options = (0, _pluginOptions.defaultOptions)(pluginOptions);
+  const options = (0, _pluginOptions.defaultOptions)(pluginOptions)
   const {
     extensions
-  } = options;
-  const mdxPath = (0, _parseComponentPath.getPathToContentComponent)(filename);
+  } = options
+  const mdxPath = (0, _parseComponentPath.getPathToContentComponent)(filename)
   if (!mdxPath) {
-    return undefined;
+    return undefined
   }
   const mdxOptions = await (0, _pluginOptions.enhanceMdxOptions)(pluginOptions, {
     getNode,
@@ -117,22 +117,22 @@ const preprocessSource = async ({
     reporter,
     cache,
     store
-  });
-  const ext = _path.default.extname(mdxPath);
+  })
+  const ext = _path.default.extname(mdxPath)
   if (!extensions.includes(ext)) {
-    return undefined;
+    return undefined
   }
-  const contents = await _fsExtra.default.readFile(mdxPath);
+  const contents = await _fsExtra.default.readFile(mdxPath)
   const compileRes = await (0, _compileMdx.compileMDX)({
     source: contents,
     absolutePath: filename
-  }, mdxOptions, cache, reporter);
+  }, mdxOptions, cache, reporter)
   if (!(compileRes !== null && compileRes !== void 0 && compileRes.processedMDX)) {
-    return undefined;
+    return undefined
   }
-  return compileRes.processedMDX.toString();
-};
-exports.preprocessSource = preprocessSource;
+  return compileRes.processedMDX.toString()
+}
+exports.preprocessSource = preprocessSource
 const createSchemaCustomization = async ({
   getNode,
   getNodesByType,
@@ -145,7 +145,7 @@ const createSchemaCustomization = async ({
 }, pluginOptions) => {
   const {
     createTypes
-  } = actions;
+  } = actions
   const typeDefs = [schema.buildObjectType({
     name: `Mdx`,
     fields: {
@@ -160,13 +160,13 @@ const createSchemaCustomization = async ({
         async resolve(mdxNode, {
           pruneLength
         }) {
-          const rehypeInferDescriptionMeta = (await (0, _cacheHelpers.cachedImport)(`rehype-infer-description-meta`)).default;
+          const rehypeInferDescriptionMeta = (await (0, _cacheHelpers.cachedImport)(`rehype-infer-description-meta`)).default
           const descriptionOptions = {
             truncateSize: pruneLength
-          };
-          const fileNode = getNode(mdxNode.parent);
+          }
+          const fileNode = getNode(mdxNode.parent)
           if (!fileNode) {
-            return null;
+            return null
           }
           const result = await (0, _compileMdx.compileMDXWithCustomOptions)({
             source: mdxNode.body,
@@ -184,11 +184,11 @@ const createSchemaCustomization = async ({
             reporter,
             cache,
             store
-          });
+          })
           if (!result) {
-            return null;
+            return null
           }
-          return result.metadata.description;
+          return result.metadata.description
         }
       },
       tableOfContents: {
@@ -206,10 +206,10 @@ const createSchemaCustomization = async ({
             visit
           }, {
             toc
-          }] = await Promise.all([import(`unist-util-visit`), import(`mdast-util-toc`)]);
-          const fileNode = getNode(mdxNode.parent);
+          }] = await Promise.all([import(`unist-util-visit`), import(`mdast-util-toc`)])
+          const fileNode = getNode(mdxNode.parent)
           if (!fileNode) {
-            return null;
+            return null
           }
           const result = await (0, _compileMdx.compileMDXWithCustomOptions)({
             source: mdxNode.body,
@@ -231,11 +231,11 @@ const createSchemaCustomization = async ({
             reporter,
             cache,
             store
-          });
+          })
           if (!result) {
-            return null;
+            return null
           }
-          return result.metadata.toc;
+          return result.metadata.toc
         }
       }
     },
@@ -243,25 +243,25 @@ const createSchemaCustomization = async ({
       infer: true
     },
     interfaces: [`Node`]
-  })];
-  createTypes(typeDefs);
-};
+  })]
+  createTypes(typeDefs)
+}
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-exports.createSchemaCustomization = createSchemaCustomization;
+exports.createSchemaCustomization = createSchemaCustomization
 const shouldOnCreateNode = ({
   node
 }, pluginOptions) => {
   const {
     extensions
-  } = (0, _pluginOptions.defaultOptions)(pluginOptions);
-  return node.internal.type === `File` && extensions.includes(node.ext);
-};
+  } = (0, _pluginOptions.defaultOptions)(pluginOptions)
+  return node.internal.type === `File` && extensions.includes(node.ext)
+}
 
 /**
  * Create Mdx nodes from MDX files.
  */
-exports.shouldOnCreateNode = shouldOnCreateNode;
+exports.shouldOnCreateNode = shouldOnCreateNode
 const onCreateNode = async ({
   node,
   loadNodeContent,
@@ -272,11 +272,11 @@ const onCreateNode = async ({
   createNodeId,
   cache
 }) => {
-  const rawBody = await loadNodeContent(node);
+  const rawBody = await loadNodeContent(node)
   const {
     frontmatter,
     body
-  } = (0, _frontmatter.parseFrontmatter)(node.internal.contentDigest, rawBody);
+  } = (0, _frontmatter.parseFrontmatter)(node.internal.contentDigest, rawBody)
   const mdxNode = {
     id: createNodeId(`${node.id} >>> Mdx`),
     children: [],
@@ -288,72 +288,72 @@ const onCreateNode = async ({
     },
     body,
     frontmatter
-  };
-  createNode(mdxNode);
+  }
+  createNode(mdxNode)
   createParentChildLink({
     parent: node,
     child: mdxNode
-  });
-  await cache.set((0, _cacheHelpers.createFileToMdxCacheKey)(node.absolutePath), mdxNode.id);
-};
+  })
+  await cache.set((0, _cacheHelpers.createFileToMdxCacheKey)(node.absolutePath), mdxNode.id)
+}
 
 /**
  * Add frontmatter as page context for MDX pages
  */
-exports.onCreateNode = onCreateNode;
+exports.onCreateNode = onCreateNode
 const onCreatePage = async ({
   page,
   actions,
   getNodesByType
 }, pluginOptions) => {
-  var _page$context;
+  var _page$context
   const {
     createPage,
     deletePage
-  } = actions;
+  } = actions
   const {
     extensions
-  } = (0, _pluginOptions.defaultOptions)(pluginOptions);
-  const mdxPath = (0, _parseComponentPath.getPathToContentComponent)(page.component);
-  const ext = _path.default.extname(mdxPath);
+  } = (0, _pluginOptions.defaultOptions)(pluginOptions)
+  const mdxPath = (0, _parseComponentPath.getPathToContentComponent)(page.component)
+  const ext = _path.default.extname(mdxPath)
 
   // Only apply on pages based on .mdx files
   if (!extensions.includes(ext)) {
-    return;
+    return
   }
-  const fileNode = getNodesByType(`File`).find(node => node.absolutePath === mdxPath);
+  const fileNode = getNodesByType(`File`).find(node => node.absolutePath === mdxPath)
   if (!fileNode) {
-    throw new Error(`Could not locate File node for ${mdxPath}`);
+    throw new Error(`Could not locate File node for ${mdxPath}`)
   }
 
   // Avoid loops
   if (!((_page$context = page.context) !== null && _page$context !== void 0 && _page$context.frontmatter)) {
-    const content = await _fsExtra.default.readFile(mdxPath, `utf8`);
+    const content = await _fsExtra.default.readFile(mdxPath, `utf8`)
     const {
       frontmatter
-    } = (0, _frontmatter.parseFrontmatter)(fileNode.internal.contentDigest, content);
-    deletePage(page);
+    } = (0, _frontmatter.parseFrontmatter)(fileNode.internal.contentDigest, content)
+    deletePage(page)
     createPage({
       ...page,
       context: {
         ...page.context,
         frontmatter
       }
-    });
+    })
   }
-};
-exports.onCreatePage = onCreatePage;
+}
+exports.onCreatePage = onCreatePage
 const onPluginInit = ({
   reporter
 }) => {
   // @ts-ignore - We only expose this type from gatsby-cli and we don't want to import from there
-  reporter.setErrorMap(_errorUtils.ERROR_MAP);
-};
+  reporter.setErrorMap(_errorUtils.ERROR_MAP)
+}
 
 /**
  * Plugin option validation
  */
-exports.onPluginInit = onPluginInit;
+exports.onPluginInit = onPluginInit
 const pluginOptionsSchema = ({
   Joi
 }) => Joi.object({
@@ -370,5 +370,5 @@ const pluginOptionsSchema = ({
     rehypePlugins: Joi.array().description(`List of rehype (hast, HTML) plugins`),
     remarkRehypeOptions: Joi.object().unknown().description(`Options to pass through to \`remark-rehype\``)
   }).unknown(true).default({}).description(`Pass any options to MDX. See: https://mdxjs.com/packages/mdx/#compilefile-options`)
-});
-exports.pluginOptionsSchema = pluginOptionsSchema;
+})
+exports.pluginOptionsSchema = pluginOptionsSchema
