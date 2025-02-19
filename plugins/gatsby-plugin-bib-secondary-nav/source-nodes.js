@@ -1,4 +1,4 @@
-export const sourceNodes = (gatsbyApi) => {
+export function sourceNodes(gatsbyApi) {
   // Your arbitrary, serializable data
   const yourData = {
     hello: `world`,

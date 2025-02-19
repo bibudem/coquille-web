@@ -1,10 +1,17 @@
-import { writeFileSync } from 'node:fs'
+import { writeFileSync } from 'fs'
+import { dirname, join, resolve } from 'path'
+import { fileURLToPath } from 'url'
 import { createFilePath } from 'gatsby-source-filesystem'
 import getTree from './utils/getTree.js'
 import getLinks from './utils/getLinks.js'
 import sortLinks from './utils/sortLinks.js'
 import createNodes from './utils/createNodes.js'
 import markRoots from './utils/markRoots.js'
+import { SITE_NAVIGATION_FILE_PATH } from './constants.js'
+
+const __dirname = dirname(resolve(fileURLToPath(import.meta.url), '..', '..'))
+
+const navigationFilePath = resolve(__dirname, SITE_NAVIGATION_FILE_PATH)
 
 export const onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -29,30 +36,36 @@ export const sourceNodes = ({ actions, createContentDigest, createNodeId, getNod
   const { createNode, createParentChildLink, createNodeField } = actions
 
   const tree = getTree()
+  console.log('tree:', tree.length)
   const links = getLinks(tree)
+  console.log('links:', links.length)
   const sortedLinks = sortLinks(links)
+  // const sortedLinks = [...links]
+  console.log('------------------------------- sortedLinks:', JSON.stringify(sortedLinks))
 
-  createNodes(sortedLinks, getNode, createContentDigest, createNode, createParentChildLink)
+  createNodes(sortedLinks, getNode, createContentDigest, createNode, createParentChildLink, createNodeId)
   markRoots(getNodes, createNodeField)
 }
 
 export const createPages = async ({ graphql }) => {
+  // allSiteNavigation(filter: { fields: { isRoot: { eq: true } } }) {
+
   const { errors, data } = await graphql(`
     {
-      # allSiteNavigation(filter: { fields: { isRoot: { eq: true } } }) {
       allSiteNavigation {
         edges {
           node {
+            id
             title
-            path
-            childrenSiteNavigation {
-              title
-              path
-              order
-              # fields {
-              #   isRoot
-              # }
-            }
+            pathname
+            #childrenSiteNavigation {
+            #  title
+            #  pathname
+            #  order
+            #    # fields {
+            #    #   isRoot
+            #    # }
+            #}
           }
         }
       }
@@ -66,5 +79,6 @@ export const createPages = async ({ graphql }) => {
 
   const reducedData = data.allSiteNavigation.edges.map(({ node }) => node)
 
-  writeFileSync('public/site-navigation.json', JSON.stringify(reducedData))
+  console.log('Writing site navigation to file:', navigationFilePath, reducedData)
+  writeFileSync(navigationFilePath, JSON.stringify(reducedData))
 }

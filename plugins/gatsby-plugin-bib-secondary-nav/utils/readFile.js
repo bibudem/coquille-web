@@ -1,10 +1,10 @@
-import fs from 'node:fs'
+import { readFileSync } from 'fs'
 
-const readFile = path => {
+export default function readFile(path) {
   let result
 
   try {
-    result = fs.readFileSync(path, 'utf8')
+    result = readFileSync(path, 'utf8')
   } catch (error) {
     console.log('Error reading file `%s` from disk.', path, error)
     console.log(error)
@@ -13,6 +13,4 @@ const readFile = path => {
 
   return result
 }
-
-export default readFile
 

@@ -2,6 +2,7 @@ import getPageAttrs from './getPageAttrs.js'
 import getNormalPath from './getNormalPath.js'
 
 const getLinks = (tree, links = []) => {
+
   const { path, type, children: treeChildren = [] } = tree
 
   if (type === 'directory' && treeChildren) {
@@ -17,9 +18,10 @@ const getLinks = (tree, links = []) => {
     const { title, order } = pageAttrs
 
     links.push({
-      path: getNormalPath(path),
+      pathname: getNormalPath(path),
       title,
       order,
+      isRoot: path.endsWith('index.mdx')
     })
   }
   return links
