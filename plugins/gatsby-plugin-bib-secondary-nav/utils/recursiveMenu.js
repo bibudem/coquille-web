@@ -1,7 +1,7 @@
 export function recursiveMenu(routes) {
-  const createItemsFromSlugs = routes
+  const createItemsFromPathnames = routes
     .map(route => {
-      let paths = route.slug.split("/").filter(s => s)
+      let paths = route.pathname.split("/").filter(s => s)
       return {
         ...route,
         id: paths.length > 1 ? paths[paths.length - 1] : "",
@@ -18,7 +18,7 @@ export function recursiveMenu(routes) {
         items.push({
           navTitle: item.parent && item.parent.replace(/-/g, " "),
           id: item.parent,
-          slug: null,
+          pathname: null,
           paths: null,
           parent: paths.length > 2 ? paths[paths.length - 3] : null
         })
@@ -41,5 +41,5 @@ export function recursiveMenu(routes) {
     return result
   }
 
-  return createRecursiveMenu(createItemsFromSlugs, null)
+  return createRecursiveMenu(createItemsFromPathnames, null)
 }

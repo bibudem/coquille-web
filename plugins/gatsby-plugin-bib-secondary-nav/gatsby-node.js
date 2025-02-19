@@ -36,11 +36,8 @@ export const sourceNodes = ({ actions, createContentDigest, createNodeId, getNod
   const { createNode, createParentChildLink, createNodeField } = actions
 
   const tree = getTree()
-  console.log('tree:', tree.length)
   const links = getLinks(tree)
-  console.log('links:', links.length)
   const sortedLinks = sortLinks(links)
-  // const sortedLinks = [...links]
   console.log('------------------------------- sortedLinks:', JSON.stringify(sortedLinks))
 
   createNodes(sortedLinks, getNode, createContentDigest, createNode, createParentChildLink, createNodeId)
@@ -79,6 +76,5 @@ export const createPages = async ({ graphql }) => {
 
   const reducedData = data.allSiteNavigation.edges.map(({ node }) => node)
 
-  console.log('Writing site navigation to file:', navigationFilePath, reducedData)
   writeFileSync(navigationFilePath, JSON.stringify(reducedData))
 }
