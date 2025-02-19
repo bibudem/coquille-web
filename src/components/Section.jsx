@@ -62,7 +62,7 @@ export default function Section({ bg, image, fixedWidth = false, ...rest }) {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: '50% 50%',
-        // backgroundColor: 'linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%)',
+        color: '#fff',
       }))
     }
   }, [image])
