@@ -7,6 +7,8 @@ import imageEspace from './images/image-arret-bibliothecaire.webp'
 import imageRecherche from './images/recherche-accueil.webp'
 import imageEnseignement from './images/enseignement-accueil.webp'
 import imageCollections from './images/collections-speciales-montage.webp'
+import imageEngagement from './images/engagement-accueil.webp'
+import { Padding } from '@mui/icons-material'
 
 <Section> 
 # Les bibliothèques / UdeM
@@ -58,7 +60,7 @@ Ressources et conseils préparés par nos spécialistes [Voir la boîte à outil
   </CallToAction1>
 </Section>
 
-<Section bg='bleuPrincipal'>
+<Section bg='bleu100'>
 
 <CallToAction1 image={imageRecherche}>
 
@@ -79,7 +81,7 @@ Notre équipe de spécialistes s’affaire pour vous donner les moyens de faire 
 
 </Section>
 
-<Section bg='bleu200'>
+<Section bg='bleuPrincipal'>
 
 <CallToAction1 image={imageEnseignement} align='right'>
 
@@ -94,7 +96,7 @@ Que ce soit en participant à vos cours par des formations ou une implication à
   
 </Section>
 
-<Section bg='bleuPrincipal'>
+<Section bg='bleu100'>
 
   <CallToAction1 image={imageCollections}>
 
@@ -107,16 +109,34 @@ Que ce soit en participant à vos cours par des formations ou une implication à
   </CallToAction1>
 </Section>
 
-<Section>
+<Section image={imageEngagement}>
 
-<Hero image texte droite image full>
+<Grid container
+spacing={2}
+sx={{
+  paddingTop:'238px',
+  paddingBottom: '185px',
+  outline: '1px solid red'
+}}>
+<Grid size={{xs:12, md:6}} offset={{md:6}}>
 
-## S’engager pour une science ouverte
+<Typography component='h2' variant='h2' 
+sx={{
+  fontFamily:'Figtree',
+  fontWeight:400,
+  lineHeight:1.2,
+  fontSize:'3.8125rem!important',
+  marginBottom:'2rem',
+}}>S’engager pour une science ouverte</Typography>
 
 Notre équipe est résolument engagées dans le développement d’un accès universel aux savoirs, par le soutien à la Politique sur le libre accès aux publications savantes et par le financement de la publication de monographies savantes en libre accès, sans parler du soutien à de multiples outils et initiatives.
 
-<Button primary href="/engagements/">Découvrir nos engagements</Button>
+<Button primary href="/engagements/"
+sx={{
+  marginTop:'2rem'
+}}>Découvrir nos engagements</Button>
 
-</Hero>
+</Grid>
+</Grid>
 
 </Section>
