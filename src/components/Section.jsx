@@ -23,12 +23,11 @@ const baseStyles = {
 export default function Section({ bg, image, fixedWidth = false, ...rest }) {
   const { children, sx, ...props } = rest
 
-  if (image) {
-    throw new Error("La propriété `image` n'est pas encore implémentée.")
+  if (image && bg) {
+    throw new Error('Les propriétés `image` et `bg` sont mutuellement exclusives.')
   }
 
   const [styles, setStyles] = useState(baseStyles)
-  console.log('secondaryColors', secondaryColors)
 
   useEffect(() => {
     function getsecondaryColor(color) {
@@ -40,6 +39,7 @@ export default function Section({ bg, image, fixedWidth = false, ...rest }) {
     }
 
     console.log('bg', bg)
+    console.log('image', image)
 
     if (bg) {
       const color = getsecondaryColor(bg)
@@ -52,6 +52,20 @@ export default function Section({ bg, image, fixedWidth = false, ...rest }) {
       }))
     }
   }, [bg])
+
+  useEffect(() => {
+    if (image) {
+      console.log('YEP: image')
+      setStyles((oldStyles) => ({
+        ...oldStyles,
+        backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%), url('${image}')`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: '50% 50%',
+        // backgroundColor: 'linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%)',
+      }))
+    }
+  }, [image])
 
   useEffect(() => {
     if (!fixedWidth) {
@@ -86,7 +100,6 @@ export default function Section({ bg, image, fixedWidth = false, ...rest }) {
       sx={{
         ...styles,
         ...sx,
-        outline: '1px dotted blue',
       }}
     >
       <Container maxWidth="xl" {...props}>
