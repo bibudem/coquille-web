@@ -38,7 +38,7 @@ export const sourceNodes = ({ actions, createContentDigest, createNodeId, getNod
   const tree = getTree()
   const links = getLinks(tree)
   const sortedLinks = sortLinks(links)
-  console.log('------------------------------- sortedLinks:', JSON.stringify(sortedLinks))
+  // console.log('------------------------------- sortedLinks:', JSON.stringify(sortedLinks))
 
   createNodes(sortedLinks, getNode, createContentDigest, createNode, createParentChildLink, createNodeId)
   markRoots(getNodes, createNodeField)

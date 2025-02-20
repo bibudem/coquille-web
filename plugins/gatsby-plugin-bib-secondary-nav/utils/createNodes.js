@@ -28,7 +28,7 @@ export default function createNodes(
 
     const parentPathname = `${pathname.split('/').slice(0, isRoot ? -2 : -1).join('/')}/`
     const parentId = getId(`${pathname.split('/').slice(0, isRoot ? -2 : -1).join('/')}/`)
-    console.log('Parent of %s is %s', pathname, parentPathname)
+    // console.log('Parent of %s is %s', pathname, parentPathname)
 
     const parent = pathname === '/' ? undefined : getNode(parentId)
 
