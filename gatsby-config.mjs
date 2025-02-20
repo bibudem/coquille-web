@@ -36,11 +36,6 @@ const config = {
           '@/images': 'src/images',
           '@/utils': 'src/utils',
         },
-        extensions: [
-          'js',
-          'jsx',
-          'mdx'
-        ],
       }
     },
     {
@@ -96,6 +91,7 @@ const config = {
         icon: 'src/images/logo-bib-icon.svg'
       }
     },
+    'gatsby-plugin-bib-secondary-nav',
     'gatsby-plugin-mdx',
     {
       resolve: 'gatsby-plugin-webfonts',

@@ -18,26 +18,28 @@ export const createPages = async ({ graphql, actions, reporter, getNode }) => {
 
   // Get all markdown pages
   const result = await graphql(`
-  query PagesQuery {
-    allFile(filter: {sourceInstanceName: {eq: "contenu"}}) {
-      nodes {
-        id
-        name
-        relativeDirectory
-        absolutePath
-        internal {
-          contentFilePath
-        }
-        childMdx {
-          frontmatter {
-            slug
-            title
-            template
+    query PagesQuery {
+      allFile(filter: {sourceInstanceName: {eq: "contenu"}}) {
+        nodes {
+          id
+          name
+          relativeDirectory
+          absolutePath
+          internal {
+            contentFilePath
+          }
+          childMdx {
+            frontmatter {
+              slug
+              title
+              navTitle
+              order
+              template
+            }
           }
         }
       }
     }
-  }
   `)
 
   if (result.errors) {
@@ -70,6 +72,7 @@ export const createPages = async ({ graphql, actions, reporter, getNode }) => {
       // You can use the values in this context in
       // our page layout component
       context: { id: node.id },
+      path2: path
     })
   })
 }
