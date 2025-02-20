@@ -2,6 +2,12 @@
 title: Les bibliothèques / UdeM
 slug: index
 ---
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import CardActionArea from '@mui/material/CardActionArea';
+
 
 import imageEspace from './images/image-arret-bibliothecaire.webp'
 import imageRecherche from './images/recherche-accueil.webp'
@@ -9,6 +15,7 @@ import imageEnseignement from './images/enseignement-accueil.webp'
 import imageCollections from './images/collections-speciales-montage.webp'
 import imageEngagement from './images/engagement-accueil.webp'
 import { Padding } from '@mui/icons-material'
+import { BookmarkSimple } from '@phosphor-icons/react'
 
 <Section> 
 # Les bibliothèques / UdeM
@@ -19,12 +26,17 @@ Display : Curiosité illimitée Julia Géréreux Randall Bibliothécaire Science
 
 <Section>recherche Sofia</Section>
 
-<Section bg='bleuPrincipal'>
+<Section bg='bleu100'>
 
 ## Quoi de neuf
 
 <Bloc nouvelles-événements pompé>
 </Bloc>
+
+
+
+
+
 </Section>
 
 <Section bg='bleu200'>
@@ -33,12 +45,29 @@ Display : Curiosité illimitée Julia Géréreux Randall Bibliothécaire Science
 
 Quels que soient vos besoins, vous découvrirez ici de multiples méthodes d’apprentissage facilement accessibles. Trouvez celle qui vous convient!
 
-<Hero cartes bleues icônes>
+<Card 
+sx={theme => ({ maxWidth: 345,
+boxShadow:'none',
+backgroundColor: theme.palette.primary.main,
+color:'#FFF'
+})}>
+      <CardActionArea>
+        <CardContent>
+        <BookmarkSimple color='#FFFFFF88' />
+          <Typography gutterBottom variant="h5" component="div">
+            Ressources et conseils préparés par nos spécialistes
+          </Typography>
+          <Typography variant="body2">
+            Voir la boîte à outils
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
 
-Ressources et conseils préparés par nos spécialistes [Voir la boîte à outil](https://libguides.bib.umontreal.ca/c.php?g=739631) Capsules vidéos et webinaires [Accédez à YouTube](https://www.youtube.com/@BibliothequesUdeM) Services Accessibilité [En savoir plus](bib.umontreal.ca) Soutien personnalisé avec nos spécialistes [Prendre rendez-vous](bib.umontreal.ca)
+
 
 <Button primary foncé>Découvrir les services pour la communauté étudiante</Button>
-</Hero>
+
 
 </Section>
 
@@ -116,7 +145,6 @@ spacing={2}
 sx={{
   paddingTop:'238px',
   paddingBottom: '185px',
-  outline: '1px solid red'
 }}>
 <Grid size={{xs:12, md:6}} offset={{md:6}}>
 
