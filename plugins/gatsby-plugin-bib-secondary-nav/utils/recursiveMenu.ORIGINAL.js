@@ -1,22 +1,4 @@
 export function recursiveMenu(routes) {
-
-  const menuStructure = []
-
-  routes
-    .filter(route => route.isRoot)
-    .forEach(route => {
-      const { pathname } = route
-      const paths = pathname.split('/').filter(s => s)
-      const menu = {
-        id: paths[paths.length - 1],
-        pathname,
-        parent: paths.length > 1 ? paths[paths.length - 2] : null,
-        paths,
-        menu: null
-      }
-      menuStructure.push(menu)
-    })
-
   const createItemsFromPathnames = routes
     .map(route => {
       let paths = route.pathname.split("/").filter(s => s)
@@ -45,8 +27,6 @@ export function recursiveMenu(routes) {
       return items
     }, [])
     .filter(route => route.navTitle)
-
-  console.log('createItemsFromPathnames:', createItemsFromPathnames)
 
   function createRecursiveMenu(array, parent) {
     let result = []

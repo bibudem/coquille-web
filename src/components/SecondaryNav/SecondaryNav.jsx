@@ -1,77 +1,36 @@
 import { useEffect, useState } from 'react'
-import { Box } from '@mui/material'
+import { Box, Divider } from '@mui/material'
 import { graphql, useStaticQuery } from 'gatsby'
+import NavList from './NavList'
+import NavItem from './NavItem'
 import { recursiveMenu } from '../../../plugins/gatsby-plugin-bib-secondary-nav/utils/recursiveMenu.js'
 import fetchNavigation from './fetchNavigation.js'
 
-// import { MdxRoutes } from '../../../plugins/gatsby-plugin-bib-secondary-nav/components/MdxRoutes.js'
-
-export function SecondaryNav({ children, navigationOrder = false, data, ...props }) {
-  const [navigation, setNavigation] = useState(null)
+export function SecondaryNav({ currentLocation, children, navigationOrder = false, data, ...props }) {
+  const [navigationTree, setNavigationTree] = useState(null)
 
   const pages = useStaticQuery(graphql`
     query NavQuery {
-      allMdx(filter: { internal: { contentFilePath: { regex: "//content//" } } }) {
+      allSiteNavigation {
         edges {
           node {
             id
-            frontmatter {
-              title
-              slug
-              navTitle
-              order
-            }
+            isRoot
+            order
+            parentId
+            pathname
+            title
           }
         }
       }
     }
   `)
 
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     allMdx(filter: { internal: { contentFilePath: { regex: "//content//" } } }) {
-  //       edges {
-  //         node {
-  //           id
-  //           frontmatter {
-  //             title
-  //             slug
-  //             navTitle
-  //             order
-  //           }
-  //         }
-  //       }
-  //     }
-  //     allSiteNavigation {
-  //       edges {
-  //         node {
-  //           id
-  //           order
-  //           parent {
-  //             id
-  //             internal {
-  //               contentFilePath
-  //             }
-  //           }
-  //           title
-  //           path
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-
-  const { edges } = pages.allMdx
-
   useEffect(() => {
     fetchNavigation().then((data) => {
-      console.log('########## nav data:', data)
-      setNavigation(data)
+      setNavigationTree(data)
     })
   }, [])
-
-  // console.log('navData:', navData)
-  console.log('edges:', edges)
 
   function sortOrder(array) {
     if (navigationOrder) {
@@ -89,40 +48,44 @@ export function SecondaryNav({ children, navigationOrder = false, data, ...props
     }, [])
   }
 
-  const mdxData = edges.map((data) => {
-    console.log('### data:', data)
-    const { frontmatter } = data.node
-    return {
-      navTitle: frontmatter.navTitle ?? frontmatter.title,
-      slug: frontmatter.slug,
-    }
-  })
+  const navData = pages.allSiteNavigation.edges.map((data) => data.node)
+  const currentRoute = navData.find((route) => route.pathname === currentLocation.pathname)
+  const siblings = navData
+    .filter((route) => {
+      return route.parentId === currentRoute.parentId
+    })
+    .map(({ order, ...rest }) => {
+      order = order ?? 999
+      return {
+        order,
+        ...rest,
+      }
+    })
+    .sort((a, b) => {
+      const orderA = a.order
+      const orderB = b.order
+      return orderA - orderB
+    })
 
-  const routes = sortOrder(mdxData)
   // const menus = sortOrder(recursiveMenu(mdxData))
 
-  console.log('props:', props)
-  console.log('edges:', edges)
-  console.log('routes:', routes)
   // console.log('menus:', menus)
 
+  // const routes_ = recursiveMenu(navData)
+
+  // useEffect(() => {
+  //   console.log('navigationTree:', navigationTree)
+  // }, [navigationTree])
+
   return (
-    <Box {...props} sx={{ outline: '1px solid red' }}>
+    <Box {...props}>
       <nav>
-        {/* <MdxRoutes>
-          {(routes, _) => {
-            console.log('routes:', routes)
-            return (
-              <ul>
-                {routes.map((route, index) => (
-                  <li key={index}>
-                    <Link to={route.slug}>{route.navTitle}</Link>
-                  </li>
-                ))}
-              </ul>
-            )
-          }}
-        </MdxRoutes> */}
+        <Divider />
+        <NavList>
+          {siblings.map((data) => (
+            <NavItem key={data.id} item={data} currentLocation={currentLocation}></NavItem>
+          ))}
+        </NavList>
       </nav>
     </Box>
   )

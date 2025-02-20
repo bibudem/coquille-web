@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { Accordion, AccordionDetails, AccordionSummary, Box, Container, Tab, Tabs, useTheme } from '@mui/material'
@@ -35,9 +36,15 @@ import { SecondaryNav } from '@/components/SecondaryNav/SecondaryNav'
 
 const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, CallToAction1, CallToAction2, Carousel, Divider, Grid, IconInSquare, List, ListItem, ListItemText, ListItemButton, ListItemButton, ListItemIcon, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
 
-export default function PageTemplate({ pageContext, children, data, ...rest }) {
+export default function PageTemplate({ pageContext, children, data, location, ...rest }) {
   const isSmall = useSmall('lg')
   const theme = useTheme()
+  const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
+
+  useEffect(() => {
+    const navLvl = location.pathname.split('/').length
+    setHasSecondaryNav(navLvl > 2)
+  }, [location])
 
   if (typeof window !== 'undefined') {
     window.bib = window.bib || {}
@@ -45,12 +52,19 @@ export default function PageTemplate({ pageContext, children, data, ...rest }) {
     console.log('window.bib.theme:', window.bib.theme)
   }
 
-  // console.log('pageContext:', pageContext)
-  console.log('data:', data)
-
   const {
     breadcrumb: { crumbs },
   } = pageContext
+
+  const mainContent = (
+    <>
+      <Breadcrumbs crumbs={crumbs} />
+      <main role="main">
+        {children}
+        <RetroactionUsager />
+      </main>
+    </>
+  )
 
   return (
     <MDXProvider components={components}>
@@ -70,15 +84,26 @@ export default function PageTemplate({ pageContext, children, data, ...rest }) {
 
         <MenuLatteral />
 
-        <Breadcrumbs crumbs={crumbs} />
+        {hasSecondaryNav ? (
+          <Container maxWidth="xl">
+            <Grid
+              container
+              spacing={{
+                xs: 1,
+                sm: 3,
+                lg: 4,
+              }}
+            >
+              <Grid size={3}>
+                <SecondaryNav currentLocation={location} />
+              </Grid>
+              <Grid size={9}>{mainContent}</Grid>
+            </Grid>
+          </Container>
+        ) : (
+          <>{mainContent}</>
+        )}
 
-        <SecondaryNav />
-
-        <main role="main">
-          {children}
-
-          <RetroactionUsager />
-        </main>
         <Footer />
 
         <bib-consent server-request-timeout="5000"></bib-consent>
