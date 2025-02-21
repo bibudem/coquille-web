@@ -8,6 +8,7 @@
     "coquille",
     "theme",
     "accessibilite",
-    "dependencies"
+    "dependencies",
+    "component"
   ]
 }
