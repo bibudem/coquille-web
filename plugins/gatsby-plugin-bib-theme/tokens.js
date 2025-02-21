@@ -22,8 +22,8 @@ const CONTRAST_TEXT_THRESHOLD = 4.5
 const CONTRAST_TEXT_LIGHT = '#fff'
 const CONTRAST_TEXT_DARK = '#111'
 
-function getContrastColor(color) {
-	return getContrastRatio(color, '#fff') > CONTRAST_TEXT_THRESHOLD ? CONTRAST_TEXT_LIGHT : CONTRAST_TEXT_DARK
+export function getContrastColor(color, light = CONTRAST_TEXT_LIGHT, dark = CONTRAST_TEXT_DARK) {
+	return getContrastRatio(color, '#fff') > CONTRAST_TEXT_THRESHOLD ? light : dark
 }
 
 function getColorPalette(color) {

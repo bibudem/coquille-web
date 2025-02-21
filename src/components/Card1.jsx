@@ -1,4 +1,5 @@
-import { styled } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { styled, useTheme } from '@mui/material'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardActionArea from '@mui/material/CardActionArea'
@@ -6,6 +7,7 @@ import Grid from '@mui/material/Grid2'
 
 import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
 import isInternalLink from '../utils/internLink.js'
+import { getContrastColor } from '../../plugins/gatsby-plugin-bib-theme/tokens.js'
 
 const StyledTitle = styled('div')({
   flexGrow: 1,
@@ -30,21 +32,59 @@ const StyledMoreText = styled('div')({
  * @param {any} props.rest - Any additional props to be passed to the component.
  * @returns {React.ReactElement} - The Card1 component.
  */
-export default function Card1({ title, IconComponent, moreText, href, ...rest }) {
+export default function Card1({ title, IconComponent, color = 'bleuPrincipal', moreText, href, ...rest }) {
+  const { sx, ...props } = rest
+  const linkProps = {}
+  const theme = useTheme()
+
+  const colorMap = {
+    primary: {
+      bg: theme.palette.primary.main,
+      hoverBg: theme.palette.primary.dark,
+      iconColor: '#ffffff88',
+      linkIconColor: '#fff',
+    },
+    bleuPrincipal: {
+      bg: theme.palette.bleuPrincipal.main,
+      hoverBg: theme.palette.bleuPrincipal.dark,
+      iconColor: '#ffffff88',
+      linkIconColor: '#fff',
+    },
+    vertFonce: {
+      bg: theme.palette.vertFonce.main,
+      hoverBg: theme.palette.vertFonce.dark,
+      iconColor: '#ffffff88',
+      linkIconColor: '#fff',
+    },
+    rose300: {
+      bg: theme.palette.rose300.main,
+      hoverBg: theme.palette.rose500.main,
+      iconColor: '#f04e2488',
+      linkIconColor: theme.palette.rougeOrange.main,
+    },
+  }
+
   if (typeof href !== 'string') {
     throw new Error('The `href`prop must be a string')
   }
 
-  const linkProps = {}
+  const [_color, _setColor] = useState(colorMap.bleuPrincipal)
+
+  useEffect(() => {
+    if (Reflect.has(colorMap, color)) {
+      _setColor(colorMap[color])
+    }
+  }, [color, colorMap])
+
   const linkIsInternal = isInternalLink(href)
 
   const StyledLinkIcon = styled(linkIsInternal ? ArrowRight : ArrowUpRight)(({ theme }) => ({
-    fill: '#ffca40',
+    fill: _color.linkIconColor,
     borderRadius: theme.shape.corner.full,
     width: '3.125rem',
     height: '3.125rem',
-    backgroundColor: theme.palette.primary.dark,
-    padding: '0.8125rem 0.8125rem',
+    backgroundColor: _color.hoverBg,
+    padding: '0.8125rem',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -59,21 +99,24 @@ export default function Card1({ title, IconComponent, moreText, href, ...rest })
       sx={(theme) => ({
         borderRadius: theme.shape.corner.small,
         boxShadow: 'none',
+        maxWidth: 345,
+        ...sx,
       })}
+      {...props}
     >
       <CardActionArea
         component="a"
         href={href}
         sx={(theme) => ({
-          maxWidth: 345,
+          maxWidth: '100%',
           aspectRatio: '0.8446',
           borderRadius: theme.shape.corner.small,
-          color: '#FFF',
+          color: getContrastColor(_color.bg, '#fff', '#111'),
           display: 'block',
           padding: '1.875rem',
-          backgroundColor: theme.palette.primary.main,
+          backgroundColor: _color.bg,
           '&:hover': {
-            backgroundColor: theme.palette.primary.dark,
+            backgroundColor: _color.hoverBg,
           },
         })}
         {...linkProps}
@@ -88,7 +131,7 @@ export default function Card1({ title, IconComponent, moreText, href, ...rest })
           container
           spacing="1.8125rem"
         >
-          <IconComponent color="#ffffff88" size={55} />
+          <IconComponent color={_color.iconColor} size={55} />
           <StyledTitle component="div">{title}</StyledTitle>
           <Grid
             container
