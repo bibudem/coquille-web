@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.7.0](https://github.com/bibudem/coquille-web/compare/v3.6.0...v3.7.0) (2025-02-21)
+
+
+### Features
+
+* Ajout du composant Card1 à la section "Mille et une façon d'apprendre" de la page d'accueil ([021685f](https://github.com/bibudem/coquille-web/commit/021685f9933ba0207a1f37f053234850fc28c028))
+* **component:** Ajout du composant Card1. ([97e91ce](https://github.com/bibudem/coquille-web/commit/97e91ce4ed3c82ce0783d414559481e16db038e0))
+* **component:** Card1: ajout de la propriété `color` ([409c7ca](https://github.com/bibudem/coquille-web/commit/409c7ca5713bcb3cba8819f1fded33d3c5e8ca57))
+* création de la carte sur la page d'accueil sous Milles et une façon d'apprendre ([59f7dd0](https://github.com/bibudem/coquille-web/commit/59f7dd04a51def17205386b1fd4a86924955330f))
+
+
+### Bug Fixes
+
+* **component:** Card1: renommage de la propriété linkText pour moreText ([6184a87](https://github.com/bibudem/coquille-web/commit/6184a87b1574360606ac594cba5e190a7bde608f))
+* Correction du titre pour navigation secondaire de la page mission-vision-valeur.mdx ([5098ddf](https://github.com/bibudem/coquille-web/commit/5098ddf93c7fc1288d0f50b92dfec3819d725cd9))
+
 ## [3.6.0](https://github.com/bibudem/coquille-web/compare/v3.5.0...v3.6.0) (2025-02-20)
 
 
