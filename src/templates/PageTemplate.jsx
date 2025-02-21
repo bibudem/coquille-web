@@ -27,6 +27,7 @@ import CallToAction1 from '@/components/CallToAction1'
 import CallToAction2 from '@/components/CallToAction2'
 import Button from '@/components/Button'
 import IconInSquare from '@/components/IconInSquare'
+import Card1 from '@/components/Card1'
 
 import CommentIcon from '@mui/icons-material/Comment'
 
@@ -34,7 +35,7 @@ import { useSmall } from '@/hooks/use-small'
 import { Hero, Bloc } from '@/components/dummy-components'
 import { SecondaryNav } from '@/components/SecondaryNav/SecondaryNav'
 
-const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, CallToAction1, CallToAction2, Carousel, Divider, Grid, IconInSquare, List, ListItem, ListItemText, ListItemButton, ListItemButton, ListItemIcon, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
+const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, CallToAction1, CallToAction2, Card1, Carousel, Divider, Grid, IconInSquare, List, ListItem, ListItemText, ListItemButton, ListItemButton, ListItemIcon, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
 
 export default function PageTemplate({ pageContext, children, data, location, ...rest }) {
   const isSmall = useSmall('lg')
