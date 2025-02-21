@@ -15,7 +15,7 @@ import imageEnseignement from './images/enseignement-accueil.webp'
 import imageCollections from './images/collections-speciales-montage.webp'
 import imageEngagement from './images/engagement-accueil.webp'
 import { Padding } from '@mui/icons-material'
-import { BookmarkSimple } from '@phosphor-icons/react'
+import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icons/react'
 
 <Section> 
 # Les bibliothèques / UdeM
@@ -41,33 +41,46 @@ Display : Curiosité illimitée Julia Géréreux Randall Bibliothécaire Science
 
 <Section bg='bleu200'>
 
-## Mille et une façons d’apprendre
+  ## Mille et une façons d’apprendre
 
-Quels que soient vos besoins, vous découvrirez ici de multiples méthodes d’apprentissage facilement accessibles. Trouvez celle qui vous convient!
+  Quels que soient vos besoins, vous découvrirez ici de multiples méthodes d’apprentissage facilement accessibles. Trouvez celle qui vous convient!
 
-<Card 
-sx={theme => ({ maxWidth: 345,
-boxShadow:'none',
-backgroundColor: theme.palette.primary.main,
-color:'#FFF'
-})}>
-      <CardActionArea>
-        <CardContent>
-        <BookmarkSimple color='#FFFFFF88' />
-          <Typography gutterBottom variant="h5" component="div">
-            Ressources et conseils préparés par nos spécialistes
-          </Typography>
-          <Typography variant="body2">
-            Voir la boîte à outils
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+  <Grid container spacing=".62rem" sx={{margin:'4rem 0 4rem'}}>
+    <Grid>
+      <Card1
+        title="Ressources et conseils préparés par nos spécialistes"
+        IconComponent={BookmarkSimple}
+        linkText="Voir la boîte à outils"
+        href="#"
+      />
+    </Grid>
+    <Grid>
+      <Card1
+        title="Capsules vidéos et webinaires"
+        IconComponent={Video}
+        linkText="Accéder à YouTube"
+        href="https://www.youtube.com/user/BibliothequesUdeM"
+      />
+    </Grid>
+    <Grid>
+      <Card1
+        title="Service Accessibilité"
+        IconComponent={PersonSimpleCircle}
+        linkText="En savoir plus"
+        href="#"
+      />
+    </Grid>
+    <Grid>
+      <Card1
+        title="Soutien personnalisé avec nos spécialistes"
+        IconComponent={Users}
+        linkText="Prendre rendez-vous"
+        href="#"
+      />
+    </Grid>
+  </Grid>
 
-
-
-<Button primary foncé>Découvrir les services pour la communauté étudiante</Button>
-
+  <Button primary href="#">Découvrir les services pour la communauté étudiante</Button>
 
 </Section>
 
