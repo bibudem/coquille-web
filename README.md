@@ -72,17 +72,25 @@ Les commits dans la branche production déclanchent un déploiement sur Netlify 
 
 Le prototype utilise la librairie [Material UI](https://mui.com/material-ui/). Tous les composants de cette librairie peuvent être utilisées dans les fichiers markdown (`.mdx`). Les composants suivants sont pré-chargés dans le prototype et peuvent donc être utilisés directement:
 
-- Link
-- [Accordion, AccordionDetails, AccordionSummary](https://mui.com/material-ui/react-accordion/)
-- [Button](https://mui.com/material-ui/react-button/)
-- [Box](https://mui.com/material-ui/react-box/)
-- [Divider](https://mui.com/material-ui/react-divider/)
-- [Grid v2](https://mui.com/material-ui/react-grid2/)
-- [List, ListItem, ListItemText, ListItemButton, ListItemIcon](https://mui.com/material-ui/react-list/)
-- [Tabs, Tab](https://mui.com/material-ui/react-tabs/)
-- [Typography](https://mui.com/material-ui/react-typography/)
+| Composant                                                                                                                                                                                                                                                                                             | Source (package node)      |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| [Accordion](https://mui.com/material-ui/react-accordion/),<br />[AccordionDetails](https://mui.com/material-ui/react-accordion/),<br />[AccordionSummary](https://mui.com/material-ui/react-accordion/)                                                                                               | @mui/material              |
+| [Button](https://mui.com/material-ui/react-button/)                                                                                                                                                                                                                                                   | @mui/material              |
+| [Box](https://mui.com/material-ui/react-box/)                                                                                                                                                                                                                                                         | @mui/material              |
+| CallToAction1                                                                                                                                                                                                                                                                                         | @bibudem/coquille-web      |
+| CallToAction2                                                                                                                                                                                                                                                                                         | @bibudem/coquille-web      |
+| Card1                                                                                                                                                                                                                                                                                                 | @bibudem/coquille-web      |
+| Carousel                                                                                                                                                                                                                                                                                              | react-material-ui-carousel |
+| [Divider](https://mui.com/material-ui/react-divider/)                                                                                                                                                                                                                                                 | @mui/material<br />        |
+| [Grid v2](https://mui.com/material-ui/react-grid2/)                                                                                                                                                                                                                                                   | @mui/material              |
+| IconInSquare                                                                                                                                                                                                                                                                                          | @bibudem/coquille-web      |
+| Link                                                                                                                                                                                                                                                                                                  | @bibudem/coquille-web      |
+| [List](https://mui.com/material-ui/react-list/),<br />[ListItem](https://mui.com/material-ui/react-list/),<br />[ListItemButton](https://mui.com/material-ui/react-list/),<br />[ListItemIcon](https://mui.com/material-ui/react-list/),<br />[ListItemText](https://mui.com/material-ui/react-list/) | @mui/material              |
+| Section                                                                                                                                                                                                                                                                                               | @bibudem/coquille-web      |
+| [Tabs](https://mui.com/material-ui/react-tabs/),<br />[Tab](https://mui.com/material-ui/react-tabs/)                                                                                                                                                                                                  | @mui/material              |
+| [Typography](https://mui.com/material-ui/react-typography/)                                                                                                                                                                                                                                           | @mui/material              |
 
-Les autres composants de la librairie doivent être importées pour être utilisées:
+Les autres composants de la librairie doivent être importées pour être utilisées. Par exemple:
 
 une-page.mdx
 
@@ -119,3 +127,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ```
 
 Consultez la [documentation de Material UI](https://mui.com/material-ui/all-components/) pour la liste complète des composants disponibles.
+
+## Pour créer une nouvelle release
+
+- npm version minor -m "Bump v%s"
