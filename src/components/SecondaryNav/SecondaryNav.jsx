@@ -50,9 +50,10 @@ export function SecondaryNav({ currentLocation, children, navigationOrder = fals
 
   const navData = pages.allSiteNavigation.edges.map((data) => data.node)
   const currentRoute = navData.find((route) => route.pathname === currentLocation.pathname)
+  // console.log('currentRoute:', currentRoute)
   const siblings = navData
     .filter((route) => {
-      return route.parentId === currentRoute.parentId
+      return route.parentId === currentRoute?.parentId
     })
     .map(({ order, ...rest }) => {
       order = order ?? 999
