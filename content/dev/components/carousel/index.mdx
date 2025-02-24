@@ -1,0 +1,53 @@
+---
+title: Carousel
+hideSecondaryNav: true
+secondaryNav:
+  hidden: true
+---
+
+import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icons/react'
+
+<Section bg='bleu200'>
+
+  ## Mille et une façons d’apprendre
+
+  Quels que soient vos besoins, vous découvrirez ici de multiples méthodes d’apprentissage facilement accessibles. Trouvez celle qui vous convient!
+
+  <Carousel children={
+    <>
+      <Card1
+        key={1}
+        title="Ressources et conseils préparés par nos spécialistes"
+        IconComponent={BookmarkSimple}
+        moreText="Voir la boîte à outils"
+        href="#"
+        sx={{display: 'inline-block'}}
+      />
+      <Card1
+        title="Capsules vidéos et webinaires"
+        IconComponent={Video}
+        moreText="Accéder à YouTube"
+        href="https://www.youtube.com/user/BibliothequesUdeM"
+        sx={{display: 'inline-block'}}
+      />
+      <Card1
+        title="Service Accessibilité"
+        IconComponent={PersonSimpleCircle}
+        moreText="En savoir plus"
+        href="#"
+        sx={{display: 'inline-block'}}
+      />
+      <Card1
+        title="Soutien personnalisé avec nos spécialistes"
+        IconComponent={Users}
+        moreText="Prendre rendez-vous"
+        href="#"
+        sx={{display: 'inline-block'}}
+          />
+    </>
+    }
+  />
+
+  <Button primary href="#">Découvrir les services pour la communauté étudiante</Button>
+
+</Section>
