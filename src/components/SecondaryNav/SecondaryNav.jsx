@@ -1,12 +1,67 @@
 import { useEffect, useState } from 'react'
-import { Box, Divider } from '@mui/material'
+import { Box, Divider, styled } from '@mui/material'
 import { graphql, useStaticQuery } from 'gatsby'
 import NavList from './NavList'
 import NavItem from './NavItem'
 import { recursiveMenu } from '../../../plugins/gatsby-plugin-bib-secondary-nav/utils/recursiveMenu.js'
 import fetchNavigation from './fetchNavigation.js'
 
-export function SecondaryNav({ currentLocation, children, navigationOrder = false, data, ...props }) {
+const Div = styled('div')({})
+
+const secondaryNavSampleData = {
+  title: 'Obtenir un document',
+  pathname: '/obtenir/',
+  children: [
+    {
+      title: 'Prêt, renouvellement, retour',
+      pathname: '/obtenir/pret-renouvellement-retour/',
+      isActive: true,
+      children: [
+        {
+          title: 'Communauté UdeM',
+          pathname: '/obtenir/pret-renouvellement-retour/communaute-udem/',
+          isActive: true,
+          children: [
+            {
+              title: 'Carte PBUQ',
+              pathname: '/obtenir/pret-renouvellement-retour/communaute-udem/carte-pbuq',
+              isActive: true,
+            },
+            {
+              title: 'Ententes avec les cégeps',
+              pathname: '/obtenir/pret-renouvellement-retour/communaute-udem/ententes-cegeps',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Nos collections',
+      pathname: '/obtenir/collections/',
+    },
+    {
+      title: 'Mission, vision, valeurs et objectifs',
+      pathname: '/obtenir/mission-vision-valeurs',
+    },
+    ,
+    {
+      title: 'Rapports annuels',
+      pathname: '/obtenir/rapports annuels',
+    },
+    ,
+    {
+      title: 'Politiques et reglement',
+      pathname: '/obtenir/politiques-reglement',
+    },
+    ,
+    {
+      title: 'Carrière',
+      pathname: '/obtenir/carriere',
+    },
+  ],
+}
+
+export function SecondaryNav({ navData = secondaryNavSampleData, data = {}, currentLocation, children, navigationOrder = false, ...rest }) {
   const [navigationTree, setNavigationTree] = useState(null)
 
   const pages = useStaticQuery(graphql`
@@ -32,6 +87,11 @@ export function SecondaryNav({ currentLocation, children, navigationOrder = fals
     })
   }, [])
 
+  // ------------------------------------------------------------
+  //
+  //
+  //
+
   function sortOrder(array) {
     if (navigationOrder) {
       return array.sort((a, b) => {
@@ -48,10 +108,10 @@ export function SecondaryNav({ currentLocation, children, navigationOrder = fals
     }, [])
   }
 
-  const navData = pages.allSiteNavigation.edges.map((data) => data.node)
-  const currentRoute = navData.find((route) => route.pathname === currentLocation.pathname)
+  const navData_ = pages.allSiteNavigation.edges.map((data) => data.node)
+  const currentRoute = navData_.find((route) => route.pathname === currentLocation.pathname)
   // console.log('currentRoute:', currentRoute)
-  const siblings = navData
+  const siblings = navData_
     .filter((route) => {
       return route.parentId === currentRoute?.parentId
     })
@@ -72,19 +132,34 @@ export function SecondaryNav({ currentLocation, children, navigationOrder = fals
 
   // console.log('menus:', menus)
 
-  // const routes_ = recursiveMenu(navData)
+  // const routes_ = recursiveMenu(navData_)
 
   // useEffect(() => {
   //   console.log('navigationTree:', navigationTree)
   // }, [navigationTree])
 
+  // ------------------------------------------------------------
+
   return (
-    <Box {...props}>
+    <Box {...rest}>
+      <header role="banner">
+        <Div
+          sx={{
+            fontFamily: 'Lora',
+            fontSize: '2rem',
+            fontWeight: 500,
+            lineHeight: 1.2,
+            color: '#222930', // neutre/700
+          }}
+        >
+          {navData.title}
+        </Div>
+      </header>
+      <Divider />
       <nav>
-        <Divider />
-        <NavList>
-          {siblings.map((data) => (
-            <NavItem key={data.id} item={data} currentLocation={currentLocation}></NavItem>
+        <NavList isRoot={true}>
+          {navData.children.map((data, i) => (
+            <NavItem key={i} item={data} currentLocation={currentLocation}></NavItem>
           ))}
         </NavList>
       </nav>
