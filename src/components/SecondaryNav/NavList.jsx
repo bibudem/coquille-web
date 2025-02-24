@@ -9,6 +9,31 @@ const StyledNavList = styled('ul')(({ theme }) => ({
   gap: 12,
 }))
 
-export default function NavList({ children, ...props }) {
-  return <StyledNavList {...props}>{children}</StyledNavList>
+export default function NavList({ isRoot = false, ...rest }) {
+  const { children, sx = {}, ...props } = rest
+  const styles = {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: 0,
+    margin: 0,
+    marginLeft: '1rem',
+    gap: 1.25,
+  }
+
+  if (isRoot) {
+    styles.marginLeft = 0
+  }
+
+  return (
+    <StyledNavList
+      className="bib-nav2-list"
+      sx={{
+        ...styles,
+        ...sx,
+      }}
+      {...props}
+    >
+      {children}
+    </StyledNavList>
+  )
 }
