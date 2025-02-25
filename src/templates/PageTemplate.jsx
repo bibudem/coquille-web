@@ -41,6 +41,7 @@ export default function PageTemplate({ pageContext, children, data, location, ..
   const isSmall = useSmall('lg')
   const theme = useTheme()
   const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
+  console.log('location:', location)
 
   useEffect(() => {
     const navLvl = location.pathname.split('/').length
