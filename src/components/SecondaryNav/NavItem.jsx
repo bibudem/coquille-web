@@ -1,30 +1,37 @@
-import { Link, styled } from '@mui/material'
+import { Divider, Link, styled } from '@mui/material'
 import { CaretRight } from '@phosphor-icons/react'
 import NavList from './NavList.jsx'
 import { useEffect, useState } from 'react'
 
-const LVL_0_LINK_STYLES = {
+const LINK_STYLES_BASE = {
   color: '#222930',
   fontFamily: 'Figtree',
-  fontSize: '1.1875rem',
-  fontWeight: 600,
-  lineHeight: '150%',
-  letterSpacing: '0.01188rem',
+  fontSize: 16,
+  lineHeight: 1.6,
+  '&.active, &:hover': {
+    color: 'var(--bib-palette-bleuPrincipal-main)',
+  },
 }
 
-const LVL_REST_LINK_STYLES = {}
+const LVL_0_LINK_STYLES = {
+  ...LINK_STYLES_BASE,
+  fontWeight: 600,
+  letterSpacing: '.32px',
+}
+
+const LVL_REST_LINK_STYLES = {
+  ...LINK_STYLES_BASE,
+  fontWeight: 400,
+}
 
 const StyledLi = styled('li')(({ theme }) => ({
   margin: 0,
   padding: 0,
-  '&.active': {
-    color: theme.palette.primary.main,
-  },
 }))
 
 export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
   console.log('item:', item)
-  const { title, pathname, isActive = false, children } = item
+  const { title, route, isActive = false, children = false } = item
   // const isActive = currentLocation.pathname === pathname
 
   const [linkStyles, setLinkStyles] = useState({})
@@ -51,23 +58,38 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
     <StyledLi className={`bib-nav2-item ${isActive ? 'active' : ''}`}>
       <Link
         col
-        href={pathname}
+        href={route}
         sx={{
           display: 'flex',
           alignSelf: 'stretch',
           alignItems: 'flex-start',
           paddingLeft: '0.5rem',
+          justifyContent: 'space-between',
           ...linkStyles,
+          ...(isActive && { color: 'var(--bib-palette-bleuPrincipal-main)' }),
         }}
         {...props}
       >
         {title}
-        {isActive && <CaretRight size="1.5rem" color="var(--bib-palette-bleuPrincipal-main)" />}
+        {children && (
+          <CaretRight
+            size="1.5rem"
+            color={isActive ? 'var(--bib-palette-bleuPrincipal-main)' : 'inherit'}
+            style={{
+              flexShrink: 1,
+              flexGrow: 0,
+              ...(isActive && { transform: 'rotate(90deg)' }),
+              '&:hover': {
+                color: 'var(--bib-palette-bleuPrincipal-main)',
+              },
+            }}
+          />
+        )}
       </Link>
       {children && (
         <NavList>
           {children.map((item) => (
-            <NavItem key={item.pathname} item={item} currentLocation={currentLocation} lvl={lvl + 1} />
+            <NavItem key={item.route} item={item} currentLocation={currentLocation} lvl={lvl + 1} />
           ))}
         </NavList>
       )}
