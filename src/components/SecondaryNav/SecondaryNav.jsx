@@ -5,61 +5,9 @@ import NavList from './NavList'
 import NavItem from './NavItem'
 import { recursiveMenu } from '../../../plugins/gatsby-plugin-bib-secondary-nav/utils/recursiveMenu.js'
 import fetchNavigation from './fetchNavigation.js'
+import secondaryNavSampleData from './secondaryNavSampleData.js'
 
 const Div = styled('div')({})
-
-const secondaryNavSampleData = {
-  title: 'Obtenir un document',
-  pathname: '/obtenir/',
-  children: [
-    {
-      title: 'Prêt, renouvellement, retour',
-      pathname: '/obtenir/pret-renouvellement-retour/',
-      isActive: true,
-      children: [
-        {
-          title: 'Communauté UdeM',
-          pathname: '/obtenir/pret-renouvellement-retour/communaute-udem/',
-          isActive: true,
-          children: [
-            {
-              title: 'Carte PBUQ',
-              pathname: '/obtenir/pret-renouvellement-retour/communaute-udem/carte-pbuq',
-              isActive: true,
-            },
-            {
-              title: 'Ententes avec les cégeps',
-              pathname: '/obtenir/pret-renouvellement-retour/communaute-udem/ententes-cegeps',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: 'Nos collections',
-      pathname: '/obtenir/collections/',
-    },
-    {
-      title: 'Mission, vision, valeurs et objectifs',
-      pathname: '/obtenir/mission-vision-valeurs',
-    },
-    ,
-    {
-      title: 'Rapports annuels',
-      pathname: '/obtenir/rapports annuels',
-    },
-    ,
-    {
-      title: 'Politiques et reglement',
-      pathname: '/obtenir/politiques-reglement',
-    },
-    ,
-    {
-      title: 'Carrière',
-      pathname: '/obtenir/carriere',
-    },
-  ],
-}
 
 export function SecondaryNav({ navData = secondaryNavSampleData, data = {}, currentLocation, children, navigationOrder = false, ...rest }) {
   const [navigationTree, setNavigationTree] = useState(null)
