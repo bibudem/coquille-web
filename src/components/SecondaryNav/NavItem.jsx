@@ -1,28 +1,7 @@
-import { Divider, Link, styled } from '@mui/material'
-import { CaretRight } from '@phosphor-icons/react'
-import NavList from './NavList.jsx'
 import { useEffect, useState } from 'react'
-
-const LINK_STYLES_BASE = {
-  color: '#222930',
-  fontFamily: 'Figtree',
-  fontSize: 16,
-  lineHeight: 1.6,
-  '&.active, &:hover': {
-    color: 'var(--bib-palette-bleuPrincipal-main)',
-  },
-}
-
-const LVL_0_LINK_STYLES = {
-  ...LINK_STYLES_BASE,
-  fontWeight: 600,
-  letterSpacing: '.32px',
-}
-
-const LVL_REST_LINK_STYLES = {
-  ...LINK_STYLES_BASE,
-  fontWeight: 400,
-}
+import { Link, styled, useTheme } from '@mui/material'
+import { CaretRight } from '@phosphor-icons/react'
+import NavList from './NavList'
 
 const StyledLi = styled('li')(({ theme }) => ({
   margin: 0,
@@ -32,9 +11,36 @@ const StyledLi = styled('li')(({ theme }) => ({
 export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
   console.log('item:', item)
   const { title, route, isActive = false, children = false } = item
-  // const isActive = currentLocation.pathname === pathname
 
   const [linkStyles, setLinkStyles] = useState({})
+
+  const LVL_0_LINK_ITEM_STYLES = {}
+
+  const LINK_STYLES_BASE = {
+    // color: '#222930',
+    color: 'green',
+    fontFamily: 'Figtree',
+    lineHeight: 1.6,
+    paddingTop: '.5rem',
+    paddingBottom: '.5rem',
+    '&.active, &:hover': {
+      color: 'var(--bib-palette-bleuPrincipal-main)',
+    },
+  }
+
+  const LVL_0_LINK_STYLES = {
+    ...LINK_STYLES_BASE,
+    fontSize: 18,
+    fontWeight: 600,
+    // borderTop: `1px solid #c3ccd5`,
+    borderTop: `1px solid red`,
+  }
+
+  const LVL_REST_LINK_STYLES = {
+    ...LINK_STYLES_BASE,
+    fontSize: 16,
+    fontWeight: 400,
+  }
 
   useEffect(() => {
     if (lvl > 0) {
@@ -48,22 +54,17 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
     }
   }, [lvl])
 
-  const rootLvlStyles = {}
-
-  if (lvl === 0) {
-    rootLvlStyles.paddingLeft = '0.5rem'
-  }
-
   return (
-    <StyledLi className={`bib-nav2-item ${isActive ? 'active' : ''}`}>
+    <StyledLi className={`bib-nav2-item lvl-${lvl} ${isActive ? 'is-active' : ''}`}>
       <Link
         col
         href={route}
+        className={`bib-nav2-item-link lvl-${lvl} ${isActive && 'is-active'}`}
         sx={{
           display: 'flex',
           alignSelf: 'stretch',
           alignItems: 'flex-start',
-          paddingLeft: '0.5rem',
+          ...(lvl > 0 && { paddingLeft: '0.8125rem' }),
           justifyContent: 'space-between',
           ...linkStyles,
           ...(isActive && { color: 'var(--bib-palette-bleuPrincipal-main)' }),
@@ -86,7 +87,7 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
           />
         )}
       </Link>
-      {children && (
+      {children && isActive && (
         <NavList>
           {children.map((item) => (
             <NavItem key={item.route} item={item} currentLocation={currentLocation} lvl={lvl + 1} />

@@ -16,8 +16,7 @@ export default function NavList({ isRoot = false, ...rest }) {
     flexDirection: 'column',
     padding: 0,
     margin: 0,
-    marginLeft: '1rem',
-    gap: 1.25,
+    gap: 0,
   }
 
   if (isRoot) {

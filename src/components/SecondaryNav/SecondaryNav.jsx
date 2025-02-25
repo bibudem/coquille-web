@@ -6,6 +6,7 @@ import NavItem from './NavItem'
 import { recursiveMenu } from '../../../plugins/gatsby-plugin-bib-secondary-nav/utils/recursiveMenu.js'
 import fetchNavigation from './fetchNavigation.js'
 import secondaryNavSampleData from './secondaryNavSampleData.js'
+import tempBg from './tmp-bg'
 
 const Div = styled('div')({})
 
@@ -89,21 +90,30 @@ export function SecondaryNav({ navData = secondaryNavSampleData, data = {}, curr
   // ------------------------------------------------------------
 
   return (
-    <Box {...rest}>
+    <Box
+      {...rest}
+      sx={{
+        backgroundImage: `url(${tempBg})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPositionX: -11,
+        backgroundPositionY: 20,
+        paddingTop: '28px',
+      }}
+    >
       <header role="banner">
         <Div
           sx={{
             fontFamily: 'Lora',
-            fontSize: '2rem',
+            fontSize: 27,
             fontWeight: 500,
             lineHeight: 1.2,
             color: '#222930', // neutre/700
+            paddingBottom: '24px',
           }}
         >
           {navData.title}
         </Div>
       </header>
-      <Divider />
       <nav>
         <NavList isRoot={true}>
           {navData.children.map((data, i) => (
