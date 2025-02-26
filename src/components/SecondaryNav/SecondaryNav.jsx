@@ -6,7 +6,6 @@ import NavItem from './NavItem'
 import { recursiveMenu } from '../../../plugins/gatsby-plugin-bib-secondary-nav/utils/recursiveMenu.js'
 import fetchNavigation from './fetchNavigation.js'
 import secondaryNavSampleData from './secondaryNavSampleData.js'
-import tempBg from './tmp-bg'
 
 const Div = styled('div')({})
 
