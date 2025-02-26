@@ -68,13 +68,11 @@ export default function TopAppBar() {
         <Container
           maxWidth="xl"
           sx={{
-            '&.MuiContainer-maxWidthXl': {
-              maxWidth: '1500px',
-            },
             py: 0.5,
+            px: '0!important',
           }}
         >
-          <Toolbar>
+          <Toolbar disableGutters>
             <Box
               sx={{
                 flexGrow: 0,
