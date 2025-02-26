@@ -10,7 +10,8 @@ import tempBg from './tmp-bg'
 
 const Div = styled('div')({})
 
-export function SecondaryNav({ navData = secondaryNavSampleData, data = {}, currentLocation, children, navigationOrder = false, ...rest }) {
+export function SecondaryNav({ navData = secondaryNavSampleData, data = {}, currentLocation, navigationOrder = false, ...rest }) {
+  const { sx, children, ...props } = rest
   const [navigationTree, setNavigationTree] = useState(null)
 
   const pages = useStaticQuery(graphql`
@@ -91,13 +92,10 @@ export function SecondaryNav({ navData = secondaryNavSampleData, data = {}, curr
 
   return (
     <Box
-      {...rest}
+      {...props}
       sx={{
-        backgroundImage: `url(${tempBg})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPositionX: -11,
-        backgroundPositionY: 20,
         paddingTop: '28px',
+        ...sx,
       }}
     >
       <header role="banner">

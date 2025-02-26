@@ -9,20 +9,16 @@ const StyledLi = styled('li')(({ theme }) => ({
 }))
 
 export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
-  console.log('item:', item)
   const { title, route, isActive = false, children = false } = item
 
   const [linkStyles, setLinkStyles] = useState({})
 
-  const LVL_0_LINK_ITEM_STYLES = {}
-
   const LINK_STYLES_BASE = {
-    // color: '#222930',
-    color: 'green',
+    display: 'flex',
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    color: '#222930',
     fontFamily: 'Figtree',
-    lineHeight: 1.6,
-    paddingTop: '.5rem',
-    paddingBottom: '.5rem',
     '&.active, &:hover': {
       color: 'var(--bib-palette-bleuPrincipal-main)',
     },
@@ -32,14 +28,19 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
     ...LINK_STYLES_BASE,
     fontSize: 18,
     fontWeight: 600,
-    // borderTop: `1px solid #c3ccd5`,
-    borderTop: `1px solid red`,
+    paddingTop: '8px',
+    paddingBottom: '8px',
+    lineHeight: 1.7,
+    borderTop: `1px solid #c3ccd5`,
   }
 
   const LVL_REST_LINK_STYLES = {
     ...LINK_STYLES_BASE,
     fontSize: 16,
     fontWeight: 400,
+    paddingTop: '4px',
+    paddingBottom: '4px',
+    lineHeight: 1.6,
   }
 
   useEffect(() => {
@@ -61,9 +62,6 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
         href={route}
         className={`bib-nav2-item-link lvl-${lvl} ${isActive && 'is-active'}`}
         sx={{
-          display: 'flex',
-          alignSelf: 'stretch',
-          alignItems: 'flex-start',
           ...(lvl > 0 && { paddingLeft: '0.8125rem' }),
           justifyContent: 'space-between',
           ...linkStyles,
@@ -81,14 +79,14 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
               flexGrow: 0,
               ...(isActive && { transform: 'rotate(90deg)' }),
               '&:hover': {
-                color: 'var(--bib-palette-bleuPrincipal-main)',
+                fill: 'var(--bib-palette-bleuPrincipal-main)',
               },
             }}
           />
         )}
       </Link>
       {children && isActive && (
-        <NavList>
+        <NavList sx={{ paddingBottom: '8px' }}>
           {children.map((item) => (
             <NavItem key={item.route} item={item} currentLocation={currentLocation} lvl={lvl + 1} />
           ))}

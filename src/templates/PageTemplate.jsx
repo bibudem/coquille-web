@@ -87,7 +87,7 @@ export default function PageTemplate({ pageContext, children, data, location, ..
         <MenuLatteral />
 
         {hasSecondaryNav ? (
-          <Container maxWidth="xl">
+          <Container maxWidth="xl" sx={{ px: '64px' }}>
             <Grid
               container
               spacing={{
