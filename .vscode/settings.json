@@ -10,5 +10,6 @@
     "accessibilite",
     "dependencies",
     "component"
-  ]
+  ],
+  "editor.unusualLineTerminators": "auto"
 }
