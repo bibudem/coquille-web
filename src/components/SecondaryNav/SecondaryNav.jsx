@@ -16,14 +16,17 @@ export function SecondaryNav({ navData = secondaryNavSampleData, data = {}, curr
   const pages = useStaticQuery(graphql`
     query NavQuery {
       allSiteNavigation {
-        edges {
-          node {
+        nodes {
+          id
+          title
+          route
+          hidden
+          isRoot
+          title
+          order
+          childrenSiteNavigation {
             id
-            isRoot
-            order
-            parentId
-            pathname
-            title
+            route
           }
         }
       }
@@ -57,8 +60,8 @@ export function SecondaryNav({ navData = secondaryNavSampleData, data = {}, curr
     }, [])
   }
 
-  const navData_ = pages.allSiteNavigation.edges.map((data) => data.node)
-  const currentRoute = navData_.find((route) => route.pathname === currentLocation.pathname)
+  const navData_ = pages.allSiteNavigation.nodes.map((node) => node)
+  const currentRoute = navData_.find((data) => data.route === currentLocation.pathname)
   // console.log('currentRoute:', currentRoute)
   const siblings = navData_
     .filter((route) => {

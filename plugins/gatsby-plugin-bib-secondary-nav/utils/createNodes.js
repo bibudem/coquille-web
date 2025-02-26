@@ -9,28 +9,26 @@ export default function createNodes(
   createNodeId
 ) {
 
-  function getId(pathname) {
-    return createNodeId(`${ID_PREFIX} >>> ${pathname}`)
+  function getId(path) {
+    return createNodeId(`${ID_PREFIX} >>> ${path}`)
   }
 
   sortedLinks.forEach(link => {
-    const { isRoot, pathname } = link
+    const { isRoot, path } = link
     const nodeContent = JSON.stringify(link)
-    const id = getId(pathname)
+    const id = getId(path)
 
-    // const parentId = isRoot ? getId(`${pathname
+    // const parentId = isRoot ? getId(`${path
     //   .split('/')
     //   .slice(0, -2)
-    //   .join('/')}/`) : getId(`${pathname
+    //   .join('/')}/`) : getId(`${path
     //     .split('/')
     //     .slice(0, -1)
     //     .join('/')}/`)
 
-    const parentPathname = `${pathname.split('/').slice(0, isRoot ? -2 : -1).join('/')}/`
-    const parentId = getId(`${pathname.split('/').slice(0, isRoot ? -2 : -1).join('/')}/`)
-    // console.log('Parent of %s is %s', pathname, parentPathname)
+    const parentId = getId(`${path.split('/').slice(0, isRoot ? -2 : -1).join('/')}/`)
 
-    const parent = pathname === '/' ? undefined : getNode(parentId)
+    const parent = path === '/' ? undefined : getNode(parentId)
 
     const nodeMeta = {
       id,
