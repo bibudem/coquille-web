@@ -1,13 +1,20 @@
 import directoryTree from 'directory-tree'
-import getLinks from './getLinks.js'
+import getLinks from '../utils/getLinks.js'
 
 function parseTree() {
   return directoryTree('content', { extensions: /\.mdx?$/, attributes: ['type'], normalizePath: true, exclude: [/^content\/consent/i] })
 }
 
-export default function getTree() {
+function doGetRecursiveMenu(routes) {
+  const recursiveMenu = []
+  const rootNodes = routes.filter(({ isRoot, parentId }) => isRoot && !parentId)
+}
+
+export default function getRecursiveMenu(routes) {
   const tree = parseTree()
+  console.log('tree:', JSON.stringify(tree, null, 2))
   const links = getLinks(tree)
+  console.log('links:', JSON.stringify(links, null, 2))
 
   return Array
     .from(links)

@@ -1,36 +1,54 @@
 import { useEffect, useState } from 'react'
-import { Box, Divider } from '@mui/material'
+import { Box, Divider, styled } from '@mui/material'
 import { graphql, useStaticQuery } from 'gatsby'
 import NavList from './NavList'
 import NavItem from './NavItem'
-import { recursiveMenu } from '../../../plugins/gatsby-plugin-bib-secondary-nav/utils/recursiveMenu.js'
 import fetchNavigation from './fetchNavigation.js'
+import secondaryNavSampleData from './secondaryNavSampleData.js'
 
-export function SecondaryNav({ currentLocation, children, navigationOrder = false, data, ...props }) {
+const Div = styled('div')({})
+
+export function SecondaryNav({ navData = secondaryNavSampleData, currentLocation, navigationOrder = false, ...rest }) {
+  const { sx, children, ...props } = rest
   const [navigationTree, setNavigationTree] = useState(null)
 
-  const pages = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query NavQuery {
-      allSiteNavigation {
-        edges {
-          node {
+      allSiteNavigation(filter: { hidden: { eq: false } }) {
+        nodes {
+          id
+          title
+          path
+          hidden
+          isRoot
+          title
+          order
+          childrenSiteNavigation {
             id
+            path
+            hidden
             isRoot
             order
-            parentId
-            pathname
-            title
           }
         }
       }
     }
   `)
 
-  useEffect(() => {
-    fetchNavigation().then((data) => {
-      setNavigationTree(data)
-    })
-  }, [])
+  const recursiveMenu = [...data.allSiteNavigation.nodes]
+
+  console.log('recursiveMenu:', recursiveMenu)
+
+  // useEffect(() => {
+  //   fetchNavigation().then((data) => {
+  //     setNavigationTree(data)
+  //   })
+  // }, [])
+
+  // ------------------------------------------------------------
+  //
+  //
+  //
 
   function sortOrder(array) {
     if (navigationOrder) {
@@ -48,43 +66,44 @@ export function SecondaryNav({ currentLocation, children, navigationOrder = fals
     }, [])
   }
 
-  const navData = pages.allSiteNavigation.edges.map((data) => data.node)
-  const currentRoute = navData.find((route) => route.pathname === currentLocation.pathname)
-  // console.log('currentRoute:', currentRoute)
-  const siblings = navData
-    .filter((route) => {
-      return route.parentId === currentRoute?.parentId
-    })
-    .map(({ order, ...rest }) => {
-      order = order ?? 999
-      return {
-        order,
-        ...rest,
-      }
-    })
-    .sort((a, b) => {
-      const orderA = a.order
-      const orderB = b.order
-      return orderA - orderB
-    })
-
   // const menus = sortOrder(recursiveMenu(mdxData))
 
   // console.log('menus:', menus)
 
-  // const routes_ = recursiveMenu(navData)
+  // const routes_ = recursiveMenu(navData_)
 
   // useEffect(() => {
   //   console.log('navigationTree:', navigationTree)
   // }, [navigationTree])
 
+  // ------------------------------------------------------------
+
   return (
-    <Box {...props}>
+    <Box
+      {...props}
+      sx={{
+        paddingTop: '28px',
+        ...sx,
+      }}
+    >
+      <header role="banner">
+        <Div
+          sx={{
+            fontFamily: 'Lora',
+            fontSize: 27,
+            fontWeight: 500,
+            lineHeight: 1.2,
+            color: '#222930', // neutre/700
+            paddingBottom: '24px',
+          }}
+        >
+          {navData.title}
+        </Div>
+      </header>
       <nav>
-        <Divider />
-        <NavList>
-          {siblings.map((data) => (
-            <NavItem key={data.id} item={data} currentLocation={currentLocation}></NavItem>
+        <NavList isRoot={true}>
+          {navData.children.map((data, i) => (
+            <NavItem key={i} item={data} currentLocation={currentLocation}></NavItem>
           ))}
         </NavList>
       </nav>

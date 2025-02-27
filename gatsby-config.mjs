@@ -23,7 +23,7 @@ const config = {
     image: `/gatsby-icon.png`,
     siteUrl: 'https://bib.umontreal.ca',
   },
-  trailingSlash: 'never',
+  trailingSlash: 'ignore',
   plugins: [
     'gatsby-plugin-provide-react',
     {

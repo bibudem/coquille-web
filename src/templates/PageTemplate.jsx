@@ -37,10 +37,11 @@ import { SecondaryNav } from '@/components/SecondaryNav/SecondaryNav'
 
 const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, CallToAction1, CallToAction2, Card1, Carousel, Divider, Grid, IconInSquare, List, ListItem, ListItemButton, ListItemIcon, ListItemText, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
 
-export default function PageTemplate({ pageContext, children, data, location, ...rest }) {
+export default function PageTemplate({ pageContext, children, data, location }) {
   const isSmall = useSmall('lg')
   const theme = useTheme()
   const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
+  console.log('location:', location)
 
   useEffect(() => {
     const navLvl = location.pathname.split('/').length
@@ -86,7 +87,7 @@ export default function PageTemplate({ pageContext, children, data, location, ..
         <MenuLatteral />
 
         {hasSecondaryNav ? (
-          <Container maxWidth="xl">
+          <Container maxWidth="xl" sx={{ px: '64px' }}>
             <Grid
               container
               spacing={{

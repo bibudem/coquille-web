@@ -15,12 +15,13 @@ const getLinks = (tree, links = []) => {
 
   const pageAttrs = getPageAttrs(path)
   if (pageAttrs) {
-    const { title, order } = pageAttrs
+    const { title, order, hidden } = pageAttrs
 
     links.push({
-      pathname: getNormalPath(path),
+      path: getNormalPath(path),
       title,
       order,
+      hidden,
       isRoot: path.endsWith('index.mdx')
     })
   }

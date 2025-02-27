@@ -32,9 +32,12 @@ export const createPages = async ({ graphql, actions, reporter, getNode }) => {
             frontmatter {
               slug
               title
-              navTitle
-              order
               template
+              secondaryNav {
+                hidden
+                title
+                order
+              }
             }
           }
         }
@@ -54,7 +57,6 @@ export const createPages = async ({ graphql, actions, reporter, getNode }) => {
   // `context` is available in the template as a prop and as a variable in GraphQL
 
   pages.forEach(node => {
-    // console.log('node: %o', node)
     // console.log(node.parent)
 
     const template = node.childMdx?.frontmatter?.template

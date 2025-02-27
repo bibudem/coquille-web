@@ -6,11 +6,11 @@
   "author": "Christian Rémillard",
   "keywords": [],
   "scripts": {
-    "dev": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby clean && gatsby build",
+    "dev": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" npm run gatsby:develop",
+    "build": "cross-env NODE_OPTIONS='--max-old-space-size=8192' npm run clean && npm run build",
     "preview": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "gatsby:develop": "gatsby develop --verbose"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -23,6 +23,7 @@
     "@sindresorhus/slugify": "^2.2.1",
     "code-bib": "github:bibudem/code-bib",
     "color": "^4.2.3",
+    "conditional-wrap": "^1.0.3",
     "contrast-color": "^1.0.1",
     "directory-tree": "^3.5.2",
     "dotenv": "^16.4.7",
@@ -56,5 +57,8 @@
     "react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825": {
       "react": "^18.2.0"
     }
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

@@ -1,12 +1,11 @@
 import { writeFileSync } from 'fs'
-import { dirname, join, resolve } from 'path'
+import { dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
 import { createFilePath } from 'gatsby-source-filesystem'
-import getTree from './utils/getTree.js'
-import getLinks from './utils/getLinks.js'
-import sortLinks from './utils/sortLinks.js'
+import getRecursiveMenu from './lib/getRecursiveMenu.js'
 import createNodes from './utils/createNodes.js'
 import markRoots from './utils/markRoots.js'
+import getTree from './utils/getTree.js'
 import { SITE_NAVIGATION_FILE_PATH } from './constants.js'
 
 const __dirname = dirname(resolve(fileURLToPath(import.meta.url), '..', '..'))
@@ -17,7 +16,7 @@ export const onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === 'Mdx' && node.internal.fileAbsolutePath?.includes('/content/')) {
-    const pathname = createFilePath({
+    const path = createFilePath({
       node,
       getNode,
       basePath: `content`,
@@ -26,43 +25,40 @@ export const onCreateNode = ({ node, getNode, actions }) => {
 
     createNodeField({
       node,
-      name: 'pathname',
-      value: pathname
+      name: 'path',
+      value: path
     })
   }
 }
 
 export const sourceNodes = ({ actions, createContentDigest, createNodeId, getNode, getNodes }) => {
   const { createNode, createParentChildLink, createNodeField } = actions
+  const navigationTree = getTree()
 
-  const tree = getTree()
-  const links = getLinks(tree)
-  const sortedLinks = sortLinks(links)
-  // console.log('------------------------------- sortedLinks:', JSON.stringify(sortedLinks))
-
-  createNodes(sortedLinks, getNode, createContentDigest, createNode, createParentChildLink, createNodeId)
+  createNodes(navigationTree, getNode, createContentDigest, createNode, createParentChildLink, createNodeId)
   markRoots(getNodes, createNodeField)
 }
 
+// allSiteNavigation(filter: { fields: { isRoot: { eq: true } } }) {
 export const createPages = async ({ graphql }) => {
-  // allSiteNavigation(filter: { fields: { isRoot: { eq: true } } }) {
 
   const { errors, data } = await graphql(`
     {
-      allSiteNavigation {
-        edges {
-          node {
+      allSiteNavigation(filter: {hidden: {eq: false}}) {
+        nodes {
+          id
+          title
+          path
+          hidden
+          isRoot
+          title
+          order
+          childrenSiteNavigation {
             id
-            title
-            pathname
-            #childrenSiteNavigation {
-            #  title
-            #  pathname
-            #  order
-            #    # fields {
-            #    #   isRoot
-            #    # }
-            #}
+            path
+            hidden
+            isRoot
+            order
           }
         }
       }
@@ -74,7 +70,25 @@ export const createPages = async ({ graphql }) => {
     return errors
   }
 
-  const reducedData = data.allSiteNavigation.edges.map(({ node }) => node)
+  const secondaryNavData = getRecursiveMenu([...data.allSiteNavigation.nodes])
 
-  writeFileSync(navigationFilePath, JSON.stringify(reducedData))
+  writeFileSync(navigationFilePath, JSON.stringify(secondaryNavData))
+}
+
+export function createSchemaCustomization({ actions }) {
+  const { createTypes } = actions
+  createTypes(`
+    type SiteNavigation implements Node {
+      title: String!
+      path: String
+      secondaryNav: SecondaryNav
+    }
+    
+    type SecondaryNav implements Node {
+      title: String
+      order: Int
+      hidden: Boolean
+      isRoot: Boolean
+    }
+  `)
 }
