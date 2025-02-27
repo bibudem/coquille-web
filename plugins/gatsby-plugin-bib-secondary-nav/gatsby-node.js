@@ -2,10 +2,10 @@ import { writeFileSync } from 'fs'
 import { dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
 import { createFilePath } from 'gatsby-source-filesystem'
-import getNavigationTree from './utils/getTree.js'
-import getTree from './utils/getTree.js'
+import getRecursiveMenu from './lib/getRecursiveMenu.js'
 import createNodes from './utils/createNodes.js'
 import markRoots from './utils/markRoots.js'
+import getTree from './utils/getTree.js'
 import { SITE_NAVIGATION_FILE_PATH } from './constants.js'
 
 const __dirname = dirname(resolve(fileURLToPath(import.meta.url), '..', '..'))
@@ -34,7 +34,6 @@ export const onCreateNode = ({ node, getNode, actions }) => {
 export const sourceNodes = ({ actions, createContentDigest, createNodeId, getNode, getNodes }) => {
   const { createNode, createParentChildLink, createNodeField } = actions
   const navigationTree = getTree()
-  console.log('------------------------------- navigationTree:', JSON.stringify(navigationTree, null, 2))
 
   createNodes(navigationTree, getNode, createContentDigest, createNode, createParentChildLink, createNodeId)
   markRoots(getNodes, createNodeField)
@@ -45,7 +44,7 @@ export const createPages = async ({ graphql }) => {
 
   const { errors, data } = await graphql(`
     {
-      allSiteNavigation {
+      allSiteNavigation(filter: {hidden: {eq: false}}) {
         nodes {
           id
           title
@@ -57,6 +56,9 @@ export const createPages = async ({ graphql }) => {
           childrenSiteNavigation {
             id
             path
+            hidden
+            isRoot
+            order
           }
         }
       }
@@ -68,7 +70,7 @@ export const createPages = async ({ graphql }) => {
     return errors
   }
 
-  const secondaryNavData = getNavigationTree(data.allSiteNavigation.nodes.map(({ node }) => node))
+  const secondaryNavData = getRecursiveMenu([...data.allSiteNavigation.nodes])
 
   writeFileSync(navigationFilePath, JSON.stringify(secondaryNavData))
 }

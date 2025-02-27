@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, styled, useTheme } from '@mui/material'
+import { Collapse, Link, styled } from '@mui/material'
 import { CaretRight } from '@phosphor-icons/react'
 import NavList from './NavList'
 
@@ -85,7 +85,7 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
           />
         )}
       </Link>
-      {children && isActive && (
+      {children && (
         <NavList sx={{ paddingBottom: '8px' }}>
           {children.map((item) => (
             <NavItem key={item.route} item={item} currentLocation={currentLocation} lvl={lvl + 1} />

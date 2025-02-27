@@ -3,41 +3,47 @@ import { Box, Divider, styled } from '@mui/material'
 import { graphql, useStaticQuery } from 'gatsby'
 import NavList from './NavList'
 import NavItem from './NavItem'
-import { recursiveMenu } from '../../../plugins/gatsby-plugin-bib-secondary-nav/utils/recursiveMenu.js'
 import fetchNavigation from './fetchNavigation.js'
 import secondaryNavSampleData from './secondaryNavSampleData.js'
 
 const Div = styled('div')({})
 
-export function SecondaryNav({ navData = secondaryNavSampleData, data = {}, currentLocation, navigationOrder = false, ...rest }) {
+export function SecondaryNav({ navData = secondaryNavSampleData, currentLocation, navigationOrder = false, ...rest }) {
   const { sx, children, ...props } = rest
   const [navigationTree, setNavigationTree] = useState(null)
 
-  const pages = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query NavQuery {
-      allSiteNavigation {
+      allSiteNavigation(filter: { hidden: { eq: false } }) {
         nodes {
           id
           title
-          route
+          path
           hidden
           isRoot
           title
           order
           childrenSiteNavigation {
             id
-            route
+            path
+            hidden
+            isRoot
+            order
           }
         }
       }
     }
   `)
 
-  useEffect(() => {
-    fetchNavigation().then((data) => {
-      setNavigationTree(data)
-    })
-  }, [])
+  const recursiveMenu = [...data.allSiteNavigation.nodes]
+
+  console.log('recursiveMenu:', recursiveMenu)
+
+  // useEffect(() => {
+  //   fetchNavigation().then((data) => {
+  //     setNavigationTree(data)
+  //   })
+  // }, [])
 
   // ------------------------------------------------------------
   //
@@ -59,26 +65,6 @@ export function SecondaryNav({ navData = secondaryNavSampleData, data = {}, curr
       return [...routes, route]
     }, [])
   }
-
-  const navData_ = pages.allSiteNavigation.nodes.map((node) => node)
-  const currentRoute = navData_.find((data) => data.route === currentLocation.pathname)
-  // console.log('currentRoute:', currentRoute)
-  const siblings = navData_
-    .filter((route) => {
-      return route.parentId === currentRoute?.parentId
-    })
-    .map(({ order, ...rest }) => {
-      order = order ?? 999
-      return {
-        order,
-        ...rest,
-      }
-    })
-    .sort((a, b) => {
-      const orderA = a.order
-      const orderB = b.order
-      return orderA - orderB
-    })
 
   // const menus = sortOrder(recursiveMenu(mdxData))
 
