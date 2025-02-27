@@ -222,6 +222,12 @@ export default {
 			fontSize: '4.8124rem',
 			fontWeight: 400,
 			lineHeight: '120%'
+		},
+		display5: {
+			fontFamily: 'Figtree',
+			fontSize: '61px',
+			fontWeight: 400,
+			lineHeight: '120%'
 		}
 		// body1: {
 		// 	fontSize: '1.4667rem',
