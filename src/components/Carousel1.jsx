@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid2'
 import { ArrowCircleLeft, ArrowCircleRight } from '@phosphor-icons/react'
 import Button from '@/components/Button'
 
-export default function Carousel1({ title, description, moreText, moreLink, ...rest }) {
+export default function Carousel1({ title, description, moreText, moreLink = '#', ...rest }) {
   const { sx, children, ...props } = rest
 
   return (

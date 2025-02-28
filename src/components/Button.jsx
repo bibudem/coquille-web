@@ -31,8 +31,8 @@ const commonIconProps = {
  *
  * @returns {JSX.Element} The rendered Material-UI Button component.
  */
-export default function Button({ primary, secondary, ...props }) {
-  const { children, color, endIcon, disableElevation, disableEndIcon, href, sx, variant, ...rest } = props
+export default function Button({ primary, secondary, href, ...props }) {
+  const { children, color, endIcon, disableElevation, disableEndIcon, sx, variant, ...rest } = props
 
   if (primary && secondary) {
     throw new Error('The primary and secondary props are mutually exclusive.')
@@ -48,10 +48,11 @@ export default function Button({ primary, secondary, ...props }) {
     disableElevation: disableElevation || (primary ? config.primary.disableElevation : false),
     ...rest,
   }
-
+  console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', href, children)
   if (typeof href === 'string') {
     buttonProps.href = href
     const linkIsInternal = isInternalLink(href)
+    console.log('linkIsInternal:', linkIsInternal, ' - ', href)
 
     if (!disableEndIcon) {
       buttonProps.endIcon = endIcon ?? (linkIsInternal ? <ArrowRight {...commonIconProps} /> : <ArrowUpRight {...commonIconProps} />)
