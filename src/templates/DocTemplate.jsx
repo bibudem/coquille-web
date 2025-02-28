@@ -27,7 +27,7 @@ import CallToAction2 from '@/components/CallToAction2'
 import Button from '@/components/Button'
 import IconInSquare from '@/components/IconInSquare'
 import Card1 from '@/components/Card1'
-import Carousel1 from '@/components/Carousel1'
+import Carousel1 from '@/components/Carousel1/Carousel1'
 
 import CommentIcon from '@mui/icons-material/Comment'
 

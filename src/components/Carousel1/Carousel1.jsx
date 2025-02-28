@@ -1,8 +1,8 @@
 import { Children } from 'react'
 import { Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2'
-import { ArrowCircleLeft, ArrowCircleRight } from '@phosphor-icons/react'
 import Button from '@/components/Button'
+import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from '../CustomIcons.jsx'
 
 export default function Carousel1({ title, description, moreText, moreLink = '#', ...rest }) {
   const { sx, children, ...props } = rest
@@ -19,9 +19,9 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
               {description}
             </Typography>
           </Grid>
-          <Grid container size="auto" sx={{ alignItems: 'flex-end', pl: 4 }}>
-            <ArrowCircleLeft size={50} />
-            <ArrowCircleRight />
+          <Grid container size="auto" spacing='10px' sx={{ alignItems: 'flex-end', pl: 4 }}>
+            <ArrowLeftCircleIcon fontSize={50} color='#0057ac' />
+            <ArrowRightCircleIcon fontSize={50} color='#0057ac' />
           </Grid>
         </Grid>
       </Grid>
