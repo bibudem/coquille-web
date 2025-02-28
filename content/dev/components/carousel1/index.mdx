@@ -1,0 +1,42 @@
+---
+title: <Carousel1>
+template: doc
+---
+
+import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icons/react'
+
+<Section>
+# &lt;Carousel1&gt;
+
+  <Carousel1
+    title="Problème informatique? Pas de panique!"
+    description="Accès hors campus, authentification, impression, numérisation, prêt d’ordinateurs ou de tablettes; nos comptoirs, nos services et nos experts vous sont accessibles à l’année!"
+    moreText="Voir le studio"
+    moreHref="#"
+  >
+  <Card1
+    title="Ressources et conseils préparés par nos spécialistes"
+    IconComponent={BookmarkSimple}
+    moreText="Voir la boîte à outils"
+    href="#"
+  />
+  <Card1
+    title="Capsules vidéos et webinaires"
+    IconComponent={Video}
+    moreText="Accéder à YouTube"
+    href="https://www.youtube.com/user/BibliothequesUdeM"
+  />
+  <Card1
+    title="Service Accessibilité"
+    IconComponent={PersonSimpleCircle}
+    moreText="En savoir plus"
+    href="#"
+  />
+  <Card1
+    title="Soutien personnalisé avec nos spécialistes"
+    IconComponent={Users}
+    moreText="Prendre rendez-vous"
+    href="#"
+  />
+  </Carousel1>
+</Section>
