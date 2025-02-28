@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Box, Container } from '@mui/material'
+import { Box, Container, useTheme } from '@mui/material'
 import { secondaryColors } from '../../plugins/gatsby-plugin-bib-theme/tokens.js'
 
 const baseStyles = {
@@ -22,6 +22,7 @@ const baseStyles = {
  */
 export default function Section({ bg, image, fixedWidth = false, ...rest }) {
   const { children, sx, ...props } = rest
+  const theme = useTheme()
 
   if (image && bg) {
     throw new Error('Les propriétés `image` et `bg` sont mutuellement exclusives.')
@@ -86,12 +87,12 @@ export default function Section({ bg, image, fixedWidth = false, ...rest }) {
 
   return fixedWidth ? (
     <Container
-      maxWidth="xl"
-      {...props}
+      maxWidth={theme.breakpoints.keys.at(-1)}
       sx={{
         ...styles,
         ...sx,
       }}
+      {...props}
     >
       {children}
     </Container>
@@ -102,7 +103,14 @@ export default function Section({ bg, image, fixedWidth = false, ...rest }) {
         ...sx,
       }}
     >
-      <Container maxWidth="xl" {...props}>
+      <Container
+        maxWidth={theme.breakpoints.keys.at(-1)}
+        sx={{
+          ...styles,
+          ...sx,
+        }}
+        {...props}
+      >
         {children}
       </Container>
     </Box>
