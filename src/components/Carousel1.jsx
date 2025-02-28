@@ -20,12 +20,12 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
             </Typography>
           </Grid>
           <Grid container size="auto" sx={{ alignItems: 'flex-end', pl: 4 }}>
-            <ArrowCircleLeft />
+            <ArrowCircleLeft size={50} />
             <ArrowCircleRight />
           </Grid>
         </Grid>
       </Grid>
-      <Grid container size={12}>
+      <Grid container size={12} spacing="10px">
         {Children.toArray(children).map((child, index) => (
           <Grid key={index} size={3}>
             {child}
