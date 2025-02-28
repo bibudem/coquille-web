@@ -50,6 +50,7 @@ export default function Button({ primary, secondary, ...props }) {
   }
 
   if (typeof href === 'string') {
+    buttonProps.href = href
     const linkIsInternal = isInternalLink(href)
 
     if (!disableEndIcon) {
