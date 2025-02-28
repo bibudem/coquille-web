@@ -1,0 +1,92 @@
+---
+title: <Tabs1>
+slug: tabs1
+---
+
+import Tabs1 from '@/components/Tabs1/Tabs1'
+import img1 from './img1.webp'
+import img2 from './img2.webp'
+import img3 from './img3.webp'
+import img4 from './img4.webp'
+import img5 from './img5.webp'
+
+<Section>
+  <Tabs1
+    tabs={['Espaces pour se concentrer', 'Salles de travail en équipe', 'Salle pour les cycles supérieurs']}
+  >
+
+    <Grid
+      container
+      direction='row'
+      gap='30px'
+      sx={theme => ({
+        borderRadius: theme.shape.corner.medium,
+        backgroundColor: '#e5f0f8',
+        padding: '19px 0 25px 50px'
+      })}>
+      <Grid>
+        <Typography variant='h3'>À chacun sa bulle</Typography>
+        <Typography variant='body1'>Besoin de concentration pour étudier? Salles d’étude individuelles ou cabines insonorisée, vous n’avez qu’à réserver!</Typography>
+      </Grid>
+      <Grid container direction='row' spacing={1.25}>
+        <Grid><img src={img1} width='283' height='306' /></Grid>
+        <Grid><img src={img2} width='283' height='306' /></Grid>
+        <Grid><img src={img1} width='283' height='306' /></Grid>
+      </Grid>
+      <Grid>
+      <Button primary href="https://calendrier.bib.umontreal.ca/r">Réserver une salle</Button>
+      </Grid>
+    </Grid>
+    
+
+    <Grid
+      container
+      direction='row'
+      gap='30px'
+      sx={theme => ({
+        borderRadius: theme.shape.corner.medium,
+        backgroundColor: '#e5f0f8',
+        padding: '19px 0 25px 50px'
+      })}>
+      <Grid sx={{pr: 2}}>
+        <Typography variant='h3'>Là où peuvent converger les idées</Typography>
+        <Box sx={{py: 2}}>
+          <Typography variant='body1'>Un travail à faire en équipe? Une séance d’étude de groupe? Nous vous offrons des salles de travail communes avec ou sans réservation, des espaces pour parler librement, des banquettes avec écran - tout ce qu’il vous faut pour collaborer!</Typography>
+        </Box>
+      </Grid>
+      <Grid container direction='row' spacing={1.25}>
+        <Grid><img src={img3} width='283' height='306' /></Grid>
+        <Grid><img src={img4} width='283' height='306' /></Grid>
+        <Grid><img src={img5} width='283' height='306' /></Grid>
+      </Grid>
+      <Grid>
+      <Button primary href="https://calendrier.bib.umontreal.ca/r">Réserver une salle</Button>
+      </Grid>
+    </Grid>
+    
+
+    <Grid
+      container
+      direction='row'
+      gap='30px'
+      sx={theme => ({
+        borderRadius: theme.shape.corner.medium,
+        backgroundColor: '#e5f0f8',
+        padding: '19px 0 25px 50px'
+      })}>
+      <Grid>
+        <Typography variant='h3'>À chacun sa bulle</Typography>
+        <Typography variant='body1'>Besoin de concentration pour étudier? Salles d’étude individuelles ou cabines insonorisée, vous n’avez qu’à réserver!</Typography>
+      </Grid>
+      <Grid container direction='row' spacing={1.25}>
+        <Grid><img src={img1} width='283' height='306' /></Grid>
+        <Grid><img src={img2} width='283' height='306' /></Grid>
+        <Grid><img src={img1} width='283' height='306' /></Grid>
+      </Grid>
+      <Grid>
+      <Button primary href="https://calendrier.bib.umontreal.ca/r">Réserver une salle</Button>
+      </Grid>
+    </Grid>
+  </Tabs1>
+
+  </Section>
