@@ -1,0 +1,46 @@
+---
+title: <Card2>
+template: doc
+---
+
+import { BookOpenText, Chat, PencilSimple, UsersFour } from '@phosphor-icons/react'
+
+
+<Section>
+
+# Card2
+
+  <Grid container spacing=".62rem" sx={{margin:'4rem 0 4rem'}}>
+    <Grid>
+      <Card2
+      id='a'
+        title="Nous écrire"
+        IconComponent={PencilSimple}
+        href="#"
+      />
+    </Grid>
+    <Grid>
+      <Card2
+      id='b'
+        title="Clavarder"
+        IconComponent={Chat}
+        href="#"
+      />
+    </Grid>
+    <Grid>
+      <Card2
+        title="Consulter le répertoire"
+        IconComponent={UsersFour}
+        href="#"
+      />
+    </Grid>
+    <Grid>
+      <Card2
+        title="Faire une suggestion d'achat"
+        IconComponent={BookOpenText}
+        href="#"
+      />
+    </Grid>
+  </Grid>
+
+</Section>
