@@ -2,5 +2,8 @@
   "name": "gatsby-plugin-bib-secondary-nav",
   "main": "index.js",
   "type": "module",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "directory-tree": "^3.5.2"
+  }
 }
