@@ -26,7 +26,7 @@ const StyledTitle = styled('div')({
  * @param {any} props.rest - Any additional props to be passed to the component.
  * @returns {React.ReactElement} - The Card1 component.
  */
-export default function Card2({ title, IconComponent, href, id, ...rest }) {
+export default function Card2({ title, IconComponent, href, ...rest }) {
   const { sx, ...props } = rest
   const linkProps = {}
   const theme = useTheme()
@@ -67,7 +67,6 @@ export default function Card2({ title, IconComponent, href, id, ...rest }) {
 
   return (
     <Card
-      id={id}
       sx={(theme) => ({
         borderRadius: theme.shape.corner.small,
         color: getContrastColor(_color.bg, '#fff', '#111'),
