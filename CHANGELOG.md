@@ -1,5 +1,39 @@
 # Changelog
 
+## [3.7.0](https://github.com/bibudem/coquille-web/compare/v3.6.0...v3.7.0) (2025-03-03)
+
+
+### Features
+
+* Ajout d'un template sans navigation secondaire "doc" pour les pages dans /dev ([c3f40d7](https://github.com/bibudem/coquille-web/commit/c3f40d7dd203fe5e2052f4639f93f03fd964f562))
+* Ajout d'une page /nous-joindre ([3752a5b](https://github.com/bibudem/coquille-web/commit/3752a5b1f5e19e4a2bda70e5262a7e7ec6ca9578))
+* ajout de l'icone flèche verte et modification de la page études ([d7bc773](https://github.com/bibudem/coquille-web/commit/d7bc773ed76212eb8acec466e9b957ac5633d58a))
+* Ajout du composant Card1 à la section "Mille et une façon d'apprendre" de la page d'accueil ([021685f](https://github.com/bibudem/coquille-web/commit/021685f9933ba0207a1f37f053234850fc28c028))
+* **component:** Ajout d'un mockup pour le composant Carousel1 ([e6599f6](https://github.com/bibudem/coquille-web/commit/e6599f6ffd4249d101b852143f8b7f91b46f102a))
+* **component:** Ajout de la page de description du composant Carousel ([dad9c8b](https://github.com/bibudem/coquille-web/commit/dad9c8bbd927b6ea72b85b8da0f0fe5382d2ea1f))
+* **component:** Ajout du composant Card1. ([97e91ce](https://github.com/bibudem/coquille-web/commit/97e91ce4ed3c82ce0783d414559481e16db038e0))
+* **component:** Card1: ajout de la propriété `color` ([409c7ca](https://github.com/bibudem/coquille-web/commit/409c7ca5713bcb3cba8819f1fded33d3c5e8ca57))
+* **component:** Nouveau composant Card2 pour la section Nous joindre ([d81b49d](https://github.com/bibudem/coquille-web/commit/d81b49d2076668b2b6b9028a25f9fb772426aead))
+* **component:** Nouveau composant Card3 (mockup) ([e17dcb2](https://github.com/bibudem/coquille-web/commit/e17dcb2597d5119391499362e7e52461e01f6c55))
+* **component:** Nouveau composant Tabs1 ([58cf01b](https://github.com/bibudem/coquille-web/commit/58cf01bd1e80153fb79fba5a1cb71de89f3eafaf))
+* création de la carte sur la page d'accueil sous Milles et une façon d'apprendre ([59f7dd0](https://github.com/bibudem/coquille-web/commit/59f7dd04a51def17205386b1fd4a86924955330f))
+* **icons:** Ajout dans les CustomIcons: ArrowLeftCircleIcon et ArrowRightCircleIcon ([6d4cf2c](https://github.com/bibudem/coquille-web/commit/6d4cf2ced18a7e66295f2cbbde88de81d3d1a2fc))
+* **theme:** Ajout de la variante display5 pour le composant Typography ([bf1da2c](https://github.com/bibudem/coquille-web/commit/bf1da2c7f1a6c9129198c44c7a70915bd2d40795))
+
+
+### Bug Fixes
+
+* Changement de config pour le trailing slash (de 'never' à 'ignore') ([c3f0d2e](https://github.com/bibudem/coquille-web/commit/c3f0d2e8f4481f4ef7bde599a372104db09605a6))
+* Changement de config pour le trailing slash (de 'never' à 'ignore') ([315b6b1](https://github.com/bibudem/coquille-web/commit/315b6b1ce3d27d8d946a3c4ebf21dde392d95890))
+* Changement de la structure de données (frontmatter) pour la navigation secondaire. ([473dfa4](https://github.com/bibudem/coquille-web/commit/473dfa41e61a9ee32389ee7bace6d35faeaf67bf))
+* **component:** Card1: renommage de la propriété linkText pour moreText ([6184a87](https://github.com/bibudem/coquille-web/commit/6184a87b1574360606ac594cba5e190a7bde608f))
+* **component:** Carousel1: ajout des bons styles pour les icônes flèches précédent/suivant ([44f46d0](https://github.com/bibudem/coquille-web/commit/44f46d0988726866abe966009a268320926bbdca))
+* **component:** Composant Button : la propriété href ne fonctionnait pas ([f717454](https://github.com/bibudem/coquille-web/commit/f71745469c2823bfb4f1fb0af761e900fda57807))
+* Correction du titre pour navigation secondaire de la page mission-vision-valeur.mdx ([5098ddf](https://github.com/bibudem/coquille-web/commit/5098ddf93c7fc1288d0f50b92dfec3819d725cd9))
+* **theme:** Amélioration du visuel de la navigation secondaire ([4009ca5](https://github.com/bibudem/coquille-web/commit/4009ca527b601c97d29791aceb559d05f24d7a72))
+* **theme:** Amélioration du visuel de la navigation secondaire ([7975a97](https://github.com/bibudem/coquille-web/commit/7975a97ba5245435d0066ef749b3d2e7f123d325))
+* Travail sur la page Espaces ([3db0439](https://github.com/bibudem/coquille-web/commit/3db04398bec2e163edff90c603436a8a8fbbd6f0))
+
 ## [3.6.0](https://github.com/bibudem/coquille-web/compare/v3.5.0...v3.6.0) (2025-02-20)
 
 
