@@ -45,7 +45,7 @@ export default function Card2({ title, IconComponent, href, id, ...rest }) {
 
   useEffect(() => {
     if (href) {
-      setLinkIsInternal(href)
+      setLinkIsInternal(isInternalLink(href))
     }
   }, [href])
 
@@ -74,8 +74,8 @@ export default function Card2({ title, IconComponent, href, id, ...rest }) {
         boxShadow: 'none',
         height: '100%',
         minHeight: '100%',
-        minWidth: 250,
-        maxWidth: 345,
+        maxWidth: '20.125rem',
+        width: '20.125rem',
         ...sx,
       })}
       {...props}
