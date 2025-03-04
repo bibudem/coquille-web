@@ -1,15 +1,6 @@
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { Accordion, AccordionDetails, AccordionSummary, Box, Container, Tab, Tabs, useTheme } from '@mui/material'
-import Divider from '@mui/material/Divider'
-import Grid from '@mui/material/Grid2'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemText from '@mui/material/ListItemText'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import Typography from '@mui/material/Typography'
-import Carousel from 'react-material-ui-carousel'
+import { useTheme } from '@mui/material'
 import { IconContext } from '@phosphor-icons/react'
 
 import TopAppBar from '@/components/AppBar/TopAppBar'
@@ -17,26 +8,12 @@ import TopAppBarSm from '@/components/AppBar/TopAppBarSm'
 import MenuLatteral from '@/components/MenuLatteral/MenuLatteral'
 import Footer from '@/components/Footer'
 import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs'
-import HeroWithImage from '@/components/HeroWithImage'
-import HeroWithText from '@/components/HeroWithText'
-import Link from '@/components/Link'
 import SEO from '@/components/SEO'
 import Debug from '@/components/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
-import Section from '@/components/Section'
-import Button from '@/components/Button'
-import IconInSquare from '@/components/IconInSquare'
-import Card1 from '@/components/Card1'
-import Card2 from '@/components/Card2'
-import FlipCard1 from '@/components/FlipCard1'
-import Carousel1 from '@/components/Carousel1/Carousel1'
-
-import CommentIcon from '@mui/icons-material/Comment'
 
 import { useSmall } from '@/hooks/use-small'
-import { Hero, Bloc } from '@/components/dummy-components'
-
-const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, Card1, Card2, Carousel, Carousel1, Divider, FlipCard1, Grid, HeroWithImage,  HeroWithText,IconInSquare, List, ListItem, ListItemButton, ListItemIcon, ListItemText, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
+import commonComponents from './commonComponents'
 
 export default function PageTemplate({ pageContext, children, data, location }) {
   const isSmall = useSmall('lg')
@@ -63,7 +40,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
   )
 
   return (
-    <MDXProvider components={components}>
+    <MDXProvider components={commonComponents}>
       <IconContext.Provider
         value={{
           size: '2rem',
