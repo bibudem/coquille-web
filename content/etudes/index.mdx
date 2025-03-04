@@ -5,10 +5,10 @@ slug: etudes
 
 import { Card, CardContent, CardMedia } from '@mui/material'
 import { Horse, Heart, Cube } from '@phosphor-icons/react'
-import { SofiaIcon } from '@/components/CustomIcons'
+import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
 import { StaticImage } from 'gatsby-plugin-image'
 import imageBienvenue from '../images/espaces-montage.webp'
-//import iconeFlecheVerte from '../../src/icons/fleche.svg'
+import CommentIcon from '@mui/icons-material/Comment'
 
 <Section>
 # Études
@@ -88,7 +88,9 @@ Consultez notre calendrier de formations - il y en a pour tous les goûts, tous 
             }
           />
             <ListItemIcon sx={{color: '#fff'}}>
-              {/* <iconeFlecheVerte/> */}
+              <ArrowRightCircleIcon
+              color='red'
+              sx={{fontSize:'50px'}} />
             </ListItemIcon>
         </ListItemButton>
       </ListItem>
