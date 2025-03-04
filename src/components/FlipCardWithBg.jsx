@@ -10,20 +10,24 @@ const StyledTitle = styled('div')({
 })
 
 /**
- * FlipCardWithImage component that renders a card with a title and image.
+ * FlipCardWithBg component that renders a card with a title and image.
  * @param {Object} props - The component props.
  * @param {string} props.title - The title of the card.
  * @param {React.ComponentType} props.Image - The image component to be displayed.
  * @param {Object} [props.sx] - Optional MUI system styles to apply to the card.
- * @returns {React.ReactElement} - The FlipCardWithImage component.
+ * @returns {React.ReactElement} - The FlipCardWithBg component.
  */
-export default function FlipCardWithImage({ title, Image, ...rest }) {
-  if (typeof Image === 'undefined') {
-    throw new Error('The `Image` prop is missing')
+export default function FlipCardWithBg({ title, bgColor = 'bleuPrincipal', Icon, ...rest }) {
+  if (typeof title === 'undefined') {
+    throw new Error('The `title` prop is missing')
+  }
+
+  if (typeof Icon === 'undefined') {
+    throw new Error('The `Icon` prop is missing')
   }
 
   const { sx, ...props } = rest
-
+  // couleurs: rose, bleu vert
   return (
     <Card
       sx={(theme) => ({

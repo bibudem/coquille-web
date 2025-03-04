@@ -16,8 +16,10 @@ import Carousel from 'react-material-ui-carousel'
 
 import Card1 from '@/components/Card1'
 import Card2 from '@/components/Card2'
+import Card5 from '@/components/Card5'
 import Button from '@/components/Button'
 import FlipCardWithImage from '@/components/FlipCardWithImage'
+import FlipCardWithBg from '@/components/FlipCardWithBg'
 import HeroWithImage from '@/components/HeroWithImage'
 import HeroWithText from '@/components/HeroWithText'
 import IconInSquare from '@/components/IconInSquare'
@@ -35,9 +37,11 @@ export default {
   Box,
   Card1,
   Card2,
+  Card5,
   Carousel,
   Carousel1,
   Divider,
+  FlipCardWithBg,
   FlipCardWithImage,
   Grid,
   HeroWithImage,
