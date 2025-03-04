@@ -10,13 +10,13 @@ const StyledTitle = styled('div')({
 })
 
 /**
- * FlipCard1 component that renders a card with a title and image.
+ * FlipCardWithImage component that renders a card with a title and image.
  * @param {Object} props - The component props.
  * @param {string} props.title - The title of the card.
  * @param {React.ComponentType} props.Image - The image component to be displayed.
  * @param {Object} [props.sx] - Optional MUI system styles to apply to the card.
- * @returns {React.ReactElement} - The FlipCard1 component.
- */ export default function FlipCard1({ title, Image, ...rest }) {
+ * @returns {React.ReactElement} - The FlipCardWithImage component.
+ */ export default function FlipCardWithImage({ title, Image, ...rest }) {
   if (typeof Image === 'undefined') {
     throw new Error('The `Image` prop is missing')
   }
