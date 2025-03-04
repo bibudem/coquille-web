@@ -18,12 +18,12 @@ import TopAppBarSm from '@/components/AppBar/TopAppBarSm'
 import MenuLatteral from '@/components/MenuLatteral/MenuLatteral'
 import Footer from '@/components/Footer'
 import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs'
+import HeroWithImage from '@/components/HeroWithImage'
 import Link from '@/components/Link'
 import SEO from '@/components/SEO'
 import Debug from '@/components/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
 import Section from '@/components/Section'
-import CallToAction1 from '@/components/CallToAction1'
 import CallToAction2 from '@/components/CallToAction2'
 import Button from '@/components/Button'
 import IconInSquare from '@/components/IconInSquare'
@@ -38,7 +38,7 @@ import { useSmall } from '@/hooks/use-small'
 import { Hero, Bloc } from '@/components/dummy-components'
 import { SecondaryNav } from '@/components/SecondaryNav/SecondaryNav'
 
-const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, CallToAction1, CallToAction2, Card1, Card2, Carousel, Carousel1, Divider, FlipCard1, Grid, IconInSquare, List, ListItem, ListItemButton, ListItemIcon, ListItemText, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
+const components = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, CallToAction2, Card1, Card2, Carousel, Carousel1, Divider, FlipCard1, Grid, HeroWithImage, IconInSquare, List, ListItem, ListItemButton, ListItemIcon, ListItemText, CommentIcon, Section, Tab, Tabs, Typography, /* Dummies: */ Hero, Bloc } // Provide common components here
 
 export default function PageTemplate({ pageContext, children, data, location }) {
   const isSmall = useSmall('lg')
