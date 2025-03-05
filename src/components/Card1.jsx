@@ -22,6 +22,8 @@ const sizes = {
   },
 }
 
+const StyledDiv = styled('div')()
+
 const Row = styled(Grid)({
   width: '100%',
 })
@@ -130,7 +132,7 @@ export default function Card1({ title, IconComponent, color = 'bleuPrincipal', m
         boxShadow: 'none',
         width: cardSize.width,
         height: cardSize.height,
-        transition: 'width 1.2s ease-in-out',
+        transition: 'width 200ms ease-in-out',
         '&:hover': {
           width: cardSize.width * HOVER_WIDTH_FACTOR,
         },
@@ -159,19 +161,26 @@ export default function Card1({ title, IconComponent, color = 'bleuPrincipal', m
         {...linkProps}
       >
         <CardContent
-          component={Grid}
+          component={StyledDiv}
           sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.8125rem 0',
             padding: 0,
-            flexDirection: 'row',
-            alignContent: 'flex-start',
+
+            // flexDirection: 'row',
+            // alignContent: 'flex-start',
             height: '100%',
             width: '100%',
+            outline: '1px solid red',
+            // alignContent: 'space-between',
           }}
           container
           spacing="1.8125rem"
         >
           <Row
             sx={{
+              height: '55px',
               outline: '1px dotted red',
               '> svg': {
                 display: 'flex',
@@ -183,7 +192,7 @@ export default function Card1({ title, IconComponent, color = 'bleuPrincipal', m
           <Row sx={{ outline: '1px dotted green', flexGrow: 1 }}>
             <StyledTitle>{title}</StyledTitle>
           </Row>
-          <Row sx={{ outline: '1px dotted yellow' }}>
+          <Row sx={{ outline: '1px dotted yellow', height: '55px' }}>
             <Grid
               container
               size="auto"
