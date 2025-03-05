@@ -3,9 +3,11 @@ title: Recherche
 slug: recherche
 ---
 
-import toto from '../images/image-arret-bibliothecaire.webp'
+import PorteeScientifique from '../images/portee-scientifique.webp'
+import Bibliothecaire from '../images/bibliothecaire-montage.webp'
 import CommentIcon from '@mui/icons-material/Comment'
 import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
+import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGlass, PencilSimple, TextAlignJustify } from '@phosphor-icons/react'
 
 <Section>
 
@@ -13,8 +15,8 @@ import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
 
 </Section>
 
-<Section bg='bleu600'>
-  <HeroWithImage Image={toto} align="right">
+<Section bg='vertFonce'>
+  <HeroWithImage Image={Bibliothecaire} align="right">
     <Typography component="h2" variant="h2">Premier arrêt, votre bibliothécaire disciplinaire</Typography>
 
     De l’idéation à la communication de vos résultats, nous pouvons vous accompagner tout au long du cycle de la recherche.
@@ -24,6 +26,134 @@ import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
     <Button href="" primary>Contacter votre bibliothécaire disciplinaire</Button>
 
   </HeroWithImage>
+</Section>
+
+
+<Section bg='rose300'>
+<Carousel1
+    title="La science ouverte et le libre accès, une culture institutionnelle"
+    description="Nous sommes activement engagées dans le projet de la science ouverte, qui vise à démocratiser l’accès à la science et tout en favorisant la réutilisation des savoirs: libre accès, données ouvertes, logiciels ouverts, science citoyenne, etc. "
+  >
+    <Card1
+      color="vertFonce"
+      title="Qu'est-ce que le libre accès?"
+      IconComponent={Laptop}
+      moreText="Comprendre le concept"
+      href="#"
+    />
+    <Card1
+      color="vertFonce"
+      title="Déposer sa thèse ou son mémoire dans Papyrus"
+      IconComponent={DownloadSimple}
+      moreText="Voir les étapes"
+      href="#"
+    />
+    <Card1
+      color="vertFonce"
+      title="Déposer facilement son article en libre accès"
+      IconComponent={DownloadSimple}
+      moreText="Utiliser le formulaire rapide"
+      href="#"
+    />
+    <Card1
+      color="vertFonce"
+      title="Comprendre la politique institutionnelle sur le libre accès"
+      IconComponent={Plugs}
+      moreText="En savoir plus"
+      href="#"
+    />
+  </Carousel1>
+
+</Section>
+
+<Section bg='bleu600'>
+
+  <HeroWithImage Image={PorteeScientifique} align="left">
+    <Typography component='h2' variant='h2'>Mesurer votre portée scientifique avec la bibliométrie</Typography>
+    
+    <Typography>Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes bibliométriques responsables pour mieux :</Typography>
+    <List> 
+    <ListItem>Informer le plan stratégique de votre équipe de recherche</ListItem>
+    <ListItem>Trouver des partenaires de recherche pertinents</ListItem>
+    <ListItem>Trouver de nouvelles opportunités de financement</ListItem>
+    <ListItem>Optimiser vos demandes de financement</ListItem>
+    <ListItem>découvrir l’impact de votre production scientifique</ListItem>
+    </List>
+
+    <Button primary href='/espaces/'>Découvrir nos espaces</Button>
+
+  </HeroWithImage>
+</Section>
+
+
+<Section>
+  <HeroWithText 
+    leftColl={<IconInSquare color='vertPale' icon={<UserFocus color="vertFonce" />} />}
+    rightColl={
+      <>
+        <Typography component="h2" variant="h2">Maîtrisez votre identité numérique</Typography>
+        
+         <Typography>Optimisez votre visibilité et votre crédibilité dans le monde numérique en utilisant les identifiants pérennes, en optimisant vos informations liées à vos communications savantes et en gérant efficacement vos profils professionels et de chercheur sur les outils numériques et plateformes en ligne.</Typography>
+
+        <Button href="" variant="contained" color="bleuFonce">Faire un don maintenant</Button>
+        <Button primary href="">Explorer le guide sur les identifiants numérique</Button>
+  <Button secondary href="">Découvrez l'identifiant ORCHID</Button>
+      </>
+      }
+  />
+
+</Section>
+
+<Section>
+<Carousel1
+    title="Gestion des données de recherche"
+    description="Les organismes subventionnaires l’exigent, vous devez porter une attention particulière au cycle de vie de données de recherche. Nous vous aidons à y voir plus clair, de l’élaboration d’un plan de gestion de données jusqu’au partage dans un dépôt fiable et reconnu. 
+Nos services de gestion des données de recherche sont conçus pour vous aider à organiser, préserver et partager vos données de recherche de manière efficace et sécurisée. Nous offrons des conseils personnalisés et des outils adaptés pour garantir la conformité aux meilleures pratiques et remplir vos obligations."
+  >
+    <Card1
+      title="Rédiger un plan de gestion de données"
+      IconComponent={PencilSimple}
+      moreText="Explorer le guide"
+      href="#"
+    />
+    <Card1
+      title="Partager et trouver des données dans un dépôt"
+      IconComponent={MagnifyingGlass}
+      moreText="Explorer le guide"
+      href="#"
+    />
+    <Card1
+      title="Normaliser et documenter les données avec des métadonnées"
+      IconComponent={TextAlignJustify}
+      moreText="Explorer le guide"
+      href="#"
+    />
+  </Carousel1>
+</Section>
+
+<Section bg='bleu200'>
+  <HeroWithText 
+    leftColl={<IconInSquare color='#fff' icon={<CubeTransparent color="bleuPrincipal" />} />}
+    rightColl={
+      <>
+        <Typography component="h2" variant="h2">Maîtrisez votre identité numérique</Typography>
+        
+         <Typography>Nous vous offrons l’accès à une panoplie d’outils numériques et de l’aide pour les utiliser afin d’explorer, d’exploiter, d’enrichir et d’analyser vos données de recherche :</Typography>
+             <List> 
+    <ListItem>Gérer et analyser des centaines et des milliers de références bibliographiques</ListItem>
+    <ListItem>Visualiser de grandes quantités de données à travers nos espaces et services de création numérique</ListItem>
+    <ListItem>Maximiser vos jeux de données de leur identification à leur visualisation. Données ouvertes, statistiques, géospatiales, textuelles, manuscrites, audio, vidéo, 3D… Peu importe leur nature !</ListItem>
+    <ListItem>Composer un corpus pour effectuer des fouilles de texte</ListItem>
+    <ListItem>Obtenir du soutien aux humanités numériques : numérisation, transcription, comparaison, annotations, diffusion, conservation, …</ListItem>
+    </List>
+
+        <Button href="" variant="contained" color="bleuFonce">Voir nos espaces de créations numériques</Button>
+
+  
+      </>
+      }
+  />
+
 </Section>
 
 

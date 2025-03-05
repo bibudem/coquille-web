@@ -5,6 +5,7 @@ slug: espaces
 
 import Alert from '@mui/material/Alert'
 import imageAccessible from '../images/marguerite-youville-espace.webp'
+import zoneConfort from '../images/confort-espaces.webp'
 
 <Section>
 
@@ -14,7 +15,7 @@ import imageAccessible from '../images/marguerite-youville-espace.webp'
 
 </Section>
 
-<Section bg='bleuPrincipal'>
+<Section>
   <Hero onglets de côté avec cartes>
     ## Des espaces pour étudier
     
@@ -59,15 +60,43 @@ import imageAccessible from '../images/marguerite-youville-espace.webp'
   </Hero>
 </Section>
 
-<Section>
-  <Hero image texte gauche image full>
-    ## Votre zone de confort
-    
-    Rien de mieux par moments que de retrouver ses repères dans un lieu familier et accueillant. Nos nombreux espaces de détente sont là pour vous accueillir, le temps d’un souffle ou d’une sieste. Faites comme chez vous! 
-  </Hero>
+
+<Section image={zoneConfort}>
+
+<Grid container
+spacing={2}
+sx={{
+  paddingTop:'338px',
+  paddingBottom: '185px',
+}}>
+<Grid size={{xs:12, md:6}} offset={{md:6}}>
+
+<Typography component='h2' variant='h2' 
+sx={{
+  fontFamily:'Figtree',
+  fontWeight:400,
+  lineHeight:1.2,
+  fontSize:'3.8125rem!important',
+  marginBottom:'2rem',
+}}>Votre zone de confort</Typography>
+
+Rien de mieux par moments que de retrouver ses repères dans un lieu familier et accueillant. Nos nombreux espaces de détente sont là pour vous accueillir, le temps d’un souffle ou d’une sieste. Faites comme chez vous!
+
+<Button primary href="/engagements/"
+sx={{
+  marginTop:'2rem'
+}}>Découvrir nos engagements</Button>
+
+</Grid>
+</Grid>
+
 </Section>
 
-<Section bg="bleu200">
+
+
+
+
+<Section bg="bleu100">
   <Hero cartes photo avec info en hover>
     ## Un esprit sain dans un corps sain sans un corps sain
     
@@ -151,7 +180,7 @@ import imageAccessible from '../images/marguerite-youville-espace.webp'
   </Hero>
 </Section>
 
-<Section bg="bleuPrincipal">
+<Section>
   <Hero onglets de côté avec cartes>
     ## Des espaces technologiques 
     

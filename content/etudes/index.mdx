@@ -4,11 +4,12 @@ slug: etudes
 ---
 
 import { Card, CardContent, CardMedia } from '@mui/material'
-import { Horse, Heart, Cube } from '@phosphor-icons/react'
+import { TextOutdent, Compass, MagnifyingGlass, Laptop, MicrosoftWordLogo, DownloadSimple, Plugs } from '@phosphor-icons/react'
 import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
 import { StaticImage } from 'gatsby-plugin-image'
 import imageBienvenue from '../images/espaces-montage.webp'
 import CommentIcon from '@mui/icons-material/Comment'
+
 
 <Section>
 # Études
@@ -19,50 +20,35 @@ Display: On inspire la réussite
 
 <Section>
 
-  <Carousel autoPlay={false}>
-
-    <Card>
-      <CardContent>
-        <Typography component="h3" variant="h3">Des outils essentiels pour vos travaux</Typography>
-
-      Dans le torrent d’information disponible en ligne et sur nos rayons, par où commencer l’exploration? Nos experts ont conçu des guides et sélectionné les ressources les plus pratiques pour vous. Profitez-en!
-
-    </CardContent>
-    </Card>
-    <Bloc>
-
-      ### Citer ses sources
-
-      [Explorer la citation](https://libguides.bib.umontreal.ca/c.php?g=739631)
-
-    </Bloc>
-    <Bloc>
-
-      ### Ressources par discipline
-
-      [Explorer par discipline](https://libguides.bib.umontreal.ca/c.php?g=739631)
-
-    </Bloc>
-    <Bloc>
-
-      ### Trouver et évaluer la fiabilité des sources
-
-      [Explorer le repérage et l'évaluation de sources](https://libguides.bib.umontreal.ca/c.php?g=739631)
-
-    </Bloc>
-    <Bloc>
-
-      ### Rédiger
-
-      [Explorer la rédaction](https://libguides.bib.umontreal.ca/c.php?g=739631)
-
-    </Bloc>
-
-    </Carousel>
+<Carousel1
+    title="Des outils essentiels pour vos travaux"
+    description="Dans le torrent d’information disponible en ligne et sur nos rayons, par où commencer l’exploration? Nos spécialistes ont conçu des guides et sélectionné les ressources les plus pratiques pour vous. Profitez-en!"
+    moreText="Voir la boîte à outils"
+    moreHref="#"
+  >
+    <Card1
+      title="Citer ses sources"
+      IconComponent={TextOutdent}
+      moreText="Explorer la citation"
+      href="#"
+    />
+    <Card1
+      title="Ressources par discipline"
+      IconComponent={Compass}
+      moreText="Explorer les disciplinese"
+      href="#"
+    />
+    <Card1
+      title="Trouver et évaluer la fiabilité des sources"
+      IconComponent={MagnifyingGlass}
+      moreText="En savoir plus"
+      href="#"
+    />
+  </Carousel1>
 
 </Section>
 
-<Section bg='bleuPrincipal'>
+<Section bg='bleu100'>
 
 ## Profiter de nos formations gratuites, c'est payant
 
@@ -162,23 +148,43 @@ Consultez notre calendrier de formations - il y en a pour tous les goûts, tous 
 
 </Section>
 
-<Section bg='bleuPrincipal'>
-  <Hero cartes icônes avec lien carte lien-dessous>
-    ## Problème informatique?
-    
-    Pas de panique! Accès hors campus, authentification, impression, numérisation, prêt d’ordinateurs ou de tablettes; nos comptoirs, nos services et nos experts vous sont accessibles à l’année!
-    
-    ### Accès à distance aux ressources électroniques (proxy) Consulter la documentation
-    
-    ### Utilisation des outils bureautiques Consulter la documentation
-    
-    ### Installation et configuration de logiciels Consulter la documentation
-    
-    ### Connexion à distance aux logiciel Consulter la documentation
+<Section>
+<Carousel1
+    title="Problème informatique? Pas de panique!"
+    description="Accès hors campus, authentification, impression, numérisation, prêt d’ordinateurs ou de tablettes; nos comptoirs, nos services et nos spécialistes vous sont accessibles à l’année!"
+    moreText="Consulter la documentation sur le proxy"
+    moreHref="#"
+  >
+    <Card1
+      color="rose300"
+      title="Accès à distance aux ressources électroniques (PROXY)"
+      IconComponent={Laptop}
+      moreText="Consulter la documentation"
+      href="#"
+    />
+    <Card1
+      color="rose300"
+      title="Utilisation des outils bureautiques"
+      IconComponent={MicrosoftWordLogo}
+      moreText="Consulter la documentation"
+      href="#"
+    />
+    <Card1
+      color="rose300"
+      title="Installation et configuration de logiciels"
+      IconComponent={DownloadSimple}
+      moreText="Consulter la documentation"
+      href="#"
+    />
+    <Card1
+      color="rose300"
+      title="Connexion à distance aux logiciels"
+      IconComponent={Plugs}
+      moreText="Consulter la documentation"
+      href="#"
+    />
+  </Carousel1>
 
-    <Button primary>Voir le studio</Button>
-
-  </Hero>
 </Section>
 
 <Section bg='bleu200'>
@@ -201,7 +207,7 @@ Consultez notre calendrier de formations - il y en a pour tous les goûts, tous 
   </Hero>
 </Section>
 
-<Section bg='bleuPrincipal'>
+<Section>
   <HeroWithImage Image={imageBienvenue}>
 
     <Typography component='h2' variant='h2'>Bienvenue chez vous!</Typography>

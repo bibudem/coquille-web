@@ -3,6 +3,8 @@ title: Enseignement
 slug: enseignement
 ---
 
+import Techno from '../images/touche-techno.webp'
+
 <Section>
 
   # Enseignement
@@ -11,7 +13,7 @@ slug: enseignement
 
 </Section>
 
-<Section bg='bleu200'>
+<Section bg='bleu100'>
   <h2>Inscrivez-nous à votre cours</h2>
 
   <p>Pour intégrer facilement les notions de recherche d’information et d’évaluation de la crédibilité et de la pertinence des sources dans vos cours, faites appel à notre équipe spécialisée!</p>
@@ -27,7 +29,7 @@ slug: enseignement
   <Button secondary href="">Contactez votre bibliothécaire disciplinaire</Button>
 </Section>
 
-<Section bg='bleuPrincipal'>
+<Section>
 
 
 <Typography component="h2" variant="display5">5,75M de titres à portée de main</Typography>
@@ -85,19 +87,29 @@ Nous l’achèterons pour vous !</Typography>
 
 </Section>
 
+
 <Section bg='bleu600'>
-  ## Ajoutez une touche techno
-  
-  Ateliers, laboratoire de visualisation, studios d’enregistrement et d’édition, nos espaces de création numérique offrent plusieurs possibilités pour intégrer les technologies créatives et la production média à votre enseignement :
+
+  <HeroWithImage Image={Techno} align="right">
+    <Typography component='h2' variant='h2'>Ajoutez une touche techno</Typography>
+    
+ Ateliers, laboratoire de visualisation, studios d’enregistrement et d’édition, nos espaces de création numérique offrent plusieurs possibilités pour intégrer les technologies créatives et la production média à votre enseignement :
   
   - Enseigner dans nos espaces de création
   - Produire du contenu pour un cours
   - Intégrer les technologies dans les travaux pratiques
 
-  <Button primary>Découvrir nos espaces</Button>
+    <Button primary href='/espaces/'>Découvrir nos espaces</Button>
+
+  </HeroWithImage>
 </Section>
 
-<Section bg='bleuPrincipal'>
+
+
+
+
+
+<Section>
 
 
 <Typography component="h2" variant="display5">Tout savoir sur le droit d'auteur</Typography>
