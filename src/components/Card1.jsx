@@ -9,11 +9,30 @@ import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
 import isInternalLink from '../utils/internLink.js'
 import { getContrastColor } from '../../plugins/gatsby-plugin-bib-theme/tokens.js'
 
+const HOVER_WIDTH_FACTOR = 1.15
+
+const sizes = {
+  small: {
+    width: 290,
+    height: 332,
+  },
+  large: {
+    width: 335,
+    height: 400,
+  },
+}
+
+const Row = styled(Grid)({
+  width: '100%',
+})
+
 const StyledTitle = styled('div')({
-  flexGrow: 1,
+  '--_lh': '1.2',
+  lineHeight: 'calc(var(--_lh) * 1em)',
+  // maxHeight: 'calc(var(--_lh) * 3em)',
+  // overflow: 'hidden',
   fontSize: '2rem',
   fontWeight: 500,
-  lineHeight: 1.2,
 })
 
 const StyledMoreText = styled('div')({
@@ -32,10 +51,12 @@ const StyledMoreText = styled('div')({
  * @param {any} props.rest - Any additional props to be passed to the component.
  * @returns {React.ReactElement} - The Card1 component.
  */
-export default function Card1({ title, IconComponent, color = 'bleuPrincipal', moreText, href, ...rest }) {
+export default function Card1({ title, IconComponent, color = 'bleuPrincipal', moreText, href, small = false, ...rest }) {
   const { sx, ...props } = rest
   const linkProps = {}
   const theme = useTheme()
+  const [isSmall, setIsSmall] = useState(small)
+  const [cardSize, setCardSize] = useState(isSmall ? sizes.small : sizes.large)
 
   const colorMap = {
     primary: {
@@ -76,6 +97,14 @@ export default function Card1({ title, IconComponent, color = 'bleuPrincipal', m
     }
   }, [color, colorMap])
 
+  useEffect(() => {
+    setIsSmall(small)
+  }, [small])
+
+  useEffect(() => {
+    setCardSize(isSmall ? sizes.small : sizes.large)
+  }, [isSmall])
+
   const linkIsInternal = isInternalLink(href)
 
   const StyledLinkIcon = styled(linkIsInternal ? ArrowRight : ArrowUpRight)(({ theme }) => ({
@@ -99,7 +128,12 @@ export default function Card1({ title, IconComponent, color = 'bleuPrincipal', m
       sx={(theme) => ({
         borderRadius: theme.shape.corner.small,
         boxShadow: 'none',
-        maxWidth: 345,
+        width: cardSize.width,
+        height: cardSize.height,
+        transition: 'width 1.2s ease-in-out',
+        '&:hover': {
+          width: cardSize.width * HOVER_WIDTH_FACTOR,
+        },
         ...sx,
       })}
       {...props}
@@ -108,11 +142,14 @@ export default function Card1({ title, IconComponent, color = 'bleuPrincipal', m
         component="a"
         href={href}
         sx={(theme) => ({
-          maxWidth: '100%',
-          aspectRatio: '0.8446',
+          width: '100%',
+          height: '100%',
+          overflow: 'hidden',
+          outline: '1px dotted red',
+          // aspectRatio: isSmall ? 0.8735 : 0.8446,
           borderRadius: theme.shape.corner.small,
           color: getContrastColor(_color.bg, '#fff', '#111'),
-          display: 'block',
+          display: 'flex',
           padding: '1.875rem',
           backgroundColor: _color.bg,
           '&:hover': {
@@ -125,30 +162,45 @@ export default function Card1({ title, IconComponent, color = 'bleuPrincipal', m
           component={Grid}
           sx={{
             padding: 0,
-            flexDirection: 'column',
+            flexDirection: 'row',
+            alignContent: 'flex-start',
             height: '100%',
+            width: '100%',
           }}
           container
           spacing="1.8125rem"
         >
-          <IconComponent color={_color.iconColor} size={55} />
-          <StyledTitle component="div">{title}</StyledTitle>
-          <Grid
-            container
-            size="grow"
-            spacing="1.8125rem"
+          <Row
             sx={{
-              alignItems: 'center',
-              flexGrow: 0,
+              outline: '1px dotted red',
+              '> svg': {
+                display: 'flex',
+              },
             }}
           >
-            <Grid size="grow">
-              <StyledMoreText>{moreText}</StyledMoreText>
+            <IconComponent color={_color.iconColor} size={55} />
+          </Row>
+          <Row sx={{ outline: '1px dotted green', flexGrow: 1 }}>
+            <StyledTitle>{title}</StyledTitle>
+          </Row>
+          <Row sx={{ outline: '1px dotted yellow' }}>
+            <Grid
+              container
+              size="auto"
+              spacing="1rem"
+              sx={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}
+            >
+              <Grid size="grow">
+                <StyledMoreText>{moreText}</StyledMoreText>
+              </Grid>
+              <Grid size="auto">
+                <StyledLinkIcon weight="light" />
+              </Grid>
             </Grid>
-            <Grid size="auto">
-              <StyledLinkIcon weight="light" />
-            </Grid>
-          </Grid>
+          </Row>
         </CardContent>
       </CardActionArea>
     </Card>
