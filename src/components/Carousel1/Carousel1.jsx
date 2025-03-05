@@ -19,15 +19,15 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
               {description}
             </Typography>
           </Grid>
-          <Grid container size="auto" spacing='10px' sx={{ alignItems: 'flex-end', pl: 4 }}>
-            <ArrowLeftCircleIcon fontSize={50} color='#0057ac' />
-            <ArrowRightCircleIcon fontSize={50} color='#0057ac' />
+          <Grid container size="auto" spacing="10px" sx={{ alignItems: 'flex-end', pl: 4 }}>
+            <ArrowLeftCircleIcon fontSize={50} color="#0057ac" />
+            <ArrowRightCircleIcon fontSize={50} color="#0057ac" />
           </Grid>
         </Grid>
       </Grid>
       <Grid container size={12} spacing="10px">
         {Children.toArray(children).map((child, index) => (
-          <Grid key={index} size={3}>
+          <Grid key={index} size={2}>
             {child}
           </Grid>
         ))}
