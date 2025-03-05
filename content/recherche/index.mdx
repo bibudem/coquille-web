@@ -4,6 +4,8 @@ slug: recherche
 ---
 
 import toto from '../images/image-arret-bibliothecaire.webp'
+import CommentIcon from '@mui/icons-material/Comment'
+import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
 
 <Section>
 
@@ -22,4 +24,101 @@ import toto from '../images/image-arret-bibliothecaire.webp'
     <Button href="" primary>Contacter votre bibliothécaire disciplinaire</Button>
 
   </HeroWithImage>
+</Section>
+
+
+
+<Section bg='vertFonce'>
+
+<Typography component="h2" variant="display5">Nos services pour les cycles supérieurs </Typography>
+
+    <List>
+      <ListItem disableGutters>
+        <ListItemButton component="a" href="https://www.facebook.com/groups/655999033385375/">
+          <ListItemText 
+           sx={{ width: '66%' }}
+            primary={
+              <Typography component="h3" variant="h3">Matinée de rédaction</Typography>
+            }
+            secondary={
+              <Typography>Travaillez efficacement dans un environnement structuré grâce aux Matinées de rédaction. Les séances sont structurées en cycles de rédaction, suivis de pauses d'échanges informels.</Typography>
+            }
+          />
+            <ListItemIcon sx={{color: '#fff'}}>
+              <ArrowRightCircleIcon
+              color='red'
+              sx={{fontSize:'50px'}} />
+            </ListItemIcon>
+        </ListItemButton>
+      </ListItem>
+      <Divider component="li" sx={{borderColor: '#fff'}} />
+      <ListItem disableGutters>
+        <ListItemButton component="a" href="#">
+          <ListItemText
+          sx={{ width: '66%' }}
+            primary={
+              <Typography component="h3" variant="h3">Aide à la rédaction et à la mise en page</Typography>
+            }
+            secondary={
+              <Typography>Bénéficiez d’aide pour utiliser le modèle Word pour thèses et mémoires qui répond aux normes du Guide de présentation des mémoires et des thèses des Études supérieures et postdoctorales (ESP).</Typography>
+            }
+          />
+            <ListItemIcon sx={{color: '#fff'}}>
+              <CommentIcon/>
+            </ListItemIcon>
+        </ListItemButton>
+      </ListItem>
+      <Divider component="li" sx={{borderColor: '#fff'}} />
+      <ListItem disableGutters>
+        <ListItemButton component="a" href="#">
+          <ListItemText
+          sx={{ width: '66%' }}
+            primary={
+              <Typography component="h3" variant="h3">Aide au dépôt de votre mémoire ou thèse dans Papyrus</Typography>
+            }
+            secondary={
+              <Typography>Nous sommes là pour vous accompagner dans le processus de mise en forme et de dépôt de votre thèse ou de votre mémoire dans le dépôt institutionnel Papyrus, étape obligatoire pour l’obtention de votre grade.</Typography>
+            }
+          />
+            <ListItemIcon sx={{color: '#fff'}}>
+              <CommentIcon/>
+            </ListItemIcon>
+        </ListItemButton>
+      </ListItem>
+      <Divider component="li" sx={{borderColor: '#fff'}} />
+      <ListItem disableGutters>
+        <ListItemButton component="a" href="#">
+          <ListItemText
+          sx={{ width: '66%' }}
+            primary={
+              <Typography component="h3" variant="h3">Accompagnement personnalisé au doctorat </Typography>
+            }
+            secondary={
+              <Typography>Vous pouvez planifier une série de rencontres individuelles avec votre bibliothécaire disciplinaire pour recevoir un soutien dans toutes les étapes de votre doctorat, de la recherche documentaire jusqu’à la rédaction de votre thèse, en passant par la mise en place de veille et par l’aide à la création de corpus de recherche.</Typography>
+            }
+          />
+            <ListItemIcon sx={{color: '#fff'}}>
+              <CommentIcon/>
+            </ListItemIcon>
+        </ListItemButton>
+      </ListItem>
+      <Divider component="li" sx={{borderColor: '#fff'}} />
+      <ListItem disableGutters>
+        <ListItemButton component="a" href="#">
+          <ListItemText
+          sx={{ width: '66%' }}
+            primary={
+              <Typography component="h3" variant="h3">Espaces dédiés aux cycles supérieurs</Typography>
+            }
+            secondary={
+              <Typography>Des salles de travail vous sont dédiées : salles individuelles réservables, salles communes équipées de casiers pour votre documentation. L’offre varie d’une bibliothèque à l’autre, consultez le répertoire!</Typography>
+            }
+          />
+            <ListItemIcon sx={{color: '#fff'}}>
+              <CommentIcon/>
+            </ListItemIcon>
+        </ListItemButton>
+      </ListItem>
+    </List>
+
 </Section>
