@@ -13,7 +13,7 @@ const pages = [
   { url: '/etudes', label: 'Études' },
   { url: '/recherche', label: 'Recherche' },
   { url: '/enseignement', label: 'Enseignement' },
-  { url: '/engagement', label: 'Engagement' },
+  { url: '/engagements', label: 'Engagements' },
   { url: '/tests', label: 'Tests' },
 ]
 
