@@ -177,6 +177,16 @@ export default {
 		}
 	},
 	spacing: 8,
+	transitions: {
+		easing: {
+			emphasized: 'cubic-bezier(.3, 0, .8, .15)',
+			// emphasizedAccelerate: 'cubic-bezier()',
+			// emphasizedDecelerate: 'cubic-bezier()',
+			// standard: 'cubic-bezier()',
+			// standardAccelerate: 'cubic-bezier()',
+			// standardDecelerate: 'cubic-bezier()',
+		}
+	},
 	typography: {
 		fontFamily: 'Figtree',
 		fontSize: 16,
