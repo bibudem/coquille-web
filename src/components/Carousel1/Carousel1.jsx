@@ -19,9 +19,9 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
               {description}
             </Typography>
           </Grid>
-          <Grid container size="auto" spacing='10px' sx={{ alignItems: 'flex-end', pl: 4 }}>
-            <ArrowLeftCircleIcon fontSize={50} color='#0057ac' />
-            <ArrowRightCircleIcon fontSize={50} color='#0057ac' />
+          <Grid container size="auto" spacing="10px" sx={{ alignItems: 'flex-end', pl: 4 }}>
+            <ArrowLeftCircleIcon fontSize={50} color="#0057ac" />
+            <ArrowRightCircleIcon fontSize={50} color="#0057ac" />
           </Grid>
         </Grid>
       </Grid>
@@ -32,11 +32,13 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
           </Grid>
         ))}
       </Grid>
-      <Grid size={12}>
-        <Button primary href={moreLink}>
-          {moreText}
-        </Button>
-      </Grid>
+      {moreLink && moreText && (
+        <Grid size={12}>
+          <Button primary href={moreLink}>
+            {moreText}
+          </Button>
+        </Grid>
+      )}
     </Grid>
   )
 }
