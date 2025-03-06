@@ -9,7 +9,7 @@ import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from './CustomIcons'
  * A React component that renders a carousel with a title, description, and optional "more" link.
  *
  * @param {object} props - The component props.
- * @param {string} props.title - The title of the carousel.
+ * @param {string|React.ReactNode} props.title - The title of the carousel, which can be a string or a React element.
  * @param {string|React.ReactNode} props.description - The description of the carousel, which can be a string or a React element.
  * @param {string} [props.moreText] - The text for the "more" link.
  * @param {string} [props.moreLink] - The URL for the "more" link.
@@ -29,16 +29,28 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
   return (
     <Grid container spacing="45px">
       <Grid size={12}>
-        <Typography
-          variant="display5"
-          component="h2"
-          sx={{
-            pb: 4,
-            ...variableWidthStyles,
-          }}
+      <Div sx={{
+        pb: 4,
+        ...variableWidthStyles,
+        '.MuiTypography-root': {
+            fontSize: '2.25rem!important',
+            fontWeight: 400,
+            lineHeight: 1
+          }
+        }}
         >
-          {title}
-        </Typography>
+          {
+            typeof title === 'string' ? (
+              <Typography
+                component="h2"
+              >
+                {title}
+              </Typography>
+            ) : (
+              title
+            )
+          }
+        </Div>
         <Grid container>
           <Grid 
             size="grow"
