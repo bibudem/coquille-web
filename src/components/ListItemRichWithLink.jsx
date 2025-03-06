@@ -23,7 +23,10 @@ export default function ListItemRichWithLink({ title, description, href, linkTex
               <Div
                 sx={(theme) => ({
                   [theme.breakpoints.up('md')]: {
-                    width: '66%'
+                    width: '83.3333%'
+                  },
+                  [theme.breakpoints.up('lg')]: {
+                    width: '66.6667%'
                   }
                 })}
               >
@@ -34,7 +37,10 @@ export default function ListItemRichWithLink({ title, description, href, linkTex
               <Div
                 sx={(theme) => ({
                   [theme.breakpoints.up('md')]: {
-                    width: '66%'
+                    width: '83.3333%'
+                  },
+                  [theme.breakpoints.up('lg')]: {
+                    width: '66.6667%'
                   }
                 })}
               >
