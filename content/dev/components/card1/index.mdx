@@ -8,20 +8,6 @@ import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icon
 # Card1
 
 <Section>
-  <div
-    style={{
-      display: 'flex',
-      flexDirection: 'column',
-      height: '400px', width: '300px', border: '1px solid silver'
-    }}
-  >
-    <div style={{ outline: '1px dotted yellow'}}>icône</div>
-    <div style={{ outline: '1px dotted yellow'}}>titre</div>
-    <div style={{ outline: '1px dotted yellow'}}>bas</div>
-  </div>
-</Section>
-
-<Section>
 
   ## Couleur: par défaut (bleuPrincipal)
 
@@ -147,6 +133,8 @@ import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icon
 <Section>
   ## Cartes utilisées dans un carousel
 
+  Ajoutez la propriété `small` pour les cartes qui seront utilisées dans un carousel.
+
 <Carousel1
     title="Problème informatique? Pas de panique!"
     description="Accès hors campus, authentification, impression, numérisation, prêt d’ordinateurs ou de tablettes; nos comptoirs, nos services et nos experts vous sont accessibles à l’année!"
@@ -158,24 +146,28 @@ import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icon
       IconComponent={BookmarkSimple}
       moreText="Voir la boîte à outils"
       href="#"
+      small
     />
     <Card1
       title="Capsules vidéos et webinaires"
       IconComponent={Video}
       moreText="Accéder à YouTube"
       href="https://www.youtube.com/user/BibliothequesUdeM"
+      small
     />
     <Card1
       title="Service Accessibilité"
       IconComponent={PersonSimpleCircle}
       moreText="En savoir plus"
       href="#"
+      small
     />
     <Card1
       title="Soutien personnalisé avec nos spécialistes"
       IconComponent={Users}
       moreText="Prendre rendez-vous"
       href="#"
+      small
     />
   </Carousel1>
 </Section>

@@ -22,7 +22,7 @@ const sizes = {
   },
 }
 
-const StyledDiv = styled('div')()
+const Div = styled('div')()
 
 const Row = styled(Grid)({
   width: '100%',
@@ -33,27 +33,31 @@ const StyledTitle = styled('div')({
   lineHeight: 'calc(var(--_lh) * 1em)',
   // maxHeight: 'calc(var(--_lh) * 3em)',
   // overflow: 'hidden',
-  fontSize: '2rem',
+  fontSize: '1.75rem',
   fontWeight: 500,
+  paddingBlockStart: '1.8125rem',
 })
 
 const StyledMoreText = styled('div')({
   fontSize: '1rem',
-  fontWeight: 500,
-  lineHeight: 1.5,
+  fontWeight: 400,
+  lineHeight: 1.6,
 })
 
 /**
- * Card1 component that renders a card with a title, icon, link text, and link.
- * @param {Object} props - The component props.
- * @param {string} props.title - The title of the card.
- * @param {React.ComponentType} props.IconComponent - The icon component to be displayed.
- * @param {string} props.moreText - The text to be displayed for the link.
- * @param {string} props.href - The URL of the link.
- * @param {any} props.rest - Any additional props to be passed to the component.
- * @returns {React.ReactElement} - The Card1 component.
+ * Card1 component that renders an interactive card with hover effects and dynamic sizing
+ *
+ * @param {Object} props - The component props
+ * @param {string} props.title - The title text displayed in the card
+ * @param {React.ComponentType} props.Icon - The icon component rendered at the top
+ * @param {('primary'|'bleuPrincipal'|'vertFonce'|'rose300')} [props.color='bleuPrincipal'] - The color theme of the card
+ * @param {string} props.moreText - The text displayed above the arrow icon
+ * @param {string} props.href - The URL for the card's link (internal or external)
+ * @param {boolean} [props.small=false] - Whether to use small card dimensions
+ * @throws {Error} When href prop is not a string
+ * @returns {React.ReactElement} A styled MUI Card component
  */
-export default function Card1({ title, IconComponent, color = 'bleuPrincipal', moreText, href, small = false, ...rest }) {
+export default function Card1({ title, Icon, color = 'bleuPrincipal', moreText, href, small = false, ...rest }) {
   const { sx, ...props } = rest
   const linkProps = {}
   const theme = useTheme()
@@ -87,8 +91,12 @@ export default function Card1({ title, IconComponent, color = 'bleuPrincipal', m
     },
   }
 
+  if (typeof title === 'undefined') {
+    throw new Error('The `title` prop is required and must be a string')
+  }
+
   if (typeof href !== 'string') {
-    throw new Error('The `href`prop must be a string')
+    throw new Error('The `href` prop must be a string')
   }
 
   const [_color, _setColor] = useState(colorMap.bleuPrincipal)
@@ -132,7 +140,7 @@ export default function Card1({ title, IconComponent, color = 'bleuPrincipal', m
         boxShadow: 'none',
         width: cardSize.width,
         height: cardSize.height,
-        transition: 'width 200ms ease-in-out',
+        transition: `width ${theme.transitions.duration.md3.medium1}ms ${theme.transitions.easing.md3.emphasized}`,
         '&:hover': {
           width: cardSize.width * HOVER_WIDTH_FACTOR,
         },
@@ -146,9 +154,6 @@ export default function Card1({ title, IconComponent, color = 'bleuPrincipal', m
         sx={(theme) => ({
           width: '100%',
           height: '100%',
-          overflow: 'hidden',
-          outline: '1px dotted red',
-          // aspectRatio: isSmall ? 0.8735 : 0.8446,
           borderRadius: theme.shape.corner.small,
           color: getContrastColor(_color.bg, '#fff', '#111'),
           display: 'flex',
@@ -157,42 +162,39 @@ export default function Card1({ title, IconComponent, color = 'bleuPrincipal', m
           '&:hover': {
             backgroundColor: _color.hoverBg,
           },
+          '.MuiCardActionArea-focusHighlight': {
+            transitionDuration: theme.transitions.duration.md3.medium1,
+            transitionEasing: theme.transitions.easing.md3.emphasized,
+          },
         })}
         {...linkProps}
       >
         <CardContent
-          component={StyledDiv}
+          component={Div}
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '1.8125rem 0',
             padding: 0,
 
-            // flexDirection: 'row',
-            // alignContent: 'flex-start',
             height: '100%',
             width: '100%',
-            outline: '1px solid red',
-            // alignContent: 'space-between',
           }}
           container
-          spacing="1.8125rem"
         >
           <Row
             sx={{
               height: '55px',
-              outline: '1px dotted red',
               '> svg': {
                 display: 'flex',
               },
             }}
           >
-            <IconComponent color={_color.iconColor} size={55} />
+            <Icon color={_color.iconColor} size={55} />
           </Row>
-          <Row sx={{ outline: '1px dotted green', flexGrow: 1 }}>
+          <Row sx={{ flexGrow: 1 }}>
             <StyledTitle>{title}</StyledTitle>
           </Row>
-          <Row sx={{ outline: '1px dotted yellow', height: '55px' }}>
+          <Row sx={{ height: '55px' }}>
             <Grid
               container
               size="auto"
