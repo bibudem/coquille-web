@@ -9,8 +9,6 @@ import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
-import Tabs from '@mui/material/Tabs'
-import Tab from '@mui/material/Tab'
 import Typography from '@mui/material/Typography'
 import Carousel from 'react-material-ui-carousel'
 
@@ -27,6 +25,7 @@ import IconInSquare from '@/components/IconInSquare'
 import Link from '@/components/Link'
 import ListItemRichWithLink from '@/components/ListItemRichWithLink'
 import Section from '@/components/Section'
+import Tabs1 from '@/components/Tabs1'
 // Dummy components
 import { Hero, Bloc } from '@/components/dummy-components'
 
@@ -56,8 +55,7 @@ export default {
   ListItemRichWithLink,
   ListItemText,
   Section,
-  Tab,
-  Tabs,
+  Tabs1,
   Typography,
   /* Dummies: */
   Hero,
