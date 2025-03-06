@@ -21,12 +21,12 @@ const StyledTitle = styled('div')({
  * Card1 component that renders a card with a title, icon, link text, and link.
  * @param {Object} props - The component props.
  * @param {string} props.title - The title of the card.
- * @param {React.ComponentType} props.IconComponent - The icon component to be displayed.
+ * @param {React.ComponentType} props.Icon - The icon component to be displayed.
  * @param {string} props.href - The URL of the link.
  * @param {any} props.rest - Any additional props to be passed to the component.
  * @returns {React.ReactElement} - The Card1 component.
  */
-export default function Card2({ title, IconComponent, href, ...rest }) {
+export default function Card2({ title, Icon, href, ...rest }) {
   const { sx, ...props } = rest
   const linkProps = {}
   const theme = useTheme()
@@ -108,7 +108,7 @@ export default function Card2({ title, IconComponent, href, ...rest }) {
           spacing="1.5rem"
         >
           <Grid size="12">
-            <IconComponent color={_color.iconColor} size={55} />
+            <Icon color={_color.iconColor} size={55} />
           </Grid>
           <Grid size="12">
             <StyledTitle component="div">{title}</StyledTitle>
