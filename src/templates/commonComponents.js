@@ -21,6 +21,7 @@ import FlipCardWithBg from '@/components/FlipCardWithBg'
 import FlipCardWithImage from '@/components/FlipCardWithImage'
 import HeroWithImage from '@/components/HeroWithImage'
 import HeroWithText from '@/components/HeroWithText'
+import HeroWithText2 from '@/components/HeroWithText2'
 import IconInSquare from '@/components/IconInSquare'
 import Link from '@/components/Link'
 import ListItemRichWithLink from '@/components/ListItemRichWithLink'
@@ -46,6 +47,7 @@ export default {
   Grid,
   HeroWithImage,
   HeroWithText,
+  HeroWithText2,
   IconInSquare,
   Link,
   List,
