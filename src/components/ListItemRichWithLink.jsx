@@ -62,7 +62,7 @@ export default function ListItemRichWithLink({ title, description, href, linkTex
           }
         </ListItemButton>
       </ListItem>
-      <Divider component="li" sx={{borderColor: 'red'}} />
+      <Divider component="li" sx={{borderColor: '#2178C4'}} />
     </>
   )
 }
