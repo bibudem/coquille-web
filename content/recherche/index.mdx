@@ -7,7 +7,7 @@ import PorteeScientifique from '../images/portee-scientifique.webp'
 import Bibliothecaire from '../images/bibliothecaire-montage.webp'
 import CommentIcon from '@mui/icons-material/Comment'
 import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
-import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGlass, PencilSimple, TextAlignJustify } from '@phosphor-icons/react'
+import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGlass, PencilSimple, TextAlignJustify, Binoculars, TreasureChest, Graph, Article } from '@phosphor-icons/react'
 
 <Section>
 
@@ -26,6 +26,138 @@ import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGl
     <Button href="" primary>Contacter votre bibliothécaire disciplinaire</Button>
 
   </HeroWithImage>
+</Section>
+
+<Section>
+
+<Tabs1
+    tabs={['Rédiger et produire', 'Diffuser vos savoirs', 'Plateformes de diffusion']}
+  >
+  <Carousel1
+    title={<Typography component="h3">Rédiger et produire</Typography>}
+    description="Nous vous proposons une panoplie de ressources et d'aides à la rédaction savante et à la production d'outils de diffusion de vos recherches."
+    moreText="En savoir plus sur les services"
+    moreHref="#"
+  >
+    <Card1
+      title="Recherche documentaire"
+      Icon={MagnifyingGlass}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+    <Card1
+      title="Veille documentaire"
+      Icon={Binoculars}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+    <Card1
+      title="Rédiger un article scientifique, une thèse ou un mémoire"
+      Icon={PencilSimple}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+    <Card1
+      title="Revue systématique"
+      Icon={Binoculars}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+        <Card1
+      title="Logiciel bibliographique"
+      Icon={Binoculars}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+  </Carousel1>
+
+  <Carousel1
+    title={<Typography component="h3">Diffuser vos savoirs</Typography>}
+    description="Nous vous proposons une multitude de services pour optimiser la publication, la diffusion et la conservation des résultats de vos travaux de recherche."
+    moreText="En savoir plus sur les services"
+    moreHref="#"
+  >
+    <Card1
+      title="Déposer dans Papyrus"
+      Icon={MagnifyingGlass}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+    <Card1
+      title="Publier un article scientifique"
+      Icon={Binoculars}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+    <Card1
+      title="Attribution d'identifiants pérennes"
+      Icon={PencilSimple}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+    <Card1
+      title="Participer aux échanges scientifiques"
+      Icon={Binoculars}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+        <Card1
+      title="Diffuser vos bibliographies Zotero"
+      Icon={Binoculars}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+            <Card1
+      title="Exposer dans nos espaces"
+      Icon={Binoculars}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+  </Carousel1>
+
+
+<Carousel1
+    title={<Typography component="h3">Rédiger et produire</Typography>}
+    description="Nous vous proposons une panoplie de ressources et d'aides à la rédaction savante et à la production d'outils de diffusion de vos recherches."
+    moreText="En savoir plus sur les services"
+    moreHref="#"
+  >
+    <Card1
+      title="Dépôt institutionnel"
+      Icon={TreasureChest}
+      moreText="Accéder à Papyrus"
+      href="#"
+      small
+    />
+    <Card1
+      title="Dépôt de données de recherche"
+      Icon={Graph}
+      moreText="Accéder à Borealis"
+      href="#"
+      small
+    />
+    <Card1
+      title="Plateforme d'édition savante en libre accès"
+      Icon={Article}
+      moreText="Accéder à OJS"
+      href="#"
+      small
+    />
+
+  </Carousel1>
+
+  </Tabs1>
 </Section>
 
 
