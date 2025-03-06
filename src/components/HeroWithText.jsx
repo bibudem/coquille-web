@@ -6,7 +6,6 @@ import Grid from '@mui/material/Grid2'
  * @param {Object} props - Les propriétés du composant.
  * @param {React.ReactNode} props.leftColl - Le contenu à afficher dans la colonne de gauche.
  * @param {React.ReactNode} props.rightColl - Le contenu à afficher dans la colonne de droite.
- * @param {Object} [props.rest] - Propriétés supplémentaires à passer au conteneur Grid.
  *
  * @returns {JSX.Element} Le composant HeroWithText rendu.
  */

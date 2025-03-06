@@ -177,6 +177,38 @@ export default {
 		}
 	},
 	spacing: 8,
+	transitions: {
+		duration: {
+			md3: {
+				short1: 50,
+				short2: 100,
+				short3: 150,
+				short4: 200,
+				medium1: 250,
+				medium2: 300,
+				medium3: 350,
+				medium4: 400,
+				long1: 450,
+				long2: 500,
+				long3: 550,
+				long4: 600,
+				extraLong1: 700,
+				extraLong2: 800,
+				extraLong3: 900,
+				extraLong4: 1000,
+			}
+		},
+		easing: {
+			md3: {
+				emphasized: 'cubic-bezier(.2, 0, 0, 1)',
+				emphasizedAccelerate: 'cubic-bezier(.3, 0, .8, .15)',
+				emphasizedDecelerate: 'cubic-bezier(.05, .7, .1, 1)',
+				standard: 'cubic-bezier(.2, 0, 0, 1)',
+				standardAccelerate: 'cubic-bezier(.3, 0, 1, 1)',
+				standardDecelerate: 'cubic-bezier(0, 0, 0, 1)',
+			}
+		}
+	},
 	typography: {
 		fontFamily: 'Figtree',
 		fontSize: 16,

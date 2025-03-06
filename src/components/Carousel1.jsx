@@ -2,7 +2,7 @@ import { Children } from 'react'
 import { Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import Button from '@/components/Button'
-import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from '../CustomIcons.jsx'
+import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from './CustomIcons.jsx'
 
 export default function Carousel1({ title, description, moreText, moreLink = '#', ...rest }) {
   const { sx, children, ...props } = rest
@@ -27,7 +27,7 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
       </Grid>
       <Grid container size={12} spacing="10px">
         {Children.toArray(children).map((child, index) => (
-          <Grid key={index} size={3}>
+          <Grid key={index} size="auto">
             {child}
           </Grid>
         ))}

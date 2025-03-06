@@ -9,33 +9,60 @@ import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
 import isInternalLink from '../utils/internLink.js'
 import { getContrastColor } from '../../plugins/gatsby-plugin-bib-theme/tokens.js'
 
+const HOVER_WIDTH_FACTOR = 1.15
+
+const sizes = {
+  small: {
+    width: 290,
+    height: 332,
+  },
+  large: {
+    width: 335,
+    height: 400,
+  },
+}
+
+const Div = styled('div')()
+
+const Row = styled(Grid)({
+  width: '100%',
+})
+
 const StyledTitle = styled('div')({
-  flexGrow: 1,
-  fontSize: '2rem',
+  '--_lh': '1.2',
+  lineHeight: 'calc(var(--_lh) * 1em)',
+  // maxHeight: 'calc(var(--_lh) * 3em)',
+  // overflow: 'hidden',
+  fontSize: '1.75rem',
   fontWeight: 500,
-  lineHeight: 1.2,
+  paddingBlockStart: '1.8125rem',
 })
 
 const StyledMoreText = styled('div')({
   fontSize: '1rem',
-  fontWeight: 500,
-  lineHeight: 1.5,
+  fontWeight: 400,
+  lineHeight: 1.6,
 })
 
 /**
- * Card1 component that renders a card with a title, icon, link text, and link.
- * @param {Object} props - The component props.
- * @param {string} props.title - The title of the card.
- * @param {React.ComponentType} props.IconComponent - The icon component to be displayed.
- * @param {string} props.moreText - The text to be displayed for the link.
- * @param {string} props.href - The URL of the link.
- * @param {any} props.rest - Any additional props to be passed to the component.
- * @returns {React.ReactElement} - The Card1 component.
+ * Card1 component that renders an interactive card with hover effects and dynamic sizing
+ *
+ * @param {Object} props - The component props
+ * @param {string} props.title - The title text displayed in the card
+ * @param {React.ComponentType} props.Icon - The icon component rendered at the top
+ * @param {('primary'|'bleuPrincipal'|'vertFonce'|'rose300')} [props.color='bleuPrincipal'] - The color theme of the card
+ * @param {string} props.moreText - The text displayed above the arrow icon
+ * @param {string} props.href - The URL for the card's link (internal or external)
+ * @param {boolean} [props.small=false] - Whether to use small card dimensions
+ * @throws {Error} When href prop is not a string
+ * @returns {React.ReactElement} A styled MUI Card component
  */
-export default function Card1({ title, IconComponent, color = 'bleuPrincipal', moreText, href, ...rest }) {
+export default function Card1({ title, Icon, color = 'bleuPrincipal', moreText, href, small = false, ...rest }) {
   const { sx, ...props } = rest
   const linkProps = {}
   const theme = useTheme()
+  const [isSmall, setIsSmall] = useState(small)
+  const [cardSize, setCardSize] = useState(isSmall ? sizes.small : sizes.large)
 
   const colorMap = {
     primary: {
@@ -64,8 +91,12 @@ export default function Card1({ title, IconComponent, color = 'bleuPrincipal', m
     },
   }
 
+  if (typeof title === 'undefined') {
+    throw new Error('The `title` prop is required and must be a string')
+  }
+
   if (typeof href !== 'string') {
-    throw new Error('The `href`prop must be a string')
+    throw new Error('The `href` prop must be a string')
   }
 
   const [_color, _setColor] = useState(colorMap.bleuPrincipal)
@@ -75,6 +106,14 @@ export default function Card1({ title, IconComponent, color = 'bleuPrincipal', m
       _setColor(colorMap[color])
     }
   }, [color, colorMap])
+
+  useEffect(() => {
+    setIsSmall(small)
+  }, [small])
+
+  useEffect(() => {
+    setCardSize(isSmall ? sizes.small : sizes.large)
+  }, [isSmall])
 
   const linkIsInternal = isInternalLink(href)
 
@@ -99,7 +138,12 @@ export default function Card1({ title, IconComponent, color = 'bleuPrincipal', m
       sx={(theme) => ({
         borderRadius: theme.shape.corner.small,
         boxShadow: 'none',
-        maxWidth: 345,
+        width: cardSize.width,
+        height: cardSize.height,
+        transition: `width ${theme.transitions.duration.md3.medium1}ms ${theme.transitions.easing.md3.emphasized}`,
+        '&:hover': {
+          width: cardSize.width * HOVER_WIDTH_FACTOR,
+        },
         ...sx,
       })}
       {...props}
@@ -108,47 +152,66 @@ export default function Card1({ title, IconComponent, color = 'bleuPrincipal', m
         component="a"
         href={href}
         sx={(theme) => ({
-          maxWidth: '100%',
-          aspectRatio: '0.8446',
+          width: '100%',
+          height: '100%',
           borderRadius: theme.shape.corner.small,
           color: getContrastColor(_color.bg, '#fff', '#111'),
-          display: 'block',
+          display: 'flex',
           padding: '1.875rem',
           backgroundColor: _color.bg,
           '&:hover': {
             backgroundColor: _color.hoverBg,
           },
+          '.MuiCardActionArea-focusHighlight': {
+            transitionDuration: theme.transitions.duration.md3.medium1,
+            transitionEasing: theme.transitions.easing.md3.emphasized,
+          },
         })}
         {...linkProps}
       >
         <CardContent
-          component={Grid}
+          component={Div}
           sx={{
-            padding: 0,
+            display: 'flex',
             flexDirection: 'column',
+            padding: 0,
+
             height: '100%',
+            width: '100%',
           }}
           container
-          spacing="1.8125rem"
         >
-          <IconComponent color={_color.iconColor} size={55} />
-          <StyledTitle component="div">{title}</StyledTitle>
-          <Grid
-            container
-            size="grow"
-            spacing="1.8125rem"
+          <Row
             sx={{
-              alignItems: 'center',
-              flexGrow: 0,
+              height: '55px',
+              '> svg': {
+                display: 'flex',
+              },
             }}
           >
-            <Grid size="grow">
-              <StyledMoreText>{moreText}</StyledMoreText>
+            <Icon color={_color.iconColor} size={55} />
+          </Row>
+          <Row sx={{ flexGrow: 1 }}>
+            <StyledTitle>{title}</StyledTitle>
+          </Row>
+          <Row sx={{ height: '55px' }}>
+            <Grid
+              container
+              size="auto"
+              spacing="1rem"
+              sx={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}
+            >
+              <Grid size="grow">
+                <StyledMoreText>{moreText}</StyledMoreText>
+              </Grid>
+              <Grid size="auto">
+                <StyledLinkIcon weight="light" />
+              </Grid>
             </Grid>
-            <Grid size="auto">
-              <StyledLinkIcon weight="light" />
-            </Grid>
-          </Grid>
+          </Row>
         </CardContent>
       </CardActionArea>
     </Card>

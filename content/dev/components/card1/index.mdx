@@ -1,12 +1,11 @@
 ---
-title: Card1
+title: <Card1>
 template: doc
 ---
 
 import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icons/react'
 
 # Card1
-
 
 <Section>
 
@@ -36,6 +35,14 @@ import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icon
         title="Service Accessibilité"
         IconComponent={PersonSimpleCircle}
         moreText="En savoir plus avec beaucoup de texte..."
+        href="#"
+      />
+    </Grid>
+    <Grid>
+      <Card1
+        title="Une ligne"
+        IconComponent={PersonSimpleCircle}
+        moreText="En savoir plus"
         href="#"
       />
     </Grid>
@@ -121,4 +128,46 @@ import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icon
 
   <Button primary href="#">Découvrir les services pour la communauté étudiante</Button>
 
+</Section>
+
+<Section>
+  ## Cartes utilisées dans un carousel
+
+  Ajoutez la propriété `small` pour les cartes qui seront utilisées dans un carousel.
+
+<Carousel1
+    title="Problème informatique? Pas de panique!"
+    description="Accès hors campus, authentification, impression, numérisation, prêt d’ordinateurs ou de tablettes; nos comptoirs, nos services et nos experts vous sont accessibles à l’année!"
+    moreText="Voir le studio"
+    moreHref="#"
+  >
+    <Card1
+      title="Publier un article scientifique"
+      IconComponent={BookmarkSimple}
+      moreText="Voir la boîte à outils"
+      href="#"
+      small
+    />
+    <Card1
+      title="Capsules vidéos et webinaires"
+      IconComponent={Video}
+      moreText="Accéder à YouTube"
+      href="https://www.youtube.com/user/BibliothequesUdeM"
+      small
+    />
+    <Card1
+      title="Service Accessibilité"
+      IconComponent={PersonSimpleCircle}
+      moreText="En savoir plus"
+      href="#"
+      small
+    />
+    <Card1
+      title="Soutien personnalisé avec nos spécialistes"
+      IconComponent={Users}
+      moreText="Prendre rendez-vous"
+      href="#"
+      small
+    />
+  </Carousel1>
 </Section>
