@@ -25,6 +25,7 @@ import HeroWithImage from '@/components/HeroWithImage'
 import HeroWithText from '@/components/HeroWithText'
 import IconInSquare from '@/components/IconInSquare'
 import Link from '@/components/Link'
+import ListItemRichWithLink from '@/components/ListItemRichWithLink'
 import Section from '@/components/Section'
 // Dummy components
 import { Hero, Bloc } from '@/components/dummy-components'
@@ -52,6 +53,7 @@ export default {
   ListItem,
   ListItemButton,
   ListItemIcon,
+  ListItemRichWithLink,
   ListItemText,
   Section,
   Tab,
