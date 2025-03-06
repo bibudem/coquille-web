@@ -19,24 +19,73 @@ import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icon
       Icon={BookmarkSimple}
       moreText="Voir la boîte à outils"
       href="#"
+      small
     />
     <Card1
       title="Capsules vidéos et webinaires"
       Icon={Video}
       moreText="Accéder à YouTube"
       href="https://www.youtube.com/user/BibliothequesUdeM"
+      small
     />
     <Card1
       title="Service Accessibilité"
       Icon={PersonSimpleCircle}
       moreText="En savoir plus"
       href="#"
+      small
     />
     <Card1
       title="Soutien personnalisé avec nos spécialistes"
       Icon={Users}
       moreText="Prendre rendez-vous"
       href="#"
+      small
+    />
+  </Carousel1>
+</Section>
+
+<Section>
+# &lt;Carousel1&gt; avec fragment React comme `description`
+
+  <Carousel1
+    title="Problème informatique? Pas de panique!"
+    description={
+      <>
+        <Typography sx={{pb: 1.5}}>Les organismes subventionnaires l’exigent, vous devez porter une attention particulière au cycle de vie de données de recherche. Nous vous aidons à y voir plus clair, de l’élaboration d’un plan de gestion de données jusqu’au partage dans un dépôt fiable et reconnu.</Typography>
+        <Typography>Nos services de gestion des données de recherche sont conçus pour vous aider à organiser, préserver et partager vos données de recherche de manière efficace et sécurisée. Nous offrons des conseils personnalisés et des outils adaptés pour garantir la conformité aux meilleures pratiques et remplir vos obligations.</Typography>
+      </>
+    }
+    moreText="Voir le studio"
+    moreHref="#"
+  >
+    <Card1
+      title="Ressources et conseils préparés par nos spécialistes"
+      Icon={BookmarkSimple}
+      moreText="Voir la boîte à outils"
+      href="#"
+      small
+    />
+    <Card1
+      title="Capsules vidéos et webinaires"
+      Icon={Video}
+      moreText="Accéder à YouTube"
+      href="https://www.youtube.com/user/BibliothequesUdeM"
+      small
+    />
+    <Card1
+      title="Service Accessibilité"
+      Icon={PersonSimpleCircle}
+      moreText="En savoir plus"
+      href="#"
+      small
+    />
+    <Card1
+      title="Soutien personnalisé avec nos spécialistes"
+      Icon={Users}
+      moreText="Prendre rendez-vous"
+      href="#"
+      small
     />
   </Carousel1>
 </Section>
