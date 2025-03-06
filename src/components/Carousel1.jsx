@@ -1,10 +1,9 @@
 import { Children } from 'react'
-import { styled, Typography, useTheme } from '@mui/material'
+import { Typography, useTheme } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import Button from '@/components/Button'
-import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from './CustomIcons.jsx'
-
-const Div = styled('div')()
+import Div from '@/components/utils/Div'
+import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from './CustomIcons'
 
 /**
  * A React component that renders a carousel with a title, description, and optional "more" link.
