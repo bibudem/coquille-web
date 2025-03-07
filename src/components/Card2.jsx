@@ -18,13 +18,13 @@ const StyledTitle = styled('div')({
 })
 
 /**
- * Card1 component that renders a card with a title, icon, link text, and link.
+ * Card2 component that renders a card with a title, icon, link text, and link.
  * @param {Object} props - The component props.
  * @param {string} props.title - The title of the card.
  * @param {React.ComponentType} props.Icon - The icon component to be displayed.
  * @param {string} props.href - The URL of the link.
  * @param {any} props.rest - Any additional props to be passed to the component.
- * @returns {React.ReactElement} - The Card1 component.
+ * @returns {React.ReactElement} - The Card2 component.
  */
 export default function Card2({ title, Icon, href, ...rest }) {
   const { sx, ...props } = rest
