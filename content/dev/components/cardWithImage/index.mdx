@@ -4,9 +4,11 @@ template: doc
 ---
 
 import image1 from './image1.webp'
+import image2 from './image2.webp'
+import image3 from './image3.webp'
 
 
-<Section>
+<Section bg='rose300'>
 
 # CardWithImage
 
@@ -22,13 +24,15 @@ import image1 from './image1.webp'
     <Grid>
       <CardWithImage
         title="Clavarder"
-        Image={image1}
+        Image={image2}
+        href="https://umontreal.ca"
       />
     </Grid>
     <Grid>
       <CardWithImage
         title="Consulter le répertoire"
-        Image={image1}
+        Image={image3}
+        href="#"
       />
     </Grid>
   </Grid>

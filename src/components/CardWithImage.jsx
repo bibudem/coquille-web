@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react'
-import { styled, useTheme } from '@mui/material'
+import { CardMedia, styled, Typography, useTheme } from '@mui/material'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardActionArea from '@mui/material/CardActionArea'
 import Grid from '@mui/material/Grid2'
-import ConditionalWrapper from '@/components/ConditionalWrapper'
-import isInternalLink from '../utils/internLink.js'
+import { useIsExternal } from '@/hooks/use-is-external'
+import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
 
 const StyledTitle = styled('div')({
   flexGrow: 1,
@@ -16,95 +15,95 @@ const StyledTitle = styled('div')({
 })
 
 /**
- * CardWithImage component that renders a card with a title, icon, link text, and link.
- * @param {Object} props - The component props.
- * @param {string} props.title - The title of the card.
- * @param {React.ComponentType} props.Image - The icon component to be displayed.
- * @param {string} props.href - The URL of the link.
- * @param {any} props.rest - Any additional props to be passed to the component.
- * @returns {React.ReactElement} - The CardWithImage component.
+ * CardWithImage component that renders a card with a banner image, title, icon, and link.
+ * @param {Object} props - The component props
+ * @param {string} props.title - The title text displayed in the card
+ * @param {string} props.Image - The image URL to be displayed as banner
+ * @param {string} props.href - The URL the card links to
+ * @param {string} [props.moreText='En savoir plus'] - Optional text for the "learn more" link
+ * @param {Object} [props.sx] - Optional MUI system styles to apply to the card
+ * @throws {Error} When required props title, Image or href are missing
+ * @returns {React.ReactElement} A clickable card component with image, title and link
  */
-export default function CardWithImage({ title, Image, href, ...rest }) {
-  const { sx, ...props } = rest
+export default function CardWithImage({ title, Image, href, moreText = 'En savoir plus', ...rest }) {
+  if (typeof title === 'undefined') {
+    throw new Error('The `title` prop is missing')
+  }
 
   if (typeof Image === 'undefined') {
     throw new Error('The `Image` prop is missing')
   }
 
-  const linkProps = {}
-  const theme = useTheme()
-  const [linkIsInternal, setLinkIsInternal] = useState(null)
-
-  useEffect(() => {
-    if (href) {
-      setLinkIsInternal(isInternalLink(href))
-    }
-  }, [href])
-
-  if (!linkIsInternal) {
-    linkProps.rel = 'noopener'
+  if (typeof href === 'undefined') {
+    throw new Error('The `href` prop is missing')
   }
+
+  const { sx, ...props } = rest
+
+  const theme = useTheme()
+  const { linkProps, linkIcon } = useIsExternal(href, {
+    icons: {
+      external: <ArrowRightCircleIcon color={theme.palette.bleuPrincipal.main} fontSize={50} />,
+      internal: <ArrowUpRightCircleIcon color={theme.palette.bleuPrincipal.main} fontSize={50} />,
+    },
+  })
 
   return (
     <Card
       sx={(theme) => ({
         borderRadius: theme.shape.corner.small,
-        background: `linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%) no-repeat, url('${Image}') no-repeat center center`,
-        backgroundSize: 'cover',
-        color: '#111',
         boxShadow: 'none',
-        height: '100%',
-        minHeight: '100%',
-        maxWidth: '20.125rem',
-        width: '20.125rem',
+        width: 330,
+        height: 417,
         ...sx,
       })}
       {...props}
     >
-      <ConditionalWrapper
-        condition={typeof href === 'string'}
-        wrapper={(children) => (
-          <CardActionArea
-            component="a"
-            href={href}
-            sx={{
-              width: '100%',
-              height: '100%',
-              display: 'block',
-              padding: '30px',
-            }}
-            {...linkProps}
-          >
-            {children}
-          </CardActionArea>
-        )}
+      <CardActionArea
+        component="a"
+        href={href}
+        {...linkProps}
+        sx={{
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          flexWrap: 'nowrap',
+        }}
       >
-        <CardContent
-          component={Grid}
+        <CardMedia
+          image={Image}
           sx={{
-            padding: 0,
-            flexDirection: 'column',
-            justifyContent: 'flex-start',
-            alignItems: 'stretch',
-            flexShrink: 0,
-            height: '100%',
+            width: 330,
+            height: 220,
           }}
-          container
-          spacing="1.5rem"
+        />
+        <CardContent
+          sx={{
+            backgroundColor: theme.palette.background.paper,
+            flexGrow: 1,
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
         >
+          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
+            {title}
+          </Typography>
           <Grid
             container
             sx={{
-              alignItems: 'flex-end',
-              height: '100%',
+              flexGrow: 0,
+              alignItems: 'center',
+              width: '100%',
             }}
           >
-            <Grid>
-              <StyledTitle> {title} </StyledTitle>
+            <Grid size="grow">{moreText}</Grid>
+            <Grid size="auto" sx={{ display: 'flex' }}>
+              {linkIcon}
             </Grid>
           </Grid>
         </CardContent>
-      </ConditionalWrapper>
+      </CardActionArea>
     </Card>
   )
 }
