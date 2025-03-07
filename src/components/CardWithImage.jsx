@@ -68,6 +68,9 @@ export default function CardWithImage({ title, Image, href, moreText = 'En savoi
           display: 'flex',
           flexDirection: 'column',
           flexWrap: 'nowrap',
+          '&:hover .bib-comp-card-with-image--more-text': {
+            color: theme.palette.bleuPrincipal.main,
+          },
         }}
       >
         <CardMedia
@@ -84,9 +87,18 @@ export default function CardWithImage({ title, Image, href, moreText = 'En savoi
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
+            padding: '2rem',
           }}
         >
-          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            component="div"
+            sx={{
+              flexGrow: 1,
+              fontFamily: 'Lora',
+              fontSize: '2rem',
+              fontWeight: 400,
+            }}
+          >
             {title}
           </Typography>
           <Grid
@@ -97,7 +109,15 @@ export default function CardWithImage({ title, Image, href, moreText = 'En savoi
               width: '100%',
             }}
           >
-            <Grid size="grow">{moreText}</Grid>
+            <Grid
+              size="grow"
+              className="bib-comp-card-with-image--more-text"
+              sx={{
+                fontSize: '1rem',
+              }}
+            >
+              {moreText}
+            </Grid>
             <Grid size="auto" sx={{ display: 'flex' }}>
               {linkIcon}
             </Grid>
