@@ -45,7 +45,7 @@ const StyledMoreText = styled('div')({
 })
 
 /**
- * Card1 component that renders an interactive card with hover effects and dynamic sizing
+ * CardWithIcon component that renders an interactive card with hover effects and dynamic sizing
  *
  * @param {Object} props - The component props
  * @param {string} props.title - The title text displayed in the card
@@ -57,7 +57,7 @@ const StyledMoreText = styled('div')({
  * @throws {Error} When href prop is not a string
  * @returns {React.ReactElement} A styled MUI Card component
  */
-export default function Card1({ title, Icon, color = 'bleuPrincipal', moreText, href, small = false, ...rest }) {
+export default function CardWithIcon({ title, Icon, color = 'bleuPrincipal', moreText, href, small = false, ...rest }) {
   const { sx, ...props } = rest
   const linkProps = {}
   const theme = useTheme()

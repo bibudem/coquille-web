@@ -13,9 +13,9 @@ import Typography from '@mui/material/Typography'
 import Carousel from 'react-material-ui-carousel'
 
 import Button from '@/components/Button'
-import Card1 from '@/components/Card1'
 import Card2 from '@/components/Card2'
 import Card5 from '@/components/Card5'
+import CardWithIcon from '@/components/CardWithIcon'
 import Carousel1 from '@/components/Carousel1'
 import FlipCardWithBg from '@/components/FlipCardWithBg'
 import FlipCardWithImage from '@/components/FlipCardWithImage'
@@ -36,9 +36,9 @@ export default {
   AccordionSummary,
   Button,
   Box,
-  Card1,
   Card2,
   Card5,
+  CardWithIcon,
   Carousel,
   Carousel1,
   Divider,

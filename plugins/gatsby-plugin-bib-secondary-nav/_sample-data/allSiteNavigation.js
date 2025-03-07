@@ -508,7 +508,7 @@ export default [
   },
   {
     id: "4e8a4fab-c5e6-59bf-a2bd-44c443eefa99",
-    title: "Card1",
+    title: "CardWithIcon",
     path: "/dev/components/card1/",
     hidden: false,
     isRoot: true,

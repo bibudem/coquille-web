@@ -50,7 +50,7 @@ export default [
   },
   {
     path: "/dev/components/card1/",
-    title: "Card1",
+    title: "CardWithIcon",
     order: null,
     hidden: false,
     isRoot: true
