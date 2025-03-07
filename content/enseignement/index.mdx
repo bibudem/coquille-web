@@ -4,6 +4,9 @@ slug: enseignement
 ---
 
 import Techno from '../images/touche-techno.webp'
+import Didactheque from '../images/didactheque.webp'
+
+
 
 <Section>
 
@@ -168,17 +171,32 @@ Nous l’achèterons pour vous !</Typography>
 
 <Section bg='vertFonce'>
 
-  ## Changer de décor!
+<Carousel1
+    title={<Typography component="h2">Changer de décor!</Typography>}
+    description="Nous offrons plusieurs salles de formation à réserver. Consultez notre répertoire de salles pour donner un cours dans un environnement pensé pour l’apprentissage de groupe, le partage des connaissances ou le visionnement multimédia en groupe."
+  >
 
-  Nous offrons plusieurs salles de formation à réserver. Consultez notre répertoire de salles pour donner un cours dans un environnement pensé pour l’apprentissage de groupe, le partage des connaissances ou le visionnement multimédia en groupe.
+<CardWithImage
+        title="Salle Didactique"
+        Image={Didactheque}
+        href="#"
+        moreText="En savoir plus"
+      /> 
 
-  ### Salle 1
+<CardWithImage
+        title="Salle de formation"
+        Image={Didactheque}
+        href="#"
+        moreText="En savoir plus"
+      /> 
 
-  <Button primary>En savoir plus</Button>
-
-  ### Salle 2
-
-  <Button primary>En savoir plus</Button>
+<CardWithImage
+        title="Salle de formation"
+        Image={Didactheque}
+        href="#"
+        moreText="En savoir plus"
+      /> 
+  </Carousel1>
 
 </Section>
 
