@@ -1,4 +1,4 @@
-import { CardMedia, styled, Typography, useTheme } from '@mui/material'
+import { CardMedia, styled, useTheme } from '@mui/material'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardActionArea from '@mui/material/CardActionArea'
@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid2'
 import { useIsExternal } from '@/hooks/use-is-external'
 import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
 
-const StyledTitle = styled('div')({
+const Title = styled('div')({
   flexGrow: 1,
   fontFamily: 'Lora',
   fontSize: '1.875rem',
@@ -90,7 +90,7 @@ export default function CardWithImage({ title, Image, href, moreText = 'En savoi
             padding: '2rem',
           }}
         >
-          <StyledTitle>{title}</StyledTitle>
+          <Title>{title}</Title>
           <Grid
             container
             sx={{

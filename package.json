@@ -7,7 +7,7 @@
   "keywords": [],
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" npm run gatsby:develop",
-    "build": "cross-env NODE_OPTIONS='--max-old-space-size=8192' npm run clean && npm run build",
+    "build": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" gatsby build",
     "preview": "gatsby serve",
     "clean": "gatsby clean",
     "gatsby:develop": "gatsby develop --verbose"

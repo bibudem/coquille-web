@@ -3,15 +3,17 @@ title: <FlipCardWithBg>
 template: doc
 ---
 
+import {ArrowsOut, HandCoins, Megaphone} from '@phosphor-icons/react'
+
 <Section>
 
 # FlipCardWithBg
 
   <Grid container spacing=".62rem" sx={{margin:'2rem 0 2rem'}}>
     <Grid>
-      <FlipCardWithImage
-        title="Cabines insonorisées"
-        Image={image1}
+      <FlipCardWithBg
+        title="Ambassadrice du libre accès"
+        Icon={Megaphone}
       >
         <p>Disponibles :</p>
         <ul>
@@ -23,31 +25,33 @@ template: doc
           <li>Bibliothèque Thérèse-Gouin-Décarie</li>
           <li>Bibliothèque de la santé</li>
         </ul>
-      </FlipCardWithImage>
+      </FlipCardWithBg>
     </Grid>
     <Grid>
-      <FlipCardWithImage
+      <FlipCardWithBg
         title="Achats de licence Adobe Creative Cloud"
-        Image={image2}
+        Icon={HandCoins}
       >
         Description...
-      </FlipCardWithImage>
+      </FlipCardWithBg>
     </Grid>
     <Grid>
-      <FlipCardWithImage
-        title="Consulter le répertoire"
-        Image={image3}
+      <FlipCardWithBg
+        title="Financement de projet en libre accès"
+        bg="vertFonce"
+        Icon={ArrowsOut}
       >
-        Description...
-      </FlipCardWithImage>
+        <p>Appui à la Politique de l’Université de Montréal sur le libre accès aux publications savantes, notamment par une offre de formation, par la promotion, par l’intégration à nos services-conseils et diverses autres initiatives.</p>
+      </FlipCardWithBg>
     </Grid>
     <Grid>
-      <FlipCardWithImage
+      <FlipCardWithBg
         title="Postes de travail actif"
-        Image={image4}
+        bg="rose300"
+        Icon={Megaphone}
       >
         Description...
-      </FlipCardWithImage>
+      </FlipCardWithBg>
     </Grid>
   </Grid>
 
