@@ -16,15 +16,15 @@ const StyledTitle = styled('div')({
 })
 
 /**
- * Card5 component that renders a card with a title, icon, link text, and link.
+ * CardWithImage component that renders a card with a title, icon, link text, and link.
  * @param {Object} props - The component props.
  * @param {string} props.title - The title of the card.
  * @param {React.ComponentType} props.Image - The icon component to be displayed.
  * @param {string} props.href - The URL of the link.
  * @param {any} props.rest - Any additional props to be passed to the component.
- * @returns {React.ReactElement} - The Card5 component.
+ * @returns {React.ReactElement} - The CardWithImage component.
  */
-export default function Card2({ title, Image, href, ...rest }) {
+export default function CardWithImage({ title, Image, href, ...rest }) {
   const { sx, ...props } = rest
 
   if (typeof Image === 'undefined') {
