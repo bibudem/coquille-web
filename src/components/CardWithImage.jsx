@@ -8,10 +8,10 @@ import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/Custo
 
 const StyledTitle = styled('div')({
   flexGrow: 1,
-  fontSize: '1.75rem',
-  fontWeight: 500,
+  fontFamily: 'Lora',
+  fontSize: '1.875rem',
+  fontWeight: 400,
   lineHeight: 1.2,
-  width: '100%',
 })
 
 /**
@@ -90,17 +90,7 @@ export default function CardWithImage({ title, Image, href, moreText = 'En savoi
             padding: '2rem',
           }}
         >
-          <Typography
-            component="div"
-            sx={{
-              flexGrow: 1,
-              fontFamily: 'Lora',
-              fontSize: '2rem',
-              fontWeight: 400,
-            }}
-          >
-            {title}
-          </Typography>
+          <StyledTitle>{title}</StyledTitle>
           <Grid
             container
             sx={{
