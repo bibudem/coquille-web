@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { styled, useTheme } from '@mui/material'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -26,6 +27,8 @@ const Title = styled('div')({
   fontFeatureSettings: "'liga' off, 'clig' off",
 })
 
+const colors = ['bleuPrincipal', 'rose300', 'vertFonce']
+
 /**
  * FlipCardWithBg component that renders a card with a title and image.
  * @param {Object} props - The component props.
@@ -34,7 +37,7 @@ const Title = styled('div')({
  * @param {Object} [props.sx] - Optional MUI system styles to apply to the card.
  * @returns {React.ReactElement} - The FlipCardWithBg component.
  */
-export default function FlipCardWithBg({ title, Icon, ...rest }) {
+export default function FlipCardWithBg({ title, Icon, bg = 'bleuPrincipal', ...rest }) {
   if (typeof title === 'undefined') {
     throw new Error('The `title` prop is missing')
   }
@@ -43,8 +46,13 @@ export default function FlipCardWithBg({ title, Icon, ...rest }) {
     throw new Error('The `Icon` prop is missing')
   }
 
+  if (!colors.includes(bg)) {
+    throw new Error(`The \`bg\` prop accepted values are: ${colors.join(', ')}. Received: ${bg}`)
+  }
+
   const { sx, children, ...props } = rest
   const theme = useTheme()
+  const [_bg, setBg] = useState(bg)
 
   const FlipContainer = styled('div')({
     position: 'absolute',
@@ -56,6 +64,12 @@ export default function FlipCardWithBg({ title, Icon, ...rest }) {
     transitionDuration: `${theme.transitions.duration.md3.long4}ms`,
     transformStyle: 'preserve-3d',
   })
+
+  useEffect(() => {
+    if (bg) {
+      setBg(theme.palette[bg])
+    }
+  }, [bg])
 
   // couleurs: rose, bleu vert
   return (
@@ -89,7 +103,7 @@ export default function FlipCardWithBg({ title, Icon, ...rest }) {
                 padding: '1.88rem',
                 height: '100%',
 
-                backgroundColor: theme.palette.bleuPrincipal.main,
+                backgroundColor: _bg.main,
                 flexGrow: 1,
                 width: '100%',
                 display: 'flex',
@@ -133,8 +147,8 @@ export default function FlipCardWithBg({ title, Icon, ...rest }) {
           <Card
             sx={(theme) => ({
               borderRadius: theme.shape.corner.small,
-              background: theme.palette.primary.main,
-              color: '#fff',
+              background: _bg.main,
+              color: _bg.contrastText,
               boxShadow: 'none',
               width: 337,
               height: 400,
@@ -143,17 +157,17 @@ export default function FlipCardWithBg({ title, Icon, ...rest }) {
             {...props}
           >
             <CardContent
-              sx={(theme) => ({
+              sx={{
                 padding: '1.88rem',
                 height: '100%',
 
-                backgroundColor: theme.palette.bleuPrincipal.main,
+                backgroundColor: _bg.main,
                 flexGrow: 1,
                 width: '100%',
                 display: 'flex',
                 flexDirection: 'column',
                 padding: '1.88rem',
-              })}
+              }}
             >
               <Grid
                 container
@@ -162,7 +176,18 @@ export default function FlipCardWithBg({ title, Icon, ...rest }) {
                   height: '100%',
                 }}
               >
-                <Grid>{children}</Grid>
+                <Grid
+                  sx={{
+                    '> :first-child': {
+                      marginTop: 0,
+                    },
+                    '& > :last-child': {
+                      marginBottom: 0,
+                    },
+                  }}
+                >
+                  {children}
+                </Grid>
               </Grid>
             </CardContent>
           </Card>
