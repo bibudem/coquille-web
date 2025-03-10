@@ -1,20 +1,11 @@
-import { Children, useEffect, useState } from 'react'
-import { IconButton, Typography, useTheme } from '@mui/material'
+import { Children } from 'react'
+import { Typography, useTheme } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
-// import 'pure-react-carousel/dist/react-carousel.es.css'
-import { Carousel } from '@ark-ui/react/carousel'
+import 'pure-react-carousel/dist/react-carousel.es.css'
 import Button from '@/components/Button'
 import Div from '@/components/utils/Div'
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from './CustomIcons'
-import { useBreakpoint } from '@/hooks/use-breakpoint'
-
-const slidesPerPagPerBreakpoint = {
-  xs: 1,
-  sm: 2,
-  md: 3,
-  lg: 4,
-}
 
 /**
  * A React component that renders a carousel with a title, description, and optional "more" link.
@@ -29,10 +20,7 @@ const slidesPerPagPerBreakpoint = {
  */
 export default function Carousel1({ title, description, moreText, moreLink = '#', ...rest }) {
   const { sx, children, ...props } = rest
-  const [slidesPerPage, setSlidesPerPage] = useState(1)
-  const [showNavigation, setShowNavigation] = useState(false)
   const theme = useTheme()
-  const currentBreakpoint = useBreakpoint()
 
   const variableWidthStyles = {
     [theme.breakpoints.up('md')]: {
@@ -40,19 +28,8 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
     },
   }
 
-  useEffect(() => {
-    if (Reflect.has(slidesPerPagPerBreakpoint, currentBreakpoint.key) && slidesPerPage !== slidesPerPagPerBreakpoint[currentBreakpoint.key]) {
-      setSlidesPerPage(slidesPerPagPerBreakpoint[currentBreakpoint.key])
-    }
-  }, [currentBreakpoint])
-
-  useEffect(() => {
-    setShowNavigation(Children.count(children) > slidesPerPage)
-  }, [children, slidesPerPage])
-
   return (
-    <Carousel.Root defaultPage={0} slideCount={Children.count(children)} slidesPerPage={slidesPerPage} allowMouseDrag spacing="10px" {...props}>
-      <p>slidesPerPage: {slidesPerPage}</p>
+    <CarouselProvider visibleSlides={4} naturalSlideWidth={100} naturalSlideHeight={186} totalSlides={Children.toArray(children).length}>
       <Grid container spacing="45px">
         <Grid size={12}>
           <Div
@@ -88,34 +65,26 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
                 )}
               </Div>
             </Grid>
-            {showNavigation && (
-              <Grid container size="auto" spacing="10px" sx={{ alignItems: 'flex-end', pl: 4 }}>
-                <Carousel.Control>
-                  <Carousel.PrevTrigger asChild>
-                    <IconButton color="primary" aria-label="précédent" sx={{ fontSize: 50 }}>
-                      <ArrowLeftCircleIcon fontSize={50} />
-                    </IconButton>
-                  </Carousel.PrevTrigger>
-                  <Carousel.NextTrigger asChild>
-                    <IconButton color="primary" aria-label="suivant" sx={{ fontSize: 50 }} edge="end">
-                      <ArrowRightCircleIcon fontSize={50} />
-                    </IconButton>
-                  </Carousel.NextTrigger>
-                </Carousel.Control>
-              </Grid>
-            )}
+            <Grid container size="auto" spacing="10px" sx={{ alignItems: 'flex-end', pl: 4 }}>
+              <ButtonBack>
+                <ArrowLeftCircleIcon fontSize={50} color="#0057ac" />
+              </ButtonBack>
+              <ButtonNext>
+                <ArrowRightCircleIcon fontSize={50} color="#0057ac" />
+              </ButtonNext>
+            </Grid>
           </Grid>
         </Grid>
         <div style={{ width: '100%', outline: '1px solid red' }}>
-          <Carousel.ItemGroup>
+          <Slider style={{ height: 332 }}>
             {Children.toArray(children).map((child, index) => {
               return (
-                <Carousel.Item key={index} index={index}>
+                <Slide key={index} style={{ display: 'inline-block' }}>
                   {child}
-                </Carousel.Item>
+                </Slide>
               )
             })}
-          </Carousel.ItemGroup>
+          </Slider>
         </div>
         {moreLink && moreText && (
           <Grid size={12}>
@@ -125,6 +94,6 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
           </Grid>
         )}
       </Grid>
-    </Carousel.Root>
+    </CarouselProvider>
   )
 }
