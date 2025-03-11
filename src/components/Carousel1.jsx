@@ -59,10 +59,12 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
         slidesPerPage={slidesPerPage}
         allowMouseDrag
         spacing="10px"
-        style={{
-          justifyContent: 'start',
-          '--slide-item-size': 'min-content',
-        }}
+        style={
+          {
+            // justifyContent: 'start',
+            // '--slide-item-size': 'min-content',
+          }
+        }
         {...props}
       >
         <p>slidesPerPage: {slidesPerPage}</p>

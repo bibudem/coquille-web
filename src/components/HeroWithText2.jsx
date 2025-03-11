@@ -10,9 +10,9 @@ import Grid from '@mui/material/Grid2'
  * @returns {JSX.Element} Le composant HeroWithText rendu.
  */
 export default function HeroWithText2({ leftColl, rightColl, sx, children, ...rest }) {
-  const leftCollContainer = <Grid size={{ xs: 12, md: 3 }}>{leftColl}</Grid>
+  const leftCollContainer = <Grid size={{ xs: 12, md: 6 }}>{leftColl}</Grid>
 
-  const rightCollContainer = <Grid size={{ xs: 12, md: 8 }}>{rightColl}</Grid>
+  const rightCollContainer = <Grid size={{ xs: 12, md: 6 }}>{rightColl}</Grid>
 
   return (
     <Grid
