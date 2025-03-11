@@ -17,9 +17,9 @@ export default function HeroWithText2({ leftColl, rightColl, sx, children, ...re
   return (
     <Grid
       container
-      spacing={0}
+      spacing={8}
       sx={{
-        alignItems: 'flex-start',
+        alignItems: 'center',
         '.MuiTypography-h2, .MuiTypography-h3': {
           fontFamily: 'Figtree',
           fontSize: '3.8125rem',

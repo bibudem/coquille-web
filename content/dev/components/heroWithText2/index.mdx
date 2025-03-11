@@ -3,7 +3,7 @@ title: <HeroWithText2>
 template: doc
 ---
 
-import { FlowerTulip } from '@phosphor-icons/react'
+import mockContent2 from './image2.webp'
 
 <Section>
 
@@ -11,20 +11,22 @@ import { FlowerTulip } from '@phosphor-icons/react'
 
 </Section>
 
-<Section bg="bleu600">
+<Section bg="rose300">
   <HeroWithText2
-    leftColl={<IconInSquare color='vertPale' icon={<FlowerTulip color="vertFonce" />} />}
+    leftColl={
+      <>
+        <Typography variant="h2">Naviguer le droit d’auteur à votre avantage</Typography>
+        <Typography>Que ce soit pour vous aider à protéger les œuvres et les publications issues de vos recherches, utiliser du contenu protégé dans vos travaux ou bien diffuser vos résultats le plus démocratiquement et largement possible, nos spécialistes sont là pour vous outiller et vous accompagner.</Typography>
+        <Button primary href="#">Consulter le guide sur le droit d'auteur</Button>
+      </>
+    }
     rightColl={
       <>
-        <Typography component="h2" variant="h2">Cultiver la curiosité</Typography>
-        
-         <Typography gutterBottom>Véritable milieu de vie où se rencontre et se ressemble la communauté universitaire, les Bibliothèques de l’Université de Montréal sont des partenaires essentiels au rayonnement des savoirs. Lieu où l’on cultive la curiosité, elles comptent parmi les grandes bibliothèques de recherche de langue française.</Typography>
-         <Typography gutterBottom>En soutenant les Bibliothèques de l’Université de Montréal, vous contribuez directement à multiplier les opportunités d'apprentissage et de recherche pour les générations futures.</Typography>
-         <Typography gutterBottom>Que ce soit en contribuant à la modernisation des espaces offerts ou à la démocratisation des savoirs, chaque don représente un pas de plus vers une science accessible et ouverte, à la communauté UdeM et aux jeunes de demain.</Typography>
-
-        <Button href="" variant="contained" color="bleuFonce">Faire un don maintenant</Button>
+        <Grid container spacing={2}>
+          <Grid size={12}><img src={mockContent2} width="549" height="351" /></Grid>
+        </Grid>
       </>
-      }
+    }
   />
 
 </Section>
