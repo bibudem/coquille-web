@@ -10,7 +10,6 @@ import ListItemText from '@mui/material/ListItemText'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Typography from '@mui/material/Typography'
-import Carousel from 'react-material-ui-carousel'
 
 import Button from '@/components/Button'
 import Card2 from '@/components/Card2'
@@ -39,7 +38,6 @@ export default {
   Card2,
   CardWithIcon,
   CardWithImage,
-  Carousel,
   Carousel1,
   Divider,
   FlipCardWithBg,
