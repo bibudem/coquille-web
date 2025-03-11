@@ -4,6 +4,8 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid2'
 
+const bgColors = ['bleuPrincipal', 'rose300', 'vertFonce']
+
 const CardContainer = styled('div')({
   position: 'relative',
   width: 337,
@@ -27,14 +29,12 @@ const Title = styled('div')({
   fontFeatureSettings: "'liga' off, 'clig' off",
 })
 
-const colors = ['bleuPrincipal', 'rose300', 'vertFonce']
-
 /**
- * FlipCardWithBg component that renders a card with a title and image.
+ * FlipCardWithBg component that renders a flippable card with a title and icon.
  * @param {Object} props - The component props.
  * @param {string} props.title - The title of the card.
- * @param {React.ComponentType} props.Image - The image component to be displayed.
- * @param {Object} [props.sx] - Optional MUI system styles to apply to the card.
+ * @param {React.ComponentType} props.Icon - The icon component to be displayed.
+ * @param {'bleuPrincipal' | 'rose300' | 'vertFonce'} [props.bg='bleuPrincipal'] - The background color of the card.
  * @returns {React.ReactElement} - The FlipCardWithBg component.
  */
 export default function FlipCardWithBg({ title, Icon, bg = 'bleuPrincipal', ...rest }) {
@@ -46,8 +46,8 @@ export default function FlipCardWithBg({ title, Icon, bg = 'bleuPrincipal', ...r
     throw new Error('The `Icon` prop is missing')
   }
 
-  if (!colors.includes(bg)) {
-    throw new Error(`The \`bg\` prop accepted values are: ${colors.join(', ')}. Received: ${bg}`)
+  if (!bgColors.includes(bg)) {
+    throw new Error(`The \`bg\` prop accepted values are: ${bgColors.join(', ')}. Received: ${bg}`)
   }
 
   const { sx, children, ...props } = rest
@@ -71,7 +71,6 @@ export default function FlipCardWithBg({ title, Icon, bg = 'bleuPrincipal', ...r
     }
   }, [bg])
 
-  // couleurs: rose, bleu vert
   return (
     <CardContainer
       sx={{
@@ -89,8 +88,7 @@ export default function FlipCardWithBg({ title, Icon, bg = 'bleuPrincipal', ...r
           <Card
             sx={(theme) => ({
               borderRadius: theme.shape.corner.small,
-              background: theme.palette.primary.main,
-              color: '#fff',
+              color: _bg.contrastText,
               boxShadow: 'none',
               width: 337,
               height: 400,
@@ -99,7 +97,7 @@ export default function FlipCardWithBg({ title, Icon, bg = 'bleuPrincipal', ...r
             {...props}
           >
             <CardContent
-              sx={(theme) => ({
+              sx={{
                 padding: '1.88rem',
                 height: '100%',
 
@@ -109,7 +107,7 @@ export default function FlipCardWithBg({ title, Icon, bg = 'bleuPrincipal', ...r
                 display: 'flex',
                 flexDirection: 'column',
                 padding: '1.88rem',
-              })}
+              }}
             >
               <Grid
                 container
@@ -122,7 +120,7 @@ export default function FlipCardWithBg({ title, Icon, bg = 'bleuPrincipal', ...r
                 <Grid
                   sx={{
                     svg: {
-                      fill: '#fff',
+                      fill: bg === 'rose300' ? theme.palette.rougeOrange.main : '#fff',
                       fillOpacity: 0.5,
                       width: 55,
                       fontSize: 55,
