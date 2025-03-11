@@ -1,7 +1,27 @@
-import { styled } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { styled, useTheme } from '@mui/material'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid2'
+
+const cardSize = {
+  width: '23rem',
+  height: '25rem',
+}
+
+const CardContainer = styled('div')({
+  position: 'relative',
+  ...cardSize,
+  cursor: 'pointer',
+})
+
+const FlipSide = styled('div')({
+  position: 'absolute',
+  width: '100%',
+  height: '100%',
+  backfaceVisibility: 'hidden',
+  transformStyle: 'preserve-3d',
+})
 
 const StyledTitle = styled('div')({
   fontSize: '1.75rem',
@@ -22,40 +42,125 @@ export default function FlipCardWithImage({ title, Image, ...rest }) {
     throw new Error('The `Image` prop is missing')
   }
 
-  const { sx, ...props } = rest
+  const { sx, children, ...props } = rest
+  const [_image, setImage] = useState(Image)
+  const theme = useTheme()
+
+  const FlipContainer = styled('div')({
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    backfaceVisibility: 'hidden',
+    transitionProperty: 'transform',
+    transitionDuration: `${theme.transitions.easing.md3.emphasizedIn}`,
+    transitionDuration: `${theme.transitions.duration.md3.long4}ms`,
+    transformStyle: 'preserve-3d',
+  })
+
+  useEffect(() => {
+    setImage(Image)
+  }, [Image])
 
   return (
-    <Card
-      sx={(theme) => ({
-        borderRadius: theme.shape.corner.small,
-        background: `linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%) no-repeat, url('${Image}') no-repeat center center`,
-        backgroundSize: 'cover',
-        color: '#fff',
-        boxShadow: 'none',
-        width: '23rem',
-        height: '25rem',
+    <CardContainer
+      sx={{
         ...sx,
-      })}
-      {...props}
+        '&:hover': {
+          '.flip-container': {
+            transform: 'rotateY(180deg)',
+            transition: `transform ${theme.transitions.duration.md3.long4}ms ${theme.transitions.easing.md3.emphasizedOut}`,
+          },
+        },
+      }}
     >
-      <CardContent
-        sx={{
-          padding: '1.88rem',
-          height: '100%',
-        }}
-      >
-        <Grid
-          container
+      <FlipContainer className="flip-container">
+        <FlipSide>
+          <Card
+            sx={(theme) => ({
+              borderRadius: theme.shape.corner.small,
+              background: `linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%) no-repeat, url('${_image}') no-repeat center center`,
+              backgroundSize: 'cover',
+              color: '#fff',
+              boxShadow: 'none',
+              ...cardSize,
+              ...sx,
+            })}
+            {...props}
+          >
+            <CardContent
+              sx={{
+                padding: '1.88rem',
+                height: '100%',
+              }}
+            >
+              <Grid
+                container
+                sx={{
+                  alignItems: 'flex-end',
+                  height: '100%',
+                }}
+              >
+                <Grid>
+                  <StyledTitle> {title} </StyledTitle>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
+        </FlipSide>
+        <FlipSide
           sx={{
-            alignItems: 'flex-end',
-            height: '100%',
+            transform: 'rotateY(180deg)',
           }}
         >
-          <Grid>
-            <StyledTitle> {title} </StyledTitle>
-          </Grid>
-        </Grid>
-      </CardContent>
-    </Card>
+          <Card
+            sx={(theme) => ({
+              borderRadius: theme.shape.corner.small,
+              background: `linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%) no-repeat, url('${_image}') no-repeat center center`,
+              backgroundSize: 'cover',
+              color: '#fff',
+              boxShadow: 'none',
+              ...cardSize,
+              ...sx,
+            })}
+            {...props}
+          >
+            <CardContent
+              sx={{
+                padding: '1.88rem',
+                height: '100%',
+
+                // backgroundColor: _bg.main,
+                flexGrow: 1,
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                padding: '1.88rem',
+              }}
+            >
+              <Grid
+                container
+                sx={{
+                  alignItems: 'center',
+                  height: '100%',
+                }}
+              >
+                <Grid
+                  sx={{
+                    '> :first-child': {
+                      marginTop: 0,
+                    },
+                    '& > :last-child': {
+                      marginBottom: 0,
+                    },
+                  }}
+                >
+                  {children}
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
+        </FlipSide>
+      </FlipContainer>
+    </CardContainer>
   )
 }
