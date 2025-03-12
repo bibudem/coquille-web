@@ -11,6 +11,7 @@ const CardContainer = styled('div')({
   width: 337,
   height: 400,
   cursor: 'pointer',
+  perspective: '600px',
 })
 
 const FlipSide = styled('div')({
@@ -60,6 +61,7 @@ export default function FlipCardWithBg({ title, Icon, bg = 'bleuPrincipal', ...r
     height: '100%',
     backfaceVisibility: 'hidden',
     transitionProperty: 'transform',
+    borderRadius: theme.shape.corner.small,
     transitionDuration: `${theme.transitions.easing.md3.emphasizedIn}`,
     transitionDuration: `${theme.transitions.duration.md3.long4}ms`,
     transformStyle: 'preserve-3d',
@@ -71,17 +73,25 @@ export default function FlipCardWithBg({ title, Icon, bg = 'bleuPrincipal', ...r
     }
   }, [bg])
 
+  function onCardContainerClick() {
+    // console.log('click')
+    // setBg(theme.palette[bg])
+  }
+
   return (
     <CardContainer
       sx={{
+        borderRadius: theme.shape.corner.small,
         ...sx,
-        '&:hover': {
+        '&:hover, &:focus': {
           '.flip-container': {
             transform: 'rotateY(180deg)',
             transition: `transform ${theme.transitions.duration.md3.long4}ms ${theme.transitions.easing.md3.emphasizedOut}`,
           },
         },
       }}
+      tabIndex="0"
+      onClick={onCardContainerClick}
     >
       <FlipContainer className="flip-container">
         <FlipSide>
