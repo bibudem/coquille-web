@@ -1,0 +1,83 @@
+---
+title: <Carousel4>
+template: doc
+---
+
+import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icons/react'
+import Carousel4 from '@/components/utils/Carousel4'
+
+<Section>
+
+  # &lt;Carousel4&gt;
+
+  Employez la propriété `small` sur le composant `CardWithIcon` lorsqu'il se trouve dans un caroussel.
+
+ <Carousel4
+    title="Problème informatique? Pas de panique!"
+    description={
+      <>
+        <Typography sx={{pb: 1.5}}>Les organismes subventionnaires l’exigent, vous devez porter une attention particulière au cycle de vie de données de recherche. Nous vous aidons à y voir plus clair, de l’élaboration d’un plan de gestion de données jusqu’au partage dans un dépôt fiable et reconnu.</Typography>
+        <Typography>Nos services de gestion des données de recherche sont conçus pour vous aider à organiser, préserver et partager vos données de recherche de manière efficace et sécurisée. Nous offrons des conseils personnalisés et des outils adaptés pour garantir la conformité aux meilleures pratiques et remplir vos obligations.</Typography>
+      </>
+    }
+    moreText="Voir le studio"
+    moreHref="#"
+  >
+    <CardWithIcon
+      title="Ressources et conseils préparés par nos spécialistes"
+      Icon={BookmarkSimple}
+      moreText="Voir la boîte à outils"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Capsules vidéos et webinaires"
+      Icon={Video}
+      moreText="Accéder à YouTube"
+      href="https://www.youtube.com/user/BibliothequesUdeM"
+      small
+    />
+    <CardWithIcon
+      title="Service Accessibilité"
+      Icon={PersonSimpleCircle}
+      moreText="En savoir plus"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Soutien personnalisé avec nos spécialistes"
+      Icon={Users}
+      moreText="Prendre rendez-vous"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Ressources et conseils préparés par nos spécialistes"
+      Icon={BookmarkSimple}
+      moreText="Voir la boîte à outils"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Capsules vidéos et webinaires"
+      Icon={Video}
+      moreText="Accéder à YouTube"
+      href="https://www.youtube.com/user/BibliothequesUdeM"
+      small
+    />
+    <CardWithIcon
+      title="Service Accessibilité"
+      Icon={PersonSimpleCircle}
+      moreText="En savoir plus"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Soutien personnalisé avec nos spécialistes"
+      Icon={Users}
+      moreText="Prendre rendez-vous"
+      href="#"
+      small
+    />
+  </Carousel4>
+</Section>
