@@ -79,7 +79,7 @@ export default function FlipCardWithImage({ title, Image, ...rest }) {
           <Card
             sx={(theme) => ({
               borderRadius: theme.shape.corner.small,
-              background: `linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%) no-repeat, url('${_image}') no-repeat center center`,
+              background: `linear-gradient(0deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%) no-repeat, url('${_image}') no-repeat center center`,
               backgroundSize: 'cover',
               color: '#fff',
               boxShadow: 'none',
@@ -116,7 +116,7 @@ export default function FlipCardWithImage({ title, Image, ...rest }) {
           <Card
             sx={(theme) => ({
               borderRadius: theme.shape.corner.small,
-              background: `linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%) no-repeat, url('${_image}') no-repeat center center`,
+              background: `linear-gradient(0deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%) no-repeat, url('${_image}') no-repeat center center`,
               backgroundSize: 'cover',
               color: '#fff',
               boxShadow: 'none',
