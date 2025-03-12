@@ -30,10 +30,10 @@ const slidesPerPagPerBreakpoint = {
  */
 export default function Carousel1({ title, description, moreText, moreLink = '#', ...rest }) {
   const { sx, children, ...props } = rest
-  const [slidesPerPage, setSlidesPerPage] = useState(1)
+  const currentBreakpoint = useBreakpoint()
+  const [slidesPerPage, setSlidesPerPage] = useState(Reflect.has(slidesPerPagPerBreakpoint, currentBreakpoint.key) ? slidesPerPagPerBreakpoint[currentBreakpoint.key].key : 1)
   const [showNavigation, setShowNavigation] = useState(false)
   const theme = useTheme()
-  const currentBreakpoint = useBreakpoint()
 
   const variableWidthStyles = {
     [theme.breakpoints.up('md')]: {
@@ -42,7 +42,7 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
   }
 
   useEffect(() => {
-    if (Reflect.has(slidesPerPagPerBreakpoint, currentBreakpoint.key) && slidesPerPage !== slidesPerPagPerBreakpoint[currentBreakpoint.key]) {
+    if (currentBreakpoint.key in slidesPerPagPerBreakpoint && slidesPerPage !== slidesPerPagPerBreakpoint[currentBreakpoint.key]) {
       setSlidesPerPage(slidesPerPagPerBreakpoint[currentBreakpoint.key])
     }
   }, [currentBreakpoint])
