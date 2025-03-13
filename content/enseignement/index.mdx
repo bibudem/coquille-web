@@ -5,6 +5,7 @@ slug: enseignement
 
 import Techno from '../images/touche-techno.webp'
 import Didactheque from '../images/didactheque.webp'
+import { DoorOpen, Handshake, Heart, Mountains } from '@phosphor-icons/react'
 
 
 
@@ -16,6 +17,97 @@ import Didactheque from '../images/didactheque.webp'
 
 </Section>
 
+
+<Section bg="bleu100">
+  <HeroWithText2
+    leftColl={
+      <>
+        <Typography variant="h2">Inscrivez-nous à votre cours</Typography>
+        <Typography>Pour intégrer facilement les notions de recherche d’information et d’évaluation de la crédibilité et de la pertinence des sources dans vos cours, faites appel à notre équipe spécialisée! </Typography>
+        <Button secondary href="#">Voir des sujets de formations</Button>
+        <Button primary href="#">Contactez votre bibliothécaire disciplinaire</Button>
+      </>
+    }
+    rightColl={
+      <>
+<Grid container spacing={2}>
+<Grid size={{ xs: 12, md: 6 }}>
+    <Box
+      sx={{
+        p:2,
+        height: '100%',
+        fontWeight: 600,
+      }}
+    >
+        <Grid size="auto">
+          <Heart color='#0057AC' size={50} />
+        </Grid>
+
+     Création de formation sur mesure pour votre cours
+
+    </Box>
+
+  </Grid>
+  <Grid size={{ xs: 12, md: 6 }}>
+    <Box
+      sx={{
+        p:2,
+        height: '100%',
+        fontWeight: 600,
+      }}
+    >
+
+        <Grid size="auto">
+          <Mountains color='#0057AC' size={50} />
+        </Grid>
+        
+       Collaboration avec votre bibliothécaire dans StudiUM
+
+    </Box>
+
+  </Grid>
+  <Grid size={{ xs: 12, md: 6 }}>
+    <Box
+      sx={{
+        p:2,
+        height: '100%',
+        fontWeight: 600,
+      }}
+    >
+     
+        <Grid size="auto">
+          <DoorOpen color='#0057AC' size={50} />
+        </Grid>
+        
+     Création de guides de sources et outils pertinents
+
+    </Box>
+
+  </Grid>
+  <Grid size={{ xs: 12, md: 6 }}>
+    <Box
+      sx={{
+        p:2,
+        fontWeight: 600,
+      }}
+    >
+        <Grid size="auto">
+          <Handshake color='#0057AC' size={50} />
+      </Grid>
+
+       Identification de ressources pertinentes pour vos cours
+       
+    </Box>
+  </Grid>
+
+</Grid>
+      </>
+    
+    }
+  />
+
+
+</Section>
 <Section bg='bleu100'>
   <h2>Inscrivez-nous à votre cours</h2>
 
@@ -56,6 +148,7 @@ import Didactheque from '../images/didactheque.webp'
       title="Collections spéciales"
       description="Nous conservons plus de 150 000 documents anciens, rares ou précieux, qui sont entièrement à la disposition de la communauté UdeM pour la consultation et la recherche."
       href="#"
+      linkText="Faire une suggestion"
     />
   </List>
 
