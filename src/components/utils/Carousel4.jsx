@@ -56,13 +56,17 @@ const styles = {
 export default function Carousel4({ children }) {
   const pages = Children.toArray(children)
 
+  function getAnnouncement(index, totalSlides, slideGroupList) {
+    return `Diapositive ${index + 1} de ${totalSlides}`
+  }
+
   return (
     <div style={styles.root}>
-      <Carousel as="div" align="center">
+      <Carousel as="div" align="start" groupSize={1} announcement={getAnnouncement} style={{ outline: '1px dotted orange' }}>
         <CarouselViewport>
-          <CarouselSlider>
+          <CarouselSlider style={{ gap: '10px' }}>
             {pages.map((item, index) => (
-              <CarouselCard key={index} id={getPageId(index)}>
+              <CarouselCard key={index} id={getPageId(index)} autoSize style={{ outline: '2px dashed red', outlineOffset: '-2px' }} aria-label={`${index + 1} de ${pages.length}`}>
                 {item}
               </CarouselCard>
             ))}
