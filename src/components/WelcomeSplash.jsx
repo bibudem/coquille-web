@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
 
-export default function WelcomeSplash({ title, image, ...rest }) {
+export default function WelcomeSplash({ title, subTitle, image, ...rest }) {
   if (typeof title === 'undefined') {
     throw new Error('title prop is required')
   }
