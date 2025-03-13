@@ -37,56 +37,27 @@ import Didactheque from '../images/didactheque.webp'
 
 <Typography component="h2" variant="display5">5,75M de titres à portée de main</Typography>
 
-    <List>
-      <ListItem disableGutters>
-        <ListItemButton component="a" href="https://www.facebook.com/groups/655999033385375/">
-          <ListItemText 
-           sx={{ width: '66%' }}
-            primary={
-              <Typography component="h3" variant="h3">Réserve de cours</Typography>
-            }
-            secondary={
-              <Typography>Assurez un accès aux documents importants dans le cadre de vos cours en créant une réserve de cours pour la session.</Typography>
-            }
-          />
-            <Button primary href="#">Mettre un livre à la réserve</Button>
-        </ListItemButton>
-      </ListItem>
-      <Divider component="li" sx={{borderColor: 'red'}} />
-      <ListItem disableGutters>
-        <ListItemButton component="a" href="#">
-          <ListItemText
-          sx={{ width: '66%' }}
-            primary={
-              <Typography component="h3" variant="h3">Suggestion d’achat</Typography>
-            }
-            secondary={
-              <Typography>Il vous manque un document qui serait utile pour votre cours ? 
-Nous l’achèterons pour vous !</Typography>
-            }
-          />
-            <Button primary href="#">Faire une suggestion</Button>
-        </ListItemButton>
-      </ListItem>
-      <Divider component="li" sx={{borderColor: 'red'}} />
-      <ListItem disableGutters>
-        <ListItemButton component="a" href="#">
-          <ListItemText
-          sx={{ width: '66%' }}
-            primary={
-              <Typography component="h3" variant="h3">Collections spéciales</Typography>
-            }
-            secondary={
-              <Typography>Nous conservons plus de 150 000 documents anciens, rares ou précieux, qui sont entièrement à la disposition de la communauté UdeM pour la consultation et la recherche.</Typography>
-            }
-          />
-<Button primary href="#">En savoir plus</Button>
-        </ListItemButton>
-      </ListItem>
-      <Divider component="li" sx={{borderColor: 'red'}} />
-      
-    </List>
 
+
+ <List>
+    <ListItemRichWithLink 
+      title="Réserve de cours"
+      description="Assurez un accès aux documents importants dans le cadre de vos cours en créant une réserve de cours pour la session."
+      href="#"
+      linkText="Mettre un livre à la réserve"
+    />
+    <ListItemRichWithLink 
+      title="Suggestion d’achat"
+      description="Il vous manque un document qui serait utile pour votre cours ? Nous l’achèterons pour vous !"
+      href="#"
+      linkText="Faire une suggestion"
+    />
+    <ListItemRichWithLink 
+      title="Collections spéciales"
+      description="Nous conservons plus de 150 000 documents anciens, rares ou précieux, qui sont entièrement à la disposition de la communauté UdeM pour la consultation et la recherche."
+      href="#"
+    />
+  </List>
 
 </Section>
 

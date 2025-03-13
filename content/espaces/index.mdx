@@ -13,7 +13,20 @@ import studioAudio from '../images/studio-audio.webp'
 import salleIndividuelle from '../images/salle-individuelle.webp'
 import cabine from '../images/cabine.webp'
 import salleEquipe from '../images/salle-equipe.webp'
+import salleCycleSup from '../images/cycle-sup.webp'
+import salleMaitrise from '../images/cycle-sup-droit-maitrise.webp'
+import salleDoctorat from '../images/cycle-sup-droit-doctorat.webp'
 import grandeSalleEquipe from '../images/grande-salle-equipe.webp'
+import veloPupitre from '../images/velo-pupitre.webp'
+import pedalier from '../images/pedalier.webp'
+import stationErgo from '../images/station-ergo.webp'
+import disqueEquilibre from '../images/disque-equilibre.webp'
+import placheEquilibre from '../images/planche-equilibre.webp'
+import tableAjustable from '../images/table-ajustable.webp'
+import tapisFatigue from '../images/tapis-anti-fatique.webp'
+import chaiseBallon from '../images/chaise-ballon.webp'
+import tableHaute from '../images/table-haute.webp'
+
 
 <Section>
 
@@ -118,15 +131,15 @@ import grandeSalleEquipe from '../images/grande-salle-equipe.webp'
     moreHref="#"
   >
    <FlipCardWithImage
-        title="Salles de travail BLSH"
-        Image={salleEquipe}
+        title="Salles de travail individuelles - cycles supérieurs"
+        Image={salleCycleSup}
       >
-        <p>Disponibles dans presque toutes les bibliothèques</p>
+        <p>Disponibles à la Bibliothèques des lettres et sciences humaines</p>
       </FlipCardWithImage>
 
     <FlipCardWithImage
-        title="Salle de travail 4 à 8 personnes"
-        Image={grandeSalleEquipe}
+        title="Salle de travail - maîtrise en droit"
+        Image={salleMaitrise}
       >
         <p>Disponibles :</p>
         <ul>
@@ -137,8 +150,8 @@ import grandeSalleEquipe from '../images/grande-salle-equipe.webp'
       </FlipCardWithImage>
 
     <FlipCardWithImage
-        title="Espace d'innovation et de créativité"
-        Image={cabine}
+        title="Salle de travail - doctorat en droit"
+        Image={salleDoctorat}
       >
         <p>Disponibles :</p>
         <ul>
@@ -151,54 +164,6 @@ import grandeSalleEquipe from '../images/grande-salle-equipe.webp'
 
       </Tabs1>
  </Section>
-
-
-
-<Section>
-  <Hero onglets de côté avec cartes>
-    ## Des espaces pour étudier
-    
-    ### Espaces pour se concentrer
-    
-    Display: À chacun sa bulle Besoin de concentration pour étudier? Salles d'étude individuelles ou cabines insonorisée, vous n'avez qu'à réserver! 
-    
-    #### Salles de travail individuel 
-    
-    #### Cabine insonorisées
-
-    <Button primary>Réserver une salle</Button>
-
-    ### Salle de travail en équipe
-
-    Display: Là où peuvent converger les idées
-
-    Un travail à faire en équipe? Une séance d’étude de groupe? Nous vous offrons des salles de travail communes avec ou sans réservation, des espaces pour parler librement, des banquettes avec écran - tout ce qu’il vous faut pour collaborer!
-
-    #### Salle de travail 3 à 4 personnes
-
-    #### Salle de travail 4 à 8 personnes
-
-    #### Banquettes
-
-    <Button primary>Réserver une salle</Button>
-
-    ### Salle de travail en équipe
-
-    Display: Cycle supérieurs : c'est par ici!
-
-    Certaines bibliothèques offrent des salles spécifiquement réservées aux étudiants et étudiantes des cycles supérieurs.
-
-    #### Salles de travail à BLSH - cycles supérieurs
-
-    #### Salle de travail de droit - maîtrise
-
-    #### Salle de travail de droit - Doctorat
-
-    <Button primary>Réserver une salle</Button>
-
-  </Hero>
-</Section>
-
 
 <Section image={zoneConfort}>
 
@@ -236,89 +201,100 @@ sx={{
 
 
 <Section bg="bleu100">
-  <Hero cartes photo avec info en hover>
-    ## Un esprit sain dans un corps sain sans un corps sain
-    
-    Étudier sans y laisser la forme, c’est tout un défi! Pour vous aider, nous vous proposons une panoplie de vélos-pupitres, chaise-ballons, planches d’équilibre, tables à hauteur ajustable. Faites de l’exercice tout en musclant votre cerveau!
-    
-    ### Vélo-pupitre
-    
-    - Bibliothèque du campus Laval
-    - Bibliothèque de droit
-    - Bibliothèque Marguerite-d'Youville
-    - Bibliothèque de médecine vétérinaire
-    - Bibliothèque Thérèse-Gouin-Décarie
-    - Bibliothèque de la santé
-    
-    ### Pédalier Disponibles dans presque toutes les bibliothèques.
-    
-    - Bibliothèque du campus Laval
-    - Bibliothèque de droit
-    - Bibliothèque de Kinésiologie 
-    - Bibliothèque Marguerite-d'Youville 
-    - Bibliothèque de médecine vétérinaire 
-    - Bibliothèque de musique 
-    - Bibliothèque du Parc 
-    - Bibliothèque Thérèse-Gouin-Décarie 
-    - Bibliothèque de la santé 
-    
-    ### Disque d'équilibre 
-    
-    - Bibliothèque d'aménagement 
-    - Bibliothèque du campus Laval 
-    - Bibliothèque de droit 
-    - Bibliothèque Thérèse-Gouin-Décarie 
-    
-    ### Planche d'équilibre 
-    
-    - Bibliothèque d'aménagement 
-    - Bibliothèque du campus Laval 
-    - Bibliothèque de droit 
-    - Bibliothèque de Kinésiologie 
-    - Bibliothèque de la santé 
-    
-    ### Table à hauteur ajustable 
-    
-    Disponibles dans presque toutes les bibliothèques. 
-    
-    - Bibliothèque d'aménagement 
-    - Bibliothèque du campus Laval 
-    - Bibliothèque de droit 
-    - Bibliothèque Marguerite-d'Youville 
-    - Bibliothèque de médecine vétérinaire 
-    - Bibliothèque de musique 
-    - Bibliothèque Thérèse-Gouin-Décarie 
-    - Bibliothèque de la santé 
-    
-    ### Tapis antifatigue pour le travail debout 
-    
-    Disponibles dans presque toutes les bibliothèques.
-    
-    - Bibliothèque d'aménagement 
-    - Bibliothèque du campus Laval 
-    - Bibliothèque de droit 
-    - Bibliothèque de Kinésiologie 
-    - Bibliothèque Marguerite-d'Youville 
-    - Bibliothèque de médecine vétérinaire 
-    - Bibliothèque de musique 
-    - Bibliothèque Thérèse-Gouin-Décarie 
-    - Bibliothèque de la santé 
-    
-    ### Chaise ballon avec dossier 
-    
-    Disponibles : 
-    
-    - Bibliothèque de Kinésiologie 
-    - Bibliothèque de médecine vétérinaire 
-    
-    ### Table haute 
-    
-    Disponible : 
-    
-    - Bibliothèque de Kinésiologie
-  </Hero>
+
+<Carousel1
+    title={<Typography component="h2">Un esprit sain dans un corps sain sans un corps sain</Typography>}
+    description="Étudier sans y laisser la forme, c’est tout un défi! Pour vous aider, nous vous proposons une panoplie de vélos-pupitres, chaise-ballons, planches d’équilibre, tables à hauteur ajustable. Faites de l’exercice tout en musclant votre cerveau!"
+  >
+   <FlipCardWithImage
+        title="Vélo-pupitre"
+        Image={veloPupitre}
+      >
+        <p>Disponibles:</p>
+        <li>Bibliothèque du campus Laval</li>
+    <li>Bibliothèque de droit</li>
+    <li>Bibliothèque Marguerite-d'Youville</li>
+    <li>Bibliothèque de médecine vétérinaire</li>
+    <li>Bibliothèque Thérèse-Gouin-Décarie</li>
+    <li>Bibliothèque de la santé</li>
+      </FlipCardWithImage>
+
+    <FlipCardWithImage
+        title="Pédalier"
+        Image={pedalier}
+      >
+        <p>Disponibles dans presque toutes les bibliothèques</p>
+
+      </FlipCardWithImage>
+<FlipCardWithImage
+        title="Station ergonomique"
+        Image={stationErgo}
+      >
+        <p>Disponibles à la Bibliothèque de droit</p>
+
+      </FlipCardWithImage>
+    <FlipCardWithImage
+        title="Disque d'équilibre "
+        Image={disqueEquilibre}
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>Bibliothèque d'aménagement</li>
+    <li>Bibliothèque du campus Laval </li>
+    <li>Bibliothèque de droit </li>
+    <li>Bibliothèque Thérèse-Gouin-Décarie </li>
+        </ul>
+      </FlipCardWithImage>
+      <FlipCardWithImage
+        title="Planche d'équilibre "
+        Image={placheEquilibre}
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>Bibliothèque d'aménagement </li>
+    <li>Bibliothèque du campus Laval </li>
+    <li>Bibliothèque de droit </li>
+    <li>Bibliothèque de Kinésiologie </li>
+    <li>Bibliothèque de la santé </li>
+        </ul>
+      </FlipCardWithImage>
+
+<FlipCardWithImage
+        title="Table à hauteur ajustable "
+        Image={tableAjustable}
+      >
+        <p>Disponibles dans presque toutes les bibliothèques</p>
+
+      </FlipCardWithImage>
+<FlipCardWithImage
+        title="Tapis antifatigue pour le travail debout "
+        Image={tapisFatigue}
+      >
+      <p>Disponibles dans presque toutes les bibliothèques</p>
+      </FlipCardWithImage>
+            
+<FlipCardWithImage
+        title="Chaise ballon avec dossier "
+        Image={salleDoctorat}
+      >
+      <p>Disponibles :</p>
+    <ul>
+    <li>Bibliothèque de Kinésiologie</li> 
+    <li>Bibliothèque de médecine vétérinaire</li> 
+    </ul>
+      </FlipCardWithImage>
+          
+<FlipCardWithImage
+        title="Table haute"
+        Image={salleDoctorat}
+      >
+      <p>Disponibles à la Bibliothèque de Kinésiologie</p>
+      </FlipCardWithImage>
+
+      </Carousel1>
 </Section>
 
+  
 
 <Section bg='rose300'>
 
