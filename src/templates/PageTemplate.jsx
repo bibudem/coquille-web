@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { Container, useTheme } from '@mui/material'
+import Grid from '@mui/material/Grid2'
 import { IconContext } from '@phosphor-icons/react'
 
 import TopAppBar from '@/components/AppBar/TopAppBar'
