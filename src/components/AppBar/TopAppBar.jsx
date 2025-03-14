@@ -6,8 +6,8 @@ import Link from '@/components/Link'
 import SideNav from '@/components/SideNav/SideNav'
 import SideNavContent from '@/components/SideNav/SideNavContent'
 import Div from '@/components/utils/Div'
-import LogoUdeMMonochrome from '@/images/logo-udem-monochrome.svg'
-import LogoUdeM from '@/images/logo-udem.svg'
+import LogoUdeMMonochrome from '@/images/logo-udem/logo_udem-noir.svg'
+import LogoUdeM from '@/images/logo-udem/logo_udem-officiel.svg'
 import MenuFab from './MenuButton'
 
 const pages = [
@@ -24,37 +24,53 @@ const styles = {}
 const StyledButton = styled(Button)(({ theme }) => ({
   alignContent: 'center',
   my: 2,
-  color: theme.palette.text.primary,
+  color: 'inherit',
   fontSize: '0.875rem',
   fontWeight: 400,
   display: 'block',
   textTransform: 'none',
 }))
+/**
+ *
 
+width: 35px;
+height: 0px;
+
+border: 1px solid #C3CCD5;
+transform: rotate(90deg);
+
+flex: none;
+order: 1;
+flex-grow: 0;
+
+ */
 export const appBarHeight = '5rem'
 
 function Logo({ lvl }) {
   const theme = useTheme()
+  const [color, setColor] = useState(theme.palette.grey['50'])
   const logoUdeMBaseStyles = {
-    height: '3.5625rem',
-    outline: '1px solid red',
-    fill: 'currentColor',
-    color: lvl === 1 ? theme.palette.grey['50'] : 'inherit',
+    width: 'auto',
+    height: '59px',
+    fill: lvl === 1 ? theme.palette.grey['50'] : '#37424D',
   }
-  console.log('---------------------------- lvll', lvl)
+
+  useEffect(() => {
+    setColor(lvl === 1 ? theme.palette.grey['50'] : 'inherit')
+  }, [lvl])
   return (
     <Div
-      sx={(theme) => ({
+      sx={{
         display: 'flex',
+        flexWrap: 'nowrap',
         alignItems: 'center',
-        color: lvl === 1 ? theme.palette.grey['50'] : 'inherit',
-      })}
+        color,
+      }}
     >
       {lvl === '1' ? (
         <LogoUdeMMonochrome
           style={{
             ...logoUdeMBaseStyles,
-            color: 'red',
           }}
         />
       ) : (
@@ -64,8 +80,26 @@ function Logo({ lvl }) {
           }}
         />
       )}
-      <Divider orientation="vertical" flexItem />
-      Les bibliothèques
+      <Divider
+        orientation="vertical"
+        flexItem
+        aria-hidden="true"
+        sx={{
+          borderColor: lvl === 1 ? theme.palette.grey['200'] : theme.palette.grey['600'],
+          margin: '12px',
+        }}
+      />
+      <Div
+        sx={{
+          color: lvl === 1 ? 'inherit' : 'primary.main',
+          fontSize: '1.1875rem',
+          fontWeight: 400,
+          lineHeight: 1.5,
+          letterSpacing: '0.01188rem',
+        }}
+      >
+        Les bibliothèques
+      </Div>
     </Div>
   )
 }
@@ -98,9 +132,9 @@ export default function TopAppBar({ lvl }) {
       <AppBar
         position="sticky"
         elevation={0}
-        color={theme.palette.grey['50']}
         sx={{
           '--AppBar-background': lvl < 2 ? 'transparent' : '#fff',
+          '--AppBar-color': lvl === 1 ? theme.palette.grey['50'] : '#222930',
           '.MuiToolbar-root': {
             height: appBarHeight,
           },
@@ -128,7 +162,6 @@ export default function TopAppBar({ lvl }) {
                   display: { xs: 'none', sm: 'block', color: 'inherit' },
                 }}
               >
-                {/* <LogoBib style={{ height: '35px' }} /> */}
                 <Logo lvl={lvl} />
               </Link>
             </Box>
@@ -136,12 +169,21 @@ export default function TopAppBar({ lvl }) {
             <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
               {pages.map(({ url, label }) => {
                 return (
-                  <StyledButton size="large" href={url} key={url}>
+                  <StyledButton size="large" href={url} key={url} lvl={lvl}>
                     {label}
                   </StyledButton>
                 )
               })}
-              <Button variant="contained" disableElevation size="large" href="/connexion" sx={{ bgcolor: 'bleuFonce.main' }}>
+              <Button
+                variant="contained"
+                disableElevation
+                size="large"
+                href="/connexion"
+                sx={{
+                  color: lvl === 1 ? '#0B113A' : '#0b113a',
+                  bgcolor: lvl === 1 ? '#fff' : 'bleuFonce.main',
+                }}
+              >
                 Je donne
               </Button>
             </Stack>
