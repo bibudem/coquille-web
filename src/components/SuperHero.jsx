@@ -1,4 +1,5 @@
 import { Typography } from '@mui/material'
+import Grid from '@mui/material/Grid2'
 import Section from '@/components/Section'
 import { appBarHeight } from '@/components/AppBar/TopAppBar'
 
@@ -42,10 +43,14 @@ export default function WelcomeSplash({ title, subTitle, image, ...rest }) {
             padding: `0 0 4.25rem 5.69rem`,
           }}
         >
-          <Typography variant="display1" component="h1">
-            {title}
-          </Typography>
-          {subTitle}
+          <Grid container direction="row">
+            <Grid size={8}>
+              <Typography variant="display1" component="h1">
+                {title}
+              </Typography>
+              {subTitle}
+            </Grid>
+          </Grid>
         </Section>
         {children}
       </div>
