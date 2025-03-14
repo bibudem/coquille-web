@@ -7,6 +7,8 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import CardActionArea from '@mui/material/CardActionArea'
+import SuperHero from '@/components/SuperHero'
+import RechercheSofiaAccueil from '@/components/RechercheSofiaAccueil'
 
 import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icons/react'
 import imageEspace from './images/image-arret-bibliothecaire.webp'
@@ -14,27 +16,20 @@ import imageRecherche from './images/recherche-accueil.webp'
 import imageEnseignement from './images/enseignement-accueil.webp'
 import imageCollections from './images/collections-speciales-montage.webp'
 import imageEngagement from './images/engagement-accueil.webp'
+import superHeroImage from './images/super-heroes/accueil.webp'
 
-import WelcomeSplash from '@/components/WelcomeSplash'
-import splashImage from './images/splash-accueil.webp'
-
-<WelcomeSplash
-      title="Curiosité illimitée"
-  image={splashImage}
+<SuperHero
+  title="Curiosité illimitée"
+  subTitle={
+    <>
+      <Typography component='div' variant='subtitle1'>Julia Généreux Randall</Typography>
+      <Typography component='div' variant='subtitle1'>Bibliothécaire Science politique / Démographie</Typography>
+    </>
+  }
+  image={superHeroImage}
 >
-  <div style={{background: '#00000066', padding: '2.875rem 4.125rem 2.875rem 4rem', height: '9.5625rem', display: 'flex', alignItems: 'center', gap: '1rem'}}> 
-   Boîte de recherche
-  </div>
-</WelcomeSplash>
-
-<Section> 
-  # Les bibliothèques / UdeM
-
-  Display : Curiosité illimitée Julia Géréreux Randall Bibliothécaire Science politique / démographie
-
-</Section>
-
-<Section>recherche Sofia</Section>
+  <RechercheSofiaAccueil />
+</SuperHero>
 
 <Section bg='bleu100'>
 
