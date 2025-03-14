@@ -180,7 +180,7 @@ export default function TopAppBar({ lvl }) {
                 size="large"
                 href="/connexion"
                 sx={{
-                  color: lvl === 1 ? '#0B113A' : '#0b113a',
+                  color: lvl === 1 ? '#0B113A' : '#fafdfe',
                   bgcolor: lvl === 1 ? '#fff' : 'bleuFonce.main',
                 }}
               >
