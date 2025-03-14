@@ -19,11 +19,19 @@ import { SecondaryNav } from '@/components/SecondaryNav/SecondaryNav'
 
 import commonComponents from './commonComponents'
 
+function getCurrentPageLevel(location) {
+  return location.pathname.split('/').length - 1
+}
+
 export default function PageTemplate({ pageContext, children, data, location }) {
   const isSmall = useSmall('lg')
   const theme = useTheme()
   const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
-  console.log('location:', location)
+  const [lvl, setLvl] = useState(getCurrentPageLevel(location))
+
+  useEffect(() => {
+    setLvl(getCurrentPageLevel(location))
+  }, [location])
 
   useEffect(() => {
     const navLvl = location.pathname.split('/').length
@@ -62,7 +70,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         <udem-urgence></udem-urgence>
 
-        {isSmall ? <TopAppBarSm /> : <TopAppBar />}
+        {isSmall ? <TopAppBarSm /> : <TopAppBar lvl={lvl} />}
 
         {/* <bib-avis bouton-fermer /> */}
 
