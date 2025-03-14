@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
-import { AppBar, Box, Button, Container, Stack, Toolbar } from '@mui/material'
+import { AppBar, Box, Button, Container, Divider, Stack, Toolbar } from '@mui/material'
 import { styled, useTheme } from '@mui/material/styles'
 
 import Link from '@/components/Link'
 import SideNav from '@/components/SideNav/SideNav'
 import SideNavContent from '@/components/SideNav/SideNavContent'
-import LogoBib from '@/images/logo-bib.svg'
+import Div from '@/components/utils/Div'
+import LogoUdeMMonochrome from '@/images/logo-udem-monochrome.svg'
+import LogoUdeM from '@/images/logo-udem.svg'
 import MenuFab from './MenuButton'
 
 const pages = [
@@ -17,6 +19,8 @@ const pages = [
   { url: '/tests', label: 'Tests' },
 ]
 
+const styles = {}
+
 const StyledButton = styled(Button)(({ theme }) => ({
   alignContent: 'center',
   my: 2,
@@ -27,10 +31,49 @@ const StyledButton = styled(Button)(({ theme }) => ({
   textTransform: 'none',
 }))
 
+export const appBarHeight = '5rem'
+
+function Logo({ lvl }) {
+  const theme = useTheme()
+  const logoUdeMBaseStyles = {
+    height: '3.5625rem',
+    outline: '1px solid red',
+    fill: 'currentColor',
+    color: lvl === 1 ? theme.palette.grey['50'] : 'inherit',
+  }
+  console.log('---------------------------- lvll', lvl)
+  return (
+    <Div
+      sx={(theme) => ({
+        display: 'flex',
+        alignItems: 'center',
+        color: lvl === 1 ? theme.palette.grey['50'] : 'inherit',
+      })}
+    >
+      {lvl === '1' ? (
+        <LogoUdeMMonochrome
+          style={{
+            ...logoUdeMBaseStyles,
+            color: 'red',
+          }}
+        />
+      ) : (
+        <LogoUdeM
+          style={{
+            ...logoUdeMBaseStyles,
+          }}
+        />
+      )}
+      <Divider orientation="vertical" flexItem />
+      Les bibliothèques
+    </Div>
+  )
+}
+
 /**
  * Primary search app bar component
  */
-export default function TopAppBar() {
+export default function TopAppBar({ lvl }) {
   const [open, setOpen] = useState(false)
   const theme = useTheme()
 
@@ -55,15 +98,13 @@ export default function TopAppBar() {
       <AppBar
         position="sticky"
         elevation={0}
-        sx={(theme) => ({
-          borderBottom: '1px solid silver',
-          bgcolor: 'white',
+        color={theme.palette.grey['50']}
+        sx={{
+          '--AppBar-background': lvl < 2 ? 'transparent' : '#fff',
           '.MuiToolbar-root': {
-            [theme.breakpoints.up('sm')]: {
-              minHeight: 89,
-            },
+            height: appBarHeight,
           },
-        })}
+        }}
       >
         <Container
           maxWidth="xl"
@@ -87,7 +128,8 @@ export default function TopAppBar() {
                   display: { xs: 'none', sm: 'block', color: 'inherit' },
                 }}
               >
-                <LogoBib style={{ height: '35px' }} />
+                {/* <LogoBib style={{ height: '35px' }} /> */}
+                <Logo lvl={lvl} />
               </Link>
             </Box>
             <Box sx={{ flexGrow: 1 }} />

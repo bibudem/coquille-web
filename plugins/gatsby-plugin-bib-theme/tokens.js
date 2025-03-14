@@ -239,6 +239,7 @@ export default {
 		},
 		display1: {
 			fontFamily: 'Figtree',
+			fontFeatureSettings: "'liga' off, 'clig' off",
 			fontSize: '6.6875rem',
 			fontWeight: 600,
 			lineHeight: '112%'
