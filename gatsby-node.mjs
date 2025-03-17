@@ -6,6 +6,7 @@
 
 import { resolve } from 'node:path'
 import slugify from '@sindresorhus/slugify'
+import readingTime from 'reading-time'
 
 // Define the template for pages
 const pageTemplate = resolve('./src/templates/PageTemplate.jsx')
@@ -77,4 +78,15 @@ export const createPages = async ({ graphql, actions, reporter, getNode }) => {
       path2: path
     })
   })
+}
+
+export const onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === `Mdx`) {
+    createNodeField({
+      node,
+      name: `timeToRead`,
+      value: readingTime(node.body)
+    })
+  }
 }

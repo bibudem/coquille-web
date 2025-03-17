@@ -2,7 +2,6 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import GatsbyAdapterNetlifyModule from 'gatsby-adapter-netlify'
 import 'dotenv/config'
-// import tokens from './plugins/gatsby-plugin-bib-theme/tokens.js'
 
 const adapter = GatsbyAdapterNetlifyModule.default
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -18,7 +17,7 @@ const config = {
   siteMetadata: {
     title: 'Les bibliothèques / UdeM',
 
-    description: `Example project for the Gatsby Head API`,
+    description: `Site Web des Bibliothèques de l'Université de Montréal`,
     twitterUsername: `@bibUdeM`,
     image: `/gatsby-icon.png`,
     siteUrl: 'https://bib.umontreal.ca',
@@ -43,15 +42,24 @@ const config = {
       options: {
         name: 'contenu',
         path: join(__dirname, 'content'),
+        ignore: ['**/super-heroes'],
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: join(__dirname, 'src', 'images')
+        path: join(__dirname, 'src', 'images'),
+        ignore: ['**/super-heroes'],
       },
       __key: 'images'
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'super-heroes',
+        path: join(__dirname, 'content', 'images', 'super-heroes'),
+      },
     },
     {
       resolve: 'gatsby-source-filesystem',
@@ -67,9 +75,8 @@ const config = {
         defaults: {
           formats: [`auto`, `webp`],
           placeholder: `dominantColor`,
-          quality: 50,
+          quality: 75,
           breakpoints: [600, 900, 1200, 1536],
-          // breakpoints: Object.values(tokens.breakpoints.values).filter(item => item !== 0),
           backgroundColor: `transparent`,
           blurredOptions: {},
           jpgOptions: {},
