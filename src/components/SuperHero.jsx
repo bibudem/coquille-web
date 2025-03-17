@@ -67,6 +67,15 @@ export default function SuperHero({ title, subTitle, imageName, ...rest }) {
             position: 'absolute',
           }}
         />
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            background: `linear-gradient(180deg, rgba(0, 0, 0, 0.48) 5%, rgba(104, 104, 104, 0.11) 22%, rgba(255, 255, 255, 0.00) 36%)`,
+            zIndex: 2,
+          }}
+        ></div>
         <Section
           sx={{
             padding: `0 0 4.25rem 5.69rem`,
