@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles'
 import Link from '@/components/Link'
 import SideNavSm from '@/components/SideNav/SideNavSm'
 import SideNavContent from '@/components/SideNav/SideNavContent'
-import MenuButton from './MenuButton'
+import MenuBurger from './MenuBurger'
 import LogoBib from '@/images/logo-bib.svg'
 import LogoUdeM from '@/images/logo-udem.svg'
 
@@ -84,7 +84,7 @@ export default function TopAppBarSm(props) {
                 <LogoUdeM style={{ height: '33px', marginRight: '20px', color: '#000' }} />
                 <LogoBib style={{ height: '33px' }} />
               </Link>
-              <MenuButton
+              <MenuBurger
                 onClick={toggleDrawer(true)}
                 sx={{
                   position: 'absolute',

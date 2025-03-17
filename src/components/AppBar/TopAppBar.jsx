@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AppBar, Box, Button, Container, Divider, Stack, Toolbar } from '@mui/material'
 import { styled, useTheme } from '@mui/material/styles'
+import { ArrowRight } from '@phosphor-icons/react'
 
 import Link from '@/components/Link'
 import SideNav from '@/components/SideNav/SideNav'
@@ -8,18 +9,8 @@ import SideNavContent from '@/components/SideNav/SideNavContent'
 import Div from '@/components/utils/Div'
 import LogoUdeMMonochrome from '@/images/logo-udem/logo_udem-noir.svg'
 import LogoUdeM from '@/images/logo-udem/logo_udem-officiel.svg'
-import MenuFab from './MenuButton'
-
-const pages = [
-  { url: '/espaces', label: 'Espaces' },
-  { url: '/etudes', label: 'Études' },
-  { url: '/recherche', label: 'Recherche' },
-  { url: '/enseignement', label: 'Enseignement' },
-  { url: '/engagements', label: 'Engagements' },
-  { url: '/tests', label: 'Tests' },
-]
-
-const styles = {}
+import MenuBurger from './MenuBurger'
+import pages from './menu'
 
 const StyledButton = styled(Button)(({ theme }) => ({
   alignContent: 'center',
@@ -182,13 +173,17 @@ export default function TopAppBar({ lvl }) {
                 sx={{
                   color: lvl === 1 ? '#0B113A' : '#fafdfe',
                   bgcolor: lvl === 1 ? '#fff' : 'bleuFonce.main',
+                  '.MuiButton-icon svg': {
+                    fill: lvl === 1 ? theme.palette.rougeOrange.main : 'currentColor',
+                  },
                 }}
+                endIcon={<ArrowRight color={theme.palette.rougeOrange.main} />}
               >
                 Je donne
               </Button>
             </Stack>
             <Box>
-              <MenuFab onClick={toggleDrawer(true)} />
+              <MenuBurger lvl={lvl} onClick={toggleDrawer(true)} />
             </Box>
           </Toolbar>
         </Container>
