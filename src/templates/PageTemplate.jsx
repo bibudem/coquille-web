@@ -50,7 +50,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
   const mainContent = (
     <>
-      <Breadcrumbs crumbs={crumbs} />
+      {lvl > 2 && <Breadcrumbs crumbs={crumbs} />}
       <main role="main">
         {children}
         <RetroactionUsager />

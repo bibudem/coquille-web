@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { useTheme } from '@mui/material'
@@ -15,9 +16,18 @@ import RetroactionUsager from '@/components/RetroactionUsager'
 import { useSmall } from '@/hooks/use-small'
 import commonComponents from './commonComponents'
 
+function getCurrentPageLevel(location) {
+  return location.pathname.split('/').length - 1
+}
+
 export default function PageTemplate({ pageContext, children, data, location }) {
   const isSmall = useSmall('lg')
   const theme = useTheme()
+  const [lvl, setLvl] = useState(getCurrentPageLevel(location))
+
+  useEffect(() => {
+    setLvl(getCurrentPageLevel(location))
+  }, [location])
 
   if (typeof window !== 'undefined') {
     window.bib = window.bib || {}
@@ -31,7 +41,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
   const mainContent = (
     <>
-      <Breadcrumbs crumbs={crumbs} />
+      {lvl > 2 && <Breadcrumbs crumbs={crumbs} />}
       <main role="main">
         {children}
         <RetroactionUsager />
