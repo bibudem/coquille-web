@@ -174,7 +174,7 @@ export default function TopAppBar({ lvl }) {
                   color: lvl === 1 ? '#0B113A' : '#fafdfe',
                   bgcolor: lvl === 1 ? '#fff' : 'bleuFonce.main',
                   '.MuiButton-icon svg': {
-                    fill: theme.palette.rougeOrange.main,
+                    fill: lvl === 1 ? theme.palette.rougeOrange.main : 'currentColor',
                   },
                 }}
                 endIcon={<ArrowRight color={theme.palette.rougeOrange.main} />}
