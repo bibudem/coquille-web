@@ -51,7 +51,6 @@ export default function Section({ bg, image, fixedWidth = false, ...rest }) {
 
   useEffect(() => {
     if (image) {
-      console.log('YEP: image')
       setStyles((oldStyles) => ({
         ...oldStyles,
         backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%), url('${image}')`,
