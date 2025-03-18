@@ -15,7 +15,10 @@ export function useIsExternal(href, { icons } = {}) {
 
   useEffect(() => {
     setIsExternal(isExternalLink(href))
-  }, [href])
+    if (icons) {
+      setIcons(icons)
+    }
+  }, [])
 
   useEffect(() => {
     if (isExternal) {
@@ -26,12 +29,6 @@ export function useIsExternal(href, { icons } = {}) {
       setLinkProps({})
     }
   }, [isExternal])
-
-  useEffect(() => {
-    if (icons) {
-      setIcons(icons)
-    }
-  }, [icons])
 
   useEffect(() => {
     if (isExternal) {
