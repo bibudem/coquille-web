@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { AppBar, Box, Button, Container, Divider, Stack, Toolbar } from '@mui/material'
+import { AppBar, Box, Button, Divider, Stack, Toolbar } from '@mui/material'
 import { styled, useTheme } from '@mui/material/styles'
 import { ArrowRight } from '@phosphor-icons/react'
 
@@ -131,11 +131,11 @@ export default function TopAppBar({ lvl, location = {} }) {
           },
         }}
       >
-        <Container
-          maxWidth="xl"
+        <Div
           sx={{
-            py: 0.5,
-            px: '0!important',
+            margin: '0 auto',
+            width: '100%',
+            maxWidth: theme.breakpoints.values.xl,
           }}
         >
           <Toolbar disableGutters>
@@ -191,11 +191,11 @@ export default function TopAppBar({ lvl, location = {} }) {
                 Je donne
               </Button>
             </Stack>
-            <Box>
+            <Box sx={{ paddingLeft: '2rem' }}>
               <MenuBurger lvl={lvl} onClick={toggleDrawer(true)} />
             </Box>
           </Toolbar>
-        </Container>
+        </Div>
       </AppBar>
       <SideNav open={open} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)}>
         <SideNavContent />
