@@ -1,4 +1,4 @@
-import { Stack, styled, useScrollTrigger } from '@mui/material'
+import { ListItemIcon, ListItemText as MuiListItemText, MenuItem, MenuList, Paper, Stack, styled, useScrollTrigger, useTheme } from '@mui/material'
 import { CalendarPlus, Chats, ClockCountdown, Lifebuoy } from '@phosphor-icons/react'
 import { SofiaIcon } from '@/components/CustomIcons'
 
@@ -26,11 +26,20 @@ const A = styled('a')(({ theme }) => ({
   gap: '0.98088rem',
 }))
 
-const StyledNavItemText = styled('div')({
-  fontSize: '1rem',
-  fontWeight: 400,
-  lineHeight: '1.6rem',
-})
+function ListItemText({ children }) {
+  return (
+    <MuiListItemText
+      disableTypography
+      sx={{
+        fontSize: '1rem',
+        fontWeight: 400,
+        lineHeight: 1.6,
+      }}
+    >
+      {children}
+    </MuiListItemText>
+  )
+}
 
 export default function MenuLatteral() {
   const trigger = useScrollTrigger({
@@ -38,29 +47,83 @@ export default function MenuLatteral() {
     threshold: 200,
   })
 
-  function handleClick(event) {
+  const theme = useTheme()
+
+  function handleOnMenuItemClick(event) {
+    event.preventDefault()
     alert('Action à définir')
   }
 
   return (
-    <Stack
-      direction="column"
-      aria-labelledby="udem-footer-aide-header"
-      spacing={0}
-      component="nav"
-      sx={(theme) => ({
-        display: 'flex',
-        position: 'fixed',
-        top: '0',
-        right: 0,
-        bottom: 0,
-        justifyContent: 'center',
-        // width: '4rem',
-        zIndex: theme.zIndex.drawer,
-        pointerEvents: 'none',
-        color: '#fff',
-      })}
-    >
+    <>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          justifyContent: 'center',
+          // width: '4rem',
+          zIndex: theme.zIndex.drawer,
+          pointerEvents: 'none',
+          color: '#fff',
+        }}
+      >
+        <Paper
+          component="nav"
+          elevation={3}
+          sx={(theme) => ({
+            display: 'flex',
+            justifyContent: 'center',
+            // width: '4rem',
+            zIndex: theme.zIndex.drawer,
+            pointerEvents: 'none',
+            color: '#fff',
+            transform: trigger ? 'translateX(170px)' : 'translateX(0)',
+            transitionTimingFunction: theme.transitions.easing.md3[trigger ? 'emphasizedDecelerate' : 'emphasizedAccelerate'],
+            transitionDuration: `${theme.transitions.duration.md3[trigger ? 'medium4' : 'short4']}ms`,
+            backgroundColor: theme.vars.palette.bleuPrincipal.main, // var(--mui-palette-primary-main)
+            pointerEvents: 'auto',
+            borderRadius: '12px 0 0 12px',
+            transitionProperty: `transform`,
+          })}
+        >
+          <MenuList>
+            <MenuItem component="a" href="https://umontreal.on.worldcat.org/discovery?lang=fr">
+              <ListItemIcon>
+                <SofiaIcon color="#fff" />
+              </ListItemIcon>
+              <ListItemText>Sofia</ListItemText>
+            </MenuItem>
+            <MenuItem component="a" href="/horaires">
+              <ListItemIcon>
+                <ClockCountdown color="#fff" size={24} />
+              </ListItemIcon>
+              <ListItemText>Horaires</ListItemText>
+            </MenuItem>
+            <MenuItem component="a" href="https://calendrier.bib.umontreal.ca/r">
+              <ListItemIcon>
+                <CalendarPlus color="#fff" size={24} />
+              </ListItemIcon>
+              <ListItemText>Réserver une salle</ListItemText>
+            </MenuItem>
+            <MenuItem component="a" href="#" onClick={handleOnMenuItemClick}>
+              <ListItemIcon>
+                <Lifebuoy color="#fff" size={24} />
+              </ListItemIcon>
+              <ListItemText>Soutien informatique</ListItemText>
+            </MenuItem>
+            <MenuItem component="a" href="#" onClick={handleOnMenuItemClick}>
+              <ListItemIcon>
+                <Chats color="#fff" size={24} />
+              </ListItemIcon>
+              <ListItemText>Clavarder</ListItemText>
+            </MenuItem>
+          </MenuList>
+        </Paper>
+      </div>
       <StyledNav
         component="ul"
         sx={(theme) => ({
@@ -72,34 +135,34 @@ export default function MenuLatteral() {
         <StyledNavItem>
           <A href="https://umontreal.on.worldcat.org/discovery?lang=fr">
             <SofiaIcon color="#fff" />
-            <StyledNavItemText>Sofia</StyledNavItemText>
+            <ListItemText>Sofia</ListItemText>
           </A>
         </StyledNavItem>
         <StyledNavItem>
           <A href="/horaires">
             <ClockCountdown color="#fff" size={24} />
-            <StyledNavItemText>Horaires</StyledNavItemText>
+            <ListItemText>Horaires</ListItemText>
           </A>
         </StyledNavItem>
         <StyledNavItem>
           <A href="https://calendrier.bib.umontreal.ca/r">
             <CalendarPlus color="#fff" size={24} />
-            <StyledNavItemText>Réserver une salle</StyledNavItemText>
+            <ListItemText>Réserver une salle</ListItemText>
           </A>
         </StyledNavItem>
         <StyledNavItem>
-          <A href="#" onClick={handleClick}>
+          <A href="#" onClick={handleOnMenuItemClick}>
             <Lifebuoy color="#fff" size={24} />
-            <StyledNavItemText>Soutien informatique</StyledNavItemText>
+            <ListItemText>Soutien informatique</ListItemText>
           </A>
         </StyledNavItem>
         <StyledNavItem>
-          <A href="#" onClick={handleClick}>
+          <A href="#" onClick={handleOnMenuItemClick}>
             <Chats color="#fff" size={24} />
-            <StyledNavItemText>Clavarder</StyledNavItemText>
+            <ListItemText>Clavarder</ListItemText>
           </A>
         </StyledNavItem>
       </StyledNav>
-    </Stack>
+    </>
   )
 }
