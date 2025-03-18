@@ -17,17 +17,23 @@ import { useSmall } from '@/hooks/use-small'
 import commonComponents from './commonComponents'
 
 function getCurrentPageLevel(location) {
-  return location.pathname.split('/').length - 1
+  return location.pathname.split('/').filter((item) => item).length
 }
 
 export default function PageTemplate({ pageContext, children, data, location }) {
   const isSmall = useSmall('lg')
   const theme = useTheme()
+  const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
   const [lvl, setLvl] = useState(getCurrentPageLevel(location))
 
   useEffect(() => {
     setLvl(getCurrentPageLevel(location))
   }, [location])
+
+  useEffect(() => {
+    // const navLvl = location.pathname.split('/').length
+    setHasSecondaryNav(lvl > 1)
+  }, [lvl])
 
   if (typeof window !== 'undefined') {
     window.bib = window.bib || {}
@@ -41,7 +47,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
   const mainContent = (
     <>
-      {lvl > 2 && <Breadcrumbs crumbs={crumbs} />}
+      {hasSecondaryNav && <Breadcrumbs crumbs={crumbs} />}
       <main role="main">
         {children}
         <RetroactionUsager />
@@ -61,7 +67,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         <udem-urgence></udem-urgence>
 
-        {isSmall ? <TopAppBarSm /> : <TopAppBar />}
+        {isSmall ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
 
         {/* <bib-avis bouton-fermer /> */}
 

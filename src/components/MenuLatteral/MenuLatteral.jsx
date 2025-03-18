@@ -44,7 +44,7 @@ function ListItemText({ children }) {
 export default function MenuLatteral() {
   const trigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 200,
+    threshold: 175,
   })
 
   const theme = useTheme()
@@ -55,114 +55,73 @@ export default function MenuLatteral() {
   }
 
   return (
-    <>
-      <div
-        style={{
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        justifyContent: 'center',
+        // width: '4rem',
+        zIndex: theme.zIndex.drawer,
+        pointerEvents: 'none',
+        color: '#fff',
+      }}
+    >
+      <Paper
+        component="nav"
+        elevation={3}
+        sx={(theme) => ({
           display: 'flex',
-          flexDirection: 'column',
-          position: 'fixed',
-          top: 0,
-          right: 0,
-          bottom: 0,
           justifyContent: 'center',
           // width: '4rem',
           zIndex: theme.zIndex.drawer,
           pointerEvents: 'none',
           color: '#fff',
-        }}
-      >
-        <Paper
-          component="nav"
-          elevation={3}
-          sx={(theme) => ({
-            display: 'flex',
-            justifyContent: 'center',
-            // width: '4rem',
-            zIndex: theme.zIndex.drawer,
-            pointerEvents: 'none',
-            color: '#fff',
-            transform: trigger ? 'translateX(170px)' : 'translateX(0)',
-            transitionTimingFunction: theme.transitions.easing.md3[trigger ? 'emphasizedDecelerate' : 'emphasizedAccelerate'],
-            transitionDuration: `${theme.transitions.duration.md3[trigger ? 'medium4' : 'short4']}ms`,
-            backgroundColor: theme.vars.palette.bleuPrincipal.main, // var(--mui-palette-primary-main)
-            pointerEvents: 'auto',
-            borderRadius: '12px 0 0 12px',
-            transitionProperty: `transform`,
-          })}
-        >
-          <MenuList>
-            <MenuItem component="a" href="https://umontreal.on.worldcat.org/discovery?lang=fr">
-              <ListItemIcon>
-                <SofiaIcon color="#fff" />
-              </ListItemIcon>
-              <ListItemText>Sofia</ListItemText>
-            </MenuItem>
-            <MenuItem component="a" href="/horaires">
-              <ListItemIcon>
-                <ClockCountdown color="#fff" size={24} />
-              </ListItemIcon>
-              <ListItemText>Horaires</ListItemText>
-            </MenuItem>
-            <MenuItem component="a" href="https://calendrier.bib.umontreal.ca/r">
-              <ListItemIcon>
-                <CalendarPlus color="#fff" size={24} />
-              </ListItemIcon>
-              <ListItemText>Réserver une salle</ListItemText>
-            </MenuItem>
-            <MenuItem component="a" href="#" onClick={handleOnMenuItemClick}>
-              <ListItemIcon>
-                <Lifebuoy color="#fff" size={24} />
-              </ListItemIcon>
-              <ListItemText>Soutien informatique</ListItemText>
-            </MenuItem>
-            <MenuItem component="a" href="#" onClick={handleOnMenuItemClick}>
-              <ListItemIcon>
-                <Chats color="#fff" size={24} />
-              </ListItemIcon>
-              <ListItemText>Clavarder</ListItemText>
-            </MenuItem>
-          </MenuList>
-        </Paper>
-      </div>
-      <StyledNav
-        component="ul"
-        sx={(theme) => ({
           transform: trigger ? 'translateX(170px)' : 'translateX(0)',
           transitionTimingFunction: theme.transitions.easing.md3[trigger ? 'emphasizedDecelerate' : 'emphasizedAccelerate'],
           transitionDuration: `${theme.transitions.duration.md3[trigger ? 'medium4' : 'short4']}ms`,
+          backgroundColor: theme.vars.palette.bleuPrincipal.main, // var(--mui-palette-primary-main)
+          pointerEvents: 'auto',
+          borderRadius: '12px 0 0 12px',
+          transitionProperty: `transform`,
         })}
       >
-        <StyledNavItem>
-          <A href="https://umontreal.on.worldcat.org/discovery?lang=fr">
-            <SofiaIcon color="#fff" />
+        <MenuList>
+          <MenuItem component="a" href="https://umontreal.on.worldcat.org/discovery?lang=fr">
+            <ListItemIcon>
+              <SofiaIcon color="#fff" />
+            </ListItemIcon>
             <ListItemText>Sofia</ListItemText>
-          </A>
-        </StyledNavItem>
-        <StyledNavItem>
-          <A href="/horaires">
-            <ClockCountdown color="#fff" size={24} />
+          </MenuItem>
+          <MenuItem component="a" href="/horaires">
+            <ListItemIcon>
+              <ClockCountdown color="#fff" size={24} />
+            </ListItemIcon>
             <ListItemText>Horaires</ListItemText>
-          </A>
-        </StyledNavItem>
-        <StyledNavItem>
-          <A href="https://calendrier.bib.umontreal.ca/r">
-            <CalendarPlus color="#fff" size={24} />
+          </MenuItem>
+          <MenuItem component="a" href="https://calendrier.bib.umontreal.ca/r">
+            <ListItemIcon>
+              <CalendarPlus color="#fff" size={24} />
+            </ListItemIcon>
             <ListItemText>Réserver une salle</ListItemText>
-          </A>
-        </StyledNavItem>
-        <StyledNavItem>
-          <A href="#" onClick={handleOnMenuItemClick}>
-            <Lifebuoy color="#fff" size={24} />
+          </MenuItem>
+          <MenuItem component="a" href="#" onClick={handleOnMenuItemClick}>
+            <ListItemIcon>
+              <Lifebuoy color="#fff" size={24} />
+            </ListItemIcon>
             <ListItemText>Soutien informatique</ListItemText>
-          </A>
-        </StyledNavItem>
-        <StyledNavItem>
-          <A href="#" onClick={handleOnMenuItemClick}>
-            <Chats color="#fff" size={24} />
+          </MenuItem>
+          <MenuItem component="a" href="#" onClick={handleOnMenuItemClick}>
+            <ListItemIcon>
+              <Chats color="#fff" size={24} />
+            </ListItemIcon>
             <ListItemText>Clavarder</ListItemText>
-          </A>
-        </StyledNavItem>
-      </StyledNav>
-    </>
+          </MenuItem>
+        </MenuList>
+      </Paper>
+    </div>
   )
 }
