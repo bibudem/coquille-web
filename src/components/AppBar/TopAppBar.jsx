@@ -178,12 +178,12 @@ export default function TopAppBar({ lvl, location = {} }) {
                 variant="contained"
                 disableElevation
                 size="large"
-                href="/connexion"
+                href="/nous-soutenir/"
                 sx={{
-                  color: lvl === 1 ? '#0B113A' : '#fafdfe',
-                  bgcolor: lvl === 1 ? '#fff' : 'bleuFonce.main',
+                  color: lvl < 2 ? '#0B113A' : '#fafdfe',
+                  bgcolor: lvl < 2 ? '#fff' : 'bleuFonce.main',
                   '.MuiButton-icon svg': {
-                    fill: lvl === 1 ? theme.palette.rougeOrange.main : 'currentColor',
+                    fill: lvl < 2 ? theme.palette.rougeOrange.main : 'currentColor',
                   },
                 }}
                 endIcon={<ArrowRight color={theme.palette.rougeOrange.main} />}

@@ -20,7 +20,7 @@ import { SecondaryNav } from '@/components/SecondaryNav/SecondaryNav'
 import commonComponents from './commonComponents'
 
 function getCurrentPageLevel(location) {
-  const pathname = location.pathname.endsWith('/') ? location.pathname.slice(1) : location.pathname
+  // const pathname = location.pathname.endsWith('/') ? location.pathname.slice(1) : location.pathname
   return location.pathname.split('/').filter((item) => item).length
 }
 
@@ -36,9 +36,9 @@ export default function PageTemplate({ pageContext, children, data, location }) 
   }, [location])
 
   useEffect(() => {
-    const navLvl = location.pathname.split('/').length
-    setHasSecondaryNav(navLvl > 1)
-  }, [location])
+    // const navLvl = location.pathname.split('/').length
+    setHasSecondaryNav(lvl > 1)
+  }, [lvl])
 
   if (typeof window !== 'undefined') {
     window.bib = window.bib || {}
@@ -69,6 +69,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
         }}
       >
         {process.env.NODE_ENV !== 'production' && <Debug />}
+        <div style={{ position: 'absolute', background: '#fff', top: 0, right: 0, padding: '.5em' }}>{lvl}</div>
 
         <udem-urgence></udem-urgence>
 
