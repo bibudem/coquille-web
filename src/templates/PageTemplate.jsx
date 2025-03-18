@@ -20,7 +20,8 @@ import { SecondaryNav } from '@/components/SecondaryNav/SecondaryNav'
 import commonComponents from './commonComponents'
 
 function getCurrentPageLevel(location) {
-  return location.pathname.split('/').length - 1
+  const pathname = location.pathname.endsWith('/') ? location.pathname.slice(1) : location.pathname
+  return location.pathname.split('/').filter((item) => item).length
 }
 
 export default function PageTemplate({ pageContext, children, data, location }) {
@@ -31,11 +32,12 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
   useEffect(() => {
     setLvl(getCurrentPageLevel(location))
+    console.log('lvl:', getCurrentPageLevel(location))
   }, [location])
 
   useEffect(() => {
     const navLvl = location.pathname.split('/').length
-    setHasSecondaryNav(navLvl > 2)
+    setHasSecondaryNav(navLvl > 1)
   }, [location])
 
   if (typeof window !== 'undefined') {
@@ -50,7 +52,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
   const mainContent = (
     <>
-      {lvl > 2 && <Breadcrumbs crumbs={crumbs} />}
+      {hasSecondaryNav && <Breadcrumbs crumbs={crumbs} />}
       <main role="main">
         {children}
         <RetroactionUsager />
@@ -70,7 +72,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         <udem-urgence></udem-urgence>
 
-        {isSmall ? <TopAppBarSm /> : <TopAppBar lvl={lvl} />}
+        {isSmall ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
 
         {/* <bib-avis bouton-fermer /> */}
 

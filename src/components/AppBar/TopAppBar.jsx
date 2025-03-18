@@ -43,11 +43,11 @@ function Logo({ lvl }) {
   const logoUdeMBaseStyles = {
     width: 'auto',
     height: '59px',
-    fill: lvl === 1 ? theme.palette.grey['50'] : '#37424D',
+    fill: lvl < 2 ? theme.palette.grey['50'] : '#37424D',
   }
 
   useEffect(() => {
-    setColor(lvl === 1 ? theme.palette.grey['50'] : 'inherit')
+    setColor(lvl < 2 ? theme.palette.grey['50'] : 'inherit')
   }, [lvl])
   return (
     <Div
@@ -58,7 +58,7 @@ function Logo({ lvl }) {
         color,
       }}
     >
-      {lvl === '1' ? (
+      {lvl < 2 ? (
         <LogoUdeMMonochrome
           style={{
             ...logoUdeMBaseStyles,
@@ -76,13 +76,13 @@ function Logo({ lvl }) {
         flexItem
         aria-hidden="true"
         sx={{
-          borderColor: lvl === 1 ? theme.palette.grey['200'] : theme.palette.grey['600'],
+          borderColor: lvl < 2 ? theme.palette.grey['200'] : theme.palette.grey['600'],
           margin: '12px',
         }}
       />
       <Div
         sx={{
-          color: lvl === 1 ? 'inherit' : 'primary.main',
+          color: lvl < 2 ? 'inherit' : 'primary.main',
           fontSize: '1.1875rem',
           fontWeight: 400,
           lineHeight: 1.5,
@@ -98,7 +98,7 @@ function Logo({ lvl }) {
 /**
  * Primary search app bar component
  */
-export default function TopAppBar({ lvl }) {
+export default function TopAppBar({ lvl, location = {} }) {
   const [open, setOpen] = useState(false)
   const theme = useTheme()
 
@@ -125,7 +125,7 @@ export default function TopAppBar({ lvl }) {
         elevation={0}
         sx={{
           '--AppBar-background': lvl < 2 ? 'transparent' : '#fff',
-          '--AppBar-color': lvl === 1 ? theme.palette.grey['50'] : '#222930',
+          '--AppBar-color': lvl < 2 ? theme.palette.grey['50'] : '#222930',
           '.MuiToolbar-root': {
             height: appBarHeight,
           },
@@ -159,8 +159,17 @@ export default function TopAppBar({ lvl }) {
             <Box sx={{ flexGrow: 1 }} />
             <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
               {pages.map(({ url, label }) => {
+                const isActive = location.pathname.startsWith(url)
                 return (
-                  <StyledButton size="large" href={url} key={url} lvl={lvl}>
+                  <StyledButton
+                    size="large"
+                    href={url}
+                    key={url}
+                    lvl={lvl}
+                    sx={{
+                      fontWeight: isActive && 700,
+                    }}
+                  >
                     {label}
                   </StyledButton>
                 )
