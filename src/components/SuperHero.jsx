@@ -10,7 +10,15 @@ const boxSize = {
   width: '100%',
 }
 
-export default function SuperHero({ title, subTitle, imageName, ...rest }) {
+/**
+ * A full-width hero section component with background image and text overlay
+ * @param {string} title - The main heading text to display (required)
+ * @param {React.ReactNode} subTitle - Optional subtitle content below the heading
+ * @param {string} imageName - Name of the image file to use as background (required)
+ * @param {string} alt - Alt text for the background image (defaults to empty string)
+ * @returns {JSX.Element} A hero section with gradient overlay and text content
+ */
+export default function SuperHero({ title, subTitle, imageName, alt = '', ...rest }) {
   if (typeof title === 'undefined') {
     throw new Error('title prop is required')
   }
@@ -59,13 +67,20 @@ export default function SuperHero({ title, subTitle, imageName, ...rest }) {
         }}
       >
         <GatsbyImage
+          className="bib-comp-super-hero"
           image={image}
           layout="fullWidth"
+          alt={alt}
           style={{
             width: '100%',
             height: '100%',
             position: 'absolute',
+            img: {
+              outline: '10px solid red',
+              outlineOffset: '-10px',
+            },
           }}
+          loading="eager"
         />
         <div
           style={{

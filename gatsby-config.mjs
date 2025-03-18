@@ -73,9 +73,9 @@ const config = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          formats: [`auto`, `webp`],
-          placeholder: `dominantColor`,
-          quality: 75,
+          formats: [`avif`, `webp`, 'jpeg'],
+          placeholder: `blurred`,
+          quality: 80,
           breakpoints: [600, 900, 1200, 1536],
           backgroundColor: `transparent`,
           blurredOptions: {},
