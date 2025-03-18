@@ -6,7 +6,7 @@ slug: enseignement
 import SuperHero from '@/components/SuperHero'
 import Techno from '../images/touche-techno.webp'
 import Didactheque from '../images/didactheque.webp'
-import { DoorOpen, Handshake, Heart, Mountains } from '@phosphor-icons/react'
+import { DoorOpen, Handshake, Heart, Mountains, MagnifyingGlass, Screwdriver, Laptop, Copyright, ChalkboardTeacher, Medal, Toolbox } from '@phosphor-icons/react'
 
 <SuperHero
   title="Épauler l'enseignement, c'est notre rayon"
@@ -35,7 +35,7 @@ import { DoorOpen, Handshake, Heart, Mountains } from '@phosphor-icons/react'
       }}
     >
         <Grid size="auto">
-          <Heart color='#0057AC' size={50} />
+          <ChalkboardTeacher color='#0057AC' size={50} />
         </Grid>
 
      Création de formation sur mesure pour votre cours
@@ -71,7 +71,7 @@ import { DoorOpen, Handshake, Heart, Mountains } from '@phosphor-icons/react'
     >
      
         <Grid size="auto">
-          <DoorOpen color='#0057AC' size={50} />
+          <Toolbox color='#0057AC' size={50} />
         </Grid>
         
      Création de guides de sources et outils pertinents
@@ -87,7 +87,7 @@ import { DoorOpen, Handshake, Heart, Mountains } from '@phosphor-icons/react'
       }}
     >
         <Grid size="auto">
-          <Handshake color='#0057AC' size={50} />
+          <Medal color='#0057AC' size={50} />
       </Grid>
 
        Identification de ressources pertinentes pour vos cours
@@ -101,27 +101,9 @@ import { DoorOpen, Handshake, Heart, Mountains } from '@phosphor-icons/react'
     }
   />
 
-
-</Section>
-<Section bg='bleu100'>
-  <h2>Inscrivez-nous à votre cours</h2>
-
-  <p>Pour intégrer facilement les notions de recherche d’information et d’évaluation de la crédibilité et de la pertinence des sources dans vos cours, faites appel à notre équipe spécialisée!</p>
-
-    ... les 2 boutons
-
-  - Création de formation sur mesure pour votre cours
-  - Collaboration avec votre bibliothécaire dans StudiUM
-  - Création de guides de sources et outils pertinents
-  - Identification de ressources pertinentes pour vos cours
-
-  <Button primary href="">Voir des sujets de formation</Button>
-  <Button secondary href="">Contactez votre bibliothécaire disciplinaire</Button>
 </Section>
 
 <Section>
-
-
 <Typography component="h2" variant="display5">5,75M de titres à portée de main</Typography>
 
 
@@ -259,19 +241,91 @@ import { DoorOpen, Handshake, Heart, Mountains } from '@phosphor-icons/react'
 
 </Section>
 
-<Section bg='vertFonce'>
+<Section bg="rose300">
+  <HeroWithText2
+    leftColl={
+      <>
+        <Typography variant="h2">Aider les étudiants et étudiantes, c’est réussir ensemble</Typography>
+        <Typography>N’hésitez pas à parler de nos services dans vos cours ou aux personnes inscrites à vos cours qui pourraient en bénéficier ! </Typography>
+        <Button primary href="#">Découvrir le soutien aux études</Button>
+      </>
+    }
+    rightColl={
+      <>
+<Grid container spacing={2}>
+<Grid size={{ xs: 12, md: 6 }}>
+    <Box
+      sx={{
+        p:2,
+        height: '100%',
+        fontWeight: 600,
+      }}
+    >
+        <Grid size="auto">
+          <MagnifyingGlass color='#f04e24' size={50} />
+        </Grid>
 
-</Section>
+     Développement d’une stratégie de recherche
 
-<Section bg='rose300'>
-    ## Aider les étudiants et étudiantes, c’est réussir ensemble
+    </Box>
+
+  </Grid>
+  <Grid size={{ xs: 12, md: 6 }}>
+    <Box
+      sx={{
+        p:2,
+        height: '100%',
+        fontWeight: 600,
+      }}
+    >
+
+        <Grid size="auto">
+          <Screwdriver color='#f04e24' size={50} />
+        </Grid>
+        
+       Conseil sur les meilleurs outils de recherche
+
+    </Box>
+
+  </Grid>
+  <Grid size={{ xs: 12, md: 6 }}>
+    <Box
+      sx={{
+        p:2,
+        height: '100%',
+        fontWeight: 600,
+      }}
+    >
+     
+        <Grid size="auto">
+          <Laptop color='#f04e24' size={50} />
+        </Grid>
+        
+     Initiation aux logiciels bibliographiques
+
+    </Box>
+
+  </Grid>
+  <Grid size={{ xs: 12, md: 6 }}>
+    <Box
+      sx={{
+        p:2,
+        fontWeight: 600,
+      }}
+    >
+        <Grid size="auto">
+          <Copyright color='#f04e24' size={50} />
+      </Grid>
+
+       Réponses aux questions de droits d’auteur
+       
+    </Box>
+  </Grid>
+
+</Grid>
+      </>
     
-    N’hésitez pas à parler de nos services dans vos cours ou aux personnes inscrites à vos cours qui pourraient en bénéficier ! - Développement d’une stratégie de recherche
-    
-    - Conseil sur les meilleurs outils de recherche
-    - Initiation aux logiciels bibliographiques
-    - Réponses aux questions de droits d’auteur
-
-    <Button primary>Découvrir le soutien aux études</Button>
+    }
+  />
 
 </Section>
