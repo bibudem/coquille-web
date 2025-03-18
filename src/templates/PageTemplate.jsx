@@ -25,7 +25,8 @@ function getCurrentPageLevel(location) {
 }
 
 export default function PageTemplate({ pageContext, children, data, location }) {
-  const isSmall = useSmall('lg')
+  const isSmall = useSmall('md')
+  const isMedium = useSmall('lg')
   const theme = useTheme()
   const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
   const [lvl, setLvl] = useState(getCurrentPageLevel(location))
@@ -39,6 +40,10 @@ export default function PageTemplate({ pageContext, children, data, location }) 
     // const navLvl = location.pathname.split('/').length
     setHasSecondaryNav(lvl > 1)
   }, [lvl])
+
+  useEffect(() => {
+    console.log('isSmall:', isSmall)
+  }, [isSmall])
 
   if (typeof window !== 'undefined') {
     window.bib = window.bib || {}
@@ -73,11 +78,11 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         <udem-urgence></udem-urgence>
 
-        {isSmall ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
+        {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
 
         {/* <bib-avis bouton-fermer /> */}
 
-        <MenuLatteral />
+        {!isSmall && <MenuLatteral />}
 
         {hasSecondaryNav ? (
           <Container maxWidth="xl" sx={{ px: '64px' }}>

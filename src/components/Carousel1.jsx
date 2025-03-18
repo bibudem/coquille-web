@@ -121,8 +121,8 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
               )}
             </Grid>
           </Grid>
-          <div style={{ outline: '1px solid red' }}>
-            <Carousel.ItemGroup>
+          <div style={{ overflowX: 'scroll' }}>
+            {/* <Carousel.ItemGroup>
               {Children.toArray(children).map((child, index) => {
                 return (
                   <Carousel.Item key={index} index={index}>
@@ -130,7 +130,16 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
                   </Carousel.Item>
                 )
               })}
-            </Carousel.ItemGroup>
+            </Carousel.ItemGroup> */}
+            <div style={{ display: 'flex', flexWrap: 'nowrap', gap: '10px' }}>
+              {Children.toArray(children).map((child, index) => {
+                return (
+                  <div key={index} index={index}>
+                    {child}
+                  </div>
+                )
+              })}
+            </div>
           </div>
           {moreLink && moreText && (
             <Grid size={12}>
