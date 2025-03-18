@@ -39,13 +39,8 @@ export default function Section({ bg, image, fixedWidth = false, ...rest }) {
       return secondaryColors[color]
     }
 
-    console.log('bg', bg)
-    console.log('image', image)
-
     if (bg) {
       const color = getsecondaryColor(bg)
-      console.log('yep:', bg)
-      console.log('color:', color)
       setStyles((oldStyles) => ({
         ...oldStyles,
         backgroundColor: color.main,
@@ -76,14 +71,6 @@ export default function Section({ bg, image, fixedWidth = false, ...rest }) {
       }))
     }
   }, [fixedWidth])
-
-  // if (image) {
-  //   console.log('image', image)
-  //   baseStyles.backgroundImage = `url(${image})`
-  //   baseStyles.backgroundSize = 'cover'
-  //   baseStyles.backgroundPosition = 'center'
-  //   baseStyles.backgroundRepeat = 'no-repeat'
-  // }
 
   return fixedWidth ? (
     <Container
