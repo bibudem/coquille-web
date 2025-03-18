@@ -105,7 +105,7 @@ export default function CardWithIcon({ title, Icon, color = 'bleuPrincipal', mor
     if (Reflect.has(colorMap, color)) {
       _setColor(colorMap[color])
     }
-  }, [color, colorMap])
+  }, [])
 
   useEffect(() => {
     setIsSmall(small)
