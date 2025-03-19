@@ -23,7 +23,8 @@ import HeroWithText from '@/components/HeroWithText'
 import HeroWithText2 from '@/components/HeroWithText2'
 import IconInSquare from '@/components/IconInSquare'
 import Link from '@/components/Link'
-import ListItemRichWithLink from '@/components/ListItemRichWithLink'
+import RichList from '@/components/RichList'
+import RichListItemWithLink from '@/components/RichListItemWithLink'
 import Section from '@/components/Section'
 import Tabs1 from '@/components/Tabs1'
 // Dummy components
@@ -52,8 +53,9 @@ export default {
   ListItem,
   ListItemButton,
   ListItemIcon,
-  ListItemRichWithLink,
   ListItemText,
+  RichList,
+  RichListItemWithLink,
   Section,
   Tabs1,
   Typography,

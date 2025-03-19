@@ -1,8 +1,9 @@
-import { Divider, IconButton, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material'
+import { Divider, IconButton, ListItem, ListItemButton, ListItemText, useTheme } from '@mui/material'
 import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
 import Button from '@/components/Button'
 import Div from '@/components/utils/Div'
 import isInternalLink from '../utils/internLink.js'
+import { useEffect, useState } from 'react'
 
 function Header({ children }) {
   return (
@@ -34,8 +35,28 @@ function Description({ children }) {
   )
 }
 
-export default function ListItemRichWithLink({ title, description, href, linkText = null, ...rest }) {
+export default function RichListItemWithLink({ title, description, href, linkText = null, color = 'default', ...rest }) {
   const { sx, ...props } = rest
+  const theme = useTheme()
+
+  const colorsSettings = {
+    default: {
+      icon: {
+        bg: theme.palette.bleuFonce.main,
+        color: '#fff',
+      },
+      divider: theme.palette.bleuPrincipal.main,
+    },
+    vertFonce: {
+      icon: {
+        bg: theme.palette.vertPale.main,
+        color: '#fff',
+      },
+      divider: 'currentColor',
+    },
+  }
+
+  const [colors, setColors] = useState(colorsSettings.default)
 
   function onButtonClick(event) {
     event.preventDefault()
@@ -44,10 +65,14 @@ export default function ListItemRichWithLink({ title, description, href, linkTex
 
   const isInternal = isInternalLink(href)
 
+  useEffect(() => {
+    setColors(colorsSettings[color])
+  }, [color])
+
   return (
     <>
       <ListItem disableGutters>
-        <ListItemButton component="a" href={href}>
+        <ListItemButton component="a" href={href} sx={{ margin: '0 -1rem 0' }}>
           <ListItemText
             disableTypography
             primary={
@@ -84,13 +109,23 @@ export default function ListItemRichWithLink({ title, description, href, linkTex
               {linkText}
             </Button>
           ) : (
-            <IconButton href={href} sx={{ color: 'inherit' }}>
-              {isInternal ? <ArrowRight size={24} color="currentColor" /> : <ArrowUpRight size={24} color="currentColor" />}
+            <IconButton
+              href={href}
+              sx={{
+                color: 'inherit',
+                backgroundColor: colors.icon.bg,
+                '&:hover': {
+                  backgroundColor: colors.icon.bg,
+                },
+              }}
+              onClick={onButtonClick}
+            >
+              {isInternal ? <ArrowRight size={24} color={colors.icon.color} /> : <ArrowUpRight size={24} color={colors.icon.color} />}
             </IconButton>
           )}
         </ListItemButton>
       </ListItem>
-      <Divider component="li" sx={{ borderColor: 'currentColor' }} />
+      <Divider component="li" sx={{ borderColor: colors.divider, margin: 0 }} aria-hidden />
     </>
   )
 }
