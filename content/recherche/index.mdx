@@ -230,11 +230,14 @@ import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGl
         <Typography component="h2" variant="h2">Maîtrisez votre identité numérique</Typography>
         
          <Typography>Optimisez votre visibilité et votre crédibilité dans le monde numérique en utilisant les identifiants pérennes, en optimisant vos informations liées à vos communications savantes et en gérant efficacement vos profils professionels et de chercheur sur les outils numériques et plateformes en ligne.</Typography>
-
-        <Button primary href="">Explorer le guide sur les identifiants numérique</Button>
-  <Button secondary href="">Découvrez l'identifiant ORCHID</Button>
       </>
-      }
+    }
+    rightFoter={
+      <>
+        <Button primary href="">Explorer le guide sur les identifiants numérique</Button>
+        <Button secondary href="">Découvrez l'identifiant ORCHID</Button>
+      </>
+    }
   />
 
 </Section>
@@ -245,82 +248,79 @@ import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGl
       <>
         <Typography variant="h2">Naviguer le droit d’auteur à votre avantage</Typography>
         <Typography>Que ce soit pour vous aider à protéger les œuvres et les publications issues de vos recherches, utiliser du contenu protégé dans vos travaux ou bien diffuser vos résultats le plus démocratiquement et largement possible, nos spécialistes sont là pour vous outiller et vous accompagner. </Typography>
-        <Button primary href="#">Consulter le guide sur le droit d'auteur</Button>
       </>
+    }
+    leftFooter={
+      <Button primary href="#">Consulter le guide sur le droit d'auteur</Button>
     }
     rightColl={
       <>
-<Grid container spacing={2}>
-<Grid size={{ xs: 12, md: 6 }}>
-    <Box
-      sx={{
-        p:2,
-        height: '100%',
-        fontWeight: 600,
-      }}
-    >
-        <Grid size="auto">
-          <CheckSquareOffset color='#f04e24' size={50} />
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <CheckSquareOffset color='#f04e24' size={50} />
+              </Grid>
+
+              Choix des différentes licences disponibles
+
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <ShareNetwork color='#f04e24' size={50} />
+              </Grid>
+
+              Diffusion et partage
+
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+              }}
+            >
+
+              <Grid size="auto">
+                <Handshake color='#f04e24' size={50} />
+              </Grid>
+
+              Rôle de l’auteur ou l’autrice et entente avec ses coauteurs ou coautrices
+
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <Repeat color='#f04e24' size={50} />
+              </Grid>
+
+              Reproduction et réutilisation de contenu pour vos recherches
+
+            </Box>
+          </Grid>
         </Grid>
-
-     Choix des différentes licences disponibles
-
-    </Box>
-
-  </Grid>
-  <Grid size={{ xs: 12, md: 6 }}>
-    <Box
-      sx={{
-        p:2,
-        height: '100%',
-        fontWeight: 600,
-      }}
-    >
-
-        <Grid size="auto">
-          <ShareNetwork color='#f04e24' size={50} />
-        </Grid>
-        
-       Diffusion et partage
-
-    </Box>
-
-  </Grid>
-  <Grid size={{ xs: 12, md: 6 }}>
-    <Box
-      sx={{
-        p:2,
-        height: '100%',
-        fontWeight: 600,
-      }}
-    >
-     
-        <Grid size="auto">
-          <Handshake color='#f04e24' size={50} />
-        </Grid>
-        
-     Rôle de l’auteur ou l’autrice et entente avec ses coauteurs ou coautrices
-
-    </Box>
-
-  </Grid>
-  <Grid size={{ xs: 12, md: 6 }}>
-    <Box
-      sx={{
-        p:2,
-        fontWeight: 600,
-      }}
-    >
-        <Grid size="auto">
-          <Repeat color='#f04e24' size={50} />
-      </Grid>
-
-       Reproduction et réutilisation de contenu pour vos recherches
-       
-    </Box>
-  </Grid>
-
-</Grid>
       </>
     
     }
@@ -329,7 +329,7 @@ import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGl
 </Section>
 
 <Section>
-<Carousel1
+  <Carousel1
     title="Gestion des données de recherche"
     description={
       <>
