@@ -72,10 +72,6 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
             width: '100%',
             height: '100%',
             position: 'absolute',
-            img: {
-              outline: '10px solid red',
-              outlineOffset: '-10px',
-            },
           }}
           loading="eager"
         />
