@@ -6,7 +6,7 @@ export default function GridOffset({ offset = 0, children }) {
   }
 
   return (
-    <Grid container spacing={0} id="t">
+    <Grid container spacing={0}>
       <Grid size={12 - offset * 2} offset={offset}>
         {children}
       </Grid>
