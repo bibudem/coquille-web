@@ -22,6 +22,7 @@ export default function RechercheSofiaAccueil() {
       >
         <Paper
           component="form"
+          action=""
           sx={(theme) => ({
             width: '65%',
             borderRadius: theme.shape.corner.full,
