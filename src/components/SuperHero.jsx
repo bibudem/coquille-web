@@ -56,7 +56,6 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
           position: 'absolute',
           top: 0,
           left: 0,
-          // outline: '1px solid red',
           ...boxSize,
           color: '#fff',
           display: 'flex',
@@ -86,13 +85,13 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
             height: '100%',
             position: 'absolute',
             background: `linear-gradient(180deg, rgba(0, 0, 0, 0.48) 5%, rgba(0, 0, 0, 0.20) ${appBarHeight})`,
-            zIndex: 2,
+            zIndex: 1,
           }}
         ></div>
         <Section
           sx={{
             padding: `0 0 ${children ? '1rem' : '4.25rem'} 5.69rem`,
-            zIndex: 1,
+            zIndex: 2,
           }}
         >
           <Grid container direction="row">
@@ -104,13 +103,12 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
             </Grid>
           </Grid>
         </Section>
-        {children}
+        <div style={{ zIndex: 2 }}>{children}</div>
       </div>
       <div
         style={{
           width: boxSize.width,
           height: `calc(${boxSize.height} - ${appBarHeight})`,
-          // outline: '1px solid blue',
         }}
       />
     </>
