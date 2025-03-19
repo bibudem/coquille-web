@@ -85,13 +85,13 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
             width: '100%',
             height: '100%',
             position: 'absolute',
-            background: `linear-gradient(180deg, rgba(0, 0, 0, 0.48) 5%, rgba(104, 104, 104, 0.11) 22%, rgba(255, 255, 255, 0.00) 36%)`,
+            background: `linear-gradient(180deg, rgba(0, 0, 0, 0.48) 5%, rgba(0, 0, 0, 0.20) ${appBarHeight})`,
             zIndex: 2,
           }}
         ></div>
         <Section
           sx={{
-            padding: `0 0 4.25rem 5.69rem`,
+            padding: `0 0 ${children ? '1rem' : '4.25rem'} 5.69rem`,
             zIndex: 1,
           }}
         >
