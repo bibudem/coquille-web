@@ -58,8 +58,6 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
           left: 0,
           // outline: '1px solid red',
           ...boxSize,
-          // background: `linear-gradient(180deg, rgba(0, 0, 0, 0.48) 5%, rgba(104, 104, 104, 0.11) 22%, rgba(255, 255, 255, 0.00) 36%), url(${image}) lightgray 50% / cover no-repeat`,
-          backgroundSize: 'cover',
           color: '#fff',
           display: 'flex',
           flexDirection: 'column',
