@@ -1,6 +1,6 @@
 import { Button as MuiButton } from '@mui/material'
 import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
-import isInternalLink from '../utils/internLink.js'
+import isInternalLink from '../utils/internLink'
 
 const config = {
   primary: {
@@ -48,7 +48,7 @@ export default function Button({ primary, secondary, href, ...props }) {
     disableElevation: disableElevation || (primary ? config.primary.disableElevation : false),
     ...rest,
   }
-  console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', href, children)
+  console.log('@@@@@@@@@@@@@', href, children)
   if (typeof href === 'string') {
     buttonProps.href = href
     const linkIsInternal = isInternalLink(href)
