@@ -1,5 +1,12 @@
 import { styled } from '@mui/material'
 import Grid from '@mui/material/Grid2'
+import { useSmall } from '@/hooks/use-small'
+import GridOffset from './utils/GridOffset'
+import Div from './utils/Div'
+
+function FooterContainer({ children }) {
+  return <Div style={{ paddingTop: '2rem' }}>{children}</Div>
+}
 
 const StyledImage = styled('img')(({ theme }) => ({
   borderRadius: theme.shape.corner.small,
@@ -20,7 +27,7 @@ const StyledImage = styled('img')(({ theme }) => ({
  *
  * @returns {JSX.Element} Le composant HeroWithImage rendu.
  */
-export default function HeroWithImage({ align = 'left', Image, sx, children, ...rest }) {
+export default function HeroWithImage({ align = 'left', footer, Image, sx, children, ...rest }) {
   if (!['left', 'right'].includes(align)) {
     throw new Error(`Invalid align property: ${align}. Muse be one of: \`left\` (default) or \`right\``)
   }
@@ -29,48 +36,57 @@ export default function HeroWithImage({ align = 'left', Image, sx, children, ...
     throw new Error('Missing image property')
   }
 
+  const isSmall = useSmall('md')
+
   const columns = [
     <Grid size={{ xs: 12, md: 5 }} key="content">
       {children}
+      {!isSmall && footer}
     </Grid>,
   ]
 
-  columns[align === 'left' ? 'push' : 'unshift'](<Grid size={1}></Grid>)
+  if (typeof Image !== 'undefined') {
+    if (!isSmall) {
+      columns[align === 'left' ? 'push' : 'unshift'](<Grid size={1}></Grid>)
+    }
 
-  columns[align === 'left' ? 'push' : 'unshift'](
-    <Grid
-      container
-      size={{ xs: 12, md: 6 }}
-      key="image"
-      sx={{
-        justifyContent: 'center',
-      }}
-    >
-      <StyledImage src={Image} alt="" />
-    </Grid>
-  )
+    columns[align === 'left' ? 'push' : 'unshift'](
+      <Grid
+        container
+        size={{ xs: 12, md: 6 }}
+        key="image"
+        sx={{
+          justifyContent: 'center',
+        }}
+      >
+        <StyledImage src={Image} alt="" aria-hidden />
+      </Grid>
+    )
+  }
 
   return (
-    <Grid
-      container
-      spacing={0}
-      sx={{
-        alignItems: 'center',
-        '.MuiTypography-h2, .MuiTypography-h3': {
-          fontFamily: 'Figtree',
-          fontSize: '3.8125rem',
-          fontWeight: 400,
-          lineHeight: 1.2,
-          marginBottom: '2rem',
-        },
-        '.MuiButton-root:first-of-type': {
-          marginTop: '2rem',
-        },
-        ...sx,
-      }}
-      {...rest}
-    >
-      {columns}
-    </Grid>
+    <GridOffset offset={0.5}>
+      <Grid
+        container
+        spacing={0}
+        direction={{ xs: 'column', md: 'row' }}
+        gap={{ xs: '2rem', md: 0 }}
+        sx={{
+          alignItems: 'center',
+          '.MuiTypography-h2, .MuiTypography-h3': {
+            fontFamily: 'Figtree',
+            fontSize: '3.8125rem',
+            fontWeight: 400,
+            lineHeight: 1.2,
+            marginBottom: '2rem',
+          },
+          ...sx,
+        }}
+        {...rest}
+      >
+        {columns}
+        {isSmall && footer && <Grid size={12}>{footer}</Grid>}
+      </Grid>
+    </GridOffset>
   )
 }
