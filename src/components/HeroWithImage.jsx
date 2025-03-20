@@ -19,15 +19,15 @@ const StyledImage = styled('img')(({ theme }) => ({
  *
  * @param {Object} props - Les propriétés du composant.
  * @param {string} [props.align='left'] - L'alignement du contenu textuel, soit 'left' soit 'right'.
- * @param {string} props.Image - L'image à afficher sous forme d'objet.
- * @param {Object} [props.rest] - Propriétés supplémentaires à passer au conteneur.
+ * @param {React.ReactNode} [props.footer] - Contenu à afficher dans le pied de la section.
+ * @param {React.ReactNode} props.Image - L'image à afficher.
  *
  * @throws {Error} Si la propriété `align` n'est pas 'left' ou 'right'.
  * @throws {Error} Si la propriété `Image` n'est pas fournie.
  *
  * @returns {JSX.Element} Le composant HeroWithImage rendu.
  */
-export default function HeroWithImage({ align = 'left', footer, Image, sx, children, ...rest }) {
+export default function HeroWithImage({ align = 'left', footer, Image, ...rest }) {
   if (!['left', 'right'].includes(align)) {
     throw new Error(`Invalid align property: ${align}. Muse be one of: \`left\` (default) or \`right\``)
   }
@@ -36,12 +36,14 @@ export default function HeroWithImage({ align = 'left', footer, Image, sx, child
     throw new Error('Missing image property')
   }
 
+  const { sx, children, ...props } = rest
+
   const isSmall = useSmall('md')
 
   const columns = [
     <Grid size={{ xs: 12, md: 5 }} key="content">
       {children}
-      {!isSmall && footer}
+      {!isSmall && footer && <FooterContainer>{footer}</FooterContainer>}
     </Grid>,
   ]
 
