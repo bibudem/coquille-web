@@ -5,6 +5,8 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import Section from '@/components/Section'
 import { appBarHeight } from '@/components/AppBar/TopAppBar'
 
+export const inlineOffset = '3.75rem'
+
 const boxSize = {
   height: '49.75rem',
   width: '100%',
@@ -86,7 +88,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
         ></div>
         <Section
           sx={{
-            padding: `0 0 ${children ? '1rem' : '4.25rem'} 5.69rem`,
+            padding: `0 0 ${children ? '1rem' : '4.25rem'} ${inlineOffset}`,
             zIndex: 2,
           }}
         >

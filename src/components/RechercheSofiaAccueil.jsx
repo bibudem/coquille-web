@@ -1,19 +1,31 @@
-import { Paper, IconButton, InputBase, TextField } from '@mui/material'
-import Section from '@/components/Section'
-import SearchIcon from '@mui/icons-material/Search'
+import { useRef } from 'react'
+import { Container, Paper, IconButton, InputBase } from '@mui/material'
 import { MagnifyingGlass } from '@phosphor-icons/react'
+import { inlineOffset } from './SuperHero.jsx'
 
 export default function RechercheSofiaAccueil() {
+  const defaultActionUrl = 'https://umontreal.on.worldcat.org/search?databaseList=283,638&clusterResults=true&baseScope=wz%3A11098&lang=fr&stickyFacetsChecked=on&changedFacet=database&database=Xwc&overrideStickyFacetDefault=true&queryString=kw:'
+  const inputRef = useRef(null)
+
+  function onFormSubmit(event) {
+    event.preventDefault()
+    const value = inputRef.current.value
+    const url = `${defaultActionUrl}${encodeURIComponent(value)}`
+    window.location.href = url
+  }
+
   return (
     <div
       style={{
-        background: '#00000022',
+        background: 'linear-gradient(90deg, rgba(34, 41, 48, 0.00) 30%, rgba(34, 41, 48, 0.46) 44%, rgba(106, 128, 150, 0.46) 100%)',
       }}
     >
-      <Section
+      <Container
+        disableGutters
+        maxWidth="xl"
         sx={{
           padding: 0,
-          padding: '2.875rem 4.125rem 2.875rem 4rem',
+          padding: `2.875rem 4.125rem 2.875rem ${inlineOffset}`,
           height: '9.5625rem',
           display: 'flex',
           alignItems: 'center',
@@ -22,7 +34,8 @@ export default function RechercheSofiaAccueil() {
       >
         <Paper
           component="form"
-          action=""
+          action={defaultActionUrl}
+          onSubmit={onFormSubmit}
           sx={(theme) => ({
             width: '65%',
             borderRadius: theme.shape.corner.full,
@@ -33,7 +46,7 @@ export default function RechercheSofiaAccueil() {
             height: 80,
           })}
         >
-          <InputBase fullWidth placeholder="Rechercher des articles, des livres, des films..." />
+          <InputBase inputRef={inputRef} fullWidth placeholder="Rechercher des articles, des livres, des films..." required aria-description="Rechercher dans Sofia" />
           <IconButton type="submit" aria-label="Chercher" color="bleuPrincipal">
             <MagnifyingGlass size={32} color="currentColor" />
           </IconButton>
@@ -51,7 +64,7 @@ export default function RechercheSofiaAccueil() {
           <br />
           un monde de savoirs à explorer
         </div>
-      </Section>
+      </Container>
     </div>
   )
 }
