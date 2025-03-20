@@ -6,7 +6,7 @@ import { IconContext } from '@phosphor-icons/react'
 
 import TopAppBar from '@/components/AppBar/TopAppBar'
 import TopAppBarSm from '@/components/AppBar/TopAppBarSm'
-import MenuLatteral from '@/components/MenuLatteral/MenuLatteral'
+import { MenuLatteral, MenuLatteralSm } from '@/components/MenuLatteral/MenuLatteral'
 import Footer from '@/components/Footer'
 import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs'
 import SEO from '@/components/SEO'
@@ -21,7 +21,8 @@ function getCurrentPageLevel(location) {
 }
 
 export default function PageTemplate({ pageContext, children, data, location }) {
-  const isSmall = useSmall('lg')
+  const isSmall = useSmall('md')
+  const isMedium = useSmall('lg')
   const theme = useTheme()
   const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
   const [lvl, setLvl] = useState(getCurrentPageLevel(location))
@@ -67,11 +68,11 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         <udem-urgence></udem-urgence>
 
-        {isSmall ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
+        {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
 
         {/* <bib-avis bouton-fermer /> */}
 
-        <MenuLatteral />
+        {isSmall ? <MenuLatteralSm /> : <MenuLatteral />}
 
         {mainContent}
 

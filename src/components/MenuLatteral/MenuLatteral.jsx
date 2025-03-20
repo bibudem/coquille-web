@@ -1,30 +1,8 @@
-import { ListItemIcon, ListItemText as MuiListItemText, MenuItem, MenuList, Paper, Stack, styled, useScrollTrigger, useTheme } from '@mui/material'
+import { ListItemIcon, ListItemText as MuiListItemText, MenuItem, MenuList, Paper, useScrollTrigger, useTheme, IconButton, Box } from '@mui/material'
 import { CalendarPlus, Chats, ClockCountdown, Lifebuoy } from '@phosphor-icons/react'
+import Div from '@/components/utils/Div'
+import { useSmall } from '@/hooks/use-small'
 import { SofiaIcon } from '@/components/CustomIcons'
-
-const StyledNav = styled(Stack)(({ theme }) => ({
-  margin: 0,
-  padding: 20,
-  backgroundColor: theme.vars.palette.bleuPrincipal.main, // var(--mui-palette-primary-main)
-  color: theme.vars.palette.bleuPrincipal.contrastText,
-  boxShadow: '0 4px 16px 0 #22293040',
-  borderRadius: '12px 0 0 12px',
-  listStyle: 'none',
-  gap: 15.69,
-  pointerEvents: 'auto',
-  transitionProperty: `transform`,
-}))
-
-const StyledNavItem = styled('li')({})
-
-const A = styled('a')(({ theme }) => ({
-  color: 'inherit',
-  textDecoration: 'none',
-  display: 'flex',
-  flexWrap: 'nowrap',
-  alignItems: 'center',
-  gap: '0.98088rem',
-}))
 
 function ListItemText({ children }) {
   return (
@@ -41,13 +19,14 @@ function ListItemText({ children }) {
   )
 }
 
-export default function MenuLatteral() {
+export function MenuLatteral() {
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 175,
   })
 
   const theme = useTheme()
+  const isSmall = useSmall()
 
   function handleOnMenuItemClick(event) {
     event.preventDefault()
@@ -55,19 +34,18 @@ export default function MenuLatteral() {
   }
 
   return (
-    <div
-      style={{
+    <Div
+      sx={{
         display: 'flex',
-        flexDirection: 'column',
         position: 'fixed',
+        justifyContent: 'center',
+        zIndex: theme.zIndex.drawer,
+        color: '#fff',
+        flexDirection: 'column',
         top: 0,
         right: 0,
         bottom: 0,
-        justifyContent: 'center',
-        // width: '4rem',
-        zIndex: theme.zIndex.drawer,
         pointerEvents: 'none',
-        color: '#fff',
       }}
     >
       <Paper
@@ -76,14 +54,13 @@ export default function MenuLatteral() {
         sx={(theme) => ({
           display: 'flex',
           justifyContent: 'center',
-          // width: '4rem',
           zIndex: theme.zIndex.drawer,
           pointerEvents: 'none',
           color: '#fff',
           transform: trigger ? 'translateX(170px)' : 'translateX(0)',
           transitionTimingFunction: theme.transitions.easing.md3[trigger ? 'emphasizedDecelerate' : 'emphasizedAccelerate'],
           transitionDuration: `${theme.transitions.duration.md3[trigger ? 'medium4' : 'short4']}ms`,
-          backgroundColor: theme.vars.palette.bleuPrincipal.main, // var(--mui-palette-primary-main)
+          backgroundColor: theme.vars.palette.bleuPrincipal.main,
           pointerEvents: 'auto',
           borderRadius: '12px 0 0 12px',
           transitionProperty: `transform`,
@@ -122,6 +99,64 @@ export default function MenuLatteral() {
           </MenuItem>
         </MenuList>
       </Paper>
-    </div>
+    </Div>
+  )
+}
+
+export function MenuLatteralSm() {
+  const theme = useTheme()
+
+  function handleOnMenuItemClick(event) {
+    event.preventDefault()
+    alert('Action à définir')
+  }
+
+  return (
+    <Div
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        flexWrap: 'nowrap',
+        position: 'fixed',
+        zIndex: theme.zIndex.drawer,
+
+        left: 0,
+        right: 0,
+        bottom: 0,
+        color: '#fff',
+        backgroundColor: theme.vars.palette.bleuPrincipal.main,
+        zIndex: theme.zIndex.drawer,
+        padding: '15px 30px',
+        boxShadow: theme.shadows[3],
+      }}
+    >
+      <Box
+        component="nav"
+        elevation={3}
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-evenly',
+          width: 500,
+          maxWidth: '100%',
+        }}
+      >
+        <IconButton component="a" href="https://umontreal.on.worldcat.org/discovery?lang=fr" aria-label="Sofia">
+          <SofiaIcon color="#fff" />
+        </IconButton>
+        <IconButton component="a" href="/horaires" aria-label="Horaires">
+          <ClockCountdown color="#fff" size={24} />
+        </IconButton>
+        <IconButton component="a" href="https://calendrier.bib.umontreal.ca/r" aria-label="Réserver une salle">
+          <CalendarPlus color="#fff" size={24} />
+        </IconButton>
+        <IconButton component="a" href="#" onClick={handleOnMenuItemClick} aria-label="Soutien informatique">
+          <Lifebuoy color="#fff" size={24} />
+        </IconButton>
+        <IconButton component="a" href="#" onClick={handleOnMenuItemClick} aria-label="Clavarder">
+          <Chats color="#fff" size={24} />
+        </IconButton>
+      </Box>
+    </Div>
   )
 }

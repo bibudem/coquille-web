@@ -7,7 +7,7 @@ import { IconContext } from '@phosphor-icons/react'
 
 import TopAppBar from '@/components/AppBar/TopAppBar'
 import TopAppBarSm from '@/components/AppBar/TopAppBarSm'
-import MenuLatteral from '@/components/MenuLatteral/MenuLatteral'
+import { MenuLatteral, MenuLatteralSm } from '@/components/MenuLatteral/MenuLatteral'
 import Footer from '@/components/Footer'
 import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs'
 import SEO from '@/components/SEO'
@@ -82,7 +82,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         {/* <bib-avis bouton-fermer /> */}
 
-        {!isSmall && <MenuLatteral />}
+        {isSmall ? <MenuLatteralSm /> : <MenuLatteral />}
 
         {hasSecondaryNav ? (
           <Container maxWidth="xl" sx={{ px: '64px' }}>
