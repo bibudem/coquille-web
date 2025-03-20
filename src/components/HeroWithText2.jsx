@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid2'
-import { useSmall } from '@/hooks/use-small'
 import GridOffset from './utils/GridOffset'
+import { useSmall } from '@/hooks/use-small'
 import Div from './utils/Div'
 
 function FooterContainer({ children }) {
