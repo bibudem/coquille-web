@@ -92,19 +92,24 @@ import imageEngagement from './images/engagement-accueil.webp'
 </Section>
 
 <Section bg='vertFonce'>
-  <HeroWithImage Image={imageEspace} align="right">
+  <HeroWithImage
+    Image={imageEspace}
+    align="right"
+    footer={<Button primary href='/espaces/'>Découvrir nos espaces</Button>}
+  >
     <Typography component='h2' variant='h2'>Tout le monde s’y retrouve</Typography>
     
     Choisissez votre espace selon vos besoins du moment : horaires étendus, accès autonome, création numérique, travail en cabine silencieuse, salon de détente... Le vaste réseau des bibliothèques de l’UdeM, avec leur personnalité, leurs espaces et leurs particularités bien à elles.
-
-    <Button primary href='/espaces/'>Découvrir nos espaces</Button>
 
   </HeroWithImage>
 </Section>
 
 <Section bg='bleu100'>
 
-<HeroWithImage Image={imageRecherche}>
+<HeroWithImage
+  Image={imageRecherche}
+  footer={<Button primary href="/recherche/">Explorer les services pour la recherche</Button>}
+>
 
 <Typography component="h2" variant="h2">
   Soutenir votre recherche pour aller plus loin
@@ -117,36 +122,38 @@ Notre équipe de spécialistes s’affaire pour vous donner les moyens de faire 
 - Revues systématiques
 - etc.
 
-<Button primary href="/recherche/">Explorer les services pour la recherche</Button>
-
 </HeroWithImage>
 
 </Section>
 
 <Section bg='bleuPrincipal'>
 
-<HeroWithImage Image={imageEnseignement} align='right'>
+<HeroWithImage
+  Image={imageEnseignement}
+  align='right'
+  footer={<Button primary href='/enseignement/'>Découvrir les services pour l’enseignement</Button>}
+>
 
 <Typography component="h2" variant="h2">
   Partenaire en matière d'enseignement
 </Typography>
+
 Que ce soit en participant à vos cours par des formations ou une implication à StudiUM, en vous aidant à donner accès à de la documentation et à produire vos déclaration dans Savia, notre équipe est là pour vous appuyer dans votre enseignement.
 
-    <Button primary href='/enseignement/'>Découvrir les services pour l’enseignement</Button>
-
-  </HeroWithImage>
+</HeroWithImage>
   
 </Section>
 
 <Section bg='bleu100'>
 
-  <HeroWithImage Image={imageCollections}>
+  <HeroWithImage
+    Image={imageCollections}
+    footer={<Button primary href='https://calypso.bib.umontreal.ca/'>Accéder aux collections spéciales</Button>}
+  >
 
     <Typography component='h2' variant='h2'>Découvrez nos pièces uniques</Typography>
 
     Nos collections spéciales forment de véritables laboratoires de recherche et de découverte. Parcourir les différents fonds, c’est découvrir le passé à travers nos livres rares et anciens, nos artefacts et nos collections d’images.
-
-    <Button primary href='https://calypso.bib.umontreal.ca/'>Accéder aux collections spéciales</Button>
 
   </HeroWithImage>
 </Section>
@@ -154,11 +161,12 @@ Que ce soit en participant à vos cours par des formations ou une implication à
 <Section image={imageEngagement}>
 
 <Grid container
-spacing={2}
-sx={{
-  paddingTop:'238px',
-  paddingBottom: '185px',
-}}>
+  spacing={2}
+  sx={{
+    paddingTop:'238px',
+    paddingBottom: '185px',
+  }}
+>
 <Grid size={{xs:12, md:6}} offset={{md:6}}>
 
 <Typography component='h2' variant='h2' 

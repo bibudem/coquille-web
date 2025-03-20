@@ -16,14 +16,16 @@ import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGl
 />
 
 <Section bg='vertFonce'>
-  <HeroWithImage Image={Bibliothecaire} align="right">
+  <HeroWithImage
+    Image={Bibliothecaire}
+    align="right"
+    footer={<Button href="" primary>Contacter votre bibliothécaire disciplinaire</Button>}
+  >
     <Typography component="h2" variant="h2">Premier arrêt, votre bibliothécaire disciplinaire</Typography>
 
     De l’idéation à la communication de vos résultats, nous pouvons vous accompagner tout au long du cycle de la recherche.
 
     Pour une aide sur mesure, consultez votre bibliothécaire disciplinaire ou continuez votre lecture pour découvrir ce que nous pouvons faire pour vous.
-
-    <Button href="" primary>Contacter votre bibliothécaire disciplinaire</Button>
 
   </HeroWithImage>
 </Section>
@@ -204,20 +206,21 @@ import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGl
 
 <Section bg='bleu600'>
 
-  <HeroWithImage Image={PorteeScientifique} align="left">
+  <HeroWithImage
+    Image={PorteeScientifique}
+    align="left"
+    footer={<Button primary href='/espaces/'>Découvrir nos espaces</Button>}
+  >
     <Typography component='h2' variant='h2'>Mesurer votre portée scientifique avec la bibliométrie</Typography>
     
     <Typography>Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes bibliométriques responsables pour mieux :</Typography>
     <List> 
-    <ListItem>Informer le plan stratégique de votre équipe de recherche</ListItem>
-    <ListItem>Trouver des partenaires de recherche pertinents</ListItem>
-    <ListItem>Trouver de nouvelles opportunités de financement</ListItem>
-    <ListItem>Optimiser vos demandes de financement</ListItem>
-    <ListItem>découvrir l’impact de votre production scientifique</ListItem>
+      <ListItem>Informer le plan stratégique de votre équipe de recherche</ListItem>
+      <ListItem>Trouver des partenaires de recherche pertinents</ListItem>
+      <ListItem>Trouver de nouvelles opportunités de financement</ListItem>
+      <ListItem>Optimiser vos demandes de financement</ListItem>
+      <ListItem>découvrir l’impact de votre production scientifique</ListItem>
     </List>
-
-    <Button primary href='/espaces/'>Découvrir nos espaces</Button>
-
   </HeroWithImage>
 </Section>
 

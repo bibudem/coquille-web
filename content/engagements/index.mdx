@@ -182,28 +182,31 @@ import empreinte from '../images/empreinte.webp'
   </Carousel1>
 </Section>
 
-      <Section bg='bleu100'>
-        <HeroWithImage Image={empreinte} align="right">
-          <Typography component='h2' variant='h2'>Vers une empreinte écologique réduite</Typography>
+<Section bg='bleu100'>
+  <HeroWithImage
+    Image={empreinte}
+    align="right"
+    footer={<Button primary href='#'>Consulter le rapport</Button>}
+  >
+    <Typography component='h2' variant='h2'>Vers une empreinte écologique réduite</Typography>
 
-À l’heure où chaque geste compte pour préserver notre planète, nous nous engageons à explorer et adopter des pratiques pour réduire notre impact environnemental.
+    À l’heure où chaque geste compte pour préserver notre planète, nous nous engageons à explorer et adopter des pratiques pour réduire notre impact environnemental.
 
-Au printemps 2024, dans le but d’identifier nos priorités pour une transition écologique durable, nous avons entrepris une évaluation de notre empreinte carbone.
+    Au printemps 2024, dans le but d’identifier nos priorités pour une transition écologique durable, nous avons entrepris une évaluation de notre empreinte carbone.
 
-          <Button primary href='#'>Consulter le rapport</Button>
-        </HeroWithImage>
+  </HeroWithImage>
 
-      </Section>
+</Section>
 
-      <Section bg="rose300">
-        <HeroWithText 
-          leftColl={<IconInSquare color='rose500' icon={<HeadCircuit color="rougeOrange" />} />}
-          rightColl={
-            <>
-              <Typography component="h2" variant="h2">Intelligence artificielle, une intégration éthique</Typography>
-              <Typography>Nous nous engageons à soutenir et à encourager un usage éthique et innovant de l’intelligence artificielle dans un contexte de recherche, d’enseignement et d’apprentissage. Nous voulons créer un environnement expérientiel où l’IA est mise au service de la collaboration, de la créativité et de l’accès équitable à la connaissance, tout en s’ancrant dans un cadre d’utilisation responsable.</Typography>
-            </>
-          }
-        />
-      </Section>
+<Section bg="rose300">
+  <HeroWithText 
+    leftColl={<IconInSquare color='rose500' icon={<HeadCircuit color="rougeOrange" />} />}
+    rightColl={
+      <>
+        <Typography component="h2" variant="h2">Intelligence artificielle, une intégration éthique</Typography>
+        <Typography>Nous nous engageons à soutenir et à encourager un usage éthique et innovant de l’intelligence artificielle dans un contexte de recherche, d’enseignement et d’apprentissage. Nous voulons créer un environnement expérientiel où l’IA est mise au service de la collaboration, de la créativité et de l’accès équitable à la connaissance, tout en s’ancrant dans un cadre d’utilisation responsable.</Typography>
+      </>
+    }
+  />
+</Section>
 
