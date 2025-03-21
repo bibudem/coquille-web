@@ -105,7 +105,7 @@ import { DoorOpen, Handshake, Heart, Mountains, MagnifyingGlass, Screwdriver, La
 
 
 
- <List>
+ <RichList>
     <RichListItemWithLink 
       title="Réserve de cours"
       description="Assurez un accès aux documents importants dans le cadre de vos cours en créant une réserve de cours pour la session."
@@ -122,9 +122,9 @@ import { DoorOpen, Handshake, Heart, Mountains, MagnifyingGlass, Screwdriver, La
       title="Collections spéciales"
       description="Nous conservons plus de 150 000 documents anciens, rares ou précieux, qui sont entièrement à la disposition de la communauté UdeM pour la consultation et la recherche."
       href="#"
-      linkText="Faire une suggestion"
+      linkText="En savoir plus"
     />
-  </List>
+  </RichList>
 
 </Section>
 
@@ -152,57 +152,31 @@ import { DoorOpen, Handshake, Heart, Mountains, MagnifyingGlass, Screwdriver, La
   <Typography component="h2" variant="display5">Tout savoir sur le droit d'auteur</Typography>
   <Typography> Avant de consulter, partager et reproduire des documents dans le cadre d’un cours, il vaut mieux se renseigner. Nous sommes là pour vous aider à choisir l’option de partage qui convient à votre situation.</Typography>
 
-    <List>
-      <ListItem disableGutters>
-        <ListItemButton component="a" href="#">
-          <ListItemText 
-           sx={{ width: '66%' }}
-            primary={
-              <Typography component="h3" variant="h3">Donner accès aux lecture suggérées</Typography>
-            }
-            secondary={
-              <Typography>Partager des documents tout en respectant le droit d'auteur ? Cela peut se faire via la licence Copidec, les abonnements des bibliothèques ou selon les exceptions prévues par le droit d'auteur.</Typography>
-            }
-          />
-            <Button primary href="#">Voir les informations</Button>
-        </ListItemButton>
-      </ListItem>
-      <Divider component="li" sx={{borderColor: 'red'}} />
-      <ListItem disableGutters>
-        <ListItemButton component="a" href="#">
-          <ListItemText
-          sx={{ width: '66%' }}
-            primary={<Typography component="h3" variant="h3">Déclaration de reproduction</Typography>
-            }
-            secondary={<Typography>Si vous devez utiliser du matériel protégé dans votre cours, vous devez déclarer vos reproductions en vertu de la licence Copibec, via l’outil Savia.</Typography>
-            }
-          />
-            <Button primary href="#">Faire une déclaration</Button>
-        </ListItemButton>
-      </ListItem>
-      <Divider component="li" sx={{borderColor: 'red'}} />
-      <ListItem disableGutters>
-        <ListItemButton component="a" href="#">
-          <ListItemText
-          sx={{ width: '66%' }}
-            primary={ <Typography component="h3" variant="h3">Collections spéciales</Typography>
-            }
-            secondary={ <Typography>Notre équipe offre également du soutien au droit d’auteur en contexte de recherche.</Typography>
-            }
-          />
-<Button primary href="#">Voir les services pour la recherche</Button>
-        </ListItemButton>
-      </ListItem>
-      <Divider component="li" sx={{borderColor: 'red'}} />
-      
-    </List>
 
+  <RichList>
+    <RichListItemWithLink
+      title="Donner accès aux lecture suggérées"
+      description="Partager des documents tout en respectant le droit d'auteur ? Cela peut se faire via la licence Copidec, les abonnements des bibliothèques ou selon les exceptions prévues par le droit d'auteur."
+      href="#"
+      linkText="Voir les informations"
+    />
+    <RichListItemWithLink 
+      title="Déclaration de reproduction"
+      description="Si vous devez utiliser du matériel protégé dans votre cours, vous devez déclarer vos reproductions en vertu de la licence Copibec, via l’outil Savia."
+      href="#"
+      linkText="Faire une déclaration"
+    />
+    <RichListItemWithLink 
+      title="Autres services"
+      description="Notre équipe offre également du soutien au droit d’auteur en contexte de recherche."
+      href="#"
+      linkText="Voir les services pour la recherche"
+    />
+  </RichList>
 </Section>
 
 
-
-
-
+    
 <Section bg='vertFonce'>
 
 <Carousel1

@@ -9,6 +9,14 @@ import { TextOutdent, Compass, MagnifyingGlass, Laptop, MicrosoftWordLogo, Downl
 import SuperHero from '@/components/SuperHero'
 import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
 import imageBienvenue from '../images/espaces-montage.webp'
+import Cocon from '../images/cocon.webp'
+import troussePetits from '../images/trousse-petits.webp'
+import collectionBienEtre from '../images/collection-bien-etre.webp'
+import collectionDetente from '../images/collection-detente.webp'
+import luminotherapie from '../images/luminotherapie.webp'
+import coloriage from '../images/coloriage.webp'
+import relaxation from '../images/relaxation.webp'
+
 
 <SuperHero
   title="On inspire la réussite"
@@ -63,33 +71,38 @@ Consultez notre calendrier de formations - il y en a pour tous les goûts, tous 
 <Typography component="h2" variant="display5"> Des services personnalisés</Typography>
 
 
-<List>
+<RichList bg="vertFonce">
     <RichListItemWithLink 
       title="Accueil en bibliothèque"
       description="Notre équipe est présente en bibliothèques pour répondre à vos questions sur place - passez nous voir au comptoir!"
       href="#"
+      color="vertFonce"
     />
     <RichListItemWithLink 
       title="Clavardage"
       description="Même à distance, notre équipe est à un clic pour répondre à vos questions, vous aider à repérer un document, utiliser les ressources des bibliothèques ou vous offrir un soutien informatique."
       href="#"
+      color="vertFonce"
     />
     <RichListItemWithLink 
       title="Rendez-vous avec nos spécialistes"
       description="Notre équipe propose une formation et un soutien individuels. Approfondissez les notions à votre rythme dans une ambiance accueillante."
       href="#"
+      color="vertFonce"
     />
     <RichListItemWithLink 
       title="Services pour les cycles supérieurs"
       description="Jumelage avec un bibliothécaire, dépôt dans Papyrus, mise en page dans Word, matinées de rédaction, nous vous proposons une gamme de services pour vous épauler dans votre processus de rédaction."
       href="#"
+      color="vertFonce"
     />
     <RichListItemWithLink 
       title="Service Accessibilité"
       description="L’accès à la documentation dont vous avez besoin est notre priorité. Profitez également d’un soutien, d’équipements et de logiciels adaptés pour vous accompagner dans votre parcours universitaire."
       href="#"
+      color="vertFonce"
     />
-  </List>
+  </RichList>
 
 </Section>
 
@@ -144,22 +157,25 @@ Consultez notre calendrier de formations - il y en a pour tous les goûts, tous 
   >
    <FlipCardWithImage
         title="Collection bien être"
-        Image={veloPupitre}
+        Image={collectionBienEtre}
       >
         <p>Plusieurs documents en ligne et collections imprimées disponibles:</p>
+        <ul>
         <li>Bibliothèque du Campus de Laval</li>
         <li>Bibliothèque de la santé</li>
         <li>Bibliothèque de lettres et sciences humaines</li>
         <li>Bibliothèque de médecine vétérinaire</li>
         <li>Bibliothèque de musique</li>
         <li>Bibliothèque Thérèse-Gouin-Décarie</li>
+        </ul>
       </FlipCardWithImage>
 
     <FlipCardWithImage
         title="Jeux de société"
-        Image={pedalier}
+        Image={relaxation}
       >
         <p>Disponibles:</p>
+        <ul>
         <li>Bibliothèque d’aménagement</li>
 <li>Bibliothèque de droit</li>
 <li>Bibliothèque de la santé</li>
@@ -167,13 +183,14 @@ Consultez notre calendrier de formations - il y en a pour tous les goûts, tous 
 <li>Bibliothèque de médecine vétérinaire</li>
 <li>Bibliothèque de musique</li>
 <li>Bibliothèque Thérèse-Gouin-Décarie</li>
-
+</ul>
       </FlipCardWithImage>
 <FlipCardWithImage
         title="Collection détente"
-        Image={stationErgo}
+        Image={collectionDetente}
       >
         <p>Bandes dessinées et romans graphiques disponibles:</p>
+        <ul>
         <li>Bibliothèque d’aménagement</li>
 <li>Bibliothèque de droit</li>
 <li>Bibliothèque Hubert-Reeves</li>
@@ -183,18 +200,18 @@ Consultez notre calendrier de formations - il y en a pour tous les goûts, tous 
 <li>Bibliothèque de mathématiques et informatique</li>
 <li>Bibliothèque de musique</li>
 <li>Bibliothèque Marguerite-d'Youville</li>
-
+</ul>
       </FlipCardWithImage>
     <FlipCardWithImage
         title="Trousse pour petits visiteurs"
-        Image={disqueEquilibre}
+        Image={troussePetits}
       >
         <p>Disponible à la Bibliothèque de droit</p>
         
       </FlipCardWithImage>
       <FlipCardWithImage
         title="Luminothérapie "
-        Image={placheEquilibre}
+        Image={luminotherapie}
       >
         <p>Disponibles :</p>
         <ul>
@@ -212,7 +229,7 @@ Consultez notre calendrier de formations - il y en a pour tous les goûts, tous 
 
 <FlipCardWithImage
         title="Coloriage et mandalas"
-        Image={tableAjustable}
+        Image={coloriage}
       >
         <p>Disponibles:</p>
                 <ul>
@@ -228,14 +245,14 @@ Consultez notre calendrier de formations - il y en a pour tous les goûts, tous 
       </FlipCardWithImage>
 <FlipCardWithImage
         title="Espaces de relaxation"
-        Image={tapisFatigue}
+        Image={relaxation}
       >
       <p>Disponibles dans presque toutes les bibliothèques</p>
       </FlipCardWithImage>
             
 <FlipCardWithImage
         title="Cocon de micro-sieste"
-        Image={salleDoctorat}
+        Image={Cocon}
       >
       <p>Disponibles :</p>
     <ul>
@@ -246,7 +263,7 @@ Consultez notre calendrier de formations - il y en a pour tous les goûts, tous 
           
 <FlipCardWithImage
         title="Casse-tête"
-        Image={salleDoctorat}
+        Image={relaxation}
       >
       <p>Disponibles à la Bibliothèque de Kinésiologie</p>
       </FlipCardWithImage>
