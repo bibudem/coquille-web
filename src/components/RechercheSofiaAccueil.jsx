@@ -4,7 +4,7 @@ import { MagnifyingGlass } from '@phosphor-icons/react'
 import { inlineOffset } from './SuperHero.jsx'
 
 export default function RechercheSofiaAccueil() {
-  const defaultActionUrl = 'https://umontreal.on.worldcat.org/search?databaseList=283,638&clusterResults=true&baseScope=wz%3A11098&lang=fr&stickyFacetsChecked=on&changedFacet=database&database=Xwc&overrideStickyFacetDefault=true&queryString=kw:'
+  const defaultActionUrl = 'https://umontreal.on.worldcat.org/search?clusterResults=true&baseScope=wz:11098&lang=fr&stickyFacetsChecked=on&changedFacet=database&database=Xwc&overrideStickyFacetDefault=true&queryString=kw:'
   const inputRef = useRef(null)
 
   function onFormSubmit(event) {
