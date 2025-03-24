@@ -2,6 +2,7 @@ import { Divider, IconButton, ListItem, ListItemButton, ListItemText, useTheme }
 import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
 import Button from '@/components/Button'
 import Div from '@/components/utils/Div'
+import { useSmall } from '@/hooks/use-small'
 import isInternalLink from '../utils/internLink.js'
 import { useEffect, useState } from 'react'
 
@@ -38,6 +39,8 @@ function Description({ children }) {
 export default function RichListItemWithLink({ title, description, href, linkText = null, color = 'default', ...rest }) {
   const { sx, ...props } = rest
   const theme = useTheme()
+  const isSmall = useSmall('md')
+  const [flexSettings, setFlexSettings] = useState()
 
   const colorsSettings = {
     default: {
@@ -56,6 +59,14 @@ export default function RichListItemWithLink({ title, description, href, linkTex
     },
   }
 
+  useEffect(() => {
+    setFlexSettings({
+      direction: isSmall ? 'column' : 'row',
+      alignItems: isSmall ? 'flex-start' : 'center',
+      marginBottom: isSmall ? '.75rem' : 0,
+    })
+  }, [isSmall])
+
   const [colors, setColors] = useState(colorsSettings.default)
 
   function onButtonClick(event) {
@@ -72,17 +83,27 @@ export default function RichListItemWithLink({ title, description, href, linkTex
   return (
     <>
       <ListItem disableGutters>
-        <ListItemButton component="a" href={href} sx={{ margin: '0 -1rem 0' }}>
+        <ListItemButton
+          component="a"
+          href={href}
+          sx={{
+            margin: '0 -1rem 0',
+            flexDirection: flexSettings?.direction,
+            gap: '1rem',
+            alignItems: flexSettings?.alignItems,
+          }}
+        >
           <ListItemText
             disableTypography
             primary={
               <Div
                 sx={(theme) => ({
+                  width: '100%',
                   [theme.breakpoints.up('md')]: {
-                    width: '83.3333%',
+                    maxWidth: '83.3333%',
                   },
                   [theme.breakpoints.up('lg')]: {
-                    width: '66.6667%',
+                    maxWidth: '66.6667%',
                   },
                 })}
               >
@@ -92,11 +113,12 @@ export default function RichListItemWithLink({ title, description, href, linkTex
             secondary={
               <Div
                 sx={(theme) => ({
+                  width: '100%',
                   [theme.breakpoints.up('md')]: {
-                    width: '83.3333%',
+                    maxWidth: '83.3333%',
                   },
                   [theme.breakpoints.up('lg')]: {
-                    width: '66.6667%',
+                    maxWidth: '66.6667%',
                   },
                 })}
               >
@@ -105,7 +127,7 @@ export default function RichListItemWithLink({ title, description, href, linkTex
             }
           />
           {linkText ? (
-            <Button primary href={href} onClick={onButtonClick}>
+            <Button primary href={href} onClick={onButtonClick} sx={{ flex: 'none', marginBottom: flexSettings?.marginBottom }}>
               {linkText}
             </Button>
           ) : (
@@ -113,6 +135,7 @@ export default function RichListItemWithLink({ title, description, href, linkTex
               href={href}
               sx={{
                 color: 'inherit',
+                marginBottom: flexSettings?.marginBottom,
                 backgroundColor: colors.icon.bg,
                 '&:hover': {
                   backgroundColor: colors.icon.bg,
@@ -125,7 +148,7 @@ export default function RichListItemWithLink({ title, description, href, linkTex
           )}
         </ListItemButton>
       </ListItem>
-      <Divider component="li" sx={{ borderColor: colors.divider, margin: 0 }} aria-hidden />
+      <Divider component="li" sx={{ borderColor: colors.divider, margin: 0 }} aria-hidden role={null} />
     </>
   )
 }
