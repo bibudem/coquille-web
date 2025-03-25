@@ -97,7 +97,7 @@ function ListeFormationsItem({ imageVedette, upper, title, lower, url, ...props 
   return (
     <ListItem {...props} alignItems="flex-start" disableGutters>
       <ListItemButton component="a" href={url}>
-        <Grid container spacing={1} sx={{ width: '100%' }}>
+        <Grid container spacing={1.5} sx={{ width: '100%' }}>
           <Grid size="auto">{imageVedette}</Grid>
           <Grid
             size="grow"
@@ -151,12 +151,7 @@ export default function ListeFormations({ service = 'https://api.bib.umontreal.c
   const theme = useTheme()
 
   // Handles error and loading state
-  if (error)
-    return (
-      <ListeFormationsContainer>
-        <div className="failed">failed to load</div>
-      </ListeFormationsContainer>
-    )
+  if (error) return <></>
 
   if (isValidating)
     return (
