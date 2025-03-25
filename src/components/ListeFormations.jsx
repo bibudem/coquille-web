@@ -5,12 +5,13 @@ import Button from '@/components/Button'
 import Div from '@/components/utils/Div'
 import { CalendarBlank, ClockCountdown, MapPinSimpleArea } from '@phosphor-icons/react'
 
+const FETCH_TIMEOUT = 2000
+
 function fetcher(...args) {
-  return fetch(...args).then((res) => res.json())
+  return fetch(...args, { signal: AbortSignal.timeout(FETCH_TIMEOUT) }).then((res) => res.json())
 }
 
 function Title({ children }) {
-  const theme = useTheme()
   return (
     <Div
       sx={{
@@ -147,7 +148,12 @@ export default function ListeFormations({ service = 'https://api.bib.umontreal.c
     throw new Error('The `service` parameter must be a valid url')
   }
 
-  const { data, error, isValidating } = useSWR(`${service}?limit=${limit}`, fetcher)
+  const { data, error, isValidating } = useSWR(`${service}?limit=${limit}`, fetcher, {
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+    shouldRetryOnError: false,
+  })
   const theme = useTheme()
 
   // Handles error and loading state
