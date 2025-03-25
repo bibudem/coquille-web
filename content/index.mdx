@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography'
 import CardActionArea from '@mui/material/CardActionArea'
 import SuperHero from '@/components/SuperHero'
 import RechercheSofiaAccueil from '@/components/RechercheSofiaAccueil'
+import ListeFormations from '@/components/ListeFormations'
 
 import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icons/react'
 import imageEspace from './images/image-arret-bibliothecaire.webp'
@@ -84,11 +85,11 @@ import imageEngagement from './images/engagement-accueil.webp'
 
 </Section>
 
-<Section bg='bleuPrincipal'>
+<Section>
 
-## Nos formations
+  ## Nos formations
 
-  <Bloc formations pompé></Bloc>
+  <ListeFormations moreText="Toutes nos formations" moreLink="https://calendrier.bib.umontreal.ca/calendar?cid=7690&t=m&d=0000-00-00&cal=7690&inc=0" />
 </Section>
 
 <Section bg='vertFonce'>
