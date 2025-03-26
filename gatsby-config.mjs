@@ -40,8 +40,8 @@ const config = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'contenu',
-        path: join(__dirname, 'content'),
+        name: 'pages',
+        path: join(__dirname, 'content', 'pages'),
         ignore: ['**/super-heroes'],
       },
     },
@@ -58,7 +58,14 @@ const config = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'super-heroes',
-        path: join(__dirname, 'content', 'images', 'super-heroes'),
+        path: join(__dirname, 'content', 'pages', 'images', 'super-heroes'),
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'nouvelles',
+        path: join(__dirname, 'content', 'nouvelles'),
       },
     },
     {
