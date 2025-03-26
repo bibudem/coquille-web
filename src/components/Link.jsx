@@ -9,9 +9,9 @@ const StyledA = styled('a')(unstable_styleFunctionSx)
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
-// export default function Link({ children, to, activeClassName, partiallyActive, ...other }) {
+// export default function Link({ children, to, activeClassName, ...rest }) {
 const Link = forwardRef(function Link(props, ref) {
-  const { children, to, activeClassName, partiallyActive, ...other } = props
+  const { children, to, activeClassName, ...rest } = props
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
@@ -20,14 +20,14 @@ const Link = forwardRef(function Link(props, ref) {
   // Use Gatsby Link for internal links, and <a> for others
   if (isExternal) {
     return (
-      <StyledA ref={ref} href={to} {...other}>
+      <StyledA ref={ref} href={to} {...rest}>
         {children}
       </StyledA>
     )
   }
 
   return (
-    <MuiLink ref={ref} component={GatsbyLink} to={to} activeClassName={activeClassName} partiallyActive={partiallyActive} {...other}>
+    <MuiLink ref={ref} component={GatsbyLink} to={to} activeClassName={activeClassName} {...rest}>
       {children}
     </MuiLink>
   )
