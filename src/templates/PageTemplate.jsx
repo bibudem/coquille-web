@@ -33,17 +33,11 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
   useEffect(() => {
     setLvl(getCurrentPageLevel(location))
-    console.log('lvl:', getCurrentPageLevel(location))
   }, [location])
 
   useEffect(() => {
-    // const navLvl = location.pathname.split('/').length
     setHasSecondaryNav(lvl > 1)
   }, [lvl])
-
-  useEffect(() => {
-    console.log('isSmall:', isSmall)
-  }, [isSmall])
 
   if (typeof window !== 'undefined') {
     window.bib = window.bib || {}
@@ -106,7 +100,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         <Footer />
 
-        <bib-consent server-request-timeout="5000"></bib-consent>
+        {/* <bib-consent server-request-timeout="5000"></bib-consent> */}
       </IconContext.Provider>
     </MDXProvider>
   )
