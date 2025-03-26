@@ -18,18 +18,20 @@ import { useSmall } from '@/hooks/use-small'
 import { SecondaryNav } from '@/components/_layout/SecondaryNav/SecondaryNav'
 
 import commonComponents from './commonComponents'
+import { AppBarContext } from '@/components/_layout/AppBar/AppBarContext'
 
 function getCurrentPageLevel(location) {
   // const pathname = location.pathname.endsWith('/') ? location.pathname.slice(1) : location.pathname
   return location.pathname.split('/').filter((item) => item).length
 }
 
-export default function PageTemplate({ pageContext, children, data, location }) {
+export default function PageTemplate({ pageContext, children, location }) {
   const isSmall = useSmall('md')
   const isMedium = useSmall('lg')
   const theme = useTheme()
   const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
   const [lvl, setLvl] = useState(getCurrentPageLevel(location))
+  const [appBarData, setAppBarData] = useState(null)
 
   useEffect(() => {
     setLvl(getCurrentPageLevel(location))
@@ -47,6 +49,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
   const {
     breadcrumb: { crumbs },
+    frontmatter: { superHero },
   } = pageContext
 
   const mainContent = (
@@ -67,40 +70,42 @@ export default function PageTemplate({ pageContext, children, data, location }) 
           color: theme.palette.grey['700'],
         }}
       >
-        {process.env.NODE_ENV !== 'production' && <Debug />}
-        <div style={{ position: 'absolute', background: '#fff', top: 0, right: 0, padding: '.5em' }}>{lvl}</div>
+        <AppBarContext.Provider value={{ appBarData, setAppBarData }}>
+          {process.env.NODE_ENV !== 'production' && <Debug />}
+          <div style={{ position: 'absolute', background: '#fff', top: 0, right: 0, padding: '.5em' }}>{lvl}</div>
 
-        <udem-urgence></udem-urgence>
+          <udem-urgence></udem-urgence>
 
-        {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
+          {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} superHero={superHero} />}
 
-        {/* <bib-avis bouton-fermer /> */}
+          {/* <bib-avis bouton-fermer /> */}
 
-        {isSmall ? <QuickLinksSm /> : <QuickLinks />}
+          {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
-        {hasSecondaryNav ? (
-          <Container maxWidth="xl" sx={{ px: '64px' }}>
-            <Grid
-              container
-              spacing={{
-                xs: 1,
-                sm: 3,
-                lg: 4,
-              }}
-            >
-              <Grid size={3}>
-                <SecondaryNav currentLocation={location} />
+          {hasSecondaryNav ? (
+            <Container maxWidth="xl" sx={{ px: '64px' }}>
+              <Grid
+                container
+                spacing={{
+                  xs: 1,
+                  sm: 3,
+                  lg: 4,
+                }}
+              >
+                <Grid size={3}>
+                  <SecondaryNav currentLocation={location} />
+                </Grid>
+                <Grid size={9}>{mainContent}</Grid>
               </Grid>
-              <Grid size={9}>{mainContent}</Grid>
-            </Grid>
-          </Container>
-        ) : (
-          <>{mainContent}</>
-        )}
+            </Container>
+          ) : (
+            <>{mainContent}</>
+          )}
 
-        <Footer />
+          <Footer />
 
-        {/* <bib-consent server-request-timeout="5000"></bib-consent> */}
+          {/* <bib-consent server-request-timeout="5000"></bib-consent> */}
+        </AppBarContext.Provider>
       </IconContext.Provider>
     </MDXProvider>
   )

@@ -6,6 +6,7 @@ import { ArrowRight } from '@phosphor-icons/react'
 import Link from '@/components/Link'
 import SideNav from '@/components/_layout/SideNav/SideNav'
 import SideNavContent from '@/components/_layout/SideNav/SideNavContent'
+import SuperHero from './SuperHero'
 import Div from '@/components/utils/Div'
 import LogoUdeMMonochrome from '@/images/logo-udem/logo_udem-noir.svg'
 import LogoUdeM from '@/images/logo-udem/logo_udem-officiel.svg'
@@ -98,7 +99,7 @@ function Logo({ lvl }) {
 /**
  * Primary search app bar component
  */
-export default function TopAppBar({ lvl, location = {} }) {
+export default function TopAppBar({ lvl, location = {}, superHero }) {
   const [open, setOpen] = useState(false)
   const theme = useTheme()
 
@@ -129,6 +130,8 @@ export default function TopAppBar({ lvl, location = {} }) {
           '.MuiToolbar-root': {
             height: appBarHeight,
           },
+          outline: '1px solid red',
+          outlineOffset: '-1px',
         }}
       >
         <Div
@@ -138,7 +141,7 @@ export default function TopAppBar({ lvl, location = {} }) {
             maxWidth: theme.breakpoints.values.xl,
           }}
         >
-          <Toolbar disableGutters>
+          <Toolbar disableGutters sx={{ outline: '1px dotted blue', outlineOffset: '-1px', zIndex: 1 }}>
             <Box
               sx={{
                 flexGrow: 0,
@@ -196,6 +199,7 @@ export default function TopAppBar({ lvl, location = {} }) {
             </Box>
           </Toolbar>
         </Div>
+        <SuperHero {...superHero} />
       </AppBar>
       <SideNav open={open} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)}>
         <SideNavContent />
