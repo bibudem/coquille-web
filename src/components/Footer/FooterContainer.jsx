@@ -1,7 +1,6 @@
-import { Box } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
   display: 'flex',
   width: '100%',
   maxWidth: theme.breakpoints.values[theme.breakpoints.keys[theme.breakpoints.keys.length - 1]],
@@ -10,5 +9,6 @@ const StyledBox = styled(Box)(({ theme }) => ({
 }))
 
 export default function FooterContainer({ children, ...props }) {
-  return <StyledBox {...props}>{children}</StyledBox>
+  console.log('props:', props)
+  return <StyledDiv>{children}</StyledDiv>
 }

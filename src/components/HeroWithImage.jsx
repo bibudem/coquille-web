@@ -49,7 +49,7 @@ export default function HeroWithImage({ align = 'left', footer, Image, ...rest }
 
   if (typeof Image !== 'undefined') {
     if (!isSmall) {
-      columns[align === 'left' ? 'push' : 'unshift'](<Grid size={1}></Grid>)
+      columns[align === 'left' ? 'push' : 'unshift'](<Grid size={1} key="spacer"></Grid>)
     }
 
     columns[align === 'left' ? 'push' : 'unshift'](

@@ -4,6 +4,8 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Section from '@/components/Section'
 import { appBarHeight } from '@/components/AppBar/TopAppBar'
+import { useSmall } from '@/hooks/use-small'
+import { createContext, useEffect, useState } from 'react'
 
 export const inlineOffset = '3.75rem'
 
@@ -11,6 +13,8 @@ const boxSize = {
   height: '49.75rem',
   width: '100%',
 }
+
+export const SuperHeroContext = createContext({})
 
 /**
  * A full-width hero section component with background image and text overlay
@@ -30,6 +34,9 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
   }
 
   const { children, ...props } = rest
+
+  const isSmall = useSmall()
+  const [contextData, setContextData] = useState({})
 
   const data = useStaticQuery(graphql`
     query ImageQuery {
@@ -51,64 +58,80 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
   const imageNode = data.allFile.nodes.find((node) => node.name === imageName)
   const image = imageNode.childrenImageSharp[0].gatsbyImageData
 
+  useEffect(() => {
+    setContextData(
+      isSmall
+        ? {
+            inlineOffset: '20px',
+            bottomOffset: '2rem',
+          }
+        : {
+            inlineOffset,
+            bottomOffset: '4.25rem',
+          }
+    )
+  }, [isSmall])
+
   return (
     <>
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          ...boxSize,
-          color: '#fff',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-        }}
-      >
-        <GatsbyImage
-          className="bib-comp-super-hero"
-          image={image}
-          layout="fullWidth"
-          alt={alt}
-          style={{
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-          }}
-          loading="eager"
-        />
+      <SuperHeroContext.Provider value={contextData}>
         <div
           style={{
-            width: '100%',
-            height: '100%',
             position: 'absolute',
-            background: `linear-gradient(180deg, rgba(0, 0, 0, 0.48) 5%, rgba(0, 0, 0, 0.20) ${appBarHeight})`,
-            zIndex: 1,
-          }}
-        ></div>
-        <Section
-          sx={{
-            padding: `0 0 ${children ? '1rem' : '4.25rem'} ${inlineOffset}`,
-            zIndex: 2,
+            top: 0,
+            left: 0,
+            ...boxSize,
+            color: '#fff',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
           }}
         >
-          <Grid container direction="row">
-            <Grid size={8}>
-              <Typography variant="display1" component="h1">
-                {title}
-              </Typography>
-              {subTitle}
+          <GatsbyImage
+            className="bib-comp-super-hero"
+            image={image}
+            layout="fullWidth"
+            alt={alt}
+            style={{
+              width: '100%',
+              height: '100%',
+              position: 'absolute',
+            }}
+            loading="eager"
+          />
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              position: 'absolute',
+              background: `linear-gradient(180deg, rgba(0, 0, 0, 0.48) 5%, rgba(0, 0, 0, 0.20) ${appBarHeight})`,
+              zIndex: 1,
+            }}
+          ></div>
+          <Section
+            sx={{
+              padding: `0 0 ${children ? '1rem' : contextData.bottomOffset} ${contextData.inlineOffset}`,
+              zIndex: 2,
+            }}
+          >
+            <Grid container direction="row">
+              <Grid size={{ xs: 12, md: 8 }}>
+                <Typography variant="display1" component="h1" sx={{ wordBreak: 'break-word' }}>
+                  {title}
+                </Typography>
+                {subTitle}
+              </Grid>
             </Grid>
-          </Grid>
-        </Section>
-        <div style={{ zIndex: 2 }}>{children}</div>
-      </div>
-      <div
-        style={{
-          width: boxSize.width,
-          height: `calc(${boxSize.height} - ${appBarHeight})`,
-        }}
-      />
+          </Section>
+          <div style={{ zIndex: 2 }}>{children}</div>
+        </div>
+        <div
+          style={{
+            width: boxSize.width,
+            height: `calc(${boxSize.height} - ${appBarHeight})`,
+          }}
+        />
+      </SuperHeroContext.Provider>
     </>
   )
 }

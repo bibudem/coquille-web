@@ -47,12 +47,12 @@ const BibFooterUdeM = forwardRef(function BibFooterUdeM(props, ref) {
       <FooterContainer>
         <Box paddingBlock="35px" width="100%">
           <Grid container width="100%" rowSpacing={2} columnSpacing={{ xs: 1.5, md: 2 }}>
-            <Grid xs={12} md={5} display="flex" paddingBlockEnd={{ xs: 3, md: 0 }}>
-              <a href="https://www.umontreal.ca" id="awef">
+            <Grid size={{ xs: 12, md: 5 }} display="flex" paddingBlockEnd={{ xs: 3, md: 0 }}>
+              <a href="https://www.umontreal.ca">
                 <img src={'/images/carre-UdeM_monde-RGB.svg'} alt="Université de Montréal et du Monde" width={carreUdeMMondeSize} height={carreUdeMMondeSize} />
               </a>
             </Grid>
-            <Grid xs={6} md>
+            <Grid size={{ xs: 6, md: 12 }}>
               <Stack direction="column" component="section" aria-labelledby="udem-footer-aide-header">
                 <UdeMFooterSectionHeader id="udem-footer-aide-header">Besoin d'aide?</UdeMFooterSectionHeader>
                 <FooterLink to="https://umontreal.ca/">Sureté</FooterLink>
@@ -60,7 +60,7 @@ const BibFooterUdeM = forwardRef(function BibFooterUdeM(props, ref) {
                 <FooterLink to="https://denonciation-udem.icotechnologies.com/">Signalement</FooterLink>
               </Stack>
             </Grid>
-            <Grid xs={6} md>
+            <Grid size={{ xs: 6, md: 12 }}>
               <Stack direction="column" component="section" aria-labelledby="udem-footer-info-header">
                 <UdeMFooterSectionHeader id="udem-footer-info-header">Informations</UdeMFooterSectionHeader>
                 <FooterLink to="https://bcrp.umontreal.ca/">Relations médias</FooterLink>
@@ -68,7 +68,7 @@ const BibFooterUdeM = forwardRef(function BibFooterUdeM(props, ref) {
                 <FooterLink to="https://calendrier.umontreal.ca/">Calendrier</FooterLink>
               </Stack>
             </Grid>
-            <Grid xs={6} md>
+            <Grid size={{ xs: 6, md: 12 }}>
               <Stack direction="column" component="section" aria-labelledby="udem-footer-engagement-header">
                 <UdeMFooterSectionHeader id="udem-footer-engagement-header">Engagement</UdeMFooterSectionHeader>
                 <FooterLink to="https://durable.umontreal.ca/">Durable</FooterLink>
@@ -76,7 +76,7 @@ const BibFooterUdeM = forwardRef(function BibFooterUdeM(props, ref) {
                 <FooterLink to="https://www.umontreal.ca/diversite/">Diversité</FooterLink>
               </Stack>
             </Grid>
-            <Grid xs={6} md>
+            <Grid size={{ xs: 6, md: 12 }}>
               <Stack direction="column" component="section" aria-labelledby="udem-footer-campus-header">
                 <UdeMFooterSectionHeader id="udem-footer-campus-header">Campus</UdeMFooterSectionHeader>
                 <FooterLink to="https://www.umontreal.ca/nos-campus/montreal/">Montréal</FooterLink>
@@ -84,7 +84,7 @@ const BibFooterUdeM = forwardRef(function BibFooterUdeM(props, ref) {
                 <FooterLink to="https://www.umontreal.ca/nos-campus/laval/">Laval</FooterLink>
               </Stack>
             </Grid>
-            <Grid component="section" xs="12" md="auto" display="flex" justifyContent={isSmall ? 'flex-end' : null}>
+            <Grid component="section" size={{ xs: 6, md: 12 }} display="flex" justifyContent={isSmall ? 'flex-end' : null}>
               <Grid
                 container
                 component="ul"

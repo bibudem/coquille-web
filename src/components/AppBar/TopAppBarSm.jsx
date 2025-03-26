@@ -5,8 +5,7 @@ import Link from '@/components/Link'
 import SideNavSm from '@/components/SideNav/SideNavSm'
 import SideNavContent from '@/components/SideNav/SideNavContent'
 import MenuBurger from './MenuBurger'
-import LogoBib from '@/images/logo-bib.svg'
-import LogoUdeM from '@/images/logo-udem.svg'
+import LogoUdeMMonochrome from '@/images/logo-udem/logo_udem-noir.svg'
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
 
@@ -56,8 +55,9 @@ export default function TopAppBarSm(props) {
           position="fixed"
           elevation={0}
           sx={{
-            borderBottom: '1px solid silver',
-            bgcolor: 'white',
+            bgcolor: 'transparent',
+            outline: '1px solid red',
+            outlineOffset: '-1px',
           }}
         >
           <Container
@@ -69,20 +69,38 @@ export default function TopAppBarSm(props) {
               py: 0.5,
             }}
           >
-            <Toolbar sx={{ justifyContent: 'center' }}>
+            <Toolbar
+              sx={{
+                outline: '1px dotted blue',
+                outlineOffset: '-1px',
+              }}
+            >
               <Link
                 aria-label="Accueil"
-                variant="h6"
                 noWrap
                 to="/"
                 sx={{
                   display: 'flex',
-                  alignItems: 'flex-end',
-                  color: 'inherit',
+                  flexDirection: 'column',
+                  color: '#fff',
+                  margin: '10px 0 0 14px',
                 }}
               >
-                <LogoUdeM style={{ height: '33px', marginRight: '20px', color: '#000' }} />
-                <LogoBib style={{ height: '33px' }} />
+                <LogoUdeMMonochrome
+                  style={{
+                    width: 140,
+                    height: 'auto',
+                    fill: 'currentColor',
+                  }}
+                />
+                <span
+                  style={{
+                    fontSize: '18px',
+                    fontWeight: 600,
+                  }}
+                >
+                  les bibliothèques
+                </span>
               </Link>
               <MenuBurger
                 onClick={toggleDrawer(true)}

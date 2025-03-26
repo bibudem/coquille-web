@@ -1,3 +1,4 @@
+import { extendTheme, responsiveFontSizes } from '@mui/material/styles'
 import { darken, lighten, getContrastRatio } from '@mui/material/styles'
 
 //
@@ -61,7 +62,7 @@ export const secondaryColors = {
 	vertPale: getColorPalette(vertPale),
 }
 
-export default {
+const tokens = {
 	breakpoints: {
 		values: {
 			xs: 0,
@@ -240,7 +241,7 @@ export default {
 		display1: {
 			fontFamily: 'Figtree',
 			fontFeatureSettings: "'liga' off, 'clig' off",
-			fontSize: '6.6875rem',
+			fontSize: '46px',
 			fontWeight: 600,
 			lineHeight: '112%'
 		},
@@ -272,4 +273,12 @@ export default {
 		// 	fontSize: '1.4667rem',
 		// }
 	},
+}
+
+// export const theme = responsiveFontSizes(extendTheme(tokens))
+const theme = extendTheme(tokens)
+export default theme
+
+theme.typography.display1[theme.breakpoints.up('md')] = {
+	fontSize: '6.6875rem',
 }

@@ -22,7 +22,7 @@ function Copyright() {
   )
 }
 
-const StyledNoteCell = styled(Grid)(({ theme }) => ({
+const NoteCell = styled(Grid)(({ theme }) => ({
   [`${theme.breakpoints.down('md')}`]: {
     position: 'relative',
     '&:not(:last-child):not(:first-child)': {
@@ -39,10 +39,6 @@ const StyledNoteCell = styled(Grid)(({ theme }) => ({
     },
   },
 }))
-
-function NoteCell({ children, ...props }) {
-  return <StyledNoteCell {...props}>{children}</StyledNoteCell>
-}
 
 export function UdeMFooterNote() {
   function handleOnConsentLinkClick(e) {
@@ -62,7 +58,7 @@ export function UdeMFooterNote() {
         }}
       >
         <Grid container width="100%" columnGap={{ xs: 1, md: 2 }}>
-          <NoteCell xs={12} md={true} order={{ xs: 1, md: 0 }} sx={{ paddingBlockStart: { xs: '1em', md: 0 } }}>
+          <NoteCell size={{ xs: 12 }} order={{ xs: 1, md: 0 }} sx={{ paddingBlockStart: { xs: '1em', md: 0 } }}>
             <Copyright />
           </NoteCell>
           <NoteCell>
