@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { Container } from '@mui/material'
-import SEO from '@/components/SEO'
-import Debug from '@/components/Debug'
+import SEO from '@/components/_layout/SEO'
+import Debug from '@/components/_layout/Debug'
 
 export default function PageTemplate({ children }) {
   return (

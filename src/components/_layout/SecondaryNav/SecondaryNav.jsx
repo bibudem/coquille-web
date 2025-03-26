@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Box, Divider, styled } from '@mui/material'
 import { graphql, useStaticQuery } from 'gatsby'
-import NavList from './NavList'
-import NavItem from './NavItem'
+import NavList from './NavList.jsx'
+import NavItem from './NavItem.jsx'
 import fetchNavigation from './fetchNavigation.js'
 import secondaryNavSampleData from './secondaryNavSampleData.js'
 

@@ -1,4 +1,4 @@
-import { SITE_NAVIGATION_FILE_URL } from '../../../plugins/gatsby-plugin-bib-secondary-nav/constants.js'
+import { SITE_NAVIGATION_FILE_URL } from '../../../../plugins/gatsby-plugin-bib-secondary-nav/constants.js'
 
 let currentNavigation = null
 let requestPromise = null

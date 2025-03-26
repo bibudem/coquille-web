@@ -19,7 +19,7 @@ function ListItemText({ children }) {
   )
 }
 
-export function MenuLatteral() {
+export function QuickLinks() {
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 175,
@@ -103,7 +103,7 @@ export function MenuLatteral() {
   )
 }
 
-export function MenuLatteralSm() {
+export function QuickLinksSm() {
   const theme = useTheme()
 
   function handleOnMenuItemClick(event) {

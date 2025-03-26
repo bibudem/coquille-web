@@ -5,17 +5,17 @@ import { Container, useTheme } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { IconContext } from '@phosphor-icons/react'
 
-import TopAppBar from '@/components/AppBar/TopAppBar'
-import TopAppBarSm from '@/components/AppBar/TopAppBarSm'
-import { MenuLatteral, MenuLatteralSm } from '@/components/MenuLatteral/MenuLatteral'
-import Footer from '@/components/Footer'
-import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs'
-import SEO from '@/components/SEO'
-import Debug from '@/components/Debug'
+import TopAppBar from '@/components/_layout/AppBar/TopAppBar'
+import TopAppBarSm from '@/components/_layout/AppBar/TopAppBarSm'
+import { QuickLinks, QuickLinksSm } from '@/components/_layout/QuickLinks'
+import Footer from '@/components/_layout/Footer/Footer'
+import Breadcrumbs from '@/components/_layout/Breadcrumbs/Breadcrumbs'
+import SEO from '@/components/_layout/SEO'
+import Debug from '@/components/_layout/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
 
 import { useSmall } from '@/hooks/use-small'
-import { SecondaryNav } from '@/components/SecondaryNav/SecondaryNav'
+import { SecondaryNav } from '@/components/_layout/SecondaryNav/SecondaryNav'
 
 import commonComponents from './commonComponents'
 
@@ -76,7 +76,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         {/* <bib-avis bouton-fermer /> */}
 
-        {isSmall ? <MenuLatteralSm /> : <MenuLatteral />}
+        {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
         {hasSecondaryNav ? (
           <Container maxWidth="xl" sx={{ px: '64px' }}>
