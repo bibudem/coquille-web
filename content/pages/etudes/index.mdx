@@ -26,7 +26,7 @@ import relaxation from '../images/relaxation.webp'
 
 <Section>
 
-<Carousel1
+  <Carousel1 
     title="Des outils essentiels pour vos travaux"
     description="Dans le torrent d’information disponible en ligne et sur nos rayons, par où commencer l’exploration? Nos spécialistes ont conçu des guides et sélectionné les ressources les plus pratiques pour vous. Profitez-en!"
     moreText="Voir la boîte à outils"
@@ -69,10 +69,10 @@ import relaxation from '../images/relaxation.webp'
 
 <Section bg='vertFonce'>
 
-<Typography component="h2" variant="display5"> Des services personnalisés</Typography>
+  <Typography component="h2" variant="display5"> Des services personnalisés</Typography>
 
 
-<RichList bg="vertFonce">
+  <RichList bg="vertFonce">
     <RichListItemWithLink 
       title="Accueil en bibliothèque"
       description="Notre équipe est présente en bibliothèques pour répondre à vos questions sur place - passez nous voir au comptoir!"
@@ -108,7 +108,7 @@ import relaxation from '../images/relaxation.webp'
 </Section>
 
 <Section>
-<Carousel1
+  <Carousel1
     title="Problème informatique? Pas de panique!"
     description="Accès hors campus, authentification, impression, numérisation, prêt d’ordinateurs ou de tablettes; nos comptoirs, nos services et nos spécialistes vous sont accessibles à l’année!"
     moreText="Consulter la documentation sur le proxy"
@@ -152,57 +152,59 @@ import relaxation from '../images/relaxation.webp'
 
 <Section bg="bleu100">
 
-<Carousel1
+  <Carousel1
     title={<Typography component="h2">On a votre bien-être à coeur</Typography>}
     description="Une session universitaire, ça passe vite, et on a parfois besoin d’un pause, de lire une BD pour le plaisir, de compléter un mandala entre deux séances d’étude. Nous vous proposons des collections axées sur le bien-être et la détente, des jeux, et toutes sortes de trucs pour vous changer les idées."
   >
    <FlipCardWithImage
-        title="Collection bien être"
-        Image={collectionBienEtre}
-      >
-        <p>Plusieurs documents en ligne et collections imprimées disponibles:</p>
-        <ul>
-        <li>Bibliothèque du Campus de Laval</li>
+      title="Collection bien être"
+      Image={collectionBienEtre}
+    >
+      <p>Plusieurs documents en ligne et collections imprimées disponibles:</p>
+      <ul>
+      <li>Bibliothèque du Campus de Laval</li>
+      <li>Bibliothèque de la santé</li>
+      <li>Bibliothèque de lettres et sciences humaines</li>
+      <li>Bibliothèque de médecine vétérinaire</li>
+      <li>Bibliothèque de musique</li>
+      <li>Bibliothèque Thérèse-Gouin-Décarie</li>
+      </ul>
+    </FlipCardWithImage>
+
+    <FlipCardWithImage
+      title="Jeux de société"
+      Image={relaxation}
+    >
+      <p>Disponibles:</p>
+      <ul>
+        <li>Bibliothèque d’aménagement</li>
+        <li>Bibliothèque de droit</li>
         <li>Bibliothèque de la santé</li>
-        <li>Bibliothèque de lettres et sciences humaines</li>
+        <li>Bibliothèque de mathématiques et informatique</li>
         <li>Bibliothèque de médecine vétérinaire</li>
         <li>Bibliothèque de musique</li>
         <li>Bibliothèque Thérèse-Gouin-Décarie</li>
-        </ul>
-      </FlipCardWithImage>
+      </ul>
+    </FlipCardWithImage>
 
     <FlipCardWithImage
-        title="Jeux de société"
-        Image={relaxation}
-      >
-        <p>Disponibles:</p>
-        <ul>
+      title="Collection détente"
+      Image={collectionDetente}
+    >
+      <p>Bandes dessinées et romans graphiques disponibles:</p>
+      <ul>
         <li>Bibliothèque d’aménagement</li>
-<li>Bibliothèque de droit</li>
-<li>Bibliothèque de la santé</li>
-<li>Bibliothèque de mathématiques et informatique</li>
-<li>Bibliothèque de médecine vétérinaire</li>
-<li>Bibliothèque de musique</li>
-<li>Bibliothèque Thérèse-Gouin-Décarie</li>
-</ul>
-      </FlipCardWithImage>
-<FlipCardWithImage
-        title="Collection détente"
-        Image={collectionDetente}
-      >
-        <p>Bandes dessinées et romans graphiques disponibles:</p>
-        <ul>
-        <li>Bibliothèque d’aménagement</li>
-<li>Bibliothèque de droit</li>
-<li>Bibliothèque Hubert-Reeves</li>
-<li>Bibliothèque de la santé</li>
-<li>Local des étudiants de la Faculté de médecine</li>
-<li>Bibliothèque de kinésiologie</li>
-<li>Bibliothèque de mathématiques et informatique</li>
-<li>Bibliothèque de musique</li>
-<li>Bibliothèque Marguerite-d'Youville</li>
-</ul>
-      </FlipCardWithImage>
+        <li>Bibliothèque de droit</li>
+        <li>Bibliothèque Hubert-Reeves</li>
+        <li>Bibliothèque de la santé</li>
+        <li>Local des étudiants de la Faculté de médecine</li>
+        <li>Bibliothèque de kinésiologie</li>
+        <li>Bibliothèque de mathématiques et informatique</li>
+        <li>Bibliothèque de musique</li>
+        <li>Bibliothèque Marguerite-d'Youville</li>
+      </ul>
+    </FlipCardWithImage>
+
     <FlipCardWithImage
         title="Trousse pour petits visiteurs"
         Image={troussePetits}
@@ -210,66 +212,67 @@ import relaxation from '../images/relaxation.webp'
         <p>Disponible à la Bibliothèque de droit</p>
         
       </FlipCardWithImage>
+
       <FlipCardWithImage
-        title="Luminothérapie "
+        title="Luminothérapie"
         Image={luminotherapie}
       >
         <p>Disponibles :</p>
         <ul>
           <li>Bibliothèque d'aménagement</li>
-<li>Bibliothèque de droit</li>
-<li>Bibliothèque de la santé</li>
-<li>Bibliothèque de kinésiologie</li>
-<li>Bibliothèque des lettres et sciences humaines</li>
-<li>Bibliothèque de mathématiques et informatique</li>
-<li>Bibliothèque de médecine vétérinaire</li>
-<li>Bibliothèque de musique</li>
-<li>Bibliothèque du Campus de Laval</li>
+          <li>Bibliothèque de droit</li>
+          <li>Bibliothèque de la santé</li>
+          <li>Bibliothèque de kinésiologie</li>
+          <li>Bibliothèque des lettres et sciences humaines</li>
+          <li>Bibliothèque de mathématiques et informatique</li>
+          <li>Bibliothèque de médecine vétérinaire</li>
+          <li>Bibliothèque de musique</li>
+          <li>Bibliothèque du Campus de Laval</li>
         </ul>
       </FlipCardWithImage>
 
-<FlipCardWithImage
+      <FlipCardWithImage
         title="Coloriage et mandalas"
         Image={coloriage}
       >
         <p>Disponibles:</p>
-                <ul>
-
-<li>Bibliothèque de droit</li>
-<li>Bibliothèque de la santé</li>
-<li>Bibliothèque de kinésiologie</li>
-<li>Bibliothèque de médecine vétérinaire</li>
-<li>Bibliothèque de musique</li>
-<li>Bibliothèque Marguerite-d'Youville</li>
+        <ul>
+          <li>Bibliothèque de droit</li>
+          <li>Bibliothèque de la santé</li>
+          <li>Bibliothèque de kinésiologie</li>
+          <li>Bibliothèque de médecine vétérinaire</li>
+          <li>Bibliothèque de musique</li>
+          <li>Bibliothèque Marguerite-d'Youville</li>
         </ul>
 
       </FlipCardWithImage>
-<FlipCardWithImage
+
+      <FlipCardWithImage
         title="Espaces de relaxation"
         Image={relaxation}
       >
-      <p>Disponibles dans presque toutes les bibliothèques</p>
+        <p>Disponibles dans presque toutes les bibliothèques</p>
       </FlipCardWithImage>
             
-<FlipCardWithImage
+      <FlipCardWithImage
         title="Cocon de micro-sieste"
         Image={Cocon}
       >
-      <p>Disponibles :</p>
-    <ul>
-    <li>Bibliothèque de Kinésiologie</li> 
-    <li>Bibliothèque de médecine vétérinaire</li> 
-    </ul>
+        <p>Disponibles :</p>
+        <ul>
+          <li>Bibliothèque de Kinésiologie</li> 
+          <li>Bibliothèque de médecine vétérinaire</li> 
+        </ul>
       </FlipCardWithImage>
-          
-<FlipCardWithImage
+            
+      <FlipCardWithImage
         title="Casse-tête"
         Image={relaxation}
       >
-      <p>Disponibles à la Bibliothèque de Kinésiologie</p>
+        <p>Disponibles à la Bibliothèque de Kinésiologie</p>
       </FlipCardWithImage>
 
-      </Carousel1>
+  </Carousel1>
 </Section>
 
 <Section>

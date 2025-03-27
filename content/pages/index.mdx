@@ -42,47 +42,37 @@ import imageEngagement from './images/engagement-accueil.webp'
 
 <Section bg='bleu200'>
 
-  ## Mille et une façons d’apprendre
-
-  Quels que soient vos besoins, vous découvrirez ici de multiples méthodes d’apprentissage facilement accessibles. Trouvez celle qui vous convient!
-
-  <Grid container spacing=".62rem" sx={{margin:'4rem 0 4rem'}}>
-    <Grid>
+  <Carousel1
+    title="Mille et une façons d’apprendre"
+    description="Quels que soient vos besoins, vous découvrirez ici de multiples méthodes d’apprentissage facilement accessibles. Trouvez celle qui vous convient!"
+    moreLink="#"
+    moreText="Découvrir les services pour la communauté étudiante"
+  >
       <CardWithIcon
         title="Ressources et conseils préparés par nos spécialistes"
         Icon={BookmarkSimple}
         moreText="Voir la boîte à outils"
         href="#"
       />
-    </Grid>
-    <Grid>
       <CardWithIcon
         title="Capsules vidéos et webinaires"
         Icon={Video}
         moreText="Accéder à YouTube"
         href="https://www.youtube.com/user/BibliothequesUdeM"
       />
-    </Grid>
-    <Grid>
       <CardWithIcon
         title="Service Accessibilité"
         Icon={PersonSimpleCircle}
         moreText="En savoir plus"
         href="#"
       />
-    </Grid>
-    <Grid>
       <CardWithIcon
         title="Soutien personnalisé avec nos spécialistes"
         Icon={Users}
         moreText="Prendre rendez-vous"
         href="#"
       />
-    </Grid>
-  </Grid>
-
-  <Button primary href="#">Découvrir les services pour la communauté étudiante</Button>
-
+  </Carousel1>
 </Section>
 
 <Section>
