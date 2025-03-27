@@ -1,21 +1,23 @@
-import { Children, useEffect, useState } from 'react'
+import { Children, useEffect, useMemo, useState } from 'react'
 import { IconButton, Typography, useTheme } from '@mui/material'
 import Grid from '@mui/material/Grid2'
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
-// import 'pure-react-carousel/dist/react-carousel.es.css'
-import { Carousel } from '@ark-ui/react/carousel'
+import * as carousel from '@zag-js/carousel'
+import { normalizeProps, useMachine } from '@zag-js/react'
 import Button from '@/components/Button'
 import Div from '@/components/utils/Div'
+import { useSmall } from '@/hooks/use-small'
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from './CustomIcons'
 import { useBreakpoint } from '@/hooks/use-breakpoint'
-import { LocaleProvider } from '@ark-ui/react'
 
 const slidesPerPagPerBreakpoint = {
   xs: 1,
   sm: 2,
   md: 3,
   lg: 4,
+  xl: 4,
 }
+
+let idCounter = 1
 
 /**
  * A React component that renders a carousel with a title, description, and optional "more" link.
@@ -31,9 +33,15 @@ const slidesPerPagPerBreakpoint = {
 export default function Carousel1({ title, description, moreText, moreLink = '#', ...rest }) {
   const { sx, children, ...props } = rest
   const currentBreakpoint = useBreakpoint()
-  const [slidesPerPage, setSlidesPerPage] = useState(Reflect.has(slidesPerPagPerBreakpoint, currentBreakpoint.key) ? slidesPerPagPerBreakpoint[currentBreakpoint.key].key : 1)
-  const [showNavigation, setShowNavigation] = useState(false)
+  const [showNavigation, setShowNavigation] = useState(true)
+  const [slidesPerPage, setSlidesPerPage] = useState(4)
   const theme = useTheme()
+  const isSmall = useSmall()
+  const slides = Children.toArray(children)
+  const id = useMemo(() => idCounter++, [])
+
+  const service = useMachine(carousel.machine, { id, slideCount: slides.length, spacing: '10px', slidesPerPage: slidesPerPagPerBreakpoint[currentBreakpoint.key] })
+  const { getRootProps, getControlProps, getPrevTriggerProps, getNextTriggerProps, getItemGroupProps, getItemProps } = carousel.connect(service, normalizeProps)
 
   const variableWidthStyles = {
     [theme.breakpoints.up('md')]: {
@@ -42,32 +50,16 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
   }
 
   useEffect(() => {
-    if (currentBreakpoint.key in slidesPerPagPerBreakpoint && slidesPerPage !== slidesPerPagPerBreakpoint[currentBreakpoint.key]) {
-      setSlidesPerPage(slidesPerPagPerBreakpoint[currentBreakpoint.key])
-    }
+    setSlidesPerPage(slidesPerPagPerBreakpoint[currentBreakpoint.key])
   }, [currentBreakpoint])
 
   useEffect(() => {
-    setShowNavigation(Children.count(children) > slidesPerPage)
-  }, [children, slidesPerPage])
+    setShowNavigation(slides.length > slidesPerPage)
+  }, [slidesPerPage, slides])
 
   return (
-    <LocaleProvider locale="fr-FR">
-      <Carousel.Root
-        defaultPage={0}
-        slideCount={Children.count(children)}
-        slidesPerPage={slidesPerPage}
-        allowMouseDrag
-        spacing="10px"
-        style={
-          {
-            // justifyContent: 'start',
-            // '--slide-item-size': 'min-content',
-          }
-        }
-        {...props}
-      >
-        <p>slidesPerPage: {slidesPerPage}</p>
+    <div {...getRootProps()}>
+      <Div sx={{ '--slide-item-size': 'calc(96% / var(--slides-per-page) - var(--slide-spacing) * (var(--slides-per-page) - 1) / var(--slides-per-page))' }}>
         <Grid container spacing="45px">
           <Grid size={12}>
             <Div
@@ -83,7 +75,7 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
             >
               {typeof title === 'string' ? <Typography component="h2">{title}</Typography> : title}
             </Div>
-            <Grid container>
+            <Grid container direction={isSmall ? 'column' : 'row'}>
               <Grid
                 size="grow"
                 sx={{
@@ -104,43 +96,26 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
                 </Div>
               </Grid>
               {showNavigation && (
-                <Grid container size="auto" spacing="10px" sx={{ alignItems: 'flex-end', pl: 4 }}>
-                  <Carousel.Control>
-                    <Carousel.PrevTrigger asChild>
-                      <IconButton color="primary" aria-label="précédent" sx={{ fontSize: 50 }}>
-                        <ArrowLeftCircleIcon fontSize={50} />
-                      </IconButton>
-                    </Carousel.PrevTrigger>
-                    <Carousel.NextTrigger asChild>
-                      <IconButton color="primary" aria-label="suivant" sx={{ fontSize: 50 }} edge="end">
-                        <ArrowRightCircleIcon fontSize={50} />
-                      </IconButton>
-                    </Carousel.NextTrigger>
-                  </Carousel.Control>
+                <Grid container size="auto" spacing="10px" sx={{ ...(isSmall ? { justifyContent: 'flex-end' } : { alignItems: 'flex-end', pl: 4 }) }} {...getControlProps()}>
+                  <IconButton color="primary" aria-label="précédent" sx={{ fontSize: 50 }} {...getPrevTriggerProps()}>
+                    <ArrowLeftCircleIcon fontSize={50} />
+                  </IconButton>
+                  <IconButton color="primary" aria-label="suivant" sx={{ fontSize: 50 }} edge="end" {...getNextTriggerProps()}>
+                    <ArrowRightCircleIcon fontSize={50} />
+                  </IconButton>
                 </Grid>
               )}
             </Grid>
           </Grid>
-          <div style={{ overflowX: 'scroll' }}>
-            {/* <Carousel.ItemGroup>
-              {Children.toArray(children).map((child, index) => {
-                return (
-                  <Carousel.Item key={index} index={index}>
-                    {child}
-                  </Carousel.Item>
-                )
-              })}
-            </Carousel.ItemGroup> */}
-            <div style={{ display: 'flex', flexWrap: 'nowrap', gap: '10px' }}>
-              {Children.toArray(children).map((child, index) => {
-                return (
-                  <div key={index} index={index}>
-                    {child}
-                  </div>
-                )
-              })}
-            </div>
-          </div>
+          <Div sx={{ minWidth: '100%' }} {...getItemGroupProps()}>
+            {Children.toArray(children).map((child, index) => {
+              return (
+                <SnapSliderItem key={index} {...getItemProps({ index })}>
+                  {child}
+                </SnapSliderItem>
+              )
+            })}
+          </Div>
           {moreLink && moreText && (
             <Grid size={12}>
               <Button primary href={moreLink}>
@@ -149,7 +124,15 @@ export default function Carousel1({ title, description, moreText, moreLink = '#'
             </Grid>
           )}
         </Grid>
-      </Carousel.Root>
-    </LocaleProvider>
+      </Div>
+    </div>
+  )
+}
+
+function SnapSliderItem({ children, ...props }) {
+  return (
+    <Div xs={{ display: 'flex', flexShrink: 0 }} {...props}>
+      {children}
+    </Div>
   )
 }
