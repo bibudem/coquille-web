@@ -1,6 +1,5 @@
 import { extendTheme, responsiveFontSizes } from '@mui/material/styles'
 import { darken, lighten, getContrastRatio } from '@mui/material/styles'
-import { props } from '@zag-js/carousel'
 
 //
 // Liste des couleurs secondaires
@@ -288,7 +287,7 @@ const tokens = {
 	},
 	typography: {
 		fontFamily: 'Figtree',
-		fontSize: 16,
+		fontSize: 18,
 		h1: {
 			fontSize: '3.2rem',
 			fontWeight: 600,
