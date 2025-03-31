@@ -48,11 +48,11 @@ export default function Button({ primary, secondary, href, ...props }) {
     disableElevation: disableElevation || (primary ? config.primary.disableElevation : false),
     ...rest,
   }
-  console.log('@@@@@@@@@@@@@', href, children)
+  // console.log('@@@@@@@@@@@@@', href, children)
   if (typeof href === 'string') {
     buttonProps.href = href
     const linkIsInternal = isInternalLink(href)
-    console.log('linkIsInternal:', linkIsInternal, ' - ', href)
+    // console.log('linkIsInternal:', linkIsInternal, ' - ', href)
 
     if (!disableEndIcon) {
       buttonProps.endIcon = endIcon ?? (linkIsInternal ? <ArrowRight {...commonIconProps} /> : <ArrowUpRight {...commonIconProps} />)
