@@ -1,5 +1,6 @@
 import { extendTheme, responsiveFontSizes } from '@mui/material/styles'
 import { darken, lighten, getContrastRatio } from '@mui/material/styles'
+import { props } from '@zag-js/carousel'
 
 //
 // Liste des couleurs secondaires
@@ -94,6 +95,81 @@ const tokens = {
 		}
 	},
 	components: {
+		MuiAlert: {
+			defaultProps: {
+				variant: 'outlined',
+			},
+			styleOverrides: {
+				root: {
+					variants: [
+						{
+							props: { variant: 'outlined' },
+							style: ({ theme }) => ({
+								borderRadius: `0 0 ${theme.shape.corner.small} ${theme.shape.corner.small}`,
+								border: '1px solid #c3ccd5',
+								padding: 0,
+							}),
+						}]
+				},
+				message: {
+					variants: [
+						{
+							props: { variant: 'outlined' },
+							style: ({ theme }) => ({
+								flexGrow: 1,
+								color: '#222930',
+								backgroundColor: '#eef4f7',
+								borderRadius: `0 0 ${theme.shape.corner.small} 0`,
+								padding: '16px'
+							})
+						}
+					]
+				},
+				icon: {
+					variants: [
+						{
+							props: { variant: 'outlined' },
+							style: ({ theme }) => ({
+								backgroundColor: '#eef4f7',
+								borderRadius: `0 0 0 ${theme.shape.corner.small}`,
+								padding: '16px 4px',
+								margin: 0,
+								width: '35px',
+								justifyContent: 'center',
+							})
+						},
+						{
+							props: { variant: 'outlined', severity: 'success' },
+							style: {
+								backgroundColor: '#52B782!important',
+								color: '#EDF9F3!important'
+							}
+						},
+						{
+							props: { variant: 'outlined', severity: 'info' },
+							style: ({ theme }) => ({
+								backgroundColor: '#CCE2F3',
+								color: `${theme.palette.bleuPrincipal.main}!important`
+							})
+						},
+						{
+							props: { variant: 'outlined', severity: 'warning' },
+							style: ({ theme }) => ({
+								backgroundColor: theme.palette.jaunePale.main,
+								color: '#976D00!important'
+							})
+						},
+						{
+							props: { variant: 'outlined', severity: 'error' },
+							style: ({ theme }) => ({
+								backgroundColor: '#FEE1DE',
+								color: '#B10000!important'
+							})
+						}
+					]
+				},
+			}
+		},
 		MuiButton: {
 			styleOverrides: {
 				root: ({ theme }) => ({

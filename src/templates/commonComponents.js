@@ -1,6 +1,7 @@
 import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
+import AlertTitle from '@mui/material/AlertTitle'
 import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid2'
@@ -11,6 +12,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Typography from '@mui/material/Typography'
 
+import Alert from '@/components/Alert'
 import Button from '@/components/Button'
 import Card2 from '@/components/Card2'
 import CardWithIcon from '@/components/CardWithIcon'
@@ -34,6 +36,8 @@ export default {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Alert,
+  AlertTitle,
   Button,
   Box,
   Card2,
