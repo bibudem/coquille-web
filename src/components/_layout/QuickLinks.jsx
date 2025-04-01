@@ -22,7 +22,7 @@ function ListItemText({ children }) {
 export function QuickLinks() {
   const trigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 175,
+    threshold: 50,
   })
 
   const theme = useTheme()
