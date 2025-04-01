@@ -14,6 +14,9 @@ const config = {
     excludeDatastoreFromEngineFunction: false,
     imageCDN: false,
   }),
+  flags: {
+    DEV_SSR: true,
+  },
   siteMetadata: {
     title: 'Les bibliothèques / UdeM',
 
