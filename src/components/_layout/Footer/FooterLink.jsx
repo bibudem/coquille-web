@@ -6,9 +6,12 @@ export default function FooterLink({ children, sx, ...props }) {
       {...props}
       children={children}
       sx={{
-        ...sx,
         textDecoration: 'none',
+        '&:hover': {
+          textDecoration: 'underline',
+        },
         color: 'inherit',
+        ...sx,
       }}
     />
   )

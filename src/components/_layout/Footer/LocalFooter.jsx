@@ -1,6 +1,7 @@
 import { forwardRef } from 'react'
 import { IconButton, SvgIcon, styled, useMediaQuery, useTheme } from '@mui/material'
 import { Box, Stack, TextField, Typography } from '@mui/material'
+import Div from '@/components/utils/Div'
 
 import FooterLink from './FooterLink'
 import FooterContainer from './FooterContainer'
@@ -17,22 +18,15 @@ const logoStyle = {
   fill: 'currentColor',
 }
 
-const BibFooterLocal = styled('div', {
-  name: 'BibFooter',
-  slot: 'local',
-})(({ theme }) => ({
-  color: theme.palette.primary.contrastText,
-  backgroundColor: theme.palette.primary.main,
-}))
-
-const FooterLocal = forwardRef(function FooterLocal(props, ref) {
+export default function LocalFooter() {
   const theme = useTheme()
   const isXSmall = useMediaQuery(theme.breakpoints.down('sm'))
 
   return (
-    <BibFooterLocal ref={ref}>
-      <FooterContainer
+    <FooterContainer sx={{ backgroundColor: 'bleuFonce.main', color: 'bleuFonce.main' }}>
+      <Div
         sx={{
+          display: 'flex',
           flexDirection: {
             xs: 'row',
             md: 'column',
@@ -106,59 +100,8 @@ const FooterLocal = forwardRef(function FooterLocal(props, ref) {
               </Stack>
             </Box>
           </Box>
-          {!isXSmall && (
-            <>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 1,
-                }}
-              >
-                <Typography variant="body2" fontWeight={600}>
-                  Product
-                </Typography>
-                <FooterLink to="#">Features</FooterLink>
-                <FooterLink to="#">Testimonials</FooterLink>
-                <FooterLink to="#">Highlights</FooterLink>
-                <FooterLink to="#">Pricing</FooterLink>
-                <FooterLink to="#">FAQs</FooterLink>
-              </Box>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 1,
-                }}
-              >
-                <Typography variant="body2" fontWeight={600}>
-                  Company
-                </Typography>
-                <FooterLink to="#">About us</FooterLink>
-                <FooterLink to="#">Careers</FooterLink>
-                <FooterLink to="#">Press</FooterLink>
-              </Box>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 1,
-                }}
-              >
-                <Typography variant="body2" fontWeight={600}>
-                  Legal
-                </Typography>
-                <FooterLink to="#">Terms</FooterLink>
-                <FooterLink to="#">Privacy</FooterLink>
-                <FooterLink to="#">Contact</FooterLink>
-              </Box>
-            </>
-          )}
         </Box>
-      </FooterContainer>
-    </BibFooterLocal>
+      </Div>
+    </FooterContainer>
   )
-})
-// }
-
-export default FooterLocal
+}
