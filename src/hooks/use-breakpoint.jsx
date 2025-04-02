@@ -18,7 +18,7 @@ export function useBreakpoint() {
 
   useEffect(() => {
     const newResolution = queries.find((query) => query.match)
-    if (resolution?.key !== newResolution.key) {
+    if (newResolution && resolution?.key !== newResolution.key) {
       setResolution(newResolution)
     }
   }, queries)
