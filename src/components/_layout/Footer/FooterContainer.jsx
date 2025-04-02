@@ -1,8 +1,8 @@
 import Div from '@/components/utils/Div'
 
-export default function FooterContainer({ sx, children }) {
+export default function FooterContainer({ sx, children, ...props }) {
   return (
-    <Div sx={sx}>
+    <Div sx={sx} {...props}>
       <Div
         sx={(theme) => ({
           width: '100%',

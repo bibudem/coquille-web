@@ -3,7 +3,7 @@ import { Box, Divider as MUIDivider, List, ListItem, ListItemButton, ListItemTex
 import { styled } from '@mui/material/styles'
 import Link from '@/components/Link'
 import Close from '@/components/Close'
-import LogoBib from '@/images/logo-bib.svg'
+import LogoBib from '@/images/logo-bib/logo-bib.svg'
 
 const StyledBox = styled(Box)(
   ({ theme }) => `

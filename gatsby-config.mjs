@@ -105,7 +105,7 @@ const config = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: 'src/images/logo-bib-icon.svg'
+        icon: 'src/images/logo-bib/logo-bib-icon.svg'
       }
     },
     'gatsby-plugin-bib-secondary-nav',
