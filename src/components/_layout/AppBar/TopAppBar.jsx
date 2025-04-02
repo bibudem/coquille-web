@@ -128,10 +128,10 @@ export default function TopAppBar({ lvl, location = {} }) {
         position="sticky"
         elevation={0}
         sx={{
-          '--AppBar-background': lvl < 2 ? (trigger ? 'red' : 'transparent') : '#fff',
-          '--AppBar-color': lvl < 2 ? theme.palette.grey['50'] : '#222930',
+          '--AppBar-background': lvl < 2 ? (trigger ? '#fff' : 'transparent') : '#fff',
+          '--AppBar-color': lvl < 2 ? (trigger ? '#222930' : theme.palette.grey['50']) : '#222930',
           backgroundImage: lvl < 2 ? (trigger ? 'none' : 'linear-gradient(180deg, rgba(0,0,0,0.10) 90%, rgba(0,0,0,0) 100%)') : 'none',
-          transition: 'background-color 0.2s ease-in-out',
+          transition: 'background-color 0.15s ease-in-out',
           '.MuiToolbar-root': {
             height: appBarHeight,
           },
