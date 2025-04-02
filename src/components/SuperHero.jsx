@@ -104,7 +104,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
               width: '100%',
               height: '100%',
               position: 'absolute',
-              background: `linear-gradient(180deg, rgba(0, 0, 0, 0.48) 5%, rgba(0, 0, 0, 0.20) ${appBarHeight})`,
+              background: `rgba(0, 0, 0, 0.20)`,
               zIndex: 1,
             }}
           ></div>

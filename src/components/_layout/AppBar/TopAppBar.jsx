@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { AppBar, Box, Button, Divider, Stack, Toolbar } from '@mui/material'
+import { AppBar, Box, Button, Divider, Stack, Toolbar, useScrollTrigger } from '@mui/material'
 import { styled, useTheme } from '@mui/material/styles'
 import { ArrowRight } from '@phosphor-icons/react'
 
@@ -96,11 +96,15 @@ function Logo({ lvl }) {
 }
 
 /**
- * Primary search app bar component
+ * Primary app bar component
  */
 export default function TopAppBar({ lvl, location = {} }) {
   const [open, setOpen] = useState(false)
   const theme = useTheme()
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 50,
+  })
 
   const toggleDrawer = (newState) => () => {
     setOpen(newState ?? !open)
@@ -124,11 +128,14 @@ export default function TopAppBar({ lvl, location = {} }) {
         position="sticky"
         elevation={0}
         sx={{
-          '--AppBar-background': lvl < 2 ? 'transparent' : '#fff',
+          '--AppBar-background': lvl < 2 ? (trigger ? 'red' : 'transparent') : '#fff',
           '--AppBar-color': lvl < 2 ? theme.palette.grey['50'] : '#222930',
+          backgroundImage: lvl < 2 ? (trigger ? 'none' : 'linear-gradient(180deg, rgba(0,0,0,0.10) 90%, rgba(0,0,0,0) 100%)') : 'none',
+          transition: 'background-color 0.2s ease-in-out',
           '.MuiToolbar-root': {
             height: appBarHeight,
           },
+          zIndex: 5,
         }}
       >
         <Div
