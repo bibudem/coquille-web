@@ -10,6 +10,8 @@ import CardActionArea from '@mui/material/CardActionArea'
 import SuperHero from '@/components/SuperHero'
 import RechercheSofiaAccueil from '@/components/RechercheSofiaAccueil'
 import ListeFormations from '@/components/ListeFormations'
+import ListeEvenements from '@/components/ListeEvenements'
+import LayoutGrid from  '@/components/utils/LayoutGrid'
 
 import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icons/react'
 import imageEspace from './images/image-arret-bibliothecaire.webp'
@@ -35,8 +37,14 @@ import imageEngagement from './images/engagement-accueil.webp'
 
   ## Quoi de neuf
 
-  <Bloc nouvelles-événements pompé>
-  </Bloc>
+  <LayoutGrid sx={{marginTop: '2rem'}}>
+    <Grid container spacing='2.25rem' size={{ sm: 12, md: 7 }}>
+      <ListeEvenements />
+    </Grid>
+    <Grid container spacing='2.25rem' size={{sm:12, md:5}}>
+      <Typography component="h3" variant="h3">Nouvelles</Typography>
+    </Grid>
+  </LayoutGrid>
 
 </Section>
 
