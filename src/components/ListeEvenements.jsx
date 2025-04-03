@@ -45,9 +45,9 @@ function Title({ children }) {
     <Div
       sx={{
         fontFamily: 'Lora',
-        fontSize: '1.5rem',
+        fontSize: '1.75rem',
         fontWeight: 500,
-        lineHeight: 1.3,
+        lineHeight: 1.5,
         color: 'var(--_title-color)',
       }}
     >
@@ -79,7 +79,6 @@ function Upper({ children }) {
 
 function Lower({ children, url }) {
   const theme = useTheme()
-  console.log('isInternalLink(%s):', url, isInternalLink(url))
   return (
     <Div
       sx={{
@@ -162,9 +161,9 @@ function ListeEvenementsItem({ imageVedette, upper, title, lower, url, ...rest }
             size="grow"
             container
             direction="column"
-            spacing={0}
+            spacing="1rem"
             sx={{
-              justifyContent: 'space-around',
+              justifyContent: 'flex-start',
             }}
           >
             <Grid>{upper}</Grid>
