@@ -12,12 +12,12 @@ const StyledBreadcrumb = styled(Link)(({ theme }) => ({
 }))
 
 function handleClick(event) {
-  event.preventDefault()
-  console.info('You clicked a breadcrumb.', event)
+  // event.preventDefault()
+  // console.info('You clicked a breadcrumb.', event)
 }
 
 export default function Breadcrumbs({ crumbs }) {
-  console.log('crumbs:', crumbs)
+  // console.log('crumbs:', crumbs)
 
   return (
     <Container
