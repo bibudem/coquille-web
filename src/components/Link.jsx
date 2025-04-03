@@ -15,10 +15,10 @@ const Link = forwardRef(function Link(props, ref) {
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
-  const isExternal = /^(?:https?:)?\/\//.test(to)
+  const isInternal = /^\//.test(to)
 
   // Use Gatsby Link for internal links, and <a> for others
-  if (isExternal) {
+  if (!isInternal) {
     return (
       <StyledA ref={ref} href={to} {...rest}>
         {children}
