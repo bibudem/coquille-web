@@ -26,6 +26,7 @@
     "color": "^4.2.3",
     "conditional-wrap": "^1.0.3",
     "contrast-color": "^1.0.1",
+    "date-fns": "^4.1.0",
     "directory-tree": "^3.5.2",
     "dotenv": "^16.4.7",
     "embla-carousel-react": "^8.5.2",
