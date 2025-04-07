@@ -15,7 +15,7 @@ import Debug from '@/components/_layout/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
 
 import { useSmall } from '@/hooks/use-small'
-import { SecondaryNav } from '@/components/_layout/SecondaryNav/SecondaryNav'
+import LayoutGrid from '@/components/utils/LayoutGrid'
 
 import commonComponents from './commonComponents'
 
@@ -69,37 +69,13 @@ export default function NouvelleTemplate({ pageContext, children, data, location
       >
         {process.env.NODE_ENV !== 'production' && <Debug />}
         <div style={{ position: 'absolute', background: '#fff', top: 0, right: 0, padding: '.5em' }}>{lvl}</div>
-
         <udem-urgence></udem-urgence>
-
         {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
-
         {/* <bib-avis bouton-fermer /> */}
-
         {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
-        {hasSecondaryNav ? (
-          <Container maxWidth="xl" sx={{ px: '64px' }}>
-            <Grid
-              container
-              spacing={{
-                xs: 1,
-                sm: 3,
-                lg: 4,
-              }}
-            >
-              <Grid size={3}>
-                <SecondaryNav currentLocation={location} />
-              </Grid>
-              <Grid size={9}>{mainContent}</Grid>
-            </Grid>
-          </Container>
-        ) : (
-          <>{mainContent}</>
-        )}
-
+        <Container maxWidth="xl">{mainContent}</Container>
         <Footer />
-
         {/* <bib-consent server-request-timeout="5000"></bib-consent> */}
       </IconContext.Provider>
     </MDXProvider>

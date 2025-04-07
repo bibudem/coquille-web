@@ -113,11 +113,11 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
 
   const data = useStaticQuery(graphql`
     query NouvellesQuery {
-      allFile(filter: { sourceInstanceName: { eq: "nouvelles" }, extension: { eq: "mdx" } }, sort: { childMdx: { frontmatter: { date: DESC } } }, limit: 3) {
+      allFile(filter: { sourceInstanceName: { eq: "pages" }, extension: { eq: "mdx" }, relativePath: { regex: "/^nouvelles/.*/" } }, sort: { childMdx: { frontmatter: { date: DESC } } }, limit: 2) {
         nodes {
-          absolutePath
           id
-          name
+          relativeDirectory
+          relativePath
           childMdx {
             frontmatter {
               articleUrl
@@ -131,12 +131,6 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
               title
               type
             }
-            fields {
-              timeToRead {
-                minutes
-                text
-              }
-            }
           }
         }
       }
@@ -144,14 +138,13 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
   `)
 
   const nouvelles = data.allFile.nodes.map((node) => {
+    const { id, relativePath, relativeDirectory } = node
     const {
       frontmatter: { articleUrl, authors, date, imageAlt, imageCaption, imageName, slug, source, title, type },
-      fields: {
-        timeToRead: { text },
-      },
     } = node.childMdx
+    const url = type === 'interne' ? `/${relativePath.replace(/\.mdx$/i, '')}` : articleUrl
     return {
-      articleUrl,
+      id,
       authors,
       date,
       imageAlt,
@@ -161,7 +154,7 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
       source,
       title,
       type,
-      text,
+      url,
     }
   })
 
@@ -177,8 +170,9 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
     >
       <Header flexItem>{title}</Header>
 
-      {nouvelles.map(({ articleUrl, authors, date, imageAlt, imageCaption, imageName, slug, source, text, title, type }) => (
+      {nouvelles.map(({ id, authors, date, imageAlt, imageCaption, imageName, slug, source, title, type, url }) => (
         <Card
+          key={id}
           sx={(theme) => ({
             boxShadow: 'none',
             borderRadius: theme.shape.corner.small,
@@ -187,12 +181,13 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
         >
           <CardActionArea
             component={Link}
-            to={slug}
+            to={url}
             sx={{
               rect: {
                 transition: 'opacity 250ms ease-in-out',
               },
               ':hover': {
+                textDecoration: 'none',
                 rect: {
                   opacity: 0,
                   transition: 'opacity 250ms ease-in-out',
@@ -219,8 +214,8 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
                 }}
               >
                 <Title>{title}</Title>
-                <Lower url={articleUrl} type={type}>
-                  {text}
+                <Lower url={url} type={type}>
+                  {source}
                 </Lower>
               </Div>
             </CardContent>

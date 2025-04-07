@@ -64,13 +64,13 @@ const config = {
         path: join(__dirname, 'content', 'pages', 'images', 'super-heroes'),
       },
     },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'nouvelles',
-        path: join(__dirname, 'content', 'nouvelles'),
-      },
-    },
+    // {
+    //   resolve: 'gatsby-source-filesystem',
+    //   options: {
+    //     name: 'nouvelles',
+    //     path: join(__dirname, 'content', 'nouvelles'),
+    //   },
+    // },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
