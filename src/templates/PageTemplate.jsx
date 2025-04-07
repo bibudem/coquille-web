@@ -79,7 +79,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
         {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
         {hasSecondaryNav ? (
-          <Container maxWidth="xl" sx={{ px: '64px' }}>
+          <Container sx={{ px: '64px' }}>
             <Grid
               container
               spacing={{

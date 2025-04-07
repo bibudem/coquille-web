@@ -30,7 +30,6 @@ export default function RechercheSofiaAccueil() {
       >
         <Container
           disableGutters
-          maxWidth="xl"
           sx={{
             padding: `2.875rem 4.125rem 2.875rem ${inlineOffset}`,
             height: '9.5625rem',

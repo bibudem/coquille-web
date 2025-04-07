@@ -59,7 +59,6 @@ export default function TopAppBarSm(props) {
           }}
         >
           <Container
-            maxWidth="xl"
             sx={{
               '&.MuiContainer-maxWidthXl': {
                 maxWidth: '1500px',

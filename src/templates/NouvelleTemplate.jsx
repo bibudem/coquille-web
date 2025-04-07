@@ -15,7 +15,6 @@ import Debug from '@/components/_layout/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
 
 import { useSmall } from '@/hooks/use-small'
-import LayoutGrid from '@/components/utils/LayoutGrid'
 
 import commonComponents from './commonComponents'
 
@@ -74,7 +73,7 @@ export default function NouvelleTemplate({ pageContext, children, data, location
         {/* <bib-avis bouton-fermer /> */}
         {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
-        <Container maxWidth="xl">{mainContent}</Container>
+        <Container>{mainContent}</Container>
         <Footer />
         {/* <bib-consent server-request-timeout="5000"></bib-consent> */}
       </IconContext.Provider>

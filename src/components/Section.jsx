@@ -73,7 +73,6 @@ export default function Section({ bg, image, fixedWidth = false, ...rest }) {
 
   return fixedWidth ? (
     <Container
-      maxWidth={theme.breakpoints.keys.at(-1)}
       sx={{
         ...styles,
         ...sx,
@@ -89,9 +88,7 @@ export default function Section({ bg, image, fixedWidth = false, ...rest }) {
         ...sx,
       }}
     >
-      <Container maxWidth={theme.breakpoints.keys.at(-1)} {...props}>
-        {children}
-      </Container>
+      <Container {...props}>{children}</Container>
     </Box>
   )
 }

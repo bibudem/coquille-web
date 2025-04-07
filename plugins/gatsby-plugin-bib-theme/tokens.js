@@ -197,6 +197,11 @@ const tokens = {
 				})
 			}
 		},
+		MuiContainer: {
+			defaultProps: {
+				maxWidth: 'xl',
+			}
+		},
 		MuiCssBaseline: {
 			/*
 			 * Viewport Width Range: 375px - 1536px
