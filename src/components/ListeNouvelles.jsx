@@ -112,10 +112,11 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
   }
 
   const data = useStaticQuery(graphql`
-    query NouvellesQuery {
-      allFile(filter: { sourceInstanceName: { eq: "pages" }, extension: { eq: "mdx" }, relativePath: { regex: "/^nouvelles/.*/" } }, sort: { childMdx: { frontmatter: { date: DESC } } }, limit: 2) {
+    query NouvellesQuery1 {
+      allFile(filter: { sourceInstanceName: { eq: "nouvelles" }, extension: { eq: "mdx" } }, sort: { childMdx: { frontmatter: { date: DESC } } }, limit: 2) {
         nodes {
           id
+          name
           relativeDirectory
           relativePath
           childMdx {
@@ -136,27 +137,29 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
       }
     }
   `)
-
-  const nouvelles = data.allFile.nodes.map((node) => {
-    const { id, relativePath, relativeDirectory } = node
-    const {
-      frontmatter: { articleUrl, authors, date, imageAlt, imageCaption, imageName, slug, source, title, type },
-    } = node.childMdx
-    const url = type === 'interne' ? `/${relativePath.replace(/\.mdx$/i, '')}` : articleUrl
-    return {
-      id,
-      authors,
-      date,
-      imageAlt,
-      imageCaption,
-      imageName,
-      slug,
-      source,
-      title,
-      type,
-      url,
-    }
-  })
+  console.log('data ici: ', data.allFile.nodes)
+  const nouvelles = data.allFile.nodes
+    // .filter((node) => !(node.relativeDirectory === 'nouvelles' && node.name === 'index'))
+    .map((node) => {
+      const { id, relativePath, relativeDirectory } = node
+      const {
+        frontmatter: { articleUrl, authors, date, imageAlt, imageCaption, imageName, slug, source, title, type },
+      } = node.childMdx
+      const url = type === 'interne' ? `/${relativePath.replace(/\.mdx$/i, '')}` : articleUrl
+      return {
+        id,
+        authors,
+        date,
+        imageAlt,
+        imageCaption,
+        imageName,
+        slug,
+        source,
+        title,
+        type,
+        url,
+      }
+    })
 
   return (
     <Div
