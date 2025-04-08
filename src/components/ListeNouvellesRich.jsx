@@ -1,11 +1,12 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { Card, CardActionArea, CardContent, List, ListItem, ListItemButton, ListItemText } from '@mui/material'
+import { Card, CardActionArea, CardContent, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Skeleton } from '@mui/material'
 import Button from '@/components/Button'
 import Link from '@/components/Link'
 import Div from '@/components/utils/Div'
 import isInternalLink from '@/utils/internLink'
 import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
 import { CalendarBlank } from '@phosphor-icons/react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 function Header({ children }) {
   return (
@@ -101,8 +102,27 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
           }
         }
       }
+
+      images: allFile(filter: { sourceInstanceName: { eq: "nouvelles" } }) {
+        nodes {
+          id
+          name
+          absolutePath
+          relativePath
+          relativeDirectory
+          childrenImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+          }
+        }
+      }
     }
   `)
+
+  const images = new Map()
+
+  data.images.nodes.forEach((node) => {
+    images.set(node.name, node)
+  })
 
   const nouvelles = data.allFile.nodes.map((node) => {
     const { id, relativePath, relativeDirectory } = node
@@ -119,6 +139,7 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
       imageAlt,
       imageCaption,
       imageName,
+      images: images.get(imageName)?.childrenImageSharp[0]?.gatsbyImageData,
       slug,
       source,
       title,
@@ -140,12 +161,13 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
       <Header flexItem>{title}</Header>
 
       <List>
-        {nouvelles.map(({ id, authors, date, excerpt, imageAlt, imageCaption, imageName, slug, source, title, type, url }) => (
+        {nouvelles.map(({ id, authors, date, excerpt, images, imageAlt, imageCaption, imageName, slug, source, title, type, url }) => (
           <ListItem key={id} disableGutters>
             <ListItemButton
               component={Link}
               to={url}
               sx={{
+                gap: '30px',
                 rect: {
                   transition: 'opacity 250ms ease-in-out',
                 },
@@ -159,6 +181,23 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
                 },
               }}
             >
+              <ListItemAvatar>
+                {images ? (
+                  <GatsbyImage
+                    image={images}
+                    alt={imageAlt}
+                    title={imageCaption}
+                    layout="fullWidth"
+                    style={{
+                      width: 120,
+                      height: 120,
+                      borderRadius: '12px',
+                    }}
+                  />
+                ) : (
+                  <Skeleton variant="rectangular" width={120} height={120} sx={{ borderRadius: '12px' }} />
+                )}
+              </ListItemAvatar>
               <ListItemText sx={{ display: 'flex', flexDirection: 'column', gap: '15px' }} disableTypography secondary={<Excerpt>{excerpt}</Excerpt>}>
                 <Upper>{date}</Upper>
                 <Title>{title}</Title>

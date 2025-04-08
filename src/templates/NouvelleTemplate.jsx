@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { Container, useTheme } from '@mui/material'
-import Grid from '@mui/material/Grid2'
 import { IconContext } from '@phosphor-icons/react'
 
 import TopAppBar from '@/components/_layout/AppBar/TopAppBar'
@@ -86,19 +85,44 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       frontmatter {
         title
+        articleUrl
+        authors
+        dateFormated: date(formatString: "LL", locale: "fr")
+        date
+        imageAlt
+        imageCaption
+        imageName
+        slug
+        source
+        template
+        type
       }
     }
   }
 `
+function convertTZ(date) {
+  return date.replace(/\.000Z$/i, '-05:00')
+}
 
 export function Head({ pageContext, location }) {
-  const { frontmatter } = pageContext
+  const { date, title, articleUrl, authors, imageName } = pageContext.frontmatter
   const { pathname } = location
+  const d = convertTZ(date)
+
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: title,
+    datePublished: d,
+    dateModified: d,
+    // image: `https://www.udem.fr/images/nouvelles/${imageName}`,
+    author: authors?.map((author) => ({ name: author.split(',')[0] })),
+  }
 
   return (
     <>
       <html lang="fr" />
-      <SEO title={frontmatter?.title} pathname={pathname} />
+      <SEO title={title} pathname={pathname} />
       <bib-gtm></bib-gtm>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-gtm.js"></script>
       {/* <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-avis.js"></script> */}
@@ -106,6 +130,8 @@ export function Head({ pageContext, location }) {
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/udem-urgence.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent-preferences-btn.js"></script>
+
+      <script type="application/ld+json">{JSON.stringify(jsonld)}</script>
     </>
   )
 }
