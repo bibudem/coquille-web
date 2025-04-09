@@ -98,8 +98,8 @@ function Lower({ children, url }) {
           gap: '.5em',
         }}
       >
-        <ClockCountdown size="1.25rem" color={theme.palette.bleuPrincipal.main} />
-        {children}
+        {/* <ClockCountdown size="1.25rem" color={theme.palette.bleuPrincipal.main} />
+        {children} */}
       </Div>
       <Div
         sx={{
