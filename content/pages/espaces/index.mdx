@@ -1,10 +1,15 @@
 ---
 title: Espaces
 slug: espaces
+test: >-
+  ## Ceci est un titre de niveau 2
+
+  Voici un paragraphe.
 ---
 
 import Alert from '@mui/material/Alert'
 import SuperHero from '@/components/SuperHero'
+import ListeBibliotheques from '@/components/ListeBibliotheques'
 import imageAccessible from '../images/marguerite-youville-espace.webp'
 import zoneConfort from '../images/confort-espaces.webp'
 import impression3d from '../images/impression-3d.webp'
@@ -32,7 +37,6 @@ import tableHaute from '../images/table-haute.webp'
   title="De l'espace pour réfléchir, découvrir et s'enrichir"
   imageName='espaces'
 />
-
 
 <Section>
   <Tabs1
@@ -411,12 +415,14 @@ import tableHaute from '../images/table-haute.webp'
   </HeroWithImage>
 </Section>
 
-<Section bg='bleu200'>
+<Section>
   ## On aime la visite!
 
   Découvrez ici les différents points de service du réseau des bibliothèques de l’UdeM. De la Montagne à Laval, en passant par la Rive-Sud et le MIL, il y a du choix!
 
   [carte]
+
+  <ListeBibliotheques />
 
 &lt;Section-fiches-bibliothèques&gt;
 
