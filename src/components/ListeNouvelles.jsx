@@ -6,6 +6,13 @@ import Div from '@/components/utils/Div'
 import isInternalLink from '@/utils/internLink'
 import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
 
+function getPath(path, slug) {
+  if (slug) {
+    return `/nouvelles/${path.split('/').slice(0, -1).join('/')}/${slug}`
+  }
+  return `/nouvelles/${path.replace(/\.mdx$/i, '')}`
+}
+
 function Header({ children }) {
   return (
     <Div
@@ -112,21 +119,23 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
   }
 
   const data = useStaticQuery(graphql`
-    query NouvellesQuery1 {
+    query ListeNouvellesQuery {
       allFile(filter: { sourceInstanceName: { eq: "nouvelles" }, extension: { eq: "mdx" } }, sort: { childMdx: { frontmatter: { date: DESC } } }, limit: 2) {
         nodes {
           id
           name
-          relativeDirectory
           relativePath
           childMdx {
             frontmatter {
-              articleUrl
               authors
               date(formatString: "LL", locale: "fr")
-              imageAlt
-              imageCaption
-              imageName
+              newsImage {
+                name
+                alt
+                legend
+                source
+              }
+              newsUrl
               slug
               source
               title
@@ -137,29 +146,25 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
       }
     }
   `)
-  console.log('data ici: ', data.allFile.nodes)
-  const nouvelles = data.allFile.nodes
-    // .filter((node) => !(node.relativeDirectory === 'nouvelles' && node.name === 'index'))
-    .map((node) => {
-      const { id, relativePath, relativeDirectory } = node
-      const {
-        frontmatter: { articleUrl, authors, date, imageAlt, imageCaption, imageName, slug, source, title, type },
-      } = node.childMdx
-      const url = type === 'interne' ? `/${relativePath.replace(/\.mdx$/i, '')}` : articleUrl
-      return {
-        id,
-        authors,
-        date,
-        imageAlt,
-        imageCaption,
-        imageName,
-        slug,
-        source,
-        title,
-        type,
-        url,
-      }
-    })
+
+  const nouvelles = data.allFile.nodes.map((node) => {
+    const { id, relativePath } = node
+    const {
+      frontmatter: { authors, date, newsImage, newsUrl, slug, source, title, type },
+    } = node.childMdx
+    const url = type === 'interne' ? getPath(relativePath, slug) : newsUrl
+    return {
+      id,
+      authors,
+      date,
+      newsImage,
+      url,
+      slug,
+      source,
+      title,
+      type,
+    }
+  })
 
   return (
     <Div
@@ -173,7 +178,7 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
     >
       <Header flexItem>{title}</Header>
 
-      {nouvelles.map(({ id, authors, date, imageAlt, imageCaption, imageName, slug, source, title, type, url }) => (
+      {nouvelles.map(({ id, authors, date, newsImage, url, source, title, type }) => (
         <Card
           key={id}
           sx={(theme) => ({
@@ -185,18 +190,22 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
           <CardActionArea
             component={Link}
             to={url}
-            sx={{
+            sx={(theme) => ({
+              '.MuiCardActionArea-focusHighlight': {
+                transitionDuration: `${theme.transitions.duration.md3.medium1}ms`,
+                transitionTimingFunction: theme.transitions.easing.md3.emphasized,
+              },
               rect: {
-                transition: 'opacity 250ms ease-in-out',
+                transition: `opacity ${theme.transitions.duration.md3.medium1}ms ${theme.transitions.easing.md3.emphasized}`,
               },
               ':hover': {
                 textDecoration: 'none',
                 rect: {
                   opacity: 0,
-                  transition: 'opacity 250ms ease-in-out',
+                  transition: `opacity ${theme.transitions.duration.md3.medium1}ms ${theme.transitions.easing.md3.emphasized}`,
                 },
               },
-            }}
+            })}
           >
             <CardContent
               sx={{

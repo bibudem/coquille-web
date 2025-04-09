@@ -101,9 +101,13 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
             frontmatter {
               authors
               date(formatString: "LL", locale: "fr")
-              imageAlt
-              imageCaption
-              imageName
+              newsImage {
+                name
+                alt
+                legend
+                source
+              }
+              newsUrl
               slug
               source
               title
@@ -134,9 +138,7 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
 
     const basePath = node.relativeDirectory ? `/nouvelles/${node.relativeDirectory}` : '/nouvelles'
     const path = `${basePath}/${(node.childMdx?.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')}`
-    console.log('node.childMdx?.frontmatter', node.childMdx?.frontmatter)
-    console.log('---', node.childMdx?.childMdx?.frontmatter?.slug ?? slugify(node.name))
-    console.log('===', path)
+
     createPage({
       // As mentioned above you could also query something else like frontmatter.title above and use a helper function
       // like slugify to create a slug

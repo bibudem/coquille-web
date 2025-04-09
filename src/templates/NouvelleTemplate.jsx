@@ -85,13 +85,16 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       frontmatter {
         title
-        articleUrl
         authors
         dateFormated: date(formatString: "LL", locale: "fr")
         date
-        imageAlt
-        imageCaption
-        imageName
+        newsImage {
+          alt
+          legend
+          name
+          source
+        }
+        newsUrl
         slug
         source
         template
@@ -105,7 +108,7 @@ function convertTZ(date) {
 }
 
 export function Head({ pageContext, location }) {
-  const { date, title, articleUrl, authors, imageName } = pageContext.frontmatter
+  const { date, title, newsUrl, authors } = pageContext.frontmatter
   const { pathname } = location
   const d = convertTZ(date)
 

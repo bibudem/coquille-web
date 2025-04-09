@@ -79,7 +79,7 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
   }
 
   const data = useStaticQuery(graphql`
-    query NouvellesQuery {
+    query ListeNouvellesRichQuery {
       allFile(filter: { sourceInstanceName: { eq: "nouvelles" }, extension: { eq: "mdx" } }, sort: { childMdx: { frontmatter: { date: DESC } } }) {
         nodes {
           id
@@ -88,12 +88,15 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
           childMdx {
             excerpt(pruneLength: 200)
             frontmatter {
-              articleUrl
               authors
               date(formatString: "LL", locale: "fr")
-              imageAlt
-              imageCaption
-              imageName
+              newsImage {
+                alt
+                legend
+                name
+                source
+              }
+              newsUrl
               slug
               source
               title
@@ -103,7 +106,7 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
         }
       }
 
-      images: allFile(filter: { sourceInstanceName: { eq: "nouvelles" } }) {
+      images: allFile(filter: { sourceInstanceName: { eq: "nouvelles" }, internal: { mediaType: { glob: "image/*" } } }) {
         nodes {
           id
           name
@@ -121,30 +124,28 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
   const images = new Map()
 
   data.images.nodes.forEach((node) => {
-    images.set(node.name, node)
+    images.set(node.name, node.childrenImageSharp[0]?.gatsbyImageData)
   })
-
+  console.log([...images.entries()])
   const nouvelles = data.allFile.nodes.map((node) => {
     const { id, relativePath, relativeDirectory } = node
     const {
       excerpt,
-      frontmatter: { articleUrl, authors, date, imageAlt, imageCaption, imageName, slug, source, title, type },
+      frontmatter: { authors, date, newsImage, newsUrl, slug, source, title, type },
     } = node.childMdx
-    const url = type === 'interne' ? `/nouvelles/${relativePath.replace(/\.mdx$/i, '')}` : articleUrl
+    const url = type === 'interne' ? `/nouvelles/${relativePath.replace(/\.mdx$/i, '')}` : newsUrl
     return {
       id,
       authors,
       date,
       excerpt,
-      imageAlt,
-      imageCaption,
-      imageName,
-      images: images.get(imageName)?.childrenImageSharp[0]?.gatsbyImageData,
+      images: images.get(newsImage.name),
+      newsImage,
+      newsUrl: url,
       slug,
       source,
       title,
       type,
-      url,
     }
   })
 
@@ -161,11 +162,11 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
       <Header flexItem>{title}</Header>
 
       <List>
-        {nouvelles.map(({ id, authors, date, excerpt, images, imageAlt, imageCaption, imageName, slug, source, title, type, url }) => (
+        {nouvelles.map(({ id, authors, date, excerpt, images, newsImage, newsUrl, slug, source, title, type }) => (
           <ListItem key={id} disableGutters>
             <ListItemButton
               component={Link}
-              to={url}
+              to={newsUrl}
               sx={{
                 gap: '30px',
                 rect: {
@@ -185,8 +186,8 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
                 {images ? (
                   <GatsbyImage
                     image={images}
-                    alt={imageAlt}
-                    title={imageCaption}
+                    alt={newsImage.alt}
+                    title={newsImage.caption}
                     layout="fullWidth"
                     style={{
                       width: 120,
