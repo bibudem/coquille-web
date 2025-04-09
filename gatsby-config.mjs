@@ -75,7 +75,7 @@ const config = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'personnel',
-        path: join(__dirname, 'data', 'personnel'),
+        path: join(__dirname, 'content', 'personnel'),
         ignore: ['**/~$*']
       },
     },
