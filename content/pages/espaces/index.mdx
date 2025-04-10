@@ -1,15 +1,12 @@
 ---
 title: Espaces
 slug: espaces
-test: >-
-  ## Ceci est un titre de niveau 2
-
-  Voici un paragraphe.
 ---
 
 import Alert from '@mui/material/Alert'
 import SuperHero from '@/components/SuperHero'
-import ListeBibliotheques from '@/components/ListeBibliotheques'
+import Bibliotheques from '../../bibliotheques/bibliotheques.mdx'
+
 import imageAccessible from '../images/marguerite-youville-espace.webp'
 import zoneConfort from '../images/confort-espaces.webp'
 import impression3d from '../images/impression-3d.webp'
@@ -198,10 +195,6 @@ import tableHaute from '../images/table-haute.webp'
 
 </Section>
 
-
-
-
-
 <Section bg="bleu100">
 
 <Carousel1
@@ -227,14 +220,14 @@ import tableHaute from '../images/table-haute.webp'
       >
         <p>Disponibles dans presque toutes les bibliothèques</p>
 
-      </FlipCardWithImage>
-<FlipCardWithImage
+    </FlipCardWithImage>
+    <FlipCardWithImage
         title="Station ergonomique"
         Image={stationErgo}
       >
         <p>Disponibles à la Bibliothèque de droit</p>
 
-      </FlipCardWithImage>
+    </FlipCardWithImage>
     <FlipCardWithImage
         title="Disque d'équilibre "
         Image={disqueEquilibre}
@@ -242,61 +235,59 @@ import tableHaute from '../images/table-haute.webp'
         <p>Disponibles :</p>
         <ul>
           <li>Bibliothèque d'aménagement</li>
-    <li>Bibliothèque du campus Laval </li>
-    <li>Bibliothèque de droit </li>
-    <li>Bibliothèque Thérèse-Gouin-Décarie </li>
+          <li>Bibliothèque du campus Laval </li>
+          <li>Bibliothèque de droit </li>
+          <li>Bibliothèque Thérèse-Gouin-Décarie </li>
         </ul>
-      </FlipCardWithImage>
-      <FlipCardWithImage
-        title="Planche d'équilibre "
-        Image={placheEquilibre}
-      >
+    </FlipCardWithImage>
+    <FlipCardWithImage
+      title="Planche d'équilibre "
+      Image={placheEquilibre}
+    >
         <p>Disponibles :</p>
         <ul>
           <li>Bibliothèque d'aménagement </li>
-    <li>Bibliothèque du campus Laval </li>
-    <li>Bibliothèque de droit </li>
-    <li>Bibliothèque de Kinésiologie </li>
-    <li>Bibliothèque de la santé </li>
+          <li>Bibliothèque du campus Laval </li>
+          <li>Bibliothèque de droit </li>
+          <li>Bibliothèque de Kinésiologie </li>
+          <li>Bibliothèque de la santé </li>
         </ul>
       </FlipCardWithImage>
 
-<FlipCardWithImage
+      <FlipCardWithImage
         title="Table à hauteur ajustable "
         Image={tableAjustable}
       >
         <p>Disponibles dans presque toutes les bibliothèques</p>
 
       </FlipCardWithImage>
-<FlipCardWithImage
+      <FlipCardWithImage
         title="Tapis antifatigue pour le travail debout "
         Image={tapisFatigue}
       >
-      <p>Disponibles dans presque toutes les bibliothèques</p>
+        <p>Disponibles dans presque toutes les bibliothèques</p>
       </FlipCardWithImage>
             
-<FlipCardWithImage
+      <FlipCardWithImage
         title="Chaise ballon avec dossier "
         Image={salleDoctorat}
       >
-      <p>Disponibles :</p>
-    <ul>
-    <li>Bibliothèque de Kinésiologie</li> 
-    <li>Bibliothèque de médecine vétérinaire</li> 
-    </ul>
+        <p>Disponibles :</p>
+        <ul>
+          <li>Bibliothèque de Kinésiologie</li> 
+          <li>Bibliothèque de médecine vétérinaire</li> 
+        </ul>
       </FlipCardWithImage>
           
-<FlipCardWithImage
+    <FlipCardWithImage
         title="Table haute"
         Image={salleDoctorat}
       >
-      <p>Disponibles à la Bibliothèque de Kinésiologie</p>
+        <p>Disponibles à la Bibliothèque de Kinésiologie</p>
       </FlipCardWithImage>
 
       </Carousel1>
 </Section>
-
-  
 
 <Section bg='rose300'>
 
@@ -422,9 +413,7 @@ import tableHaute from '../images/table-haute.webp'
 
   [carte]
 
-  <ListeBibliotheques />
-
-&lt;Section-fiches-bibliothèques&gt;
+  <Bibliotheques />
 
 ### Aménagement
 
