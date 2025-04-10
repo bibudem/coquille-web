@@ -109,7 +109,7 @@ const config = {
       }
     },
     'gatsby-plugin-bib-secondary-nav',
-    'gatsby-plugin-mdx-frontmatter',
+    // 'gatsby-plugin-mdx-frontmatter',
     'gatsby-plugin-mdx',
     {
       resolve: 'gatsby-plugin-webfonts',
