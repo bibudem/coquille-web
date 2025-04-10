@@ -93,7 +93,7 @@ export default function Section({ bg, image, fixedWidth = false, ...rest }) {
         {...props}
         sx={{
           padding: '0!important',
-          outline: '1px solid red',
+          // outline: '1px solid red',
         }}
       >
         <Box sx={{ padding: '0 64px' }}>{children}</Box>
