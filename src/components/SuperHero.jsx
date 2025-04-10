@@ -1,3 +1,4 @@
+import { createContext, useEffect, useState } from 'react'
 import { Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { useStaticQuery, graphql } from 'gatsby'
@@ -5,7 +6,6 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import Section from '@/components/Section'
 import { appBarHeight } from '@/components/_layout/AppBar/TopAppBar'
 import { useSmall } from '@/hooks/use-small'
-import { createContext, useEffect, useState } from 'react'
 
 export const inlineOffset = '3.75rem'
 

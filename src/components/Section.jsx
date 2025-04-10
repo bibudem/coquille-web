@@ -73,6 +73,7 @@ export default function Section({ bg, image, fixedWidth = false, ...rest }) {
 
   return fixedWidth ? (
     <Container
+      fixed
       sx={{
         ...styles,
         ...sx,
@@ -88,7 +89,15 @@ export default function Section({ bg, image, fixedWidth = false, ...rest }) {
         ...sx,
       }}
     >
-      <Container {...props}>{children}</Container>
+      <Container
+        {...props}
+        sx={{
+          padding: '0!important',
+          // outline: '1px solid red',
+        }}
+      >
+        <Box sx={{ padding: '0 64px' }}>{children}</Box>
+      </Container>
     </Box>
   )
 }
