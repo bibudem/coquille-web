@@ -1,15 +1,15 @@
 ---
 title: Lettres et sciences humaines
-code: ss
 image: 
   - name: ss
 ---
 
-import FicheBibliotheque from '@components/FicheBibliotheque'
+import FicheBibliotheque from '@/components/FicheBibliotheque'
 import {ArrowRight} from '@phosphor-icons/react'
 
 <FicheBibliotheque
   title="Lettres et sciences humaines"
+  codeBib="ss"
   espaces={
     <ul>
       <li>Amphithéâtre</li>
@@ -30,7 +30,7 @@ import {ArrowRight} from '@phosphor-icons/react'
   nousJoindre={
     <>
       <p>514 343-6111 poste 2737</p>
-      <p><Link to="#">Répertoire du personnel <ArrowRight /></Link></p>
+      <p><Link to="#" style={{display: 'inline-flex', alignItems: 'center', gap: '.5em'}}>Répertoire du personnel <ArrowRight size={18} /></Link></p>
     </>
   }
 >
