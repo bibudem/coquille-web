@@ -138,71 +138,63 @@ export default function TopAppBar({ lvl, location = {} }) {
           zIndex: 5,
         }}
       >
-        <Div
-          sx={{
-            margin: '0 auto',
-            width: '100%',
-            maxWidth: theme.breakpoints.values.xl,
-          }}
-        >
-          <Toolbar disableGutters>
-            <Box
+        <Toolbar disableGutters sx={{ margin: '0 auto', width: '100%', maxWidth: theme.breakpoints.values.xl, paddingLeft: '1.44rem', paddingRight: '1.25rem' }}>
+          <Box
+            sx={{
+              flexGrow: 0,
+            }}
+          >
+            <Link
+              aria-label="Accueil"
+              variant="h6"
+              noWrap
+              to="/"
               sx={{
-                flexGrow: 0,
+                display: { xs: 'none', sm: 'block', color: 'inherit' },
               }}
             >
-              <Link
-                aria-label="Accueil"
-                variant="h6"
-                noWrap
-                to="/"
-                sx={{
-                  display: { xs: 'none', sm: 'block', color: 'inherit' },
-                }}
-              >
-                <Logo lvl={lvl} />
-              </Link>
-            </Box>
-            <Box sx={{ flexGrow: 1 }} />
-            <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-              {pages.map(({ url, label }) => {
-                const isActive = location.pathname.startsWith(url)
-                return (
-                  <StyledButton
-                    size="large"
-                    href={url}
-                    key={url}
-                    lvl={lvl}
-                    sx={{
-                      fontWeight: isActive && 700,
-                    }}
-                  >
-                    {label}
-                  </StyledButton>
-                )
-              })}
-              <Button
-                variant="contained"
-                disableElevation
-                size="large"
-                href="/nous-soutenir/"
-                sx={{
-                  color: lvl < 2 ? '#0B113A' : '#fafdfe',
-                  bgcolor: lvl < 2 ? '#fff' : 'bleuFonce.main',
-                  '.MuiButton-icon svg': {
-                    fill: lvl < 2 ? theme.palette.rougeOrange.main : 'currentColor',
-                  },
-                }}
-                endIcon={<ArrowRight color={theme.palette.rougeOrange.main} />}
-              >
-                Je donne
-              </Button>
-            </Stack>
-            <Box sx={{ paddingLeft: '2rem' }}>
-              <MenuBurger lvl={lvl} onClick={toggleDrawer(true)} />
-            </Box>
-          </Toolbar>
-        </Div>
+              <Logo lvl={lvl} />
+            </Link>
+          </Box>
+          <Box sx={{ flexGrow: 1 }} />
+          <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+            {pages.map(({ url, label }) => {
+              const isActive = location.pathname.startsWith(url)
+              return (
+                <StyledButton
+                  size="large"
+                  href={url}
+                  key={url}
+                  lvl={lvl}
+                  sx={{
+                    fontWeight: isActive && 700,
+                  }}
+                >
+                  {label}
+                </StyledButton>
+              )
+            })}
+            <Button
+              variant="contained"
+              disableElevation
+              size="large"
+              href="/nous-soutenir/"
+              sx={{
+                color: lvl < 2 ? '#0B113A' : '#fafdfe',
+                bgcolor: lvl < 2 ? '#fff' : 'bleuFonce.main',
+                '.MuiButton-icon svg': {
+                  fill: lvl < 2 ? theme.palette.rougeOrange.main : 'currentColor',
+                },
+              }}
+              endIcon={<ArrowRight color={theme.palette.rougeOrange.main} />}
+            >
+              Je donne
+            </Button>
+          </Stack>
+          <Box sx={{ paddingLeft: '2rem' }}>
+            <MenuBurger lvl={lvl} onClick={toggleDrawer(true)} />
+          </Box>
+        </Toolbar>
       </AppBar>
       <SideNav open={open} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)}>
         <SideNavContent />
