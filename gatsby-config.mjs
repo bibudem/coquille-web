@@ -29,6 +29,22 @@ const config = {
   plugins: [
     'gatsby-plugin-provide-react',
     {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        extensions: ['.mdx'],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 1200,
+              linkImagesToOriginal: false,
+              withWebp: true,
+            },
+          },
+        ]
+      }
+    },
+    {
       resolve: 'gatsby-plugin-alias-imports',
       options: {
         alias: {
@@ -80,6 +96,13 @@ const config = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'bibliotheques',
+        path: join(__dirname, 'content', 'bibliotheques'),
+      },
+    },
+    {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
@@ -109,8 +132,6 @@ const config = {
       }
     },
     'gatsby-plugin-bib-secondary-nav',
-    // 'gatsby-plugin-mdx-frontmatter',
-    'gatsby-plugin-mdx',
     {
       resolve: 'gatsby-plugin-webfonts',
       options: {
