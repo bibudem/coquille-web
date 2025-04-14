@@ -1,7 +1,8 @@
 import { Typography } from '@mui/material'
-import Grid from '@mui/material/Grid2'
 import GridOffset from '@/components/utils/GridOffset'
 import Div from '@/components/utils/Div'
+import { FichesBibliothequesContext } from './FicheBibliotheque/FichesBibliothequesContext'
+import { useState } from 'react'
 
 function Header1({ Icon, children }) {
   return (
@@ -30,6 +31,7 @@ function Header1({ Icon, children }) {
 
 export default function FichesBibliotheques({ title, ...rest }) {
   const { children, ...props } = rest
+  const [expanded, setExpanded] = useState(false)
 
   return (
     <GridOffset offset={1}>
@@ -40,7 +42,7 @@ export default function FichesBibliotheques({ title, ...rest }) {
           gap: '30px',
         }}
       >
-        {children}
+        <FichesBibliothequesContext.Provider value={expanded}>{children}</FichesBibliothequesContext.Provider>
       </Div>
     </GridOffset>
   )

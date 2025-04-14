@@ -11,7 +11,11 @@ import Bloc from '@/components/FicheBibliotheque/Bloc'
 import HoraireAujourdhui from '@/components/FicheBibliotheque/HoraireAujourdhui'
 import PlusIcon from '@/components/FicheBibliotheque/plus.svg'
 
-const Accordion = styled((props) => <MuiAccordion disableGutters elevation={0} square {...props} />)(({ theme }) => ({}))
+const Accordion = styled((props) => <MuiAccordion disableGutters elevation={0} square {...props} />)(({ theme }) => ({
+  '&::before': {
+    display: 'none',
+  },
+}))
 
 const AccordionSummary = styled((props) => <MuiAccordionSummary expandIcon={<SvgIcon component={PlusIcon} inheritViewBox />} {...props} />)(({ theme }) => ({
   alignItems: 'flex-start',
@@ -19,8 +23,15 @@ const AccordionSummary = styled((props) => <MuiAccordionSummary expandIcon={<Svg
   paddingLeft: 0,
   paddingRight: 0,
   borderBottom: `1px solid ${theme.palette.bleuPrincipal.main}`,
+  transition: `color ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
   '.MuiAccordionSummary-content': {
     margin: '0',
+    fontSize: '1.2222rem',
+    fontWeight: 700,
+    lineHeight: 1.2,
+  },
+  '&.Mui-expanded': {
+    color: theme.palette.bleuPrincipal.main,
   },
 }))
 
@@ -29,22 +40,6 @@ const AccordionDetails = styled((props) => <MuiAccordionDetails {...props} />)((
   padding: '3.125rem',
   borderRadius: `0 0 ${theme.shape.corner.small} ${theme.shape.corner.small}`,
 }))
-
-function Header({ children }) {
-  return (
-    <Typography
-      component="h3"
-      sx={{
-        fontSize: '1.375rem',
-        fontWeight: 700,
-        lineHeight: 1.2,
-        color: 'bleuPrincipal.main',
-      }}
-    >
-      {children}
-    </Typography>
-  )
-}
 
 function Col({ children }) {
   return (
@@ -74,9 +69,7 @@ export default function FicheBibliotheque({ title, codeBib, espaces, adresse, no
 
   return (
     <Accordion>
-      <AccordionSummary>
-        <Header>{title}</Header>
-      </AccordionSummary>
+      <AccordionSummary>{title}</AccordionSummary>
       <AccordionDetails>
         <LayoutGrid columns={10}>
           <Grid size={3}>
