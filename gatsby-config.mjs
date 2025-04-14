@@ -106,7 +106,7 @@ const config = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          formats: [`avif`, `webp`, 'jpg'],
+          formats: [`webp`, 'jpg'],
           placeholder: `blurred`,
           quality: 80,
           breakpoints: [600, 900, 1200, 1536],
