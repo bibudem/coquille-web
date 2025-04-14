@@ -2,7 +2,6 @@ import { Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import GridOffset from '@/components/utils/GridOffset'
 import Div from '@/components/utils/Div'
-import { graphql, useStaticQuery } from 'gatsby'
 
 function Header1({ Icon, children }) {
   return (
@@ -30,12 +29,19 @@ function Header1({ Icon, children }) {
 }
 
 export default function FichesBibliotheques({ title, ...rest }) {
-  console.log('title:', title)
   const { children, ...props } = rest
 
   return (
     <GridOffset offset={1}>
-      <Grid>{children}</Grid>
+      <Div
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '30px',
+        }}
+      >
+        {children}
+      </Div>
     </GridOffset>
   )
 }

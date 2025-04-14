@@ -122,9 +122,15 @@ export function Head({ pageContext, location }) {
 
   return (
     <>
-      <html lang="fr" />
+      <html lang="fr-CA" />
       <SEO title={frontmatter?.title} pathname={pathname} />
       <bib-gtm></bib-gtm>
+      {['/espaces', 'nous-joindre'].some((path) => pathname.startsWith(path)) && (
+        <>
+          <link rel="preload" href="https://api.bib.umontreal.ca/horaires/services" as="fetch" crossorigin="anonymous" />
+          <link rel="preload" href="https://api.bib.umontreal.ca/horaires/?fin=P1D" as="fetch" crossorigin="anonymous" />
+        </>
+      )}
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-gtm.js"></script>
       {/* <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-avis.js"></script> */}
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-retroaction-usager.js"></script>

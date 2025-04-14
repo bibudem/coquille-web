@@ -5,7 +5,7 @@ image:
 ---
 
 import FicheBibliotheque from '@/components/FicheBibliotheque'
-import {ArrowRight} from '@phosphor-icons/react'
+import {ArrowSquareOut} from '@phosphor-icons/react'
 
 <FicheBibliotheque
   title="Lettres et sciences humaines"
@@ -23,14 +23,14 @@ import {ArrowRight} from '@phosphor-icons/react'
       <p>Bibliothèque des lettres et sciences humaines</p>
       <p>Pavillon Samuel-Bronfman</p>
       <p>3000 rue Jean Brillant, Montréal, salle 1030</p>
-      <p><Link to="https://www.google.com/maps/place/Pavillon+Samuel-Bronfman,+3000+Jean+Brillant+St,+Montreal,+QC+H3T+1N7,+Canada/@45.499427,-73.616554,4251m/data=!3m1!1e3!4m6!3m5!1s0x4cc919f3c6b6c4fd:0x1783a82167c956!8m2!3d45.4994274!4d-73.6165537!16s%2Fg%2F1tftqq4m?hl=en&entry=ttu&g_ep=EgoyMDI1MDQwOC4wIKXMDSoASAFQAw%3D%3D">Voir l'itinéraire</Link></p>
+      <p><Link to="https://www.google.com/maps/place/Pavillon+Samuel-Bronfman,+3000+Jean+Brillant+St,+Montreal,+QC+H3T+1N7,+Canada/@45.499427,-73.616554,4251m/data=!3m1!1e3!4m6!3m5!1s0x4cc919f3c6b6c4fd:0x1783a82167c956!8m2!3d45.4994274!4d-73.6165537!16s%2Fg%2F1tftqq4m?hl=en&entry=ttu&g_ep=EgoyMDI1MDQwOC4wIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
       <p>Accessibilité</p>
     </>
   }
   nousJoindre={
     <>
       <p>514 343-6111 poste 2737</p>
-      <p><Link to="#" style={{display: 'inline-flex', alignItems: 'center', gap: '.5em'}}>Répertoire du personnel <ArrowRight size={18} /></Link></p>
+      <p><Link to="#" Icon>Répertoire du personnel</Link></p>
     </>
   }
 >
