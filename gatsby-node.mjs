@@ -132,7 +132,7 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
   // `context` is available in the template as a prop and as a variable in GraphQL
 
   pages.forEach(node => {
-    console.log(Object.keys(node))
+
     const template = node.childMdx?.frontmatter?.template
     const templateFullPath = template ? resolve(`./src/templates/${template.substring(0, 1).toUpperCase()}${template.substring(1)}Template.jsx`) : nouvelleTemplate
 
