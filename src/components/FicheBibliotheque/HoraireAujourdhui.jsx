@@ -22,7 +22,6 @@ const Dl = styled('dl')(({ theme }) => ({
 }))
 
 const Dt = styled('dt')(({ theme }) => ({
-  fontFamily: 'Lora',
   fontSize: '1rem',
   fontWeight: 400,
   lineHeight: 1.6,
@@ -37,18 +36,18 @@ const Dd = styled('dd')(({ theme }) => ({
   fontSize: '0.7778rem',
   fontWeight: 500,
   lineHeight: 1.5,
-  paddingBottom: '.5rem',
   [theme.breakpoints.up('md')]: {
     fontSize: '1rem',
     fontWeight: 400,
     lineHeight: 1.6,
+    paddingBottom: '.5rem',
   },
 }))
 
 export default function HoraireAujourdhui({ codeBib }) {
   const { data: services } = useSWR('https://api.bib.umontreal.ca/horaires/services', fetcher)
   const { data, error } = useSWR('https://api.bib.umontreal.ca/horaires/?fin=P1D', fetcher)
-  const isSmall = useSmall('sm')
+  const isSmall = useSmall('md')
 
   if (error) {
     console.error(error)

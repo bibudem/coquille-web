@@ -25,7 +25,16 @@ export default function Bloc({ title, Icon, children }) {
       })}
     >
       {title && <BlocTitle Icon={Icon}>{title}</BlocTitle>}
-      <Div sx={{ fontSize: '16px' }}>{children}</Div>
+      <Div
+        sx={(theme) => ({
+          fontSize: '16px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '15px',
+        })}
+      >
+        {children}
+      </Div>
     </Div>
   )
 }
