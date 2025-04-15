@@ -178,6 +178,7 @@ const tokens = {
 					fontSize: '0.875rem',
 					fontWeight: 400,
 					minHeight: '3.125rem', // 50px
+					padding: '6px 20px 6px 25px',
 					variants: [
 						{
 							props: { variant: 'contained' },
