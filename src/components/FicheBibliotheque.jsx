@@ -9,9 +9,11 @@ import { Door, MapTrifold, Users } from '@phosphor-icons/react'
 import LayoutGrid from '@/components/utils/LayoutGrid'
 import Bloc from '@/components/FicheBibliotheque/Bloc'
 import HoraireAujourdhui from '@/components/FicheBibliotheque/HoraireAujourdhui'
+import { useSmall } from '@/hooks/use-small'
 import PlusIcon from '@/components/FicheBibliotheque/plus.svg'
 
 const Accordion = styled((props) => <MuiAccordion disableGutters elevation={0} square {...props} />)(({ theme }) => ({
+  color: theme.palette.bleuFonce.main,
   '&::before': {
     display: 'none',
   },
@@ -37,7 +39,10 @@ const AccordionSummary = styled((props) => <MuiAccordionSummary expandIcon={<Svg
 
 const AccordionDetails = styled((props) => <MuiAccordionDetails {...props} />)(({ theme }) => ({
   backgroundColor: theme.palette.bleu100.main,
-  padding: '3.125rem',
+  padding: '20px',
+  [theme.breakpoints.up('md')]: {
+    padding: '3.125rem',
+  },
   borderRadius: `0 0 ${theme.shape.corner.small} ${theme.shape.corner.small}`,
 }))
 
@@ -51,6 +56,7 @@ function Col({ children }) {
 
 export default function FicheBibliotheque({ title, codeBib, espaces, adresse, nousJoindre, ...rest }) {
   const { children, ...props } = rest
+  const isSmall = useSmall('md')
   const imageData = useStaticQuery(graphql`
     query FicheBibliothequeImageQuery {
       allFile(filter: { sourceInstanceName: { eq: "bibliotheques" }, relativePath: { glob: "images/*" } }) {
@@ -68,11 +74,11 @@ export default function FicheBibliotheque({ title, codeBib, espaces, adresse, no
   const image = imageData.allFile.nodes.find((node) => node.name === codeBib)?.childrenImageSharp[0].gatsbyImageData
 
   return (
-    <Accordion>
+    <Accordion className="bib-comp-fiche-bibliotheque">
       <AccordionSummary>{title}</AccordionSummary>
       <AccordionDetails>
-        <LayoutGrid columns={10}>
-          <Grid size={3}>
+        <Grid container columns={10} columnSpacing="10px">
+          <Grid size={{ xs: 10, sm: 5, md: 3 }}>
             <Col>
               <HoraireAujourdhui codeBib={codeBib} />
               <Bloc title="Espaces" Icon={Door}>
@@ -80,7 +86,7 @@ export default function FicheBibliotheque({ title, codeBib, espaces, adresse, no
               </Bloc>
             </Col>
           </Grid>
-          <Grid size={4}>
+          <Grid size={{ xs: 10, sm: 5, md: 4 }}>
             <Col>
               <Bloc title="Adresse" Icon={MapTrifold}>
                 {adresse}
@@ -91,10 +97,12 @@ export default function FicheBibliotheque({ title, codeBib, espaces, adresse, no
               {children && <Bloc>{children}</Bloc>}
             </Col>
           </Grid>
-          <Grid size={3}>
-            <GatsbyImage image={image} style={{ borderRadius: '0rem 0rem 0.75rem 0rem' }} alt="" />
-          </Grid>
-        </LayoutGrid>
+          {!isSmall && (
+            <Grid size={{ md: 3 }}>
+              <GatsbyImage image={image} style={{ borderRadius: '0rem 0rem 0.75rem 0rem' }} alt="" />
+            </Grid>
+          )}
+        </Grid>
       </AccordionDetails>
     </Accordion>
   )

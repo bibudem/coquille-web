@@ -1,29 +1,54 @@
 import { useMemo } from 'react'
 import { styled } from '@mui/material'
 import useSWR from 'swr'
-import { ArrowRight, ClockCountdown } from '@phosphor-icons/react'
+import { ClockCountdown } from '@phosphor-icons/react'
+import ConditionalWrap from 'conditional-wrap'
 import Link from '@/components/Link'
+import Div from '@/components/utils/Div'
+import { useSmall } from '@/hooks/use-small'
 import Bloc from './Bloc'
 
 const fetcher = (url) => fetch(url).then((r) => r.json())
 
-const Dt = styled('dt')({
-  fontFamily: 'Lora',
-  fontSize: '1rem',
-  fontWeight: 600,
-  lineHeight: 1.6,
-})
+const Dl = styled('dl')(({ theme }) => ({
+  margin: 0,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '6px',
+  // [theme.breakpoints.up('md')]: {
+  //   fontWeight: 600,
+  //   lineHeight: 1.2,
+  // },
+}))
 
-const Dd = styled('dd')({
+const Dt = styled('dt')(({ theme }) => ({
+  fontFamily: 'Lora',
   fontSize: '1rem',
   fontWeight: 400,
   lineHeight: 1.6,
+  [theme.breakpoints.up('md')]: {
+    fontWeight: 600,
+    lineHeight: 1.2,
+  },
+}))
+
+const Dd = styled('dd')(({ theme }) => ({
+  color: theme.palette.bleuFonce.main,
+  fontSize: '0.7778rem',
+  fontWeight: 500,
+  lineHeight: 1.5,
   paddingBottom: '.5rem',
-})
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1rem',
+    fontWeight: 400,
+    lineHeight: 1.6,
+  },
+}))
 
 export default function HoraireAujourdhui({ codeBib }) {
   const { data: services } = useSWR('https://api.bib.umontreal.ca/horaires/services', fetcher)
   const { data, error } = useSWR('https://api.bib.umontreal.ca/horaires/?fin=P1D', fetcher)
+  const isSmall = useSmall('sm')
 
   if (error) {
     console.error(error)
@@ -45,15 +70,28 @@ export default function HoraireAujourdhui({ codeBib }) {
 
   return (
     evenements && (
-      <Bloc title="Horaire d'aujourd'hui" Icon={ClockCountdown}>
-        <dl>
-          {evenements.map(({ service, sommaire }) => (
-            <>
+      <Bloc title="Aujourd'hui" Icon={ClockCountdown}>
+        {evenements.map(({ service, sommaire }) => (
+          <ConditionalWrap
+            condition={isSmall}
+            wrap={(children) => (
+              <Div
+                sx={{
+                  display: 'flex',
+                  gap: '1em',
+                }}
+              >
+                <ClockCountdown size={26} color="var(--bib-palette-primary-main)" />
+                {children}
+              </Div>
+            )}
+          >
+            <Dl>
               <Dt>{service}</Dt>
               <Dd>{sommaire}</Dd>
-            </>
-          ))}
-        </dl>
+            </Dl>
+          </ConditionalWrap>
+        ))}
         <div>
           <Link to="/horaires/" Icon>
             Tous les horaires

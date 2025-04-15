@@ -1,29 +1,37 @@
 import Div from '@/components/utils/Div'
+import { useSmall } from '@/hooks/use-small'
 
 export default function Bloc({ title, Icon, children }) {
   return (
     <Div
-      sx={{
+      sx={(theme) => ({
         display: 'flex',
         flexDirection: 'column',
-        gap: '1rem',
+        gap: '0.8333rem',
+        [theme.breakpoints.up('md')]: {
+          gap: '1rem',
+        },
+
         lineHeight: 1.5,
-        '& p, & dd': {
+        '& p, & dd, & ol, & ul': {
           margin: 0,
         },
         '& ul, & ol': {
-          margin: 0,
           paddingLeft: '1em',
         },
-      }}
+        '& p, & li': {
+          marginBottom: '.3333em',
+        },
+      })}
     >
-      {title && Icon && <BlocTitle Icon={Icon}>{title}</BlocTitle>}
+      {title && <BlocTitle Icon={Icon}>{title}</BlocTitle>}
       <Div sx={{ fontSize: '16px' }}>{children}</Div>
     </Div>
   )
 }
 
 export function BlocTitle({ Icon, children }) {
+  const isSmall = useSmall('md')
   return (
     <Div
       sx={{
@@ -35,7 +43,7 @@ export function BlocTitle({ Icon, children }) {
         color: 'bleuPrincipal.main',
       }}
     >
-      <Icon size="1.5rem" color="currentColor" />
+      {Icon && !isSmall && <Icon size="1.5rem" color="currentColor" />}
       {children}
     </Div>
   )
