@@ -12,6 +12,7 @@ import Footer from '@/components/_layout/Footer/Footer'
 import Breadcrumbs from '@/components/_layout/Breadcrumbs/Breadcrumbs'
 import SEO from '@/components/_layout/SEO'
 import Debug from '@/components/_layout/Debug'
+import LayoutGrid from '../components/utils/LayoutGrid'
 import RetroactionUsager from '@/components/RetroactionUsager'
 
 import { useSmall } from '@/hooks/use-small'
@@ -79,7 +80,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
         {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
         {hasSecondaryNav ? (
-          <Container sx={{ px: '64px' }}>
+          <LayoutGrid outter>
             <Grid
               container
               spacing={{
@@ -93,7 +94,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
               </Grid>
               <Grid size={9}>{mainContent}</Grid>
             </Grid>
-          </Container>
+          </LayoutGrid>
         ) : (
           <>{mainContent}</>
         )}
