@@ -96,7 +96,16 @@ export default function Section({ bg, image, fixedWidth = false, ...rest }) {
           // outline: '1px solid red',
         }}
       >
-        <Box sx={{ padding: '0 64px' }}>{children}</Box>
+        <Box
+          sx={(theme) => ({
+            padding: '0 20px',
+            [theme.breakpoints.up('md')]: {
+              padding: '0 64px',
+            },
+          })}
+        >
+          {children}
+        </Box>
       </Container>
     </Box>
   )

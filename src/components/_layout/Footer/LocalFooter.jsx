@@ -80,12 +80,15 @@ export default function LocalFooter() {
   return (
     <FooterContainer sx={{ backgroundColor: 'bleuFonce.main', color: 'bleuFonce.contrastText' }}>
       <Div
-        sx={{
+        sx={(theme) => ({
           display: 'flex',
           alignItems: 'stretch',
-          padding: '24px 64px',
+          padding: '0 20px',
+          [theme.breakpoints.up('md')]: {
+            padding: '0 64px',
+          },
           justifyContent: 'space-between',
-        }}
+        })}
       >
         <Col>
           <Header>Nous joindre</Header>

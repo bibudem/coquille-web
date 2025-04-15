@@ -5,13 +5,17 @@ export default function LayoutGrid({ outter = false, sx, children, ...props }) {
     <Grid
       container
       spacing="64px"
-      sx={{
+      sx={(theme) => ({
         ...(outter && {
-          paddingLeft: '64px',
-          paddingRight: '64px',
+          paddingLeft: '20px',
+          paddingRight: '20px',
+          [theme.breakpoints.up('md')]: {
+            paddingLeft: '64px',
+            paddingRight: '64px',
+          },
         }),
         ...sx,
-      }}
+      })}
       {...props}
     >
       {children}
