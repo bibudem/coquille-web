@@ -17,6 +17,10 @@ const Accordion = styled((props) => <MuiAccordion disableGutters elevation={0} s
   '&::before': {
     display: 'none',
   },
+  '& .MuiAlert-root, & .MuiAlert-message': {
+    fontSize: 'inherit',
+    color: 'inherit',
+  },
 }))
 
 const AccordionSummary = styled((props) => <MuiAccordionSummary expandIcon={<SvgIcon component={PlusIcon} inheritViewBox />} {...props} />)(({ theme }) => ({
