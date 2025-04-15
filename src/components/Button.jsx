@@ -1,4 +1,5 @@
 import { Button as MuiButton } from '@mui/material'
+import { Link as GatsbyLink } from 'gatsby'
 import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
 import isInternalLink from '../utils/internLink'
 
@@ -9,8 +10,8 @@ const config = {
     disableElevation: true,
   },
   secondary: {
-    color: 'bleuFonce',
-    variant: 'outlined',
+    color: 'bleuPrincipal',
+    variant: 'text',
   },
 }
 
@@ -60,6 +61,10 @@ export default function Button({ primary, secondary, href, ...props }) {
 
     if (!linkIsInternal) {
       buttonProps.rel = 'noopener'
+    }
+
+    if (linkIsInternal) {
+      buttonProps.component = GatsbyLink
     }
   }
 
