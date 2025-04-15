@@ -5,6 +5,14 @@ import { unstable_styleFunctionSx } from '@mui/system'
 import styled from '@emotion/styled'
 import { ArrowRight } from '@phosphor-icons/react'
 
+const linkStyles = {
+  color: 'bleuPrincipal.main',
+  textDecoration: 'none',
+  '&:hover': {
+    textDecoration: 'underline',
+  },
+}
+
 const iconStyles = {
   display: 'inline-flex',
   alignItems: 'center',
@@ -23,7 +31,7 @@ const Link = forwardRef(function Link(props, ref) {
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
   const isInternal = /^\//.test(to)
-  const styles = Icon ? { ...iconStyles } : {}
+  const styles = Icon ? { ...linkStyles, ...iconStyles } : { ...linkStyles }
   const _iconProps = { size: '1.125rem', color: 'currentColor', ...iconProps }
 
   const icon = Icon && typeof Icon === 'boolean' ? <ArrowRight {..._iconProps} /> : <Icon {..._iconProps} />
