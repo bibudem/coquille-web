@@ -84,9 +84,11 @@ export default function FicheBibliotheque({ title, codeBib, blocHoraires, blocEs
           <Grid size={{ xs: 10, sm: 5, md: 3 }}>
             <Col>
               <HoraireAujourdhui codeBib={codeBib}>{blocHoraires}</HoraireAujourdhui>
-              <Bloc title="Espaces" Icon={Door}>
-                {blocEspaces}
-              </Bloc>
+              {blocEspaces && (
+                <Bloc title="Espaces" Icon={Door}>
+                  {blocEspaces}
+                </Bloc>
+              )}
             </Col>
           </Grid>
           <Grid size={{ xs: 10, sm: 5, md: 4 }}>
