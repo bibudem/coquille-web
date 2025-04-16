@@ -44,6 +44,7 @@ const config = {
         ]
       }
     },
+    'gatsby-plugin-catch-links',
     {
       resolve: 'gatsby-plugin-alias-imports',
       options: {
