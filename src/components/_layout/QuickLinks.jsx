@@ -142,19 +142,19 @@ export function QuickLinksSm() {
         }}
       >
         <IconButton component="a" href="https://umontreal.on.worldcat.org/discovery?lang=fr" aria-label="Sofia">
-          <SofiaIcon color="#fff" />
+          <SofiaIcon color="#fff" size={40} />
         </IconButton>
         <IconButton component="a" href="/horaires" aria-label="Horaires">
-          <ClockCountdown color="#fff" size={24} />
+          <ClockCountdown color="#fff" size={40} />
         </IconButton>
         <IconButton component="a" href="https://calendrier.bib.umontreal.ca/r" aria-label="Réserver une salle">
-          <CalendarPlus color="#fff" size={24} />
+          <CalendarPlus color="#fff" size={40} />
         </IconButton>
         <IconButton component="a" href="#" onClick={handleOnMenuItemClick} aria-label="Soutien informatique">
-          <Lifebuoy color="#fff" size={24} />
+          <Lifebuoy color="#fff" size={40} />
         </IconButton>
         <IconButton component="a" href="#" onClick={handleOnMenuItemClick} aria-label="Clavarder">
-          <Chats color="#fff" size={24} />
+          <Chats color="#fff" size={40} />
         </IconButton>
       </Box>
     </Div>

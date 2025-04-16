@@ -1,6 +1,3 @@
-import Accordion from '@mui/material/Accordion'
-import AccordionSummary from '@mui/material/AccordionSummary'
-import AccordionDetails from '@mui/material/AccordionDetails'
 import AlertTitle from '@mui/material/AlertTitle'
 import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
@@ -12,6 +9,10 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Typography from '@mui/material/Typography'
 
+import Accordion from '@/components/Accordion'
+import AccordionDetails from '@/components/AccordionDetails'
+import AccordionGroup from '@/components/AccordionGroup'
+import AccordionSummary from '@/components/AccordionSummary'
 import Alert from '@/components/Alert'
 import Button from '@/components/Button'
 import Card2 from '@/components/Card2'
@@ -35,6 +36,7 @@ import { Hero, Bloc } from '@/components/dummy-components'
 export default {
   Accordion,
   AccordionDetails,
+  AccordionGroup,
   AccordionSummary,
   Alert,
   AlertTitle,

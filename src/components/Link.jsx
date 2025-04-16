@@ -19,7 +19,7 @@ const iconStyles = {
   gap: '.375em',
 }
 
-const StyledA = styled('a')(unstable_styleFunctionSx)
+const A = styled('a')(unstable_styleFunctionSx)
 
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
@@ -27,6 +27,7 @@ const StyledA = styled('a')(unstable_styleFunctionSx)
 // export default function Link({ children, to, ...rest }) {
 const Link = forwardRef(function Link(props, ref) {
   const { children, sx, Icon, iconProps, to, ...rest } = props
+  console.log('props', props)
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
@@ -39,10 +40,10 @@ const Link = forwardRef(function Link(props, ref) {
   // Use Gatsby Link for internal links, and <a> for others
   if (!isInternal) {
     return (
-      <StyledA ref={ref} href={to} sx={{ ...styles, ...sx }} {...rest}>
+      <A ref={ref} href={to} sx={{ ...styles, ...sx }} {...rest}>
         {children}
         {Icon && icon}
-      </StyledA>
+      </A>
     )
   }
 
