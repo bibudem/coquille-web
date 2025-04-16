@@ -17,7 +17,7 @@ const Accordion = styled((props) => <MuiAccordion disableGutters elevation={0} s
     display: 'none',
   },
   '& .MuiAlert-root, & .MuiAlert-message': {
-    fontSize: 'inherit',
+    fontSize: '13px',
     color: 'inherit',
   },
 }))
@@ -57,7 +57,7 @@ function Col({ children }) {
   )
 }
 
-export default function FicheBibliotheque({ title, codeBib, espaces, adresse, nousJoindre, ...rest }) {
+export default function FicheBibliotheque({ title, codeBib, blocHoraires, blocEspaces, blocAdresse, blocNousJoindre, ...rest }) {
   const { children, ...props } = rest
   const isSmall = useSmall('md')
   const imageData = useStaticQuery(graphql`
@@ -67,7 +67,7 @@ export default function FicheBibliotheque({ title, codeBib, espaces, adresse, no
           name
           relativePath
           childrenImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, width: 365, quality: 80, breakpoints: 365)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, height: 600, quality: 80, breakpoints: 400)
           }
         }
       }
@@ -80,29 +80,40 @@ export default function FicheBibliotheque({ title, codeBib, espaces, adresse, no
     <Accordion className="bib-comp-fiche-bibliotheque">
       <AccordionSummary>{title}</AccordionSummary>
       <AccordionDetails>
-        <Grid container columns={10} columnSpacing="10px">
+        <Grid container columns={10} columnSpacing="2rem">
           <Grid size={{ xs: 10, sm: 5, md: 3 }}>
             <Col>
-              <HoraireAujourdhui codeBib={codeBib} />
+              <HoraireAujourdhui codeBib={codeBib}>{blocHoraires}</HoraireAujourdhui>
               <Bloc title="Espaces" Icon={Door}>
-                {espaces}
+                {blocEspaces}
               </Bloc>
             </Col>
           </Grid>
           <Grid size={{ xs: 10, sm: 5, md: 4 }}>
             <Col>
               <Bloc title="Adresse" Icon={MapTrifold}>
-                {adresse}
+                {blocAdresse}
               </Bloc>
               <Bloc title="Nous joindre" Icon={Users}>
-                {nousJoindre}
+                {blocNousJoindre}
               </Bloc>
               {children && <Bloc>{children}</Bloc>}
             </Col>
           </Grid>
           {!isSmall && (
-            <Grid size={{ md: 3 }}>
-              <GatsbyImage image={image} style={{ borderRadius: '0rem 0rem 0.75rem 0rem' }} alt="" />
+            <Grid size={{ md: 3 }} sx={{ position: 'relative' }}>
+              <GatsbyImage
+                image={image}
+                style={{
+                  borderRadius: '0rem 0rem 0.75rem 0rem',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                }}
+                alt=""
+              />
             </Grid>
           )}
         </Grid>

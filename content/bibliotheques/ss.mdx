@@ -1,16 +1,10 @@
----
-title: Lettres et sciences humaines
-image: 
-  - name: ss
----
-
 import FicheBibliotheque from '@/components/FicheBibliotheque'
 import { ArrowSquareOut, PersonSimpleCircle } from '@phosphor-icons/react'
 
 <FicheBibliotheque
   title="Lettres et sciences humaines"
   codeBib="ss"
-  espaces={
+  blocEspaces={
     <ul>
       <li>Amphithéâtre</li>
       <li>Studio d’enregistrement audio</li>
@@ -18,7 +12,7 @@ import { ArrowSquareOut, PersonSimpleCircle } from '@phosphor-icons/react'
       <li>Salle adaptée</li>
     </ul>
   }
-  adresse={
+  blocAdresse={
     <>
       <p>Bibliothèque des lettres et sciences humaines</p>
       <p>Pavillon Samuel-Bronfman</p>
@@ -27,7 +21,7 @@ import { ArrowSquareOut, PersonSimpleCircle } from '@phosphor-icons/react'
       <p><Link to="#" Icon={PersonSimpleCircle}>Accessibilité</Link></p>
     </>
   }
-  nousJoindre={
+  blocNousJoindre={
     <>
       <p>514 343-6111 poste 2737</p>
       <p><Link to="#" Icon>Répertoire du personnel</Link></p>

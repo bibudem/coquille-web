@@ -1,13 +1,13 @@
 import Div from '@/components/utils/Div'
 import { useSmall } from '@/hooks/use-small'
 
-export default function Bloc({ title, Icon, children }) {
+export default function Bloc({ title, Icon, flex = false, children }) {
   return (
     <Div
       sx={(theme) => ({
         display: 'flex',
         flexDirection: 'column',
-        gap: '0.8333rem',
+        gap: '15px',
         [theme.breakpoints.up('md')]: {
           gap: '1rem',
         },
@@ -26,12 +26,14 @@ export default function Bloc({ title, Icon, children }) {
     >
       {title && <BlocTitle Icon={Icon}>{title}</BlocTitle>}
       <Div
-        sx={(theme) => ({
+        sx={{
           fontSize: '16px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '15px',
-        })}
+          ...(flex && {
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '15px',
+          }),
+        }}
       >
         {children}
       </Div>
