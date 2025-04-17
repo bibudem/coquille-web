@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { Container, useTheme } from '@mui/material'
+import { useTheme } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { IconContext } from '@phosphor-icons/react'
 
@@ -21,7 +21,6 @@ import { SecondaryNav } from '@/components/_layout/SecondaryNav/SecondaryNav'
 import commonComponents from './commonComponents'
 
 function getCurrentPageLevel(location) {
-  // const pathname = location.pathname.endsWith('/') ? location.pathname.slice(1) : location.pathname
   return location.pathname.split('/').filter((item) => item).length
 }
 

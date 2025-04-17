@@ -32,7 +32,6 @@ export default function PageTemplate({ pageContext, children, data, location }) 
   }, [location])
 
   useEffect(() => {
-    // const navLvl = location.pathname.split('/').length
     setHasSecondaryNav(lvl > 1)
   }, [lvl])
 
