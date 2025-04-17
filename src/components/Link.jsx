@@ -27,7 +27,7 @@ const A = styled('a')(unstable_styleFunctionSx)
 // export default function Link({ children, to, ...rest }) {
 const Link = forwardRef(function Link(props, ref) {
   const { children, sx, Icon, iconProps, to, ...rest } = props
-  console.log('props', props)
+  // console.log('props', props)
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
