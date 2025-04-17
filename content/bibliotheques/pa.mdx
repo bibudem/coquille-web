@@ -4,23 +4,18 @@ import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
 <FicheBibliotheque
   title="Marguerite-d'Youville"
   codeBib="pa"
-  blocEspaces={
-    <ul>
-      <li><Link to="#">lien</Link></li>
-    </ul>
-  }
+  blocEspaces={false}
   blocAdresse={
     <>
-      <p>Bibliothèque ...</p>
-      <p></p>
-      <p></p>
-      <p><Link to="#" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
-      <p>Accessibilité</p>
+      <p>Bibliothèque Marguerite-d'Youville</p>
+      <p>Pavillon Marguerite-d'Youville</p>
+      <p>2375, chemin de la Côte-Sainte-Catherine, salle 2120</p>
+      <p><Link to="https://www.google.com/maps?ll=45.509365,-73.618392&z=15&t=m&hl=en&gl=US&mapclient=embed&cid=14455154458948229137" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
     </>
   }
   blocNousJoindre={
     <>
-      <p>514 343-6111, poste ####</p>
+      <p>514 343-6111, poste 1895</p>
       <p><Link to="#" Icon>Répertoire du personnel</Link></p>
     </>
   }

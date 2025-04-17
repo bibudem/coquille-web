@@ -4,26 +4,22 @@ import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
 <FicheBibliotheque
   title="Centre de conservation Lionel-Groulx"
   codeBib="conservation"
-  blocEspaces={
-    <ul>
-      <li><Link to="#">lien</Link></li>
-    </ul>
-  }
+  blocEspaces= {false}
   blocAdresse={
     <>
-      <p>Bibliothèque ...</p>
-      <p></p>
-      <p></p>
-      <p><Link to="#" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
-      <p>Accessibilité</p>
+      <p>Centre de conservation Lionel-Groulx</p>
+      <p>Pavillon Lionel-Groulx</p>
+      <p>3150, rue Jean-Brillant</p>
+      <p>salle C-1017-16 (par la porte C-1059)</p>
+      <p><Link to="https://www.google.com/maps?ll=45.499267,-73.618308&z=15&t=m&hl=en&gl=US&mapclient=embed&cid=5977889247530305618" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
     </>
   }
   blocNousJoindre={
     <>
-      <p>514 343-6111, poste ####</p>
+      <p>514 343-6111, poste 42680</p>
       <p><Link to="#" Icon>Répertoire du personnel</Link></p>
     </>
   }
 >
-
+  <Alert>Les rayons du Centre de conservation Lionel-Groulx sont inaccessibles au public. Le personnel se fera un plaisir d'aller chercher vos documents. Pour une liste de 5 documents et plus, il faut nous faire parvenir d'avance les références par <Link to="mailto:prconser@bib.umontreal.ca">courriel</Link>.</Alert>
 </FicheBibliotheque>

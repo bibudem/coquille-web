@@ -4,7 +4,10 @@ slug: index
 ---
 
 import { FlowerTulip, Heart, BookOpenText, GraduationCap } from '@phosphor-icons/react'
+import fondlivresrares from '../images/fonds-livres-rares.webp'
+import campagnebibsante from '../images/campagne-bib-sante.webp'
 
+import campagnebibsante from '../images/campagne-bib-sante.webp'
 
 <Section>
 
@@ -31,17 +34,25 @@ import { FlowerTulip, Heart, BookOpenText, GraduationCap } from '@phosphor-icons
 </Section>
 
 <Section bg='vertFonce'>
-  <Hero cartes photo>
 
-    ### Fonds des livres rares de l'UdeM
-
-    [Découvrir la campagne](https://bib.umontreal.ca/)
-
-    ### Revitalisation de la Bibliothèque de la santé
-
-    [Découvrir la campagne](https://bib.umontreal.ca/)
-
-  </Hero>
+<Grid container spacing=".62rem" sx={{margin:'4rem 0 4rem'}}>
+    <Grid>
+      <CardWithImage
+        title="Fond des livres rares de l'UdeM"
+        Image={fondlivresrares}
+        href="#"
+        moreText="Découvrir la campagne"
+      />
+    </Grid>
+    <Grid>
+      <CardWithImage
+        title="Revitalisation de la Bibliothèque de la santé"
+        Image={campagnebibsante}
+        href="https://umontreal.ca"
+        moreText="Découvrir la campagne"
+      />
+    </Grid>
+  </Grid>
 </Section>
 
 <Section bg='bleu100'>
@@ -86,13 +97,50 @@ import { FlowerTulip, Heart, BookOpenText, GraduationCap } from '@phosphor-icons
 </Section>
 
 <Section bg="rose300">
-  <Hero cartes photo info en hover>
 
-    ### cabine insonorisé
+<Grid>
+      <FlipCardWithImage
+        title="Cabines insonorisées"
+        Image={image1}
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>Bibliothèque d'aménagement</li>
+          <li>Bibliothèque du campus de Laval</li>
+          <li>Bibliothèque de droit</li>
+          <li>Bibliothèque Marguerite-d'Youville</li>
+          <li>Bibliothèque de médecine vétérinaire</li>
+          <li>Bibliothèque Thérèse-Gouin-Décarie</li>
+          <li>Bibliothèque de la santé</li>
+        </ul>
+      </FlipCardWithImage>
+    </Grid>
+    <Grid>
+      <FlipCardWithImage
+        title="Achats de licence Adobe Creative Cloud"
+        Image={image2}
+      >
+        Description...
+      </FlipCardWithImage>
+    </Grid>
+    <Grid>
+      <FlipCardWithImage
+        title="Consulter le répertoire"
+        Image={image3}
+      >
+        Description...
+      </FlipCardWithImage>
+    </Grid>
+    <Grid>
+      <FlipCardWithImage
+        title="Postes de travail actif"
+        Image={image4}
+      >
+        Description...
+      </FlipCardWithImage>
+    </Grid>
+  </Grid>
 
-    ### Achats de livres
-
-  </Hero>
 </Section>
 
 <Section bg='bleu100'>

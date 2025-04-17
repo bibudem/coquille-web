@@ -4,26 +4,22 @@ import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
 <FicheBibliotheque
   title="Centre de conservation 101, Boul. Marcel-Laurin"
   codeBib="marcel-laurin"
-  blocEspaces={
-    <ul>
-      <li><Link to="#">lien</Link></li>
-    </ul>
-  }
+  blocEspaces={false}
   blocAdresse={
     <>
-      <p>Bibliothèque ...</p>
-      <p></p>
-      <p></p>
-      <p><Link to="#" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
-      <p>Accessibilité</p>
+      <p>Centre de conservation – 101, boul. Marcel-Laurin</p>
+      <p>101, boul. Marcel-Laurin, suite 150</p>
+      <p><Link to="https://www.google.com/maps?ll=45.503789,-73.670906&z=15&t=m&hl=fr&gl=CA&mapclient=embed&q=101+Blvd.+Marcel-Laurin+Saint-Laurent,+QC+H4N+2M3" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
     </>
   }
   blocNousJoindre={
     <>
-      <p>514 343-6111, poste ####</p>
+      <p>514 343-6111, poste 42680</p>
       <p><Link to="#" Icon>Répertoire du personnel</Link></p>
     </>
   }
 >
 
+ <Alert><p>L’emprunt se fait par la réservation dans Sofia ou la numérisation d'article ou de chapitre de livre. Le délai de livraison est de 3 à 9 jours pour les livres imprimés.</p>
+<p>La consultation de documents sur place est possible sur rendez-vous seulement. Veuillez nous écrire pour prendre rendez-vous.</p></Alert>
 </FicheBibliotheque>
