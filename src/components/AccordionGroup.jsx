@@ -1,23 +1,20 @@
 import { useEffect, useState } from 'react'
+// import { navigate } from 'gatsby'
 import { useTheme } from '@mui/material'
-import AccordionContext from '@/components/AccordionContext'
+import AccordionsContext from '@/components/AccordionsContext'
 
-export default function AccordionGroup({ color, children, ...props }) {
+export default function AccordionGroup({ color = 'bleuPrincipal', children, ...props }) {
   const [expanded, setExpanded] = useState(false)
   const [currentColor, setCurrentColor] = useState(null)
   const theme = useTheme()
 
   const colors = {
-    default: {
-      background: 'transparent',
-      color: 'inherit',
-    },
     bleuPrincipal: {
-      background: theme.palette.bleu100.main,
+      backgroundColor: theme.palette.bleu100.main,
       color: theme.palette.bleuPrincipal.main,
     },
     rose: {
-      background: '#fcf3f1',
+      backgroundColor: '#fcf3f1',
       color: '#b72600',
     },
   }
@@ -40,5 +37,12 @@ export default function AccordionGroup({ color, children, ...props }) {
     }
   }, [color])
 
-  return <AccordionContext.Provider value={{ expanded, setExpanded, handleChange, currentColor, setCurrentColor }}>{children}</AccordionContext.Provider>
+  // useEffect(() => {
+  //   console.log('================================================ onchange', expanded)
+  //   if (expanded) {
+  //     navigate(`#${expanded}`, { replace: true })
+  //   }
+  // }, [expanded])
+
+  return <AccordionsContext.Provider value={{ expanded, setExpanded, handleChange, currentColor, setCurrentColor }}>{children}</AccordionsContext.Provider>
 }

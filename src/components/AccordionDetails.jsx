@@ -1,15 +1,15 @@
-import { useContext, useEffect, useId, useState } from 'react'
+import { useContext } from 'react'
 import MuiAccordionDetails from '@mui/material/AccordionDetails'
-import AccordionContext from '@/components/AccordionContext'
+import AccordionsContext from '@/components/AccordionsContext'
 
 export default function AccordionDetails({ sx, ...props }) {
-  const { expanded, setExpanded, handleChange, currentColor } = useContext(AccordionContext)
+  const { currentColor } = useContext(AccordionsContext)
 
   return (
     <MuiAccordionDetails
       sx={(theme) => ({
         ...sx,
-        backgroundColor: currentColor?.background,
+        backgroundColor: currentColor?.backgroundColor,
         padding: '20px',
         [theme.breakpoints.up('md')]: {
           padding: '3.125rem',
@@ -20,14 +20,3 @@ export default function AccordionDetails({ sx, ...props }) {
     />
   )
 }
-
-// const AccordionDetails = styled((props) => <MuiAccordionDetails {...props} />)(({ theme }) => ({
-//   backgroundColor: theme.palette.bleu100.main,
-//   padding: '20px',
-//   [theme.breakpoints.up('md')]: {
-//     padding: '3.125rem',
-//   },
-//   borderRadius: `0 0 ${theme.shape.corner.small} ${theme.shape.corner.small}`,
-// }))
-
-// export default AccordionDetails

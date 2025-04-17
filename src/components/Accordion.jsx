@@ -1,10 +1,10 @@
 import { useContext, useEffect, useId } from 'react'
-import { styled, useTheme } from '@mui/material'
+import { styled } from '@mui/material'
 import MuiAccordion from '@mui/material/Accordion'
-import AccordionContext from '@/components/AccordionContext'
+import AccordionsContext from '@/components/AccordionsContext'
 
-function BibAccordion({ color, defaultExpanded, ...props }) {
-  const { expanded, setExpanded, handleChange, currentColor, setCurrentColor } = useContext(AccordionContext)
+function BibAccordion({ defaultExpanded, ...props }) {
+  const { expanded, setExpanded, handleChange, currentColor, setCurrentColor } = useContext(AccordionsContext)
   const tabId = useId()
 
   useEffect(() => {
