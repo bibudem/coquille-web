@@ -1,0 +1,44 @@
+---
+title: <Blockquote>
+template: doc
+---
+import Blockquote from '@/components/Blockquote'
+import LayoutGrid from '@/components/utils/LayoutGrid'
+import GridOffset from '@/components/utils/GridOffset'
+import Image from './image.jpg'
+
+<Section>
+
+  # Blockquote
+
+  Depuis l’année dernière, nous avons pu restaurer plus de 20 livres rares, et 30 autres sont en voie de restauration grâce à la générosité de personnes passionnées d’histoire, de science ou de beaux livres.
+
+  La restauration de ces livres a été financée grâce au programme « Adoptez un livre ». Vous pouvez ainsi choisir de dédier votre don au titre de votre choix parmi nos pièces les plus fragiles.
+
+  En 2023-2024, le Dr Gilles Théorêt, diplômé de l’Université de Montréal, a ainsi adopté notre édition datée de 1632 des Voyages de la Nouvelle France occidentale, dicte Canada de Samuel de Champlain. Ce document, une version révisée et augmentée de l’édition de 1613, est considéré comme la plus importante de toutes les éditions de cet ouvrage. La carte géographique qui l’accompagne est la première représentation occidentale de l’entièreté des Grands Lacs.
+
+    <GridOffset
+      columnSpacing="30px"
+      sx={(theme) => ({
+        alignItems: 'center',
+        margin: '1em 2em',
+        [theme.breakpoints.up('md')]: {
+          maxWidth: '80%',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        },
+        [theme.breakpoints.up('lg')]: {
+          maxWidth: '70%'
+        }
+    })}>
+      <Grid size="auto">
+        <img src={Image} style={{width: 'auto', height: '190px', borderRadius: '12px'}} alt="" />
+      </Grid>
+      <Grid size='grow'>
+        <Blockquote source="Dr Gilles Théorêt, diplômé de l’Université de Montréal et adoptant de l’ouvrage Les voyages de la Nouvelle France occidentale">
+          L’histoire peut se perdre ou être déformée par le temps. Il est important d’avoir des sources de première main pour la comprendre.
+        </Blockquote>
+      </Grid>
+    </GridOffset>
+
+</Section>
