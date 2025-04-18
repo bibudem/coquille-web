@@ -2,18 +2,19 @@
 title: Nous soutenir
 slug: index
 ---
-
+import SuperHero from '@/components/SuperHero'
 import { FlowerTulip, Heart, BookOpenText, GraduationCap } from '@phosphor-icons/react'
 import fondlivresrares from '../images/fonds-livres-rares.webp'
 import campagnebibsante from '../images/campagne-bib-sante.webp'
+import cabine from '../images/cabine.webp'
+import travailactif from '../images/travail-actif.webp'
+import creativecloud from '../images/creative-cloud.webp'
+import atelier from '../images/atelier-fabrication.webp'
 
-import campagnebibsante from '../images/campagne-bib-sante.webp'
-
-<Section>
-
-# Nous soutenir
-
-</Section>
+<SuperHero
+  title="Nous soutenir"
+  imageName='noussoutenir'
+/>
 
 <Section bg="bleu100">
 
@@ -97,11 +98,16 @@ import campagnebibsante from '../images/campagne-bib-sante.webp'
 </Section>
 
 <Section bg="rose300">
+<Carousel1
+    title={<Typography component="h3">Apperçu des réalisations</Typography>}
+    moreText="Voir le studio"
+    moreHref="#"
+  >
 
 <Grid>
       <FlipCardWithImage
         title="Cabines insonorisées"
-        Image={image1}
+        Image={cabine}
       >
         <p>Disponibles :</p>
         <ul>
@@ -118,15 +124,7 @@ import campagnebibsante from '../images/campagne-bib-sante.webp'
     <Grid>
       <FlipCardWithImage
         title="Achats de licence Adobe Creative Cloud"
-        Image={image2}
-      >
-        Description...
-      </FlipCardWithImage>
-    </Grid>
-    <Grid>
-      <FlipCardWithImage
-        title="Consulter le répertoire"
-        Image={image3}
+        Image={creativecloud}
       >
         Description...
       </FlipCardWithImage>
@@ -134,12 +132,20 @@ import campagnebibsante from '../images/campagne-bib-sante.webp'
     <Grid>
       <FlipCardWithImage
         title="Postes de travail actif"
-        Image={image4}
+        Image={travailactif}
       >
         Description...
       </FlipCardWithImage>
     </Grid>
-  </Grid>
+ <Grid>
+          <FlipCardWithImage
+        title="Atelier de fabrication numérique"
+        Image={atelier}
+      >
+        Description...
+      </FlipCardWithImage>
+    </Grid>
+ </Carousel1>
 
 </Section>
 
