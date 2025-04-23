@@ -1,6 +1,7 @@
 import { useContext, useMemo, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import codeBibs from 'code-bib'
+import BlocHoraire from './BlocHoraire'
 import { HoraireBibContext } from './HoraireBibContext'
 import useSyncCarousels from './useSyncCarousels'
 import useHoraires from './useHoraires'
@@ -19,7 +20,8 @@ export default function HoraireBib({ codeBib, children }) {
   const horairesData = useContext(HoraireBibContext)
   const carouselProps = useSyncCarousels()
   const { header } = useHoraires()
-
+  const { daysOfWeekHeaders } = horairesData
+  console.log('daysOfWeekHeaders:', daysOfWeekHeaders)
   const _horaires = useMemo(() => {
     const { horaires, ...props } = horairesData
     if (!codeBib in horaires) {
@@ -45,7 +47,8 @@ export default function HoraireBib({ codeBib, children }) {
         <Title>{codeBibs[codeBib].court}</Title>
         {children}
       </Div>
-      <Div
+      <BlocHoraire data={daysOfWeekHeaders} />
+      {/* <Div
         sx={{
           flexGrow: 1,
           display: 'grid',
@@ -59,7 +62,7 @@ export default function HoraireBib({ codeBib, children }) {
           .map((_, i) => {
             return <Div key={i}>{i}</Div>
           })}
-      </Div>
+      </Div> */}
     </Div>
   )
 }

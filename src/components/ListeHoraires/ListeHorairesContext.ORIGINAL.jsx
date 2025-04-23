@@ -15,7 +15,7 @@ function getLastSunday() {
   return formatISO(previousSunday(new Date()), { representation: 'date' })
 }
 
-export function ListeHorairesProvider({ children }) {
+export function HoraireBibProvider({ children }) {
   const [horaires, setHoraires] = useState([])
   const [dateDebut, setWeek] = useState(() => getLastSunday())
   const { data, error, isLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires?debut=${dateDebut}&fin=P7D`, fetcher)

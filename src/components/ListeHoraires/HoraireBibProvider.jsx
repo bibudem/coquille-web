@@ -1,19 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import useSWR from 'swr'
-import { HoraireBibContext } from './HoraireBibContext'
+import { HoraireBibContext } from './HoraireBibContext.jsx'
 import { formatWeekHeader, getLastSundayISODate } from '@/utils/dateTimeUtils'
+import { getFormatedDaysOfWeek } from '../../utils/dateTimeUtils.js'
 
 const fetcher = (...args) => {
   return fetch(...args).then((res) => res.json())
 }
 
-export default function ListeHorairesProvider({ children }) {
-  const [horaires, setHoraires] = useState([])
+export default function HoraireBibProvider({ children }) {
+  // const [horaires, setHoraires] = useState([])
   const [labels, setLabels] = useState({})
   const [currentWeek, setCurrentWeek] = useState(() => getLastSundayISODate())
   const { data: horairesData, error, isLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires?debut=${currentWeek}&fin=P7D`, fetcher)
 
-  useEffect(() => {
+  const horaires = useMemo(() => {
     if (!horairesData) {
       return
     }
@@ -45,15 +46,17 @@ export default function ListeHorairesProvider({ children }) {
       setCurrentWeek,
     }
 
-    setHoraires(parsedData)
+    return parsedData
   }, [horairesData])
 
   useEffect(() => {
     if (currentWeek) {
       const currentWeekTitle = formatWeekHeader(currentWeek)
+      const daysOfWeekHeaders = getFormatedDaysOfWeek(currentWeek)
 
       setLabels({
         currentWeekTitle,
+        daysOfWeekHeaders,
       })
     }
   }, [currentWeek])

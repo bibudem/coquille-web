@@ -1,14 +1,14 @@
 import Banner from './Banner'
-import ListeHorairesProvider from './ListeHorairesProvider'
+import HoraireBibProvider from './HoraireBibProvider'
 import ListeHorairesContainer from './ListeHorairesContainer'
 import useSyncCarousels from './useSyncCarousels'
 
 export default function ListeHoraires() {
   const { navCurrentWeekTitle } = useSyncCarousels()
   return (
-    <ListeHorairesProvider>
+    <HoraireBibProvider>
       <Banner header={navCurrentWeekTitle} />
       <ListeHorairesContainer />
-    </ListeHorairesProvider>
+    </HoraireBibProvider>
   )
 }
