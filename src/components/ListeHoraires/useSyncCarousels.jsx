@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
-import { formatWeekHeader, getLastSundayDate } from '@/utils/dateTimeUtils.js'
+import { formatWeekHeader, getFirstDayOfWeekDate } from '@/utils/dateTimeUtils.js'
 
 const options = {}
 
 export default function useCarousel(emblaApi) {
   const [ref, api] = useEmblaCarousel(options)
-  const [currentWeek, setCurrentWeek] = useState(getLastSundayDate())
+  const [currentWeek, setCurrentWeek] = useState(getFirstDayOfWeekDate())
   const [navCurrentWeekTitle, setNavCurrentWeekTitle] = useState(null)
 
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true)

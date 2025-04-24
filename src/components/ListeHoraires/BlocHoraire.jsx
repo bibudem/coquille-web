@@ -6,13 +6,16 @@ import { useTheme } from '@mui/material'
 function TableHeaderCell({ sx, children }) {
   return (
     <Div
-      sx={{
+      sx={(theme) => ({
         padding: '10px 12px',
         fontWeight: 600,
         letterSpacing: '.32px',
         backgroundColor: 'bleu100.main',
+        '&:nth-child(8)': {
+          borderRadius: `0 ${theme.shape.corner.small} 0 0`,
+        },
         ...sx,
-      }}
+      })}
     >
       {children}
     </Div>
@@ -58,7 +61,7 @@ function TableHeader({ data }) {
           <TableHeaderCell
             sx={(theme) => ({
               backgroundColor: 'bleu100.main',
-              ...(i === 6 && { borderRadius: `0 ${theme.shape.corner.small} 0 0` }),
+              // ...(i === 6 && { borderRadius: `0 ${theme.shape.corner.small} 0 0` }),
             })}
           >
             {item}
@@ -71,8 +74,6 @@ function TableHeader({ data }) {
 export default function BlocHoraire({ codeBib }) {
   const { daysOfWeekHeaders, horaires, services } = useContext(HoraireBibContext)
   const [data, setData] = useState([])
-  console.log('horaires:', horaires[codeBib])
-  console.log('services:', services)
 
   useEffect(() => {
     if (horaires) {

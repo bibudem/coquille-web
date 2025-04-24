@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import useSWR from 'swr'
 import { HoraireBibContext } from './HoraireBibContext.jsx'
-import { addWeekISODate, formatWeekHeader, getFormatedDaysOfWeek, getLastSundayISODate } from '@/utils/dateTimeUtils'
+import { addWeekISODate, formatWeekHeader, formatDaysOfWeekHeader, getLastSundayISODate } from '@/utils/dateTimeUtils'
 
 const fetcher = (...args) => {
   return fetch(...args).then((res) => res.json())
@@ -13,6 +13,10 @@ export default function HoraireBibProvider({ children }) {
   const [currentWeek, setCurrentWeek] = useState(() => getLastSundayISODate())
   const { data: horairesData, error, isLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires?debut=${currentWeek}&fin=P7D`, fetcher)
   const { data: servicesData, error: serviceError, isLoading: serviceIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires/services`, fetcher)
+
+  useEffect(() => {
+    console.log('--- currentWeek:', currentWeek)
+  }, [currentWeek])
 
   function nav(to) {
     setCurrentWeek(addWeekISODate(currentWeek, to))
@@ -39,11 +43,12 @@ export default function HoraireBibProvider({ children }) {
         }
         result[codeBib].push(item)
       })
-      console.log('result:', result)
+
       return result
     }
 
     const { labels } = horairesData
+
     const parsedData = {
       horaires: parseData(horairesData),
       labels,
@@ -52,14 +57,6 @@ export default function HoraireBibProvider({ children }) {
 
     return parsedData
   }, [horairesData])
-
-  // const services = useMemo(() => {
-  //   if (!servicesData) {
-  //     return
-  //   }
-
-  //   return Object.values(servicesData)
-  // }, [servicesData])
 
   useEffect(() => {
     if (servicesData) {
@@ -70,7 +67,7 @@ export default function HoraireBibProvider({ children }) {
   useEffect(() => {
     if (currentWeek) {
       const currentWeekTitle = formatWeekHeader(currentWeek)
-      const daysOfWeekHeaders = getFormatedDaysOfWeek(currentWeek)
+      const daysOfWeekHeaders = formatDaysOfWeekHeader(currentWeek)
 
       setLabels({
         currentWeekTitle,

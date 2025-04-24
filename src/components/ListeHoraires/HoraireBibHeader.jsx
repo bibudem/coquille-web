@@ -19,7 +19,7 @@ export default function Banner({ ...rest }) {
 
   return (
     <Div sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText', position: 'sticky', top }} {...props}>
-      <Container sx={{ padding: '0 64px' }}>
+      <Container disableGutters sx={{ padding: '0 64px' }}>
         <Div
           sx={{
             display: 'flex',
