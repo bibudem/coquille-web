@@ -294,6 +294,7 @@ const tokens = {
 	typography: {
 		fontFamily: 'Figtree',
 		fontSize: 18,
+		htmlFontSize: 18,
 		h1: {
 			fontSize: '3.2rem',
 			fontWeight: 600,
@@ -349,10 +350,10 @@ const tokens = {
 			fontSize: '61px',
 			fontWeight: 400,
 			lineHeight: '120%'
+		},
+		body1: {
+			fontSize: '1rem',
 		}
-		// body1: {
-		// 	fontSize: '1.4667rem',
-		// }
 	},
 }
 

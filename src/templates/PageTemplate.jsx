@@ -19,6 +19,7 @@ import { useSmall } from '@/hooks/use-small'
 import { SecondaryNav } from '@/components/_layout/SecondaryNav/SecondaryNav'
 
 import commonComponents from './commonComponents'
+import './global-styles.css'
 
 function getCurrentPageLevel(location) {
   return location.pathname.split('/').filter((item) => item).length

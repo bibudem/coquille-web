@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from 'react'
+import { useContext, useEffect, useMemo, useState } from 'react'
 import Div from '@/components/utils/Div'
 import { HoraireBibContext } from './HoraireBibContext'
 import { useTheme } from '@mui/material'
@@ -11,6 +11,22 @@ function TableHeaderCell({ sx, children }) {
         fontWeight: 600,
         letterSpacing: '.32px',
         backgroundColor: 'bleu100.main',
+        ...sx,
+      }}
+    >
+      {children}
+    </Div>
+  )
+}
+
+function TableRowHeader({ sx, children }) {
+  return (
+    <Div
+      sx={{
+        padding: '10px 12px',
+        fontWeight: 600,
+        lineHeight: 1.6,
+        letterSpacing: '.32px',
         ...sx,
       }}
     >
@@ -37,22 +53,39 @@ function TableHeader({ data }) {
   return (
     <>
       <TableHeaderCell sx={{ borderRadius: `${theme.shape.corner.small} 0 0 0` }}></TableHeaderCell>
-      {data.map((item, i) => (
-        <TableHeaderCell
-          sx={(theme) => ({
-            backgroundColor: 'bleu100.main',
-            ...(i === 6 && { borderRadius: `0 ${theme.shape.corner.small} 0 0` }),
-          })}
-        >
-          {item}
-        </TableHeaderCell>
-      ))}
+      {data &&
+        data.map((item, i) => (
+          <TableHeaderCell
+            sx={(theme) => ({
+              backgroundColor: 'bleu100.main',
+              ...(i === 6 && { borderRadius: `0 ${theme.shape.corner.small} 0 0` }),
+            })}
+          >
+            {item}
+          </TableHeaderCell>
+        ))}
     </>
   )
 }
 
 export default function BlocHoraire({ codeBib }) {
-  const { daysOfWeekHeaders, horaires } = useContext(HoraireBibContext)
+  const { daysOfWeekHeaders, horaires, services } = useContext(HoraireBibContext)
+  const [data, setData] = useState([])
+  console.log('horaires:', horaires[codeBib])
+  console.log('services:', services)
+
+  useEffect(() => {
+    if (horaires) {
+      const rows = []
+      horaires[codeBib].forEach((horaire, i) => {
+        if (i % 7 === 0) {
+          rows.push(<TableRowHeader>{services[horaire.service]?.label}</TableRowHeader>)
+        }
+        rows.push(<TableCell>{horaire.sommaire}</TableCell>)
+      })
+      setData(rows)
+    }
+  }, [horaires])
 
   return (
     <Div
@@ -61,14 +94,11 @@ export default function BlocHoraire({ codeBib }) {
         display: 'grid',
         gridTemplateColumns: 'repeat(8, minmax(0, 1fr))',
         gridTemplateAreas: '"horaire horaire horaire horaire horaire horaire horaire"',
+        fontSize: '0.8889rem', // 16px
       }}
     >
       <TableHeader data={daysOfWeekHeaders} />
-      {Array(8)
-        .fill(1)
-        .map((_, i) => {
-          return <TableCell key={i}>{i}</TableCell>
-        })}
+      {data}
     </Div>
   )
 }

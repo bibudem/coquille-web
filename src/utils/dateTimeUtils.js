@@ -1,4 +1,4 @@
-import { addDays, format, isSunday, previousSunday } from 'date-fns'
+import { addDays, addWeeks, format, isSunday, previousSunday } from 'date-fns'
 import { frCA } from 'date-fns/locale'
 
 export function getLastSundayDate(date = new Date()) {
@@ -18,4 +18,12 @@ export function getFormatedDaysOfWeek(date, pattern = 'E d') {
 export function formatWeekHeader(startDate, pattern = 'd MMMM y') {
   const endDate = addDays(startDate, 6)
   return `${format(startDate, pattern, { locale: frCA })} - ${format(endDate, pattern, { locale: frCA })}`
+}
+
+export function addWeekISODate(date, n) {
+  if (Number.isNaN(n)) {
+    throw new Error(`'to' must be a number.`)
+  }
+
+  return format(addWeeks(date, n), 'yyy-MM-dd')
 }

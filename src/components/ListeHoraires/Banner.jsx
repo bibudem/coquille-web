@@ -3,14 +3,14 @@ import { Container, IconButton } from '@mui/material'
 import Div from '@/components/utils/Div'
 import { appBarHeight } from '@/components/_layout/AppBar/TopAppBar'
 import { CaretLeft, CaretRight } from '@phosphor-icons/react'
-import useHoraires from './useHoraires'
 import { HoraireBibContext } from './HoraireBibContext'
+import SearchBox from './SearchBox'
 import { useSmall } from '@/hooks/use-small'
 
 export default function Banner({ ...rest }) {
   const { children, sx, ...props } = rest
   const isSmall = useSmall('md')
-  const { currentWeekTitle } = useContext(HoraireBibContext)
+  const { currentWeekTitle, nav } = useContext(HoraireBibContext)
   const [top, setTop] = useState(0)
 
   useEffect(() => {
@@ -28,7 +28,9 @@ export default function Banner({ ...rest }) {
             fontSize: '1.3333rem',
           }}
         >
-          <Div>allo</Div>
+          <Div>
+            <SearchBox />
+          </Div>
           <Div
             sx={{
               display: 'flex',
@@ -38,7 +40,7 @@ export default function Banner({ ...rest }) {
             }}
           >
             <Div>
-              <IconButton aria-label="précédent" sx={{ color: 'inherit' }}>
+              <IconButton aria-label="précédent" sx={{ color: 'inherit' }} onClick={() => nav(-1)}>
                 <CaretLeft color="currentColor" />
               </IconButton>
             </Div>
@@ -56,7 +58,7 @@ export default function Banner({ ...rest }) {
               {currentWeekTitle}
             </Div>
             <Div>
-              <IconButton aria-label="précédent" sx={{ color: 'inherit' }}>
+              <IconButton aria-label="précédent" sx={{ color: 'inherit' }} onClick={() => nav(1)}>
                 <CaretRight color="currentColor" />
               </IconButton>
             </Div>
