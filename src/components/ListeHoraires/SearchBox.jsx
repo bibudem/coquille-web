@@ -1,31 +1,45 @@
 import { IconButton, InputBase, Paper } from '@mui/material'
 import { MagnifyingGlass } from '@phosphor-icons/react'
+import Div from '@/components/utils/Div'
 
 export default function SearchBox() {
   return (
     <Paper
       component="form"
       sx={(theme) => ({
-        p: '2px 4px',
+        padding: '0',
+        margin: 0,
         display: 'flex',
-        alignItems: 'center',
-        width: 400,
+        alignItems: 'stretch',
+        width: '100%',
+        maxWidth: '33%',
         borderRadius: theme.shape.corner.full,
       })}
     >
       <InputBase
         sx={(theme) => ({
-          // backgroundColor: '#fff',
-          ml: 1,
-          flex: 1,
+          '& .MuiInputBase-input': {
+            padding: '22px 0 22px 32px',
+            '&::placeholder': {
+              //
+            },
+          },
         })}
         placeholder="Chercher une bibliothèque ou un service"
         inputProps={{ 'aria-label': 'Chercher une bibliothèque ou un service' }}
         fullWidth
       />
-      <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
-        <MagnifyingGlass size={32} color="currentColor" />
-      </IconButton>
+      <Div
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          paddingRight: '12px',
+        }}
+      >
+        <IconButton color="primary" sx={{ p: '10px' }} aria-label="Chercher">
+          <MagnifyingGlass size={32} color="currentColor" />
+        </IconButton>
+      </Div>
     </Paper>
   )
 }

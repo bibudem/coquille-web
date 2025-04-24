@@ -28,7 +28,7 @@ function TableRowHeader({ sx, children }) {
       sx={{
         padding: '10px 12px',
         fontWeight: 600,
-        lineHeight: 1.6,
+        lineHeight: 1.4,
         letterSpacing: '.32px',
         ...sx,
       }}
@@ -43,6 +43,7 @@ function TableCell({ sx, children }) {
     <Div
       sx={{
         padding: '10px 12px',
+        lineHeight: 2,
         ...sx,
       }}
     >
@@ -94,7 +95,6 @@ export default function BlocHoraire({ codeBib }) {
         flexGrow: 1,
         display: 'grid',
         gridTemplateColumns: 'repeat(8, minmax(0, 1fr))',
-        gridTemplateAreas: '"horaire horaire horaire horaire horaire horaire horaire"',
         fontSize: '0.8889rem', // 16px
       }}
     >

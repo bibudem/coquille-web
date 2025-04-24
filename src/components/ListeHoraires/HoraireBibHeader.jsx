@@ -1,14 +1,17 @@
-import { useContext, useEffect, useMemo, useState } from 'react'
-import { Container, IconButton } from '@mui/material'
-import Div from '@/components/utils/Div'
-import { appBarHeight } from '@/components/_layout/AppBar/TopAppBar'
+import { useContext, useEffect, useState } from 'react'
+import { useInView } from 'react-intersection-observer'
+import { IconButton } from '@mui/material'
 import { CaretLeft, CaretRight } from '@phosphor-icons/react'
+import LayoutContainer from '@/components/utils/LayoutContainer'
+import { appBarHeight } from '@/components/_layout/AppBar/TopAppBar'
+import Div from '@/components/utils/Div'
 import { HoraireBibContext } from './HoraireBibContext'
 import SearchBox from './SearchBox'
 import { useSmall } from '@/hooks/use-small'
 
 export default function Banner({ ...rest }) {
   const { children, sx, ...props } = rest
+  const { ref, inView, entry } = useInView({})
   const isSmall = useSmall('md')
   const { currentWeekTitle, nav } = useContext(HoraireBibContext)
   const [top, setTop] = useState(0)
@@ -18,17 +21,36 @@ export default function Banner({ ...rest }) {
   }, [isSmall])
 
   return (
-    <Div sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText', position: 'sticky', top }} {...props}>
-      <Container disableGutters sx={{ padding: '0 64px' }}>
+    <>
+      <div id="t" style={{ position: 'absolute', padding: '.5em 1em', color: '#fff', fontWeight: 400, backgroundColor: 'red' }}>
+        {inView}
+      </div>
+      <LayoutContainer ref={ref} sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText', position: 'sticky', top }}>
         <Div
           sx={{
             display: 'flex',
             flexDirection: 'column',
             gap: '1em',
             fontSize: '1.3333rem',
+            padding: '46px 0',
           }}
         >
-          <Div>
+          <Div
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '.125rem',
+            }}
+          >
+            <Div
+              sx={{
+                fontSize: '1.3333rem',
+                fontWeight: 600,
+                lineHeight: 1.5,
+              }}
+            >
+              Filtrer
+            </Div>
             <SearchBox />
           </Div>
           <Div
@@ -64,7 +86,7 @@ export default function Banner({ ...rest }) {
             </Div>
           </Div>
         </Div>
-      </Container>
-    </Div>
+      </LayoutContainer>
+    </>
   )
 }
