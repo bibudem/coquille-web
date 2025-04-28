@@ -57,7 +57,7 @@ export function QuickLinks() {
           zIndex: theme.zIndex.drawer,
           pointerEvents: 'none',
           color: '#fff',
-          transform: trigger ? 'translateX(170px)' : 'translateX(0)',
+          transform: trigger ? 'translateX(185px)' : 'translateX(0)',
           transitionTimingFunction: theme.transitions.easing.md3[trigger ? 'emphasizedDecelerate' : 'emphasizedAccelerate'],
           transitionDuration: `${theme.transitions.duration.md3[trigger ? 'medium4' : 'short4']}ms`,
           backgroundColor: theme.vars.palette.bleuPrincipal.main,
