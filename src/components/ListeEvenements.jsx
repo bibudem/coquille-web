@@ -8,7 +8,7 @@ import { CalendarBlank, ClockCountdown } from '@phosphor-icons/react'
 import Button from '@/components/Button'
 import Div from '@/components/utils/Div'
 import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
-import isInternalLink from '@/utils/internLink'
+import { isInternalLink } from '@/utils/link'
 
 const FETCH_TIMEOUT = 3000
 

@@ -3,7 +3,7 @@ import { Card, CardActionArea, CardContent } from '@mui/material'
 import Button from '@/components/Button'
 import Link from '@/components/Link'
 import Div from '@/components/utils/Div'
-import isInternalLink from '@/utils/internLink'
+import { isInternalLink } from '@/utils/link'
 import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
 
 function getPath(path, slug) {

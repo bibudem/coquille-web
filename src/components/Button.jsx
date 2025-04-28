@@ -1,7 +1,7 @@
 import { Button as MuiButton } from '@mui/material'
 import { Link as GatsbyLink } from 'gatsby'
 import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
-import isInternalLink from '../utils/internLink'
+import { isInternalLink } from '@/utils/link'
 
 const config = {
   primary: {

@@ -1,10 +1,7 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { Card, CardActionArea, CardContent, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Skeleton } from '@mui/material'
-import Button from '@/components/Button'
+import { List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Skeleton } from '@mui/material'
 import Link from '@/components/Link'
 import Div from '@/components/utils/Div'
-import isInternalLink from '@/utils/internLink'
-import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
 import { CalendarBlank } from '@phosphor-icons/react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 

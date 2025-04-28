@@ -6,8 +6,8 @@ import CardActionArea from '@mui/material/CardActionArea'
 import Grid from '@mui/material/Grid2'
 
 import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
-import isInternalLink from '../utils/internLink.js'
-import { getContrastColor } from '../../plugins/gatsby-plugin-bib-theme/tokens.js'
+import { isInternalLink } from '@/utils/link'
+import { getContrastColor } from '../../plugins/gatsby-plugin-bib-theme/tokens'
 
 const HOVER_WIDTH_FACTOR = 1.15
 

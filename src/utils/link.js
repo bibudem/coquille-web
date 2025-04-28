@@ -16,7 +16,7 @@ function testHostname(hostname) {
   })
 }
 
-export default function isInternalLink(href) {
+export function isInternalLink(href) {
 
   if (typeof href !== 'string' && !(href instanceof URL)) {
     throw new Error('The href argument must be a string or a URL object.')

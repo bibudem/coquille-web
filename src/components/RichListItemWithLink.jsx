@@ -1,10 +1,10 @@
+import { useEffect, useState } from 'react'
 import { Divider, IconButton, ListItem, ListItemButton, ListItemText, useTheme } from '@mui/material'
 import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
 import Button from '@/components/Button'
 import Div from '@/components/utils/Div'
 import { useSmall } from '@/hooks/use-small'
-import isInternalLink from '../utils/internLink.js'
-import { useEffect, useState } from 'react'
+import { isInternalLink } from '@/utils/link'
 
 function Header({ children }) {
   return (

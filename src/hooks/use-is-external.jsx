@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTheme } from '@mui/material'
-import isExternalLink from '@/utils/internLink'
+import { isInternalLink } from '@/utils/link'
 import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
 
 export function useIsExternal(href, { icons } = {}) {
@@ -9,12 +9,12 @@ export function useIsExternal(href, { icons } = {}) {
   const [linkProps, setLinkProps] = useState({})
   const [linkIcon, setLinkIcon] = useState(null)
   const [_icons, setIcons] = useState({
-    internal: <ArrowUpRightCircleIcon color={theme.palette.bleuPrincipal.main} fontSize={50} />,
-    external: <ArrowRightCircleIcon color={theme.palette.bleuPrincipal.main} fontSize={50} />,
+    internal: <ArrowRightCircleIcon color={theme.palette.bleuPrincipal.main} fontSize={50} />,
+    external: <ArrowUpRightCircleIcon color={theme.palette.bleuPrincipal.main} fontSize={50} />,
   })
 
   useEffect(() => {
-    setIsExternal(isExternalLink(href))
+    setIsExternal(!isInternalLink(href))
     if (icons) {
       setIcons(icons)
     }
