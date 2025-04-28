@@ -17,9 +17,10 @@ import RetroactionUsager from '@/components/RetroactionUsager'
 
 import { useSmall } from '@/hooks/use-small'
 import { SecondaryNav } from '@/components/_layout/SecondaryNav/SecondaryNav'
+import { getLastSundayISODate } from '@/utils/dateTimeUtils'
 
 import commonComponents from './commonComponents'
-import './global-styles.css'
+// import './global-styles.css'
 
 function getCurrentPageLevel(location) {
   return location.pathname.split('/').filter((item) => item).length
@@ -129,7 +130,7 @@ export function Head({ pageContext, location }) {
       {['/espaces', 'nous-joindre'].some((path) => pathname.startsWith(path)) && (
         <>
           <link rel="preload" href="https://api.bib.umontreal.ca/horaires/services" as="fetch" crossorigin="anonymous" />
-          <link rel="preload" href="https://api.bib.umontreal.ca/horaires/?fin=P1D" as="fetch" crossorigin="anonymous" />
+          <link rel="preload" href={`https://api.bib.umontreal.ca/horaires/?debut=${getLastSundayISODate()}&fin=P7D`} as="fetch" crossorigin="anonymous" />
         </>
       )}
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-gtm.js"></script>
