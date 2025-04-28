@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react'
-import { useInView } from 'react-intersection-observer'
 import { IconButton } from '@mui/material'
 import { CaretLeft, CaretRight } from '@phosphor-icons/react'
 import LayoutContainer from '@/components/utils/LayoutContainer'
@@ -10,10 +9,9 @@ import SearchBox from './SearchBox'
 import { useSmall } from '@/hooks/use-small'
 
 export default function Banner({ ...rest }) {
-  const { children, sx, ...props } = rest
-  const { ref, inView, entry } = useInView({})
+  const { children, sx } = rest
   const isSmall = useSmall('md')
-  const { currentWeekTitle, nav } = useContext(HoraireBibContext)
+  const { currentWeekTitle, nav, prevBtnProps, nextBtnProps } = useContext(HoraireBibContext)
   const [top, setTop] = useState(0)
 
   useEffect(() => {
@@ -21,72 +19,67 @@ export default function Banner({ ...rest }) {
   }, [isSmall])
 
   return (
-    <>
-      <div id="t" style={{ position: 'absolute', padding: '.5em 1em', color: '#fff', fontWeight: 400, backgroundColor: 'red' }}>
-        {inView}
-      </div>
-      <LayoutContainer ref={ref} sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText', position: 'sticky', top }}>
+    <LayoutContainer sx={(theme) => ({ backgroundColor: 'primary.main', color: 'primary.contrastText', position: 'sticky', top: 0, zIndex: theme.zIndex.appBar })}>
+      <Div
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1em',
+          fontSize: '1.3333rem',
+          padding: '46px 0',
+        }}
+      >
         <Div
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '1em',
-            fontSize: '1.3333rem',
-            padding: '46px 0',
+            gap: '.125rem',
           }}
         >
           <Div
             sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '.125rem',
+              fontSize: '1.3333rem',
+              fontWeight: 600,
+              lineHeight: 1.5,
             }}
           >
-            <Div
-              sx={{
-                fontSize: '1.3333rem',
-                fontWeight: 600,
-                lineHeight: 1.5,
-              }}
-            >
-              Filtrer
-            </Div>
-            <SearchBox />
+            Filtrer
+          </Div>
+          <SearchBox />
+        </Div>
+        <Div
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            margin: '0 auto',
+            gap: '10px',
+          }}
+        >
+          <Div>
+            <IconButton aria-label="semaine précédente" sx={{ color: 'inherit' }} {...prevBtnProps()}>
+              <CaretLeft color="currentColor" />
+            </IconButton>
           </Div>
           <Div
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              margin: '0 auto',
-              gap: '10px',
-            }}
+            sx={(theme) => ({
+              textAlign: 'center',
+              [theme.breakpoints.up('md')]: {
+                minWidth: '300px',
+              },
+              [theme.breakpoints.up('lg')]: {
+                minWidth: '445px',
+              },
+            })}
           >
-            <Div>
-              <IconButton aria-label="précédent" sx={{ color: 'inherit' }} onClick={() => nav(-1)}>
-                <CaretLeft color="currentColor" />
-              </IconButton>
-            </Div>
-            <Div
-              sx={(theme) => ({
-                textAlign: 'center',
-                [theme.breakpoints.up('md')]: {
-                  minWidth: '300px',
-                },
-                [theme.breakpoints.up('lg')]: {
-                  minWidth: '445px',
-                },
-              })}
-            >
-              {currentWeekTitle}
-            </Div>
-            <Div>
-              <IconButton aria-label="précédent" sx={{ color: 'inherit' }} onClick={() => nav(1)}>
-                <CaretRight color="currentColor" />
-              </IconButton>
-            </Div>
+            {currentWeekTitle}
+          </Div>
+          <Div>
+            <IconButton aria-label="semaine suivante" sx={{ color: 'inherit' }} {...nextBtnProps()}>
+              <CaretRight color="currentColor" />
+            </IconButton>
           </Div>
         </Div>
-      </LayoutContainer>
-    </>
+      </Div>
+    </LayoutContainer>
   )
 }

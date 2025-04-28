@@ -1,7 +1,7 @@
-import { useContext, useEffect, useMemo, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { useTheme } from '@mui/material'
 import Div from '@/components/utils/Div'
 import { HoraireBibContext } from './HoraireBibContext'
-import { useTheme } from '@mui/material'
 
 function TableHeaderCell({ sx, children }) {
   return (
@@ -60,10 +60,9 @@ function TableHeader({ data }) {
       {data &&
         data.map((item, i) => (
           <TableHeaderCell
-            sx={(theme) => ({
+            sx={{
               backgroundColor: 'bleu100.main',
-              // ...(i === 6 && { borderRadius: `0 ${theme.shape.corner.small} 0 0` }),
-            })}
+            }}
           >
             {item}
           </TableHeaderCell>

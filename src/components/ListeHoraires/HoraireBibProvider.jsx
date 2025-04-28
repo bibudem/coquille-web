@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
-import useSWR from 'swr'
+import useSWR, { preload } from 'swr'
 import { HoraireBibContext } from './HoraireBibContext.jsx'
-import { addWeekISODate, formatWeekHeader, formatDaysOfWeekHeader, getLastSundayISODate } from '@/utils/dateTimeUtils'
+import { addWeekISODate } from '@/utils/dateTimeUtils'
+import Week from './Week.js'
 
 const fetcher = (...args) => {
   return fetch(...args).then((res) => res.json())
@@ -10,16 +11,29 @@ const fetcher = (...args) => {
 export default function HoraireBibProvider({ children }) {
   const [labels, setLabels] = useState({})
   const [services, setServices] = useState({})
-  const [currentWeek, setCurrentWeek] = useState(() => getLastSundayISODate())
+  const [currentWeek, setCurrentWeek] = useState(new Week())
   const { data: horairesData, error, isLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires?debut=${currentWeek}&fin=P7D`, fetcher)
   const { data: servicesData, error: serviceError, isLoading: serviceIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires/services`, fetcher)
-
-  useEffect(() => {
-    console.log('--- currentWeek:', currentWeek)
-  }, [currentWeek])
+  const fetchedWeeks = new Set([currentWeek])
 
   function nav(to) {
     setCurrentWeek(addWeekISODate(currentWeek, to))
+  }
+
+  function prevBtnProps() {
+    const actualWeek = new Week()
+    return {
+      onClick: () => setCurrentWeek(currentWeek.previousWeek()),
+      disabled: currentWeek.toDate() <= actualWeek.toDate(),
+    }
+  }
+
+  function nextBtnProps() {
+    const actualWeek = new Week()
+    return {
+      onClick: () => setCurrentWeek(currentWeek.nextWeek()),
+      // disabled: currentWeek.toDate() <= actualWeek.toDate(),
+    }
   }
 
   const horaires = useMemo(() => {
@@ -66,8 +80,8 @@ export default function HoraireBibProvider({ children }) {
 
   useEffect(() => {
     if (currentWeek) {
-      const currentWeekTitle = formatWeekHeader(currentWeek)
-      const daysOfWeekHeaders = formatDaysOfWeekHeader(currentWeek)
+      const currentWeekTitle = currentWeek.formatWeekHeader()
+      const daysOfWeekHeaders = currentWeek.formatDaysOfWeekHeader()
 
       setLabels({
         currentWeekTitle,
@@ -76,5 +90,16 @@ export default function HoraireBibProvider({ children }) {
     }
   }, [currentWeek])
 
-  return <HoraireBibContext.Provider value={{ ...horaires, error, isLoading, ...labels, services, nav }}>{children}</HoraireBibContext.Provider>
+  useEffect(() => {
+    if (currentWeek) {
+      const nextWeek = addWeekISODate(currentWeek, 1)
+      if (!fetchedWeeks.has(nextWeek)) {
+        console.log('currentWeek: %s, nextWeek: %s', currentWeek, nextWeek)
+        fetchedWeeks.add(nextWeek)
+        preload(`https:///api.bib.umontreal.ca/horaires?debut=${nextWeek}&fin=P7D`, fetcher)
+      }
+    }
+  }, [currentWeek])
+
+  return <HoraireBibContext.Provider value={{ ...horaires, error, isLoading, ...labels, services, nav, prevBtnProps, nextBtnProps }}>{children}</HoraireBibContext.Provider>
 }

@@ -5,6 +5,11 @@ function toDate(date) {
   if (typeof date === 'string') {
     return new Date(`${date}T00:00:00`)
   }
+
+  if (date.constructor.name === 'Week') {
+    date = date.toDate()
+  }
+
   return new Date(`${date.toISOString().split('T')[0]}T00:00:00`)
 }
 
@@ -20,13 +25,9 @@ export function getLastSundayISODate(date = new Date()) {
 }
 
 export function formatDaysOfWeekHeader(date, pattern = 'E d') {
-  console.group('formatDaysOfWeekHeader')
-  console.log('1. date: %o (%s)', date, typeof date)
   date = toDate(date)
-  console.log('2. date: %o (%s)', date, typeof date)
   const startDate = getFirstDayOfWeekDate(date)
-  console.log('3. startDate: %o (%s)', startDate, typeof startDate)
-  console.groupEnd()
+
   return Array(7).fill(1).map((_, i) => format(addDays(startDate, i), pattern, { locale: frCA }))
 }
 

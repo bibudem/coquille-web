@@ -2,11 +2,11 @@ import HoraireBibHeader from './HoraireBibHeader'
 import HoraireBibProvider from './HoraireBibProvider'
 import ListeHorairesContainer from './ListeHorairesContainer'
 
-export default function ListeHoraires() {
+export default function ListeHoraires({ children }) {
   return (
     <HoraireBibProvider>
       <HoraireBibHeader />
-      <ListeHorairesContainer />
+      <ListeHorairesContainer>{children}</ListeHorairesContainer>
     </HoraireBibProvider>
   )
 }
