@@ -15,7 +15,6 @@ import RetroactionUsager from '@/components/RetroactionUsager'
 
 import { useSmall } from '@/hooks/use-small'
 import commonComponents from './commonComponents'
-// import './global-styles.css'
 
 function getCurrentPageLevel(location) {
   return location.pathname.split('/').filter((item) => item).length

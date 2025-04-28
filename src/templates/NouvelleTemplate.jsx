@@ -12,7 +12,6 @@ import Breadcrumbs from '@/components/_layout/Breadcrumbs/Breadcrumbs'
 import SEO from '@/components/_layout/SEO'
 import Debug from '@/components/_layout/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
-// import './global-styles.css'
 
 import { useSmall } from '@/hooks/use-small'
 
