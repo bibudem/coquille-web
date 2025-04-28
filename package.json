@@ -22,7 +22,7 @@
     "@mui/x-data-grid": "^7.24.0",
     "@phosphor-icons/react": "^2.1.7",
     "@sindresorhus/slugify": "^2.2.1",
-    "code-bib": "github:bibudem/code-bib",
+    "code-bib": "github:bibudem/code-bib#f9f0817f627bb49d399f119a17f6379dbda970d3",
     "color": "^4.2.3",
     "conditional-wrap": "^1.0.3",
     "contrast-color": "^1.0.1",
