@@ -54,6 +54,7 @@ function TableCell({ sx, children }) {
 
 function TableHeader({ data }) {
   const theme = useTheme()
+
   return (
     <>
       <TableHeaderCell sx={{ borderRadius: `${theme.shape.corner.small} 0 0 0` }}></TableHeaderCell>
@@ -62,6 +63,7 @@ function TableHeader({ data }) {
           <TableHeaderCell
             sx={{
               backgroundColor: 'bleu100.main',
+              textTransform: 'capitalize',
             }}
           >
             {item}

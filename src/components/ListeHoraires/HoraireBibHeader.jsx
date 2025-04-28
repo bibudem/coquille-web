@@ -9,9 +9,8 @@ import SearchBox from './SearchBox'
 import { useSmall } from '@/hooks/use-small'
 
 export default function Banner({ ...rest }) {
-  const { children, sx } = rest
   const isSmall = useSmall('md')
-  const { currentWeekTitle, nav, prevBtnProps, nextBtnProps } = useContext(HoraireBibContext)
+  const { currentWeekTitle, prevBtnProps, nextBtnProps } = useContext(HoraireBibContext)
   const [top, setTop] = useState(0)
 
   useEffect(() => {
