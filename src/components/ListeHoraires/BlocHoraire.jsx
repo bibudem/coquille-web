@@ -73,10 +73,10 @@ function TableHeader({ data }) {
 
 export default function BlocHoraire({ codeBib }) {
   const { daysOfWeekHeaders, horaires, services } = useContext(HoraireBibContext)
-  const [data, setData] = useState([])
+  const [data, setData] = useState(null)
 
   useEffect(() => {
-    if (horaires) {
+    if (horaires && services) {
       const rows = []
       horaires[codeBib].forEach((horaire, i) => {
         if (i % 7 === 0) {
@@ -86,7 +86,7 @@ export default function BlocHoraire({ codeBib }) {
       })
       setData(rows)
     }
-  }, [horaires])
+  }, [horaires, services])
 
   return (
     <Div

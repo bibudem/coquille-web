@@ -12,9 +12,9 @@ const A = styled('a')({
   left: '-28px',
   width: 28,
   height: 28,
-  transform: 'translateY(calc(-50% - 0.3rem))',
+  transform: 'translateY(calc(-50% - 0.25rem))',
   lineHeight: 1,
-  opacity: 0.8,
+  opacity: 0,
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -36,21 +36,26 @@ function Title({ title }) {
         component="h2"
         sx={(theme) => ({
           width: 200,
+          fontSize: '1.4444rem', // 26px
+          fontWeight: 400,
+          lineHeight: 1.2,
+          [theme.breakpoints.up('md')]: {
+            fontSize: '1.5rem', // 28px
+            width: 240,
+          },
           [theme.breakpoints.up('lg')]: {
+            fontSize: '1.7778rem', // 32px
             width: 270,
           },
           [theme.breakpoints.up('xl')]: {
             width: 300,
           },
-          fontSize: '1.7778rem',
-          fontWeight: 400,
-          lineHeight: 1.2,
         })}
       >
         {title}
       </Typography>
       <A className="anchor" href={`#${id}`} aria-label={`Permalien: ${title}`}>
-        <Link size="1rem" color="currentColor" weight="bold" />
+        <Link size="1.125rem" color="currentColor" weight="bold" />
       </A>
     </Div>
   )
