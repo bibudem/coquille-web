@@ -1,9 +1,10 @@
+import { styled, Typography } from '@mui/material'
 import codeBibs from 'code-bib'
 import slugify from '@sindresorhus/slugify'
 import { Link } from '@phosphor-icons/react'
 import BlocHoraire from './BlocHoraire'
 import Div from '@/components/utils/Div'
-import { styled, Typography } from '@mui/material'
+import { useSmall } from '@/hooks/use-small'
 
 const A = styled('a')({
   color: 'inherit',
@@ -20,28 +21,36 @@ const A = styled('a')({
   alignItems: 'center',
 })
 
-function Title({ title }) {
+function Title({ title, sticky = false }) {
   const id = slugify(title)
   return (
     <Div
-      sx={{
-        position: 'relative',
-        '&:hover > .anchor': {
-          opacity: 1,
-        },
-      }}
+      sx={
+        sticky
+          ? {
+              position: 'sticky',
+              top: 0,
+              '&:hover > .anchor': {
+                opacity: 1,
+              },
+            }
+          : {
+              position: 'relative',
+              '&:hover > .anchor': {
+                opacity: 1,
+              },
+            }
+      }
     >
       <Typography
         id={id}
         component="h2"
         sx={(theme) => ({
-          width: 200,
           fontSize: '1.4444rem', // 26px
           fontWeight: 400,
           lineHeight: 1.2,
           [theme.breakpoints.up('md')]: {
             fontSize: '1.5rem', // 28px
-            width: 240,
           },
           [theme.breakpoints.up('lg')]: {
             fontSize: '1.7778rem', // 32px
@@ -62,19 +71,39 @@ function Title({ title }) {
 }
 
 export default function HoraireBib({ codeBib, children }) {
-  return (
+  const isSmall = useSmall('lg')
+  const isXSmall = useSmall('sm')
+
+  console.log('isXSmall:', isXSmall)
+
+  const miscContent = children && <Div sx={{ fontSize: '0.8889rem', marginTop: '1em' }}>{children}</Div>
+  return isXSmall ? (
     <Div
       sx={{
+        position: 'relative',
+      }}
+    >
+      <Title title={codeBibs[codeBib].court} sticky />
+      {children}
+    </Div>
+  ) : (
+    <Div
+      sx={(theme) => ({
         display: 'flex',
+        flexDirection: 'column',
         gap: '20px',
         marginBottom: '3.5556rem',
-      }}
+        [theme.breakpoints.up('lg')]: {
+          flexDirection: 'row',
+        },
+      })}
     >
       <Div>
         <Title title={codeBibs[codeBib].court} />
-        {children && <Div sx={{ fontSize: '0.8889rem', marginTop: '1em' }}>{children}</Div>}
+        {children && !isSmall && miscContent}
       </Div>
       <BlocHoraire codeBib={codeBib} />
+      {children && isSmall && miscContent}
     </Div>
   )
 }

@@ -28,24 +28,26 @@ export default function Banner({ ...rest }) {
           padding: '46px 0',
         }}
       >
-        <Div
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '.125rem',
-          }}
-        >
+        {!isSmall && (
           <Div
             sx={{
-              fontSize: '1.3333rem',
-              fontWeight: 600,
-              lineHeight: 1.5,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '.125rem',
             }}
           >
-            Filtrer
+            <Div
+              sx={{
+                fontSize: '1.3333rem',
+                fontWeight: 600,
+                lineHeight: 1.5,
+              }}
+            >
+              Filtrer
+            </Div>
+            <SearchBox />
           </Div>
-          <SearchBox />
-        </Div>
+        )}
         <Div
           sx={{
             display: 'flex',

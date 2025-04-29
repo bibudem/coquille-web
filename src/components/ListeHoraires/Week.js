@@ -28,15 +28,19 @@ export default class Week {
     return this._go(-1)
   }
 
-  formatWeekHeader(pattern = 'd MMMM y') {
+  formatWeekHeader(currentBreakpoint) {
     const startDate = this.toDate()
     const endDate = addDays(startDate, 6)
+    const pattern = currentBreakpoint.key === 'xs' ? 'd MMM y' : 'd MMMM y'
     return `${format(startDate, pattern, { locale: frCA })} - ${format(endDate, pattern, { locale: frCA })}`
   }
 
   formatDaysOfWeekHeader(pattern = 'E d') {
     const startDate = this.toDate()
 
-    return Array(7).fill(1).map((_, i) => format(addDays(startDate, i), pattern, { locale: frCA }))
+    return Array(7).fill(1).map((_, i) => {
+      const day = format(addDays(startDate, i), pattern, { locale: frCA })
+      return day.charAt(0).toUpperCase() + day.slice(1)
+    })
   }
 }
