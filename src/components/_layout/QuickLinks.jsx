@@ -3,6 +3,7 @@ import { CalendarPlus, Chats, ClockCountdown, Lifebuoy } from '@phosphor-icons/r
 import Div from '@/components/utils/Div'
 import { useSmall } from '@/hooks/use-small'
 import { SofiaIcon } from '@/components/CustomIcons'
+import Link from '@/components/Link'
 
 function ListItemText({ children }) {
   return (
@@ -67,31 +68,31 @@ export function QuickLinks() {
         })}
       >
         <MenuList>
-          <MenuItem component="a" href="https://umontreal.on.worldcat.org/discovery?lang=fr">
+          <MenuItem component={Link} href="https://umontreal.on.worldcat.org/discovery?lang=fr">
             <ListItemIcon>
               <SofiaIcon color="#fff" />
             </ListItemIcon>
             <ListItemText>Sofia</ListItemText>
           </MenuItem>
-          <MenuItem component="a" href="/horaires">
+          <MenuItem component={Link} href="/horaires">
             <ListItemIcon>
               <ClockCountdown color="#fff" size={24} />
             </ListItemIcon>
             <ListItemText>Horaires</ListItemText>
           </MenuItem>
-          <MenuItem component="a" href="https://calendrier.bib.umontreal.ca/r">
+          <MenuItem component={Link} href="https://calendrier.bib.umontreal.ca/r">
             <ListItemIcon>
               <CalendarPlus color="#fff" size={24} />
             </ListItemIcon>
             <ListItemText>Réserver une salle</ListItemText>
           </MenuItem>
-          <MenuItem component="a" href="#" onClick={handleOnMenuItemClick}>
+          <MenuItem component={Link} href="#" onClick={handleOnMenuItemClick}>
             <ListItemIcon>
               <Lifebuoy color="#fff" size={24} />
             </ListItemIcon>
             <ListItemText>Soutien informatique</ListItemText>
           </MenuItem>
-          <MenuItem component="a" href="#" onClick={handleOnMenuItemClick}>
+          <MenuItem component={Link} href="#" onClick={handleOnMenuItemClick}>
             <ListItemIcon>
               <Chats color="#fff" size={24} />
             </ListItemIcon>
@@ -141,19 +142,19 @@ export function QuickLinksSm() {
           maxWidth: '100%',
         }}
       >
-        <IconButton component="a" href="https://umontreal.on.worldcat.org/discovery?lang=fr" aria-label="Sofia">
-          <SofiaIcon color="#fff" size={40} />
+        <IconButton component={Link} href="https://umontreal.on.worldcat.org/discovery?lang=fr" aria-label="Sofia">
+          <SofiaIcon color="#fff" fontSize="40px" />
         </IconButton>
-        <IconButton component="a" href="/horaires" aria-label="Horaires">
+        <IconButton component={Link} href="/horaires" aria-label="Horaires">
           <ClockCountdown color="#fff" size={40} />
         </IconButton>
-        <IconButton component="a" href="https://calendrier.bib.umontreal.ca/r" aria-label="Réserver une salle">
+        <IconButton component={Link} href="https://calendrier.bib.umontreal.ca/r" aria-label="Réserver une salle">
           <CalendarPlus color="#fff" size={40} />
         </IconButton>
-        <IconButton component="a" href="#" onClick={handleOnMenuItemClick} aria-label="Soutien informatique">
+        <IconButton component={Link} href="#" onClick={handleOnMenuItemClick} aria-label="Soutien informatique">
           <Lifebuoy color="#fff" size={40} />
         </IconButton>
-        <IconButton component="a" href="#" onClick={handleOnMenuItemClick} aria-label="Clavarder">
+        <IconButton component={Link} href="#" onClick={handleOnMenuItemClick} aria-label="Clavarder">
           <Chats color="#fff" size={40} />
         </IconButton>
       </Box>

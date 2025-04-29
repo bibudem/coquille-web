@@ -23,7 +23,7 @@ function iconComponentFactory(IconComponent) {
   }
 }
 
-export function SofiaIcon(color, size, sx, ...props) {
+export function SofiaIcon(color, sx, ...props) {
   return <SvgIcon {...props} component={SofiaSVG} inheritViewBox sx={(theme) => ({ color: color ?? theme.palette.grey['700'], ...sx })} />
 }
 
