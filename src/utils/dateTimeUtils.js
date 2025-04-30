@@ -1,9 +1,9 @@
-import { addDays, addWeeks, format, isSunday, previousSunday } from 'date-fns'
+import { addDays, addWeeks, format, getDay as dateFnsGetDay, isSunday, previousSunday } from 'date-fns'
 import { frCA } from 'date-fns/locale'
 
 function toDate(date) {
   if (typeof date === 'string') {
-    return new Date(`${date}T00:00:00`)
+    return new Date(`${date.split('T')[0]}T00:00:00`)
   }
 
   if (date.constructor.name === 'Week') {
@@ -45,4 +45,8 @@ export function addWeekISODate(date, n) {
   }
 
   return format(addWeeks(date, n), 'yyy-MM-dd')
+}
+
+export function getDay(date) {
+  return dateFnsGetDay(date)
 }

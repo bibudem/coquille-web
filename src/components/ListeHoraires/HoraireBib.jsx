@@ -21,7 +21,7 @@ const A = styled('a')({
   alignItems: 'center',
 })
 
-function Title({ title, sticky = false }) {
+function Title({ title, fullTitle, sticky = false }) {
   const id = slugify(title)
   return (
     <Div
@@ -62,6 +62,7 @@ function Title({ title, sticky = false }) {
         })}
       >
         {title}
+        <meta itemProp="name" content={fullTitle} />
       </Typography>
       <A className="anchor" href={`#${id}`} aria-label={`Permalien: ${title}`}>
         <Link size="1.125rem" color="currentColor" weight="bold" />
@@ -71,23 +72,30 @@ function Title({ title, sticky = false }) {
 }
 
 export default function HoraireBib({ codeBib, children }) {
-  const isSmall = useSmall('lg')
-  const isXSmall = useSmall('sm')
+  const isLG = useSmall('lg')
+  const isSM = useSmall('sm')
 
-  console.log('isXSmall:', isXSmall)
+  const microdataProps = {
+    itemScope: true,
+    itemType: 'https://schema.org/Library',
+  }
 
   const miscContent = children && <Div sx={{ fontSize: '0.8889rem', marginTop: '1em' }}>{children}</Div>
-  return isXSmall ? (
+
+  return isSM ? (
     <Div
+      {...microdataProps}
       sx={{
         position: 'relative',
       }}
     >
-      <Title title={codeBibs[codeBib].court} sticky />
+      <Title title={codeBibs[codeBib].court} fullTitle={codeBibs[codeBib].long} sticky />
       {children}
+      <BlocHoraire codeBib={codeBib} />
     </Div>
   ) : (
     <Div
+      {...microdataProps}
       sx={(theme) => ({
         display: 'flex',
         flexDirection: 'column',
@@ -99,11 +107,11 @@ export default function HoraireBib({ codeBib, children }) {
       })}
     >
       <Div>
-        <Title title={codeBibs[codeBib].court} />
-        {children && !isSmall && miscContent}
+        <Title title={codeBibs[codeBib].court} fullTitle={codeBibs[codeBib].long} />
+        {children && !isLG && miscContent}
       </Div>
       <BlocHoraire codeBib={codeBib} />
-      {children && isSmall && miscContent}
+      {children && isLG && miscContent}
     </Div>
   )
 }

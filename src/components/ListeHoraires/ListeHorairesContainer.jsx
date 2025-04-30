@@ -8,12 +8,12 @@ export default function ListeHorairesContainer({ children }) {
         sx={(theme) => ({
           paddingTop: '2.1667rem',
           [theme.breakpoints.down('md')]: {
-            marginLeft: '90px',
-            marginRight: '90px',
-          },
-          [theme.breakpoints.down('sm')]: {
             marginLeft: '60px',
             marginRight: '60px',
+          },
+          [theme.breakpoints.down('sm')]: {
+            marginLeft: '40px',
+            marginRight: '40px',
           },
         })}
       >

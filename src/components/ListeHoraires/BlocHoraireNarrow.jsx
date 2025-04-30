@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { useTheme } from '@mui/material'
 import Div from '@/components/utils/Div'
 import { HoraireBibContext } from './HoraireBibContext'
+import { Hour } from './Microformat'
 import { useSmall } from '@/hooks/use-small'
 
 function TableHeaderCell({ sx, children }) {
@@ -78,48 +79,11 @@ function TableHeader({ data }) {
   )
 }
 
-export default function BlocHoraire({ codeBib }) {
-  const isXS = useSmall('md')
-
-  return isXS ? <BlocHoraireNarrow codeBib={codeBib} /> : <BlocHoraireWide codeBib={codeBib} />
+function Title({ children }) {
+  return <Div sx={{}}>{children}</Div>
 }
 
-function BlocHoraireWide({ codeBib }) {
-  const { daysOfWeekHeaders, horaires, services } = useContext(HoraireBibContext)
-  const [data, setData] = useState(null)
-
-  useEffect(() => {
-    if (horaires && services) {
-      const rows = []
-      horaires[codeBib].forEach((horaire, i) => {
-        if (i % 7 === 0) {
-          rows.push(<TableRowHeader>{services[horaire.service]?.label}</TableRowHeader>)
-        }
-        rows.push(<TableCell>{horaire.sommaire}</TableCell>)
-      })
-
-      setData(rows)
-    }
-  }, [horaires, services])
-
-  return (
-    <Div
-      sx={{
-        flexGrow: 1,
-        display: 'grid',
-        gridTemplateColumns: '1fr repeat(7, minmax(0, 1fr))',
-        fontSize: '0.8889rem', // 16px
-      }}
-    >
-      <TableHeader data={daysOfWeekHeaders} />
-      {/* {
-        data && 
-      } */}
-    </Div>
-  )
-}
-
-function BlocHoraireNarrow({ codeBib }) {
+export default function BlocHoraireNarrow({ codeBib }) {
   const { daysOfWeekHeaders, horaires, services } = useContext(HoraireBibContext)
   const [data, setData] = useState()
 
@@ -133,26 +97,28 @@ function BlocHoraireNarrow({ codeBib }) {
       const blocs = {}
       const rows = []
       horaires[codeBib].forEach((horaire, i) => {
-        console.log('[%s]', i, horaire)
         const key = horaire.service
         if (!Reflect.has(blocs, key)) {
           blocs[key] = []
         }
 
-        blocs[key].push(horaire.sommaire)
+        blocs[key].push(horaire)
       })
 
       sortedServices.forEach(({ key, label }) => {
         if (blocs[key]) {
           rows.push(<Div>{label}</Div>)
+          console.log('blocs[key]:', blocs[key])
 
           rows.push(
             <table>
-              {blocs[key].map((hours, i) => {
+              {blocs[key].map((horaire, i) => {
                 rows.push(
                   <tr>
                     <th>{daysOfWeekHeaders[i]}</th>
-                    <td>{hours}</td>
+                    <td>
+                      <Hour event={horaire} />
+                    </td>
                   </tr>
                 )
               })}
