@@ -6,6 +6,7 @@ slug: engagements
 import { Plant, HeadCircuit, Minus, Megaphone, HandCoins, ArrowsOut, LockSimpleOpen, GraduationCap, PersonSimpleCircle, UsersFour, BookOpen, FlowerLotus, Rainbow, Books, Gift, PencilLine } from '@phosphor-icons/react';
 import SuperHero from '@/components/SuperHero'
 import empreinte from '../images/empreinte.webp'
+import GridOffset from '@/components/utils/GridOffset'
 
 <SuperHero
   title="Pour un monde équitable et durable"
@@ -204,9 +205,81 @@ import empreinte from '../images/empreinte.webp'
     rightColl={
       <>
         <Typography component="h2" variant="h2">Intelligence artificielle, une intégration éthique</Typography>
-        <Typography>Nous nous engageons à soutenir et à encourager un usage éthique et innovant de l’intelligence artificielle dans un contexte de recherche, d’enseignement et d’apprentissage. Nous voulons créer un environnement expérientiel où l’IA est mise au service de la collaboration, de la créativité et de l’accès équitable à la connaissance, tout en s’ancrant dans un cadre d’utilisation responsable.</Typography>
+        <Typography>Nous nous engageons à soutenir et à encourager un usage éthique et innovant de l’intelligence artificielle dans un contexte de recherche, d’enseignement et d’apprentissage. Nous voulons créer un environnement expérientiel où l’IA est mise au service de la collaboration, de la créativité et de l’accès équitable à la connaissance, tout en s’ancrant dans un cadre d’utilisation responsable. Nous avons adopté des principes directeurs pour guider les actions et formations portées par les bibliothèques en IA.  </Typography>
       </>
     }
   />
+
+  <GridOffset offset="1">
+   <AccordionGroup color="rose">
+    <Accordion>
+      <AccordionSummary>Soutenir un développement éthique de l’IA</AccordionSummary>
+      <AccordionDetails>Soutenir le développement d’une IA responsable par le biais de nos contenus, collections et pratiques, et contribuer ainsi à la création d’une culture de l’innovation en adéquation avec les valeurs institutionnelles. </AccordionDetails>
+    </Accordion>
+    <Accordion>
+      <AccordionSummary>Respecter le principe de transparence</AccordionSummary>
+      <AccordionDetails>Utiliser l’IA dans nos outils de manière transparente, telle que préconisée par les lignes directrices institutionnelles.</AccordionDetails>
+    </Accordion>
+    <Accordion>
+      <AccordionSummary>Favoriser un usage écoresponsable</AccordionSummary>
+      <AccordionDetails>Intégrer l’IA dans nos pratiques tout en évaluant son impact environnemental et en misant sur des approches durables.</AccordionDetails>
+    </Accordion>
+        <Accordion>
+      <AccordionSummary>Assurer la protection de la vie privée</AccordionSummary>
+      <AccordionDetails>S’assurer de prendre en compte les éléments pouvant affecter la confidentialité des données personnelles dans le cadre législatif québécois et canadien.  </AccordionDetails>
+    </Accordion>
+      <Accordion>
+      <AccordionSummary>Respecter le droit d’auteur et propriété intellectuelle</AccordionSummary>
+      <AccordionDetails>Respecter les cadres légaux en matière de droit d’auteur et de propriété intellectuelle. </AccordionDetails>
+    </Accordion>
+       <Accordion>
+      <AccordionSummary>Privilégier l’Équité, la diversité, l’inclusion et l’accessibilité</AccordionSummary>
+      <AccordionDetails>Promouvoir des applications de l’IA qui renforcent l’accessibilité de l’information et soutiennent les besoins variés des personnes qui l’utilisent, en particulier les communautés sous-représentées.</AccordionDetails>
+    </Accordion>
+           <Accordion>
+      <AccordionSummary>Respecter le cadre réglementaire institutionnel </AccordionSummary>
+      <AccordionDetails>Assurer la conformité de notre offre avec le cadre réglementaire de l’Université de Montréal en intégrant les normes et directives sur l’intelligence artificielle et en nous assurant d’en informer notre communauté, lorsque pertinent.</AccordionDetails>
+    </Accordion>
+  </AccordionGroup>
+  </GridOffset>
 </Section>
 
+<Section>
+<Carousel1
+    title={<Typography component="h2">La science ouverte, notre conviction</Typography>}
+    description={
+      <>
+        <Typography sx={{pb: 1.5}}>Nous mettons la langue française au cœur de nos actions, en soutien à la vision institutionnelle : être la plus influente université de langue française dans le monde.</Typography>
+        <Typography>À travers nos actions, nous réaffirmons notre engagement envers la science en français et notre rôle moteur dans la préservation et la promotion de cette richesse culturelle et intellectuelle.</Typography>
+      </>
+    }
+  >
+    <FlipCardWithBg
+        title="Soutien à la recherche en français  "
+        Icon={Megaphone}
+      >
+        <p>Soutien des équipes de recherche par la mise à disposition d’outils et de ressources francophones, notamment en portant une attention particulière à  l’acquisition de documentation en français pour nos collections.  </p>
+      </FlipCardWithBg>
+
+          <FlipCardWithBg
+        title="Initiatives de francisation"
+        Icon={HandCoins}
+      >
+        <p>Renforcer la présence du français dans les environnements universitaires scientifiques par la traduction et l’adaptation de notices de documents pour aider au référencement et au repérage de documentation en français  et Participer à la francisation de l’interface de la plateforme numérique Borealis.</p>
+      </FlipCardWithBg>
+
+                <FlipCardWithBg
+        title="Rayonnement de la science en français"
+        Icon={ArrowsOut}
+      >
+        <p>ontribuer financièrement et collaborer activement au développement et à la gouvernance de la plateforme Érudit, spécialisée dans la diffusion en libre accès de publications savantes en français Soutenir l’implantation du Réseau Circé : Réseau québécois de recherche et de mutualisation de services aux revues savantes québécoises de langue française Offrir gratuitement une plateforme d’édition pour les revues de l’UdeM, OJS. Toutes ces infrastructures essentielles favorisent la diffusion et la valorisation des publications scientifiques francophones, permettent ainsi à la recherche en français de s’inscrire dans les dialogues mondiaux du savoir.</p>
+      </FlipCardWithBg>
+
+                <FlipCardWithBg
+        title="Service d’adaptation documentaire"
+        Icon={LockSimpleOpen}
+      >
+        <p>Adapter les documents de nos collections ou d’autres sources pour les personnes ayant une déficience perceptuelle, lorsqu’aucune version n’est disponible dans un format approprié. Nous pouvons ainsi augmenter l’accès à de la documentation en français, pour tous les membres de notre communauté. </p>
+      </FlipCardWithBg>
+  </Carousel1>
+</Section>
