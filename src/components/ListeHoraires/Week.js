@@ -1,6 +1,6 @@
-import { addDays, addWeeks, format } from 'date-fns'
+import { addDays, addWeeks, format, isToday } from 'date-fns'
 import { frCA } from 'date-fns/locale'
-import { getFirstDayOfWeekDate } from '../../utils/dateTimeUtils.js'
+import { getFirstDayOfWeekDate } from '@/utils/dateTimeUtils'
 
 export default class Week {
 
@@ -32,6 +32,7 @@ export default class Week {
     const startDate = this.toDate()
     const endDate = addDays(startDate, 6)
     const pattern = currentBreakpoint.key === 'xs' ? 'd MMM y' : 'd MMMM y'
+
     return `${format(startDate, pattern, { locale: frCA })} - ${format(endDate, pattern, { locale: frCA })}`
   }
 
@@ -39,8 +40,17 @@ export default class Week {
     const startDate = this.toDate()
 
     return Array(7).fill(1).map((_, i) => {
-      const day = format(addDays(startDate, i), pattern, { locale: frCA })
-      return day.charAt(0).toUpperCase() + day.slice(1)
+      const currentDate = addDays(startDate, i)
+      const day = format(currentDate, pattern, { locale: frCA })
+      const formated = day.charAt(0).toUpperCase() + day.slice(1)
+      const isoFormated = `${format(currentDate, 'yyyy-MM-dd')}`
+      const isActive = isToday(currentDate)
+
+      return {
+        formated,
+        isoFormated,
+        isActive
+      }
     })
   }
 }

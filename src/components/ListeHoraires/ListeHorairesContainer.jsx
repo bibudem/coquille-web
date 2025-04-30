@@ -15,6 +15,9 @@ export default function ListeHorairesContainer({ children }) {
             marginLeft: '40px',
             marginRight: '40px',
           },
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '3rem',
         })}
       >
         {children}

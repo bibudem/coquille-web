@@ -21,24 +21,27 @@ const A = styled('a')({
   alignItems: 'center',
 })
 
-function Title({ title, fullTitle, sticky = false }) {
+function Title({ title, sticky = false }) {
   const id = slugify(title)
   return (
     <Div
       sx={
         sticky
-          ? {
+          ? (theme) => ({
               position: 'sticky',
-              top: 0,
+              top: '145px',
+              backgroundColor: theme.palette.background.paper,
               '&:hover > .anchor': {
                 opacity: 1,
               },
-            }
+            })
           : {
               position: 'relative',
               '&:hover > .anchor': {
                 opacity: 1,
               },
+              // marginTop: '1.8rem',
+              marginBottom: '1.8rem',
             }
       }
     >
@@ -46,12 +49,9 @@ function Title({ title, fullTitle, sticky = false }) {
         id={id}
         component="h2"
         sx={(theme) => ({
-          fontSize: '1.4444rem', // 26px
-          fontWeight: 400,
+          fontSize: '1.5rem', // 26px
+          fontWeight: 500,
           lineHeight: 1.2,
-          [theme.breakpoints.up('md')]: {
-            fontSize: '1.5rem', // 28px
-          },
           [theme.breakpoints.up('lg')]: {
             fontSize: '1.7778rem', // 32px
             width: 270,
@@ -62,7 +62,6 @@ function Title({ title, fullTitle, sticky = false }) {
         })}
       >
         {title}
-        <meta itemProp="name" content={fullTitle} />
       </Typography>
       <A className="anchor" href={`#${id}`} aria-label={`Permalien: ${title}`}>
         <Link size="1.125rem" color="currentColor" weight="bold" />
@@ -75,27 +74,24 @@ export default function HoraireBib({ codeBib, children }) {
   const isLG = useSmall('lg')
   const isSM = useSmall('sm')
 
-  const microdataProps = {
-    itemScope: true,
-    itemType: 'https://schema.org/Library',
-  }
-
   const miscContent = children && <Div sx={{ fontSize: '0.8889rem', marginTop: '1em' }}>{children}</Div>
 
   return isSM ? (
-    <Div
-      {...microdataProps}
-      sx={{
-        position: 'relative',
-      }}
-    >
-      <Title title={codeBibs[codeBib].court} fullTitle={codeBibs[codeBib].long} sticky />
-      {children}
+    <Div>
+      <Div>
+        <Title title={codeBibs[codeBib].court} />
+        <Div
+          sx={{
+            marginBottom: '.5em',
+          }}
+        >
+          {children}
+        </Div>
+      </Div>
       <BlocHoraire codeBib={codeBib} />
     </Div>
   ) : (
     <Div
-      {...microdataProps}
       sx={(theme) => ({
         display: 'flex',
         flexDirection: 'column',
@@ -107,11 +103,11 @@ export default function HoraireBib({ codeBib, children }) {
       })}
     >
       <Div>
-        <Title title={codeBibs[codeBib].court} fullTitle={codeBibs[codeBib].long} />
-        {children && !isLG && miscContent}
+        <Title title={codeBibs[codeBib].court} />
+        {!isLG && miscContent}
       </Div>
       <BlocHoraire codeBib={codeBib} />
-      {children && isLG && miscContent}
+      {isLG && miscContent}
     </Div>
   )
 }

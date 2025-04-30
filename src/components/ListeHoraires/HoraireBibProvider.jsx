@@ -85,7 +85,10 @@ export default function HoraireBibProvider({ children }) {
   useEffect(() => {
     if (currentWeek) {
       const currentWeekTitle = currentWeek.formatWeekHeader(currentBreakpoint)
-      const daysOfWeekHeaders = currentWeek.formatDaysOfWeekHeader()
+      const daysOfWeekHeaders = {
+        days: currentWeek.formatDaysOfWeekHeader(),
+        weekDate: currentWeek.toDate(),
+      }
 
       setLabels({
         currentWeekTitle,
