@@ -1,8 +1,7 @@
 import { forwardRef } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { Link as MuiLink } from '@mui/material'
-import { unstable_styleFunctionSx } from '@mui/system'
-import styled from '@emotion/styled'
+import { styled } from '@mui/material/styles'
 import { ArrowRight } from '@phosphor-icons/react'
 
 const linkStyles = {
@@ -19,7 +18,7 @@ const iconStyles = {
   gap: '.375em',
 }
 
-const A = styled('a')(unstable_styleFunctionSx)
+const A = styled('a')({})
 
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
