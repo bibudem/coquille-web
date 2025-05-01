@@ -20,10 +20,6 @@ export default function HoraireBibProvider({ children }) {
   const { data: servicesData, error: serviceError, isLoading: serviceIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires/services`, fetcher)
   const fetchedWeeks = new Set([currentWeek])
 
-  function nav(to) {
-    setCurrentWeek(addWeekISODate(currentWeek, to))
-  }
-
   function prevBtnProps() {
     const actualWeek = new Week()
     return {
@@ -33,15 +29,20 @@ export default function HoraireBibProvider({ children }) {
   }
 
   function nextBtnProps() {
-    // const actualWeek = new Week()
     return {
       onClick: () => setCurrentWeek(currentWeek.nextWeek()),
       // disabled: currentWeek.toDate() <= actualWeek.toDate(),
     }
   }
 
+  const sortedServices = useMemo(() => {
+    if (servicesData) {
+      return Object.values(servicesData).sort((service1, service2) => service1.order - service2.order)
+    }
+  }, [servicesData])
+
   const horaires = useMemo(() => {
-    if (!horairesData) {
+    if (!horairesData || !servicesData) {
       return
     }
 
@@ -51,15 +52,19 @@ export default function HoraireBibProvider({ children }) {
       }
 
       const result = {}
-      const bibs = new Set()
 
-      horairesData.evenements?.forEach((item) => {
-        const { bibliotheque: codeBib } = item
-        if (!bibs.has(codeBib)) {
-          bibs.add(codeBib)
-          result[codeBib] = []
+      horairesData.evenements?.forEach((horaire) => {
+        const { bibliotheque: codeBib, service } = horaire
+
+        if (!Reflect.has(result, codeBib)) {
+          result[codeBib] = {}
         }
-        result[codeBib].push(item)
+
+        if (!Reflect.has(result[codeBib], service)) {
+          result[codeBib][service] = []
+        }
+
+        result[codeBib][service].push(horaire)
       })
 
       return result
@@ -74,7 +79,7 @@ export default function HoraireBibProvider({ children }) {
     }
 
     return parsedData
-  }, [horairesData])
+  }, [horairesData, services])
 
   useEffect(() => {
     if (servicesData) {
@@ -83,7 +88,6 @@ export default function HoraireBibProvider({ children }) {
   }, [servicesData])
 
   useEffect(() => {
-    console.log('[useEffect] currentWeek:', currentWeek)
     if (currentWeek) {
       const currentWeekTitle = currentWeek.formatWeekHeader(currentBreakpoint)
       const daysOfWeekHeaders = {
@@ -119,5 +123,5 @@ export default function HoraireBibProvider({ children }) {
     setIsLoading(!!horairesIsLoading || !!serviceIsLoading)
   }, [horairesIsLoading, serviceIsLoading])
 
-  return <HoraireBibContext.Provider value={{ ...horaires, error, isLoading, isReady, ...labels, services, prevBtnProps, nextBtnProps }}>{children}</HoraireBibContext.Provider>
+  return <HoraireBibContext.Provider value={{ ...horaires, error, isLoading, isReady, ...labels, services, prevBtnProps, nextBtnProps, sortedServices }}>{children}</HoraireBibContext.Provider>
 }

@@ -1,7 +1,6 @@
 import { ListItemIcon, ListItemText as MuiListItemText, MenuItem, MenuList, Paper, useScrollTrigger, useTheme, IconButton, Box } from '@mui/material'
 import { CalendarPlus, Chats, ClockCountdown, Lifebuoy } from '@phosphor-icons/react'
 import Div from '@/components/utils/Div'
-import { useSmall } from '@/hooks/use-small'
 import { SofiaIcon } from '@/components/CustomIcons'
 import Link from '@/components/Link'
 
@@ -27,7 +26,6 @@ export function QuickLinks() {
   })
 
   const theme = useTheme()
-  const isSmall = useSmall()
 
   function handleOnMenuItemClick(event) {
     event.preventDefault()
@@ -68,31 +66,31 @@ export function QuickLinks() {
         })}
       >
         <MenuList>
-          <MenuItem component={Link} href="https://umontreal.on.worldcat.org/discovery?lang=fr">
+          <MenuItem component={Link} to="https://umontreal.on.worldcat.org/discovery?lang=fr">
             <ListItemIcon>
               <SofiaIcon color="#fff" />
             </ListItemIcon>
             <ListItemText>Sofia</ListItemText>
           </MenuItem>
-          <MenuItem component={Link} href="/horaires">
+          <MenuItem component={Link} to="/horaires">
             <ListItemIcon>
               <ClockCountdown color="#fff" size={24} />
             </ListItemIcon>
             <ListItemText>Horaires</ListItemText>
           </MenuItem>
-          <MenuItem component={Link} href="https://calendrier.bib.umontreal.ca/r">
+          <MenuItem component={Link} to="https://calendrier.bib.umontreal.ca/r">
             <ListItemIcon>
               <CalendarPlus color="#fff" size={24} />
             </ListItemIcon>
             <ListItemText>Réserver une salle</ListItemText>
           </MenuItem>
-          <MenuItem component={Link} href="#" onClick={handleOnMenuItemClick}>
+          <MenuItem component={Link} to="#" onClick={handleOnMenuItemClick}>
             <ListItemIcon>
               <Lifebuoy color="#fff" size={24} />
             </ListItemIcon>
             <ListItemText>Soutien informatique</ListItemText>
           </MenuItem>
-          <MenuItem component={Link} href="#" onClick={handleOnMenuItemClick}>
+          <MenuItem component={Link} to="#" onClick={handleOnMenuItemClick}>
             <ListItemIcon>
               <Chats color="#fff" size={24} />
             </ListItemIcon>

@@ -5,12 +5,11 @@ import { HoraireBibContext } from './HoraireBibContext'
 import { styled } from '@mui/material'
 
 export default function BlocHoraireNarrow({ codeBib }) {
-  const { daysOfWeekHeaders, horaires, services } = useContext(HoraireBibContext)
+  const { daysOfWeekHeaders, horaires, services, sortedServices } = useContext(HoraireBibContext)
   const [data, setData] = useState()
 
   useEffect(() => {
-    if (horaires && services) {
-      const sortedServices = Object.values(services).sort((service1, service2) => service1.order - service2.order)
+    if (horaires && services && sortedServices) {
       const blocs = {}
       const rows = []
 
@@ -59,7 +58,7 @@ export default function BlocHoraireNarrow({ codeBib }) {
 
       setData(rows)
     }
-  }, [horaires, services])
+  }, [horaires, services, sortedServices])
 
   return (
     <Div

@@ -32,7 +32,7 @@ export default function Banner({ ...rest }) {
           },
         })}
       >
-        {!isSmall && (
+        {/* {!isSmall && (
           <Div
             sx={{
               display: 'flex',
@@ -51,7 +51,7 @@ export default function Banner({ ...rest }) {
             </Div>
             <SearchBox />
           </Div>
-        )}
+        )} */}
 
         <Div
           sx={(theme) => ({
