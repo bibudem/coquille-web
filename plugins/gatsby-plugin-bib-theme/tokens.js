@@ -2,6 +2,12 @@ import { extendTheme, responsiveFontSizes } from '@mui/material/styles'
 import { darken, lighten, getContrastRatio } from '@mui/material/styles'
 
 //
+// Couleur principale
+//
+
+const bleuFonce = '#0b113a'
+
+//
 // Liste des couleurs secondaires
 //
 
@@ -44,7 +50,7 @@ export const secondaryColors = {
 		contrastText: CONTRAST_TEXT_LIGHT
 	},
 	bleuFonce: {
-		main: '#0b113a',
+		main: bleuFonce,
 		light: 'rgb(59, 64, 97)',
 		dark: 'rgb(7, 11, 40)',
 		contrastText: CONTRAST_TEXT_LIGHT
@@ -83,7 +89,10 @@ const tokens = {
 		light: {
 			palette: {
 				primary: {
-					main: '#0057ac'
+					main: '#0057ac',
+				},
+				text: {
+					primary: bleuFonce
 				},
 				...secondaryColors,
 				background: {
@@ -246,6 +255,11 @@ const tokens = {
 				})
 			}
 		}
+	},
+	palette: {
+		text: {
+			default: 'red'
+		},
 	},
 	shape: {
 		corner: {
