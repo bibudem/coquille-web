@@ -319,7 +319,7 @@ const tokens = {
 			fontFamily: 'Lora',
 		},
 		h3: {
-			fontSize: '1.8667rem',
+			fontSize: '2rem',
 			fontWeight: 500,
 		},
 		h4: {
