@@ -83,6 +83,7 @@ export default function HoraireBibProvider({ children }) {
   }, [servicesData])
 
   useEffect(() => {
+    console.log('[useEffect] currentWeek:', currentWeek)
     if (currentWeek) {
       const currentWeekTitle = currentWeek.formatWeekHeader(currentBreakpoint)
       const daysOfWeekHeaders = {

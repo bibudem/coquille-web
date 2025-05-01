@@ -1,8 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
-import { useTheme } from '@mui/material'
 import Div from '@/components/utils/Div'
 import { HoraireBibContext } from './HoraireBibContext'
-import { useSmall } from '@/hooks/use-small'
 
 const activeDayStyles = {
   fontWeight: 600,
@@ -76,7 +74,6 @@ function TableHeader({ headers }) {
             key={isoFormated}
             sx={{
               backgroundColor: 'bleu100.main',
-              textTransform: 'capitalize',
             }}
             isActive={isActive}
           >
@@ -89,14 +86,13 @@ function TableHeader({ headers }) {
 
 export default function BlocHoraireWide({ codeBib }) {
   const { daysOfWeekHeaders, horaires, services } = useContext(HoraireBibContext)
-  const { days } = daysOfWeekHeaders
-  const todayIndex = days.findIndex((day) => day.isActive)
   const [data, setData] = useState(null)
   const [headers, setHeaders] = useState(null)
 
   useEffect(() => {
-    if (horaires && services) {
+    if (horaires && services && daysOfWeekHeaders) {
       const rows = []
+      const todayIndex = daysOfWeekHeaders.days.findIndex((day) => day.isActive)
       horaires[codeBib].forEach((horaire, i) => {
         const currentHeaderIndex = i % 7
         if (currentHeaderIndex === 0) {
@@ -107,7 +103,7 @@ export default function BlocHoraireWide({ codeBib }) {
 
       setData(rows)
     }
-  }, [horaires, services])
+  }, [horaires, services, daysOfWeekHeaders])
 
   useEffect(() => {
     if (daysOfWeekHeaders) {
