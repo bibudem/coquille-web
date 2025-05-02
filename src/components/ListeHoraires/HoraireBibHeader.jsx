@@ -20,15 +20,19 @@ export default function Banner({ ...rest }) {
   return (
     <LayoutContainer sx={(theme) => ({ backgroundColor: 'primary.main', color: 'primary.contrastText', position: 'sticky', top: 0, zIndex: theme.zIndex.appBar })}>
       <Div
-        sx={{
+        sx={(theme) => ({
           display: 'flex',
           flexDirection: 'column',
           gap: '1em',
-          fontSize: '1.3333rem',
-          padding: '46px 0',
-        }}
+          fontSize: '1.2rem',
+          padding: '30px 0',
+          [theme.breakpoints.up('sm')]: {
+            fontSize: '1.3333rem',
+            padding: '46px 0',
+          },
+        })}
       >
-        {!isSmall && (
+        {/* {!isSmall && (
           <Div
             sx={{
               display: 'flex',
@@ -47,14 +51,18 @@ export default function Banner({ ...rest }) {
             </Div>
             <SearchBox />
           </Div>
-        )}
+        )} */}
+
         <Div
-          sx={{
+          sx={(theme) => ({
             display: 'flex',
             alignItems: 'center',
             margin: '0 auto',
-            gap: '10px',
-          }}
+            gap: '1.25rem',
+            [theme.breakpoints.up('sm')]: {
+              gap: '.5rem',
+            },
+          })}
         >
           <Div>
             <IconButton aria-label="semaine précédente" sx={{ color: 'inherit' }} {...prevBtnProps()}>

@@ -5,12 +5,11 @@ import { HoraireBibContext } from './HoraireBibContext'
 import { styled } from '@mui/material'
 
 export default function BlocHoraireNarrow({ codeBib }) {
-  const { daysOfWeekHeaders, horaires, services } = useContext(HoraireBibContext)
+  const { daysOfWeekHeaders, horaires, services, sortedServices } = useContext(HoraireBibContext)
   const [data, setData] = useState()
-  console.log('daysOfWeekHeaders:', daysOfWeekHeaders)
+
   useEffect(() => {
-    if (horaires && services) {
-      const sortedServices = Object.values(services).sort((service1, service2) => service1.order - service2.order)
+    if (horaires && services && sortedServices) {
       const blocs = {}
       const rows = []
 
@@ -26,26 +25,31 @@ export default function BlocHoraireNarrow({ codeBib }) {
       sortedServices.forEach(({ key, label }) => {
         if (blocs[key]) {
           rows.push(
-            <Div>
+            <Div key={key}>
               <Title>{label}</Title>
 
               <LayoutTable sx={{ width: '100%' }}>
-                {blocs[key].map((horaire, i) => {
-                  const { isoFormated, isActive, formated } = daysOfWeekHeaders.days[i]
-                  const { sommaire } = horaire
-                  return (
-                    <Tr
-                      sx={{
-                        ...(isActive && { backgroundColor: 'bleu100.main' }),
-                      }}
-                    >
-                      <Th>
-                        <time dateTime={isoFormated}>{formated}</time>
-                      </Th>
-                      <Td>{sommaire}</Td>
-                    </Tr>
-                  )
-                })}
+                <tbody>
+                  {blocs[key].map((horaire, i) => {
+                    const { isoFormated, isActive, formated } = daysOfWeekHeaders.days[i]
+                    const { sommaire } = horaire
+                    return (
+                      <Tr
+                        key={i}
+                        sx={{
+                          ...(isActive && { backgroundColor: 'bleu100.main' }),
+                        }}
+                      >
+                        <Th>
+                          <time dateTime={isoFormated}>{formated}</time>
+                        </Th>
+                        <Td>
+                          <Span>{sommaire}</Span>
+                        </Td>
+                      </Tr>
+                    )
+                  })}
+                </tbody>
               </LayoutTable>
             </Div>
           )
@@ -54,7 +58,7 @@ export default function BlocHoraireNarrow({ codeBib }) {
 
       setData(rows)
     }
-  }, [horaires, services])
+  }, [horaires, services, sortedServices])
 
   return (
     <Div
@@ -72,8 +76,9 @@ export default function BlocHoraireNarrow({ codeBib }) {
 function Title({ children }) {
   return (
     <Div
+      className="bib-comp-horaire--service-title"
       sx={(theme) => ({
-        padding: '6px 8px 6px 0',
+        padding: '.5em 8px .5em 0',
         fontSize: '1.1em',
         borderBottom: `1px solid ${theme.palette.bleu200.dark}`,
       })}
@@ -98,4 +103,11 @@ const Th = styled(LayoutTable.Th)({
 
 const Tr = styled(LayoutTable.Tr)(({ theme }) => ({
   borderBottom: `1px solid ${theme.palette.bleu200.dark}`,
+}))
+
+const Span = styled('span')(({ theme }) => ({
+  display: 'inline-block',
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '11ch',
+  },
 }))

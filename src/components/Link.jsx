@@ -37,6 +37,7 @@ const Link = forwardRef(function Link(props, ref) {
   const icon = Icon && typeof Icon === 'boolean' ? <ArrowRight {..._iconProps} /> : <Icon {..._iconProps} />
 
   // Use Gatsby Link for internal links, and <a> for others
+  // console.log('isInternal:', isInternal)
   if (!isInternal) {
     return (
       <A ref={ref} href={to} sx={{ ...styles, ...sx }} {...rest}>

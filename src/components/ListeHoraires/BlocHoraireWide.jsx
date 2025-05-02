@@ -1,17 +1,20 @@
 import { useContext, useEffect, useState } from 'react'
-import { useTheme } from '@mui/material'
 import Div from '@/components/utils/Div'
 import { HoraireBibContext } from './HoraireBibContext'
-import { useSmall } from '@/hooks/use-small'
 
 const activeDayStyles = {
   fontWeight: 600,
   backgroundColor: 'bleu200.main',
 }
 
-function TableHeaderCell({ isActive = false, sx, children }) {
+function key() {
+  return [...arguments].join('::')
+}
+
+function TableHeaderCell({ isActive = false, sx, children, ...props }) {
   return (
     <Div
+      {...props}
       sx={(theme) => ({
         padding: '10px 12px',
         fontWeight: 600,
@@ -51,9 +54,10 @@ function TableRowHeader({ sx, children }) {
   )
 }
 
-function TableCell({ isActive = false, sx, children }) {
+function TableCell({ isActive = false, sx, children, ...props }) {
   return (
     <Div
+      {...props}
       sx={{
         padding: '10px 12px',
         lineHeight: 2,
@@ -76,7 +80,6 @@ function TableHeader({ headers }) {
             key={isoFormated}
             sx={{
               backgroundColor: 'bleu100.main',
-              textTransform: 'capitalize',
             }}
             isActive={isActive}
           >
@@ -88,26 +91,46 @@ function TableHeader({ headers }) {
 }
 
 export default function BlocHoraireWide({ codeBib }) {
-  const { daysOfWeekHeaders, horaires, services } = useContext(HoraireBibContext)
-  const { days } = daysOfWeekHeaders
-  const todayIndex = days.findIndex((day) => day.isActive)
+  const { daysOfWeekHeaders, horaires, services, sortedServices } = useContext(HoraireBibContext)
   const [data, setData] = useState(null)
   const [headers, setHeaders] = useState(null)
 
   useEffect(() => {
-    if (horaires && services) {
+    // console.log('horaires:', horaires)
+    // console.log('sortedServices:', sortedServices)
+    if (horaires && services && daysOfWeekHeaders && sortedServices) {
       const rows = []
-      horaires[codeBib].forEach((horaire, i) => {
-        const currentHeaderIndex = i % 7
-        if (currentHeaderIndex === 0) {
-          rows.push(<TableRowHeader>{services[horaire.service]?.label}</TableRowHeader>)
+      const todayIndex = daysOfWeekHeaders.days.findIndex((day) => day.isActive)
+      const currentHoraires = horaires[codeBib]
+
+      console.log('currentHoraires for %s:', codeBib, currentHoraires)
+
+      if (typeof currentHoraires === 'undefined') {
+        rows.push(<div>Horaire non disponible</div>)
+        return
+      }
+
+      sortedServices.forEach(({ key: serviceKey, label: serviceLabel }) => {
+        if (Reflect.has(currentHoraires, serviceKey)) {
+          const serviceHoraires = currentHoraires[serviceKey]
+          for (let i = 0; i <= 6; i++) {
+            const currentHeaderIndex = i % 7
+            const sommaire = serviceHoraires[i]?.sommaire ?? '-'
+            if (currentHeaderIndex === 0) {
+              rows.push(<TableRowHeader key={key(codeBib, serviceKey)}>{serviceLabel}</TableRowHeader>)
+            }
+            rows.push(
+              <TableCell key={key(codeBib, serviceKey, i)} isActive={todayIndex === currentHeaderIndex}>
+                {sommaire}
+              </TableCell>
+            )
+          }
         }
-        rows.push(<TableCell isActive={todayIndex === currentHeaderIndex}>{horaire.sommaire}</TableCell>)
       })
 
       setData(rows)
     }
-  }, [horaires, services])
+  }, [horaires, services, daysOfWeekHeaders, sortedServices])
 
   useEffect(() => {
     if (daysOfWeekHeaders) {
@@ -121,6 +144,7 @@ export default function BlocHoraireWide({ codeBib }) {
         flexGrow: 1,
         display: 'grid',
         gridTemplateColumns: '1fr repeat(7, minmax(0, 1fr))',
+        gridAutoRows: 'min-content',
         fontSize: '0.8889rem', // 16px
       }}
     >

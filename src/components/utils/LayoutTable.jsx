@@ -1,16 +1,5 @@
 import { styled } from '@mui/material'
 
-// export default function LayoutTablez({ style, ...props }) {
-//   return (
-//     <LayoutTable
-//       {...props}
-//       style={{
-//         ...style,
-//       }}
-//     />
-//   )
-// }
-
 const LayoutTable = styled('table')({
   borderCollapse: 'collapse',
 })

@@ -54,6 +54,9 @@ function Title({ title, sticky = false }) {
           lineHeight: 1.2,
           [theme.breakpoints.up('lg')]: {
             fontSize: '1.7778rem', // 32px
+            width: 240,
+          },
+          ['@media (min-width: 1370px) ']: {
             width: 270,
           },
           [theme.breakpoints.up('xl')]: {
@@ -74,7 +77,7 @@ export default function HoraireBib({ codeBib, children }) {
   const isLG = useSmall('lg')
   const isSM = useSmall('sm')
 
-  const miscContent = children && <Div sx={{ fontSize: '0.8889rem', marginTop: '1em' }}>{children}</Div>
+  const miscContent = children && <Div sx={{ flexGrow: 1, display: 'flex', alignItems: 'flex-end', fontSize: '0.8889rem' }}>{children}</Div>
 
   return isSM ? (
     <Div>
@@ -95,14 +98,22 @@ export default function HoraireBib({ codeBib, children }) {
       sx={(theme) => ({
         display: 'flex',
         flexDirection: 'column',
-        gap: '20px',
+        gap: {
+          xs: '1em',
+          lg: '20px',
+        },
         marginBottom: '3.5556rem',
         [theme.breakpoints.up('lg')]: {
           flexDirection: 'row',
         },
       })}
     >
-      <Div>
+      <Div
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
         <Title title={codeBibs[codeBib].court} />
         {!isLG && miscContent}
       </Div>
