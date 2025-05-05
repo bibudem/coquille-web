@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import Div from '@/components/utils/Div'
+import HoraireNonDisponible from './HoraireNonDisponible'
 import { HoraireBibContext } from './HoraireBibContext'
 
 const activeDayStyles = {
@@ -96,13 +97,25 @@ export default function BlocHoraireWide({ codeBib }) {
   const [headers, setHeaders] = useState(null)
 
   useEffect(() => {
-    if (horaires && services && daysOfWeekHeaders && sortedServices) {
+    if (daysOfWeekHeaders && horaires && services && sortedServices) {
       const rows = []
       const todayIndex = daysOfWeekHeaders.days.findIndex((day) => day.isActive)
       const currentHoraires = horaires[codeBib]
 
-      if (typeof currentHoraires === 'undefined') {
-        rows.push(<div>Horaire non disponible</div>)
+      if (currentHoraires.isNotAvailable) {
+        const { key: serviceKey, label: serviceLabel } = sortedServices[0]
+        setData([
+          <TableRowHeader key={key(codeBib, serviceKey)}>{serviceLabel}</TableRowHeader>,
+          <Div
+            key="is-not-available"
+            sx={{
+              gridColumnStart: 2,
+              gridColumnEnd: 9,
+            }}
+          >
+            <HoraireNonDisponible />
+          </Div>,
+        ])
         return
       }
 

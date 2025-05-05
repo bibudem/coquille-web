@@ -55,7 +55,7 @@ export default function Banner({ ...rest }) {
               textAlign: 'center',
               minWidth: '22ch',
               [theme.breakpoints.up('md')]: {
-                minWidth: '300px',
+                minWidth: '428px',
               },
               [theme.breakpoints.up('lg')]: {
                 minWidth: '445px',

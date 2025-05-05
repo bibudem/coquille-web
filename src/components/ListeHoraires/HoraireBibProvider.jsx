@@ -2,9 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import useSWR, { preload } from 'swr'
 import { HoraireBibContext } from './HoraireBibContext'
 import { addWeekISODate } from '@/utils/dateTimeUtils'
-import { useSmall } from '@/hooks/use-Small'
+import { useSmall } from '@/hooks/use-small'
 import Week from './Week'
-import { weeksToDays } from 'date-fns'
 
 const fetcher = (...args) => {
   return fetch(...args).then((res) => res.json())

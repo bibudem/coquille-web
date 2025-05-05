@@ -1,34 +1,25 @@
 import { useContext, useEffect, useState } from 'react'
-import Div from '@/components/utils/Div'
-import LayoutTable from '@/components/utils/LayoutTable'
-import { HoraireBibContext } from './HoraireBibContext'
-import HoraireNonDisponible from './HoraireNonDisponible'
 import { styled } from '@mui/material'
+import LayoutTable from '@/components/utils/LayoutTable'
+import Div from '@/components/utils/Div'
+import HoraireNonDisponible from './HoraireNonDisponible'
+import { HoraireBibContext } from './HoraireBibContext'
 
 export default function BlocHoraireNarrow({ codeBib }) {
-  const { daysOfWeekHeaders, horaires, services, sortedServices, getHorairesFor } = useContext(HoraireBibContext)
+  const { daysOfWeekHeaders, horaires, services, sortedServices } = useContext(HoraireBibContext)
   const [data, setData] = useState()
 
   useEffect(() => {
-    if (horaires && services && sortedServices && daysOfWeekHeaders) {
-      // console.log('=== horaires:', horaires)
+    if (daysOfWeekHeaders && horaires && services && sortedServices) {
       const rows = []
       const currentHoraires = horaires[codeBib]
-      console.log('currentHoraires:', currentHoraires)
-      console.log('getHorairesFor(%s) %o (horaires: %o)', codeBib, getHorairesFor(codeBib), horaires)
 
       if (currentHoraires.isNotAvailable) {
-        console.log('currentHoraires is undefined for %s', codeBib)
-        rows.push(
-          <Div className="ici">
-            <HoraireNonDisponible />
-          </Div>
-        )
+        setData(<HoraireNonDisponible />)
         return
       }
 
       sortedServices.forEach(({ key, label }) => {
-        console.log('sortedServices:')
         const serviceHoraires = currentHoraires[key]
         if (serviceHoraires) {
           const serviceRow = []
