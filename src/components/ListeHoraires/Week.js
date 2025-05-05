@@ -28,10 +28,11 @@ export default class Week {
     return this._go(-1)
   }
 
-  formatWeekHeader(currentBreakpoint) {
+  formatWeekHeader(isSmall) {
+    console.log('isSmall:', isSmall)
     const startDate = this.toDate()
     const endDate = addDays(startDate, 6)
-    const pattern = currentBreakpoint.key === 'xs' ? 'd MMM y' : 'd MMMM y'
+    const pattern = isSmall ? 'd MMM y' : 'd MMMM y'
 
     return `${format(startDate, pattern, { locale: frCA })} - ${format(endDate, pattern, { locale: frCA })}`
   }

@@ -2,54 +2,61 @@ import { useContext, useEffect, useState } from 'react'
 import Div from '@/components/utils/Div'
 import LayoutTable from '@/components/utils/LayoutTable'
 import { HoraireBibContext } from './HoraireBibContext'
+import HoraireNonDisponible from './HoraireNonDisponible'
 import { styled } from '@mui/material'
 
 export default function BlocHoraireNarrow({ codeBib }) {
-  const { daysOfWeekHeaders, horaires, services, sortedServices } = useContext(HoraireBibContext)
+  const { daysOfWeekHeaders, horaires, services, sortedServices, getHorairesFor } = useContext(HoraireBibContext)
   const [data, setData] = useState()
 
   useEffect(() => {
-    if (horaires && services && sortedServices) {
-      const blocs = {}
+    if (horaires && services && sortedServices && daysOfWeekHeaders) {
+      // console.log('=== horaires:', horaires)
       const rows = []
+      const currentHoraires = horaires[codeBib]
+      console.log('currentHoraires:', currentHoraires)
+      console.log('getHorairesFor(%s) %o (horaires: %o)', codeBib, getHorairesFor(codeBib), horaires)
 
-      horaires[codeBib].forEach((horaire, i) => {
-        const key = horaire.service
-        if (!Reflect.has(blocs, key)) {
-          blocs[key] = []
-        }
-
-        blocs[key].push(horaire)
-      })
+      if (currentHoraires.isNotAvailable) {
+        console.log('currentHoraires is undefined for %s', codeBib)
+        rows.push(
+          <Div className="ici">
+            <HoraireNonDisponible />
+          </Div>
+        )
+        return
+      }
 
       sortedServices.forEach(({ key, label }) => {
-        if (blocs[key]) {
+        console.log('sortedServices:')
+        const serviceHoraires = currentHoraires[key]
+        if (serviceHoraires) {
+          const serviceRow = []
+          for (let i = 0; i <= 6; i++) {
+            const sommaire = serviceHoraires[i]?.sommaire ?? '-'
+            const { isoFormated, isActive, formated } = daysOfWeekHeaders.days[i]
+            serviceRow.push(
+              <Tr
+                key={i}
+                sx={{
+                  ...(isActive && { backgroundColor: 'bleu100.main' }),
+                }}
+              >
+                <Th>
+                  <time dateTime={isoFormated}>{formated}</time>
+                </Th>
+                <Td>
+                  <Span>{sommaire}</Span>
+                </Td>
+              </Tr>
+            )
+          }
           rows.push(
             <Div key={key}>
               <Title>{label}</Title>
 
               <LayoutTable sx={{ width: '100%' }}>
-                <tbody>
-                  {blocs[key].map((horaire, i) => {
-                    const { isoFormated, isActive, formated } = daysOfWeekHeaders.days[i]
-                    const { sommaire } = horaire
-                    return (
-                      <Tr
-                        key={i}
-                        sx={{
-                          ...(isActive && { backgroundColor: 'bleu100.main' }),
-                        }}
-                      >
-                        <Th>
-                          <time dateTime={isoFormated}>{formated}</time>
-                        </Th>
-                        <Td>
-                          <Span>{sommaire}</Span>
-                        </Td>
-                      </Tr>
-                    )
-                  })}
-                </tbody>
+                <tbody>{serviceRow}</tbody>
               </LayoutTable>
             </Div>
           )

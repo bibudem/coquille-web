@@ -75,7 +75,7 @@ function Title({ title, sticky = false }) {
 
 export default function HoraireBib({ codeBib, children }) {
   const isLG = useSmall('lg')
-  const isSM = useSmall('sm')
+  const isSM = useSmall('md')
 
   const miscContent = children && <Div sx={{ flexGrow: 1, display: 'flex', alignItems: 'flex-end', fontSize: '0.8889rem' }}>{children}</Div>
 

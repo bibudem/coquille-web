@@ -2,8 +2,9 @@ import { useEffect, useMemo, useState } from 'react'
 import useSWR, { preload } from 'swr'
 import { HoraireBibContext } from './HoraireBibContext'
 import { addWeekISODate } from '@/utils/dateTimeUtils'
-import { useBreakpoint } from '@/hooks/use-breakpoint'
+import { useSmall } from '@/hooks/use-Small'
 import Week from './Week'
+import { weeksToDays } from 'date-fns'
 
 const fetcher = (...args) => {
   return fetch(...args).then((res) => res.json())
@@ -15,9 +16,10 @@ export default function HoraireBibProvider({ children }) {
   const [currentWeek, setCurrentWeek] = useState(new Week())
   const [isReady, setIsReady] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const currentBreakpoint = useBreakpoint()
+  const isSmall = useSmall('md')
   const { data: horairesData, error, isLoading: horairesIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires?debut=${currentWeek}&fin=P7D`, fetcher)
   const { data: servicesData, error: serviceError, isLoading: serviceIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires/services`, fetcher)
+  const { data: listeBibliothequesData, error: listeBibliothequesError, isLoading: listeBibliothequesIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires/liste`, fetcher)
   const fetchedWeeks = new Set([currentWeek])
 
   function prevBtnProps() {
@@ -35,6 +37,11 @@ export default function HoraireBibProvider({ children }) {
     }
   }
 
+  function getHorairesFor(codeBib) {
+    console.log('[getHorairesFor(%s)] %o (horaires: %o)', codeBib, horaires.horaires[codeBib], horaires.horaires)
+    return horaires.horaires[codeBib] ?? { isNotAvailable: true }
+  }
+
   const sortedServices = useMemo(() => {
     if (servicesData) {
       return Object.values(servicesData).sort((service1, service2) => service1.order - service2.order)
@@ -42,17 +49,15 @@ export default function HoraireBibProvider({ children }) {
   }, [servicesData])
 
   const horaires = useMemo(() => {
-    if (!horairesData || !servicesData) {
+    if (!servicesData || !horairesData || !listeBibliothequesData) {
+      console.log('[%s] No horairesData !! servicesData:', currentWeek, horairesData, servicesData)
       return
     }
 
     function parseData(horairesData) {
-      if (!horairesData) {
-        return
-      }
-
       const result = {}
 
+      console.log('ici:', horairesData)
       horairesData.evenements?.forEach((horaire) => {
         const { bibliotheque: codeBib, service } = horaire
 
@@ -65,6 +70,12 @@ export default function HoraireBibProvider({ children }) {
         }
 
         result[codeBib][service].push(horaire)
+      })
+
+      Object.keys(listeBibliothequesData).forEach((codeBib) => {
+        if (!Reflect.has(result, codeBib)) {
+          result[codeBib] = { isNotAvailable: true }
+        }
       })
 
       return result
@@ -89,7 +100,7 @@ export default function HoraireBibProvider({ children }) {
 
   useEffect(() => {
     if (currentWeek) {
-      const currentWeekTitle = currentWeek.formatWeekHeader(currentBreakpoint)
+      const currentWeekTitle = currentWeek.formatWeekHeader(isSmall)
       const daysOfWeekHeaders = {
         days: currentWeek.formatDaysOfWeekHeader(),
         weekDate: currentWeek.toDate(),
@@ -100,7 +111,7 @@ export default function HoraireBibProvider({ children }) {
         daysOfWeekHeaders,
       })
     }
-  }, [currentWeek, currentBreakpoint])
+  }, [currentWeek, isSmall])
 
   useEffect(() => {
     if (currentWeek) {
@@ -123,5 +134,5 @@ export default function HoraireBibProvider({ children }) {
     setIsLoading(!!horairesIsLoading || !!serviceIsLoading)
   }, [horairesIsLoading, serviceIsLoading])
 
-  return <HoraireBibContext.Provider value={{ ...horaires, error, isLoading, isReady, ...labels, services, prevBtnProps, nextBtnProps, sortedServices }}>{children}</HoraireBibContext.Provider>
+  return <HoraireBibContext.Provider value={{ ...horaires, error, isLoading, isReady, ...labels, services, prevBtnProps, nextBtnProps, sortedServices, getHorairesFor }}>{children}</HoraireBibContext.Provider>
 }

@@ -5,7 +5,7 @@ import LayoutContainer from '@/components/utils/LayoutContainer'
 import { appBarHeight } from '@/components/_layout/AppBar/TopAppBar'
 import Div from '@/components/utils/Div'
 import { HoraireBibContext } from './HoraireBibContext'
-import SearchBox from './SearchBox'
+// import SearchBox from './SearchBox'
 import { useSmall } from '@/hooks/use-small'
 
 export default function Banner({ ...rest }) {
@@ -20,6 +20,7 @@ export default function Banner({ ...rest }) {
   return (
     <LayoutContainer sx={(theme) => ({ backgroundColor: 'primary.main', color: 'primary.contrastText', position: 'sticky', top: 0, zIndex: theme.zIndex.appBar })}>
       <Div
+        className="bib-comp-horaires--header"
         sx={(theme) => ({
           display: 'flex',
           flexDirection: 'column',
@@ -32,27 +33,6 @@ export default function Banner({ ...rest }) {
           },
         })}
       >
-        {/* {!isSmall && (
-          <Div
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '.125rem',
-            }}
-          >
-            <Div
-              sx={{
-                fontSize: '1.3333rem',
-                fontWeight: 600,
-                lineHeight: 1.5,
-              }}
-            >
-              Filtrer
-            </Div>
-            <SearchBox />
-          </Div>
-        )} */}
-
         <Div
           sx={(theme) => ({
             display: 'flex',
@@ -70,8 +50,10 @@ export default function Banner({ ...rest }) {
             </IconButton>
           </Div>
           <Div
+            className="bib-comp-horaires--header-label"
             sx={(theme) => ({
               textAlign: 'center',
+              minWidth: '22ch',
               [theme.breakpoints.up('md')]: {
                 minWidth: '300px',
               },

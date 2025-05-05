@@ -96,14 +96,10 @@ export default function BlocHoraireWide({ codeBib }) {
   const [headers, setHeaders] = useState(null)
 
   useEffect(() => {
-    // console.log('horaires:', horaires)
-    // console.log('sortedServices:', sortedServices)
     if (horaires && services && daysOfWeekHeaders && sortedServices) {
       const rows = []
       const todayIndex = daysOfWeekHeaders.days.findIndex((day) => day.isActive)
       const currentHoraires = horaires[codeBib]
-
-      console.log('currentHoraires for %s:', codeBib, currentHoraires)
 
       if (typeof currentHoraires === 'undefined') {
         rows.push(<div>Horaire non disponible</div>)
