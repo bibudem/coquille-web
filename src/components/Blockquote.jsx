@@ -3,7 +3,7 @@ import { styled } from '@mui/material'
 const Figure = styled('figure')(({ theme }) => ({
   padding: '0 0 0 30px',
   position: 'relative',
-  margin: 'unset',
+  margin: '1rem 0',
   '&::before': {
     content: '""',
     position: 'absolute',
