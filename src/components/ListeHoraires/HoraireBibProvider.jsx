@@ -133,5 +133,23 @@ export default function HoraireBibProvider({ children }) {
     setIsLoading(!!horairesIsLoading || !!serviceIsLoading)
   }, [horairesIsLoading, serviceIsLoading])
 
+  useEffect(() => {
+    if (error) {
+      console.error('[fetch] error:', error)
+    }
+  }, [error])
+
+  useEffect(() => {
+    if (serviceError) {
+      console.error('[fetch] serviceError:', serviceError)
+    }
+  }, [serviceError])
+
+  useEffect(() => {
+    if (listeBibliothequesError) {
+      console.error('[fetch] listeBibliothequesError', listeBibliothequesError)
+    }
+  }, [listeBibliothequesError])
+
   return <HoraireBibContext.Provider value={{ ...horaires, error, isLoading, isReady, ...labels, services, prevBtnProps, nextBtnProps, sortedServices, getHorairesFor }}>{children}</HoraireBibContext.Provider>
 }

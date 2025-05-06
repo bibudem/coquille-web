@@ -2,6 +2,7 @@ import { addDays, addWeeks, format, getDay as dateFnsGetDay, isSunday, previousS
 import { frCA } from 'date-fns/locale'
 
 function toDate(date) {
+  console.log('date arg:', date, typeof date)
   if (typeof date === 'string') {
     return new Date(`${date.split('T')[0]}T00:00:00`)
   }
