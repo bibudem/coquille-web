@@ -15,7 +15,12 @@ export default function BlocHoraireNarrow({ codeBib }) {
       const currentHoraires = horaires[codeBib]
 
       if (currentHoraires.isNotAvailable) {
-        setData(<HoraireNonDisponible />)
+        setData(
+          <Div>
+            <Title>{services.regulier.label}</Title>
+            <HoraireNonDisponible />
+          </Div>
+        )
         return
       }
 
