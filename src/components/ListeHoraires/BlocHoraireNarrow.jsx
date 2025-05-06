@@ -6,7 +6,7 @@ import HoraireNonDisponible from './HoraireNonDisponible'
 import { HoraireBibContext } from './HoraireBibContext'
 
 export default function BlocHoraireNarrow({ codeBib }) {
-  const { daysOfWeekHeaders, horaires, services, sortedServices } = useContext(HoraireBibContext)
+  const { daysOfWeekHeaders, horaires, services, sortedServices, isLoading, isReady, error } = useContext(HoraireBibContext)
   const [data, setData] = useState()
 
   useEffect(() => {
@@ -57,6 +57,18 @@ export default function BlocHoraireNarrow({ codeBib }) {
       setData(rows)
     }
   }, [horaires, services, sortedServices])
+
+  useEffect(() => {
+    console.log('[isLoading]', isLoading)
+  }, [isLoading])
+
+  useEffect(() => {
+    console.log('[isReady]', isReady)
+  }, [isReady])
+
+  useEffect(() => {
+    console.log('[error]', error)
+  }, [error])
 
   return (
     <Div

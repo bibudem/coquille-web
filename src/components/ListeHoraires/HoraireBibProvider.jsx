@@ -5,8 +5,28 @@ import { addWeekISODate } from '@/utils/dateTimeUtils'
 import { useSmall } from '@/hooks/use-small'
 import Week from './Week'
 
-const fetcher = (...args) => {
-  return fetch(...args).then((res) => res.json())
+// const fetcher = (...args) => {
+//   return fetch(...args).then((res) => res.json())
+// }
+
+const fetcher = async (...args) => {
+  const res = await fetch(...args)
+
+  // If the status code is not in the range 200-299,
+  // we still try to parse and throw it.
+  if (!res.ok) {
+    try {
+      const error = new Error('An error occurred while fetching the data.')
+      // Attach extra info to the error object.
+      error.info = await res.json()
+      error.status = res.status
+      throw error
+    } catch (e) {
+      console.error('Could not create error after fetch:', e)
+    }
+  }
+
+  return res.json()
 }
 
 export default function HoraireBibProvider({ children }) {
@@ -15,8 +35,9 @@ export default function HoraireBibProvider({ children }) {
   const [currentWeek, setCurrentWeek] = useState(new Week())
   const [isReady, setIsReady] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
   const isSmall = useSmall('md')
-  const { data: horairesData, error, isLoading: horairesIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires?debut=${currentWeek}&fin=P7D`, fetcher)
+  const { data: horairesData, error: horairesDataError, isLoading: horairesDataIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires?debut=${currentWeek}&fin=P7D`, fetcher)
   const { data: servicesData, error: serviceError, isLoading: serviceIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires/services`, fetcher)
   const { data: listeBibliothequesData, error: listeBibliothequesError, isLoading: listeBibliothequesIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires/liste`, fetcher)
   const fetchedWeeks = new Set([currentWeek])
@@ -126,28 +147,31 @@ export default function HoraireBibProvider({ children }) {
   }, [currentWeek])
 
   useEffect(() => {
-    setIsReady(!!horairesData && !!servicesData)
-  }, [horairesData, servicesData])
+    setIsReady((!!horairesData && !!servicesData) || !!listeBibliothequesData)
+  }, [horairesData, servicesData, listeBibliothequesData])
 
   useEffect(() => {
-    setIsLoading(!!horairesIsLoading || !!serviceIsLoading)
-  }, [horairesIsLoading, serviceIsLoading])
+    setIsLoading(!!horairesDataIsLoading || !!serviceIsLoading || !!listeBibliothequesIsLoading)
+  }, [horairesDataIsLoading, serviceIsLoading, listeBibliothequesIsLoading])
 
   useEffect(() => {
-    if (error) {
-      console.error('[fetch] error:', error)
+    if (horairesDataError) {
+      console.error('[fetch] horairesDataError:', horairesDataError)
+      setError(horairesDataError)
     }
-  }, [error])
+  }, [horairesDataError])
 
   useEffect(() => {
     if (serviceError) {
       console.error('[fetch] serviceError:', serviceError)
+      setError(serviceError)
     }
   }, [serviceError])
 
   useEffect(() => {
     if (listeBibliothequesError) {
       console.error('[fetch] listeBibliothequesError', listeBibliothequesError)
+      setError(listeBibliothequesError)
     }
   }, [listeBibliothequesError])
 
