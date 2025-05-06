@@ -24,7 +24,6 @@ export default function Banner({ ...rest }) {
         sx={(theme) => ({
           display: 'flex',
           flexDirection: 'column',
-          gap: '1em',
           fontSize: '1.2rem',
           padding: '30px 0',
           [theme.breakpoints.up('sm')]: {
@@ -38,10 +37,7 @@ export default function Banner({ ...rest }) {
             display: 'flex',
             alignItems: 'center',
             margin: '0 auto',
-            gap: '1.25rem',
-            [theme.breakpoints.up('sm')]: {
-              gap: '.5rem',
-            },
+            gap: '.5rem',
           })}
         >
           <Div>
