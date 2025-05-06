@@ -1,5 +1,3 @@
 import { styled } from '@mui/material'
 
-export default styled('div')({
-  boxSizing: 'border-box',
-})
+export default styled('div')({})
