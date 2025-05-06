@@ -117,9 +117,9 @@ export function QuickLinksSm() {
         flexDirection: 'row',
         justifyContent: 'center',
         flexWrap: 'nowrap',
-        position: 'fixed',
         zIndex: theme.zIndex.drawer,
 
+        position: 'fixed',
         left: 0,
         right: 0,
         bottom: 0,

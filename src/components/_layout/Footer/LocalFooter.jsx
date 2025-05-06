@@ -3,42 +3,22 @@ import { Chats, PaperPlaneTilt, Phone, Siren, YoutubeLogo } from '@phosphor-icon
 import Div from '@/components/utils/Div'
 import { useSmall } from '@/hooks/use-small'
 
-import FooterLink from './FooterLink'
+import BibFooterLink from './FooterLink'
 import FooterContainer from './FooterContainer'
 import LogoBibSceauBleu from '@/images/logo-bib/logo-bib-sceau-bleu.svg'
+import LogoBibUBlanc from '@/images/logo-bib/logo-bib-U-blanc.svg'
 
-const logoStyle = {
-  height: {
-    xs: 125,
-    md: 252,
-  },
-  width: {
-    xs: 'auto',
-  },
-  fill: 'currentColor',
-}
-
-const linkStyles = {
+const FooterLink = styled(BibFooterLink)({
   display: 'inline-flex',
   gap: 8,
   alignItems: 'center',
-  fontSize: 16,
+  fontSize: 'inherit',
   fontWeight: 400,
   lineHeight: 1.6,
   textDecorationSkipInk: 'none',
   '&:hover': {
     textDecoration: 'underline',
   },
-}
-
-const FooterLink1 = styled(FooterLink)({
-  ...linkStyles,
-  color: '#fafdfe',
-})
-
-const FooterLink2 = styled(FooterLink)({
-  ...linkStyles,
-  color: '#cce2f3',
 })
 
 function Col({ sx, children, ...props }) {
@@ -59,7 +39,7 @@ function Col({ sx, children, ...props }) {
 
 function Header({ children }) {
   return (
-    <Typography sx={{ fontSize: 28, fontWeight: 500, lineHeight: 1.2, color: '#e5f0f8' }} component="h3">
+    <Typography sx={{ fontSize: 28, fontWeight: 500, lineHeight: 1.2, color: '#fff' }} component="h3">
       {children}
     </Typography>
   )
@@ -82,45 +62,78 @@ export default function LocalFooter() {
       <Div
         sx={(theme) => ({
           display: 'flex',
+          ...(isSmall && {
+            flexDirection: 'column',
+            gap: '45px',
+          }),
           alignItems: 'stretch',
-          padding: '0 20px',
+          padding: theme.spacing(3, 8, 3, 3.25),
           [theme.breakpoints.up('md')]: {
             padding: '0 64px',
           },
           justifyContent: 'space-between',
         })}
       >
+        {isSmall && (
+          <Col>
+            <Div
+              sx={{
+                display: 'flex',
+                flexDirection: { xs: 'column', sm: 'row' },
+                width: '100%',
+                justifyContent: 'space-between',
+              }}
+            >
+              <FooterLink
+                to="/"
+                aria-label="Accueil"
+                sx={{
+                  display: 'flex',
+                }}
+              >
+                <LogoBibUBlanc
+                  style={{
+                    width: isSmall ? '100%' : 'auto',
+                    height: isSmall ? 'auto' : '100%',
+                    maxWidth: isSmall ? 270 : 'none',
+                    padding: '12.715px 6.918px 5.36px 9.478px',
+                  }}
+                />
+              </FooterLink>
+            </Div>
+          </Col>
+        )}
         <Col>
           <Header>Nous joindre</Header>
           <Ul>
             <li>
-              <FooterLink2 to="/nous-joindre">
+              <FooterLink to="/nous-joindre">
                 <Chats color="currentColor" size={24} />
                 Clavarder avec nous
-              </FooterLink2>
+              </FooterLink>
             </li>
             <li>
-              <FooterLink2 to="/nous-joindre">
+              <FooterLink to="/nous-joindre">
                 <PaperPlaneTilt color="currentColor" size={24} />
                 Nous écrire
-              </FooterLink2>
+              </FooterLink>
             </li>
             <li>
-              <FooterLink2 to="tel:+15143437643">
+              <FooterLink to="tel:+15143437643">
                 <Phone color="currentColor" size={24} />
                 514 343-7643
-              </FooterLink2>
+              </FooterLink>
             </li>
           </Ul>
-          <FooterLink1 to="https://www.youtube.com/user/BibliothequesUdeM" sx={{ lineHeight: 1 }}>
+          <FooterLink to="https://www.youtube.com/user/BibliothequesUdeM" sx={{ lineHeight: 1 }}>
             <YoutubeLogo color="currentColor" size={28} />
             YouTube
-          </FooterLink1>
+          </FooterLink>
           <Div>
-            <FooterLink1 to="tel:+1514347771">
+            <FooterLink to="tel:+1514347771">
               <Siren color="#f04e24" size={28} />
               Urgence 514 343-7771
-            </FooterLink1>
+            </FooterLink>
           </Div>
         </Col>
         <Col>
@@ -147,61 +160,63 @@ export default function LocalFooter() {
                 })}
               >
                 <li>
-                  <FooterLink2 to="#">Notre équipe</FooterLink2>
+                  <FooterLink to="#">Notre équipe</FooterLink>
                 </li>
                 <li>
-                  <FooterLink2 to="#">Mission, vision, valeurs et objectifs</FooterLink2>
+                  <FooterLink to="#">Mission, vision, valeurs et objectifs</FooterLink>
                 </li>
                 <li>
-                  <FooterLink2 to="#">Rapports annuels</FooterLink2>
+                  <FooterLink to="#">Rapports annuels</FooterLink>
                 </li>
                 <li>
-                  <FooterLink2 to="#">Politique et règlement</FooterLink2>
+                  <FooterLink to="#">Politique et règlement</FooterLink>
                 </li>
                 <li>
-                  <FooterLink2 to="#">Carrières</FooterLink2>
+                  <FooterLink to="#">Carrières</FooterLink>
                 </li>
               </Ul>
               <Ul>
                 <li>
-                  <FooterLink2 to="#">Nouvelles</FooterLink2>
+                  <FooterLink to="#">Nouvelles</FooterLink>
                 </li>
                 <li>
-                  <FooterLink2 to="#">Nous soutenir</FooterLink2>
+                  <FooterLink to="#">Nous soutenir</FooterLink>
                 </li>
                 <li>
-                  <FooterLink2 to="#">Accessibilité Web</FooterLink2>
+                  <FooterLink to="#">Accessibilité Web</FooterLink>
                 </li>
               </Ul>
             </Div>
           </Div>
         </Col>
-        <Col>
-          <Div
-            sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
-              width: '100%',
-              justifyContent: 'space-between',
-            }}
-          >
-            <FooterLink
-              to="/"
-              aria-label="Accueil"
-              sx={(theme) => ({
+        {!isSmall && (
+          <Col>
+            <Div
+              sx={{
                 display: 'flex',
-              })}
+                flexDirection: { xs: 'column', sm: 'row' },
+                width: '100%',
+                justifyContent: 'space-between',
+              }}
             >
-              <LogoBibSceauBleu
-                style={{
-                  width: isSmall ? '100%' : 'auto',
-                  height: isSmall ? 'auto' : '100%',
-                  maxWidth: isSmall ? 200 : 'none',
-                }}
-              />
-            </FooterLink>
-          </Div>
-        </Col>
+              <FooterLink
+                to="/"
+                aria-label="Accueil"
+                sx={(theme) => ({
+                  display: 'flex',
+                })}
+              >
+                <LogoBibSceauBleu
+                  style={{
+                    width: isSmall ? '100%' : 'auto',
+                    height: isSmall ? 'auto' : '100%',
+                    maxWidth: isSmall ? 200 : 'none',
+                  }}
+                />
+              </FooterLink>
+            </Div>
+          </Col>
+        )}
       </Div>
     </FooterContainer>
   )

@@ -1,7 +1,8 @@
 import Grid from '@mui/material/Grid2'
+import Div from '@/components/utils/Div'
+import { useSmall } from '@/hooks/use-small'
 import FooterLink from './FooterLink'
 import FooterContainer from './FooterContainer'
-import Div from '@/components/utils/Div'
 
 function Copyright() {
   const namespaces = {
@@ -23,6 +24,8 @@ function Divider() {
 }
 
 export default function FooterTail() {
+  const isSmall = useSmall('md')
+
   function handleOnConsentLinkClick(e) {
     e.preventDefault()
     e.stopPropagation()
@@ -32,42 +35,55 @@ export default function FooterTail() {
   return (
     <FooterContainer
       sx={{
-        backgroundColor: 'bleuPrincipal.main',
+        backgroundColor: isSmall ? 'bleuFonce.main' : 'bleuPrincipal.main',
       }}
     >
-      <Grid
-        container
+      <Div
         sx={{
           padding: '8px 24px',
           width: '100%',
           display: 'flex',
-          alignItems: 'center',
           gap: '20px',
+          ...(isSmall
+            ? {
+                flexDirection: 'column',
+                paddingBottom: 'calc(100px + 1em)',
+              }
+            : {
+                alignItems: 'center',
+                height: 50,
+              }),
           color: '#CCE2F3',
           fontSize: '14px',
           lineHeight: 1.2,
           letterSpacing: '0.14px',
-          height: 50,
         }}
       >
-        <Grid>
-          <Copyright />
-        </Grid>
-        <Divider />
-        <Grid>
+        {!isSmall && (
+          <Div>
+            <Copyright />
+          </Div>
+        )}
+        {!isSmall && <Divider />}
+        <Div>
           <FooterLink to="#">Confidentialité</FooterLink>
-        </Grid>
-        <Divider />
+        </Div>
+        {!isSmall && <Divider />}
         <Grid>
           <FooterLink to="#">Conditions d'utilisation</FooterLink>
         </Grid>
-        <Divider />
-        <Grid>
+        {!isSmall && <Divider />}
+        <Div>
           <FooterLink className="parametres-temoins" component="button" onClick={handleOnConsentLinkClick}>
             Paramètres des témoins
           </FooterLink>
-        </Grid>
-      </Grid>
+        </Div>
+        {isSmall && (
+          <Div>
+            <Copyright />
+          </Div>
+        )}
+      </Div>
     </FooterContainer>
   )
 }
