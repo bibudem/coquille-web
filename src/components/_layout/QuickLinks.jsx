@@ -135,7 +135,7 @@ export function QuickLinksSm() {
         elevation={3}
         sx={{
           display: 'flex',
-          justifyContent: 'space-evenly',
+          justifyContent: 'space-between',
           width: 500,
           maxWidth: '100%',
         }}
