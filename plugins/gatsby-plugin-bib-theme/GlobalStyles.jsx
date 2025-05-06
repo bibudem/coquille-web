@@ -3,14 +3,22 @@ import { GlobalStyles as MuiGlobalStyles } from '@mui/material'
 export default function GlobalStyles() {
   return (
     <MuiGlobalStyles
-      styles={{
+      styles={(theme) => ({
         html: {
-          fontSize: '18px',
+          fontSize: '17px',
         },
         body: {
-          fontSize: '18px',
+          fontSize: '17px',
         },
-      }}
+        [theme.breakpoints.up('md')]: {
+          html: {
+            fontSize: '18px',
+          },
+          body: {
+            fontSize: '18px',
+          },
+        },
+      })}
     />
   )
 }
