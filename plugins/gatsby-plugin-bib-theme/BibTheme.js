@@ -6,16 +6,30 @@ import { ThemeProvider, extendTheme, responsiveFontSizes } from '@mui/material/s
 // export const theme = responsiveFontSizes(extendTheme(tokens))
 // export const theme = extendTheme(tokens)
 
-import theme from './tokens'
+import { themeLvl1, themeLvln } from './tokens'
 import GlobalStyles from './GlobalStyles'
 
-export default function BibTheme({ darkMode, children, ...props }) {
+export function BibThemeLvl1({ darkMode, children, ...props }) {
 	// take away SSR rendered mode;
 	useEffect(() => {
 		document.body.className = ''
 	}, [])
 	return (
-		<ThemeProvider theme={theme} {...props}>
+		<ThemeProvider theme={themeLvl1} {...props}>
+			<CssBaseline enableColorScheme />
+			<GlobalStyles />
+			{children}
+		</ThemeProvider>
+	)
+}
+
+export function BibThemeLvln({ darkMode, children, ...props }) {
+	// take away SSR rendered mode;
+	useEffect(() => {
+		document.body.className = ''
+	}, [])
+	return (
+		<ThemeProvider theme={themeLvln} {...props}>
 			<CssBaseline enableColorScheme />
 			<GlobalStyles />
 			{children}

@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 // import PropTypes from 'prop-types'
-import BibTheme from './BibTheme'
+import { useLocation } from "@reach/router"
+import { BibThemeLvl1 } from './BibTheme'
 import LightDarkContext from './LightDarkContext'
 
 function ThemeTopLevelProvider({ children, initTheme }) {
+	// const location = useLocation()
+	// const currentLevel = getCurrentPageLevel(location)
+	// console.log('### ICI ###:', currentLevel)
 	const [mode, setMode] = useState(initTheme)
 	const setTheme = isDark => {
 		const val = isDark ? 'dark' : 'light'
@@ -12,20 +16,15 @@ function ThemeTopLevelProvider({ children, initTheme }) {
 	}
 
 	return (
-		<BibTheme darkMode={mode === 'dark'}>
+		<BibThemeLvl1 darkMode={mode === 'dark'}>
 			<LightDarkContext.Provider value={{
 				theme: mode,
 				changeTheme: setTheme
 			}}>
 				{children}
 			</LightDarkContext.Provider>
-		</BibTheme>
+		</BibThemeLvl1>
 	)
 }
-
-// ThemeTopLevelProvider.propTypes = {
-// 	children: PropTypes.node,
-// 	initTheme: PropTypes.string.isRequired
-// }
 
 export default ThemeTopLevelProvider

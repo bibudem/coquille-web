@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid2'
 
 import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
 import { isInternalLink } from '@/utils/link'
-import { getContrastColor } from '../../plugins/gatsby-plugin-bib-theme/tokens'
+import { getContrastColor } from '../../plugins/gatsby-plugin-bib-theme/tokens/tokens.js'
 
 const HOVER_WIDTH_FACTOR = 1.15
 

@@ -6,7 +6,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Grid from '@mui/material/Grid2'
 import { frFR } from '@mui/x-data-grid/locales'
 import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
-import tokens from '../../../plugins/gatsby-plugin-bib-theme/tokens'
+import tokens from '../../../plugins/gatsby-plugin-bib-theme/tokens/tokens.js'
 
 const theme = createTheme(tokens, frFR)
 

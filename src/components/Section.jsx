@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Box, Container, useTheme } from '@mui/material'
-import { secondaryColors } from '../../plugins/gatsby-plugin-bib-theme/tokens.js'
+import { secondaryColors } from '../../plugins/gatsby-plugin-bib-theme/tokens/tokens.js'
 
 const baseStyles = {
   py: '96px',

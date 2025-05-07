@@ -1,6 +1,25 @@
 import { GlobalStyles as MuiGlobalStyles } from '@mui/material'
+import typographyLvl1 from './tokens/typography-lvl-1.js'
 
 export default function GlobalStyles() {
+  const headers = Array(6)
+    .fill()
+    .map((_, i) => {
+      const header = `h${i + 1}`
+
+      return {
+        header,
+        styles: typographyLvl1[header],
+      }
+    })
+    .reduce((headers, { header, styles }) => {
+      headers[header] = styles
+
+      return headers
+    }, {})
+
+  console.log('headers:', headers)
+
   return (
     <MuiGlobalStyles
       styles={(theme) => ({
@@ -18,6 +37,7 @@ export default function GlobalStyles() {
             fontSize: '18px',
           },
         },
+        ...headers,
       })}
     />
   )
