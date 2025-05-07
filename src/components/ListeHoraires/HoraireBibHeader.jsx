@@ -30,11 +30,12 @@ export default function Banner({ ...rest }) {
             flexDirection: 'column',
             fontSize: '1.2rem',
             padding: '30px 0',
-            padding: isSticky ? '1em 0' : '30px 0',
-            transition: 'padding 250ms',
+            // padding: isSticky ? '.75em 0' : '30px 0',
+            transition: `padding ${theme.transitions.duration.md3.short4}ms ${theme.transitions.easing.md3.emphasized}`,
             [theme.breakpoints.up('sm')]: {
               fontSize: '1.3333rem',
-              padding: isSticky ? '1em 0' : '46px 0',
+              padding: '46px 0',
+              // padding: isSticky ? '1em 0' : '46px 0',
             },
           })}
         >
