@@ -29,7 +29,6 @@ export default function FichesBibliotheques({ title, ...rest }) {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '30px',
         }}
       >
         <FichesBibliothequesContext.Provider value={expanded}>{children}</FichesBibliothequesContext.Provider>

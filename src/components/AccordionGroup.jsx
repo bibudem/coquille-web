@@ -37,12 +37,9 @@ export default function AccordionGroup({ color = 'bleuPrincipal', children, ...p
     }
   }, [color])
 
-  // useEffect(() => {
-  //   console.log('================================================ onchange', expanded)
-  //   if (expanded) {
-  //     navigate(`#${expanded}`, { replace: true })
-  //   }
-  // }, [expanded])
-
-  return <AccordionsContext.Provider value={{ expanded, setExpanded, handleChange, currentColor, setCurrentColor }}>{children}</AccordionsContext.Provider>
+  return (
+    <div>
+      <AccordionsContext.Provider value={{ expanded, setExpanded, handleChange, currentColor, setCurrentColor }}>{children}</AccordionsContext.Provider>
+    </div>
+  )
 }

@@ -44,7 +44,7 @@ const AccordionDetails = styled((props) => <MuiAccordionDetails {...props} />)((
   backgroundColor: theme.palette.bleu100.main,
   padding: '20px',
   [theme.breakpoints.up('md')]: {
-    padding: '3.125rem',
+    padding: 0,
   },
   borderRadius: `0 0 ${theme.shape.corner.small} ${theme.shape.corner.small}`,
 }))
@@ -81,7 +81,7 @@ export default function FicheBibliotheque({ title, codeBib, blocHoraires, blocEs
       <AccordionSummary>{title}</AccordionSummary>
       <AccordionDetails>
         <Grid container columns={10} columnSpacing="2rem">
-          <Grid size={{ xs: 10, sm: 5, md: 3 }}>
+          <Grid size={{ xs: 10, sm: 5, md: 3 }} sx={{ padding: '1.3333rem 0 1.3333rem 1.3333rem' }}>
             <Col>
               <HoraireAujourdhui codeBib={codeBib}>{blocHoraires}</HoraireAujourdhui>
               {blocEspaces && (
@@ -91,7 +91,7 @@ export default function FicheBibliotheque({ title, codeBib, blocHoraires, blocEs
               )}
             </Col>
           </Grid>
-          <Grid size={{ xs: 10, sm: 5, md: 4 }}>
+          <Grid size={{ xs: 10, sm: 5, md: 4 }} sx={{ padding: '1.3333rem 0 1.3333rem 1.3333rem' }}>
             <Col>
               <Bloc title="Adresse" Icon={MapTrifold}>
                 {blocAdresse}

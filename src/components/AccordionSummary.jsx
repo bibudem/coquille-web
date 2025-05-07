@@ -53,15 +53,7 @@ export default function AccordionSummary({ id, ['aria-controls']: ariaControls, 
       {...props}
       sx={(theme) => ({
         ...sx,
-        border: 'unset',
-        paddingLeft: 0,
-        paddingRight: 0,
-        transition: `color ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
-        '.MuiAccordionSummary-content': {
-          fontSize: '1.2222rem',
-          fontWeight: 700,
-          lineHeight: 1.2,
-        },
+        // border: 'unset',
         ...(colorData && {
           borderBottom: `1px solid ${colorData.color}`,
           '&.Mui-expanded': {
