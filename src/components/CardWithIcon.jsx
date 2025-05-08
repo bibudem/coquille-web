@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { styled, useTheme } from '@mui/material'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -6,6 +6,7 @@ import CardActionArea from '@mui/material/CardActionArea'
 import Grid from '@mui/material/Grid2'
 
 import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
+import Div from '@/components/utils/Div'
 import { isInternalLink } from '@/utils/link'
 import { getContrastColor } from '../../plugins/gatsby-plugin-bib-theme/tokens/tokens.js'
 
@@ -22,8 +23,6 @@ const sizes = {
   },
 }
 
-const Div = styled('div')()
-
 const Row = styled(Grid)({
   width: '100%',
 })
@@ -31,8 +30,6 @@ const Row = styled(Grid)({
 const StyledTitle = styled('div')({
   '--_lh': '1.2',
   lineHeight: 'calc(var(--_lh) * 1em)',
-  // maxHeight: 'calc(var(--_lh) * 3em)',
-  // overflow: 'hidden',
   fontSize: '1.75rem',
   fontWeight: 500,
   paddingBlockStart: '1.8125rem',
@@ -45,24 +42,27 @@ const StyledMoreText = styled('div')({
 })
 
 /**
- * CardWithIcon component that renders an interactive card with hover effects and dynamic sizing
+ * Composant CardWithIcon qui affiche une carte interactive avec des effets au survol et un dimensionnement dynamique
  *
- * @param {Object} props - The component props
- * @param {string} props.title - The title text displayed in the card
- * @param {React.ComponentType} props.Icon - The icon component rendered at the top
- * @param {('primary'|'bleuPrincipal'|'vertFonce'|'rose300')} [props.color='bleuPrincipal'] - The color theme of the card
- * @param {string} props.moreText - The text displayed above the arrow icon
- * @param {string} props.href - The URL for the card's link (internal or external)
- * @param {boolean} [props.small=false] - Whether to use small card dimensions
- * @throws {Error} When href prop is not a string
- * @returns {React.ReactElement} A styled MUI Card component
+ * @param {Object} props - Les propriétés du composant
+ * @param {string} props.title - Le texte du titre affiché dans la carte
+ * @param {React.ComponentType} props.Icon - Le composant d'icône affiché en haut
+ * @param {('primary'|'bleuPrincipal'|'vertFonce'|'rose300')} [props.color='bleuPrincipal'] - Le thème de couleur de la carte
+ * @param {string} props.moreText - Le texte affiché au-dessus de l'icône de flèche
+ * @param {string} props.href - L'URL pour le lien de la carte (interne ou externe)
+ * @param {boolean} [props.small=false] - Indique s'il faut utiliser les dimensions réduites de la carte
+ * @throws {Error} Lorsque la propriété href n'est pas une chaîne de caractères
+ * @returns {React.ReactElement} Un composant Card MUI stylisé
  */
+
 export default function CardWithIcon({ title, Icon, color = 'bleuPrincipal', moreText, href, small = false, ...rest }) {
   const { sx, ...props } = rest
   const linkProps = {}
   const theme = useTheme()
   const [isSmall, setIsSmall] = useState(small)
   const [cardSize, setCardSize] = useState(isSmall ? sizes.small : sizes.large)
+  const titleRef = useRef(null)
+  const moreTextRef = useRef(null)
 
   const colorMap = {
     primary: {
@@ -133,6 +133,18 @@ export default function CardWithIcon({ title, Icon, color = 'bleuPrincipal', mor
     linkProps.rel = 'noopener'
   }
 
+  useEffect(() => {
+    if (titleRef) {
+      titleRef.current.style.maxWidth = `${titleRef.current.offsetWidth}px`
+    }
+  }, [titleRef])
+
+  useEffect(() => {
+    if (moreTextRef) {
+      moreTextRef.current.style.maxWidth = `${moreTextRef.current.offsetWidth}px`
+    }
+  }, [moreTextRef])
+
   return (
     <Card
       sx={(theme) => ({
@@ -192,7 +204,7 @@ export default function CardWithIcon({ title, Icon, color = 'bleuPrincipal', mor
             <Icon color={_color.iconColor} size={55} />
           </Row>
           <Row sx={{ flexGrow: 1 }}>
-            <StyledTitle>{title}</StyledTitle>
+            <StyledTitle ref={titleRef}>{title}</StyledTitle>
           </Row>
           <Row sx={{ height: '55px' }}>
             <Grid
@@ -205,7 +217,7 @@ export default function CardWithIcon({ title, Icon, color = 'bleuPrincipal', mor
               }}
             >
               <Grid size="grow">
-                <StyledMoreText>{moreText}</StyledMoreText>
+                <StyledMoreText ref={moreTextRef}>{moreText}</StyledMoreText>
               </Grid>
               <Grid size="auto">
                 <StyledLinkIcon weight="light" />
