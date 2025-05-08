@@ -10,7 +10,7 @@ import Div from '@/components/utils/Div'
 import { isInternalLink } from '@/utils/link'
 import { getContrastColor } from '../../plugins/gatsby-plugin-bib-theme/tokens/tokens.js'
 
-const HOVER_WIDTH_FACTOR = 1.15
+const HOVER_WIDTH_FACTOR = 1.1
 
 const sizes = {
   small: {
@@ -30,9 +30,9 @@ const Row = styled(Grid)({
 const StyledTitle = styled('div')({
   '--_lh': '1.2',
   lineHeight: 'calc(var(--_lh) * 1em)',
-  fontSize: '1.75rem',
+  fontSize: '1.7778rem',
   fontWeight: 500,
-  paddingBlockStart: '1.8125rem',
+  paddingBlockStart: '1.6667rem',
 })
 
 const StyledMoreText = styled('div')({
@@ -169,7 +169,7 @@ export default function CardWithIcon({ title, Icon, color = 'bleuPrincipal', mor
           borderRadius: theme.shape.corner.small,
           color: getContrastColor(_color.bg, '#fff', '#111'),
           display: 'flex',
-          padding: '1.875rem',
+          padding: '1.6667rem',
           backgroundColor: _color.bg,
           '&:hover': {
             backgroundColor: _color.hoverBg,
