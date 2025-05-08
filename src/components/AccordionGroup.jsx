@@ -3,6 +3,14 @@ import { useEffect, useState } from 'react'
 import { useTheme } from '@mui/material'
 import AccordionsContext from '@/components/AccordionsContext'
 
+/**
+ * Composant AccordionGroup qui gère l'état et le contexte pour un groupe d'accordéons.
+ *
+ * @param {Object} props - Propriétés du composant
+ * @param {('bleuPrincipal'|'rose')} [props.color='bleuPrincipal'] - Thème de couleur pour le groupe d'accordéons. Valeurs possibles: 'bleuPrincipal' ou 'rose'
+ * @param {React.ReactNode} props.children - Composants enfants à rendre dans le groupe d'accordéons
+ * @returns {React.ReactElement} Groupe d'accordéons avec fournisseur de contexte
+ */
 export default function AccordionGroup({ color = 'bleuPrincipal', children, ...props }) {
   const [expanded, setExpanded] = useState(false)
   const [currentColor, setCurrentColor] = useState(null)
