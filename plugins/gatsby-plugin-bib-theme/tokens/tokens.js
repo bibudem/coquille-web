@@ -109,7 +109,7 @@ const tokens = {
 					padding: '1.5em',
 					borderRadius: `0 0 ${theme.shape.corner.small} ${theme.shape.corner.small}`,
 					[theme.breakpoints.up('md')]: {
-						padding: '1.5em 2em',
+						padding: '1.6667em 2em',
 					},
 				})
 			}
