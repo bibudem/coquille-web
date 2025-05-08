@@ -123,7 +123,7 @@ const tokens = {
 				}),
 				content: ({ theme }) => ({
 					fontSize: '1.2222rem',
-					fontWeight: 700,
+					fontWeight: 600,
 					lineHeight: 1.2,
 					margin: 0
 				})
