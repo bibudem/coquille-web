@@ -1,5 +1,6 @@
 import { GlobalStyles as MuiGlobalStyles } from '@mui/material'
 import typographyLvl1 from './tokens/typography-lvl-1.js'
+import 'modern-normalize/modern-normalize.css'
 
 export default function GlobalStyles() {
   const headers = Array(6)
@@ -18,8 +19,6 @@ export default function GlobalStyles() {
       return headers
     }, {})
 
-  console.log('headers:', headers)
-
   return (
     <MuiGlobalStyles
       styles={(theme) => ({
@@ -37,6 +36,7 @@ export default function GlobalStyles() {
             fontSize: '18px',
           },
         },
+        // Headings styles for plain html
         ...headers,
       })}
     />

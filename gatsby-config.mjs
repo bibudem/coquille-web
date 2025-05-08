@@ -140,7 +140,7 @@ const config = {
           google2: [
             {
               family: 'Figtree',
-              axes: 'wght@300..600',
+              axes: 'wght@300..700',
             },
             {
               family: 'Lora',
