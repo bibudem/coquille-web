@@ -1,0 +1,58 @@
+---
+title: <FlipCardWithBg>
+template: doc
+---
+
+import {ArrowsOut, HandCoins, Megaphone} from '@phosphor-icons/react'
+
+<Section>
+
+# FlipCardWithBg
+
+  <Grid container spacing=".62rem" sx={{margin:'2rem 0 2rem'}}>
+    <Grid>
+      <FlipCardWithBg
+        title="Ambassadrice du libre accès"
+        Icon={Megaphone}
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>Bibliothèque d'aménagement</li>
+          <li>Bibliothèque du campus de Laval</li>
+          <li>Bibliothèque de droit</li>
+          <li>Bibliothèque Marguerite-d'Youville</li>
+          <li>Bibliothèque de médecine vétérinaire</li>
+          <li>Bibliothèque Thérèse-Gouin-Décarie</li>
+          <li>Bibliothèque de la santé</li>
+        </ul>
+      </FlipCardWithBg>
+    </Grid>
+    <Grid>
+      <FlipCardWithBg
+        title="Achats de licence Adobe Creative Cloud"
+        Icon={HandCoins}
+      >
+        Description...
+      </FlipCardWithBg>
+    </Grid>
+    <Grid>
+      <FlipCardWithBg
+        title="Financement de projet en libre accès"
+        bg="vertFonce"
+        Icon={ArrowsOut}
+      >
+        <p>Appui à la Politique de l’Université de Montréal sur le libre accès aux publications savantes, notamment par une offre de formation, par la promotion, par l’intégration à nos services-conseils et diverses autres initiatives.</p>
+      </FlipCardWithBg>
+    </Grid>
+    <Grid>
+      <FlipCardWithBg
+        title="Postes de travail actif"
+        bg="rose300"
+        Icon={Megaphone}
+      >
+        Description...
+      </FlipCardWithBg>
+    </Grid>
+  </Grid>
+
+</Section>

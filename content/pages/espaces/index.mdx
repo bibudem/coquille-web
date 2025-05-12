@@ -1,0 +1,416 @@
+---
+title: Espaces
+slug: espaces
+---
+
+import Alert from '@mui/material/Alert'
+import SuperHero from '@/components/SuperHero'
+import Bibliotheques from '../../bibliotheques/bibliotheques.mdx'
+
+import imageAccessible from '../images/marguerite-youville-espace.webp'
+import zoneConfort from '../images/confort-espaces.webp'
+import impression3d from '../images/impression-3d.webp'
+import systemesEmbarques from '../images/systemes-embarques.webp'
+import studioVideo from '../images/studio-video.webp'
+import studioAudio from '../images/studio-audio.webp'
+import salleIndividuelle from '../images/salle-individuelle.webp'
+import cabine from '../images/cabine.webp'
+import salleEquipe from '../images/salle-equipe.webp'
+import salleCycleSup from '../images/cycle-sup.webp'
+import salleMaitrise from '../images/cycle-sup-droit-maitrise.webp'
+import salleDoctorat from '../images/cycle-sup-droit-doctorat.webp'
+import grandeSalleEquipe from '../images/grande-salle-equipe.webp'
+import veloPupitre from '../images/velo-pupitre.webp'
+import pedalier from '../images/pedalier.webp'
+import stationErgo from '../images/station-ergo.webp'
+import disqueEquilibre from '../images/disque-equilibre.webp'
+import placheEquilibre from '../images/planche-equilibre.webp'
+import tableAjustable from '../images/table-ajustable.webp'
+import tapisFatigue from '../images/tapis-anti-fatique.webp'
+import chaiseBallon from '../images/chaise-ballon.webp'
+import tableHaute from '../images/table-haute.webp'
+
+<SuperHero
+  title="De l'espace pour réfléchir, découvrir et s'enrichir"
+  imageName='espaces'
+/>
+
+<Section>
+  <Tabs1
+    tabs={['Salles et espaces pour se concentrer', 'Salles de travail en équipe', 'Salle pour les cycles supérieurs']}
+  >
+    <Carousel1
+      title={<Typography component="h2">À chacun sa bulle</Typography>}
+      description="Besoin de concentration pour étudier? Salles d'étude individuelles ou cabines insonorisée, vous n'avez qu'à réserver!"
+      moreText="Réserver une salle"
+      moreHref="https://calendrier.bib.umontreal.ca/r/new"
+    >
+    <FlipCardWithImage
+        title="Salles de travail individuel"
+        Image={salleIndividuelle}
+      >
+        <p>Disponibles dans presque toutes les bibliothèques</p>
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Cabines insonorisées"
+        Image={cabine}
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>Bibliothèque de droit</li>
+          <li>Bibliothèque de kinésiologie</li>
+          <li>Bibliothèque des lettres et sciences humaines</li>
+          <li>Bibliothèque Thérèse-Gouin-Décarie</li>
+          <li>Bibliothèque du Campus de Laval</li>
+          <li>Bibliothèque de la santé</li>
+        </ul>
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Salles silencieuses"
+        Image={cabine}
+        >
+        <p>Disponibles :</p>
+        <ul>
+          <li>À déterminer</li>
+          <li>Bibliothèque du campus de Laval</li>
+          <li>Bibliothèque de droit</li>
+          <li>Bibliothèque Marguerite-d'Youville</li>
+          <li>Bibliothèque de médecine vétérinaire</li>
+          <li>Bibliothèque Thérèse-Gouin-Décarie</li>
+          <li>Bibliothèque de la santé</li>
+        </ul>
+      </FlipCardWithImage>
+
+    </Carousel1>
+
+    <Carousel1
+      title={<Typography component="h2">Là où peuvent converger les idées</Typography>}
+      description="Un travail à faire en équipe? Une séance d’étude de groupe? Nous vous offrons des salles de travail communes avec ou sans réservation, des espaces pour parler librement, des banquettes avec écran - tout ce qu’il vous faut pour collaborer!"
+      moreText="Réserver une salle"
+      moreHref="https://calendrier.bib.umontreal.ca/r/new"
+    >
+    <FlipCardWithImage
+        title="Salles de travail 3 à 4 personnes"
+        Image={salleEquipe}
+      >
+        <p>Disponibles dans presque toutes les bibliothèques</p>
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Salle de travail 4 à 8 personnes"
+        Image={grandeSalleEquipe}
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>à déterminer</li>
+          <li>à déterminer</li>
+        </ul>
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Espace d'innovation et de créativité"
+        Image={cabine}
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>À déterminer</li>
+        </ul>
+      </FlipCardWithImage>
+
+    </Carousel1>
+
+    <Carousel1
+      title={<Typography component="h2">Cycle supérieurs : c'est par ici!</Typography>}
+      description="Certaines bibliothèques offrent des salles spécifiquement réservées aux étudiants et étudiantes des cycles supérieurs."
+      moreText="Réserver une salle"
+      moreHref="https://calendrier.bib.umontreal.ca/r/new"
+    >
+    <FlipCardWithImage
+        title="Salles de travail individuelles - cycles supérieurs"
+        Image={salleCycleSup}
+      >
+        <p>Disponibles à la Bibliothèques des lettres et sciences humaines pour toutes les personnes des cycles supérieurs</p>
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Salle de travail - maîtrise en droit"
+        Image={salleMaitrise}
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>Pour les personnes de la maitrise en droit seulement</li>
+          
+
+        </ul>
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Salle de travail - doctorat en droit"
+        Image={salleDoctorat}
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>Pour les personnes du doctorat en droit seulement</li>
+        </ul>
+      </FlipCardWithImage>
+
+    </Carousel1>
+  </Tabs1>
+</Section>
+
+<Section image={zoneConfort}>
+
+  <Grid
+    container
+    spacing={2}
+    sx={{
+      paddingTop:'338px',
+      paddingBottom: '185px',
+    }}>
+    <Grid size={{xs:12, md:6}} offset={{md:6}}>
+
+    <Typography
+      component='h2'
+      variant='h2' 
+      sx={{
+        fontFamily:'Figtree',
+        fontWeight:400,
+        lineHeight:1.2,
+        fontSize:'3.8125rem!important',
+        marginBottom:'2rem',
+      }}
+    >
+      Votre zone de confort
+    </Typography>
+
+    Rien de mieux par moments que de retrouver ses repères dans un lieu familier et accueillant. Nos nombreux espaces de détente sont là pour vous accueillir, le temps d’un souffle ou d’une sieste. Faites comme chez vous!
+
+    </Grid>
+  </Grid>
+
+</Section>
+
+<Section bg="bleu100">
+
+<Carousel1
+    title={<Typography component="h2">Un esprit sain dans un corps sain sans un corps sain</Typography>}
+    description="Étudier sans y laisser la forme, c’est tout un défi! Pour vous aider, nous vous proposons une panoplie de vélos-pupitres, chaise-ballons, planches d’équilibre, tables à hauteur ajustable. Faites de l’exercice tout en musclant votre cerveau!"
+  >
+   <FlipCardWithImage
+        title="Vélo-pupitre"
+        Image={veloPupitre}
+      >
+        <p>Disponibles:</p>
+        <li>Bibliothèque du campus Laval</li>
+    <li>Bibliothèque de droit</li>
+    <li>Bibliothèque Marguerite-d'Youville</li>
+    <li>Bibliothèque de médecine vétérinaire</li>
+    <li>Bibliothèque Thérèse-Gouin-Décarie</li>
+    <li>Bibliothèque de la santé</li>
+      </FlipCardWithImage>
+
+    <FlipCardWithImage
+        title="Pédalier"
+        Image={pedalier}
+      >
+        <p>Disponibles dans presque toutes les bibliothèques</p>
+
+    </FlipCardWithImage>
+    <FlipCardWithImage
+        title="Station ergonomique"
+        Image={stationErgo}
+      >
+        <p>Disponibles à la Bibliothèque de droit</p>
+
+    </FlipCardWithImage>
+    <FlipCardWithImage
+        title="Disque d'équilibre "
+        Image={disqueEquilibre}
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>Bibliothèque d'aménagement</li>
+          <li>Bibliothèque du campus Laval </li>
+          <li>Bibliothèque de droit </li>
+          <li>Bibliothèque Thérèse-Gouin-Décarie </li>
+        </ul>
+    </FlipCardWithImage>
+    <FlipCardWithImage
+      title="Planche d'équilibre "
+      Image={placheEquilibre}
+    >
+        <p>Disponibles :</p>
+        <ul>
+          <li>Bibliothèque d'aménagement </li>
+          <li>Bibliothèque du campus Laval </li>
+          <li>Bibliothèque de droit </li>
+          <li>Bibliothèque de Kinésiologie </li>
+          <li>Bibliothèque de la santé </li>
+        </ul>
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Table à hauteur ajustable "
+        Image={tableAjustable}
+      >
+        <p>Disponibles dans presque toutes les bibliothèques</p>
+
+      </FlipCardWithImage>
+      <FlipCardWithImage
+        title="Tapis antifatigue pour le travail debout "
+        Image={tapisFatigue}
+      >
+        <p>Disponibles dans presque toutes les bibliothèques</p>
+      </FlipCardWithImage>
+            
+      <FlipCardWithImage
+        title="Chaise ballon avec dossier "
+        Image={salleDoctorat}
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>Bibliothèque de Kinésiologie</li> 
+          <li>Bibliothèque de médecine vétérinaire</li> 
+        </ul>
+      </FlipCardWithImage>
+          
+    <FlipCardWithImage
+        title="Table haute"
+        Image={salleDoctorat}
+      >
+        <p>Disponibles à la Bibliothèque de Kinésiologie</p>
+      </FlipCardWithImage>
+
+      </Carousel1>
+</Section>
+
+<Section bg='rose300'>
+
+<Tabs1
+    tabs={['Technologies créatives', 'Production multimédia']}
+  >
+
+  <Grid container spacing=".62rem" sx={{margin:'4rem 0 4rem'}}>
+  <Typography component="h3" variant="h3">
+  L’art d’être à l’avant-garde
+</Typography>
+<Typography>La création vous passionne? Bienvenue aux avant-gardistes! Impression 3D, réalité virtuelle, programmation informatique, broderie numérique, voilà tout l’éventail de nouvelles technologies que nous mettons au service de votre inventivité. Profitez-en!</Typography>
+    <Grid>
+      <CardWithImage
+        title="Impression 3D"
+        Image={impression3d}
+        href="https://studio.bib.umontreal.ca/creatives/impression3d/"
+        moreText="En savoir plus"
+      />
+    </Grid>
+    <Grid>
+      <CardWithImage
+        title="Découpeuse vinyle"
+        Image={impression3d}
+        href="https://studio.bib.umontreal.ca/creatives/decoupeuse"
+        moreText="En savoir plus"
+      />
+    </Grid>
+    <Grid>
+      <CardWithImage
+        title="Électronique"
+        Image={systemesEmbarques}
+        href="https://studio.bib.umontreal.ca/creatives/electronique"
+         moreText="En savoir plus"
+      />
+    </Grid>
+        <Grid>
+      <CardWithImage
+        title="Art textile"
+        Image={impression3d}
+        href="https://studio.bib.umontreal.ca/creatives/art-textile"
+         moreText="En savoir plus"
+      />
+    </Grid>
+    <Grid>
+      <CardWithImage
+        title="Numérisation 3D"
+        Image={impression3d}
+        href="#"
+         moreText="En savoir plus"
+      />
+    </Grid>
+    <Grid>
+      <CardWithImage
+        title="Réalité virtuelle"
+        Image={impression3d}
+        href="https://studio.bib.umontreal.ca/creatives/vr"
+         moreText="En savoir plus"
+      />
+    </Grid>
+  </Grid>
+
+<Grid container spacing=".62rem" sx={{margin:'4rem 0 4rem'}}>
+<Typography component="h3" variant="h3">
+  Entrez dans le mode du multimédia
+</Typography>
+<Typography>Qu’il s’agisse d’enregistrement audio, d’édition numérique, de montage vidéo ou de visualisation de données, nos studios vous ouvrent les portes d’un univers numérique en pleine expansion!</Typography>
+    <Grid>
+      <CardWithImage
+        title="Studios vidéo"
+        Image={studioVideo}
+        href="https://studio.bib.umontreal.ca/espaces/studiovideo"
+        moreText="En savoir plus"
+      />
+    </Grid>
+    <Grid>
+      <CardWithImage
+        title="Studios audio"
+        Image={studioAudio}
+        href="https://studio.bib.umontreal.ca/espaces/studioaudio"
+         moreText="En savoir plus"
+      />
+    </Grid>
+        <Grid>
+      <CardWithImage
+        title="Édition numérique"
+        Image={impression3d}
+        href="https://studio.bib.umontreal.ca/medias/postes-edition"
+         moreText="En savoir plus"
+      />
+    </Grid>
+    <Grid>
+      <CardWithImage
+        title="Laboratoire de visualisation"
+        Image={impression3d}
+        href="https://studio.bib.umontreal.ca/espaces/visualisation"
+         moreText="En savoir plus"
+      />
+    </Grid>
+  </Grid>
+
+
+  </Tabs1>
+  
+</Section>
+
+<Section bg='vertFonce'>
+  <HeroWithImage
+    Image={imageAccessible}
+    footer={<Button primary href='../service-accessibilite'>En savoir plus</Button>}
+  >
+    <Typography component='h2' variant='h2'> Des lieux accessibles</Typography>
+    
+    La Bibliothèque des lettres et sciences humaines et la bibliothèque des sciences offrent chacune une salle mettant à votre disposition des équipements et des logiciels spécialisés afin d’adapter l’expérience en bibliothèque à vos besoins et de vous accompagner dans votre réussite.
+
+  </HeroWithImage>
+</Section>
+
+<Section>
+  ## On aime la visite!
+
+  Découvrez ici les différents points de service du réseau des bibliothèques de l’UdeM. De la Montagne à Laval, en passant par la Rive-Sud et le MIL, il y a du choix!
+
+  [carte]
+
+  <Bibliotheques />
+
+
+</Section>

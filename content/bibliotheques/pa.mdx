@@ -1,0 +1,25 @@
+import FicheBibliotheque from '@/components/FicheBibliotheque'
+import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
+
+<FicheBibliotheque
+  title="Marguerite-d'Youville"
+  codeBib="pa"
+  blocEspaces={false}
+  blocAdresse={
+    <>
+      <p>Bibliothèque Marguerite-d'Youville</p>
+      <p>Pavillon Marguerite-d'Youville</p>
+      <p>2375, chemin de la Côte-Sainte-Catherine, salle 2120</p>
+      <p><Link to="https://www.google.com/maps?ll=45.509365,-73.618392&z=15&t=m&hl=en&gl=US&mapclient=embed&cid=14455154458948229137" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
+    </>
+  }
+  blocNousJoindre={
+    <>
+      <p>Comptoir de prêt&nbsp;: 514 343-6111, poste 1895</p>
+      <p>Bureau de référence&nbsp;: 514 343-6111, poste 1851</p>
+      <p><Link to="../a-propos/notre-equipe" Icon>Répertoire du personnel</Link></p>
+    </>
+  }
+>
+
+</FicheBibliotheque>

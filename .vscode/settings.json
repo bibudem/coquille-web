@@ -1,8 +1,15 @@
 {
+  "editor.wordWrap": "on",
+  "[mdx]": {
+    "editor.formatOnSave": false
+  },
   "conventionalCommits.scopes": [
     "icons",
     "coquille",
     "theme",
-    "accessibilite"
-  ]
+    "accessibilite",
+    "dependencies",
+    "component"
+  ],
+  "editor.unusualLineTerminators": "auto"
 }

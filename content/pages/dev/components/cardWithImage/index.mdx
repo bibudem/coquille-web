@@ -1,0 +1,40 @@
+---
+title: <CardWithImage>
+template: doc
+---
+
+import image1 from './image1.webp'
+import image2 from './image2.webp'
+import image3 from './image3.webp'
+
+
+<Section bg='rose300'>
+
+# CardWithImage
+
+  <Grid container spacing=".62rem" sx={{margin:'4rem 0 4rem'}}>
+    <Grid>
+      <CardWithImage
+        title="Nous écrire"
+        Image={image1}
+        href="#"
+        moreText="Nous écrire"
+      />
+    </Grid>
+    <Grid>
+      <CardWithImage
+        title="Clavarder"
+        Image={image2}
+        href="https://umontreal.ca"
+      />
+    </Grid>
+    <Grid>
+      <CardWithImage
+        title="Consulter le répertoire"
+        Image={image3}
+        href="#"
+      />
+    </Grid>
+  </Grid>
+
+</Section>

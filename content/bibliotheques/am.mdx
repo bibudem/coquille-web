@@ -1,0 +1,24 @@
+import FicheBibliotheque from '@/components/FicheBibliotheque'
+import {ArrowSquareOut} from '@phosphor-icons/react'
+
+<FicheBibliotheque
+  title="Aménagement"
+  codeBib="am"
+  blocEspaces={false}
+  blocAdresse={
+    <>
+      <p>Bibliothèque d'aménagement</p>
+      <p>Pavillon de la Faculté de l'aménagement</p>
+      <p>2940, chemin de la Côte-Sainte-Catherine, salle 1162</p>
+      <p><Link to="https://www.google.com/maps/place/Pavillon+de+la+Facult%C3%A9+de+I'am%C3%A9nagement,+2940+Chem.+de+la+C%C3%B4te-Sainte-Catherine,+Montr%C3%A9al,+QC+H3S+2C2,+Canada/@45.504475,-73.620621,4251m/data=!3m1!1e3!4m6!3m5!1s0x4cc91992da0f9677:0xda3129520f89d791!8m2!3d45.504475!4d-73.6206208!16s%2Fg%2F1tghp63h?hl=en&entry=ttu&g_ep=EgoyMDI1MDQwOS4wIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
+     
+    </>
+  }
+  blocNousJoindre={
+    <>
+      <p>514 343-6111, poste 2737</p>
+      <p><Link to="../a-propos/notre-equipe" Icon>Répertoire du personnel</Link></p>
+    </>
+  }
+>
+</FicheBibliotheque>

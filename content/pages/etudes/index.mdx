@@ -1,0 +1,289 @@
+---
+title: Études
+slug: etudes
+---
+
+import { Card, CardContent, CardMedia } from '@mui/material'
+import CommentIcon from '@mui/icons-material/Comment'
+import { TextOutdent, Compass, MagnifyingGlass, Laptop, MicrosoftWordLogo, DownloadSimple, Plugs } from '@phosphor-icons/react'
+import SuperHero from '@/components/SuperHero'
+import ListeFormations from '@/components/ListeFormations'
+import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
+import imageBienvenue from '../images/espaces-montage.webp'
+import Cocon from '../images/cocon.webp'
+import troussePetits from '../images/trousse-petits.webp'
+import collectionBienEtre from '../images/collection-bien-etre.webp'
+import collectionDetente from '../images/collection-detente.webp'
+import luminotherapie from '../images/luminotherapie.webp'
+import coloriage from '../images/coloriage.webp'
+import relaxation from '../images/relaxation.webp'
+
+
+<SuperHero
+  title="On inspire la réussite"
+  imageName='etudes'
+/>
+
+<Section>
+
+  <Carousel1 
+    title="Des outils essentiels pour vos travaux"
+    description="Dans le torrent d’information disponible en ligne et sur nos rayons, par où commencer l’exploration? Nos spécialistes ont conçu des guides et sélectionné les ressources les plus pratiques pour vous. Profitez-en!"
+    moreText="Voir la boîte à outils"
+    moreHref="#"
+  >
+    <CardWithIcon
+      title="Citer ses sources"
+      Icon={TextOutdent}
+      moreText="Explorer la citation"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Ressources par discipline"
+      Icon={Compass}
+      moreText="Explorer les disciplines"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Trouver et évaluer la fiabilité des sources"
+      Icon={MagnifyingGlass}
+      moreText="En savoir plus"
+      href="#"
+      small
+    />
+  </Carousel1>
+
+</Section>
+
+<Section bg="bleu100">
+
+  ## Profiter de nos formations gratuites, c'est payant
+
+  Consultez notre calendrier de formations - il y en a pour tous les goûts, tous les niveaux!
+
+  <ListeFormations moreText="Toutes nos formations" moreLink="https://calendrier.bib.umontreal.ca/calendar?cid=7690&t=m&d=0000-00-00&cal=7690&inc=0" />
+
+</Section>
+
+<Section bg='vertFonce'>
+
+  <Typography component="h2" variant="display5"> Des services personnalisés</Typography>
+
+
+  <RichList bg="vertFonce">
+    <RichListItemWithLink 
+      title="Accueil en bibliothèque"
+      description="Notre équipe est présente en bibliothèques pour répondre à vos questions sur place - passez nous voir au comptoir!"
+      href="#"
+      color="vertFonce"
+    />
+    <RichListItemWithLink 
+      title="Clavardage"
+      description="Même à distance, notre équipe est à un clic pour répondre à vos questions, vous aider à repérer un document, utiliser les ressources des bibliothèques ou vous offrir un soutien informatique."
+      href="#"
+      color="vertFonce"
+    />
+    <RichListItemWithLink 
+      title="Rendez-vous avec nos spécialistes"
+      description="Notre équipe propose du soutien individuels. Approfondissez les notions à votre rythme dans une ambiance accueillante."
+      href="../a-propos/notre-equipe"
+      color="vertFonce"
+    />
+    <RichListItemWithLink 
+      title="Services pour les cycles supérieurs"
+      description="Jumelage avec un bibliothécaire, dépôt dans Papyrus, mise en page dans Word, matinées de rédaction, nous vous proposons une gamme de services pour vous épauler dans votre processus de rédaction."
+      href="../recherche"
+      color="vertFonce"
+    />
+    <RichListItemWithLink 
+      title="Service Accessibilité"
+      description="L’accès à la documentation dont vous avez besoin est notre priorité. Profitez également d’un soutien, d’équipements et de logiciels adaptés pour vous accompagner dans votre parcours universitaire."
+      href="../service-accessibilite.mdx"
+      color="vertFonce"
+    />
+  </RichList>
+
+</Section>
+
+<Section>
+  <Carousel1
+    title="Problème informatique? Pas de panique!"
+    description="Accès hors campus, authentification, impression, numérisation, prêt d’ordinateurs ou de tablettes; nos comptoirs, nos services et nos spécialistes vous sont accessibles à l’année!"
+    moreText="Voir les ressources informatiques"
+    moreHref="https://studio.bib.umontreal.ca/informatique/"
+  >
+    <CardWithIcon
+      color="rose300"
+      title="Accès à distance aux ressources électroniques (PROXY)"
+      Icon={Laptop}
+      moreText="Consulter la documentation"
+      href="https://studio.bib.umontreal.ca/informatique/proxy"
+      small
+    />
+    <CardWithIcon
+      color="rose300"
+      title="Utilisation des outils bureautiques"
+      Icon={MicrosoftWordLogo}
+      moreText="Consulter la documentation"
+      href="https://studio.bib.umontreal.ca/informatique/Logiciels"
+      small
+    />
+    <CardWithIcon
+      color="rose300"
+      title="Installation et configuration de logiciels"
+      Icon={DownloadSimple}
+      moreText="Consulter la documentation"
+      href="https://studio.bib.umontreal.ca/informatique/Logiciels"
+      small
+    />
+    <CardWithIcon
+      color="rose300"
+      title="Connexion à distance aux logiciels"
+      Icon={Plugs}
+      moreText="Consulter la documentation"
+      href="https://studio.bib.umontreal.ca/informatique/connexion-distance"
+      small
+    />
+  </Carousel1>
+
+</Section>
+
+<Section bg="bleu100">
+
+  <Carousel1
+    title={<Typography component="h2">On a votre bien-être à coeur</Typography>}
+    description="Une session universitaire, ça passe vite, et on a parfois besoin d’un pause, de lire une BD pour le plaisir, de compléter un mandala entre deux séances d’étude. Nous vous proposons des collections axées sur le bien-être et la détente, des jeux, et toutes sortes de trucs pour vous changer les idées."
+  >
+   <FlipCardWithImage
+      title="Collection bien être"
+      Image={collectionBienEtre}
+    >
+      <p>Plusieurs documents en ligne et collections imprimées disponibles:</p>
+      <ul>
+      <li>Bibliothèque du Campus de Laval</li>
+      <li>Bibliothèque de la santé</li>
+      <li>Bibliothèque de lettres et sciences humaines</li>
+      <li>Bibliothèque de médecine vétérinaire</li>
+      <li>Bibliothèque de musique</li>
+      <li>Bibliothèque Thérèse-Gouin-Décarie</li>
+      </ul>
+    </FlipCardWithImage>
+
+    <FlipCardWithImage
+      title="Jeux de société"
+      Image={relaxation}
+    >
+      <p>Disponibles:</p>
+      <ul>
+        <li>Bibliothèque d’aménagement</li>
+        <li>Bibliothèque de droit</li>
+        <li>Bibliothèque de la santé</li>
+        <li>Bibliothèque de mathématiques et informatique</li>
+        <li>Bibliothèque de médecine vétérinaire</li>
+        <li>Bibliothèque de musique</li>
+        <li>Bibliothèque Thérèse-Gouin-Décarie</li>
+      </ul>
+    </FlipCardWithImage>
+
+    <FlipCardWithImage
+      title="Collection détente"
+      Image={collectionDetente}
+    >
+      <p>Bandes dessinées et romans graphiques disponibles:</p>
+      <ul>
+        <li>Bibliothèque d’aménagement</li>
+        <li>Bibliothèque de droit</li>
+        <li>Bibliothèque Hubert-Reeves</li>
+        <li>Bibliothèque de la santé</li>
+        <li>Local des étudiants de la Faculté de médecine</li>
+        <li>Bibliothèque de kinésiologie</li>
+        <li>Bibliothèque de mathématiques et informatique</li>
+        <li>Bibliothèque de musique</li>
+        <li>Bibliothèque Marguerite-d'Youville</li>
+      </ul>
+    </FlipCardWithImage>
+
+    <FlipCardWithImage
+        title="Trousse pour petits visiteurs"
+        Image={troussePetits}
+      >
+        <p>Disponible à la Bibliothèque de droit</p>
+        
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Luminothérapie"
+        Image={luminotherapie}
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>Bibliothèque d'aménagement</li>
+          <li>Bibliothèque de droit</li>
+          <li>Bibliothèque de la santé</li>
+          <li>Bibliothèque de kinésiologie</li>
+          <li>Bibliothèque des lettres et sciences humaines</li>
+          <li>Bibliothèque de mathématiques et informatique</li>
+          <li>Bibliothèque de médecine vétérinaire</li>
+          <li>Bibliothèque de musique</li>
+          <li>Bibliothèque du Campus de Laval</li>
+        </ul>
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Coloriage et mandalas"
+        Image={coloriage}
+      >
+        <p>Disponibles:</p>
+        <ul>
+          <li>Bibliothèque de droit</li>
+          <li>Bibliothèque de la santé</li>
+          <li>Bibliothèque de kinésiologie</li>
+          <li>Bibliothèque de médecine vétérinaire</li>
+          <li>Bibliothèque de musique</li>
+          <li>Bibliothèque Marguerite-d'Youville</li>
+        </ul>
+
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Espaces de relaxation"
+        Image={relaxation}
+      >
+        <p>Disponibles dans presque toutes les bibliothèques</p>
+      </FlipCardWithImage>
+            
+      <FlipCardWithImage
+        title="Cocon de micro-sieste"
+        Image={Cocon}
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>Bibliothèque de Kinésiologie</li> 
+          <li>Bibliothèque de médecine vétérinaire</li> 
+        </ul>
+      </FlipCardWithImage>
+            
+      <FlipCardWithImage
+        title="Casse-tête"
+        Image={relaxation}
+      >
+        <p>Disponibles à la Bibliothèque de Kinésiologie</p>
+      </FlipCardWithImage>
+
+  </Carousel1>
+</Section>
+
+<Section>
+  <HeroWithImage
+    Image={imageBienvenue}
+    footer={<Button primary href='../espaces/'>Découvrir les espaces</Button>}
+  >
+
+    <Typography component='h2' variant='h2'>Bienvenue chez vous!</Typography>
+
+    Offrir des lieux communs qui répondent à des besoins individuels, c’était l’idée à la base de la conception de nos espaces multifonctionnels! Salons de détente, cabines individuelles insonorisées, salles de réunion, découvrez les espaces qui vous sont offerts sur les campus!
+
+  </HeroWithImage>
+</Section>

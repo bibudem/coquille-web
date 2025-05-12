@@ -34,7 +34,7 @@ npm run dev
 
 Puis ouvrez un navigateur à l'URL suivante:
 
-http://localhost:8000
+[http://localhost:8000](http://localhost:8000)
 
 Dans VS Code, allez dans `File > Open Folder...`, puis dirigez vous vers votre dossier `prototype-web` local du projet.
 
@@ -51,22 +51,46 @@ Les pages à éditer sont dans le dossier `content/`. Vous pouvez modifier le co
 
 ### Déploiement automatique
 
-Chaque commit sur le dépôt GitHub déclanchera une nouvelle compilation des sources et un déploiement sur Netlify à l'adresse:
+Rafraîchissez cette page pour une mise à jour du statut de déploiement.
 
-[https://bib-pp.netlify.app](https://bib-pp.netlify.app/)
+| Environnement  |                                                                             Statut de déploiement                                                                             |
+| :------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| pre-production |    [![Netlify Status](https://api.netlify.com/api/v1/badges/fdb2105f-7cc4-4336-88c6-e5c09c794d74/deploy-status)](https://app.netlify.com/sites/bib-pp/deploys?branch=main)    |
+|   production   | [![Netlify Status](https://api.netlify.com/api/v1/badges/fdb2105f-7cc4-4336-88c6-e5c09c794d74/deploy-status)](https://app.netlify.com/sites/bib-pp/deploys?branch=production) |
+
+Chaque commit sur le dépôt GitHub déclanchera une nouvelle compilation des sources de la branche `main` et un déploiement sur Netlify à l'adresse:
+
+[https://bib-pp.umontreal.ca](https://bib-pp.umontreal.ca/)
+
+Les commits dans la branche production déclanchent un déploiement sur Netlify à l'adresse:
+
+[https://bib-prod.umontreal.ca](https://bib-prod.umontreal.ca)\*
+
+\* Adresse temporaire. Elle sera remplacée le jour du lancement du site par [https://bib.umontreal.ca](https://bib.umontreal.ca).
 
 ## Composants disponibles
 
 Le prototype utilise la librairie [Material UI](https://mui.com/material-ui/). Tous les composants de cette librairie peuvent être utilisées dans les fichiers markdown (`.mdx`). Les composants suivants sont pré-chargés dans le prototype et peuvent donc être utilisés directement:
 
-- Link
-- [Accordion, AccordionDetails, AccordionSummary](https://mui.com/material-ui/react-accordion/)
-- [Button](https://mui.com/material-ui/react-button/)
-- [Box](https://mui.com/material-ui/react-box/)
-- [Divider](https://mui.com/material-ui/react-divider/)
-- [Tabs, Tab](https://mui.com/material-ui/react-tabs/)
+| Composant                                                                                                                                                                                                                                                                                             | Source (package node)      |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| [Accordion](https://mui.com/material-ui/react-accordion/),<br />[AccordionDetails](https://mui.com/material-ui/react-accordion/),<br />[AccordionSummary](https://mui.com/material-ui/react-accordion/)                                                                                               | @mui/material              |
+| [Button](https://mui.com/material-ui/react-button/)                                                                                                                                                                                                                                                   | @mui/material              |
+| [Box](https://mui.com/material-ui/react-box/)                                                                                                                                                                                                                                                         | @mui/material              |
+| HeroWithImage                                                                                                                                                                                                                                                                                         | @bibudem/coquille-web      |
+| HeroWithText                                                                                                                                                                                                                                                                                         | @bibudem/coquille-web      |
+| CardWithIcon                                                                                                                                                                                                                                                                                                 | @bibudem/coquille-web      |
+| [Carousel](https://learus.github.io/react-material-ui-carousel/)                                                                                                                                                                                                                                      | react-material-ui-carousel |
+| [Divider](https://mui.com/material-ui/react-divider/)                                                                                                                                                                                                                                                 | @mui/material<br />        |
+| [Grid v2](https://mui.com/material-ui/react-grid2/)                                                                                                                                                                                                                                                   | @mui/material              |
+| IconInSquare                                                                                                                                                                                                                                                                                          | @bibudem/coquille-web      |
+| Link                                                                                                                                                                                                                                                                                                  | @bibudem/coquille-web      |
+| [List](https://mui.com/material-ui/react-list/),<br />[ListItem](https://mui.com/material-ui/react-list/),<br />[ListItemButton](https://mui.com/material-ui/react-list/),<br />[ListItemIcon](https://mui.com/material-ui/react-list/),<br />[ListItemText](https://mui.com/material-ui/react-list/) | @mui/material              |
+| Section                                                                                                                                                                                                                                                                                               | @bibudem/coquille-web      |
+| [Tabs](https://mui.com/material-ui/react-tabs/),<br />[Tab](https://mui.com/material-ui/react-tabs/)                                                                                                                                                                                                  | @mui/material              |
+| [Typography](https://mui.com/material-ui/react-typography/)                                                                                                                                                                                                                                           | @mui/material              |
 
-Les autres composants de la librairie doivent être importées pour être utilisées:
+Les autres composants de la librairie doivent être importées pour être utilisées. Par exemple:
 
 une-page.mdx
 
@@ -75,9 +99,9 @@ une-page.mdx
 title: Une page
 ---
 
-import {Card, CardContent, CardMedia, CardActionArea, Typography }  from '@mui/material'
+import {Card, CardContent, CardMedia, CardActionArea }  from '@mui/material'
 
-# Un titre
+# Exemple React utilisant le composant Typography et d'autres composants importés localement
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hendrerit dolor magna eget est lorem.
 
@@ -93,7 +117,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
       <Typography gutterBottom variant="h5" component="div">
         Lizard
       </Typography>
-      <Typography variant="body2" color="text.secondary">
+      <Typography variant="body2" sx={{ color: theme => theme.palette.text.secondary>
         Lizards are a widespread group of squamate reptiles, with over 6,000
         species, ranging across all continents except Antarctica
       </Typography>
@@ -103,3 +127,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ```
 
 Consultez la [documentation de Material UI](https://mui.com/material-ui/all-components/) pour la liste complète des composants disponibles.
+
+## Pour créer une nouvelle release
+
+- npm version minor -m "Bump v%s"

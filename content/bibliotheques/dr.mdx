@@ -1,0 +1,29 @@
+import FicheBibliotheque from '@/components/FicheBibliotheque'
+import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
+
+<FicheBibliotheque
+  title="Droit"
+  codeBib="dr"
+  blocEspaces={
+    <ul>
+      <li><Link to="#">Salles de travail pour les cycles supérieurs</Link></li>
+    </ul>
+  }
+  blocAdresse={
+    <>
+      <p>Bibliothèque de droit</p>
+      <p>Pavillon Maximilien-Caron</p>
+      <p>3101, chemin de la Tour, 4e étage, salle 4433</p>
+      <p><Link to="https://www.google.com/maps?ll=45.498692,-73.616975&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Pavillon+Maximilien-Caron+3101+Tour+Rd+Montreal,+QC+H3T+1N8" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
+    </>
+  }
+  blocNousJoindre={
+    <>
+      <p>Comptoir de prêt&nbsp;: 514 343-7095</p>
+      <p>Bureau de référence&nbsp;: 514 343-7095</p>
+      <p><Link to="../a-propos/notre-equipe" Icon>Répertoire du personnel</Link></p>
+    </>
+  }
+>
+
+</FicheBibliotheque>

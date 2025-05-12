@@ -1,0 +1,34 @@
+---
+title: <Section>
+template: doc
+---
+
+import image from './engagement-accueil.webp'
+
+<Section>
+  <Typography variant="h2" component="h2">Plain Section</Typography>
+</Section>
+
+<Section bg="vertFonce">
+  <Typography variant="h2" component="h2">Section avec bg="vertFonce"</Typography>
+</Section>
+
+<Section bg="bleuPrincipal">
+  <Typography variant="h2" component="h2">Section avec bg="bleuPrincipal"</Typography>
+</Section>
+
+<Section bg="bleu200" fixedWidth>
+  <Typography variant="h2" component="h2">fixedWidth et bg="bleu200"</Typography>
+</Section>
+
+<Section image={image} sx={{backgroundPosition: '60% 50%'}}>
+  <Grid container>
+    <Grid size={{xs: 12, md: 6}} offset={{md:6}}>
+      <Typography variant="h2" component="h2">Section avec image=\{image\}</Typography>
+
+      Notre équipe est résolument engagées dans le développement d’un accès universel aux savoirs, par le soutien à la Politique sur le libre accès aux publications savantes et par le financement de la publication de monographies savantes en libre accès, sans parler du soutien à de multiples outils et initiatives.
+
+      <Button primary light href="">Découvrir nos engagements</Button>
+    </Grid>
+  </Grid>
+</Section>

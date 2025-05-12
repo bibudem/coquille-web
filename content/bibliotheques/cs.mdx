@@ -1,0 +1,28 @@
+import FicheBibliotheque from '@/components/FicheBibliotheque'
+import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
+
+<FicheBibliotheque
+  title="Livres rares et collections spéciales"
+  codeBib="cs"
+  blocEspaces={
+    <ul>
+      <li><Link to="#">Salle de séminaire</Link></li>
+    </ul>
+  }
+  blocAdresse={
+    <>
+      <p>Bibliothèque des livres rares et collections spéciales</p>
+      <p>Pavillon Samuel-Bronfman</p>
+      <p>3000 rue Jean Brillant, salle 4030</p>
+      <p><Link to="https://www.google.com/maps?ll=45.499427,-73.616554&z=15&t=m&hl=fr-FR&gl=US&mapclient=embed&q=Pavillon+Samuel-Bronfman+3000+Jean+Brillant+St+Montreal,+QC+H3T+1N7" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
+    </>
+  }
+  blocNousJoindre={
+    <>
+      <p>514 343-6111, poste 39836</p>
+      <p><Link to="../a-propos/notre-equipe" Icon>Répertoire du personnel</Link></p>
+    </>
+  }
+>
+
+</FicheBibliotheque>

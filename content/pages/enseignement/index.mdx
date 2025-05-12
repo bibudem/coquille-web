@@ -1,0 +1,299 @@
+---
+title: Enseignement
+slug: enseignement
+---
+
+import SuperHero from '@/components/SuperHero'
+import Techno from '../images/touche-techno.webp'
+import Didactheque from '../images/didactheque.webp'
+import { DoorOpen, Handshake, Heart, Mountains, MagnifyingGlass, Screwdriver, Laptop, Copyright, ChalkboardTeacher, Medal, Toolbox } from '@phosphor-icons/react'
+
+<SuperHero
+  title="Épauler l'enseignement, c'est notre rayon"
+  imageName='enseignement'
+/>
+
+<Section bg="bleu100">
+  <HeroWithText2
+    leftColl={
+      <>
+        <Typography variant="h2">Inscrivez-nous à votre cours</Typography>
+        <Typography>Pour intégrer facilement les notions de recherche d’information et d’évaluation de la crédibilité et de la pertinence des sources dans vos cours, faites appel à notre équipe spécialisée! </Typography>
+      </>
+    }
+    leftFooter={
+      <>
+        <Button secondary href="formations-cours">Voir des sujets de formations</Button>
+        <Button primary href="../a-propos/notre-equipe.mdx">Contactez votre bibliothécaire disciplinaire</Button>
+      </>
+    }
+    rightColl={
+      <>
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <ChalkboardTeacher color='#0057AC' size={50} />
+              </Grid>
+
+              Création de formation sur mesure pour votre cours
+
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <Mountains color='#0057AC' size={50} />
+              </Grid>
+
+              Collaboration avec votre bibliothécaire dans StudiUM
+
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <Toolbox color='#0057AC' size={50} />
+              </Grid>
+
+              Création de guides de sources et outils pertinents
+
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <Medal color='#0057AC' size={50} />
+              </Grid>
+
+              Identification de ressources pertinentes pour vos cours
+
+            </Box>
+          </Grid>
+        </Grid>
+      </>
+    }
+  />
+
+</Section>
+
+<Section>
+<Typography component="h2" variant="display5">5,75M de titres à portée de main</Typography>
+
+
+
+ <RichList>
+    <RichListItemWithLink 
+      title="Réserve de cours"
+      description="Assurez un accès aux documents importants dans le cadre de vos cours en créant une réserve de cours pour la session."
+      href="reserve"
+      linkText="Mettre un livre à la réserve"
+    />
+    <RichListItemWithLink 
+      title="Suggestion d’achat"
+      description="Il vous manque un document qui serait utile pour votre cours ? Nous l’achèterons pour vous !"
+      href="#"
+      linkText="Faire une suggestion"
+    />
+    <RichListItemWithLink 
+      title="Collections spéciales"
+      description="Nous conservons plus de 150 000 documents anciens, rares ou précieux, qui sont entièrement à la disposition de la communauté UdeM pour la consultation et la recherche."
+      href="https://calypso.bib.umontreal.ca/"
+      linkText="En savoir plus"
+    />
+  </RichList>
+
+</Section>
+
+
+<Section bg='bleu600'>
+
+  <HeroWithImage
+    Image={Techno}
+    align="right"
+    footer={<Button primary href='/espaces/'>Découvrir nos espaces</Button>}
+  >
+    <Typography component='h2' variant='h2'>Ajoutez une touche techno</Typography>
+    
+    Ateliers, laboratoire de visualisation, studios d’enregistrement et d’édition, nos espaces de création numérique offrent plusieurs possibilités pour intégrer les technologies créatives et la production média à votre enseignement :
+  
+    - Enseigner dans nos espaces de création
+    - Produire du contenu pour un cours
+    - Intégrer les technologies dans les travaux pratiques
+
+  </HeroWithImage>
+</Section>
+
+<Section>
+<Alert severity="success" sx={{my: 2}}>
+  <AlertTitle>Services suspendus</AlertTitle>
+  <>Dû à l'absence de personnel, le service est suspendu pour une période indéderminée.</>
+</Alert>
+
+  <Typography component="h2" variant="display5">Tout savoir sur le droit d'auteur</Typography>
+  <Typography> Avant de consulter, partager et reproduire des documents dans le cadre d’un cours, il vaut mieux se renseigner. Nous sommes là pour vous aider à choisir l’option de partage qui convient à votre situation.</Typography>
+
+
+  <RichList>
+    <RichListItemWithLink
+      title="Donner accès aux lecture suggérées"
+      description="Partager des documents tout en respectant le droit d'auteur ? Cela peut se faire via la licence Copidec, les abonnements des bibliothèques ou selon les exceptions prévues par le droit d'auteur."
+      href="https://boite-outils.bib.umontreal.ca/c.php?g=740213&p=5341400"
+      linkText="Voir les informations"
+    />
+    <RichListItemWithLink 
+      title="Déclaration de reproduction"
+      description="Si vous devez utiliser du matériel protégé dans votre cours, vous devez déclarer vos reproductions en vertu de la licence Copibec, via l’outil Savia."
+      href="https://boite-outils.bib.umontreal.ca/gerer-diffuser/droit-auteur/declaration-reproduction "
+      linkText="Faire une déclaration"
+    />
+    <RichListItemWithLink 
+      title="Autres services"
+      description="Notre équipe offre également du soutien au droit d’auteur en contexte de recherche."
+      href="../recherche"
+      linkText="Voir les services pour la recherche"
+    />
+  </RichList>
+</Section>
+
+
+    
+<Section bg='vertFonce'>
+
+<Carousel1
+    title={<Typography component="h2">Changer de décor!</Typography>}
+    description="Nous offrons plusieurs salles de formation à réserver. Consultez notre répertoire de salles pour donner un cours dans un environnement pensé pour l’apprentissage de groupe, le partage des connaissances ou le visionnement multimédia en groupe."
+  >
+
+<CardWithImage
+        title="Salle Didactique de Thérèse-Gouin-Décarie"
+        Image={Didactheque}
+        href="https://calendrier.bib.umontreal.ca/space/19189"
+        moreText="En savoir plus"
+      /> 
+
+<CardWithImage
+        title="Salle Didactique du Campus de Laval"
+        Image={Didactheque}
+        href="https://calendrier.bib.umontreal.ca/space/17823"
+        moreText="En savoir plus"
+      /> 
+
+<CardWithImage
+        title="Salle de formation"
+        Image={Didactheque}
+        href="#"
+        moreText="En savoir plus"
+      /> 
+  </Carousel1>
+
+</Section>
+
+<Section bg="rose300">
+  <HeroWithText2
+    leftColl={
+      <>
+        <Typography variant="h2">Aider les étudiants et étudiantes, c’est réussir ensemble</Typography>
+        <Typography>N’hésitez pas à parler de nos services dans vos cours ou aux personnes inscrites à vos cours qui pourraient en bénéficier ! </Typography>
+      </>
+    }
+    leftFooter={
+      <>
+        <Button primary href="#">Découvrir le soutien aux études</Button>
+      </>
+    }
+    rightColl={
+      <>
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <MagnifyingGlass color='#f04e24' size={50} />
+              </Grid>
+
+              Développement d’une stratégie de recherche
+
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <Screwdriver color='#f04e24' size={50} />
+              </Grid>
+
+              Conseil sur les meilleurs outils de recherche
+
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <Laptop color='#f04e24' size={50} />
+              </Grid>
+
+              Initiation aux logiciels bibliographiques
+
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <Copyright color='#f04e24' size={50} />
+              </Grid>
+
+              Réponses aux questions de droits d’auteur
+
+            </Box>
+          </Grid>
+        </Grid>
+      </>
+    }
+  />
+
+</Section>

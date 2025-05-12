@@ -1,37 +1,108 @@
+import { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { Accordion, AccordionDetails, AccordionSummary, Button, Box, Container, Divider, Tab, Tabs, useTheme } from '@mui/material'
-import TopAppBar from '@/components/AppBar/TopAppBar'
-import TopAppBarSm from '@/components/AppBar/TopAppBarSm'
-import BottomAppBarSm from '@/components/AppBar/BottomAppBarSm'
-import Footer from '@/components/Footer'
-import Link from '@/components/Link'
-import SEO from '@/components/SEO'
-import Debug from '@/components/Debug'
+import { useTheme } from '@mui/material'
+import Grid from '@mui/material/Grid2'
+import { IconContext } from '@phosphor-icons/react'
+
+import TopAppBar from '@/components/_layout/AppBar/TopAppBar'
+import TopAppBarSm from '@/components/_layout/AppBar/TopAppBarSm'
+import { QuickLinks, QuickLinksSm } from '@/components/_layout/QuickLinks'
+import Footer from '@/components/_layout/Footer/Footer'
+import Breadcrumbs from '@/components/_layout/Breadcrumbs/Breadcrumbs'
+import SEO from '@/components/_layout/SEO'
+import Debug from '@/components/_layout/Debug'
+import LayoutGrid from '../components/utils/LayoutGrid'
 import RetroactionUsager from '@/components/RetroactionUsager'
+
 import { useSmall } from '@/hooks/use-small'
+import { SecondaryNav } from '@/components/_layout/SecondaryNav/SecondaryNav'
+import { getLastSundayISODate } from '@/utils/dateTimeUtils'
 
-const shortcodes = { Link, Accordion, AccordionDetails, AccordionSummary, Button, Box, Divider, Tab, Tabs } // Provide common components here
+import commonComponents from './commonComponents'
 
-export default function PageTemplate({ children }) {
-  const isSmall = useSmall('lg')
+function getCurrentPageLevel(location) {
+  return location.pathname.split('/').filter((item) => item).length
+}
 
+export default function PageTemplate({ pageContext, children, data, location }) {
+  const isSmall = useSmall('md')
+  const isMedium = useSmall('lg')
   const theme = useTheme()
-  console.log('theme: ', theme)
-  return (
-    <MDXProvider components={shortcodes}>
-      {process.env.NODE_ENV !== 'production' && <Debug />}
-      <udem-urgence></udem-urgence>
+  const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
+  const [lvl, setLvl] = useState(getCurrentPageLevel(location))
 
-      {isSmall ? <TopAppBarSm /> : <TopAppBar />}
+  useEffect(() => {
+    setLvl(getCurrentPageLevel(location))
+  }, [location])
 
-      <bib-avis bouton-fermer />
-      <Container component="main" role="main">
+  useEffect(() => {
+    setHasSecondaryNav(lvl > 1)
+  }, [lvl])
+
+  if (typeof window !== 'undefined') {
+    window.bib = window.bib || {}
+    window.bib.theme = theme
+    console.log('window.bib.theme:', window.bib.theme)
+  }
+
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext
+
+  const mainContent = (
+    <>
+      {hasSecondaryNav && <Breadcrumbs crumbs={crumbs} />}
+      <main role="main">
         {children}
         <RetroactionUsager />
-      </Container>
-      <Footer />
-      {isSmall && <BottomAppBarSm />}
+      </main>
+    </>
+  )
+
+  return (
+    <MDXProvider components={commonComponents}>
+      <IconContext.Provider
+        value={{
+          size: '2rem',
+          color: theme.palette.grey['700'],
+        }}
+      >
+        {process.env.NODE_ENV !== 'production' && <Debug />}
+        <div style={{ position: 'absolute', background: '#fff', top: 0, right: 0, padding: '.5em' }}>{lvl}</div>
+
+        <udem-urgence></udem-urgence>
+
+        {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
+
+        {/* <bib-avis bouton-fermer /> */}
+
+        {isSmall ? <QuickLinksSm /> : <QuickLinks />}
+
+        {hasSecondaryNav ? (
+          <LayoutGrid outter>
+            <Grid
+              container
+              spacing={{
+                xs: 1,
+                sm: 3,
+                lg: 4,
+              }}
+            >
+              <Grid size={3}>
+                <SecondaryNav currentLocation={location} />
+              </Grid>
+              <Grid size={9}>{mainContent}</Grid>
+            </Grid>
+          </LayoutGrid>
+        ) : (
+          <>{mainContent}</>
+        )}
+
+        <Footer />
+
+        {/* <bib-consent server-request-timeout="5000"></bib-consent> */}
+      </IconContext.Provider>
     </MDXProvider>
   )
 }
@@ -49,14 +120,24 @@ export const query = graphql`
 export function Head({ pageContext, location }) {
   const { frontmatter } = pageContext
   const { pathname } = location
+
   return (
     <>
-      <html lang="fr" />
-      <title>{frontmatter?.title}</title>
+      <html lang="fr-CA" />
       <SEO title={frontmatter?.title} pathname={pathname} />
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-avis.js"></script>
+      <bib-gtm></bib-gtm>
+      {['/espaces', 'nous-joindre'].some((path) => pathname.startsWith(path)) && (
+        <>
+          <link rel="preload" href="https://api.bib.umontreal.ca/horaires/services" as="fetch" crossorigin="anonymous" />
+          <link rel="preload" href={`https://api.bib.umontreal.ca/horaires/?debut=${getLastSundayISODate()}&fin=P7D`} as="fetch" crossorigin="anonymous" />
+        </>
+      )}
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-gtm.js"></script>
+      {/* <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-avis.js"></script> */}
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-retroaction-usager.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/udem-urgence.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent-preferences-btn.js"></script>
     </>
   )
 }

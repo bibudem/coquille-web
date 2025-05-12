@@ -1,5 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { Box, Button, Card, CardActions, CardContent, Grid, Typography, Autocomplete, TextField } from '@mui/material'
+import { Box, Button, Card, CardActions, CardContent, Typography, Autocomplete, TextField } from '@mui/material'
+import Grid from '@mui/material/Grid2'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { useState } from 'react'
 
@@ -86,6 +87,7 @@ export default function ListePersonnel() {
 
   return (
     <Box width={{ xs: '100%', md: 400 }} mx="auto" my={5}>
+      {process.env.JSDELIVR_SERVICE_URL}
       <Autocomplete
         value={value}
         onChange={(event, newValue) => {
@@ -102,12 +104,13 @@ export default function ListePersonnel() {
           return option.discipline === value.discipline
         }}
         renderInput={(params) => <TextField {...params} label="Cherchez une discipline..." fullWidth sx={{ mb: 2 }} />}
-        renderOption={(props, { nomComplet, discipline, thumb } = option) => {
+        renderOption={(props, { nomComplet, discipline, thumb, ...rest } = option) => {
+          console.log('rest: ', rest)
           return (
             <li {...props}>
               <Grid container gap={2} alignItems="center" flexWrap="nowrap">
                 <Grid item sx={{ display: 'flex' }}>
-                  <GatsbyImage image={thumb} alt={nomComplet} />
+                  <GatsbyImage image={getImage(thumb)} alt={nomComplet} />
                 </Grid>
                 <Grid item sx={{ wordWrap: 'break-word' }}>
                   <Typography variant="body">{nomComplet}</Typography>
@@ -161,8 +164,8 @@ export default function ListePersonnel() {
           </CardContent>
           <CardActions sx={{ justifyContent: 'flex-end' }}>
             <Button>Action secondaire</Button>
-            <Button variant="contained" disableElevation>
-              Écrivez-moi!
+            <Button variant="contained" disableElevation href={`https://teams.microsoft.com/l/chat/0/0?users=${value.courriel}`} target="_blank" rel="noopener noreferrer">
+              Textez-moi!
             </Button>
           </CardActions>
         </Card>

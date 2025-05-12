@@ -1,25 +1,38 @@
-import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
+import { useEffect } from 'react'
 import { CssBaseline } from '@mui/material'
-import { responsiveFontSizes, experimental_extendTheme as extendTheme, Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles'
-import tokens from './tokens'
+import { ThemeProvider, extendTheme, responsiveFontSizes } from '@mui/material/styles'
+// import tokens from './tokens'
 
-export const theme = responsiveFontSizes(extendTheme(tokens))
+// export const theme = responsiveFontSizes(extendTheme(tokens))
+// export const theme = extendTheme(tokens)
 
-export default function BibTheme({ darkMode, children, ...props }) {
+import { themeLvl1, themeLvln } from './tokens'
+import GlobalStyles from './GlobalStyles'
+
+export function BibThemeLvl1({ darkMode, children, ...props }) {
 	// take away SSR rendered mode;
 	useEffect(() => {
 		document.body.className = ''
 	}, [])
 	return (
-		<CssVarsProvider theme={theme} {...props}>
+		<ThemeProvider theme={themeLvl1} {...props}>
 			<CssBaseline enableColorScheme />
+			<GlobalStyles />
 			{children}
-		</CssVarsProvider>
+		</ThemeProvider>
 	)
 }
 
-BibTheme.propTypes = {
-	darkMode: PropTypes.bool.isRequired,
-	children: PropTypes.node
+export function BibThemeLvln({ darkMode, children, ...props }) {
+	// take away SSR rendered mode;
+	useEffect(() => {
+		document.body.className = ''
+	}, [])
+	return (
+		<ThemeProvider theme={themeLvln} {...props}>
+			<CssBaseline enableColorScheme />
+			<GlobalStyles />
+			{children}
+		</ThemeProvider>
+	)
 }

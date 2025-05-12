@@ -1,0 +1,32 @@
+import FicheBibliotheque from '@/components/FicheBibliotheque'
+import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
+
+<FicheBibliotheque
+  title="Thérèse-Gouin-Décarie"
+  codeBib="ed"
+  blocEspaces={
+    <ul>
+      <li><Link to="#">Didacthèque</Link></li>
+      <li><Link to="#">Atelier de fabrication numérique</Link></li>
+      <li><Link to="#">Studio d'enregistrement vidéo</Link></li>
+      <li><Link to="#">Cocon de micro-sieste</Link></li>
+    </ul>
+  }
+  blocAdresse={
+    <>
+      <p>Bibliothèque Thérèse-Gouin-Décarie</p>
+      <p>Pavillon Marie-Victorin</p>
+      <p>90, avenue Vincent-d'Indy, salle G-205</p>
+      <p><Link to="https://www.google.com/maps?ll=45.510687,-73.61158&z=15&t=m&hl=en&gl=US&mapclient=embed&cid=10344974121678518049" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
+    </>
+  }
+  blocNousJoindre={
+    <>
+      <p>Comptoir de prêt&nbsp;: 514 343-6111, poste 1705</p>
+      <p>Bureau de référence&nbsp;: 514 343-6111, poste 1706</p>
+      <p><Link to="../a-propos/notre-equipe" Icon>Répertoire du personnel</Link></p>
+    </>
+  }
+>
+
+</FicheBibliotheque>

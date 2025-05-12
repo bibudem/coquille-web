@@ -1,0 +1,427 @@
+---
+title: Recherche
+slug: recherche
+---
+
+import SuperHero from '@/components/SuperHero'
+import PorteeScientifique from '../images/portee-scientifique.webp'
+import Bibliothecaire from '../images/bibliothecaire-montage.webp'
+import CommentIcon from '@mui/icons-material/Comment'
+import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
+import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGlass, PencilSimple, TextAlignJustify, Binoculars, TreasureChest, Graph, Article, CheckSquareOffset, ShareNetwork, Handshake, Repeat } from '@phosphor-icons/react'
+
+<SuperHero
+  title="Amplifier l’impact de vos recherches"
+  imageName='recherche'
+/>
+
+<Section bg='vertFonce'>
+  <HeroWithImage
+    Image={Bibliothecaire}
+    align="right"
+    footer={<Button href="" primary>Contacter votre bibliothécaire disciplinaire</Button>}
+  >
+    <Typography component="h2" variant="h2">Premier arrêt, votre bibliothécaire disciplinaire</Typography>
+
+    De l’idéation à la communication de vos résultats, nous pouvons vous accompagner tout au long du cycle de la recherche.
+
+    Pour une aide sur mesure, consultez votre bibliothécaire disciplinaire ou continuez votre lecture pour découvrir ce que nous pouvons faire pour vous.
+
+  </HeroWithImage>
+</Section>
+
+<Section>
+
+  <Tabs1
+    bg='bleu200.light'
+    tabs={['Rédiger et produire', 'Diffuser vos savoirs', 'Plateformes de diffusion']}
+  >
+  <Carousel1
+    title={<Typography component="h3">Rédiger et produire</Typography>}
+    description="Nous vous proposons une panoplie de ressources et d'aides à la rédaction savante et à la production d'outils de diffusion de vos recherches."
+    moreText="En savoir plus sur les services"
+    moreHref="#"
+  >
+    <CardWithIcon
+      title="Recherche documentaire"
+      Icon={MagnifyingGlass}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Veille documentaire"
+      Icon={Binoculars}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Rédiger un article scientifique, une thèse ou un mémoire"
+      Icon={PencilSimple}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Revue systématique"
+      Icon={Binoculars}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+        <CardWithIcon
+      title="Logiciel bibliographique"
+      Icon={Binoculars}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+  </Carousel1>
+
+  <Carousel1
+    title={<Typography component="h3">Diffuser vos savoirs</Typography>}
+    description="Nous vous proposons une multitude de services pour optimiser la publication, la diffusion et la conservation des résultats de vos travaux de recherche."
+    moreText="En savoir plus sur les services"
+    moreHref="#"
+  >
+    <CardWithIcon
+      title="Déposer dans Papyrus"
+      Icon={MagnifyingGlass}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Publier un article scientifique"
+      Icon={Binoculars}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Attribution d'identifiants pérennes"
+      Icon={PencilSimple}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Participer aux échanges scientifiques"
+      Icon={Binoculars}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+        <CardWithIcon
+      title="Diffuser vos bibliographies Zotero"
+      Icon={Binoculars}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+            <CardWithIcon
+      title="Exposer dans nos espaces"
+      Icon={Binoculars}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+  </Carousel1>
+
+  <Carousel1
+    title={<Typography component="h3">Rédiger et produire</Typography>}
+    description="Nous vous proposons une panoplie de ressources et d'aides à la rédaction savante et à la production d'outils de diffusion de vos recherches."
+    moreText="En savoir plus sur les services"
+    moreHref="#"
+  >
+    <CardWithIcon
+      title="Dépôt institutionnel"
+      Icon={TreasureChest}
+      moreText="Accéder à Papyrus"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Dépôt de données de recherche"
+      Icon={Graph}
+      moreText="Accéder à Borealis"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Plateforme d'édition savante en libre accès"
+      Icon={Article}
+      moreText="Accéder à OJS"
+      href="#"
+      small
+    />
+
+  </Carousel1>
+
+  </Tabs1>
+</Section>
+
+
+<Section bg='rose300'>
+  <Carousel1
+    title="La science ouverte et le libre accès, une culture institutionnelle"
+    description="Nous sommes activement engagées dans le projet de la science ouverte, qui vise à démocratiser l’accès à la science et tout en favorisant la réutilisation des savoirs: libre accès, données ouvertes, logiciels ouverts, science citoyenne, etc. "
+  >
+    <CardWithIcon
+      color="vertFonce"
+      title="Qu'est-ce que le libre accès?"
+      Icon={Laptop}
+      moreText="Comprendre le concept"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      color="vertFonce"
+      title="Déposer sa thèse ou son mémoire dans Papyrus"
+      Icon={DownloadSimple}
+      moreText="Voir les étapes"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      color="vertFonce"
+      title="Déposer facilement son article en libre accès"
+      Icon={DownloadSimple}
+      moreText="Utiliser le formulaire rapide"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      color="vertFonce"
+      title="Comprendre la politique institutionnelle sur le libre accès"
+      Icon={Plugs}
+      moreText="En savoir plus"
+      href="#"
+      small
+    />
+  </Carousel1>
+
+</Section>
+
+<Section bg='bleu600'>
+
+  <HeroWithImage
+    Image={PorteeScientifique}
+    align="left"
+    footer={<Button primary href='/espaces/'>Découvrir nos espaces</Button>}
+  >
+    <Typography component='h2' variant='h2'>Mesurez votre portée scientifique avec la bibliométrie</Typography>
+    
+    <Typography>Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes bibliométriques responsables pour mieux :</Typography>
+    <List> 
+      <ListItem>Informer le plan stratégique de votre équipe de recherche</ListItem>
+      <ListItem>Trouver des partenaires de recherche pertinents</ListItem>
+      <ListItem>Trouver de nouvelles opportunités de financement</ListItem>
+      <ListItem>Optimiser vos demandes de financement</ListItem>
+      <ListItem>découvrir l’impact de votre production scientifique</ListItem>
+    </List>
+  </HeroWithImage>
+</Section>
+
+
+<Section>
+  <HeroWithText 
+    leftColl={<IconInSquare color='vertPale' icon={<UserFocus color="vertFonce" />} />}
+    rightColl={
+      <>
+        <Typography component="h2" variant="h2">Maîtrisez votre identité numérique</Typography>
+        
+         <Typography>Optimisez votre visibilité et votre crédibilité dans le monde numérique en utilisant les identifiants pérennes, en optimisant vos informations liées à vos communications savantes et en gérant efficacement vos profils professionels et de chercheur sur les outils numériques et plateformes en ligne.</Typography>
+      </>
+    }
+    rightFoter={
+      <>
+        <Button primary href="">Explorer le guide sur les identifiants numérique</Button>
+        <Button secondary href="">Découvrez l'identifiant ORCHID</Button>
+      </>
+    }
+  />
+
+</Section>
+
+<Section bg="rose300">
+  <HeroWithText2
+    leftColl={
+      <>
+        <Typography variant="h2">Naviguer le droit d’auteur à votre avantage</Typography>
+        <Typography>Que ce soit pour vous aider à protéger les œuvres et les publications issues de vos recherches, utiliser du contenu protégé dans vos travaux ou bien diffuser vos résultats le plus démocratiquement et largement possible, nos spécialistes sont là pour vous outiller et vous accompagner. </Typography>
+      </>
+    }
+    leftFooter={
+      <Button primary href="#">Consulter le guide sur le droit d'auteur</Button>
+    }
+    rightColl={
+      <>
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <CheckSquareOffset color='#f04e24' size={50} />
+              </Grid>
+
+              Choix des différentes licences disponibles
+
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <ShareNetwork color='#f04e24' size={50} />
+              </Grid>
+
+              Diffusion et partage
+
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+              }}
+            >
+
+              <Grid size="auto">
+                <Handshake color='#f04e24' size={50} />
+              </Grid>
+
+              Rôle de l’auteur ou l’autrice et entente avec ses coauteurs ou coautrices
+
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <Repeat color='#f04e24' size={50} />
+              </Grid>
+
+              Reproduction et réutilisation de contenu pour vos recherches
+
+            </Box>
+          </Grid>
+        </Grid>
+      </>
+    
+    }
+  />
+
+</Section>
+
+<Section>
+  <Carousel1
+    title="Gestion des données de recherche"
+    description={
+      <>
+        <Typography sx={{pb: 1.5}}>Les organismes subventionnaires l’exigent, vous devez porter une attention particulière au cycle de vie de données de recherche. Nous vous aidons à y voir plus clair, de l’élaboration d’un plan de gestion de données jusqu’au partage dans un dépôt fiable et reconnu.</Typography>
+        <Typography>Nos services de gestion des données de recherche sont conçus pour vous aider à organiser, préserver et partager vos données de recherche de manière efficace et sécurisée. Nous offrons des conseils personnalisés et des outils adaptés pour garantir la conformité aux meilleures pratiques et remplir vos obligations.</Typography>
+      </>
+    }
+  >
+    <CardWithIcon
+      title="Rédiger un plan de gestion de données"
+      Icon={PencilSimple}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Partager et trouver des données dans un dépôt"
+      Icon={MagnifyingGlass}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Normaliser et documenter les données avec des métadonnées"
+      Icon={TextAlignJustify}
+      moreText="Explorer le guide"
+      href="#"
+      small
+    />
+  </Carousel1>
+</Section>
+
+<Section bg='bleu200'>
+  <HeroWithText 
+    leftColl={<IconInSquare color='#fff' icon={<CubeTransparent color="bleuPrincipal" />} />}
+    rightColl={
+      <>
+        <Typography component="h2" variant="h2">Recherche et création : Exploitez toutes les facettes de vos données</Typography>
+        
+        <Typography>Nous vous offrons l’accès à une panoplie d’outils numériques et de l’aide pour les utiliser afin d’explorer, d’exploiter, d’enrichir et d’analyser vos données de recherche :</Typography>
+         
+        <List> 
+          <ListItem>Gérer et analyser des centaines et des milliers de références bibliographiques</ListItem>
+          <ListItem>Visualiser de grandes quantités de données à travers nos espaces et services de création numérique</ListItem>
+          <ListItem>Maximiser vos jeux de données, de leur identification à leur visualisation. Données ouvertes, statistiques, géospatiales, textuelles, manuscrites, audio, vidéo, 3D… Peu importe leur nature !</ListItem>
+          <ListItem>Composer un corpus pour effectuer des fouilles de texte</ListItem>
+          <ListItem>Obtenir du soutien aux humanités numériques : numérisation, transcription, comparaison, annotations, diffusion, conservation, …</ListItem>
+        </List>
+      </>
+      }
+      rightFooter={<Button href="" variant="contained" color="bleuFonce">Voir nos espaces de créations numériques</Button>}
+  />
+</Section>
+
+<Section bg='vertFonce'>
+
+  <Typography component="h2" variant="display5">Nos services pour les cycles supérieurs </Typography>
+
+  <RichList>
+    <RichListItemWithLink
+      color='vertFonce'
+      href="https://www.facebook.com/groups/655999033385375/"
+      title="Matinée de rédaction"
+      description="Travaillez efficacement dans un environnement structuré grâce aux Matinées de rédaction. Les séances sont divisées en cycles de rédaction, suivis de pauses d'échanges informels."
+    />
+    <RichListItemWithLink
+      color='vertFonce'
+      href="#"
+      title="Aide à la rédaction et à la mise en page"
+      description="Bénéficiez d’aide pour utiliser le modèle Word pour thèses et mémoires qui répond aux normes du Guide de présentation des mémoires et des thèses des Études supérieures et postdoctorales (ESP)."
+    />
+    <RichListItemWithLink
+      color='vertFonce'
+      href="#"
+      title="Aide au dépôt de votre mémoire ou thèse dans Papyrus"
+      description="Nous sommes là pour vous accompagner dans le processus de mise en forme et de dépôt de votre thèse ou de votre mémoire dans le dépôt institutionnel Papyrus, étape obligatoire pour l’obtention de votre grade."
+    />
+    <RichListItemWithLink
+      color='vertFonce'
+      href="#"
+      title="Accompagnement personnalisé au doctorat"
+      description="Vous pouvez planifier une série de rencontres individuelles avec votre bibliothécaire disciplinaire pour recevoir un soutien dans toutes les étapes de votre doctorat, de la recherche documentaire jusqu’à la rédaction de votre thèse, en passant par la mise en place de veille et par l’aide à la création de corpus de recherche."
+    />
+    <RichListItemWithLink
+      color='vertFonce'
+      href="#"
+      title="Espaces dédiés aux cycles supérieurs"
+      description="Salles individuelles réservables, salles communes équipées de casiers pour votre documentation : l’offre varie d’une bibliothèque à l’autre, consultez le répertoire!"
+    />
+  </RichList>
+
+</Section>

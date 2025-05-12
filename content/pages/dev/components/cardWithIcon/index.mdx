@@ -1,0 +1,173 @@
+---
+title: <CardWithIcon>
+template: doc
+---
+
+import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icons/react'
+
+# CardWithIcon
+
+<Section>
+
+  ## Couleur: par défaut (`bleuPrincipal`)
+
+  Quels que soient vos besoins, vous découvrirez ici de multiples méthodes d’apprentissage facilement accessibles. Trouvez celle qui vous convient!
+
+  <Grid container spacing=".62rem" sx={{margin:'4rem 0 4rem'}}>
+    <Grid>
+      <CardWithIcon
+        title="Ressources et conseils préparés par nos spécialistes"
+        Icon={BookmarkSimple}
+        moreText="Voir la boîte à outils"
+        href="#"
+      />
+    </Grid>
+    <Grid>
+      <CardWithIcon
+        title="Capsules vidéos et webinaires"
+        Icon={Video}
+        moreText="Accéder à YouTube"
+        href="https://www.youtube.com/user/BibliothequesUdeM"
+      />
+    </Grid>
+    <Grid>
+      <CardWithIcon
+        title="Service Accessibilité"
+        Icon={PersonSimpleCircle}
+        moreText="En savoir plus avec beaucoup de texte..."
+        href="#"
+      />
+    </Grid>
+    <Grid>
+      <CardWithIcon
+        title="Une ligne"
+        Icon={PersonSimpleCircle}
+        moreText="En savoir plus"
+        href="#"
+      />
+    </Grid>
+  </Grid>
+
+  <Button primary href="#">Découvrir les services pour la communauté étudiante</Button>
+
+</Section>
+<Section>
+
+  ## Couleur: `vertFonce`
+
+  Quels que soient vos besoins, vous découvrirez ici de multiples méthodes d’apprentissage facilement accessibles. Trouvez celle qui vous convient!
+
+  <Grid container spacing=".62rem" sx={{margin:'4rem 0 4rem'}}>
+    <Grid>
+      <CardWithIcon
+        color="vertFonce"
+        title="Ressources et conseils préparés par nos spécialistes"
+        Icon={BookmarkSimple}
+        moreText="Voir la boîte à outils"
+        href="#"
+      />
+    </Grid>
+    <Grid>
+      <CardWithIcon
+        color="vertFonce"
+        title="Capsules vidéos et webinaires"
+        Icon={Video}
+        moreText="Accéder à YouTube"
+        href="https://www.youtube.com/user/BibliothequesUdeM"
+      />
+    </Grid>
+    <Grid>
+      <CardWithIcon
+        color="vertFonce"
+        title="Service Accessibilité"
+        Icon={PersonSimpleCircle}
+        moreText="En savoir plus avec beaucoup de texte..."
+        href="#"
+      />
+    </Grid>
+  </Grid>
+
+  <Button primary href="#">Découvrir les services pour la communauté étudiante</Button>
+
+</Section>
+<Section>
+
+  ## Couleur:  rose300
+
+  Quels que soient vos besoins, vous découvrirez ici de multiples méthodes d’apprentissage facilement accessibles. Trouvez celle qui vous convient!
+
+  <Grid container spacing=".62rem" sx={{margin:'4rem 0 4rem'}}>
+    <Grid>
+      <CardWithIcon
+        color="rose300"
+        title="Ressources et conseils préparés par nos spécialistes"
+        Icon={BookmarkSimple}
+        moreText="Voir la boîte à outils"
+        href="#"
+      />
+    </Grid>
+    <Grid>
+      <CardWithIcon
+        color="rose300"
+        title="Capsules vidéos et webinaires"
+        Icon={Video}
+        moreText="Accéder à YouTube"
+        href="https://www.youtube.com/user/BibliothequesUdeM"
+      />
+    </Grid>
+    <Grid>
+      <CardWithIcon
+        color="rose300"
+        title="Service Accessibilité"
+        Icon={PersonSimpleCircle}
+        moreText="En savoir plus avec beaucoup de texte..."
+        href="#"
+      />
+    </Grid>
+  </Grid>
+
+  <Button primary href="#">Découvrir les services pour la communauté étudiante</Button>
+
+</Section>
+
+<Section>
+  ## Cartes utilisées dans un carousel
+
+  Ajoutez la propriété `small` pour les cartes qui seront utilisées dans un carousel.
+
+<Carousel1
+    title="Problème informatique? Pas de panique!"
+    description="Accès hors campus, authentification, impression, numérisation, prêt d’ordinateurs ou de tablettes; nos comptoirs, nos services et nos experts vous sont accessibles à l’année!"
+    moreText="Voir le studio"
+    moreHref="#"
+  >
+    <CardWithIcon
+      title="Publier un article scientifique"
+      Icon={BookmarkSimple}
+      moreText="Voir la boîte à outils"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Capsules vidéos et webinaires"
+      Icon={Video}
+      moreText="Accéder à YouTube"
+      href="https://www.youtube.com/user/BibliothequesUdeM"
+      small
+    />
+    <CardWithIcon
+      title="Service Accessibilité"
+      Icon={PersonSimpleCircle}
+      moreText="En savoir plus"
+      href="#"
+      small
+    />
+    <CardWithIcon
+      title="Soutien personnalisé avec nos spécialistes"
+      Icon={Users}
+      moreText="Prendre rendez-vous"
+      href="#"
+      small
+    />
+  </Carousel1>
+</Section>

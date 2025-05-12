@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="50"
+   height="51"
+   viewBox="0 0 50 51"
+   fill="none"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="arrow-left-circle.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="35.666667"
+     inkscape:cx="24.995327"
+     inkscape:cy="25.5"
+     inkscape:window-width="3840"
+     inkscape:window-height="2054"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <rect
+     x="50"
+     y="50.5"
+     width="50"
+     height="50"
+     rx="25"
+     transform="rotate(-180 50 50.5)"
+     id="rect1"
+     style="fill:#000000;fill-opacity:1;opacity:0.1" />
+  <path
+     d="M16.4922 24.5869L23.5234 17.5556C23.6345 17.4521 23.7814 17.3958 23.9332 17.3985C24.085 17.4011 24.2299 17.4626 24.3372 17.57C24.4446 17.6773 24.5061 17.8222 24.5087 17.974C24.5114 18.1258 24.4551 18.2727 24.3516 18.3838L18.3213 24.415L34.0938 24.415C34.2492 24.415 34.3982 24.4767 34.5081 24.5866C34.618 24.6965 34.6797 24.8455 34.6797 25.0009C34.6797 25.1563 34.618 25.3054 34.5081 25.4153C34.3982 25.5251 34.2492 25.5869 34.0938 25.5869L18.3213 25.5869L24.3516 31.6181C24.4551 31.7292 24.5114 31.8761 24.5087 32.0279C24.5061 32.1797 24.4446 32.3245 24.3372 32.4319C24.2299 32.5393 24.085 32.6007 23.9332 32.6034C23.7814 32.6061 23.6345 32.5498 23.5234 32.4463L16.4922 25.415C16.3825 25.3051 16.3208 25.1562 16.3208 25.0009C16.3208 24.8457 16.3825 24.6967 16.4922 24.5869Z"
+     id="path1"
+     style="fill:#000000;fill-opacity:1" />
+</svg>

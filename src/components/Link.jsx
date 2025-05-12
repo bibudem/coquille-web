@@ -1,36 +1,60 @@
+import { forwardRef } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { Link as MuiLink } from '@mui/material'
-import { unstable_styleFunctionSx } from '@mui/system'
-import styled from '@emotion/styled'
-import { forwardRef } from 'react'
+import { styled } from '@mui/material/styles'
+import { ArrowRight } from '@phosphor-icons/react'
 
-const StyledA = styled('a')(unstable_styleFunctionSx)
+const linkStyles = {
+  color: 'bleuPrincipal.main',
+  textDecoration: 'none',
+  '&:hover': {
+    textDecoration: 'underline',
+  },
+}
+
+const iconStyles = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: '.375em',
+}
+
+const A = styled('a')({})
 
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
-// export default function Link({ children, to, activeClassName, partiallyActive, ...other }) {
+// export default function Link({ children, to, ...rest }) {
 const Link = forwardRef(function Link(props, ref) {
-  const { children, to, activeClassName, partiallyActive, ...other } = props
+  const { children, sx, Icon, iconProps, to, ...rest } = props
+  // console.log('props', props)
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
-  const external = /^(?:https?:)?\/\//.test(to)
+  const isInternal = /^\//.test(to)
+  const styles = Icon ? { ...linkStyles, ...iconStyles } : { ...linkStyles }
+  const _iconProps = { size: '1.125rem', color: 'currentColor', ...iconProps }
+
+  const icon = Icon && typeof Icon === 'boolean' ? <ArrowRight {..._iconProps} /> : <Icon {..._iconProps} />
 
   // Use Gatsby Link for internal links, and <a> for others
-  if (external) {
+  // console.log('isInternal:', isInternal)
+  if (!isInternal) {
     return (
-      <StyledA ref={ref} href={to} {...other}>
+      <A ref={ref} href={to} sx={{ ...styles, ...sx }} {...rest}>
         {children}
-      </StyledA>
+        {Icon && icon}
+      </A>
     )
   }
 
   return (
-    <MuiLink ref={ref} component={GatsbyLink} to={to} activeClassName={activeClassName} partiallyActive={partiallyActive} {...other}>
+    <MuiLink ref={ref} component={GatsbyLink} to={to} sx={{ ...styles, ...sx }} {...rest}>
       {children}
+      {Icon && icon}
     </MuiLink>
   )
 })
+
+Link.muiName = MuiLink.muiName
 
 export default Link

@@ -1,0 +1,25 @@
+import FicheBibliotheque from '@/components/FicheBibliotheque'
+import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
+
+<FicheBibliotheque
+  title="Musique"
+  codeBib="mu"
+  blocEspaces={false}
+  blocAdresse={
+    <>
+      <p>Bibliothèque de musique</p>
+      <p>Pavillon de la faculté de musique</p>
+      <p>200, avenue Vincent d'Indy,  salle B-287</p>
+      <p><Link to="https://www.google.com/maps?ll=45.509273,-73.60857&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Pavillon+de+la+Faculte+de+Musique+Av.+Vincent-D%27Indy+Outremont,+QC+H2V+2T2" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
+    </>
+  }
+  blocNousJoindre={
+    <>
+      <p>Comptoir de prêt&nbsp;: 514 343-6111, poste 39838</p>
+      <p>Bureau de référence&nbsp;: 514 343-6111, poste 4702</p>
+      <p><Link to="../a-propos/notre-equipe" Icon>Répertoire du personnel</Link></p>
+    </>
+  }
+>
+
+</FicheBibliotheque>

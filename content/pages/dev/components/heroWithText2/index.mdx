@@ -1,0 +1,32 @@
+---
+title: <HeroWithText2>
+template: doc
+---
+
+import mockContent2 from './image2.webp'
+
+<Section>
+
+# HeroWithText2
+
+</Section>
+
+<Section bg="rose300">
+  <HeroWithText2
+    leftColl={
+      <>
+        <Typography variant="h2">Naviguer le droit d’auteur à votre avantage</Typography>
+        <Typography>Que ce soit pour vous aider à protéger les œuvres et les publications issues de vos recherches, utiliser du contenu protégé dans vos travaux ou bien diffuser vos résultats le plus démocratiquement et largement possible, nos spécialistes sont là pour vous outiller et vous accompagner.</Typography>
+      </>
+    }
+    rightColl={
+      <>
+        <Grid container spacing={2}>
+          <Grid size={12}><img src={mockContent2} style={{width: '100%', height: 'auto'}} /></Grid>
+        </Grid>
+      </>
+    }
+    leftFooter={<Button primary href="#">Consulter le guide sur le droit d'auteur</Button>}
+  />
+
+</Section>
