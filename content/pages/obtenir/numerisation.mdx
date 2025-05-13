@@ -3,15 +3,14 @@ title : Demande de numérisation
 slug: numerisation
 ---
 
-import Accordion from '@mui/material/Accordion';
-import AccordionActions from '@mui/material/AccordionActions';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
+
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
-
 import { Horse, Heart, Cube } from "@phosphor-icons/react";
+import Numudem from '../images/numerisation-disponible-udem.png'
+import Numbuq from '../images/numerisation-disponible-pbuq.png'
+import Nummonde from '../images/numerisation-disponible-monde.png'
 
 # Demande de numérisation
 
@@ -19,104 +18,61 @@ import { Horse, Heart, Cube } from "@phosphor-icons/react";
 
 
 
-
-
-<div>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<Heart />}
-          aria-controls="panel1-content"
-          id="panel1-header"
-        >
-          <Typography component="h2">Document des Bibliothèques UdeM</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
+<AccordionGroup>
+    <Accordion>
+      <AccordionSummary>Document des Bibliothèques UdeM</AccordionSummary>
+      <AccordionDetails>
+      <Grid container spacing={2}>
+       <Grid size={8}>
 1. Repérer le document dans Sofia ;
 2. Cliquer sur le bouton **Obtenir** ;
 3. Sélectionner **Options de récupération** > **Article ou chapitre numérisé** ;
 4. Inscrire tout détail nécessaire à votre demande dans le champ _Voulez-vous une édition ou volume précis? Avez-vous d'autres instructions pour cette demande_ ;
 5. Le lien vers la copie numérisée sera envoyé par courriel.
-</AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<Horse />}
-          aria-controls="panel2-content"
-          id="panel2-header"
-        >
-          <Typography component="span">Document des bibliothèques universitaires québécoises</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
+</Grid>
+      <Grid size={4}>
+<img src={Numudem} style={{borderRadius: '12px'}} alt="" />
+</Grid>
+      </Grid>
+      </AccordionDetails>
+    </Accordion>
 
+    <Accordion>
+      <AccordionSummary>Document des bibliothèques universitaires québécoises</AccordionSummary>
+      <AccordionDetails>
+            <Grid container spacing={2}>
+       <Grid size={8}>
 1. Se connecter au [dossier Sofia](https://umontreal.account.worldcat.org/account) ;
 2. **Créer une demande** en complétant l'un des formulaires disponibles sous les onglets **Article, Livre/chapitre de livre** ou **Autre format** ;
 3. Le lien vers la copie numérisée sera envoyé par courriel.
 
-_Note : ne pas utiliser le bouton Obtenir. Le bouton Obtenir vous permettra de faire venir une version physique du document._ 
+Note : ne pas utiliser le bouton Obtenir. Le bouton Obtenir vous permettra de faire venir une version physique du document.
+</Grid>
+      <Grid size={4}>
+<img src={Numbuq} style={{width: 'auto', height: '200px', borderRadius: '12px'}} alt="" />
+</Grid>
+      </Grid>
+</AccordionDetails>
+    </Accordion>
 
-        </AccordionDetails>
-      </Accordion>
-      <Accordion defaultExpanded>
-        <AccordionSummary
-          expandIcon={<Cube />}
-          aria-controls="panel3-content"
-          id="panel3-header"
-        >
-          <Typography component="span">Document d'une autre bibliothèque à travers le monde</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-
+    <Accordion>
+      <AccordionSummary>Document d'une autre bibliothèque à travers le monde</AccordionSummary>
+      <AccordionDetails>
+      <Grid container spacing={2}>
+       <Grid size={8}>
 1. Repérer le document dans Sofia ;
 2. Si le document n'est pas disponible à l'UdeM, élargir à **Bibliothèques à travers le monde** ;
 3. Cliquer sur **Obtenir via Prêt entre bibliothèques** ;
 4. Sélectionner le Type de service **COPY** et identifier le titre du chapitre ou le titre de l’article ainsi que les pages souhaitées ;
 5. Le lien vers la copie numérisée sera envoyé par courriel.
-
+</Grid>
+      <Grid size={4}>
+<img src={Nummonde} style={{width: 'auto', height: '200px', borderRadius: '12px'}} alt="" />
+</Grid>
+      </Grid>
 </AccordionDetails>
-      </Accordion>
-    </div>
-
-
-
-
-
-
-<details>
-<summary><h2>Document des Bibliothèques UdeM</h2></summary>
-
-1. Repérer le document dans Sofia ;
-2. Cliquer sur le bouton **Obtenir** ;
-3. Sélectionner **Options de récupération** > **Article ou chapitre numérisé** ;
-4. Inscrire tout détail nécessaire à votre demande dans le champ _Voulez-vous une édition ou volume précis? Avez-vous d'autres instructions pour cette demande_ ;
-5. Le lien vers la copie numérisée sera envoyé par courriel.
-
-![Accès - Bibliothèques UdeM](../static/images/numerisation-disponible-udem.png)
-
-</details>
-
-<details>
-<summary><h2>Document des bibliothèques universitaires québécoises</h2></summary>
-
-1. Se connecter au [dossier Sofia](https://umontreal.account.worldcat.org/account) ;
-2. **Créer une demande** en complétant l'un des formulaires disponibles sous les onglets **Article, Livre/chapitre de livre** ou **Autre format** ;
-3. Le lien vers la copie numérisée sera envoyé par courriel.
-
-_Note : ne pas utiliser le bouton Obtenir. Le bouton Obtenir vous permettra de faire venir une version physique du document._ ![Accès - Bibliothèques québécoises](../static/images/numerisation-disponible-pbuq.png)
-
-</details>
-
-<details>
-<summary><h2>Document d'une autre bibliothèque à travers le monde</h2></summary>
-
-1. Repérer le document dans Sofia ;
-2. Si le document n'est pas disponible à l'UdeM, élargir à **Bibliothèques à travers le monde** ;
-3. Cliquer sur **Obtenir via Prêt entre bibliothèques** ;
-4. Sélectionner le Type de service **COPY** et identifier le titre du chapitre ou le titre de l’article ainsi que les pages souhaitées ;
-5. Le lien vers la copie numérisée sera envoyé par courriel.
-
-![Accès - Bibliothèques à travers le monde](../static/images/numerisation-disponible-monde.png)
-
-</details>
+    </Accordion>
+  </AccordionGroup>
 
 ## Délais
 
