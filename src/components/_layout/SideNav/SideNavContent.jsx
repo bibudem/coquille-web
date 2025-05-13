@@ -1,23 +1,54 @@
 import { forwardRef, useState } from 'react'
-import { Box, Divider, List, ListItem, ListItemButton, ListItemText, Typography, ListItemIcon } from '@mui/material'
+import { Box, List, ListItem, ListItemButton, ListItemText, Typography, ListItemIcon } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import { CalendarPlus, ClockCountdown, Lifebuoy } from '@phosphor-icons/react'
 import Link from '@/components/Link'
 import Close from '@/components/Close'
-import LogoBib from '@/images/logo-bib/logo-bib.svg'
+import Button from '@/components/Button'
+import noop from '@/utils/noop'
+import { CalendarPlus, ClockCountdown, Lifebuoy } from '@phosphor-icons/react'
 import { SofiaIcon } from '@/components/CustomIcons'
+import LogoBib from '@/images/logo-bib/logo-bib.svg'
+import LogoBibUBlanc from '@/images/logo-bib/logo-bib-U-blanc.svg'
 
-const StyledBox = styled(Box)(({ theme }) => ({
-  [theme.breakpoints.up('sm')]: {
-    padding: '2rem',
-  },
-}))
+const StyledLogoLink = styled(Link)({
+  width: '100px',
+  whiteSpace: 'nowrap',
+})
 
-function NavList({ children, ...props }) {
+const StyledNav = styled('nav')({
+  padding: '80px 48px',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '32px',
+})
+
+function Nav({ bg = false, ...props }) {
+  return (
+    <StyledNav
+      {...props}
+      sx={(theme) => ({
+        ...(bg && { backgroundColor: theme.palette.bleuPrincipal.main }),
+      })}
+    />
+  )
+}
+
+const StyledNavHeader = styled(Typography)({
+  color: '#fff',
+  fontSize: '28px',
+  fontWeight: 500,
+  lineHeight: 1.2,
+})
+
+function NavHeader({ children, ...props }) {
+  return <StyledNavHeader {...props} component="h2" children={children} />
+}
+
+function NavList(props) {
   return (
     <List
+      disablePadding
       {...props}
-      children={children}
       sx={
         {
           // pt: 3,
@@ -30,7 +61,17 @@ function NavList({ children, ...props }) {
 function NavListItem({ href, children, icon, ...props }) {
   return (
     <ListItem disablePadding {...props}>
-      <ListItemButton component={Link} to={href}>
+      <ListItemButton
+        /*disableGutters*/ /*alignItems="flex-start"*/ component="a"
+        to={href}
+        sx={{
+          textDecoration: 'none',
+          '&:hover': {
+            textDecoration: 'underline',
+            backgroundColor: 'unset',
+          },
+        }}
+      >
         {icon && <ListItemIcon>{icon}</ListItemIcon>}
         <ListItemText primary={children} />
       </ListItemButton>
@@ -38,28 +79,7 @@ function NavListItem({ href, children, icon, ...props }) {
   )
 }
 
-const StyledNavHeader = styled(Typography)(
-  ({ theme }) => `
-  font-weight: bold;
-`
-)
-
-const StyledLogoLink = styled(Link)(
-  ({ theme }) => `
-  width: 100px;
-  white-space: nowrap;
-`
-)
-
-const Nav = styled('nav')(({ theme }) => ({
-  margin: '80px 48px',
-}))
-
-function NavHeader({ children, ...props }) {
-  return <StyledNavHeader {...props} component="h2" children={children} />
-}
-
-export default forwardRef(function SideNavContent({ close, onClose, ...props }, ref) {
+export default forwardRef(function SideNavContent({ close = noop, onClose = noop, ...props }, ref) {
   const [open, setOpen] = useState(false)
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
 
@@ -73,8 +93,12 @@ export default forwardRef(function SideNavContent({ close, onClose, ...props }, 
       ref={ref}
       sx={(theme) => ({
         backgroundColor: theme.palette.bleuFonce.main,
-        color: theme.palette.bleuFonce.contrastText,
+        color: theme.palette.bleu200.main,
         width: '100vw',
+        height: '100%',
+        fontSize: '16px',
+        fontFeatureSettings: '"liga" off, "clig" off',
+        fontVariantNumeric: 'lining-nums tabular-nums',
         [theme.breakpoints.up('md')]: {
           width: '80vw',
         },
@@ -110,24 +134,24 @@ export default forwardRef(function SideNavContent({ close, onClose, ...props }, 
         <Nav aria-label="À propos">
           <NavHeader>À propos</NavHeader>
           <NavList>
-            <NavListItem href="/a-propos/notre-equipe.mdx">Notre équipe</NavListItem>
-            <NavListItem href="#">Vision stratégique</NavListItem>
-            <NavListItem href="#">Rapports annuels</NavListItem>
-            <NavListItem href="#">Politiques et règlement</NavListItem>
-            <NavListItem href="#">Nouvelles</NavListItem>
-            <NavListItem href="#">Carrières</NavListItem>
+            <NavListItem href="/a-propos/notre-equipe">Notre équipe</NavListItem>
+            <NavListItem href="/a-propos/mission-vision-valeur">Vision stratégique</NavListItem>
+            <NavListItem href="/a-propos/rapports-annuels">Rapports annuels</NavListItem>
+            <NavListItem href="/a-propos/politiques-reglement">Politiques et règlement</NavListItem>
+            <NavListItem href="/nouvelles/">Nouvelles</NavListItem>
+            <NavListItem href="/a-propos/carriere.mdx">Carrières</NavListItem>
           </NavList>
         </Nav>
 
-        <Nav aria-label="Plateformes" sx={(theme) => ({ backgroundColor: theme.palette.bleuPrincipal.main })}>
+        <Nav aria-label="Plateformes" bg>
           <NavHeader>Plateformes</NavHeader>
           <NavList>
             <NavListItem href="#">Le studio - écosystème numérique</NavListItem>
             <NavListItem href="#">Calypso: Collections spéciales</NavListItem>
             <NavListItem href="#">La boîte à outils - guides</NavListItem>
-            <NavListItem href="#">Sofia: outil de découverte</NavListItem>
+            <NavListItem href="https://umontreal.on.worldcat.org/discovery?lang=fr">Sofia: outil de découverte</NavListItem>
             <NavListItem href="#">Bases de données de A à Z</NavListItem>
-            <NavListItem href="#">Papyrus: dépôt institutionnel</NavListItem>
+            <NavListItem href="https://umontreal.scholaris.ca/">Papyrus: dépôt institutionnel</NavListItem>
             <NavListItem href="#">GéoIndex: données géospatiales</NavListItem>
           </NavList>
         </Nav>
@@ -142,16 +166,16 @@ export default forwardRef(function SideNavContent({ close, onClose, ...props }, 
           </NavList>
         </Nav>
 
-        <Nav aria-label="Liens rapides" sx={(theme) => ({ backgroundColor: theme.palette.bleuPrincipal.main })}>
+        <Nav aria-label="Liens rapides" bg>
           <NavHeader sx={{ visibility: 'hidden' }}>Liens rapides</NavHeader>
           <NavList>
-            <NavListItem href="#" icon={<SofiaIcon color="#fff" />}>
+            <NavListItem href="https://umontreal.on.worldcat.org/discovery?lang=fr" icon={<SofiaIcon color="#fff" />}>
               Sofia
             </NavListItem>
-            <NavListItem href="#" icon={<ClockCountdown color="#fff" size={24} />}>
+            <NavListItem href="/horaires" icon={<ClockCountdown color="#fff" size={24} />}>
               Horaires
             </NavListItem>
-            <NavListItem href="#" icon={<CalendarPlus color="#fff" size={24} />}>
+            <NavListItem href="https://calendrier.bib.umontreal.ca/r" icon={<CalendarPlus color="#fff" size={24} />}>
               Réserver une salle
             </NavListItem>
             <NavListItem href="#" icon={<Lifebuoy color="#fff" size={24} />}>
@@ -161,8 +185,16 @@ export default forwardRef(function SideNavContent({ close, onClose, ...props }, 
         </Nav>
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '32px 21px' }}>
-        <Box>[LOGO]</Box>
-        <Box>[nous joindre]</Box>
+        <Box>
+          <Link to="/" aria-label="Accueil">
+            <LogoBibUBlanc style={{ width: '200px', height: 'auto' }} />
+          </Link>
+        </Box>
+        <Box>
+          <Button href="/nous-joindre/" variant="outlined" sx={{ color: '#fafdfe', border: '1px solid #e7ebee' }}>
+            Nous joindre
+          </Button>
+        </Box>
       </Box>
     </Box>
   )
