@@ -1,25 +1,17 @@
-import React, { forwardRef, useState } from 'react'
-import { Box, Divider as MUIDivider, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material'
+import { forwardRef, useState } from 'react'
+import { Box, Divider, List, ListItem, ListItemButton, ListItemText, Typography, ListItemIcon } from '@mui/material'
 import { styled } from '@mui/material/styles'
+import { CalendarPlus, ClockCountdown, Lifebuoy } from '@phosphor-icons/react'
 import Link from '@/components/Link'
 import Close from '@/components/Close'
 import LogoBib from '@/images/logo-bib/logo-bib.svg'
+import { SofiaIcon } from '@/components/CustomIcons'
 
-const StyledBox = styled(Box)(
-  ({ theme }) => `
-${theme.breakpoints.up('sm')} {
-  padding: 2rem;
-}
-`
-)
-
-function Divider({ children, ...props }) {
-  return (
-    <Box py={2}>
-      <MUIDivider {...props}>{children}</MUIDivider>
-    </Box>
-  )
-}
+const StyledBox = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.up('sm')]: {
+    padding: '2rem',
+  },
+}))
 
 function NavList({ children, ...props }) {
   return (
@@ -35,10 +27,11 @@ function NavList({ children, ...props }) {
   )
 }
 
-function NavListItem({ href, children, ...props }) {
+function NavListItem({ href, children, icon, ...props }) {
   return (
     <ListItem disablePadding {...props}>
       <ListItemButton component={Link} to={href}>
+        {icon && <ListItemIcon>{icon}</ListItemIcon>}
         <ListItemText primary={children} />
       </ListItemButton>
     </ListItem>
@@ -58,11 +51,9 @@ const StyledLogoLink = styled(Link)(
 `
 )
 
-const Nav = styled('nav')(
-  ({ theme }) => `
-  margin-top: 1rem;
-  `
-)
+const Nav = styled('nav')(({ theme }) => ({
+  margin: '80px 48px',
+}))
 
 function NavHeader({ children, ...props }) {
   return <StyledNavHeader {...props} component="h2" children={children} />
@@ -81,17 +72,20 @@ export default forwardRef(function SideNavContent({ close, onClose, ...props }, 
     <Box
       ref={ref}
       sx={(theme) => ({
+        backgroundColor: theme.palette.bleuFonce.main,
+        color: theme.palette.bleuFonce.contrastText,
         width: '100vw',
-        [theme.breakpoints.up('sm')]: {
-          width: '32.8125rem',
+        [theme.breakpoints.up('md')]: {
+          width: '80vw',
         },
       })}
       role="presentation"
       onClick={() => closeDrawer()}
     >
-      <StyledBox
+      <Box
         sx={(theme) => ({
           display: 'flex',
+          padding: '21px 21px 32px',
           alignItems: 'center',
           justifyContent: 'space-between',
           height: '3rem',
@@ -104,56 +98,39 @@ export default forwardRef(function SideNavContent({ close, onClose, ...props }, 
           <LogoBib style={{ height: '1.5rem' }} />
         </StyledLogoLink>
         <Close aria-label="Fermer le menu" />
-      </StyledBox>
-      <MUIDivider />
-      <StyledBox>
+      </Box>
+
+      <Box
+        sx={{
+          display: 'flex',
+          borderTop: '1px solid #fff',
+          borderBottom: '1px solid #fff',
+        }}
+      >
         <Nav aria-label="À propos">
           <NavHeader>À propos</NavHeader>
           <NavList>
             <NavListItem href="/a-propos/notre-equipe.mdx">Notre équipe</NavListItem>
-            <NavListItem href="#">Mission, vision, valeur, objectifs</NavListItem>
+            <NavListItem href="#">Vision stratégique</NavListItem>
             <NavListItem href="#">Rapports annuels</NavListItem>
+            <NavListItem href="#">Politiques et règlement</NavListItem>
+            <NavListItem href="#">Nouvelles</NavListItem>
             <NavListItem href="#">Carrières</NavListItem>
           </NavList>
         </Nav>
 
-        <Divider />
-
-        <Nav aria-label="Ce qui se passe aux bibliothèques">
-          <NavHeader>Ce qui se passe aux bibliothèques</NavHeader>
+        <Nav aria-label="Plateformes" sx={(theme) => ({ backgroundColor: theme.palette.bleuPrincipal.main })}>
+          <NavHeader>Plateformes</NavHeader>
           <NavList>
-            <NavListItem href="#">Nouvelles</NavListItem>
-            <NavListItem href="#">Formations</NavListItem>
-            <NavListItem href="#">Activités</NavListItem>
-            <NavListItem href="#">Expositions</NavListItem>
-          </NavList>
-        </Nav>
-
-        <Divider />
-
-        <Nav aria-label="Outils de recherche">
-          <NavHeader>Outils de recherche</NavHeader>
-          <NavList>
-            <NavListItem href="#">Sofia: outil de découverte</NavListItem>
-            <NavListItem href="#">Bases de données Z à Z</NavListItem>
-            <NavListItem href="#">Papyrus: dépôt institutionnel</NavListItem>
+            <NavListItem href="#">Le studio - écosystème numérique</NavListItem>
             <NavListItem href="#">Calypso: Collections spéciales</NavListItem>
+            <NavListItem href="#">La boîte à outils - guides</NavListItem>
+            <NavListItem href="#">Sofia: outil de découverte</NavListItem>
+            <NavListItem href="#">Bases de données de A à Z</NavListItem>
+            <NavListItem href="#">Papyrus: dépôt institutionnel</NavListItem>
+            <NavListItem href="#">GéoIndex: données géospatiales</NavListItem>
           </NavList>
         </Nav>
-
-        <Divider />
-
-        <Nav aria-label="Technologies">
-          <NavHeader>Technologies</NavHeader>
-          <NavList>
-            <NavListItem href="#">Soutien informatique</NavListItem>
-            <NavListItem href="#">Création numérique</NavListItem>
-            <NavListItem href="#">Équipements</NavListItem>
-            <NavListItem href="#">Accès aux ressources hors campus (Proxy)</NavListItem>
-          </NavList>
-        </Nav>
-
-        <Divider />
 
         <Nav aria-label="Obtenir un document">
           <NavHeader>Obtenir un document</NavHeader>
@@ -165,24 +142,28 @@ export default forwardRef(function SideNavContent({ close, onClose, ...props }, 
           </NavList>
         </Nav>
 
-        <Divider />
-
-        <Nav aria-label="Guides / Contenus détaillés">
-          <NavHeader>Guides / Contenus détaillés</NavHeader>
+        <Nav aria-label="Liens rapides" sx={(theme) => ({ backgroundColor: theme.palette.bleuPrincipal.main })}>
+          <NavHeader sx={{ visibility: 'hidden' }}>Liens rapides</NavHeader>
           <NavList>
-            <NavListItem href="#">Recherche par discipline </NavListItem>
-            <NavListItem href="#">Recherche documentaire </NavListItem>
-            <NavListItem href="#">Soutien à la recherche</NavListItem>
+            <NavListItem href="#" icon={<SofiaIcon color="#fff" />}>
+              Sofia
+            </NavListItem>
+            <NavListItem href="#" icon={<ClockCountdown color="#fff" size={24} />}>
+              Horaires
+            </NavListItem>
+            <NavListItem href="#" icon={<CalendarPlus color="#fff" size={24} />}>
+              Réserver une salle
+            </NavListItem>
+            <NavListItem href="#" icon={<Lifebuoy color="#fff" size={24} />}>
+              Soutien informatique
+            </NavListItem>
           </NavList>
         </Nav>
-
-        <Divider />
-
-        <NavList>
-          <NavListItem href="https://www.umontreal.ca">Site principal de l'udeM</NavListItem>
-          <NavListItem href="#">Accessibilité</NavListItem>
-        </NavList>
-      </StyledBox>
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '32px 21px' }}>
+        <Box>[LOGO]</Box>
+        <Box>[nous joindre]</Box>
+      </Box>
     </Box>
   )
 })

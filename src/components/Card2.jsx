@@ -71,10 +71,16 @@ export default function Card2({ title, Icon, href, ...rest }) {
         borderRadius: theme.shape.corner.small,
         color: getContrastColor(_color.bg, '#fff', '#111'),
         boxShadow: 'none',
+        minWidth: '250px',
+        maxWidth: '400px',
         height: '100%',
-        minHeight: '100%',
-        maxWidth: '20.125rem',
-        width: '20.125rem',
+        flex: '1 1 0',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        [theme.breakpoints.up('sm')]: {
+          maxWidth: 'unset',
+        },
+
         ...sx,
       })}
       {...props}
