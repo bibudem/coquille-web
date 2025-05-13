@@ -3,6 +3,7 @@ import Div from '@/components/utils/Div'
 import { useSmall } from '@/hooks/use-small'
 import FooterLink from './FooterLink'
 import FooterContainer from './FooterContainer'
+import { ButtonBase } from '@mui/material'
 
 function Copyright() {
   const namespaces = {
@@ -53,7 +54,7 @@ export default function FooterTail() {
                 alignItems: 'center',
                 height: 50,
               }),
-          color: '#CCE2F3',
+          color: '#cce2f3',
           fontSize: '14px',
           lineHeight: 1.2,
           letterSpacing: '0.14px',
@@ -74,9 +75,18 @@ export default function FooterTail() {
         </Grid>
         {!isSmall && <Divider />}
         <Div>
-          <FooterLink className="parametres-temoins" component="button" onClick={handleOnConsentLinkClick}>
+          <ButtonBase
+            sx={{
+              textDecoration: 'none',
+              '&:hover': {
+                textDecoration: 'underline',
+              },
+            }}
+            className="parametres-temoins"
+            onClick={handleOnConsentLinkClick}
+          >
             Paramètres des témoins
-          </FooterLink>
+          </ButtonBase>
         </Div>
         {isSmall && (
           <Div>
