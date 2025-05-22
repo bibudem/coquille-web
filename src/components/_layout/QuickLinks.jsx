@@ -68,7 +68,7 @@ export function QuickLinks() {
         <MenuList>
           <MenuItem component={Link} to="https://umontreal.on.worldcat.org/discovery?lang=fr">
             <ListItemIcon>
-              <SofiaIcon color="#fff" />
+              <SofiaIcon color="#fff" fontSize='24px' />
             </ListItemIcon>
             <ListItemText>Sofia</ListItemText>
           </MenuItem>
