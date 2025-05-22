@@ -265,6 +265,11 @@ const tokens = {
 				}
 			}
 		},
+		MuiDrawer: {
+			defaultProps: {
+				anchor: 'right',
+			}
+		},
 		MuiLink: {
 			defaultProps: {
 				underline: 'hover',
