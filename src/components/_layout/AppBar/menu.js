@@ -4,5 +4,4 @@ export default [
   { url: '/recherche/', label: 'Recherche' },
   { url: '/enseignement/', label: 'Enseignement' },
   { url: '/engagements/', label: 'Engagements' },
-  { url: '/tests/', label: 'Tests' },
 ]
