@@ -5,7 +5,7 @@ secondaryNav:
   order: 3
 ---
 
-import { DoorOpen, Handshake, Heart, Mountains } from '@phosphor-icons/react'
+import { DoorOpen, Handshake, Heart, Mountains, Target } from '@phosphor-icons/react'
 
 <Section>
 
@@ -13,7 +13,7 @@ import { DoorOpen, Handshake, Heart, Mountains } from '@phosphor-icons/react'
 
 ## Planification stratégique 2023-2028
 
-La [planification stratégique 2023-2028](/static/a-propos/planification-strategique.pdf) des Bibliothèques de l'UdeM présente des objectifs ambitieux, ainsi que des moyens concrets pour y arriver.
+La [planification stratégique 2023-2028](/a-propos/planification-strategique.pdf) des Bibliothèques de l'UdeM présente des objectifs ambitieux, ainsi que des moyens concrets pour y arriver.
 
 Cette planification a été établie avec plusieurs actrices et acteurs clés lors d’ateliers de cocréation. Y ont participé :
 
@@ -27,6 +27,23 @@ Cette planification a été établie avec plusieurs actrices et acteurs clés lo
 Le but des ateliers était de mettre à jour la vision, la mission et la valeur des Bibliothèques, en plus de définir une série d'objectifs pour les concrétiser d'ici 2028.
 
 <Divider />
+
+<HeroWithText 
+    leftColl={<IconInSquare color='rose500' icon={<Target color='orange' />} />}
+    rightColl={
+      <>
+        <Typography component="h2" variant="h2">Notre mission</Typography>
+      
+        <Typography component="p" variant="p">Les Bibliothèques assurent à la communauté de l’UdeM :
+
+- des services évolutifs pour exploiter l’information ;
+- des ressources et des services pertinents en soutien à l’apprentissage, à l’enseignement et à la recherche ;
+- un appui solide à la diffusion et au rayonnement des savoirs passés et futurs ;
+- des lieux propices pour apprendre, créer et interagir.</Typography>
+      </>
+    }
+
+/>
 
 ## Notre mission
 
@@ -162,38 +179,33 @@ Au coeur de la vie universitaire et fortes d’une équipe engagée, les bibliot
 
 ## Objectifs
 
-<details>
-<summary>
-<h3>Document des Bibliothèques UdeM</h3>
-</summary>
-S’inscrire comme partenaire à part entière de la recherche en y apportant une valeur ajoutée propre à notre champ d’action et à notre expertise.
+<AccordionGroup>
+    <Accordion>
+      <AccordionSummary>Partenaire de la recherche</AccordionSummary>
+      <AccordionDetails>S’inscrire comme partenaire à part entière de la recherche en y apportant une valeur ajoutée propre à notre champ d’action et à notre expertise.
 
 #### Stratégies
 
 - Enrichir l’offre de services afin de contribuer à toutes les étapes de la recherche, de l’innovation et de la création.
 - Favoriser le maillage avec tous les acteurs et actrices de l’écosystème de la recherche de l’UdeM.
-- Développer des outils et des plateformes numériques pour soutenir les équipes de recherche.
+- Développer des outils et des plateformes numériques pour soutenir les équipes de recherche.</AccordionDetails>
+    </Accordion>
 
-</details>
-
-<details>
-<summary><h3>Partenaire de la réussite et de l'enseignemnt</h3></summary>
-Soutenir de façon proactive et agile l’enseignement et sa transformation, ainsi que la réussite étudiante, en collaboration avec nos partenaires internes.
+    <Accordion>
+      <AccordionSummary>Partenaire de la réussite et de l'enseignement</AccordionSummary>
+      <AccordionDetails>Soutenir de façon proactive et agile l’enseignement et sa transformation, ainsi que la réussite étudiante, en collaboration avec nos partenaires internes.
 
 #### Stratégies
 
 - Poursuivre le développement d’une offre variée de formations.
 - Enrichir nos services en soutien à la réussite étudiante.
 - Proposer des espaces, des expériences et des équipements de pointe favorisant l’interdisciplinarité, l’innovation et la créativité.
-- Adapter l’offre de services aux nouveaux modes et moyens d’enseignement.
+- Adapter l’offre de services aux nouveaux modes et moyens d’enseignement.</AccordionDetails>
+    </Accordion>
 
-</details>
-
-<details>
-<summary>
-<h3>Sciences ouverte</h3>
-</summary>
-Déployer des services et des outils qui font de la science ouverte une réalité, et se positionner comme partenaire de choix en mobilisation des connaissances.
+    <Accordion>
+      <AccordionSummary>Science ouverte</AccordionSummary>
+      <AccordionDetails>Déployer des services et des outils qui font de la science ouverte une réalité, et se positionner comme partenaire de choix en mobilisation des connaissances.
 
 #### Stratégies
 
@@ -201,15 +213,12 @@ Déployer des services et des outils qui font de la science ouverte une réalit�
 - Concevoir une offre de services permettant de soutenir la communication savante et la science ouverte.
 - Soutenir les activités d'édition en libre accès par la mutualisation des outils, des services et des expertises.
 - Contribuer à la création et à la diffusion de nouveaux savoirs ouverts.
-- Appuyer l'apprentissage et l'enseignement ouverts.
+- Appuyer l'apprentissage et l'enseignement ouverts.</AccordionDetails>
+    </Accordion>
 
-</details>
-
-<details>
-<summary>
-<h3>Des bibliothèques centrées sur l'humain</h3>
-</summary>
-Se démarquer comme un milieu de vie inclusif, stimulant et en adéquation avec les valeurs sociétales,où chacun et chacune peut s’épanouir, se développer et grandir.
+        <Accordion>
+      <AccordionSummary>Des bibliothèques centrées sur l'humain</AccordionSummary>
+      <AccordionDetails>Se démarquer comme un milieu de vie inclusif, stimulant et en adéquation avec les valeurs sociétales,où chacun et chacune peut s’épanouir, se développer et grandir.
 
 ##### Stratégies
 
@@ -217,21 +226,18 @@ Se démarquer comme un milieu de vie inclusif, stimulant et en adéquation avec 
 - Inclure les principes d’équité, de diversité, d’inclusion et d’écoresponsabilité au coeur de nos actions.
 - Permettre au personnel de développer son potentiel en encourageant le partage d'expertise et en offrant des expériences de développement ainsi que des occasions de dépassement.
 - Favoriser des modes de collaboration agile et de communication fluide au sein de l'équipe des bibliothèques.
-
-</details>
-
-<details>
-<summary>
-<h3>Rayonnement</h3>
-</summary>
-Faire rayonner les activités et l’expertise des bibliothèques de l’UdeM.
+</AccordionDetails>
+    </Accordion>
+            <Accordion>
+      <AccordionSummary>Rayonnement</AccordionSummary>
+      <AccordionDetails>Faire rayonner les activités et l’expertise des bibliothèques de l’UdeM.
 
 ##### Stratégies
 
 - Faire connaître nos services, nos espaces ainsi que notre expertise auprès de notre communauté et de nos partenaires institutionnels.
 - Exercer une influence aux niveaux local, provincial, national et international.
 - Se positionner comme une organisation engagée.
+</AccordionDetails>
+    </Accordion>
+  </AccordionGroup>
 
-</details>
-
-</Section>
