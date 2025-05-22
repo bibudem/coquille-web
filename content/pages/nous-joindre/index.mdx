@@ -4,7 +4,7 @@ title: Nous joindre
 
 import Bibliotheques from '../../bibliotheques/bibliotheques.mdx'
 import SuperHero from '@/components/SuperHero'
-import { BookOpenText, Chat, PencilSimple, UsersFour } from '@phosphor-icons/react'
+import { BookOpenText, Chat, PencilSimple, UsersFour, Envelope, Phone } from '@phosphor-icons/react'
 
 <SuperHero
   title="Nous joindre"
@@ -42,7 +42,7 @@ import { BookOpenText, Chat, PencilSimple, UsersFour } from '@phosphor-icons/rea
       <Card2
         title="Consulter le répertoire"
         Icon={UsersFour}
-        href="../a-propos/notre-equipe"
+        href="../nous-joindre/notre-equipe"
       />
     </Grid>
     <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
@@ -56,8 +56,35 @@ import { BookOpenText, Chat, PencilSimple, UsersFour } from '@phosphor-icons/rea
 
   ## Services
 
-  - [Service Accessibilité](#)
-  - [Prêt entre bibliothèques](#)
+  <AccordionGroup>
+    <Accordion id="mon-accordeon">
+      <AccordionSummary>Service Accessibilité</AccordionSummary>
+      <AccordionDetails>
+<div style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
+  <Envelope size={24} color="var(--bleuPrincipal)" />
+  <Link to="mailto:accessibilite@bib.umontreal.ca">accessibilite@bib.umontreal.ca</Link>
+  </div>
+<div style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
+  <Phone size={24} color="var(--bleuPrincipal)" />
+  <Link to="tel:514-343-2135">514 343-2135</Link>
+</div>
+</AccordionDetails>
+    </Accordion>
+
+    <Accordion>
+      <AccordionSummary>Prêt entre bibliothèques</AccordionSummary>
+      <AccordionDetails>
+<div style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
+  <Envelope size={24} color="var(--bleuPrincipal)" />
+  <Link to="mailto:peb@bib.umontreal.ca">peb@bib.umontreal.ca</Link>
+</div>
+<div style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
+  <Phone size={24} color="var(--bleuPrincipal)" />
+  <Link to="tel:514-343-2135">514 343-2135</Link>
+</div>
+    </AccordionDetails>
+    </Accordion>
+  </AccordionGroup>
 
   ## Bibliothèques et points de service
 

@@ -5,7 +5,7 @@ secondaryNav:
   order: 3
 ---
 
-import { DoorOpen, Handshake, Heart, Mountains } from '@phosphor-icons/react'
+import { DoorOpen, Handshake, Heart, Mountains, Target, Binoculars } from '@phosphor-icons/react'
 
 <Section>
 
@@ -28,20 +28,46 @@ Le but des ateliers était de mettre à jour la vision, la mission et la valeur
 
 <Divider />
 
-## Notre mission
+<Grid 
+container
+sx={{
+    justifyContent: "center",
+    alignItems: "center",
+  }}
+  >
+<Grid size={8}>
+<h2>Notre mission</h2>
+      
+<p>Les Bibliothèques assurent à la communauté de l’UdeM :</p>
 
-Les Bibliothèques assurent à la communauté de l’UdeM :
-
-- des services évolutifs pour exploiter l’information ;
-- des ressources et des services pertinents en soutien à l’apprentissage, à l’enseignement et à la recherche ;
-- un appui solide à la diffusion et au rayonnement des savoirs passés et futurs ;
-- des lieux propices pour apprendre, créer et interagir.
+<ul><li>des services évolutifs pour exploiter l’information ;</li>
+<li>des ressources et des services pertinents en soutien à l’apprentissage, à l’enseignement et à la recherche ;</li>
+<li>un appui solide à la diffusion et au rayonnement des savoirs passés et futurs ;</li>
+<li>des lieux propices pour apprendre, créer et interagir.</li></ul>
+</Grid>
+<Grid size={4}>
+<IconInSquare color='vertPale' icon={<Target color='orange' />}/>
+</Grid>
+</Grid>
 
 <Divider />
 
-## Notre vision
-
-Au coeur de la vie universitaire et fortes d’une équipe engagée, les bibliothèques de l’Université de Montréal comptent parmi les grandes bibliothèques de recherche de langue française. Elles sont un partenaire essentiel au rayonnement des savoirs. Audacieuses, inclusives et accessibles, elles sont un vibrant milieu de vie où les membres de la communauté UdeM se rencontrent et se rassemblent autour d'expériences de découverte et de création riches et stimulantes.
+<Grid 
+container
+sx={{
+    justifyContent: "center",
+    alignItems: "center",
+  }}
+  >
+<Grid size={8}>
+<h2>Notre vision</h2>
+      
+<p>Au coeur de la vie universitaire et fortes d’une équipe engagée, les bibliothèques de l’Université de Montréal comptent parmi les grandes bibliothèques de recherche de langue française. Elles sont un partenaire essentiel au rayonnement des savoirs. Audacieuses, inclusives et accessibles, elles sont un vibrant milieu de vie où les membres de la communauté UdeM se rencontrent et se rassemblent autour d'expériences de découverte et de création riches et stimulantes.</p>
+</Grid>
+<Grid size={4}>
+<IconInSquare color='bleu100' icon={<Binoculars color='bleuPrincipal' />}/>
+</Grid>
+</Grid>
 
 <Divider />
 
@@ -162,76 +188,86 @@ Au coeur de la vie universitaire et fortes d’une équipe engagée, les bibliot
 
 ## Objectifs
 
-<details>
-<summary>
-<h3>Document des Bibliothèques UdeM</h3>
-</summary>
-S’inscrire comme partenaire à part entière de la recherche en y apportant une valeur ajoutée propre à notre champ d’action et à notre expertise.
+<AccordionGroup>
 
-#### Stratégies
+    <Accordion>
+      <AccordionSummary>Partenaire de la recherche</AccordionSummary>
+      <AccordionDetails>
 
-- Enrichir l’offre de services afin de contribuer à toutes les étapes de la recherche, de l’innovation et de la création.
-- Favoriser le maillage avec tous les acteurs et actrices de l’écosystème de la recherche de l’UdeM.
-- Développer des outils et des plateformes numériques pour soutenir les équipes de recherche.
+<p>S’inscrire comme partenaire à part entière de la recherche en y apportant une valeur ajoutée propre à notre champ d’action et à notre expertise.</p>
 
-</details>
+<h4>Stratégies</h4>
 
-<details>
-<summary><h3>Partenaire de la réussite et de l'enseignemnt</h3></summary>
-Soutenir de façon proactive et agile l’enseignement et sa transformation, ainsi que la réussite étudiante, en collaboration avec nos partenaires internes.
+<ul>
+<li>Enrichir l’offre de services afin de contribuer à toutes les étapes de la recherche, de l’innovation et de la création.</li>
+<li>Favoriser le maillage avec tous les acteurs et actrices de l’écosystème de la recherche de l’UdeM.</li>
+<li>Développer des outils et des plateformes numériques pour soutenir les équipes de recherche.</li>
+</ul>
 
-#### Stratégies
+</AccordionDetails>
 
-- Poursuivre le développement d’une offre variée de formations.
-- Enrichir nos services en soutien à la réussite étudiante.
-- Proposer des espaces, des expériences et des équipements de pointe favorisant l’interdisciplinarité, l’innovation et la créativité.
-- Adapter l’offre de services aux nouveaux modes et moyens d’enseignement.
+    </Accordion>
 
-</details>
+    <Accordion>
+      <AccordionSummary>Partenaire de la réussite et de l'enseignement</AccordionSummary>
+      <AccordionDetails>
+<p>Soutenir de façon proactive et agile l’enseignement et sa transformation, ainsi que la réussite étudiante, en collaboration avec nos partenaires internes.</p>
 
-<details>
-<summary>
-<h3>Sciences ouverte</h3>
-</summary>
-Déployer des services et des outils qui font de la science ouverte une réalité, et se positionner comme partenaire de choix en mobilisation des connaissances.
+<h4>Stratégies</h4>
+<ul>
+<li>Poursuivre le développement d’une offre variée de formations.</li>
+<li>Enrichir nos services en soutien à la réussite étudiante.</li>
+<li>Proposer des espaces, des expériences et des équipements de pointe favorisant l’interdisciplinarité, l’innovation et la créativité.</li>
+<li>Adapter l’offre de services aux nouveaux modes et moyens d’enseignement.</li>
+</ul>
+</AccordionDetails>
+    </Accordion>
 
-#### Stratégies
+    <Accordion>
+      <AccordionSummary>Science ouverte</AccordionSummary>
+      <AccordionDetails>
+      
+<p>Déployer des services et des outils qui font de la science ouverte une réalité, et se positionner comme partenaire de choix en mobilisation des connaissances.</p>
 
-- Démystifier la science ouverte et susciter l’adhésion à ses principes.
-- Concevoir une offre de services permettant de soutenir la communication savante et la science ouverte.
-- Soutenir les activités d'édition en libre accès par la mutualisation des outils, des services et des expertises.
-- Contribuer à la création et à la diffusion de nouveaux savoirs ouverts.
-- Appuyer l'apprentissage et l'enseignement ouverts.
+<h4>Stratégies</h4>
+<ul>
+<li>Démystifier la science ouverte et susciter l’adhésion à ses principes.</li>
+<li>Concevoir une offre de services permettant de soutenir la communication savante et la science ouverte.</li>
+<li>Soutenir les activités d'édition en libre accès par la mutualisation des outils, des services et des expertises.</li>
+<li>Contribuer à la création et à la diffusion de nouveaux savoirs ouverts.</li>
+<li>Appuyer l'apprentissage et l'enseignement ouverts.</li>
+</ul>
+</AccordionDetails>
+    </Accordion>
 
-</details>
+        <Accordion>
+      <AccordionSummary>Des bibliothèques centrées sur l'humain</AccordionSummary>
+      <AccordionDetails>
 
-<details>
-<summary>
-<h3>Des bibliothèques centrées sur l'humain</h3>
-</summary>
-Se démarquer comme un milieu de vie inclusif, stimulant et en adéquation avec les valeurs sociétales,où chacun et chacune peut s’épanouir, se développer et grandir.
+<p>Se démarquer comme un milieu de vie inclusif, stimulant et en adéquation avec les valeurs sociétales,où chacun et chacune peut s’épanouir, se développer et grandir.</p>
 
-##### Stratégies
+<h4>Stratégies</h4>
+<ul>
+<li>Offrir un milieu de vie stimulant et attrayant répondant aux besoins diversifiés de nos communautés.</li>
+<li>Inclure les principes d’équité, de diversité, d’inclusion et d’écoresponsabilité au coeur de nos actions.</li>
+<li>Permettre au personnel de développer son potentiel en encourageant le partage d'expertise et en offrant des expériences de développement ainsi que des occasions de dépassement.</li>
+<li>Favoriser des modes de collaboration agile et de communication fluide au sein de l'équipe des bibliothèques.</li>
+</ul>
+</AccordionDetails>
+    </Accordion>
+            <Accordion>
+      <AccordionSummary>Rayonnement</AccordionSummary>
+      <AccordionDetails>
+<p>Faire rayonner les activités et l’expertise des bibliothèques de l’UdeM.</p>
 
-- Offrir un milieu de vie stimulant et attrayant répondant aux besoins diversifiés de nos communautés.
-- Inclure les principes d’équité, de diversité, d’inclusion et d’écoresponsabilité au coeur de nos actions.
-- Permettre au personnel de développer son potentiel en encourageant le partage d'expertise et en offrant des expériences de développement ainsi que des occasions de dépassement.
-- Favoriser des modes de collaboration agile et de communication fluide au sein de l'équipe des bibliothèques.
-
-</details>
-
-<details>
-<summary>
-<h3>Rayonnement</h3>
-</summary>
-Faire rayonner les activités et l’expertise des bibliothèques de l’UdeM.
-
-##### Stratégies
-
-- Faire connaître nos services, nos espaces ainsi que notre expertise auprès de notre communauté et de nos partenaires institutionnels.
-- Exercer une influence aux niveaux local, provincial, national et international.
-- Se positionner comme une organisation engagée.
-
-</details>
+<h4>Stratégies</h4>
+<ul>
+<li>Faire connaître nos services, nos espaces ainsi que notre expertise auprès de notre communauté et de nos partenaires institutionnels.</li>
+<li>Exercer une influence aux niveaux local, provincial, national et international.</li>
+<li>Se positionner comme une organisation engagée.</li>
+</ul>
+</AccordionDetails>
+    </Accordion>
+  </AccordionGroup>
 
 </Section>
