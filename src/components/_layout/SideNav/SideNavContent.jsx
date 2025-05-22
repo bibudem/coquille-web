@@ -1,14 +1,21 @@
 import { forwardRef, useState } from 'react'
-import { Box, List, ListItem, ListItemButton, ListItemText, Typography, ListItemIcon } from '@mui/material'
+import { Box, Button, List, ListItem, ListItemButton, ListItemText, Typography, ListItemIcon } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import Link from '@/components/Link'
 import Close from '@/components/Close'
-import Button from '@/components/Button'
+// import Button from '@/components/Button'
 import noop from '@/utils/noop'
-import { CalendarPlus, ClockCountdown, Lifebuoy } from '@phosphor-icons/react'
+import { ArrowRight, ArrowUpRight, CalendarPlus, ClockCountdown, Lifebuoy, PaperPlaneTilt } from '@phosphor-icons/react'
 import { SofiaIcon } from '@/components/CustomIcons'
-import LogoBib from '@/images/logo-bib/logo-bib.svg'
+import LogoUdeM from '@/images/logo-udem/logo-udem-blanc.svg'
 import LogoBibUBlanc from '@/images/logo-bib/logo-bib-U-blanc.svg'
+
+const SideNavHeaderContainer = styled(Box)({
+  display: 'flex',
+  padding: '21px 21px 32px',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+})
 
 const StyledLogoLink = styled(Link)({
   width: '100px',
@@ -45,26 +52,17 @@ function NavHeader({ children, ...props }) {
 }
 
 function NavList(props) {
-  return (
-    <List
-      disablePadding
-      {...props}
-      sx={
-        {
-          // pt: 3,
-        }
-      }
-    />
-  )
+  return <List disablePadding {...props} />
 }
 
 function NavListItem({ href, children, icon, ...props }) {
   return (
     <ListItem disablePadding {...props}>
       <ListItemButton
-        /*disableGutters*/ /*alignItems="flex-start"*/ component="a"
+        component="a"
         to={href}
         sx={{
+          gap: '15px',
           textDecoration: 'none',
           '&:hover': {
             textDecoration: 'underline',
@@ -72,7 +70,7 @@ function NavListItem({ href, children, icon, ...props }) {
           },
         }}
       >
-        {icon && <ListItemIcon>{icon}</ListItemIcon>}
+        {icon && <ListItemIcon sx={{ minWidth: 'unset' }}>{icon}</ListItemIcon>}
         <ListItemText primary={children} />
       </ListItemButton>
     </ListItem>
@@ -84,6 +82,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
 
   function closeDrawer() {
+    console.log('onClose...')
     close()
     onClose()
   }
@@ -92,37 +91,42 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
     <Box
       ref={ref}
       sx={(theme) => ({
-        backgroundColor: theme.palette.bleuFonce.main,
-        color: theme.palette.bleu200.main,
         width: '100vw',
-        height: '100%',
+        height: '100vh',
         fontSize: '16px',
         fontFeatureSettings: '"liga" off, "clig" off',
         fontVariantNumeric: 'lining-nums tabular-nums',
         [theme.breakpoints.up('md')]: {
+          minWidth: 'calc(100% - 30px)',
+          width: '100%',
+        },
+        [theme.breakpoints.up('xl')]: {
+          minWidth: '1380px',
           width: '80vw',
         },
       })}
       role="presentation"
       onClick={() => closeDrawer()}
     >
-      <Box
-        sx={(theme) => ({
-          display: 'flex',
-          padding: '21px 21px 32px',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          height: '3rem',
-          [theme.breakpoints.up('sm')]: {
-            height: '5rem',
-          },
-        })}
-      >
-        <StyledLogoLink to="/">
-          <LogoBib style={{ height: '1.5rem' }} />
+      <SideNavHeaderContainer>
+        <StyledLogoLink to="https://umontreal.ca">
+          <LogoUdeM style={{ height: '60px' }} />
         </StyledLogoLink>
-        <Close aria-label="Fermer le menu" />
-      </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            gap: '22px',
+          }}
+        >
+          <Button href="https://monudem.umontreal.ca/" variant="outlined" sx={{ color: '#fafdfe', border: '1px solid #e7ebee', fontSize: '14px' }} endIcon={<ArrowUpRight size={28} />}>
+            Mon UdeM
+          </Button>
+          <Button href="/nous-soutenir/" variant="contained" sx={(theme) => ({ fontSize: '14px', color: '#222930', backgroundColor: '#eef4f7' })} endIcon={<ArrowRight size={28} />}>
+            Je donne
+          </Button>
+          <Close aria-label="Fermer le menu" sx={{ color: '#fff' }} />
+        </Box>
+      </SideNavHeaderContainer>
 
       <Box
         sx={{
@@ -134,12 +138,12 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
         <Nav aria-label="À propos">
           <NavHeader>À propos</NavHeader>
           <NavList>
-            <NavListItem href="/a-propos/notre-equipe">Notre équipe</NavListItem>
+            <NavListItem href="/a-propos/notre-organisation/">Notre équipe</NavListItem>
             <NavListItem href="/a-propos/mission-vision-valeur">Vision stratégique</NavListItem>
             <NavListItem href="/a-propos/rapports-annuels">Rapports annuels</NavListItem>
             <NavListItem href="/a-propos/politiques-reglement">Politiques et règlement</NavListItem>
             <NavListItem href="/nouvelles/">Nouvelles</NavListItem>
-            <NavListItem href="/a-propos/carriere.mdx">Carrières</NavListItem>
+            <NavListItem href="/a-propos/carriere">Carrières</NavListItem>
           </NavList>
         </Nav>
 
@@ -168,8 +172,8 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
 
         <Nav aria-label="Liens rapides" bg>
           <NavHeader sx={{ visibility: 'hidden' }}>Liens rapides</NavHeader>
-          <NavList>
-            <NavListItem href="https://umontreal.on.worldcat.org/discovery?lang=fr" icon={<SofiaIcon color="#fff" />}>
+          <NavList sx={{ color: '#fff' }}>
+            <NavListItem href="https://umontreal.on.worldcat.org/discovery?lang=fr" icon={<SofiaIcon color="#fff" fontSize="24px" />}>
               Sofia
             </NavListItem>
             <NavListItem href="/horaires" icon={<ClockCountdown color="#fff" size={24} />}>
@@ -184,18 +188,18 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
           </NavList>
         </Nav>
       </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '32px 21px' }}>
+      <SideNavHeaderContainer>
         <Box>
           <Link to="/" aria-label="Accueil">
             <LogoBibUBlanc style={{ width: '200px', height: 'auto' }} />
           </Link>
         </Box>
         <Box>
-          <Button href="/nous-joindre/" variant="outlined" sx={{ color: '#fafdfe', border: '1px solid #e7ebee' }}>
+          <Button href="/nous-joindre/" variant="outlined" sx={{ color: '#fafdfe', border: '1px solid #e7ebee', fontSize: '14px' }} endIcon={<PaperPlaneTilt size={28} />}>
             Nous joindre
           </Button>
         </Box>
-      </Box>
+      </SideNavHeaderContainer>
     </Box>
   )
 })
