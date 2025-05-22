@@ -59,6 +59,7 @@ function NavListItem({ href, children, icon, ...props }) {
   return (
     <ListItem disablePadding {...props}>
       <ListItemButton
+        disableGutters
         component="a"
         to={href}
         sx={{
