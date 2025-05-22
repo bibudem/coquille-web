@@ -82,10 +82,30 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
   const [open, setOpen] = useState(false)
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
 
-  function closeDrawer() {
-    console.log('onClose...')
-    close()
-    onClose()
+  function onDrawerClick(event) {
+    console.log('onClose...', event)
+    let { target: node } = event
+
+    if (node.matches('a[href]')) {
+      dispatchClose(event)
+      return
+    }
+
+    while (node.parent) {
+      if (node.matches('a[href]')) {
+        dispatchClose(event)
+        break
+      }
+
+      node = node.parent
+    }
+  }
+
+  function dispatchClose(event) {
+    event.preventDefault()
+    event.stopPropagation()
+
+    event.target.dispatchEvent(new Event('close', { bubbles: true }))
   }
 
   return (
@@ -107,7 +127,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
         },
       })}
       role="presentation"
-      onClick={() => closeDrawer()}
+      onClick={onDrawerClick}
     >
       <SideNavHeaderContainer>
         <StyledLogoLink to="https://umontreal.ca">
@@ -192,7 +212,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
       <SideNavHeaderContainer>
         <Box>
           <Link to="/" aria-label="Accueil">
-            <LogoBibUBlanc style={{ width: '200px', height: 'auto' }} />
+            <LogoBibUBlanc style={{ width: '200px', height: 'auto', pointerEvents: 'none' }} />
           </Link>
         </Box>
         <Box>
