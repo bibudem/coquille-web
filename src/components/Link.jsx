@@ -25,7 +25,7 @@ const A = styled('a')({})
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
 const Link = forwardRef(function Link(props, ref) {
-  const { children, sx, Icon, iconProps, to, ...rest } = props
+  const { children, sx, Icon, iconProps, to = '#', href, ...rest } = props
 
   const isInternal = isInternalLink(to)
   const styles = Icon ? { ...linkStyles, ...iconStyles } : { ...linkStyles }
@@ -34,7 +34,6 @@ const Link = forwardRef(function Link(props, ref) {
   const icon = Icon && typeof Icon === 'boolean' ? <ArrowRight {..._iconProps} /> : <Icon {..._iconProps} />
 
   // Use Gatsby Link for internal links, and <a> for others
-  // console.log('isInternal:', isInternal)
   if (!isInternal) {
     return (
       <A ref={ref} href={to} sx={{ ...styles, ...sx }} {...rest}>
