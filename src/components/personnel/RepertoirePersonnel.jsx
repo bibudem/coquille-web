@@ -1,86 +1,21 @@
+import { useState, useMemo } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import { DataGrid } from '@mui/x-data-grid'
-import { Avatar, Box, Chip, IconButton, Stack } from '@mui/material'
-import { EmailRounded } from '@mui/icons-material'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-import Grid from '@mui/material/Grid2'
-import { frFR } from '@mui/x-data-grid/locales'
-import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
+import {
+   Avatar, Link,  TextField, MenuItem, Pagination
+} from '@mui/material'
+import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import { Email, Chat,Search } from '@mui/icons-material'
+import InputAdornment from '@mui/material/InputAdornment'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import tokens from '../../../plugins/gatsby-plugin-bib-theme/tokens/tokens.js'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { frFR } from '@mui/x-data-grid/locales'
 
 const theme = createTheme(tokens, frFR)
-
-const columns = [
-  {
-    field: 'photo',
-    headerName: '',
-    width: 75,
-    valueGetter: (_, row) => `${row.prenom} ${row.nom}`,
-    renderCell: ({ row, value }) => {
-      return (
-        <Box>
-          <Box
-            sx={{
-              borderRadius: '50%',
-            }}
-          >
-            <GatsbyImage image={row.photo} alt={value} layout="constrained" aspectRatio={1} width={50} height={50} />
-          </Box>
-          <IconButton href={`mailto:${row.courriel}`} aria-label="courriel">
-            <EmailRounded />
-          </IconButton>
-        </Box>
-      )
-    },
-  },
-  {
-    field: 'nom',
-    headerName: 'Nom',
-    width: 150,
-    valueGetter: (_, row) => `${row.prenom} ${row.nom}`,
-    renderCell: ({ row, value }) => {
-      return <Box>{`${row.prenom} ${row.nom}`}</Box>
-    },
-  },
-  // {
-  //   field: 'nom',
-  //   headerName: 'Nom',
-  // },
-  {
-    field: 'courriel',
-    headerName: 'Courriel',
-    width: 70,
-    renderCell: ({ row, value }) => {
-      return (
-        <IconButton href={`mailto:${row.courriel}`} aria-label="courriel">
-          <EmailRounded />
-        </IconButton>
-      )
-    },
-  },
-  {
-    field: 'fonction',
-    headerName: 'Fonction',
-    width: 110,
-  },
-  {
-    field: 'disciplines',
-    headerName: 'Disciplines',
-    display: 'flex',
-    flex: 1,
-    renderCell: ({ value }) => (
-      <Grid container gap={1} py={1}>
-        {value.split('|').map((discipline) => (
-          <Chip key={discipline} label={discipline} size="small" sx={{ mr: 0.5 }} />
-        ))}
-      </Grid>
-    ),
-  },
-  // {
-  //   field: 'photo',
-  //   headerName: 'Photo',
-  // },
-]
+const ITEMS_PER_PAGE = 8
 
 export default function RepertoirePersonnel() {
   const data = useStaticQuery(graphql`
@@ -88,61 +23,256 @@ export default function RepertoirePersonnel() {
       allFile(filter: { sourceInstanceName: { eq: "personnel" }, relativeDirectory: { eq: "photos" } }) {
         nodes {
           name
-          extension
-          ext
           childImageSharp {
-            gatsbyImageData(width: 50, formats: WEBP)
+            gatsbyImageData(width: 80, height: 80, formats: WEBP)
           }
-          sourceInstanceName
-          id
-          relativePath
-          relativeDirectory
-          root
-          absolutePath
-          base
-          dir
         }
       }
       allListePersonnelXlsxSheet1 {
         nodes {
           id
           nom
-          photo
           prenom
           fonction
           disciplines
           courriel
+          photo
         }
       }
     }
   `)
-  console.log('allFile: %o', data.allFile.nodes)
-  const fallbackPicture = data.allFile.nodes.find((node) => node.name === '_profile').childImageSharp.gatsbyImageData
-  const rows = data.allListePersonnelXlsxSheet1.nodes.map(({ courriel, disciplines, fonction, id, nom, photo, prenom }) => {
-    const photoId = photo.replace(/\.\w+$/, '')
-    return {
-      id,
-      courriel,
-      disciplines,
-      fonction,
-      nom,
-      prenom,
-      photo: data.allFile.nodes.find((node) => node.name === photoId)?.childImageSharp.gatsbyImageData ?? fallbackPicture,
-    }
+
+  const fallbackPicture = data.allFile.nodes.find(node => node.name === '_profile').childImageSharp.gatsbyImageData
+
+  const rawRows = data.allListePersonnelXlsxSheet1.nodes.map((person) => {
+    const photoId = person.photo?.replace(/\.\w+$/, '')
+    const photo = data.allFile.nodes.find(node => node.name === photoId)?.childImageSharp.gatsbyImageData ?? fallbackPicture
+    return { ...person, photo }
   })
+
+  const allDisciplines = Array.from(new Set(
+    rawRows.flatMap(person => (person.disciplines || '').split('|').map(d => d.trim()).filter(Boolean))
+  )).sort()
+
+  const [search, setSearch] = useState('')
+  const [disciplineFilter, setDisciplineFilter] = useState('')
+  const [page, setPage] = useState(1)
+
+  const filteredRows = useMemo(() => {
+    const keyword = search.toLowerCase()
+    return rawRows.filter(person => {
+      const matchSearch =
+        person.nom.toLowerCase().includes(keyword) ||
+        person.prenom.toLowerCase().includes(keyword) ||
+        person.fonction.toLowerCase().includes(keyword)
+      const matchDiscipline = !disciplineFilter || (person.disciplines || '').includes(disciplineFilter)
+      return matchSearch && matchDiscipline
+    })
+  }, [search, disciplineFilter, rawRows])
+
+  const paginatedRows = filteredRows.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE)
 
   return (
     <ThemeProvider theme={theme}>
-      <DataGrid
-        columns={columns}
-        rows={rows}
-        rowHeight={75}
-        autosizeOptions={{
-          columns: ['fonction'],
-          includeOutliers: true,
-          includeHeaders: true,
-        }}
-      />
+      <Box sx={{ px: 2, maxWidth: 1000, mx: 'auto' }}>
+        <Typography
+          variant="h3"
+          gutterBottom
+          sx={{
+            color: '#0B113A',
+            fontFamily: 'var(--titres-H1-police, Figtree)',
+            fontSize: '61px',
+            fontStyle: 'normal',
+            fontWeight: 400,
+            lineHeight: '120px',
+          }}
+        >
+          Notre équipe
+        </Typography>
+
+        <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mb: 3 }}>
+          <TextField
+              placeholder="Chercher un nom, une discipline, etc."
+              variant="outlined"
+              size="small"
+              fullWidth
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value)
+                setPage(1)
+              }}
+              sx={{
+                display: 'flex',
+                padding: '8px',
+                alignItems: 'center',
+                gap: '12px',
+                borderRadius: '16px',
+                border: '1px solid #666666',
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: '16px',
+                },
+                '& fieldset': {
+                  border: 'none',
+                },
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search sx={{ color: 'action.active' }} />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          <TextField
+            select
+            placeholder="Bibliothèque ou Direction"
+            variant="outlined"
+            size="small"
+            fullWidth
+            value={disciplineFilter}
+            onChange={(e) => {
+              setDisciplineFilter(e.target.value)
+              setPage(1)
+            }}
+            sx={{
+                display: 'flex',
+                padding: '8px',
+                marginLeft: '10px',
+                alignItems: 'center',
+                gap: '12px',
+                borderRadius: '16px',
+                border: '1px solid #666666',
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: '16px',
+                },
+                '& fieldset': {
+                  border: 'none',
+                },
+              }}
+          >
+            <MenuItem value="">Toutes les disciplines</MenuItem>
+            {allDisciplines.map((d) => (
+              <MenuItem key={d} value={d}>{d}</MenuItem>
+            ))}
+          </TextField>
+        </Stack>
+
+        <Stack spacing={3}>
+          {paginatedRows.map(person => (
+            <Box key={person.id} 
+              sx={{ 
+                padding: '2rem', 
+                marginTop: '1rem',
+                borderRadius: 2, 
+                backgroundColor: '#f9f9f9', 
+                boxShadow: 1 }}>
+              {/* Ligne image + nom/prénom */}
+              <Stack direction="row" spacing={2} alignItems="center">
+                <Avatar sx={{ width: 100, height: 100 }}>
+                  <GatsbyImage image={person.photo} alt={`${person.prenom} ${person.nom}`} style={{ width: '100%', height: '100%' }} />
+                </Avatar>
+                <Typography variant="h6"
+                  sx={{
+                      padding: '2rem',
+                      marginTop: '1rem',
+                      fontSize: '24px',
+                      fontStyle: 'normal',
+                      fontWeight: ' 600',
+                      lineHeight: '120%'
+                    }}
+                >{person.prenom} {person.nom}
+                </Typography>
+              </Stack>
+
+              {/* Ligne à 3 colonnes */}
+              <Grid container spacing={2} sx={{ mt: 2 }}>
+                <Grid item xs={12} md={6}>
+                  <Typography
+                      variant="subtitle2"
+                      color="text.secondary"
+                      sx={{
+                        fontSize: '18px',
+                        fontWeight: '600',
+                        lineHeight: '160%',
+                      }}
+                    >
+                      {person.fonction.charAt(0).toUpperCase() + person.fonction.slice(1)}
+                    </Typography>
+
+                  <Typography
+                      variant="body2"
+                      sx={{
+                        color: ' #222930',
+                        fontSize: '16px',
+                        fontStyle: 'normal',
+                        fontWeight: '400',
+                        lineHeight: '120%',
+                      }}
+                    >
+                      {(person.disciplines || '').split('|').join(', ')}
+                    </Typography>
+                </Grid>
+
+                <Grid item xs={12} md={6}>
+                  <Stack spacing={2}>
+                    <Link
+                      href={`mailto:${person.courriel}`}
+                      underline="hover"
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        marginLeft:'25px',
+                        overflow: 'hidden',
+                        color: ' #0057AC',
+                        textOverflow: 'ellipsis',
+                        fontSize: '16px',
+                        fontStyle: 'normal',
+                        fontWeight: '400',
+                        lineHeight: '120%',
+                        textDecorationLine: 'underline',
+                        textDecorationStyle: 'solid',
+                      }}
+                    >
+                      <Email fontSize="small" sx={{ mr: 0.5 }} /> {person.courriel}
+                    </Link>
+                    <Link
+                      href="https://teams.microsoft.com"
+                      underline="hover"
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        marginLeft:'25px',
+                        marginTop:'5px',
+                        overflow: 'hidden',
+                        color: ' #0057AC',
+                        textOverflow: 'ellipsis',
+                        fontSize: '16px',
+                        fontStyle: 'normal',
+                        fontWeight: '400',
+                        lineHeight: '120%',
+                        textDecorationLine: 'underline',
+                        textDecorationStyle: 'solid',
+                      }}
+                    >
+                      <Chat fontSize="small" sx={{ mr: 0.5 }} /> Teams
+                    </Link>
+                  </Stack>
+
+                </Grid>
+              </Grid>
+            </Box>
+          ))}
+        </Stack>
+
+        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+          <Pagination
+            count={Math.ceil(filteredRows.length / ITEMS_PER_PAGE)}
+            page={page}
+            onChange={(_, value) => setPage(value)}
+            color="primary"
+          />
+        </Box>
+      </Box>
     </ThemeProvider>
   )
 }
