@@ -1,7 +1,7 @@
 import matter from 'gray-matter'
 import readFile from './readFile.js'
 
-const getPageAttrs = path => {
+export default function getPageAttrs(path) {
   const content = readFile(path)
   const { data } = matter(content)
 
@@ -13,6 +13,4 @@ const getPageAttrs = path => {
     return title ? { title, order, hidden, isRoot } : undefined
   }
 }
-
-export default getPageAttrs;
 

@@ -1,13 +1,13 @@
 import directoryTree from 'directory-tree'
-import getLinks from './getLinks.js'
+import getMenuData from './getMenuData.js'
 
 function parseTree() {
-  return directoryTree('content', { extensions: /\.mdx?$/, attributes: ['type'], normalizePath: true, exclude: [/^content\/consent/i] })
+  return directoryTree('content/pages', { extensions: /\.mdx?$/, attributes: ['type'], normalizePath: true, exclude: [/^content\/pages\/consent/i] })
 }
 
 export default function getTree() {
   const tree = parseTree()
-  const links = getLinks(tree)
+  const links = getMenuData(tree)
 
   return Array
     .from(links)
