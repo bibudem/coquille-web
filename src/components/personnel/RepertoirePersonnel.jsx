@@ -264,12 +264,13 @@ export default function RepertoirePersonnel() {
           ))}
         </Stack>
 
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4}}>
           <Pagination
             count={Math.ceil(filteredRows.length / ITEMS_PER_PAGE)}
             page={page}
             onChange={(_, value) => setPage(value)}
             color="primary"
+            sx={{  marginTop:'4rem' }}
           />
         </Box>
       </Box>
