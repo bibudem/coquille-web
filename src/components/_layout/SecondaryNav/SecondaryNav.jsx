@@ -1,16 +1,13 @@
-import { useEffect, useState } from 'react'
-import { Box, Divider, styled } from '@mui/material'
+import { useEffect, useMemo, useState } from 'react'
+import { Box } from '@mui/material'
 import { graphql, useStaticQuery } from 'gatsby'
 import NavList from './NavList.jsx'
 import NavItem from './NavItem.jsx'
 import fetchNavigation from './fetchNavigation.js'
 import secondaryNavSampleData from './secondaryNavSampleData.js'
 
-const Div = styled('div')({})
-
 export function SecondaryNav({ navData = secondaryNavSampleData, currentLocation, navigationOrder = false, ...rest }) {
   const { sx, children, ...props } = rest
-  const [navigationTree, setNavigationTree] = useState(null)
 
   const data = useStaticQuery(graphql`
     query NavQuery {
@@ -35,9 +32,14 @@ export function SecondaryNav({ navData = secondaryNavSampleData, currentLocation
     }
   `)
 
-  const recursiveMenu = [...data.allSiteNavigation.nodes]
+  const recursiveMenu = useMemo(() => {
+    const menuData = data.allSiteNavigation.nodes
+    return [...data.allSiteNavigation.nodes]
+  }, [data, currentLocation])
 
-  console.log('recursiveMenu:', recursiveMenu)
+  // const recursiveMenu = [...data.allSiteNavigation.nodes]
+
+  // console.log('recursiveMenu:', recursiveMenu)
 
   // useEffect(() => {
   //   fetchNavigation().then((data) => {
@@ -87,7 +89,7 @@ export function SecondaryNav({ navData = secondaryNavSampleData, currentLocation
       }}
     >
       <header role="banner">
-        <Div
+        <Box
           sx={{
             fontFamily: 'Lora',
             fontSize: 27,
@@ -98,7 +100,7 @@ export function SecondaryNav({ navData = secondaryNavSampleData, currentLocation
           }}
         >
           {navData.title}
-        </Div>
+        </Box>
       </header>
       <nav>
         <NavList isRoot={true}>

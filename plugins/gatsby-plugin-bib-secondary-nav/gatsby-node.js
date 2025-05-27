@@ -39,7 +39,6 @@ export const sourceNodes = ({ actions, createContentDigest, createNodeId, getNod
   markRoots(getNodes, createNodeField)
 }
 
-// allSiteNavigation(filter: { fields: { isRoot: { eq: true } } }) {
 export const createPages = async ({ graphql }) => {
 
   const { errors, data } = await graphql(`

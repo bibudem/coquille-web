@@ -2,10 +2,10 @@ import { useMemo } from 'react'
 import { styled } from '@mui/material'
 import useSWR from 'swr'
 import { ClockCountdown } from '@phosphor-icons/react'
-import ConditionalWrap from 'conditional-wrap'
 import Link from '@/components/Link'
 import Button from '@/components/Button'
 import Div from '@/components/utils/Div'
+import ConditionalWrapper from '@/components/utils/ConditionalWrapper'
 import { useSmall } from '@/hooks/use-small'
 import Bloc from './Bloc'
 
@@ -98,9 +98,9 @@ export default function HoraireAujourdhui({ codeBib, ...rest }) {
     evenements && (
       <Bloc title="Aujourd'hui" Icon={ClockCountdown} flex>
         {evenements.map(({ service, sommaire }) => (
-          <ConditionalWrap
+          <ConditionalWrapper
             condition={isSmall}
-            wrap={(children) => (
+            wrapper={(children) => (
               <Div
                 sx={{
                   display: 'flex',
@@ -116,7 +116,7 @@ export default function HoraireAujourdhui({ codeBib, ...rest }) {
               <Dt>{service}</Dt>
               <Dd>{sommaire}</Dd>
             </Dl>
-          </ConditionalWrap>
+          </ConditionalWrapper>
         ))}
         <div>
           <ALink href="/horaires/">Tous les horaires</ALink>
