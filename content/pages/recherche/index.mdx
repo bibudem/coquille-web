@@ -19,7 +19,7 @@ import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGl
   <HeroWithImage
     Image={Bibliothecaire}
     align="right"
-    footer={<Button href="" primary>Contacter votre bibliothécaire disciplinaire</Button>}
+    footer={<Button href="../nous-joindre/notre-equipe" primary>Contacter votre bibliothécaire disciplinaire</Button>}
   >
     <Typography component="h2" variant="h2">Premier arrêt, votre bibliothécaire disciplinaire</Typography>
 
@@ -31,135 +31,22 @@ import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGl
 </Section>
 
 <Section>
+<Typography component="h2" variant="display2">Diffusez et faites rayonner vos connaissances scientifiques</Typography> 
+<RichList>
+    <RichListItemWithLink
+      title="Rédiger et produire"
+      description="Nous vous proposons une panoplie de ressources et d'aides à la rédaction savante et à la production d'outils de diffusion de vos recherches."
+      href="/recherche/rediger"
+      linkText="Voir les services"
+    />
+    <RichListItemWithLink 
+      title="Diffuser vos savoir"
+      description="Nous vous proposons une multitude de services pour optimiser la publication, la diffusion et la conservation des résultats de vos travaux de recherche."
+      href="/recherche/diffuser/"
+      linkText="Voir les services"
+    />
+  </RichList>
 
-  <Tabs1
-    bg='bleu200.light'
-    tabs={['Rédiger et produire', 'Diffuser vos savoirs', 'Plateformes de diffusion']}
-  >
-  <Carousel1
-    title={<Typography component="h3">Rédiger et produire</Typography>}
-    description="Nous vous proposons une panoplie de ressources et d'aides à la rédaction savante et à la production d'outils de diffusion de vos recherches."
-    moreText="En savoir plus sur les services"
-    moreHref="#"
-  >
-    <CardWithIcon
-      title="Recherche documentaire"
-      Icon={MagnifyingGlass}
-      moreText="Explorer le guide"
-      href="#"
-      small
-    />
-    <CardWithIcon
-      title="Veille documentaire"
-      Icon={Binoculars}
-      moreText="Explorer le guide"
-      href="#"
-      small
-    />
-    <CardWithIcon
-      title="Rédiger un article scientifique, une thèse ou un mémoire"
-      Icon={PencilSimple}
-      moreText="Explorer le guide"
-      href="#"
-      small
-    />
-    <CardWithIcon
-      title="Revue systématique"
-      Icon={Binoculars}
-      moreText="Explorer le guide"
-      href="#"
-      small
-    />
-        <CardWithIcon
-      title="Logiciel bibliographique"
-      Icon={Binoculars}
-      moreText="Explorer le guide"
-      href="#"
-      small
-    />
-  </Carousel1>
-
-  <Carousel1
-    title={<Typography component="h3">Diffuser vos savoirs</Typography>}
-    description="Nous vous proposons une multitude de services pour optimiser la publication, la diffusion et la conservation des résultats de vos travaux de recherche."
-    moreText="En savoir plus sur les services"
-    moreHref="#"
-  >
-    <CardWithIcon
-      title="Déposer dans Papyrus"
-      Icon={MagnifyingGlass}
-      moreText="Explorer le guide"
-      href="#"
-      small
-    />
-    <CardWithIcon
-      title="Publier un article scientifique"
-      Icon={Binoculars}
-      moreText="Explorer le guide"
-      href="#"
-      small
-    />
-    <CardWithIcon
-      title="Attribution d'identifiants pérennes"
-      Icon={PencilSimple}
-      moreText="Explorer le guide"
-      href="#"
-      small
-    />
-    <CardWithIcon
-      title="Participer aux échanges scientifiques"
-      Icon={Binoculars}
-      moreText="Explorer le guide"
-      href="#"
-      small
-    />
-        <CardWithIcon
-      title="Diffuser vos bibliographies Zotero"
-      Icon={Binoculars}
-      moreText="Explorer le guide"
-      href="#"
-      small
-    />
-            <CardWithIcon
-      title="Exposer dans nos espaces"
-      Icon={Binoculars}
-      moreText="Explorer le guide"
-      href="#"
-      small
-    />
-  </Carousel1>
-
-  <Carousel1
-    title={<Typography component="h3">Rédiger et produire</Typography>}
-    description="Nous vous proposons une panoplie de ressources et d'aides à la rédaction savante et à la production d'outils de diffusion de vos recherches."
-    moreText="En savoir plus sur les services"
-    moreHref="#"
-  >
-    <CardWithIcon
-      title="Dépôt institutionnel"
-      Icon={TreasureChest}
-      moreText="Accéder à Papyrus"
-      href="#"
-      small
-    />
-    <CardWithIcon
-      title="Dépôt de données de recherche"
-      Icon={Graph}
-      moreText="Accéder à Borealis"
-      href="#"
-      small
-    />
-    <CardWithIcon
-      title="Plateforme d'édition savante en libre accès"
-      Icon={Article}
-      moreText="Accéder à OJS"
-      href="#"
-      small
-    />
-
-  </Carousel1>
-
-  </Tabs1>
 </Section>
 
 
@@ -181,7 +68,7 @@ import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGl
       title="Déposer sa thèse ou son mémoire dans Papyrus"
       Icon={DownloadSimple}
       moreText="Voir les étapes"
-      href="#"
+      href="https://boite-outils.bib.umontreal.ca/gerer-diffuser/deposer-these-memoire "
       small
     />
     <CardWithIcon
@@ -189,7 +76,7 @@ import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGl
       title="Déposer facilement son article en libre accès"
       Icon={DownloadSimple}
       moreText="Utiliser le formulaire rapide"
-      href="#"
+      href="https://depot-libre-acces.bib.umontreal.ca/connexion"
       small
     />
     <CardWithIcon
@@ -254,7 +141,7 @@ import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGl
       </>
     }
     leftFooter={
-      <Button primary href="#">Consulter le guide sur le droit d'auteur</Button>
+      <Button primary href="https://boite-outils.bib.umontreal.ca/gerer-diffuser/droit-auteur/guide-droit-auteur">Consulter le guide sur le droit d'auteur</Button>
     }
     rightColl={
       <>
@@ -345,7 +232,7 @@ import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGl
       title="Rédiger un plan de gestion de données"
       Icon={PencilSimple}
       moreText="Explorer le guide"
-      href="#"
+      href=" https://boite-outils.bib.umontreal.ca/gerer-diffuser/c.php?g=726317?tab=5243845"
       small
     />
     <CardWithIcon
@@ -389,7 +276,7 @@ import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGl
 
 <Section bg='vertFonce'>
 
-  <Typography component="h2" variant="display5">Nos services pour les cycles supérieurs </Typography>
+  <Typography component="h2" variant="display2">Nos services pour les cycles supérieurs </Typography>
 
   <RichList>
     <RichListItemWithLink
@@ -412,7 +299,7 @@ import { UserFocus, CubeTransparent, Laptop, DownloadSimple, Plugs, MagnifyingGl
     />
     <RichListItemWithLink
       color='vertFonce'
-      href="#"
+      href="../nous-joindre/notre-equipe"
       title="Accompagnement personnalisé au doctorat"
       description="Vous pouvez planifier une série de rencontres individuelles avec votre bibliothécaire disciplinaire pour recevoir un soutien dans toutes les étapes de votre doctorat, de la recherche documentaire jusqu’à la rédaction de votre thèse, en passant par la mise en place de veille et par l’aide à la création de corpus de recherche."
     />

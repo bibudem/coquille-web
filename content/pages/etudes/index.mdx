@@ -5,7 +5,7 @@ slug: etudes
 
 import { Card, CardContent, CardMedia } from '@mui/material'
 import CommentIcon from '@mui/icons-material/Comment'
-import { TextOutdent, Compass, MagnifyingGlass, Laptop, MicrosoftWordLogo, DownloadSimple, Plugs } from '@phosphor-icons/react'
+import { TextOutdent, Compass, MagnifyingGlass, Laptop, Network, DownloadSimple, Plugs, WifiHigh} from '@phosphor-icons/react'
 import SuperHero from '@/components/SuperHero'
 import ListeFormations from '@/components/ListeFormations'
 import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
@@ -30,27 +30,27 @@ import relaxation from '../images/relaxation.webp'
     title="Des outils essentiels pour vos travaux"
     description="Dans le torrent d’information disponible en ligne et sur nos rayons, par où commencer l’exploration? Nos spécialistes ont conçu des guides et sélectionné les ressources les plus pratiques pour vous. Profitez-en!"
     moreText="Voir la boîte à outils"
-    moreHref="#"
+    moreHref="https://boite-outils.bib.umontreal.ca/"
   >
     <CardWithIcon
       title="Citer ses sources"
       Icon={TextOutdent}
       moreText="Explorer la citation"
-      href="#"
+      href="https://boite-outils.bib.umontreal.ca/citer"
       small
     />
     <CardWithIcon
       title="Ressources par discipline"
       Icon={Compass}
       moreText="Explorer les disciplines"
-      href="#"
+      href="https://boite-outils.bib.umontreal.ca/disciplines"
       small
     />
     <CardWithIcon
       title="Trouver et évaluer la fiabilité des sources"
       Icon={MagnifyingGlass}
       moreText="En savoir plus"
-      href="#"
+      href="https://boite-outils.bib.umontreal.ca/trouver-evaluer"
       small
     />
   </Carousel1>
@@ -69,7 +69,7 @@ import relaxation from '../images/relaxation.webp'
 
 <Section bg='vertFonce'>
 
-  <Typography component="h2" variant="display5"> Des services personnalisés</Typography>
+  <Typography component="h2" variant="display2"> Des services personnalisés</Typography>
 
 
   <RichList bg="vertFonce">
@@ -88,7 +88,7 @@ import relaxation from '../images/relaxation.webp'
     <RichListItemWithLink 
       title="Rendez-vous avec nos spécialistes"
       description="Notre équipe propose du soutien individuels. Approfondissez les notions à votre rythme dans une ambiance accueillante."
-      href="../a-propos/notre-equipe"
+      href="../nous-joindre/notre-equipe"
       color="vertFonce"
     />
     <RichListItemWithLink 
@@ -110,26 +110,29 @@ import relaxation from '../images/relaxation.webp'
 <Section>
   <Carousel1
     title="Problème informatique? Pas de panique!"
-    description="Accès hors campus, authentification, impression, numérisation, prêt d’ordinateurs ou de tablettes; nos comptoirs, nos services et nos spécialistes vous sont accessibles à l’année!"
+    description="Accès hors campus, authentification, connectivité, impression, numérisation, prêt d’ordinateurs ou de tablettes; nos comptoirs, nos services et nos spécialistes vous sont accessibles à l’année!"
     moreText="Voir les ressources informatiques"
     moreHref="https://studio.bib.umontreal.ca/informatique/"
   >
+
+  <CardWithIcon
+      color="rose300"
+      title="Connexion à distance aux logiciels"
+      Icon={Plugs}
+      moreText="Consulter la documentation"
+      href="https://studio.bib.umontreal.ca/informatique/connexion-distance"
+      small
+    />
+
     <CardWithIcon
       color="rose300"
       title="Accès à distance aux ressources électroniques (PROXY)"
-      Icon={Laptop}
+      Icon={Network}
       moreText="Consulter la documentation"
       href="https://studio.bib.umontreal.ca/informatique/proxy"
       small
     />
-    <CardWithIcon
-      color="rose300"
-      title="Utilisation des outils bureautiques"
-      Icon={MicrosoftWordLogo}
-      moreText="Consulter la documentation"
-      href="https://studio.bib.umontreal.ca/informatique/Logiciels"
-      small
-    />
+
     <CardWithIcon
       color="rose300"
       title="Installation et configuration de logiciels"
@@ -138,14 +141,16 @@ import relaxation from '../images/relaxation.webp'
       href="https://studio.bib.umontreal.ca/informatique/Logiciels"
       small
     />
-    <CardWithIcon
+
+        <CardWithIcon
       color="rose300"
-      title="Connexion à distance aux logiciels"
-      Icon={Plugs}
+      title="Accès Réseau sans fil"
+      Icon={WifiHigh}
       moreText="Consulter la documentation"
-      href="https://studio.bib.umontreal.ca/informatique/connexion-distance"
+      href="https://studio.bib.umontreal.ca/informatique/reseau/"
       small
     />
+    
   </Carousel1>
 
 </Section>

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import GridOffset from '@/components/utils/GridOffset'
-import Div from '@/components/utils/Div'
 import { FichesBibliothequesContext } from './FicheBibliotheque/FichesBibliothequesContext'
 import { useSmall } from '@/hooks/use-small'
 
@@ -25,14 +24,14 @@ export default function FichesBibliotheques({ title, ...rest }) {
 
   return (
     <GridOffset {...gridProps}>
-      <Div
+      <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
         }}
       >
         <FichesBibliothequesContext.Provider value={expanded}>{children}</FichesBibliothequesContext.Provider>
-      </Div>
+      </Box>
     </GridOffset>
   )
 }

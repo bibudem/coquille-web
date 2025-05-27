@@ -101,7 +101,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         <Footer />
 
-        {/* <bib-consent server-request-timeout="5000"></bib-consent> */}
+        <bib-consent server-request-timeout="5000"></bib-consent>
       </IconContext.Provider>
     </MDXProvider>
   )

@@ -2,6 +2,7 @@
 title: Prêt, renouvellement retour
 slug: pret-renouvellement-retour
 ---
+import Liste from '@/components/Liste'
 
 # Prêt, renouvellement, retour
 
@@ -9,21 +10,28 @@ slug: pret-renouvellement-retour
 
 L'inscription, automatique dans la plupart des cas, est obligatoire pour faire des emprunts. On peut, sans inscription, consulter la documentation en bibliothèque. Voir les modalités d'inscription et de prêt selon votre catégorie :
 
-<Section liste liens flèches>
-  * [Communauté UdeM]() * [Diplômées et diplômés UdeM, HEC Montréal, Polytechnique Montréal]() * [Personnes inscrites par droit accordé]() * [Entente du partenariat des bibliothèques universitaires du Québec (PBUQ)]() * [Entente avec BAnQ et les universités canadiennes]() * [Ententes avec les cégeps]() * [Grand public]()
-</Section>
+<Liste variant="fleche">
+    <li>Communauté UdeM</li>
+    <li>Diplômées et diplômés UdeM, HEC Montréal, Polytechnique Montréal</li>
+    <li>Personnes inscrites par droit accordé</li>
+    <li>Entente du partenariat des bibliothèques universitaires du Québec (PBUQ)</li>
+    <li>Entente avec BAnQ et les universités canadiennes</li>
+    <li>Ententes avec les cégeps</li>
+    <li>Grand public</li>
+  </Liste>
+
 
 ## Emprunter sur place
 
-La [communauté UdeM]() peut emprunter avec la carte UdeM un document disponible dans l'outil de recherche Sofia dans l'une ou l'autre des bibliothèques UdeM et dans les bibliothèques universitaires du Québec. Des bornes de prêt en libre-service sont disponibles en tout temps dans plusieurs bibliothèques. Elles permettent l'emprunt et le retour de documents de manière autonome.  
-Les membres de la [communauté UdeM]() peuvent également emprunter sur place dans d'autres établissements universitaires canadiens avec la [carte PBUQ]() et dans un des cégeps participants.
+La [communauté UdeM](./communaute-udem) peut emprunter avec la carte UdeM un document disponible dans l'outil de recherche Sofia dans l'une ou l'autre des bibliothèques UdeM et dans les bibliothèques universitaires du Québec. Des bornes de prêt en libre-service sont disponibles en tout temps dans plusieurs bibliothèques. Elles permettent l'emprunt et le retour de documents de manière autonome.  
+Les membres de la [communauté UdeM](./communaute-udem) peuvent également emprunter sur place dans d'autres établissements universitaires canadiens avec la [carte PBUQ](./communaute-udem/carte-pbuq) et dans un des cégeps participants.
 
 ## Récupérer un document à la bibliothèques UdeM de son choix
 
 Les membres de la communauté UdeM peuvent faire livrer un document repéré dans Sofia au comptoir de l'une des bibliothèques UdeM pour cueillette en utilisant :
 
 - le bouton Obtenir pour les documents de l'UdeM et des bibliothèques universitaires québécoises ;
-- le bouton Obtenir via Prêt entre bibliothèques pour les autres établissements. Un avis de disponibilité est envoyé par courriel lorsque le document peut être récupéré. La gestion et le suivi des demandes sont faits à partir du [dossier Sofia]().
+- le bouton Obtenir via Prêt entre bibliothèques pour les autres établissements. Un avis de disponibilité est envoyé par courriel lorsque le document peut être récupéré. La gestion et le suivi des demandes sont faits à partir du [dossier Sofia](https://umontreal.account.worldcat.org/account).
 
 ### Délais
 
@@ -37,8 +45,8 @@ Les délais varient selon la provenance et la disponibilité du document, mais v
 
 Les documents appelés à être très consultés dans le cadre d'un cours peuvent être mis à la réserve de cours par la personne qui l'enseigne.
 
-- Voir les procédures pour [consulter un document à la réserve]()
-- Voir la procédure pour [mettre un document à la réserve]()
+- Voir les procédures pour [consulter un document à la réserve]
+- Voir la procédure pour [mettre un document à la réserve](../../enseignement/reserve)
 
 ### Prêt de nuit
 
@@ -48,11 +56,11 @@ Le prêt de nuit est le prêt d'un document de la réserve de cours en dehors de
 
 Les membres de la communauté UdeM peuvent emprunter du matériel informatique dans plusieurs bibliothèques UdeM :
 
-- [Ordinateurs portables]()
-- [Tablettes iPad]()
-- [Robots]()
-- [Casques de réalité virtuelle]()
-- Autres : souris, adaptateurs, cordons d'alimentation, etc. Voir les disponibilités dans Sofia. Pour plus de détails, voir [XXXX]()
+- [Ordinateurs portables](https://studio.bib.umontreal.ca/informatique/ordinateurs#portables-en-pr%C3%AAt)
+- [Tablettes iPad](https://studio.bib.umontreal.ca/informatique/tablettes)
+- [Robots](https://studio.bib.umontreal.ca/creatives/robots/)
+- [Casques de réalité virtuelle](https://studio.bib.umontreal.ca/creatives/vr)
+- Autres : souris, adaptateurs, cordons d'alimentation, etc. [Voir les disponibilités dans Sofia](https://umontreal.on.worldcat.org/search?queryString=ti:((Bibliotheque%20OU%20BLSH%20OU%20Cartotheque)%20ET%20Pret%20de%20materiel%20informatique)&database=Xwc&lang=fr&_gl=1*6cwma2*_ga*MTc0NTcwODQyNC4xNzM4MTcyNDQ1*_ga_V8J6YFFD4F*czE3NDcyMzQ4MjEkbzIzOCRnMSR0MTc0NzIzNTEyMyRqMCRsMCRoMA..).
 
 ## Renouveler ses emprunts
 
@@ -63,7 +71,11 @@ Le renouvellement est automatique pour la plupart des types de documents. Le ren
 
 ### Exceptions au renouvellement automatique
 
-|Ordinateur portable en prêt courte durée| 1 seul renouvellement automatique| |Documents de la réserve, matériel informatique, documents en prêt de 3 jours| Aucun renouvellement| |Document empruntés par la communauté liée aux ententes avec les cégeps| Aucun renouvellement|
+| Type de document | Renouvellement permis |
+|------------------|------------------------|
+| Ordinateur portable en prêt courte durée | 1 seul renouvellement automatique |
+| Documents de la réserve, matériel informatique, documents en prêt de 3 jours | Aucun renouvellement |
+| Documents empruntés par la communauté liée aux ententes avec les cégeps | Aucun renouvellement |
 
 ## Retourner ses documents
 
