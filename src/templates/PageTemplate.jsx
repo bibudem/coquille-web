@@ -20,6 +20,7 @@ import { SecondaryNav } from '@/components/_layout/SecondaryNav/SecondaryNav'
 import { getLastSundayISODate } from '@/utils/dateTimeUtils'
 
 import commonComponents from './commonComponents'
+import LayoutContainer from '../components/utils/LayoutContainer.jsx'
 
 function getCurrentPageLevel(location) {
   return location.pathname.split('/').filter((item) => item).length
@@ -80,21 +81,27 @@ export default function PageTemplate({ pageContext, children, data, location }) 
         {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
         {hasSecondaryNav ? (
-          <LayoutGrid outter>
-            <Grid
-              container
-              spacing={{
-                xs: 1,
-                sm: 3,
-                lg: 4,
-              }}
-            >
-              <Grid size={3}>
-                <SecondaryNav currentLocation={location} />
+          <LayoutContainer>
+            <LayoutGrid>
+              <Grid
+                sx={{ width: '100%' }}
+                container
+                spacing={{
+                  xs: 1,
+                  sm: 3,
+                  lg: 4,
+                }}
+              >
+                <Grid size={3} className="bib-secondary-nav-col">
+                  <SecondaryNav currentLocation={location} className="bib-secondary-nav" />
+                </Grid>
+                <Grid size={9} className="bib-main-content-col">
+                  <div>{mainContent}</div>
+                </Grid>
               </Grid>
-              <Grid size={9}>{mainContent}</Grid>
-            </Grid>
-          </LayoutGrid>
+            </LayoutGrid>
+            {/* </Container> */}
+          </LayoutContainer>
         ) : (
           <>{mainContent}</>
         )}

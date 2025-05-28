@@ -8,7 +8,6 @@ export default {
     lineHeight: 1.2,
     ['@media (min-width: 900px)']: {
       fontSize: '61px',
-      lineHeight: 1.9672,
     }
   },
   h2: {

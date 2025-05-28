@@ -1,0 +1,17 @@
+h1 > .anchor,
+h2 > .anchor,
+h3 > .anchor,
+h4 > .anchor,
+h5 > .anchor,
+h6 > .anchor {
+  color: 'inherit',
+}
+
+h1 > .anchor svg,
+h2 > .anchor svg,
+h3 > .anchor svg,
+h4 > .anchor svg,
+h5 > .anchor svg,
+h6 > .anchor svg {
+  height: '.85em',
+}
