@@ -11,7 +11,7 @@ export const MdxRoutes = ({
   // are only supposed to be sourced from `pages`
   const data = useStaticQuery(graphql`
     query {
-      allMdx(filter: { internal: {contentFilePath: { regex: "//content//" }}}) {
+      allMdx(filter: { internal: {contentFilePath: { regex: "//content//pages//" }}}) {
         edges {
           node {
             id

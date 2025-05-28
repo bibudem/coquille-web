@@ -1,114 +1,59 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Box } from '@mui/material'
-import { graphql, useStaticQuery } from 'gatsby'
 import NavList from './NavList.jsx'
 import NavItem from './NavItem.jsx'
-import fetchNavigation from './fetchNavigation.js'
+// import fetchNavigation from './fetchNavigation.js'
 import secondaryNavSampleData from './secondaryNavSampleData.js'
+import secondaryNavData from '../../../../public/site-navigation.json'
 
 export function SecondaryNav({ navData = secondaryNavSampleData, currentLocation, navigationOrder = false, ...rest }) {
   const { sx, children, ...props } = rest
+  const [data, setData] = useState(null)
 
-  const data = useStaticQuery(graphql`
-    query NavQuery {
-      allSiteNavigation(filter: { hidden: { eq: false } }) {
-        nodes {
-          id
-          title
-          path
-          hidden
-          isRoot
-          title
-          order
-          childrenSiteNavigation {
-            id
-            path
-            hidden
-            isRoot
-            order
-          }
-        }
-      }
+  useEffect(() => {
+    if (secondaryNavData && currentLocation) {
+      const rootPath = `/${currentLocation.pathname
+        .split('/')
+        .filter((_) => _) // Quick way to get rid of falsy items in the array
+        .shift()}/`
+      const rootNode = secondaryNavData.find(({ path }) => path === rootPath)
+      // console.log('rootPath:', rootPath)
+      // console.log('rootNode:', rootNode)
+      setData(rootNode)
     }
-  `)
-
-  const recursiveMenu = useMemo(() => {
-    const menuData = data.allSiteNavigation.nodes
-    return [...data.allSiteNavigation.nodes]
-  }, [data, currentLocation])
-
-  // const recursiveMenu = [...data.allSiteNavigation.nodes]
-
-  // console.log('recursiveMenu:', recursiveMenu)
-
-  // useEffect(() => {
-  //   fetchNavigation().then((data) => {
-  //     setNavigationTree(data)
-  //   })
-  // }, [])
-
-  // ------------------------------------------------------------
-  //
-  //
-  //
-
-  function sortOrder(array) {
-    if (navigationOrder) {
-      return array.sort((a, b) => {
-        return navigationOrder.indexOf(a.navTitle) - navigationOrder.indexOf(b.navTitle)
-      })
-    }
-
-    return array.reduce((routes, route) => {
-      if (route.slug === '/') {
-        return [route, ...routes]
-      }
-
-      return [...routes, route]
-    }, [])
-  }
-
-  // const menus = sortOrder(recursiveMenu(mdxData))
-
-  // console.log('menus:', menus)
-
-  // const routes_ = recursiveMenu(navData_)
-
-  // useEffect(() => {
-  //   console.log('navigationTree:', navigationTree)
-  // }, [navigationTree])
-
-  // ------------------------------------------------------------
+  }, [secondaryNavData, currentLocation])
 
   return (
-    <Box
-      {...props}
-      sx={{
-        paddingTop: '28px',
-        ...sx,
-      }}
-    >
-      <header role="banner">
-        <Box
-          sx={{
-            fontFamily: 'Lora',
-            fontSize: 27,
-            fontWeight: 500,
-            lineHeight: 1.2,
-            color: '#222930', // neutre/700
-            paddingBottom: '24px',
-          }}
-        >
-          {navData.title}
-        </Box>
-      </header>
-      <nav>
-        <NavList isRoot={true}>
-          {navData.children.map((data, i) => (
-            <NavItem key={i} item={data} currentLocation={currentLocation}></NavItem>
-          ))}
-        </NavList>
-      </nav>
-    </Box>
+    data && (
+      <Box
+        {...props}
+        sx={{
+          paddingTop: '28px',
+          ...sx,
+        }}
+      >
+        <header role="banner">
+          <Box
+            sx={{
+              fontFamily: 'Lora',
+              fontSize: 27,
+              fontWeight: 500,
+              lineHeight: 1.2,
+              color: '#222930', // neutre/700
+              paddingBottom: '24px',
+            }}
+          >
+            {data.title}
+          </Box>
+        </header>
+        <nav>
+          <NavList isRoot={true}>
+            {data.children?.map((item, i) => (
+              <NavItem key={i} item={item} currentLocation={currentLocation}></NavItem>
+            ))}
+          </NavList>
+        </nav>
+      </Box>
+    )
   )
 }
