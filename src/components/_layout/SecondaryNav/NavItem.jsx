@@ -65,6 +65,7 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
           ...(lvl > 0 && { paddingLeft: '0.8125rem' }),
           justifyContent: 'space-between',
           ...linkStyles,
+          ...(!children && { paddingRight: '1.5rem' }),
           ...(isActive && { color: 'var(--bib-palette-bleuPrincipal-main)' }),
         }}
         {...props}
@@ -86,7 +87,7 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
         )}
       </Link>
       {children && (
-        <NavList sx={{ paddingBottom: '8px' }}>
+        <NavList sx={{ paddingBottom: '8px', paddingTop: '8px' }}>
           {children.map((item) => (
             <NavItem key={item.path} item={item} currentLocation={currentLocation} lvl={lvl + 1} />
           ))}
