@@ -7,10 +7,10 @@ function parseTree() {
 
 export default function getTree() {
   const tree = parseTree()
-  const links = getMenuData(tree)
+  const menuData = getMenuData(tree)
 
   return Array
-    .from(links)
+    .from(menuData)
     .sort(({ path: path1 }, { path: path2 }) => {
       const pathArray1 = path1.split("/")
       const pathArray2 = path2.split("/")

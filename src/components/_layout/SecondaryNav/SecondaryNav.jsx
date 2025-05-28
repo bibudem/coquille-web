@@ -5,41 +5,25 @@ import NavList from './NavList.jsx'
 import NavItem from './NavItem.jsx'
 import fetchNavigation from './fetchNavigation.js'
 import secondaryNavSampleData from './secondaryNavSampleData.js'
+import secondaryNavData from '../../../../public/site-navigation.json'
 
 export function SecondaryNav({ navData = secondaryNavSampleData, currentLocation, navigationOrder = false, ...rest }) {
   const { sx, children, ...props } = rest
+  const [data, setData] = useState(null)
 
-  const data = useStaticQuery(graphql`
-    query NavQuery {
-      allSiteNavigation(filter: { hidden: { eq: false } }) {
-        nodes {
-          id
-          title
-          path
-          hidden
-          isRoot
-          title
-          order
-          childrenSiteNavigation {
-            id
-            path
-            hidden
-            isRoot
-            order
-          }
-        }
-      }
+  useEffect(() => {
+    if (secondaryNavData && currentLocation) {
+      console.log('----------------- currentLocation:', currentLocation)
+      const rootPath = `/${currentLocation.pathname
+        .split('/')
+        .filter((_) => _)
+        .shift()}/`
+      const rootNode = secondaryNavData.find(({ path }) => path === rootPath)
+      console.log('rootPath:', rootPath)
+      console.log('rootNode:', rootNode)
+      setData(rootNode)
     }
-  `)
-
-  const recursiveMenu = useMemo(() => {
-    const menuData = data.allSiteNavigation.nodes
-    return [...data.allSiteNavigation.nodes]
-  }, [data, currentLocation])
-
-  // const recursiveMenu = [...data.allSiteNavigation.nodes]
-
-  // console.log('recursiveMenu:', recursiveMenu)
+  }, [secondaryNavData, currentLocation])
 
   // useEffect(() => {
   //   fetchNavigation().then((data) => {
@@ -68,16 +52,6 @@ export function SecondaryNav({ navData = secondaryNavSampleData, currentLocation
     }, [])
   }
 
-  // const menus = sortOrder(recursiveMenu(mdxData))
-
-  // console.log('menus:', menus)
-
-  // const routes_ = recursiveMenu(navData_)
-
-  // useEffect(() => {
-  //   console.log('navigationTree:', navigationTree)
-  // }, [navigationTree])
-
   // ------------------------------------------------------------
 
   return (
@@ -99,13 +73,13 @@ export function SecondaryNav({ navData = secondaryNavSampleData, currentLocation
             paddingBottom: '24px',
           }}
         >
-          {navData.title}
+          {data.title}
         </Box>
       </header>
       <nav>
         <NavList isRoot={true}>
-          {navData.children.map((data, i) => (
-            <NavItem key={i} item={data} currentLocation={currentLocation}></NavItem>
+          {data.children.map((item, i) => (
+            <NavItem key={i} item={item} currentLocation={currentLocation}></NavItem>
           ))}
         </NavList>
       </nav>
