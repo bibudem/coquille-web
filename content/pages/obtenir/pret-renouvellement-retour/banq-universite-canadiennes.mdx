@@ -5,6 +5,14 @@ secondaryNav:
   title: Ententes BAnQ et universités canadiennes
 ---
 
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
 # Ententes avec BAnQ et les universités canadiennes
 
 Cette catégorie inclut les membres:
@@ -34,10 +42,29 @@ La consultation des ressources électroniques est possible sur les postes public
 
 ## Modalités détaillées
 
-| Type de document                                              | Durée du prêt                                          |
-| ------------------------------------------------------------- | ------------------------------------------------------ |
-| Livres, partition                                             | 30 jours                                               |
-| Documents d'accompagnement d'un livre (cédéroms, DVD, autre)  | 30 jours                                               |
-| Réserve de cours : 3 documents permis, consultation sur place | livres et partition : 3 heures; Audiovisuel : 6 heures |
+<TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Type de document</TableCell>
+            <TableCell align="right">Durée du prêt</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableCell>Livres, partitions</TableCell>
+            <TableCell align="right">30 jours</TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableCell>Documents d'accompagnement d'un livre (cédéroms, DVD, autre)</TableCell>
+            <TableCell align="right">30 jours</TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableCell>Réserve de cours : 3 documents permis, consultation sur place</TableCell>
+            <TableCell align="right">Livres et partitions : 3 heures <br/> Audiovisuel : 6 heures</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
 
 Les types de document suivant sont exclus: périodiques, matériel didactique, manuels scolaires, jeux et accessoires didactiques, affiches, trousses et ensembles multi-supports, cartes géographiques et photos aériennes, index et normes

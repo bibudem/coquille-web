@@ -2,6 +2,16 @@
 title: Prêts aux institutions externes
 slug : peb-institutions-externes
 ---
+
+import Liste from '@/components/Liste'
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
 # Prêts aux institutions externes
 
 [See English version](lien page anglais)
@@ -66,15 +76,69 @@ Ces tarifs s’appliquent pour chaque demande de prêt ou de copie.
 
 #### Canada
 
-|                          | Prêts        | Copies       |
-|--------------------------|--------------|--------------|
-| Entente OCUL/COPPUL/CBUA-CAUL/BCI | Selon entente | Selon entente |
-| Bibliothèques d'établissements de santé affiliées à une université québécoise (Laval, McGill, Sherbrooke) | 5,00 $ | 5,00 $ |
-| Autres bibliothèques et établissements à but non lucratif (à moins d'ententes particulières) | 25,00 $ | 25,00 $ |
-| Autres bibliothèques et établissements à but lucratif (à moins d'ententes particulières) | 35,00 $ | 35,00 $ |
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="frais prêts et copies">
+        <TableHead>
+          <TableRow>
+            <TableCell></TableCell>
+            <TableCell align="right">Prêts</TableCell>
+            <TableCell align="right">Copies</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell>Entente OCUL/COPPUL/CBUA-CAUL/BCI</TableCell>
+            <TableCell align="right">Selon entente</TableCell>
+            <TableCell align="right">Selon entente</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              Bibliothèques d'établissements de santé affiliées à une université québécoise
+              (Laval, McGill, Sherbrooke)
+            </TableCell>
+            <TableCell align="right">5,00 $</TableCell>
+            <TableCell align="right">5,00 $</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              Autres bibliothèques et établissements à but non lucratif<br />
+              (à moins d'ententes particulières)
+            </TableCell>
+            <TableCell align="right">25,00 $</TableCell>
+            <TableCell align="right">25,00 $</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              Autres bibliothèques et établissements à but lucratif<br />
+              (à moins d'ententes particulières)
+            </TableCell>
+            <TableCell align="right">35,00 $</TableCell>
+            <TableCell align="right">35,00 $</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
 
 #### Hors Canada
 
-|                                | Prêts       | Copies      |
-|--------------------------------|-------------|-------------|
-| Autres bibliothèques et établissements hors Canada (à moins d'ententes particulières) | 35,00 $ | 35,00 $ |
+ <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="frais hors Canada">
+        <TableHead>
+          <TableRow>
+            <TableCell></TableCell>
+            <TableCell align="right">Prêts</TableCell>
+            <TableCell align="right">Copies</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell>
+              Autres bibliothèques et établissements hors Canada<br />
+              (à moins d'ententes particulières)
+            </TableCell>
+            <TableCell align="right">35,00 $</TableCell>
+            <TableCell align="right">35,00 $</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
