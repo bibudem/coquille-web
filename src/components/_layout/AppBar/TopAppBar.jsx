@@ -1,18 +1,16 @@
-import { useEffect, useState } from 'react'
-import { AppBar, Box, Button, Divider, Stack, Toolbar, useScrollTrigger } from '@mui/material'
+import { useEffect, useMemo, useState } from 'react'
+import { AppBar, Box, Button, Stack, Toolbar, useScrollTrigger } from '@mui/material'
 import { styled, useTheme } from '@mui/material/styles'
-import { ArrowRight } from '@phosphor-icons/react'
+import { ArrowRightIcon } from '@phosphor-icons/react'
 
 import Link from '@/components/Link'
 import SideNav from '@/components/_layout/SideNav/SideNav'
 import SideNavContent from '@/components/_layout/SideNav/SideNavContent'
-import Div from '@/components/utils/Div'
-import LogoUdeMMonochrome from '@/images/logo-udem/logo_udem-noir.svg'
-import LogoUdeM from '@/images/logo-udem/logo_udem-officiel.svg'
 import MenuBurger from './MenuBurger'
 import pages from './menu'
+import LogoLink from './LogoLink.js'
 
-const StyledButton = styled(Button)(({ theme }) => ({
+const StyledButton = styled(Button)({
   alignContent: 'center',
   my: 2,
   color: 'inherit',
@@ -20,67 +18,9 @@ const StyledButton = styled(Button)(({ theme }) => ({
   fontWeight: 400,
   display: 'block',
   textTransform: 'none',
-}))
+})
 
 export const appBarHeight = '5rem'
-
-function Logo({ lvl }) {
-  const theme = useTheme()
-  const [color, setColor] = useState(theme.palette.grey['50'])
-  const logoUdeMBaseStyles = {
-    width: 'auto',
-    height: '59px',
-    fill: lvl < 2 ? theme.palette.grey['50'] : '#37424D',
-  }
-
-  useEffect(() => {
-    setColor(lvl < 2 ? theme.palette.grey['50'] : 'inherit')
-  }, [lvl])
-  return (
-    <Div
-      sx={{
-        display: 'flex',
-        flexWrap: 'nowrap',
-        alignItems: 'center',
-        color,
-      }}
-    >
-      {lvl < 2 ? (
-        <LogoUdeMMonochrome
-          style={{
-            ...logoUdeMBaseStyles,
-          }}
-        />
-      ) : (
-        <LogoUdeM
-          style={{
-            ...logoUdeMBaseStyles,
-          }}
-        />
-      )}
-      <Divider
-        orientation="vertical"
-        flexItem
-        aria-hidden="true"
-        sx={{
-          borderColor: lvl < 2 ? theme.palette.grey['200'] : theme.palette.grey['600'],
-          margin: '12px',
-        }}
-      />
-      <Div
-        sx={{
-          color: lvl < 2 ? 'inherit' : 'primary.main',
-          fontSize: '1.1875rem',
-          fontWeight: 400,
-          lineHeight: 1.5,
-          letterSpacing: '0.01188rem',
-        }}
-      >
-        Les bibliothèques
-      </Div>
-    </Div>
-  )
-}
 
 /**
  * Primary app bar component
@@ -92,6 +32,14 @@ export default function TopAppBar({ lvl, location = {} }) {
     disableHysteresis: true,
     threshold: 50,
   })
+  const transitionProps = useMemo(
+    () => ({
+      transitionProperty: 'color',
+      transitionTimingFunction: theme.transitions.easing.md3[trigger ? 'emphasizedAccelerate' : 'emphasizedDecelerate'],
+      transitionDuration: `${theme.transitions.duration.md3.short4}ms`,
+    }),
+    [trigger, theme]
+  )
 
   const toggleDrawer = (newState) => () => {
     setOpen(newState ?? !open)
@@ -113,12 +61,13 @@ export default function TopAppBar({ lvl, location = {} }) {
     <>
       <AppBar
         position="sticky"
-        elevation={0}
+        elevation={trigger ? 2 : 0}
         sx={{
           '--AppBar-background': lvl < 2 ? (trigger ? '#fff' : 'transparent') : '#fff',
           '--AppBar-color': lvl < 2 ? (trigger ? '#222930' : theme.palette.grey['50']) : '#222930',
           backgroundImage: lvl < 2 ? (trigger ? 'none' : 'linear-gradient(180deg, rgba(0,0,0,0.10) 90%, rgba(0,0,0,0) 100%)') : 'none',
-          transition: 'background-color 0.15s ease-in-out',
+          ...transitionProps,
+          transitionProperty: 'background-color, box-shadow',
           '.MuiToolbar-root': {
             height: appBarHeight,
           },
@@ -140,7 +89,7 @@ export default function TopAppBar({ lvl, location = {} }) {
                 display: { xs: 'none', sm: 'block', color: 'inherit' },
               }}
             >
-              <Logo lvl={lvl} />
+              <LogoLink lvl={lvl} trigger={trigger} />
             </Link>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
@@ -161,22 +110,7 @@ export default function TopAppBar({ lvl, location = {} }) {
                 </StyledButton>
               )
             })}
-            <Button
-              variant="contained"
-              disableElevation
-              size="large"
-              href="/nous-soutenir/"
-              sx={{
-                color: lvl < 2 ? '#0B113A' : '#fafdfe',
-                bgcolor: lvl < 2 ? '#fff' : 'bleuFonce.main',
-                '.MuiButton-icon svg': {
-                  fill: lvl < 2 ? theme.palette.rougeOrange.main : 'currentColor',
-                },
-              }}
-              endIcon={<ArrowRight color={theme.palette.rougeOrange.main} />}
-            >
-              Je donne
-            </Button>
+            <JeDonneButton lvl={lvl} trigger={trigger} transitionProps={transitionProps} />
           </Stack>
           <Box sx={{ paddingLeft: '2rem' }}>
             <MenuBurger lvl={lvl} onClick={toggleDrawer(true)} />
@@ -187,5 +121,47 @@ export default function TopAppBar({ lvl, location = {} }) {
         <SideNavContent />
       </SideNav>
     </>
+  )
+}
+
+function JeDonneButton({ lvl, trigger, transitionProps }) {
+  const theme = useTheme()
+  const styles = useMemo(() => {
+    if (lvl < 2) {
+      return {
+        color: trigger ? '#fafdfe' : '#0B113A',
+        bgcolor: trigger ? 'bleuFonce.main' : '#fff',
+        ...transitionProps,
+        transitionProperty: 'color, background-color',
+        '.MuiButton-icon svg': {
+          fill: trigger ? '#fafdfe' : theme.palette.rougeOrange.main,
+          ...transitionProps,
+          transitionProperty: 'fill',
+        },
+      }
+    } else {
+      return {
+        color: '#fafdfe',
+        bgcolor: 'bleuFonce.main',
+        '.MuiButton-icon svg': {
+          fill: 'currentColor',
+        },
+      }
+    }
+  }, [lvl, trigger, transitionProps])
+
+  return (
+    <Button
+      variant="contained"
+      disableElevation
+      size="large"
+      href="/nous-soutenir/"
+      sx={{
+        ...styles,
+      }}
+      endIcon={<ArrowRightIcon color={theme.palette.rougeOrange.main} />}
+    >
+      Je donne
+    </Button>
   )
 }
