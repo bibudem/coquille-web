@@ -106,13 +106,13 @@ export default function LocalFooter() {
           <Header>Nous joindre</Header>
           <Ul>
             <li>
-              <FooterLink to="/nous-joindre">
+              <FooterLink to="/nous-joindre/">
                 <Chats color="currentColor" size={24} />
                 Clavarder avec nous
               </FooterLink>
             </li>
             <li>
-              <FooterLink to="/nous-joindre">
+              <FooterLink to="/nous-joindre/">
                 <PaperPlaneTilt color="currentColor" size={24} />
                 Nous écrire
               </FooterLink>
@@ -159,30 +159,30 @@ export default function LocalFooter() {
                 })}
               >
                 <li>
-                  <FooterLink to="#">Notre équipe</FooterLink>
+                  <FooterLink to="/a-propos/notre-organisation/">Notre équipe</FooterLink>
                 </li>
                 <li>
-                  <FooterLink to="#">Mission, vision, valeurs et objectifs</FooterLink>
+                  <FooterLink to="/a-propos/mission-vision-valeur">Mission, vision, valeurs et objectifs</FooterLink>
                 </li>
                 <li>
-                  <FooterLink to="#">Rapports annuels</FooterLink>
+                  <FooterLink to="/a-propos/rapports-annuels">Rapports annuels</FooterLink>
                 </li>
                 <li>
-                  <FooterLink to="#">Politique et règlement</FooterLink>
+                  <FooterLink to="/a-propos/politiques-reglement">Politique et règlement</FooterLink>
                 </li>
                 <li>
-                  <FooterLink to="#">Carrières</FooterLink>
+                  <FooterLink to="/a-propos/carriere/">Carrières</FooterLink>
                 </li>
               </Ul>
               <Ul>
                 <li>
-                  <FooterLink to="#">Nouvelles</FooterLink>
+                  <FooterLink to="/nouvelles/">Nouvelles</FooterLink>
                 </li>
                 <li>
-                  <FooterLink to="#">Nous soutenir</FooterLink>
+                  <FooterLink to="/nous-soutenir/">Nous soutenir</FooterLink>
                 </li>
                 <li>
-                  <FooterLink to="#">Accessibilité Web</FooterLink>
+                  <FooterLink to="/service-accessibilite">Accessibilité Web</FooterLink>
                 </li>
               </Ul>
             </Box>
@@ -201,9 +201,13 @@ export default function LocalFooter() {
               <FooterLink
                 to="/"
                 aria-label="Accueil"
-                sx={(theme) => ({
+                sx={{
                   display: 'flex',
-                })}
+                  width: {
+                    md: '200px',
+                    lg: '250px',
+                  },
+                }}
               >
                 <LogoBibSceauBleu
                   style={{

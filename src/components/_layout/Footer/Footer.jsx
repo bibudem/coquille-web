@@ -9,9 +9,6 @@ const FooterRoot = styled('footer', {
 })({
   paddingTop: 100,
   fontSize: '1rem',
-  '*': {
-    fontSize: 'inherit',
-  },
 })
 
 const Footer = forwardRef(function Footer(props, ref) {
