@@ -83,6 +83,18 @@ export default function RepertoirePersonnel() {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ px: { xs: 2, sm: 4, md: 6 }, py: 2 }}>
+        {/* Ajout du titre "Notre équipe" en variant h2 */}
+        <Typography 
+          variant="h2"
+          sx={{
+            mb: 4,
+            color: 'text.primary',
+            marginTop: '20px',
+            marginBottom: '20px'
+          }}
+        >
+          Notre Équipe
+        </Typography>
 
         <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mb: 3 }}>
           <TextField
@@ -171,12 +183,8 @@ export default function RepertoirePersonnel() {
                 <Typography
                   sx={{
                     padding: '2rem',
-                    marginTop: '1rem',
-                    fontSize: '1.5rem',
-                    fontStyle: 'normal',
-                    fontWeight: '600',
-                    lineHeight: '120%',
                   }}
+                  variant="h4"
                 >
                   {person.prenom} {person.nom}
                 </Typography>
@@ -199,13 +207,6 @@ export default function RepertoirePersonnel() {
 
                   <Typography
                     variant="body2"
-                    sx={{
-                      color: '#222930',
-                      fontSize: '16px',
-                      fontStyle: 'normal',
-                      fontWeight: '300',
-                      lineHeight: '120%',
-                    }}
                   >
                     {(person.disciplines || '').split('|').join(', ')}
                   </Typography>
@@ -300,16 +301,7 @@ export default function RepertoirePersonnel() {
                     .map((nom, index) => (
                       <Typography
                         key={index}
-                        variant="subtitle2"
-                        sx={{
-                          overflow: 'hidden',
-                          color: ' #222930',
-                          textOverflow: 'ellipsis',
-                          fontSize: '16px',
-                          fontStyle: 'normal',
-                          fontWeight: ' 400',
-                          lineHeight: '120%',
-                        }}
+                        variant="body1"
                       >
                         {ucfirst(nom.trim())}
                       </Typography>

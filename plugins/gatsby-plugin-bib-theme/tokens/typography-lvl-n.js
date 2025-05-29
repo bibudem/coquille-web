@@ -1,64 +1,71 @@
+import baseTypography from './typography-lvl-1';
+
 export default {
-  fontFamily: 'Figtree',
-  fontSize: 18,
-  htmlFontSize: 18,
+  ...baseTypography, // Hérite de toutes les propriétés de base
+
+  // Surcharges spécifiques pour le niveau n
+  fontFamily: 'Figtree', // Simplifié
+  fontSize: 16, // Taille de base légèrement plus grande
+
   h1: {
-    fontSize: '3.2rem',
-    fontWeight: 600,
+    ...baseTypography.h1,
+    fontSize: '3.2rem', // Desktop (51px)
+    '@media (max-width:899px)': {
+      fontSize: '2.5rem' // Mobile/Tablette (40px)
+    }
   },
+
   h2: {
-    fontSize: '2.4rem',
-    fontWeight: 500,
+    ...baseTypography.h2,
     fontFamily: 'Lora',
+    fontWeight: 500,
+    fontSize: '2.4rem' // Desktop (38px)
   },
+
   h3: {
-    fontSize: '2rem',
+    ...baseTypography.h3,
     fontWeight: 500,
+    fontSize: '2rem' // Desktop (32px)
   },
+
   h4: {
-    fontSize: '1.4667rem',
-    fontWeight: 500,
+    ...baseTypography.h4,
+    fontSize: '1.4667rem' // Desktop (23.5px)
   },
+
   h5: {
-    fontSize: '1.2667rem',
+    ...baseTypography.h5,
     fontWeight: 500,
+    fontSize: '1.2667rem' // Desktop (20px)
   },
+
   h6: {
-    fontSize: '1.0667rem',
+    ...baseTypography.h6,
     fontWeight: 500,
+    fontSize: '1.0667rem' // Desktop (17px)
   },
+
+  // Styles display spécifiques
   display1: {
-    fontFamily: 'Figtree',
-    fontFeatureSettings: "'liga' off, 'clig' off",
-    fontSize: '46px',
-    fontWeight: 600,
+    ...baseTypography.display1,
+    fontSize: '2.875rem', // ~46px
     lineHeight: '112%'
   },
+
   display2: {
-    fontFamily: 'Figtree',
-    fontSize: '6.0625rem',
-    fontWeight: 500,
+    ...baseTypography.display2,
+    fontSize: '3.8125rem', // ~61px
     lineHeight: '110%'
   },
+
   display3: {
-    fontFamily: 'Figtree',
-    fontSize: '5.4375rem',
-    fontWeight: 500,
+    ...baseTypography.display3,
+    fontSize: '2.125rem', // ~34px
     lineHeight: '120%'
   },
-  display4: {
-    fontFamily: 'Figtree',
-    fontSize: '4.8124rem',
-    fontWeight: 400,
-    lineHeight: '120%'
-  },
-  display5: {
-    fontFamily: 'Figtree',
-    fontSize: '61px',
-    fontWeight: 400,
-    lineHeight: '120%'
-  },
+
   body1: {
-    fontSize: '1rem',
+    ...baseTypography.body1,
+    fontSize: '1rem' // 16px
   }
-}
+};
