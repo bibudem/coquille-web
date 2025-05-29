@@ -21,20 +21,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   display: 'block',
   textTransform: 'none',
 }))
-/**
- *
 
-width: 35px;
-height: 0px;
-
-border: 1px solid #C3CCD5;
-transform: rotate(90deg);
-
-flex: none;
-order: 1;
-flex-grow: 0;
-
- */
 export const appBarHeight = '5rem'
 
 function Logo({ lvl }) {
