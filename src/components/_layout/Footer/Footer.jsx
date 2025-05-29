@@ -6,13 +6,13 @@ import FooterTail from '@/components/_layout/Footer/FooterTail'
 const FooterRoot = styled('footer', {
   name: 'BibFooter',
   slot: 'root',
-})(({ theme }) => ({
+})({
   paddingTop: 100,
   fontSize: '1rem',
   '*': {
     fontSize: 'inherit',
   },
-}))
+})
 
 const Footer = forwardRef(function Footer(props, ref) {
   return (

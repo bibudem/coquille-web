@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Collapse, Link, styled } from '@mui/material'
+import { Link, styled } from '@mui/material'
 import { CaretRight } from '@phosphor-icons/react'
 import NavList from './NavList'
 
@@ -10,7 +10,6 @@ const StyledLi = styled('li')({
 
 export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
   const { title, path, isActive = false, children = false } = item
-
   const [linkStyles, setLinkStyles] = useState({})
 
   const LINK_STYLES_BASE = {
@@ -73,8 +72,8 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
         {title}
         {children && (
           <CaretRight
-            size="1.5rem"
-            color={isActive ? 'var(--bib-palette-bleuPrincipal-main)' : 'inherit'}
+            size="24px"
+            color={isActive ? 'var(--bib-palette-bleuPrincipal-main)' : 'currentColor'}
             style={{
               flexShrink: 1,
               flexGrow: 0,
@@ -86,7 +85,7 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
           />
         )}
       </Link>
-      {children && (
+      {children && isActive && (
         <NavList sx={{ paddingBottom: '8px', paddingTop: '8px' }}>
           {children.map((item) => (
             <NavItem key={item.path} item={item} currentLocation={currentLocation} lvl={lvl + 1} />
