@@ -12,12 +12,10 @@ export function SecondaryNav({ navData = secondaryNavSampleData, currentLocation
 
   useEffect(() => {
     function markActive(node) {
-      console.log('node:', node)
       node.isTest = true
       if (node.children) {
         const activeChild = node.children.find((node) => currentLocation.pathname.startsWith(node.path))
         if (activeChild) {
-          console.log('setting isActive for %o', activeChild)
           activeChild.isActive = true
           markActive(activeChild)
         }
@@ -25,7 +23,6 @@ export function SecondaryNav({ navData = secondaryNavSampleData, currentLocation
     }
 
     if (secondaryNavData && currentLocation) {
-      console.log('currentLocation.pathname:', currentLocation.pathname)
       const rootPath = `/${currentLocation.pathname
         .split('/')
         .filter((_) => _) // Quick way to get rid of falsy items in the array
