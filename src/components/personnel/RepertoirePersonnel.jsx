@@ -29,7 +29,7 @@ export default function RepertoirePersonnel() {
         nodes {
           name
           childImageSharp {
-            gatsbyImageData(width: 80, height: 80, formats: WEBP)
+            gatsbyImageData(width: 400, height: 400, formats: WEBP)
           }
         }
       }
@@ -82,7 +82,7 @@ export default function RepertoirePersonnel() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ px: 2, maxWidth: 1000, mx: 'auto' }}>
+      <Box sx={{ px: { xs: 2, sm: 4, md: 6 }, py: 2 }}>
 
         <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mb: 3 }}>
           <TextField
@@ -295,12 +295,27 @@ export default function RepertoirePersonnel() {
                 </Grid>
 
                 <Grid item xs={12} md={4} xl={4}>
-                  <Typography
-                    variant="subtitle2"
-                  >
-                    {ucfirst(person.bibliotheque)}
-                  </Typography>
+                  {person.bibliotheque
+                    ?.split(';')
+                    .map((nom, index) => (
+                      <Typography
+                        key={index}
+                        variant="subtitle2"
+                        sx={{
+                          overflow: 'hidden',
+                          color: ' #222930',
+                          textOverflow: 'ellipsis',
+                          fontSize: '16px',
+                          fontStyle: 'normal',
+                          fontWeight: ' 400',
+                          lineHeight: '120%',
+                        }}
+                      >
+                        {ucfirst(nom.trim())}
+                      </Typography>
+                    ))}
                 </Grid>
+
               </Grid>
             </Box>
           ))}

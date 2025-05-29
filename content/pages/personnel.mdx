@@ -1,17 +1,8 @@
-import React from 'react';
-import { Box, Typography } from '@mui/material';
-import RepertoirePersonnel from '@/components/personnel/RepertoirePersonnel.jsx';
+---
+title: Répertoire du personnel
+slug: personnel
+---
 
+import RepertoirePersonnel from '@/components/personnel/RepertoirePersonnel.jsx'
 
-const PersonnelPage = () => {
-  return (
-    <Box>
-      {/* Contenu principal */}
-      <Box sx={{ px: { xs: 2, sm: 4, md: 6 }, py: 2 }}>
-        <RepertoirePersonnel />
-      </Box>
-    </Box>
-  );
-};
-
-export default PersonnelPage;
+<RepertoirePersonnel />
