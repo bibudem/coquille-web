@@ -1,6 +1,5 @@
-import { styled, Typography } from '@mui/material'
+import { Box, styled, Typography } from '@mui/material'
 import { Chats, PaperPlaneTilt, Phone, Siren, YoutubeLogo } from '@phosphor-icons/react'
-import Div from '@/components/utils/Div'
 import { useSmall } from '@/hooks/use-small'
 
 import BibFooterLink from './FooterLink'
@@ -23,7 +22,7 @@ const FooterLink = styled(BibFooterLink)({
 
 function Col({ sx, children, ...props }) {
   return (
-    <Div
+    <Box
       {...props}
       sx={{
         display: 'flex',
@@ -33,7 +32,7 @@ function Col({ sx, children, ...props }) {
       }}
     >
       {children}
-    </Div>
+    </Box>
   )
 }
 
@@ -59,7 +58,7 @@ export default function LocalFooter() {
 
   return (
     <FooterContainer sx={{ backgroundColor: 'bleuFonce.main', color: 'bleuFonce.contrastText' }}>
-      <Div
+      <Box
         sx={(theme) => ({
           display: 'flex',
           ...(isSmall && {
@@ -69,14 +68,14 @@ export default function LocalFooter() {
           alignItems: 'stretch',
           padding: theme.spacing(3, 8, 3, 3.25),
           [theme.breakpoints.up('md')]: {
-            padding: '0 64px',
+            padding: '24px 64px',
           },
           justifyContent: 'space-between',
         })}
       >
         {isSmall && (
           <Col>
-            <Div
+            <Box
               sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', sm: 'row' },
@@ -100,7 +99,7 @@ export default function LocalFooter() {
                   }}
                 />
               </FooterLink>
-            </Div>
+            </Box>
           </Col>
         )}
         <Col>
@@ -129,23 +128,23 @@ export default function LocalFooter() {
             <YoutubeLogo color="currentColor" size={28} />
             YouTube
           </FooterLink>
-          <Div>
+          <Box>
             <FooterLink to="tel:+1514347771">
               <Siren color="#f04e24" size={28} />
               Urgence 514 343-7771
             </FooterLink>
-          </Div>
+          </Box>
         </Col>
         <Col>
           <Header>À propos</Header>
-          <Div
+          <Box
             sx={{
               display: 'flex',
               flexDirection: 'column',
               gap: '16px',
             }}
           >
-            <Div
+            <Box
               sx={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -186,12 +185,12 @@ export default function LocalFooter() {
                   <FooterLink to="#">Accessibilité Web</FooterLink>
                 </li>
               </Ul>
-            </Div>
-          </Div>
+            </Box>
+          </Box>
         </Col>
         {!isSmall && (
           <Col>
-            <Div
+            <Box
               sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', sm: 'row' },
@@ -214,10 +213,10 @@ export default function LocalFooter() {
                   }}
                 />
               </FooterLink>
-            </Div>
+            </Box>
           </Col>
         )}
-      </Div>
+      </Box>
     </FooterContainer>
   )
 }
