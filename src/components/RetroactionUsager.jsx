@@ -1,26 +1,28 @@
 import { Box, Container } from '@mui/material'
+import LayoutContainer from '@/components/utils/LayoutContainer'
 
 export default function RetroactionUsager() {
   return (
-    <Container>
+    <Box
+      component="aside"
+      sx={{
+        my: 4,
+      }}
+    >
       <Box
-        component="aside"
-        sx={{
-          '--md-sys-typescale-label-large-size': '.875em',
-          '--bib-comp-retroaction-usager-title-weight': 600,
-          my: 4,
-        }}
+        sx={(theme) => ({
+          padding: 2,
+          bgcolor: 'grey.100',
+          borderRadius: theme.shape.corner['extra-small'],
+        })}
       >
-        <Box
-          sx={(theme) => ({
-            padding: 2,
-            bgcolor: 'grey.100',
-            borderRadius: theme.shape.corner['extra-small'],
-          })}
-        >
-          <bib-retroaction-usager />
-        </Box>
+        <bib-retroaction-usager
+          style={{
+            '--bib-comp-retroaction-usager-title-weight': 600,
+            '--md-sys-typescale-label-large-size': '.875em',
+          }}
+        />
       </Box>
-    </Container>
+    </Box>
   )
 }

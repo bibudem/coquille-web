@@ -63,9 +63,9 @@ export default function ListePersonnel() {
   const fallbackPicturesFile = data.allFile.nodes.find((node) => node.name === '_profile')
 
   data.allListePersonnelXlsxSheet1.nodes.forEach(({ courriel, disciplines, fonction, nom, photo: photoId, prenom }) => {
-    disciplines = disciplines.split(/\s*\|\s*/)
+    disciplines = disciplines?.split(/\s*\|\s*/) ?? []
 
-    photoId = photoId.replace(/\.\w+$/, '')
+    photoId = photoId?.replace(/\.\w+$/, '')
     const file = data.allFile.nodes.find((node) => node.name === photoId) || fallbackPicturesFile
     const photo = getImage(file.photo)
     const thumb = getImage(file.thumb)

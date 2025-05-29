@@ -38,6 +38,7 @@ export function recursiveMenu(routes) {
           id: item.parent,
           pathname: null,
           paths: null,
+          test: 'toto',
           parent: paths.length > 2 ? paths[paths.length - 3] : null
         })
       }
@@ -46,7 +47,7 @@ export function recursiveMenu(routes) {
     }, [])
     .filter(route => route.navTitle)
 
-  console.log('createItemsFromPathnames:', createItemsFromPathnames)
+  console.log('................................................................................................................................................ createItemsFromPathnames:', createItemsFromPathnames)
 
   function createRecursiveMenu(array, parent) {
     let result = []

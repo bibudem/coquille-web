@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react'
-import { Collapse, Link, styled } from '@mui/material'
+import { Link, styled } from '@mui/material'
 import { CaretRight } from '@phosphor-icons/react'
 import NavList from './NavList'
 
-const StyledLi = styled('li')(({ theme }) => ({
+const StyledLi = styled('li')({
   margin: 0,
   padding: 0,
-}))
+})
 
 export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
-  const { title, route, isActive = false, children = false } = item
-
+  const { title, path, isActive = false, children = false } = item
   const [linkStyles, setLinkStyles] = useState({})
 
   const LINK_STYLES_BASE = {
@@ -59,12 +58,13 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
     <StyledLi className={`bib-nav2-item lvl-${lvl} ${isActive ? 'is-active' : ''}`}>
       <Link
         col
-        href={route}
+        href={path}
         className={`bib-nav2-item-link lvl-${lvl} ${isActive && 'is-active'}`}
         sx={{
           ...(lvl > 0 && { paddingLeft: '0.8125rem' }),
           justifyContent: 'space-between',
           ...linkStyles,
+          ...(!children && { paddingRight: '1.5rem' }),
           ...(isActive && { color: 'var(--bib-palette-bleuPrincipal-main)' }),
         }}
         {...props}
@@ -72,8 +72,8 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
         {title}
         {children && (
           <CaretRight
-            size="1.5rem"
-            color={isActive ? 'var(--bib-palette-bleuPrincipal-main)' : 'inherit'}
+            size="24px"
+            color={isActive ? 'var(--bib-palette-bleuPrincipal-main)' : 'currentColor'}
             style={{
               flexShrink: 1,
               flexGrow: 0,
@@ -85,10 +85,10 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
           />
         )}
       </Link>
-      {children && (
-        <NavList sx={{ paddingBottom: '8px' }}>
+      {children && isActive && (
+        <NavList sx={{ paddingBottom: '8px', paddingTop: '8px' }}>
           {children.map((item) => (
-            <NavItem key={item.route} item={item} currentLocation={currentLocation} lvl={lvl + 1} />
+            <NavItem key={item.path} item={item} currentLocation={currentLocation} lvl={lvl + 1} />
           ))}
         </NavList>
       )}

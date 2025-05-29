@@ -2,7 +2,7 @@ import { writeFileSync } from 'fs'
 import { dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
 import { createFilePath } from 'gatsby-source-filesystem'
-import getRecursiveMenu from './lib/getRecursiveMenu.js'
+import getMenu from './lib/getMenu.js'
 import createNodes from './utils/createNodes.js'
 import markRoots from './utils/markRoots.js'
 import getTree from './utils/getTree.js'
@@ -69,7 +69,7 @@ export const createPages = async ({ graphql }) => {
     return errors
   }
 
-  const secondaryNavData = getRecursiveMenu([...data.allSiteNavigation.nodes])
+  const secondaryNavData = getMenu([...data.allSiteNavigation.nodes])
 
   writeFileSync(navigationFilePath, JSON.stringify(secondaryNavData))
 }

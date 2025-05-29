@@ -7,7 +7,7 @@ import { ThemeProvider, extendTheme, responsiveFontSizes } from '@mui/material/s
 // export const theme = extendTheme(tokens)
 
 import { themeLvl1, themeLvln } from './tokens'
-import GlobalStyles from './GlobalStyles'
+import GlobalStyles from './global-styles/GlobalStyles'
 
 export function BibThemeLvl1({ darkMode, children, ...props }) {
 	// take away SSR rendered mode;

@@ -1,6 +1,11 @@
 import getPageAttrs from './getPageAttrs.js'
 import getNormalPath from './getNormalPath.js'
 
+function isRoot(path) {
+  // Get all paths pointing to a section
+  return path.endsWith('index.mdx') && path.replace(/^content\/pages\//i, '').split('/').filter(item => item).length === 2
+}
+
 export default function getMenuData(tree, links = []) {
 
   const { path, type, children: children = [] } = tree
@@ -17,24 +22,19 @@ export default function getMenuData(tree, links = []) {
 
   if (pageAttrs) {
     const { title, order, hidden } = pageAttrs
+    // const lvl = getNormalPath(path).split('/').filter(item => item).length
 
     links.push({
       path: getNormalPath(path),
       title,
       order,
       hidden,
-      isRoot: path.endsWith('index.mdx'),
+      isRoot: isRoot(path),
+      // lvl
     })
   }
 
   return links
-}
-
-function sortFn(item1, item2) {
-  const { order: sortOrder1 = Infinity } = item1
-  const { order: sortOrder2 = Infinity } = item2
-
-  return sortOrder1 - sortOrder2
 }
 
 
