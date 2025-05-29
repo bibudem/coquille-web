@@ -1,9 +1,8 @@
+import { Box, ButtonBase } from '@mui/material'
 import Grid from '@mui/material/Grid2'
-import Div from '@/components/utils/Div'
 import { useSmall } from '@/hooks/use-small'
 import FooterLink from './FooterLink'
 import FooterContainer from './FooterContainer'
-import { ButtonBase } from '@mui/material'
 
 function Copyright() {
   const namespaces = {
@@ -21,7 +20,7 @@ function Copyright() {
 }
 
 function Divider() {
-  return <Div flexItem aria-hidden="true" sx={{ borderRight: '1px solid currentColor', height: '1lh' }} />
+  return <Box flexItem aria-hidden="true" sx={{ borderRight: '1px solid currentColor', height: '1lh' }} />
 }
 
 export default function FooterTail() {
@@ -39,7 +38,7 @@ export default function FooterTail() {
         backgroundColor: isSmall ? 'bleuFonce.main' : 'bleuPrincipal.main',
       }}
     >
-      <Div
+      <Box
         sx={{
           padding: '8px 24px',
           width: '100%',
@@ -61,20 +60,20 @@ export default function FooterTail() {
         }}
       >
         {!isSmall && (
-          <Div>
+          <Box>
             <Copyright />
-          </Div>
+          </Box>
         )}
         {!isSmall && <Divider />}
-        <Div>
-          <FooterLink to="#">Confidentialité</FooterLink>
-        </Div>
+        <Box>
+          <FooterLink to="https://vie-privee.umontreal.ca/confidentialite/">Confidentialité</FooterLink>
+        </Box>
         {!isSmall && <Divider />}
         <Grid>
-          <FooterLink to="#">Conditions d'utilisation</FooterLink>
+          <FooterLink to="/conditions-utilisation">Conditions d'utilisation</FooterLink>
         </Grid>
         {!isSmall && <Divider />}
-        <Div>
+        <Box>
           <ButtonBase
             sx={{
               textDecoration: 'none',
@@ -87,13 +86,13 @@ export default function FooterTail() {
           >
             Paramètres des témoins
           </ButtonBase>
-        </Div>
+        </Box>
         {isSmall && (
-          <Div>
+          <Box>
             <Copyright />
-          </Div>
+          </Box>
         )}
-      </Div>
+      </Box>
     </FooterContainer>
   )
 }
