@@ -1,13 +1,14 @@
 import { useState, useMemo } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import {
-   Avatar, Link,  TextField, MenuItem, Pagination
+  Avatar, Link, TextField, MenuItem, Pagination
 } from '@mui/material'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { Email, Chat,Search } from '@mui/icons-material'
+import { Search } from '@mui/icons-material'
+import { EnvelopeSimple, ChatsCircle, Phone } from '@phosphor-icons/react'
 import InputAdornment from '@mui/material/InputAdornment'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import tokens from '../../../plugins/gatsby-plugin-bib-theme/tokens/tokens.js'
@@ -16,6 +17,10 @@ import { frFR } from '@mui/x-data-grid/locales'
 
 const theme = createTheme(tokens, frFR)
 const ITEMS_PER_PAGE = 8
+
+function ucfirst(str = '') {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
 
 export default function RepertoirePersonnel() {
   const data = useStaticQuery(graphql`
@@ -36,7 +41,10 @@ export default function RepertoirePersonnel() {
           fonction
           disciplines
           courriel
+          telephone
+          teams
           photo
+          bibliotheque
         }
       }
     }
@@ -75,54 +83,41 @@ export default function RepertoirePersonnel() {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ px: 2, maxWidth: 1000, mx: 'auto' }}>
-        <Typography
-          variant="h3"
-          gutterBottom
-          sx={{
-            color: '#0B113A',
-            fontFamily: 'var(--titres-H1-police, Figtree)',
-            fontSize: '61px',
-            fontStyle: 'normal',
-            fontWeight: 400,
-            lineHeight: '120px',
-          }}
-        >
-          Notre équipe
-        </Typography>
 
         <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mb: 3 }}>
           <TextField
-              placeholder="Chercher un nom, une discipline, etc."
-              variant="outlined"
-              size="small"
-              fullWidth
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value)
-                setPage(1)
-              }}
-              sx={{
-                display: 'flex',
-                padding: '8px',
-                alignItems: 'center',
-                gap: '12px',
+            placeholder="Chercher par nom ou prénom"
+            variant="outlined"
+            size="small"
+            fullWidth
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value)
+              setPage(1)
+            }}
+            sx={{
+              height: '45px',
+              alignItems: 'center',
+              gap: '12px',
+              borderRadius: '16px',
+              ml: { xs: 0, md: '20%' },
+              border: '1px solid #666666',
+              '& .MuiOutlinedInput-root': {
                 borderRadius: '16px',
-                border: '1px solid #666666',
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: '16px',
-                },
-                '& fieldset': {
-                  border: 'none',
-                },
-              }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Search sx={{ color: 'action.active' }} />
-                  </InputAdornment>
-                ),
-              }}
-            />
+              },
+              '& fieldset': {
+                border: 'none',
+              },
+            }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Search sx={{ color: 'action.active' }} />
+                </InputAdornment>
+              ),
+            }}
+          />
+
           <TextField
             select
             placeholder="Bibliothèque ou Direction"
@@ -135,20 +130,19 @@ export default function RepertoirePersonnel() {
               setPage(1)
             }}
             sx={{
-                display: 'flex',
-                padding: '8px',
-                marginLeft: '10px',
-                alignItems: 'center',
-                gap: '12px',
+              height: '45px',
+              ml: { xs: 0, md: '10px' },
+              alignItems: 'center',
+              gap: '12px',
+              borderRadius: '16px',
+              border: '1px solid #666666',
+              '& .MuiOutlinedInput-root': {
                 borderRadius: '16px',
-                border: '1px solid #666666',
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: '16px',
-                },
-                '& fieldset': {
-                  border: 'none',
-                },
-              }}
+              },
+              '& fieldset': {
+                border: 'none',
+              },
+            }}
           >
             <MenuItem value="">Toutes les disciplines</MenuItem>
             {allDisciplines.map((d) => (
@@ -159,118 +153,166 @@ export default function RepertoirePersonnel() {
 
         <Stack spacing={3}>
           {paginatedRows.map(person => (
-            <Box key={person.id} 
-              sx={{ 
-                padding: '2rem', 
+            <Box
+              key={person.id}
+              sx={{
+                padding: '2rem',
                 marginTop: '1rem',
-                borderRadius: 2, 
-                backgroundColor: '#f9f9f9', 
-                boxShadow: 1 }}>
+                borderRadius: 2,
+                backgroundColor: '#f9f9f9',
+                boxShadow: 1,
+              }}
+            >
               {/* Ligne image + nom/prénom */}
-              <Stack direction="row" spacing={2} alignItems="center">
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} alignItems="center">
                 <Avatar sx={{ width: 100, height: 100 }}>
                   <GatsbyImage image={person.photo} alt={`${person.prenom} ${person.nom}`} style={{ width: '100%', height: '100%' }} />
                 </Avatar>
-                <Typography variant="h6"
+                <Typography
                   sx={{
-                      padding: '2rem',
-                      marginTop: '1rem',
-                      fontSize: '24px',
-                      fontStyle: 'normal',
-                      fontWeight: ' 600',
-                      lineHeight: '120%'
-                    }}
-                >{person.prenom} {person.nom}
+                    padding: '2rem',
+                    marginTop: '1rem',
+                    fontSize: '1.5rem',
+                    fontStyle: 'normal',
+                    fontWeight: '600',
+                    lineHeight: '120%',
+                  }}
+                >
+                  {person.prenom} {person.nom}
                 </Typography>
               </Stack>
 
               {/* Ligne à 3 colonnes */}
               <Grid container spacing={2} sx={{ mt: 2 }}>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={4} xl={4}>
                   <Typography
-                      variant="subtitle2"
-                      color="text.secondary"
-                      sx={{
-                        fontSize: '18px',
-                        fontWeight: '600',
-                        lineHeight: '160%',
-                      }}
-                    >
-                      {person.fonction.charAt(0).toUpperCase() + person.fonction.slice(1)}
-                    </Typography>
+                    variant="subtitle2"
+                    sx={{
+                      color: '#222930',
+                      fontSize: '18px',
+                      fontWeight: '600',
+                      lineHeight: '160%',
+                    }}
+                  >
+                    {ucfirst(person.fonction)}
+                  </Typography>
 
                   <Typography
-                      variant="body2"
-                      sx={{
-                        color: ' #222930',
-                        fontSize: '16px',
-                        fontStyle: 'normal',
-                        fontWeight: '400',
-                        lineHeight: '120%',
-                      }}
-                    >
-                      {(person.disciplines || '').split('|').join(', ')}
-                    </Typography>
+                    variant="body2"
+                    sx={{
+                      color: '#222930',
+                      fontSize: '16px',
+                      fontStyle: 'normal',
+                      fontWeight: '300',
+                      lineHeight: '120%',
+                    }}
+                  >
+                    {(person.disciplines || '').split('|').join(', ')}
+                  </Typography>
                 </Grid>
 
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={4} xl={4}>
                   <Stack spacing={2}>
-                    <Link
-                      href={`mailto:${person.courriel}`}
-                      underline="hover"
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        marginLeft:'25px',
-                        overflow: 'hidden',
-                        color: ' #0057AC',
-                        textOverflow: 'ellipsis',
-                        fontSize: '16px',
-                        fontStyle: 'normal',
-                        fontWeight: '400',
-                        lineHeight: '120%',
-                        textDecorationLine: 'underline',
-                        textDecorationStyle: 'solid',
-                      }}
-                    >
-                      <Email fontSize="small" sx={{ mr: 0.5 }} /> {person.courriel}
-                    </Link>
-                    <Link
-                      href="https://teams.microsoft.com"
-                      underline="hover"
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        marginLeft:'25px',
-                        marginTop:'5px',
-                        overflow: 'hidden',
-                        color: ' #0057AC',
-                        textOverflow: 'ellipsis',
-                        fontSize: '16px',
-                        fontStyle: 'normal',
-                        fontWeight: '400',
-                        lineHeight: '120%',
-                        textDecorationLine: 'underline',
-                        textDecorationStyle: 'solid',
-                      }}
-                    >
-                      <Chat fontSize="small" sx={{ mr: 0.5 }} /> Teams
-                    </Link>
-                  </Stack>
+                    {person.telephone && (
+                      <Link
+                        href={`tel:${person.telephone}`}
+                        underline="hover"
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          marginLeft: '10px',
+                          marginBottom: '10px',
+                          overflow: 'hidden',
+                          color: '#0057AC',
+                          textOverflow: 'ellipsis',
+                          fontSize: '16px',
+                          fontStyle: 'normal',
+                          fontWeight: '400',
+                          textDecorationLine: 'underline',
+                          textDecorationStyle: 'solid',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <Phone size={20} color="#0057AC" style={{ marginRight: 4 }} />
+                        {person.telephone}
+                      </Link>
+                    )}
 
+                    {person.teams && (
+                      <Box
+                        onClick={() => {
+                          // lien Teams basique
+                          window.open(person.teams, '_blank')
+                        }}
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          marginLeft: '10px',
+                          marginBottom: '10px',
+                          marginTop: '5px',
+                          overflow: 'hidden',
+                          color: '#0057AC',
+                          fontSize: '16px',
+                          fontStyle: 'normal',
+                          fontWeight: '400',
+                          textDecoration: 'underline',
+                          cursor: 'pointer',
+                          userSelect: 'none',
+                        }}
+                        role="button"
+                        tabIndex={0}
+                        onKeyPress={e => {
+                          if (e.key === 'Enter') window.open(person.teams, '_blank')
+                        }}
+                      >
+                        <ChatsCircle size={20} color="#0057AC" style={{ marginRight: 4 }} />
+                        Discussion Teams
+                      </Box>
+                    )}
+
+                    {person.courriel && (
+                      <Link
+                        href={`mailto:${person.courriel}`}
+                        underline="hover"
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          marginLeft: '10px',
+                          overflow: 'hidden',
+                          color: '#0057AC',
+                          textOverflow: 'ellipsis',
+                          fontSize: '16px',
+                          fontStyle: 'normal',
+                          fontWeight: '400',
+                          textDecorationLine: 'underline',
+                          textDecorationStyle: 'solid',
+                        }}
+                      >
+                        <EnvelopeSimple size={20} color="#0057AC" style={{ marginRight: 4 }} /> {person.courriel}
+                      </Link>
+                    )}
+                  </Stack>
+                </Grid>
+
+                <Grid item xs={12} md={4} xl={4}>
+                  <Typography
+                    variant="subtitle2"
+                  >
+                    {ucfirst(person.bibliotheque)}
+                  </Typography>
                 </Grid>
               </Grid>
             </Box>
           ))}
         </Stack>
 
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4}}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
           <Pagination
             count={Math.ceil(filteredRows.length / ITEMS_PER_PAGE)}
             page={page}
             onChange={(_, value) => setPage(value)}
             color="primary"
-            sx={{  marginTop:'4rem' }}
+            sx={{ marginTop: '4rem' }}
           />
         </Box>
       </Box>
