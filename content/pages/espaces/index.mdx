@@ -40,8 +40,8 @@ import tableHaute from '../images/table-haute.webp'
     tabs={['Salles et espaces pour se concentrer', 'Salles de travail en équipe', 'Salle pour les cycles supérieurs']}
   >
     <Carousel1
-      title={<Typography component="h2">À chacun sa bulle</Typography>}
-      description="Besoin de concentration pour étudier? Salles d'étude individuelles ou cabines insonorisée, vous n'avez qu'à réserver!"
+      title={<Typography component="h2">Bien dans sa bulle</Typography>}
+      description="Besoin de concentration pour étudier? Salles d'étude individuelles ou cabines insonorisées, vous n'avez qu'à réserver!"
       moreText="Réserver une salle"
       moreHref="https://calendrier.bib.umontreal.ca/r/new"
     >
@@ -56,7 +56,6 @@ import tableHaute from '../images/table-haute.webp'
         title="Cabines insonorisées"
         Image={cabine}
       >
-        <p>Disponibles :</p>
         <ul>
           <li>Bibliothèque de droit</li>
           <li>Bibliothèque de kinésiologie</li>
@@ -71,9 +70,7 @@ import tableHaute from '../images/table-haute.webp'
         title="Salles silencieuses"
         Image={cabine}
         >
-        <p>Disponibles :</p>
         <ul>
-          <li>À déterminer</li>
           <li>Bibliothèque du campus de Laval</li>
           <li>Bibliothèque de droit</li>
           <li>Bibliothèque Marguerite-d'Youville</li>
@@ -92,14 +89,14 @@ import tableHaute from '../images/table-haute.webp'
       moreHref="https://calendrier.bib.umontreal.ca/r/new"
     >
     <FlipCardWithImage
-        title="Salles de travail 3 à 4 personnes"
+        title="Salles de travail pour 3 à 4 personnes"
         Image={salleEquipe}
       >
         <p>Disponibles dans presque toutes les bibliothèques</p>
       </FlipCardWithImage>
 
       <FlipCardWithImage
-        title="Salle de travail 4 à 8 personnes"
+        title="Salles de travail pour 4 à 8 personnes"
         Image={grandeSalleEquipe}
       >
         <p>Disponibles :</p>
@@ -115,7 +112,7 @@ import tableHaute from '../images/table-haute.webp'
       >
         <p>Disponibles :</p>
         <ul>
-          <li>À déterminer</li>
+          <li>Bibliothèque de Mathématiques et informatique</li>
         </ul>
       </FlipCardWithImage>
 
@@ -128,7 +125,7 @@ import tableHaute from '../images/table-haute.webp'
       moreHref="https://calendrier.bib.umontreal.ca/r/new"
     >
     <FlipCardWithImage
-        title="Salles de travail individuelles - cycles supérieurs"
+        title="Salles de travail individuel - cycles supérieurs"
         Image={salleCycleSup}
       >
         <p>Disponibles à la Bibliothèques des lettres et sciences humaines pour toutes les personnes des cycles supérieurs</p>
@@ -138,7 +135,6 @@ import tableHaute from '../images/table-haute.webp'
         title="Salle de travail - maîtrise en droit"
         Image={salleMaitrise}
       >
-        <p>Disponibles :</p>
         <ul>
           <li>Pour les personnes de la maitrise en droit seulement</li>
           
@@ -195,24 +191,25 @@ import tableHaute from '../images/table-haute.webp'
 <Section bg="bleu100">
 
 <Carousel1
-    title={<Typography component="h2">Un esprit sain dans un corps sain sans un corps sain</Typography>}
+    title={<Typography component="h2">Un esprit sain dans un corps sain</Typography>}
     description="Étudier sans y laisser la forme, c’est tout un défi! Pour vous aider, nous vous proposons une panoplie de vélos-pupitres, chaise-ballons, planches d’équilibre, tables à hauteur ajustable. Faites de l’exercice tout en musclant votre cerveau!"
   >
    <FlipCardWithImage
-        title="Vélo-pupitre"
+        title="Vélos-pupitres"
         Image={veloPupitre}
       >
-        <p>Disponibles:</p>
+    <ul>
         <li>Bibliothèque du campus Laval</li>
     <li>Bibliothèque de droit</li>
     <li>Bibliothèque Marguerite-d'Youville</li>
     <li>Bibliothèque de médecine vétérinaire</li>
     <li>Bibliothèque Thérèse-Gouin-Décarie</li>
     <li>Bibliothèque de la santé</li>
+    </ul>
       </FlipCardWithImage>
 
     <FlipCardWithImage
-        title="Pédalier"
+        title="Pédaliers"
         Image={pedalier}
       >
         <p>Disponibles dans presque toutes les bibliothèques</p>
@@ -222,14 +219,13 @@ import tableHaute from '../images/table-haute.webp'
         title="Station ergonomique"
         Image={stationErgo}
       >
-        <p>Disponibles à la Bibliothèque de droit</p>
+        <p>Disponible à la Bibliothèque de droit</p>
 
     </FlipCardWithImage>
     <FlipCardWithImage
-        title="Disque d'équilibre "
+        title="Disques d'équilibre "
         Image={disqueEquilibre}
       >
-        <p>Disponibles :</p>
         <ul>
           <li>Bibliothèque d'aménagement</li>
           <li>Bibliothèque du campus Laval </li>
@@ -241,7 +237,6 @@ import tableHaute from '../images/table-haute.webp'
       title="Planche d'équilibre "
       Image={placheEquilibre}
     >
-        <p>Disponibles :</p>
         <ul>
           <li>Bibliothèque d'aménagement </li>
           <li>Bibliothèque du campus Laval </li>
@@ -269,7 +264,6 @@ import tableHaute from '../images/table-haute.webp'
         title="Chaise ballon avec dossier "
         Image={salleDoctorat}
       >
-        <p>Disponibles :</p>
         <ul>
           <li>Bibliothèque de Kinésiologie</li> 
           <li>Bibliothèque de médecine vétérinaire</li> 
@@ -341,7 +335,7 @@ import tableHaute from '../images/table-haute.webp'
 
 <Grid container spacing=".62rem" sx={{margin:'4rem 0 4rem'}}>
 <Typography component="h3" variant="h3">
-  Entrez dans le mode du multimédia
+  Entrez dans le monde du multimédia
 </Typography>
 <Typography>Qu’il s’agisse d’enregistrement audio, d’édition numérique, de montage vidéo ou de visualisation de données, nos studios vous ouvrent les portes d’un univers numérique en pleine expansion!</Typography>
     <Grid>
@@ -390,7 +384,7 @@ import tableHaute from '../images/table-haute.webp'
   >
     <Typography component='h2' variant='h2'> Des lieux accessibles</Typography>
     
-    La Bibliothèque des lettres et sciences humaines et la bibliothèque des sciences offrent chacune une salle mettant à votre disposition des équipements et des logiciels spécialisés afin d’adapter l’expérience en bibliothèque à vos besoins et de vous accompagner dans votre réussite.
+    La Bibliothèque des lettres et sciences humaines et la Bibliothèque Hubert-Reeves offrent chacune une salle mettant à votre disposition des équipements et des logiciels spécialisés afin d’adapter l’expérience en bibliothèque à vos besoins et de vous accompagner dans votre réussite.
 
   </HeroWithImage>
 </Section>
