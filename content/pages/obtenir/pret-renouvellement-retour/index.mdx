@@ -3,6 +3,14 @@ title: Prêt, renouvellement retour
 slug: pret-renouvellement-retour
 ---
 import Liste from '@/components/Liste'
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
 
 # Prêt, renouvellement, retour
 
@@ -71,11 +79,30 @@ Le renouvellement est automatique pour la plupart des types de documents. Le ren
 
 ### Exceptions au renouvellement automatique
 
-| Type de document | Renouvellement permis |
-|------------------|------------------------|
-| Ordinateur portable en prêt courte durée | 1 seul renouvellement automatique |
-| Documents de la réserve, matériel informatique, documents en prêt de 3 jours | Aucun renouvellement |
-| Documents empruntés par la communauté liée aux ententes avec les cégeps | Aucun renouvellement |
+<TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Type de document</TableCell>
+            <TableCell align="right">Renouvellement permis</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableCell>Ordinateur portable en prêt courte durée</TableCell>
+            <TableCell align="right">1 seul renouvellement automatique</TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableCell>Documents de la réserve, matériel informatique, documents en prêt de 3 jours</TableCell>
+            <TableCell align="right">Aucun renouvellement</TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableCell>Documents empruntés par la communauté liée aux ententes avec les cégeps</TableCell>
+            <TableCell align="right">Aucun renouvellement</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
 
 ## Retourner ses documents
 
