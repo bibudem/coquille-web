@@ -1,5 +1,6 @@
 import { extendTheme, responsiveFontSizes } from '@mui/material/styles'
 import { darken, lighten, getContrastRatio } from '@mui/material/styles'
+import typography from './typography-lvl-1'
 
 //
 // Couleur principale
@@ -69,6 +70,7 @@ export const secondaryColors = {
 }
 
 const tokens = {
+	typography,
 	breakpoints: {
 		values: {
 			xs: 0,
@@ -249,11 +251,17 @@ const tokens = {
 			 * 
 			 * @see https://fluidtypography.com/#app-get-started
 			*/
-			styleOverrides: (theme) => `
-				:root {
-					--bib-comp-retroaction-usager-size: ${theme.typography.body2.fontSize};
-				}
-			`
+		styleOverrides: (theme) => ({
+			':root': {
+			'--bib-comp-retroaction-usager-size': theme.typography.body2.fontSize,
+			},
+				h1: { ...theme.typography.h1 },
+				h2: { ...theme.typography.h2 },
+				h3: { ...theme.typography.h3 },
+				h4: { ...theme.typography.h4 },
+				h5: { ...theme.typography.h5 },
+				h6: { ...theme.typography.h6 },
+			}),
 		},
 		MuiDivider: {
 			defaultProps: {

@@ -1,23 +1,22 @@
-import { extendTheme } from '@mui/material/styles';
-import tokens from './tokens.js';
-import typographyLvl1 from './typography-lvl-1.js';
-import typographyLvln from './typography-lvl-n.js';
-
-const baseConfig = {
-  ...tokens,
-  cssVarPrefix: 'bib'
-};
+import { extendTheme, responsiveFontSizes } from '@mui/material/styles'
+import tokens from './tokens.js'
+import typographyLvl1 from './typography-lvl-1.js'
+import typographyLvln from './typography-lvl-n.js'
 
 export const themeLvl1 = extendTheme({
-  ...baseConfig,
-  typography: typographyLvl1
-});
+  ...tokens,
+  typography: {
+    ...typographyLvl1
+  }
+})
+
+themeLvl1.typography.display1[themeLvl1.breakpoints.up('md')] = {
+  fontSize: '6.6875rem',
+}
 
 export const themeLvln = extendTheme({
-  ...baseConfig,
-  typography: typographyLvln
-});
-
-// Option pour les fontes responsives
-// export const responsiveThemeLvl1 = responsiveFontSizes(themeLvl1);
-// export const responsiveThemeLvln = responsiveFontSizes(themeLvln);
+  ...tokens,
+  typography: {
+    ...typographyLvln
+  }
+})

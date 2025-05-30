@@ -1,156 +1,215 @@
 const fontStack = '"Figtree", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif';
 const loraStack = '"Lora", Georgia, serif';
 
+// Propriétés communes à toutes les variantes typographiques
 const baseTypography = {
   fontFeatureSettings: "'liga' off, 'clig' off",
   fontVariantNumeric: 'lining-nums tabular-nums',
-  fontStyle: 'normal'
+  fontStyle: 'normal',
+  margin: 0 // Ajout pour éviter les marges par défaut indésirables
 };
 
-export default {
+const typography = {
   fontFamily: fontStack,
-  fontSize: 14, // Base pour body (14px)
-  htmlFontSize: 16, // Base pour rem
+  fontSize: 16, // Taille de base (1rem = 16px)
+  htmlFontSize: 16, // Base pour les calculs rem
+  fontWeightLight: 300,
+  fontWeightRegular: 400,
+  fontWeightMedium: 500,
+  fontWeightBold: 700,
 
-  // Hiérarchie typographique
-  h1: {
-    ...baseTypography,
-    fontSize: '2.25rem', // Mobile (36px)
-    fontWeight: 600,
-    lineHeight: 1,
-    '@media (min-width:600px)': { // sm
-      fontSize: '4rem', // Tablet (64px)
-    },
-    '@media (min-width:900px)': { // md
-      fontSize: '6.875rem', // Desktop (110px)
-    }
-  },
-
-  h2: {
-    ...baseTypography,
-    fontSize: '1.75rem', // Mobile (28px)
-    fontWeight: 600,
-    lineHeight: 1.1,
-    '@media (min-width:600px)': {
-      fontSize: '2.875rem', // Tablet (46px)
-    },
-    '@media (min-width:900px)': {
-      fontSize: '3.5rem', // Desktop (56px)
-    }
-  },
-
-  h3: {
-    ...baseTypography,
-    fontSize: '1.5rem', // Mobile (24px)
-    fontWeight: 600,
-    lineHeight: 1.2,
-    '@media (min-width:600px)': {
-      fontSize: '2rem', // Tablet (32px)
-    },
-    '@media (min-width:900px)': {
-      fontSize: '2.25rem', // Desktop (36px)
-    }
-  },
-
-  h4: {
-    ...baseTypography,
-    fontFamily: loraStack,
-    fontSize: '1.25rem', // Mobile (20px)
-    fontWeight: 500,
-    lineHeight: 1.2,
-    '@media (min-width:600px)': {
-      fontSize: '1.5rem', // Tablet (24px)
-    },
-    '@media (min-width:900px)': {
-      fontSize: '1.875rem', // Desktop (30px)
-    }
-  },
-
-  h5: {
-    ...baseTypography,
-    fontSize: '1.125rem', // Mobile (18px)
-    fontWeight: 700,
-    lineHeight: 1.2,
-    '@media (min-width:900px)': {
-      fontSize: '1.375rem', // Desktop (22px)
-    }
-  },
-
-  h6: {
-    ...baseTypography,
-    fontSize: '1rem', // Mobile (16px)
-    fontWeight: 400,
-    lineHeight: 1.2,
-    '@media (min-width:900px)': {
-      fontSize: '1.125rem', // Desktop (18px)
-    }
-  },
-
-  // Textes standards
+   // Variantes de texte standard (requises par MUI)
   body1: {
     ...baseTypography,
-    fontSize: '0.875rem', // 14px
+    fontSize: '1rem', // 16px
     fontWeight: 400,
     lineHeight: 1.5
   },
 
   body2: {
     ...baseTypography,
-    fontSize: '0.75rem', // 12px
+    fontSize: '0.875rem', // 14px
     fontWeight: 400,
-    lineHeight: 1.2
+    lineHeight: 1.5
+  },
+  // Hiérarchie des titres
+  h1: {
+    ...baseTypography,
+    fontSize: '2.25rem!important', // 36px mobile
+    fontWeight: '600!important',
+    lineHeight: 1,
+    '@media (min-width:600px)': { // sm
+      fontSize: '4rem!important', // 64px tablette
+    },
+    '@media (min-width:900px)': { // md
+      fontSize: '6.875rem!important', // 110px desktop
+    }
   },
 
-  // Styles display
+  h2: {
+    ...baseTypography,
+    fontSize: '1.75rem!important', // 28px mobile
+    fontWeight: '600!important',
+    lineHeight: 1.1,
+    '@media (min-width:600px)': {
+      fontSize: '2.875rem!important', // 46px tablette
+    },
+    '@media (min-width:900px)': {
+      fontSize: '3.5rem!important', // 56px desktop
+    }
+  },
+
+  h3: {
+    ...baseTypography,
+    fontSize: '1.5rem!important', // 24px mobile
+    fontWeight: '600!important',
+    lineHeight: 1.2,
+    '@media (min-width:600px)': {
+      fontSize: '2rem!important', // 32px tablette
+    },
+    '@media (min-width:900px)': {
+      fontSize: '2.25rem!important', // 36px desktop
+    }
+  },
+
+  h4: {
+    ...baseTypography,
+    fontFamily: loraStack,
+    fontSize: '1.25rem!important', // 20px mobile
+    fontWeight: '500!important',
+    lineHeight: 1.2,
+    '@media (min-width:600px)': {
+      fontSize: '1.5rem!important', // 24px tablette
+    },
+    '@media (min-width:900px)': {
+      fontSize: '1.875rem!important', // 30px desktop
+    }
+  },
+
+  h5: {
+    ...baseTypography,
+    fontSize: '1.125rem!important', // 18px mobile
+    fontWeight: '700!important',
+    lineHeight: 1.2,
+    '@media (min-width:900px)': {
+      fontSize: '1.375rem!important', // 22px desktop
+    }
+  },
+
+  h6: {
+    ...baseTypography,
+    fontSize: '1rem!important', // 16px mobile
+    fontWeight: '400!important',
+    lineHeight: 1.2,
+    '@media (min-width:900px)': {
+      fontSize: '1.125rem!important', // 18px desktop
+    }
+  },
+
+  subtitle1: {
+    ...baseTypography,
+    fontSize: '1rem',
+    fontWeight: 500,
+    lineHeight: 1.5
+  },
+
+  subtitle2: {
+    ...baseTypography,
+    fontSize: '0.875rem',
+    fontWeight: 500,
+    lineHeight: 1.5
+  },
+
+  button: {
+    ...baseTypography,
+    fontSize: '0.875rem',
+    fontWeight: 500,
+    lineHeight: 1.5,
+    textTransform: 'none' // Désactive la capitalization automatique
+  },
+
+  caption: {
+    ...baseTypography,
+    fontSize: '0.75rem',
+    fontWeight: 400,
+    lineHeight: 1.5
+  },
+
+  overline: {
+    ...baseTypography,
+    fontSize: '0.75rem',
+    fontWeight: 500,
+    lineHeight: 1.5,
+    textTransform: 'uppercase'
+  },
+
+  // Variante personnalisée
+  carteProfilLink: {
+    ...baseTypography,
+    fontSize: '1rem', // 16px
+    fontWeight: 400,
+    color: '#0057AC',
+    textDecoration: 'underline solid',
+    display: 'flex',
+    alignItems: 'center',
+    margin: '0 0 10px 10px',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    cursor: 'pointer'
+  },
+
+  // Styles display personnalisés
   display1: {
     ...baseTypography,
-    fontSize: '2.5rem', // Mobile (40px)
+    fontSize: '2.5rem', // 40px mobile
     fontWeight: 600,
     lineHeight: 1,
     '@media (min-width:600px)': {
-      fontSize: '4rem', // Tablet (64px)
+      fontSize: '4rem', // 64px tablette
     },
     '@media (min-width:900px)': {
-      fontSize: '6.875rem', // Desktop (110px)
+      fontSize: '6.875rem', // 110px desktop
     }
   },
 
   display2: {
     ...baseTypography,
-    fontSize: '2rem', // Mobile (32px)
+    fontSize: '2rem', // 32px mobile
     lineHeight: 1.2,
     '@media (min-width:600px)': {
-      fontSize: '3rem', // Tablet (48px)
+      fontSize: '3rem', // 48px tablette
     },
     '@media (min-width:900px)': {
-      fontSize: '3.8125rem', // Desktop (61px)
+      fontSize: '3.8125rem', // 61px desktop
     }
   },
 
   display3: {
     ...baseTypography,
-    fontSize: '1.75rem', // Mobile (28px)
+    fontSize: '1.75rem', // 28px mobile
     lineHeight: 1.2,
     '@media (min-width:900px)': {
-      fontSize: '2.125rem', // Desktop (34px)
+      fontSize: '2.125rem', // 34px desktop
     }
   },
 
   display4: {
     ...baseTypography,
-    fontSize: '1.5rem', // Mobile (24px)
+    fontSize: '1.5rem', // 24px mobile
     lineHeight: 1.2,
     '@media (min-width:900px)': {
-      fontSize: '1.625rem', // Desktop (26px)
+      fontSize: '1.625rem', // 26px desktop
     }
   },
 
   display5: {
     ...baseTypography,
-    fontSize: '1.375rem', // Mobile (22px)
+    fontSize: '1.375rem', // 22px mobile
     lineHeight: 1.2,
     '@media (min-width:900px)': {
-      fontSize: '1.5rem', // Desktop (24px)
+      fontSize: '1.5rem', // 24px desktop
     }
   }
 };
+
+export default typography;
