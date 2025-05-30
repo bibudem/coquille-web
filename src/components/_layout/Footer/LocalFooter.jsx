@@ -1,6 +1,5 @@
-import { styled, Typography } from '@mui/material'
+import { Box, styled, Typography } from '@mui/material'
 import { Chats, PaperPlaneTilt, Phone, Siren, YoutubeLogo } from '@phosphor-icons/react'
-import Div from '@/components/utils/Div'
 import { useSmall } from '@/hooks/use-small'
 
 import BibFooterLink from './FooterLink'
@@ -23,7 +22,7 @@ const FooterLink = styled(BibFooterLink)({
 
 function Col({ sx, children, ...props }) {
   return (
-    <Div
+    <Box
       {...props}
       sx={{
         display: 'flex',
@@ -33,7 +32,7 @@ function Col({ sx, children, ...props }) {
       }}
     >
       {children}
-    </Div>
+    </Box>
   )
 }
 
@@ -59,7 +58,7 @@ export default function LocalFooter() {
 
   return (
     <FooterContainer sx={{ backgroundColor: 'bleuFonce.main', color: 'bleuFonce.contrastText' }}>
-      <Div
+      <Box
         sx={(theme) => ({
           display: 'flex',
           ...(isSmall && {
@@ -69,14 +68,14 @@ export default function LocalFooter() {
           alignItems: 'stretch',
           padding: theme.spacing(3, 8, 3, 3.25),
           [theme.breakpoints.up('md')]: {
-            padding: '0 64px',
+            padding: '24px 64px',
           },
           justifyContent: 'space-between',
         })}
       >
         {isSmall && (
           <Col>
-            <Div
+            <Box
               sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', sm: 'row' },
@@ -100,20 +99,20 @@ export default function LocalFooter() {
                   }}
                 />
               </FooterLink>
-            </Div>
+            </Box>
           </Col>
         )}
         <Col>
           <Header>Nous joindre</Header>
           <Ul>
             <li>
-              <FooterLink to="/nous-joindre">
+              <FooterLink to="/nous-joindre/">
                 <Chats color="currentColor" size={24} />
                 Clavarder avec nous
               </FooterLink>
             </li>
             <li>
-              <FooterLink to="/nous-joindre">
+              <FooterLink to="/nous-joindre/">
                 <PaperPlaneTilt color="currentColor" size={24} />
                 Nous écrire
               </FooterLink>
@@ -129,23 +128,23 @@ export default function LocalFooter() {
             <YoutubeLogo color="currentColor" size={28} />
             YouTube
           </FooterLink>
-          <Div>
+          <Box>
             <FooterLink to="tel:+1514347771">
               <Siren color="#f04e24" size={28} />
               Urgence 514 343-7771
             </FooterLink>
-          </Div>
+          </Box>
         </Col>
         <Col>
           <Header>À propos</Header>
-          <Div
+          <Box
             sx={{
               display: 'flex',
               flexDirection: 'column',
               gap: '16px',
             }}
           >
-            <Div
+            <Box
               sx={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -160,38 +159,38 @@ export default function LocalFooter() {
                 })}
               >
                 <li>
-                  <FooterLink to="#">Notre équipe</FooterLink>
+                  <FooterLink to="/a-propos/notre-organisation/">Notre équipe</FooterLink>
                 </li>
                 <li>
-                  <FooterLink to="#">Mission, vision, valeurs et objectifs</FooterLink>
+                  <FooterLink to="/a-propos/mission-vision-valeur">Mission, vision, valeurs et objectifs</FooterLink>
                 </li>
                 <li>
-                  <FooterLink to="#">Rapports annuels</FooterLink>
+                  <FooterLink to="/a-propos/rapports-annuels">Rapports annuels</FooterLink>
                 </li>
                 <li>
-                  <FooterLink to="#">Politique et règlement</FooterLink>
+                  <FooterLink to="/a-propos/politiques-reglement">Politique et règlement</FooterLink>
                 </li>
                 <li>
-                  <FooterLink to="#">Carrières</FooterLink>
+                  <FooterLink to="/a-propos/carriere/">Carrières</FooterLink>
                 </li>
               </Ul>
               <Ul>
                 <li>
-                  <FooterLink to="#">Nouvelles</FooterLink>
+                  <FooterLink to="/nouvelles/">Nouvelles</FooterLink>
                 </li>
                 <li>
-                  <FooterLink to="#">Nous soutenir</FooterLink>
+                  <FooterLink to="/nous-soutenir/">Nous soutenir</FooterLink>
                 </li>
                 <li>
-                  <FooterLink to="#">Accessibilité Web</FooterLink>
+                  <FooterLink to="/service-accessibilite">Accessibilité Web</FooterLink>
                 </li>
               </Ul>
-            </Div>
-          </Div>
+            </Box>
+          </Box>
         </Col>
         {!isSmall && (
           <Col>
-            <Div
+            <Box
               sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', sm: 'row' },
@@ -202,9 +201,13 @@ export default function LocalFooter() {
               <FooterLink
                 to="/"
                 aria-label="Accueil"
-                sx={(theme) => ({
+                sx={{
                   display: 'flex',
-                })}
+                  width: {
+                    md: '200px',
+                    lg: '250px',
+                  },
+                }}
               >
                 <LogoBibSceauBleu
                   style={{
@@ -214,10 +217,10 @@ export default function LocalFooter() {
                   }}
                 />
               </FooterLink>
-            </Div>
+            </Box>
           </Col>
         )}
-      </Div>
+      </Box>
     </FooterContainer>
   )
 }

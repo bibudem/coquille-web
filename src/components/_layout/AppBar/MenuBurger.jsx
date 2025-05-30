@@ -17,7 +17,8 @@ export default function MenuBurger({ sx, lvl, ...props }) {
       sx={{
         ...sx,
         ...fabStyles,
-        color: lvl === 1 ? '#fafdfe' : '#0B113A',
+        color: lvl < 2 ? 'currentcolor' : '#0B113A',
+        // color: 'currentcolor',
       }}
       {...props}
     >

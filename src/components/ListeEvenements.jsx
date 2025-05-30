@@ -10,7 +10,7 @@ import Div from '@/components/utils/Div'
 import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
 import { isInternalLink } from '@/utils/link'
 
-const FETCH_TIMEOUT = 3000
+const FETCH_TIMEOUT = 3_000
 
 const Img = styled('img')(({ theme }) => ({
   width: '100%',
@@ -235,21 +235,30 @@ export default function ListeEvenements({ title = 'Événements', service = 'htt
               return false
             }
 
-            const uid = `${item.querySelector('title').textContent.trim()}:::${format(new Date(item.querySelector('pubDate').textContent), 'H:mm')}`
+            const title = item.querySelector('title').textContent.trim()
+            const pubDate = item.querySelector('pubDate').textContent.trim()
+
+            const uid = `${title}:::${format(new Date(pubDate), 'H:mm')}`
             if (index.has(uid)) {
               return false
             }
+
             index.add(uid)
+
             return true
           })
           .map((item) => {
-            const dateData = new Date(item.querySelector('pubDate').textContent)
+            const dateData = new Date(item.querySelector('pubDate').textContent.trim())
             const date = format(dateData, 'd MMMM yyyy', { locale: frCA })
             const debut = format(dateData, 'H:mm', { locale: frCA })
+            const title = item.querySelector('title').textContent.trim()
+            const url = item.querySelector('link').textContent.trim()
+            const imageVedette = item.querySelector('enclosure').getAttribute('url').trim()
+
             return {
-              title: item.querySelector('title').textContent.trim(),
-              url: item.querySelector('link').textContent.trim(),
-              imageVedette: item.querySelector('enclosure').getAttribute('url'),
+              title,
+              url,
+              imageVedette,
               date,
               debut,
             }
