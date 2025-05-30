@@ -83,7 +83,6 @@ export default function RepertoirePersonnel() {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ px: { xs: 2, sm: 4, md: 6 }, py: 2 }}>
-
         <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mb: 3 }}>
           <TextField
             placeholder="Chercher par nom ou prénom"
@@ -171,12 +170,9 @@ export default function RepertoirePersonnel() {
                 <Typography
                   sx={{
                     padding: '2rem',
-                    marginTop: '1rem',
-                    fontSize: '1.5rem',
-                    fontStyle: 'normal',
                     fontWeight: '600',
-                    lineHeight: '120%',
                   }}
+                  variant="h5"
                 >
                   {person.prenom} {person.nom}
                 </Typography>
@@ -186,12 +182,11 @@ export default function RepertoirePersonnel() {
               <Grid container spacing={2} sx={{ mt: 2 }}>
                 <Grid item xs={12} md={4} xl={4}>
                   <Typography
-                    variant="subtitle2"
+                    component="h6"
                     sx={{
-                      color: '#222930',
-                      fontSize: '18px',
+                      marginTop:'0.5rem',
+                      marginBottom: '0.75rem',
                       fontWeight: '600',
-                      lineHeight: '160%',
                     }}
                   >
                     {ucfirst(person.fonction)}
@@ -200,11 +195,7 @@ export default function RepertoirePersonnel() {
                   <Typography
                     variant="body2"
                     sx={{
-                      color: '#222930',
-                      fontSize: '16px',
-                      fontStyle: 'normal',
-                      fontWeight: '300',
-                      lineHeight: '120%',
+                      marginRight:'0.5rem',
                     }}
                   >
                     {(person.disciplines || '').split('|').join(', ')}
@@ -217,82 +208,48 @@ export default function RepertoirePersonnel() {
                       <Link
                         href={`tel:${person.telephone}`}
                         underline="hover"
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          marginLeft: '10px',
-                          marginBottom: '10px',
-                          overflow: 'hidden',
-                          color: '#0057AC',
-                          textOverflow: 'ellipsis',
-                          fontSize: '16px',
-                          fontStyle: 'normal',
-                          fontWeight: '400',
-                          textDecorationLine: 'underline',
-                          textDecorationStyle: 'solid',
-                          cursor: 'pointer',
-                        }}
+                        variant="carteProfilLink"
+                        sx={{ display: 'flex', alignItems: 'center' }}
                       >
-                        <Phone size={20} color="#0057AC" style={{ marginRight: 4 }} />
+                        <Phone size={20} color="#0057AC" style={{ marginRight: 8 }} />
                         {person.telephone}
                       </Link>
-                    )}
-
-                    {person.teams && (
-                      <Box
-                        onClick={() => {
-                          // lien Teams basique
-                          window.open(person.teams, '_blank')
-                        }}
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          marginLeft: '10px',
-                          marginBottom: '10px',
-                          marginTop: '5px',
-                          overflow: 'hidden',
-                          color: '#0057AC',
-                          fontSize: '16px',
-                          fontStyle: 'normal',
-                          fontWeight: '400',
-                          textDecoration: 'underline',
-                          cursor: 'pointer',
-                          userSelect: 'none',
-                        }}
-                        role="button"
-                        tabIndex={0}
-                        onKeyPress={e => {
-                          if (e.key === 'Enter') window.open(person.teams, '_blank')
-                        }}
-                      >
-                        <ChatsCircle size={20} color="#0057AC" style={{ marginRight: 4 }} />
-                        Discussion Teams
-                      </Box>
                     )}
 
                     {person.courriel && (
                       <Link
                         href={`mailto:${person.courriel}`}
                         underline="hover"
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          marginLeft: '10px',
-                          overflow: 'hidden',
-                          color: '#0057AC',
-                          textOverflow: 'ellipsis',
-                          fontSize: '16px',
-                          fontStyle: 'normal',
-                          fontWeight: '400',
-                          textDecorationLine: 'underline',
-                          textDecorationStyle: 'solid',
-                        }}
+                        variant="carteProfilLink"
+                        sx={{ display: 'flex', alignItems: 'center' }}
                       >
-                        <EnvelopeSimple size={20} color="#0057AC" style={{ marginRight: 4 }} /> {person.courriel}
+                        <EnvelopeSimple size={20} color="#0057AC" style={{ marginRight: 8 }} />
+                        {person.courriel}
+                      </Link>
+                    )}
+
+                    {person.teams && (
+                      <Link
+                        href={person.teams}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        underline="hover"
+                        variant="carteProfilLink"
+                        sx={{ display: 'flex', alignItems: 'center' }}
+                      >
+                        <Box
+                          component="img"
+                          src="/images/teams-logo.svg"
+                          alt="Microsoft Teams"
+                          sx={{ width: 20, height: 20 }}
+                          style={{ marginRight: 8 }}
+                        />
+                        Discussion Teams
                       </Link>
                     )}
                   </Stack>
                 </Grid>
+
 
                 <Grid item xs={12} md={4} xl={4}>
                   {person.bibliotheque
@@ -300,16 +257,7 @@ export default function RepertoirePersonnel() {
                     .map((nom, index) => (
                       <Typography
                         key={index}
-                        variant="subtitle2"
-                        sx={{
-                          overflow: 'hidden',
-                          color: ' #222930',
-                          textOverflow: 'ellipsis',
-                          fontSize: '16px',
-                          fontStyle: 'normal',
-                          fontWeight: ' 400',
-                          lineHeight: '120%',
-                        }}
+                        variant="body2"
                       >
                         {ucfirst(nom.trim())}
                       </Typography>
