@@ -33,76 +33,78 @@ const typography = {
     lineHeight: 1.5
   },
   // Hiérarchie des titres
+   // Hiérarchie des titres (h1-h6)
   h1: {
     ...baseTypography,
-    fontSize: '2.25rem!important', // 36px mobile
-    fontWeight: '600!important',
-    lineHeight: 1,
-    '@media (min-width:600px)': { // sm
-      fontSize: '4rem!important', // 64px tablette
+    margin: '0.5em 0',
+    fontSize: '2.25rem', // 36px mobile
+    fontWeight: '600',
+    lineHeight: 1.1,
+    '@media (min-width:600px)': {
+      fontSize: '2.5rem', // 40px tablette
     },
-    '@media (min-width:900px)': { // md
-      fontSize: '6.875rem!important', // 110px desktop
+    '@media (min-width:900px)': {
+      fontSize: '3rem', // 48px desktop
     }
   },
 
   h2: {
     ...baseTypography,
-    fontSize: '1.75rem!important', // 28px mobile
+    fontSize: '1.75rem', // 28px mobile
     fontWeight: '600!important',
     lineHeight: 1.1,
     '@media (min-width:600px)': {
-      fontSize: '2.875rem!important', // 46px tablette
+      fontSize: '2rem', // 32px tablette
     },
     '@media (min-width:900px)': {
-      fontSize: '3.5rem!important', // 56px desktop
+      fontSize: '2.125rem', // 34px desktop
     }
   },
 
   h3: {
     ...baseTypography,
-    fontSize: '1.5rem!important', // 24px mobile
+    fontSize: '1.5rem', // 24px mobile
     fontWeight: '600!important',
     lineHeight: 1.2,
     '@media (min-width:600px)': {
-      fontSize: '2rem!important', // 32px tablette
+      fontSize: '1.75rem', // 28px
     },
     '@media (min-width:900px)': {
-      fontSize: '2.25rem!important', // 36px desktop
+      fontSize: '2rem', // 32px
     }
   },
 
   h4: {
     ...baseTypography,
     fontFamily: loraStack,
-    fontSize: '1.25rem!important', // 20px mobile
-    fontWeight: '500!important',
+    fontSize: '1.25rem', // 20px mobile
+    fontWeight: '500',
     lineHeight: 1.2,
     '@media (min-width:600px)': {
-      fontSize: '1.5rem!important', // 24px tablette
+      fontSize: '1.375rem', // 22px
     },
     '@media (min-width:900px)': {
-      fontSize: '1.875rem!important', // 30px desktop
+      fontSize: '1.5rem', // 24px
     }
   },
 
   h5: {
     ...baseTypography,
-    fontSize: '1.125rem!important', // 18px mobile
-    fontWeight: '700!important',
+    fontSize: '1.125rem', // 18px mobile
+    fontWeight: '700',
     lineHeight: 1.2,
     '@media (min-width:900px)': {
-      fontSize: '1.375rem!important', // 22px desktop
+      fontSize: '1.25rem', // 20px
     }
   },
 
   h6: {
     ...baseTypography,
-    fontSize: '1rem!important', // 16px mobile
-    fontWeight: '400!important',
+    fontSize: '1rem', // 16px mobile
+    fontWeight: '400',
     lineHeight: 1.2,
     '@media (min-width:900px)': {
-      fontSize: '1.125rem!important', // 18px desktop
+      fontSize: '1.125rem', // 18px
     }
   },
 
