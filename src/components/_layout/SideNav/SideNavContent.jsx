@@ -159,7 +159,8 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
         <Nav aria-label="À propos">
           <NavHeader>À propos</NavHeader>
           <NavList>
-            <NavListItem href="/a-propos/notre-organisation/">Notre équipe</NavListItem>
+            <NavListItem href="/a-propos/notre-organisation/">Notre organisation</NavListItem>
+            <NavListItem href="/a-propos/nos-collections">Nos collections</NavListItem>
             <NavListItem href="/a-propos/mission-vision-valeur">Vision stratégique</NavListItem>
             <NavListItem href="/a-propos/rapports-annuels">Rapports annuels</NavListItem>
             <NavListItem href="/a-propos/politiques-reglement">Politiques et règlement</NavListItem>
@@ -184,10 +185,10 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
         <Nav aria-label="Obtenir un document">
           <NavHeader>Obtenir un document</NavHeader>
           <NavList>
-            <NavListItem href="#">Prêt, renouvellement, retour</NavListItem>
-            <NavListItem href="#">Demande de numérisation</NavListItem>
-            <NavListItem href="#">Suggestion d'achat</NavListItem>
-            <NavListItem href="#">Frais et avis de retard</NavListItem>
+            <NavListItem href="/obtenir/pret-renouvellement-retour/">Prêt, renouvellement, retour</NavListItem>
+            <NavListItem href="/obtenir/numerisation">Demande de numérisation</NavListItem>
+            <NavListItem href="/nous-joindre/suggestion-achat">Suggestion d'achat</NavListItem>
+            <NavListItem href="/obtenir/frais-avis">Frais et avis de retard</NavListItem>
           </NavList>
         </Nav>
 
