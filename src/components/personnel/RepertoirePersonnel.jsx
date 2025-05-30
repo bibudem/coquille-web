@@ -83,19 +83,6 @@ export default function RepertoirePersonnel() {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ px: { xs: 2, sm: 4, md: 6 }, py: 2 }}>
-        {/* Ajout du titre "Notre équipe" en variant h2 */}
-        <Typography 
-          variant="h2"
-          sx={{
-            mb: 4,
-            color: 'text.primary',
-            marginTop: '20px',
-            marginBottom: '20px'
-          }}
-        >
-          Notre Équipe
-        </Typography>
-
         <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mb: 3 }}>
           <TextField
             placeholder="Chercher par nom ou prénom"

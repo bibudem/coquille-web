@@ -34,30 +34,34 @@ const typography = {
   },
   // Hiérarchie des titres
    // Hiérarchie des titres (h1-h6)
+    // Hiérarchie titres révisée
   h1: {
     ...baseTypography,
     margin: '0.5em 0',
-    fontSize: '2.25rem', // 36px mobile
-    fontWeight: '600',
+    fontSize: '2.5rem', // 40px mobile 
+    fontWeight: 600,
     lineHeight: 1.1,
+    letterSpacing: '-0.02em', 
     '@media (min-width:600px)': {
-      fontSize: '2.5rem', // 40px tablette
+      fontSize: '3rem', // 48px tablette
     },
     '@media (min-width:900px)': {
-      fontSize: '3rem', // 48px desktop
+      fontSize: '3.5rem', // 56px desktop
     }
   },
 
   h2: {
     ...baseTypography,
-    fontSize: '1.75rem', // 28px mobile
+    margin: '0.5em 0',
+    fontSize: '1.875rem', // 30px mobile
     fontWeight: '600!important',
-    lineHeight: 1.1,
+    lineHeight: 1.2,
+    letterSpacing: '-0.01em',
     '@media (min-width:600px)': {
-      fontSize: '2rem', // 32px tablette
+      fontSize: '2.25rem!important', // 36px tablette
     },
     '@media (min-width:900px)': {
-      fontSize: '2.125rem', // 34px desktop
+      fontSize: '2.5rem!important', // 40px desktop
     }
   },
 
