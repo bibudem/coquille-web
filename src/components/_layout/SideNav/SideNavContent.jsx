@@ -205,7 +205,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
             <NavListItem href="https://calendrier.bib.umontreal.ca/r" icon={<CalendarPlusIcon color="#fff" size={24} />}>
               Réserver une salle
             </NavListItem>
-            <NavListItem href="#" icon={<LifebuoyIcon color="#fff" size={24} />}>
+            <NavListItem href="https://studio.bib.umontreal.ca/informatique/" icon={<LifebuoyIcon color="#fff" size={24} />}>
               Soutien informatique
             </NavListItem>
           </NavList>
