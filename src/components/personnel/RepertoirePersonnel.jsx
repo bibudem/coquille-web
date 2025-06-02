@@ -242,20 +242,6 @@ export default function RepertoirePersonnel() {
                           {person.courriel}
                         </Link>
                       )}
-
-                      {person.teams && (
-                        <Link
-                          href={person.teams}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          underline="hover"
-                          variant="carteProfilLink"
-                          sx={{ display: 'flex', alignItems: 'center' }}
-                        >
-                          <MicrosoftTeamsLogoIcon size={25} color="#0057AC" style={{ marginRight: 8 }} />
-                          Discussion Teams
-                        </Link>
-                      )}
                     </Stack>
                   </Grid>
 
