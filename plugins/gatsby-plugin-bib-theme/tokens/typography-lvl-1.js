@@ -1,5 +1,5 @@
-const fontStack = '"Figtree", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif';
-const loraStack = '"Lora", Georgia, serif';
+const fontStack = '"Figtree", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif'
+const loraStack = '"Lora", Georgia, serif'
 
 // Propriétés communes à toutes les variantes typographiques
 const baseTypography = {
@@ -7,7 +7,7 @@ const baseTypography = {
   fontVariantNumeric: 'lining-nums tabular-nums',
   fontStyle: 'normal',
   margin: 0 // Ajout pour éviter les marges par défaut indésirables
-};
+}
 
 const typography = {
   fontFamily: fontStack,
@@ -18,7 +18,7 @@ const typography = {
   fontWeightMedium: 500,
   fontWeightBold: 700,
 
-   // Variantes de texte standard (requises par MUI)
+  // Variantes de texte standard (requises par MUI)
   body1: {
     ...baseTypography,
     fontSize: '1rem', // 16px
@@ -33,15 +33,15 @@ const typography = {
     lineHeight: 1.5
   },
   // Hiérarchie des titres
-   // Hiérarchie des titres (h1-h6)
-    // Hiérarchie titres révisée
+  // Hiérarchie des titres (h1-h6)
+  // Hiérarchie titres révisée
   h1: {
     ...baseTypography,
-    margin: '0.5em 0',
+    margin: '0 0 0.5em',
     fontSize: '2.5rem', // 40px mobile 
     fontWeight: 600,
     lineHeight: 1.1,
-    letterSpacing: '-0.02em', 
+    letterSpacing: '-0.02em',
     '@media (min-width:600px)': {
       fontSize: '3rem', // 48px tablette
     },
@@ -216,6 +216,6 @@ const typography = {
       fontSize: '1.5rem', // 24px desktop
     }
   }
-};
+}
 
-export default typography;
+export default typography
