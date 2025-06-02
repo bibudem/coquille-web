@@ -9,6 +9,7 @@ import TopAppBarSm from '@/components/_layout/AppBar/TopAppBarSm'
 import { QuickLinks, QuickLinksSm } from '@/components/_layout/QuickLinks'
 import Footer from '@/components/_layout/Footer/Footer'
 import Breadcrumbs from '@/components/_layout/Breadcrumbs/Breadcrumbs'
+import SkipTo from '@/components/_layout/SkipTo'
 import SEO from '@/components/_layout/SEO'
 import Debug from '@/components/_layout/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
@@ -48,7 +49,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
   const mainContent = (
     <>
       {hasSecondaryNav && <Breadcrumbs crumbs={crumbs} />}
-      <main role="main">
+      <main id="main-content" role="main">
         {children}
         <RetroactionUsager />
       </main>
@@ -64,6 +65,8 @@ export default function PageTemplate({ pageContext, children, data, location }) 
         }}
       >
         {process.env.NODE_ENV !== 'production' && <Debug />}
+
+        <SkipTo href="#main-content">Aller au contenu</SkipTo>
 
         <udem-urgence></udem-urgence>
 

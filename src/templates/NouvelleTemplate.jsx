@@ -9,6 +9,7 @@ import TopAppBarSm from '@/components/_layout/AppBar/TopAppBarSm'
 import { QuickLinks, QuickLinksSm } from '@/components/_layout/QuickLinks'
 import Footer from '@/components/_layout/Footer/Footer'
 import Breadcrumbs from '@/components/_layout/Breadcrumbs/Breadcrumbs'
+import SkipTo from '@/components/_layout/SkipTo'
 import SEO from '@/components/_layout/SEO'
 import Debug from '@/components/_layout/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
@@ -67,9 +68,15 @@ export default function NouvelleTemplate({ pageContext, children, data, location
       >
         {process.env.NODE_ENV !== 'production' && <Debug />}
         <div style={{ position: 'absolute', background: '#fff', top: 0, right: 0, padding: '.5em' }}>{lvl}</div>
+
+        <SkipTo href="#main-content">Aller au contenu</SkipTo>
+
         <udem-urgence></udem-urgence>
+
         {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
+
         {/* <bib-avis bouton-fermer /> */}
+
         {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
         <Container>{mainContent}</Container>
