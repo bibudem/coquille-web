@@ -1,5 +1,5 @@
 main {
-  :link {
+  :link:not(.MuiButtonBase-root) {
     color: var(--bib-palette-primary-main)
   }
 }

@@ -137,6 +137,8 @@ const tokens = {
 			},
 			styleOverrides: {
 				root: {
+					marginTop: '1rem',
+					marginBottom: '1rem',
 					variants: [
 						{
 							props: { variant: 'outlined' },
@@ -251,10 +253,10 @@ const tokens = {
 			 * 
 			 * @see https://fluidtypography.com/#app-get-started
 			*/
-		styleOverrides: (theme) => ({
-			':root': {
-			'--bib-comp-retroaction-usager-size': theme.typography.body2.fontSize,
-			},
+			styleOverrides: (theme) => ({
+				':root': {
+					'--bib-comp-retroaction-usager-size': theme.typography.body2.fontSize,
+				},
 				h1: { ...theme.typography.h1 },
 				h2: { ...theme.typography.h2 },
 				h3: { ...theme.typography.h3 },

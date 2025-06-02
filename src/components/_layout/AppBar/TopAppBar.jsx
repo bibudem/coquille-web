@@ -63,9 +63,9 @@ export default function TopAppBar({ lvl, location = {} }) {
         position="sticky"
         elevation={trigger ? 2 : 0}
         sx={{
-          '--AppBar-background': lvl < 2 ? (trigger ? '#fff' : 'transparent') : '#fff',
-          '--AppBar-color': lvl < 2 ? (trigger ? '#222930' : theme.palette.grey['50']) : '#222930',
-          backgroundImage: lvl < 2 ? (trigger ? 'none' : 'linear-gradient(180deg, rgba(0,0,0,0.10) 90%, rgba(0,0,0,0) 100%)') : 'none',
+          '--AppBar-background': trigger ? '#fff' : 'transparent',
+          '--AppBar-color': trigger ? '#222930' : theme.palette.grey['50'],
+          backgroundImage: trigger ? 'none' : 'linear-gradient(180deg, rgba(0,0,0,0.10) 90%, rgba(0,0,0,0) 100%)',
           ...transitionProps,
           transitionProperty: 'background-color, box-shadow',
           '.MuiToolbar-root': {
@@ -89,7 +89,7 @@ export default function TopAppBar({ lvl, location = {} }) {
                 display: { xs: 'none', sm: 'block', color: 'inherit' },
               }}
             >
-              <LogoLink lvl={lvl} trigger={trigger} />
+              <LogoLink trigger={trigger} />
             </Link>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
@@ -101,7 +101,6 @@ export default function TopAppBar({ lvl, location = {} }) {
                   size="large"
                   href={url}
                   key={url}
-                  lvl={lvl}
                   sx={{
                     fontWeight: isActive && 700,
                   }}
@@ -110,10 +109,10 @@ export default function TopAppBar({ lvl, location = {} }) {
                 </StyledButton>
               )
             })}
-            <JeDonneButton lvl={lvl} trigger={trigger} transitionProps={transitionProps} />
+            <JeDonneButton trigger={trigger} transitionProps={transitionProps} />
           </Stack>
           <Box sx={{ paddingLeft: '2rem' }}>
-            <MenuBurger lvl={lvl} onClick={toggleDrawer(true)} />
+            <MenuBurger onClick={toggleDrawer(true)} />
           </Box>
         </Toolbar>
       </AppBar>
@@ -124,31 +123,21 @@ export default function TopAppBar({ lvl, location = {} }) {
   )
 }
 
-function JeDonneButton({ lvl, trigger, transitionProps }) {
+function JeDonneButton({ trigger, transitionProps }) {
   const theme = useTheme()
   const styles = useMemo(() => {
-    if (lvl < 2) {
-      return {
-        color: trigger ? '#fafdfe' : '#0B113A',
-        bgcolor: trigger ? 'bleuFonce.main' : '#fff',
+    return {
+      color: trigger ? '#fafdfe' : '#0B113A',
+      bgcolor: trigger ? 'bleuFonce.main' : '#fff',
+      ...transitionProps,
+      transitionProperty: 'color, background-color',
+      '.MuiButton-icon svg': {
+        fill: trigger ? '#fafdfe' : theme.palette.rougeOrange.main,
         ...transitionProps,
-        transitionProperty: 'color, background-color',
-        '.MuiButton-icon svg': {
-          fill: trigger ? '#fafdfe' : theme.palette.rougeOrange.main,
-          ...transitionProps,
-          transitionProperty: 'fill',
-        },
-      }
-    } else {
-      return {
-        color: '#fafdfe',
-        bgcolor: 'bleuFonce.main',
-        '.MuiButton-icon svg': {
-          fill: 'currentColor',
-        },
-      }
+        transitionProperty: 'fill',
+      },
     }
-  }, [lvl, trigger, transitionProps])
+  }, [trigger, transitionProps])
 
   return (
     <Button

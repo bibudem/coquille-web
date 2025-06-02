@@ -2,9 +2,12 @@
 title: Carrière
 slug: carriere
 secondaryNav:
-  order: 6
+  order: 1
+superHero:
+  imageName: espaces
+  title: À propos
 ---
-import { Student, UsersThree } from '@phosphor-icons/react'
+import { StudentIcon, UsersThreeIcon } from '@phosphor-icons/react'
 import IconeUdeM from '@/components/IconeUdeM';
 
 # Carrière
@@ -12,17 +15,15 @@ import IconeUdeM from '@/components/IconeUdeM';
 <Grid container spacing=".62rem" sx={{ margin:'4rem 0', alignItems: 'stretch'}}>
     <Grid size={{ xs: 12, sm: 6, md: 4, lg: 4 }}>
       <Card2
-      id='a'
         title="Notre organisation"
-        Icon={UsersThree}
+        Icon={UsersThreeIcon}
         href="./notre-organisation"
       />
     </Grid>
     <Grid size={{ xs: 12, sm: 6, md: 4, lg: 4 }}>
       <Card2
-      id='b'
         title="Membre Premières Nations, Métis ou Inuit?"
-        Icon={Student}
+        Icon={StudentIcon}
         href="affichage-premiers-peuples"
       />
     </Grid>

@@ -10,15 +10,14 @@ const iconStyles = {
   fontSize: '34px',
 }
 
-export default function MenuBurger({ sx, lvl, ...props }) {
+export default function MenuBurger({ sx, ...props }) {
   return (
     <IconButton
       aria-label="Ouvrir le menu du site"
       sx={{
         ...sx,
         ...fabStyles,
-        color: lvl < 2 ? 'currentcolor' : '#0B113A',
-        // color: 'currentcolor',
+        color: 'currentcolor',
       }}
       {...props}
     >
