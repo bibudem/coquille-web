@@ -37,7 +37,7 @@ const typography = {
   // Hiérarchie titres révisée
   h1: {
     ...baseTypography,
-    margin: '0 0 0.5em',
+    margin: '24px 0 0.5em',
     fontSize: '2.5rem', // 40px mobile 
     fontWeight: 600,
     lineHeight: 1.1,
