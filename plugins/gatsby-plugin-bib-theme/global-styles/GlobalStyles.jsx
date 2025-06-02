@@ -3,6 +3,7 @@ import typographyLvl1 from '../tokens/typography-lvl-1.js'
 import 'modern-normalize/modern-normalize.css'
 import './header-anchors.css'
 import './pdf-links.css'
+import './links.css'
 
 export default function GlobalStyles() {
   const headers = Array(6)
