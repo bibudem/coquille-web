@@ -1,5 +1,5 @@
 import { Alert as MuiAlert } from '@mui/material'
-import { CheckCircle, Info, Warning, WarningDiamond } from '@phosphor-icons/react'
+import { CheckCircleIcon, InfoIcon, WarningIcon, WarningDiamondIcon } from '@phosphor-icons/react'
 
 /**
  * Renders a customized Material-UI Alert component with predefined icons for different severity levels.
@@ -12,12 +12,13 @@ import { CheckCircle, Info, Warning, WarningDiamond } from '@phosphor-icons/reac
 export default function Alert({ severity = 'info', children, ...props }) {
   return (
     <MuiAlert
+      className="bib-comp-alert"
       severity={severity}
       iconMapping={{
-        success: <CheckCircle color="currentColor" size={24} />,
-        info: <Info color="currentColor" size={24} />,
-        warning: <Warning color="currentColor" size={24} />,
-        error: <WarningDiamond color="currentColor" size={24} />,
+        success: <CheckCircleIcon color="currentColor" size={24} />,
+        info: <InfoIcon color="currentColor" size={24} />,
+        warning: <WarningIcon color="currentColor" size={24} />,
+        error: <WarningDiamondIcon color="currentColor" size={24} />,
       }}
       {...props}
     >

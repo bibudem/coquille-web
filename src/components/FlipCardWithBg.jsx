@@ -11,7 +11,6 @@ const CardContainer = styled('div')({
   width: 337,
   height: 400,
   cursor: 'pointer',
-  perspective: '600px',
 })
 
 const FlipSide = styled('div')({
