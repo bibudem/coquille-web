@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, styled } from '@mui/material'
-import { CaretRight } from '@phosphor-icons/react'
+import { CaretRightIcon } from '@phosphor-icons/react'
 import NavList from './NavList'
 
 const StyledLi = styled('li')({
@@ -71,7 +71,7 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
       >
         {title}
         {children && (
-          <CaretRight
+          <CaretRightIcon
             size="24px"
             color={isActive ? 'var(--bib-palette-bleuPrincipal-main)' : 'currentColor'}
             style={{
