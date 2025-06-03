@@ -61,7 +61,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
       {hasSecondaryNav && <Breadcrumbs crumbs={crumbs} />}
       <Box id="main-content" component="main" role="main" sx={{ '& > :first-child': { marginTop: 0, paddingTop: 0 } }}>
         {children}
-        <ConditionalWrapper condition={lvl === 1} wrapper={(children) => <LayoutContainer>{children}</LayoutContainer>}>
+        <ConditionalWrapper condition={lvl < 2} wrapper={(children) => <LayoutContainer>{children}</LayoutContainer>}>
           <RetroactionUsager />
         </ConditionalWrapper>
       </Box>
@@ -112,7 +112,6 @@ export default function PageTemplate({ pageContext, children, data, location }) 
                   </Grid>
                 </Grid>
               </LayoutGrid>
-              {/* </Container> */}
             </LayoutContainer>
           </Box>
         ) : (
