@@ -14,8 +14,8 @@ const slidesPerPagPerBreakpoint = {
   xs: 1,
   sm: 2,
   md: 3,
-  lg: 4,
-  xl: 4,
+  lg: 3,
+  xl: 3,
 }
 
 /**
@@ -39,7 +39,7 @@ export default function Carousel1({ title, description, moreText, moreLink, ...r
   const [options, setOptions] = useState({
     align: 'start',
     dragFree: false,
-    loop: false,
+    loop: false,        // <-- 
     skipSnaps: true,
     slidesToScroll: 1,
   })
@@ -70,23 +70,26 @@ export default function Carousel1({ title, description, moreText, moreLink, ...r
     }
   }, [options, slides])
 
+// <-- Activer pour le défilement automatique.
+  /*useEffect(() => {
+  if (!api) return
+  const interval = setInterval(() => {
+    if (api.canScrollNext()) {
+      api.scrollNext()
+    } else {
+      api.scrollTo(0) // revenir au début
+    }
+  }, 4000) // toutes les 4 secondes
+
+
+  return () => clearInterval(interval)
+}, [api])*/
+
   return (
     <div>
       <Grid container spacing="45px">
         <Grid size={12}>
-          <Div
-            sx={{
-              pb: 4,
-              ...variableWidthStyles,
-              '.MuiTypography-root': {
-                fontSize: '2.25rem!important',
-                fontWeight: 400,
-                lineHeight: 1,
-              },
-            }}
-          >
-            {typeof title === 'string' ? <Typography component="h2">{title}</Typography> : title}
-          </Div>
+            {typeof title === 'string' ? <Typography component="h2" variant="h2">{title}</Typography> : title}
           <Grid container direction={isSmall ? 'column' : 'row'}>
             <Grid
               size="grow"
