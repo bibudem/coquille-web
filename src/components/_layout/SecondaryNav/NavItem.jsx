@@ -55,11 +55,11 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
   }, [lvl])
 
   return (
-    <StyledLi className={`bib-nav2-item lvl-${lvl} ${isActive ? 'is-active' : ''}`}>
+    <StyledLi className={`bib-comp-nav2-item lvl-${lvl} ${isActive ? 'is-active' : ''}`}>
       <Link
         col
         href={path}
-        className={`bib-nav2-item-link lvl-${lvl} ${isActive && 'is-active'}`}
+        className={`bib-comp-nav2-item-link lvl-${lvl} ${isActive && 'is-active'}`}
         sx={{
           ...(lvl > 0 && { paddingLeft: '0.8125rem' }),
           justifyContent: 'space-between',
@@ -86,7 +86,7 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
         )}
       </Link>
       {children && isActive && (
-        <NavList sx={{ paddingBottom: '8px', paddingTop: '8px' }}>
+        <NavList sx={{ paddingBottom: '8px', paddingTop: '8px', marginLeft: `${lvl * 16}px` }}>
           {children.map((item) => (
             <NavItem key={item.path} item={item} currentLocation={currentLocation} lvl={lvl + 1} />
           ))}
