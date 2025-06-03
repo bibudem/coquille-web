@@ -4,6 +4,7 @@ title: Nous joindre
 
 import Bibliotheques from '../../bibliotheques/bibliotheques.mdx'
 import SuperHero from '@/components/SuperHero'
+import GridOffset from '@/components/utils/GridOffset'
 import { BookOpenTextIcon, ChatIcon, PencilSimpleIcon, UsersFourIcon, EnvelopeIcon, PhoneIcon } from '@phosphor-icons/react'
 
 <SuperHero
@@ -56,7 +57,8 @@ import { BookOpenTextIcon, ChatIcon, PencilSimpleIcon, UsersFourIcon, EnvelopeIc
 
   ## Services
 
-  <AccordionGroup>
+<GridOffset offset={1}>
+  <AccordionGroup sx={{outline: '1px solid red', width: '100%'}}>
     <Accordion id="mon-accordeon">
       <AccordionSummary>Service Accessibilité</AccordionSummary>
       <AccordionDetails>
@@ -85,6 +87,7 @@ import { BookOpenTextIcon, ChatIcon, PencilSimpleIcon, UsersFourIcon, EnvelopeIc
     </AccordionDetails>
     </Accordion>
   </AccordionGroup>
+  </GridOffset>
 
 <Typography component="h2" variant="display2" id="liste-bibliotheques" sx={{ marginTop: '1em', marginBottom: '1em' }}> Bibliothèques et points de service</Typography>
 

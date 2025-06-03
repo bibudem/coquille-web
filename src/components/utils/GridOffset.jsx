@@ -1,5 +1,6 @@
-import Grid from '@mui/material/Grid2'
 import { useEffect, useState } from 'react'
+import { Box } from '@mui/material'
+import Grid from '@mui/material/Grid2'
 
 export default function GridOffset({ offset = 0, children, ...rest }) {
   if (isNaN(offset)) {
@@ -19,7 +20,15 @@ export default function GridOffset({ offset = 0, children, ...rest }) {
   return (
     <Grid container spacing={0}>
       <Grid container size={size} offset={offset} {...props}>
-        {children}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            width: '100%',
+          }}
+        >
+          {children}
+        </Box>
       </Grid>
     </Grid>
   )
