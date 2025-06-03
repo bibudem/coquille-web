@@ -13,6 +13,7 @@ import SkipTo from '@/components/_layout/SkipTo'
 import SEO from '@/components/_layout/SEO'
 import Debug from '@/components/_layout/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
+import ConditionalWrapper from '@/components/utils/ConditionalWrapper'
 
 import { useSmall } from '@/hooks/use-small'
 
@@ -53,7 +54,9 @@ export default function NouvelleTemplate({ pageContext, children, data, location
       <Breadcrumbs crumbs={crumbs} />
       <main role="main">
         {children}
-        <RetroactionUsager />
+        <ConditionalWrapper condition={lvl === 1} wrapper={(children) => <LayoutContainer>{children}</LayoutContainer>}>
+          <RetroactionUsager />
+        </ConditionalWrapper>
       </main>
     </>
   )
