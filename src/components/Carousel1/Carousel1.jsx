@@ -89,7 +89,7 @@ export default function Carousel1({ title, description, moreText, moreLink, ...r
     <div>
       <Grid container spacing="45px">
         <Grid size={12}>
-            {typeof title === 'string' ? <Typography component="h2" variant="h2">{title}</Typography> : title}
+            {typeof title === 'string' ? <Typography component="h2" variant="h2Section">{title}</Typography> : title}
           <Grid container direction={isSmall ? 'column' : 'row'}>
             <Grid
               size="grow"

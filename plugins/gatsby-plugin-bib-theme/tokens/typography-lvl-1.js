@@ -54,7 +54,7 @@ const typography = {
     ...baseTypography,
     margin: '0.5em 0',
     fontSize: '1.875rem', // 30px mobile
-    fontWeight: '600',
+    fontWeight: '400',
     lineHeight: 1.2,
     letterSpacing: '-0.01em',
     '@media (min-width:600px)': {
@@ -111,6 +111,38 @@ const typography = {
       fontSize: '1.125rem', // 18px
     }
   },
+
+  h1Bib: {
+    ...baseTypography,
+    margin: '24px 0 0.5em',
+    fontSize: '2.5rem!important', // 40px mobile 
+    fontWeight: '400!important',
+    lineHeight: 1.1,
+    letterSpacing: '-0.02em',
+    '@media (min-width:600px)': {
+      fontSize: '3rem!important', // 48px tablette
+    },
+    '@media (min-width:900px)': {
+      fontSize: '3.5rem!important', // 56px desktop
+    }
+  },
+
+  h2Bib: {
+    ...baseTypography,
+    margin: '0.5em 0',
+    fontSize: '1.875rem!important', // 30px mobile
+    fontWeight: '400!important',
+    lineHeight: 1.2,
+    letterSpacing: '-0.01em',
+    '@media (min-width:600px)': {
+      fontSize: '2.25rem!important', // 36px tablette
+    },
+    '@media (min-width:900px)': {
+      fontSize: '2.5rem!important', // 40px desktop
+    }
+  },
+
+  
 
   subtitle1: {
     ...baseTypography,
