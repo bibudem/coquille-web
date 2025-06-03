@@ -1,15 +1,24 @@
 import Grid from '@mui/material/Grid2'
+import { useEffect, useState } from 'react'
 
-export default function GridOffset({ offset = 0, children, ...props }) {
+export default function GridOffset({ offset = 0, children, ...rest }) {
   if (isNaN(offset)) {
     throw new Error('The `offset` prop must be a number.')
   }
 
-  offset = parseFloat(offset)
+  const [size, setSize] = useState(offset)
+
+  const { sx, ...props } = rest
+
+  useEffect(() => {
+    if (offset) {
+      setSize(12 - parseFloat(offset) * 2)
+    }
+  }, [offset])
 
   return (
     <Grid container spacing={0}>
-      <Grid container size={12 - offset * 2} offset={offset} {...props}>
+      <Grid container size={size} offset={offset} {...props}>
         {children}
       </Grid>
     </Grid>
