@@ -54,21 +54,21 @@ const typography = {
     ...baseTypography,
     margin: '0.5em 0',
     fontSize: '1.875rem', // 30px mobile
-    fontWeight: '600!important',
+    fontWeight: '600',
     lineHeight: 1.2,
     letterSpacing: '-0.01em',
     '@media (min-width:600px)': {
-      fontSize: '2.25rem!important', // 36px tablette
+      fontSize: '2.25rem', // 36px tablette
     },
     '@media (min-width:900px)': {
-      fontSize: '2.5rem!important', // 40px desktop
+      fontSize: '2.5rem', // 40px desktop
     }
   },
 
   h3: {
     ...baseTypography,
     fontSize: '1.5rem', // 24px mobile
-    fontWeight: '600!important',
+    fontWeight: '600',
     lineHeight: 1.2,
     '@media (min-width:600px)': {
       fontSize: '1.75rem', // 28px
