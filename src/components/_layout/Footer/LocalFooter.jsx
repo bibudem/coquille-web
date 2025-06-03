@@ -1,5 +1,5 @@
 import { Box, styled, Typography } from '@mui/material'
-import { Chats, PaperPlaneTilt, Phone, Siren, YoutubeLogo } from '@phosphor-icons/react'
+import { Chats, PaperPlaneTilt, Phone, Siren, YoutubeLogo, User } from '@phosphor-icons/react'
 import { useSmall } from '@/hooks/use-small'
 
 import BibFooterLink from './FooterLink'
@@ -106,15 +106,21 @@ export default function LocalFooter() {
           <Header>Nous joindre</Header>
           <Ul>
             <li>
-              <FooterLink to="/nous-joindre/">
+              <FooterLink to="/nous-joindre/clavarder">
                 <Chats color="currentColor" size={24} />
                 Clavarder avec nous
               </FooterLink>
             </li>
             <li>
-              <FooterLink to="/nous-joindre/">
+              <FooterLink to="/nous-joindre/nous-ecrire">
                 <PaperPlaneTilt color="currentColor" size={24} />
                 Nous écrire
+              </FooterLink>
+            </li>
+            <li>
+              <FooterLink to="/nous-joindre/notre-equipe">
+                <User color="currentColor" size={24} />
+                Contacter un membre de notre équipe
               </FooterLink>
             </li>
             <li>
@@ -123,15 +129,17 @@ export default function LocalFooter() {
                 514 343-7643
               </FooterLink>
             </li>
-          </Ul>
-          <FooterLink to="https://www.youtube.com/user/BibliothequesUdeM" sx={{ lineHeight: 1 }}>
+            <li>
+              <FooterLink to="https://www.youtube.com/user/BibliothequesUdeM" sx={{ lineHeight: 1 }}>
             <YoutubeLogo color="currentColor" size={28} />
             YouTube
           </FooterLink>
+            </li>
+          </Ul>
           <Box>
             <FooterLink to="tel:+1514347771">
               <Siren color="#f04e24" size={28} />
-              Urgence 514 343-7771
+              Urgence UdeM 514 343-7771
             </FooterLink>
           </Box>
         </Col>
@@ -159,7 +167,7 @@ export default function LocalFooter() {
                 })}
               >
                 <li>
-                  <FooterLink to="/a-propos/notre-organisation/">Notre équipe</FooterLink>
+                  <FooterLink to="/a-propos/notre-organisation/">Notre organisation</FooterLink>
                 </li>
                 <li>
                   <FooterLink to="/a-propos/mission-vision-valeur">Mission, vision, valeurs et objectifs</FooterLink>
