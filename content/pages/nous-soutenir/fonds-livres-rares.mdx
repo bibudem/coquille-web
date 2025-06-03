@@ -56,29 +56,31 @@ La restauration de ces livres a été financée grâce au programme « Adoptez u
 
 En 2023-2024, le Dr Gilles Théorêt, diplômé de l’Université de Montréal, a ainsi adopté notre édition datée de 1632 des Voyages de la Nouvelle France occidentale, dicte Canada de Samuel de Champlain. Ce document, une version révisée et augmentée de l’édition de 1613, est considéré comme la plus importante de toutes les éditions de cet ouvrage. La carte géographique qui l’accompagne est la première représentation occidentale de l’entièreté des Grands Lacs.
 
-<GridOffset
-      columnSpacing="30px"
-      sx={(theme) => ({
-        alignItems: 'center',
-        margin: '1em 0em',
-        [theme.breakpoints.up('md')]: {
-          maxWidth: '80%',
-        },
-        [theme.breakpoints.up('lg')]: {
-          maxWidth: '70%'
-        }
-    })}>
-      <Grid size="auto">
-        <img src={Voyages} style={{width: 'auto', height: '200px', borderRadius: '12px'}} alt="" />
-      </Grid>
-      <Grid size='grow'>
-        <Blockquote source="Dr Gilles Théorêt, diplômé de l’Université de Montréal et adoptant de l’ouvrage Les voyages de la Nouvelle France occidentale">
-          L’histoire peut se perdre ou être déformée par le temps. Il est important d’avoir des sources de première main pour la comprendre.
-        </Blockquote>
-      </Grid>
-    </GridOffset>
+<GridOffset offset={.5}>
+  <Grid container
+    columnSpacing="30px"
+    sx={(theme) => ({
+      alignItems: 'center',
+      margin: '1em 0em',
+      [theme.breakpoints.up('md')]: {
+        maxWidth: '80%',
+      },
+      [theme.breakpoints.up('lg')]: {
+        maxWidth: '70%'
+      }
+  })}>
+    <Grid size="auto">
+      <img src={Voyages} style={{width: 'auto', height: '200px', borderRadius: '12px'}} alt="" />
+    </Grid>
+    <Grid size='grow'>
+      <Blockquote source="Dr Gilles Théorêt, diplômé de l’Université de Montréal et adoptant de l’ouvrage Les voyages de la Nouvelle France occidentale">
+        L’histoire peut se perdre ou être déformée par le temps. Il est important d’avoir des sources de première main pour la comprendre.
+      </Blockquote>
+    </Grid>
+  </Grid>
+</GridOffset>
 
-    ## Soutenez notre héritage culturel
+## Soutenez notre héritage culturel
 
 Votre participation contribuera à restaurer, protéger et conserver des livres et des affiches d'une valeur inestimable.
 
