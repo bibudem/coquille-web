@@ -13,7 +13,7 @@ const CardContainer = styled('div')({
   position: 'relative',
   ...cardSize,
   cursor: 'pointer',
-  perspective: '600px',
+  // perspective: '600px',
 })
 
 const FlipSide = styled('div')({

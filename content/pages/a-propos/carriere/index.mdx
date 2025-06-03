@@ -1,30 +1,33 @@
 ---
 title: Carrière
 slug: carriere
+secondaryNav:
+  order: 1
+superHero:
+  imageName: espaces
+  title: À propos
 ---
-import { Student, UsersThree } from '@phosphor-icons/react'
+import { StudentIcon, UsersThreeIcon } from '@phosphor-icons/react'
 import IconeUdeM from '@/components/IconeUdeM';
 
 # Carrière
 
 <Grid container spacing=".62rem" sx={{ margin:'4rem 0', alignItems: 'stretch'}}>
-    <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+    <Grid size={{ xs: 12, sm: 6, md: 4, lg: 4 }}>
       <Card2
-      id='a'
         title="Notre organisation"
-        Icon={UsersThree}
+        Icon={UsersThreeIcon}
         href="./notre-organisation"
       />
     </Grid>
-    <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+    <Grid size={{ xs: 12, sm: 6, md: 4, lg: 4 }}>
       <Card2
-      id='b'
-        title="Membre Premières Nation, Métis ou Inuit?"
-        Icon={Student}
+        title="Membre Premières Nations, Métis ou Inuit?"
+        Icon={StudentIcon}
         href="affichage-premiers-peuples"
       />
     </Grid>
-    <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+    <Grid size={{ xs: 12, sm: 6, md: 4, lg: 4 }}>
       <Card2
         title="Faire carrière à l'UdeM"
         Icon={IconeUdeM}
@@ -48,11 +51,11 @@ Pour consulter les affichages internes, nous invitons les membres du personnel �
 
 ## Candidatures spontanées
 
-Pour les postes de commis étudiant ou étudiante (à temps partiel), de technicien ou technicienne en documentation, de bibliothécaire ou de cadre, contacter nous au [cv@bib.umontreal.ca](mailto:cv@bib.umontreal.ca).
+Pour les postes de commis étudiant ou étudiante (à temps partiel), de technicien ou technicienne en documentation, de bibliothécaire ou de cadre, contacter nous à l'adresse [cv@bib.umontreal.ca](mailto:cv@bib.umontreal.ca).
 
 <Alert>
   <AlertTitle>À noter</AlertTitle>
-  <>Les CV sont conservés pour une période d’un an. Pour tout autre type de poste : nous vous invitons à consulter les pages [Carrières de l'UdeM](https://www.umontreal.ca/carrieres/).</>
+  <>Les CV sont conservés pour une période d’un an. Pour tout autre type de poste, nous vous invitons à consulter les pages [Carrières de l'UdeM](https://www.umontreal.ca/carrieres/).</>
 </Alert>
 
 ### L’Université de Montréal, un bon employeur

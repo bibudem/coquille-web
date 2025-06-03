@@ -1,7 +1,21 @@
 ---
 title: Personnes inscrites par droit accordé
 slug: droit-accorde
+secondaryNav:
+  title: Droit accordé
+  order: 3
+superHero:
+  imageName: obtenir
+  title: Obtenir un document
 ---
+
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 # Personnes inscrites par droit accordé
 
@@ -9,26 +23,45 @@ Cette catégorie inclut les personnes pour lesquelles une faculté ou un départ
 
 Pour s'inscrire, les personnes doivent :
 
-1. obtenir de la Faculté ou du département le [Formulaire de droit accordé](/obtenir/formulaire-droit-accorde.pdf);
-2. si la demande est acceptée, se présenter au comptoir de prêt de l'une des [bibliothèques de l'UdeM](lien vers la liste des bibs) avec une pièce d'identité avec adresse et photo.
+1. obtenir de la Faculté ou du département le [Formulaire de droit accordé](/obtenir/formulaire-droit-accorde.pdf)
+2. si la demande est acceptée, vous présenter au comptoir de prêt de l'une des [bibliothèques de l'UdeM](/espaces/#liste-bibliotheques) avec une pièce d'identité avec adresse et photo.
 
 ## Modalités générales
 
 <Bloc liste avec icônes>
 
-- Emprunt avec : carte Bibliothèques UdeM avec une pièce d'identité avec photo
-- Nombre maximum de documents : 100 documents
-- Durée du prêt : 30 jours
-- Renouvellement : automatique, à moins que le document soit réservé ou le dossier expiré ([voir les exceptions](../pret-renouvellement-retour/#exceptions-au-renouvellement-automatique)) 
+- Emprunt avec: carte Bibliothèques UdeM et une pièce d'identité avec photo
+- Nombre maximum de documents: 100 documents
+- Durée du prêt: 30 jours
+- Renouvellement: automatique, à moins que le document soit réservé ou le dossier expiré ([voir les exceptions](../pret-renouvellement-retour/#exceptions-au-renouvellement-automatique)) 
 
 </Bloc>
 
-La consultation des ressources électroniques est possible sur les postes publics des bibliothèques grâce à un compte d'acces provision (compte passant). Demandez-le au comptoir de prêt avec une pièce d'identité.
+La consultation des ressources électroniques est possible sur les ordinateurs publics des bibliothèques grâce à un compte d'acces provisoire (compte passant). Demandez-le au comptoir de prêt avec une pièce d'identité.
 
 ## Modalités détaillées
 
-| Type de document                                              | Durée du prêt                                          |
-| ------------------------------------------------------------- | ------------------------------------------------------ |
-| Livres, partition, documents audiovisuels                     | 30 jours                                               |
-| Documents d'accompagnement d'un livre (cédéroms, DVD, autre)  | 30 jours                                               |
-| Réserve de cours : 3 documents permis, consultation sur place | livres et partition : 3 heures; Audiovisuel : 6 heures |
+<TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Type de document</TableCell>
+            <TableCell align="right">Durée du prêt</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableCell>Livres, partitions</TableCell>
+            <TableCell align="right">30 jours</TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableCell>Documents d'accompagnement d'un livre (cédéroms, DVD, autre)</TableCell>
+            <TableCell align="right">30 jours</TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableCell>Réserve de cours: 3 documents permis, consultation sur place</TableCell>
+            <TableCell align="right">Livres et partitions: 3 heures <br/> Audiovisuel: 6 heures</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>

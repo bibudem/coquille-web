@@ -1,7 +1,20 @@
 ---
 title: ILL Service for External Libraries
 slug : ill-external-libraries
+superHero:
+  imageName: obtenir
+  title: Obtenir un document
 ---
+
+import Liste from '@/components/Liste'
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
 # ILL Service for External Libraries
 
 We currently use OCLC WorldShare Tipasa. If your ILL system is not compatible, you can send an ILL request for loan or copy by filling out the form below.
@@ -62,15 +75,60 @@ Here are the fees for one loan or copy request:
 
 #### Canada
 
-|                  | Loans         | Copies        |
-|------------------|---------------|---------------|
-| OCUL/COPPUL/CBUA-CAUL/BCI Agreement | Agreement     | Agreement     |
-| Medical/Hospital Libraries (affiliated with Laval, McGill, Sherbrooke) | $5.00          | $5.00          |
-| Non-profit Canadian Libraries (except agreements) | $25.00         | $25.00         |
-| Other Canadian Libraries (except agreements) | $35.00         | $35.00         |
+<TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="interlibrary fees table">
+        <TableHead>
+          <TableRow>
+            <TableCell></TableCell>
+            <TableCell align="right">Loans</TableCell>
+            <TableCell align="right">Copies</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell>OCUL/COPPUL/CBUA-CAUL/BCI Agreement</TableCell>
+            <TableCell align="right">Agreement</TableCell>
+            <TableCell align="right">Agreement</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              Medical/Hospital Libraries<br />
+              (affiliated with Laval, McGill, Sherbrooke)
+            </TableCell>
+            <TableCell align="right">$5.00</TableCell>
+            <TableCell align="right">$5.00</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Non-profit Canadian Libraries (except agreements)</TableCell>
+            <TableCell align="right">$25.00</TableCell>
+            <TableCell align="right">$25.00</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Other Canadian Libraries (except agreements)</TableCell>
+            <TableCell align="right">$35.00</TableCell>
+            <TableCell align="right">$35.00</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
 
 #### Outside Canada
 
-|                  | Loans         | Copies        |
-|------------------|---------------|---------------|
-| Libraries (except agreements) | $35.00         | $35.00         |
+ <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="additional fees table">
+        <TableHead>
+          <TableRow>
+            <TableCell></TableCell>
+            <TableCell align="right">Loans</TableCell>
+            <TableCell align="right">Copies</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell>Libraries (except agreements)</TableCell>
+            <TableCell align="right">$35.00</TableCell>
+            <TableCell align="right">$35.00</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>

@@ -1,16 +1,15 @@
 import { createContext, useEffect, useState } from 'react'
-import { Typography } from '@mui/material'
-import Grid from '@mui/material/Grid2'
+import { Box, Typography } from '@mui/material'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Section from '@/components/Section'
 import { appBarHeight } from '@/components/_layout/AppBar/TopAppBar'
 import { useSmall } from '@/hooks/use-small'
 
-export const inlineOffset = '3.75rem'
+export const inlineOffset = '0 215px'
 
 const boxSize = {
-  height: '49.75rem',
+  height: '230px',
   width: '100%',
 }
 
@@ -24,7 +23,7 @@ export const SuperHeroContext = createContext({})
  * @param {string} alt - Alt text for the background image (defaults to empty string)
  * @returns {JSX.Element} A hero section with gradient overlay and text content
  */
-export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, ...rest }) {
+export default function SuperHero({ title, subTitle, imageName, alt = '', ...rest }) {
   if (typeof title === 'undefined') {
     throw new Error('title prop is required')
   }
@@ -67,7 +66,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
           }
         : {
             inlineOffset,
-            bottomOffset: '4.25rem',
+            bottomOffset: '48px',
           }
     )
   }, [isSmall])
@@ -76,6 +75,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
     <>
       <SuperHeroContext.Provider value={contextData}>
         <div
+          className="bib-comp-super-hero"
           style={{
             position: 'absolute',
             top: 0,
@@ -88,7 +88,6 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
           }}
         >
           <GatsbyImage
-            className="bib-comp-super-hero"
             image={image}
             layout="fullWidth"
             alt={alt}
@@ -110,18 +109,28 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
           ></div>
           <Section
             sx={{
-              padding: `0 0 ${children ? '1rem' : contextData.bottomOffset} ${contextData.inlineOffset}`,
+              padding: `0 215px 48px 0`,
               zIndex: 2,
             }}
           >
-            <Grid container direction="row">
-              <Grid size={{ xs: 12, md: 8 }}>
-                <Typography variant="display1" component="h1" sx={{ wordBreak: 'break-word' }}>
-                  {title}
-                </Typography>
-                {subTitle}
-              </Grid>
-            </Grid>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                alignItems: 'flex-end',
+              }}
+            >
+              <Typography
+                component="div"
+                sx={{
+                  fontSize: '61px',
+                  wordBreak: 'break-word',
+                  lineHeight: 1,
+                }}
+              >
+                {title}
+              </Typography>
+            </Box>
           </Section>
           <div style={{ zIndex: 2 }}>{children}</div>
         </div>

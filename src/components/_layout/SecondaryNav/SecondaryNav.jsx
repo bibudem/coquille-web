@@ -1,12 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Box } from '@mui/material'
-import NavList from './NavList.jsx'
-import NavItem from './NavItem.jsx'
+import NavList from './NavList'
+import NavItem from './NavItem'
 // import fetchNavigation from './fetchNavigation.js'
-import secondaryNavSampleData from './secondaryNavSampleData.js'
 import secondaryNavData from '../../../../public/site-navigation.json'
 
-export function SecondaryNav({ navData = secondaryNavSampleData, currentLocation, navigationOrder = false, ...rest }) {
+export function SecondaryNav({ currentLocation, navigationOrder = false, ...rest }) {
   const { sx, children, ...props } = rest
   const [data, setData] = useState(null)
 

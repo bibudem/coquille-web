@@ -4,14 +4,15 @@ title: Nous joindre
 
 import Bibliotheques from '../../bibliotheques/bibliotheques.mdx'
 import SuperHero from '@/components/SuperHero'
-import { BookOpenText, Chat, PencilSimple, UsersFour, Envelope, Phone } from '@phosphor-icons/react'
+import GridOffset from '@/components/utils/GridOffset'
+import { BookOpenTextIcon, ChatIcon, PencilSimpleIcon, UsersFourIcon, EnvelopeIcon, PhoneIcon } from '@phosphor-icons/react'
 
 <SuperHero
   title="Nous joindre"
   subTitle={
     <>
       <Typography component='div' variant='subtitle1'>Valérie Bastien</Typography>
-      <Typography component='div' variant='subtitle1'>Bibliothécaire Science de l'éducation</Typography>
+      <Typography component='div' variant='subtitle1'>Bibliothécaire en science de l'éducation</Typography>
     </>
   }
   imageName="nous-joindre"
@@ -26,7 +27,7 @@ import { BookOpenText, Chat, PencilSimple, UsersFour, Envelope, Phone } from '@p
       <Card2
       id='a'
         title="Nous écrire"
-        Icon={PencilSimple}
+        Icon={PencilSimpleIcon}
         href="nous-ecrire"
       />
     </Grid>
@@ -34,21 +35,21 @@ import { BookOpenText, Chat, PencilSimple, UsersFour, Envelope, Phone } from '@p
       <Card2
       id='b'
         title="Clavarder"
-        Icon={Chat}
+        Icon={ChatIcon}
         href="../nous-joindre/clavarder"
       />
     </Grid>
     <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
       <Card2
         title="Consulter le répertoire"
-        Icon={UsersFour}
+        Icon={UsersFourIcon}
         href="../nous-joindre/notre-equipe"
       />
     </Grid>
     <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
       <Card2
         title="Faire une suggestion d'achat"
-        Icon={BookOpenText}
+        Icon={BookOpenTextIcon}
         href="suggestion-achat"
       />
     </Grid>
@@ -56,16 +57,17 @@ import { BookOpenText, Chat, PencilSimple, UsersFour, Envelope, Phone } from '@p
 
   ## Services
 
-  <AccordionGroup>
+<GridOffset offset={1}>
+  <AccordionGroup sx={{outline: '1px solid red', width: '100%'}}>
     <Accordion id="mon-accordeon">
       <AccordionSummary>Service Accessibilité</AccordionSummary>
       <AccordionDetails>
 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
-  <Envelope size={24} color="var(--bleuPrincipal)" />
+  <EnvelopeIcon size={24} color="var(--bleuPrincipal)" />
   <Link to="mailto:accessibilite@bib.umontreal.ca">accessibilite@bib.umontreal.ca</Link>
   </div>
 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
-  <Phone size={24} color="var(--bleuPrincipal)" />
+  <PhoneIcon size={24} color="var(--bleuPrincipal)" />
   <Link to="tel:514-343-2135">514 343-2135</Link>
 </div>
 </AccordionDetails>
@@ -75,18 +77,19 @@ import { BookOpenText, Chat, PencilSimple, UsersFour, Envelope, Phone } from '@p
       <AccordionSummary>Prêt entre bibliothèques</AccordionSummary>
       <AccordionDetails>
 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
-  <Envelope size={24} color="var(--bleuPrincipal)" />
+  <EnvelopeIcon size={24} color="var(--bleuPrincipal)" />
   <Link to="mailto:peb@bib.umontreal.ca">peb@bib.umontreal.ca</Link>
 </div>
 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
-  <Phone size={24} color="var(--bleuPrincipal)" />
+  <PhoneIcon size={24} color="var(--bleuPrincipal)" />
   <Link to="tel:514-343-2135">514 343-2135</Link>
 </div>
     </AccordionDetails>
     </Accordion>
   </AccordionGroup>
+  </GridOffset>
 
-<Typography components="h2" variant="display2" id="liste-bibliotheques"> Bibliothèques et points de service</Typography>
+<Typography component="h2" variant="display2" id="liste-bibliotheques" sx={{ marginTop: '1em', marginBottom: '1em' }}> Bibliothèques et points de service</Typography>
 
 <Bibliotheques />
   </Section>

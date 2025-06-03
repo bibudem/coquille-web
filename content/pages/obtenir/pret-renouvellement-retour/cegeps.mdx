@@ -1,27 +1,40 @@
 ---
 title: Ententes avec les cégeps
 slug: cegeps
+secondaryNav:
+  order: 6
+superHero:
+  imageName: obtenir
+  title: Obtenir un document
 ---
+
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 # Ententes avec les cégeps
 
-Cette catégorie inclut les membres:
+Cette catégorie inclut les membres des établissements:
 
-- Collège Jean-de-Brébeuf,
-- École de musique Vincent-d'Indy,
-- Collège de Bois-de-Boulogne,
-- Cégep du Vieux Montréal.
+- Collège Jean-de-Brébeuf
+- École de musique Vincent-d'Indy
+- Collège de Bois-de-Boulogne
+- Cégep du Vieux Montréal
 
-Pour s'inscrire, les personnes doivent se présenter à la bibliothèque de leur cégep pour obtenir le formulaire d'autorisation d'emprunt direct et suivre les instructions inscrites sur le formulaire.
+Pour s'inscrire, vous devez vous présenter à la bibliothèque de votre cégep pour obtenir le formulaire d'autorisation d'emprunt direct et suivre les instructions inscrites sur le formulaire.
 
 ## Modalités générales
 
 <Bloc liste avec icônes>
 
-- Emprunt avec : carte Bibliothèques UdeM et pièce d'identité avec photo
-- Nombre maximum de documents : 3 documents
-- Durée du prêt : 14 jours
-- Renouvellement : aucun renouvellement
+- Emprunt avec: carte Bibliothèques UdeM et pièce d'identité avec photo
+- Nombre maximum de documents: 3 documents
+- Durée du prêt: 14 jours
+- Renouvellement: aucun renouvellement
 
 </Bloc>
 
@@ -29,8 +42,27 @@ La consultation des ressources électroniques est possible sur les postes public
 
 ## Modalités détaillées
 
-| Type de document                                              | Durée du prêt                                          |
-| ------------------------------------------------------------- | ------------------------------------------------------ |
-| Livres, partition                                             | 14 jours                                               |
-| Documents d'accompagnement d'un livre (cédéroms, DVD, autre)  | 14 jours                                               |
-| Réserve de cours : 3 documents permis, consultation sur place | livres et partition : 3 heures; Audiovisuel : 6 heures |
+<TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Type de document</TableCell>
+            <TableCell align="right">Durée du prêt</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableCell>Livres, partitions</TableCell>
+            <TableCell align="right">14 jours</TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableCell>Documents d'accompagnement d'un livre (cédéroms, DVD, autre)</TableCell>
+            <TableCell align="right">14 jours</TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableCell>Réserve de cours: 3 documents permis, consultation sur place</TableCell>
+            <TableCell align="right">Livres et partitions: 3 heures <br/> Audiovisuel: 6 heures</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>

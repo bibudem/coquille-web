@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { useTheme } from '@mui/material'
+import { Box, useTheme } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { IconContext } from '@phosphor-icons/react'
 
@@ -10,17 +10,20 @@ import TopAppBarSm from '@/components/_layout/AppBar/TopAppBarSm'
 import { QuickLinks, QuickLinksSm } from '@/components/_layout/QuickLinks'
 import Footer from '@/components/_layout/Footer/Footer'
 import Breadcrumbs from '@/components/_layout/Breadcrumbs/Breadcrumbs'
+import SkipTo from '@/components/_layout/SkipTo'
 import SEO from '@/components/_layout/SEO'
 import Debug from '@/components/_layout/Debug'
 import LayoutGrid from '../components/utils/LayoutGrid'
 import RetroactionUsager from '@/components/RetroactionUsager'
+import ConditionalWrapper from '@/components/utils/ConditionalWrapper'
+import LayoutContainer from '@/components/utils/LayoutContainer'
 
 import { useSmall } from '@/hooks/use-small'
 import { SecondaryNav } from '@/components/_layout/SecondaryNav/SecondaryNav'
 import { getLastSundayISODate } from '@/utils/dateTimeUtils'
 
 import commonComponents from './commonComponents'
-import LayoutContainer from '../components/utils/LayoutContainer.jsx'
+import SuperHero from '../components/_layout/SuperHeroLvl2'
 
 function getCurrentPageLevel(location) {
   return location.pathname.split('/').filter((item) => item).length
@@ -32,6 +35,8 @@ export default function PageTemplate({ pageContext, children, data, location }) 
   const theme = useTheme()
   const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
   const [lvl, setLvl] = useState(getCurrentPageLevel(location))
+
+  const { superHero } = pageContext.frontmatter
 
   useEffect(() => {
     setLvl(getCurrentPageLevel(location))
@@ -54,10 +59,12 @@ export default function PageTemplate({ pageContext, children, data, location }) 
   const mainContent = (
     <>
       {hasSecondaryNav && <Breadcrumbs crumbs={crumbs} />}
-      <main role="main">
+      <Box id="main-content" component="main" role="main" sx={{ '& > :first-child': { marginTop: 0, paddingTop: 0 } }}>
         {children}
-        <RetroactionUsager />
-      </main>
+        <ConditionalWrapper condition={lvl === 1} wrapper={(children) => <LayoutContainer>{children}</LayoutContainer>}>
+          <RetroactionUsager />
+        </ConditionalWrapper>
+      </Box>
     </>
   )
 
@@ -70,7 +77,9 @@ export default function PageTemplate({ pageContext, children, data, location }) 
         }}
       >
         {process.env.NODE_ENV !== 'production' && <Debug />}
-        <div style={{ position: 'absolute', background: '#fff', top: 0, right: 0, padding: '.5em' }}>{lvl}</div>
+        <div style={{ position: 'fixed', background: '#fff', top: 0, right: 0, padding: '.5em', zIndex: 99999 }}>{lvl}</div>
+
+        <SkipTo href="#main-content">Aller au contenu</SkipTo>
 
         <udem-urgence></udem-urgence>
 
@@ -80,28 +89,32 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
+        {lvl > 1 && superHero && <SuperHero title={superHero.title} imageName={superHero.imageName} lvl={lvl} />}
+
         {hasSecondaryNav ? (
-          <LayoutContainer>
-            <LayoutGrid>
-              <Grid
-                sx={{ width: '100%' }}
-                container
-                spacing={{
-                  xs: 1,
-                  sm: 3,
-                  lg: 4,
-                }}
-              >
-                <Grid size={3} className="bib-secondary-nav-col">
-                  <SecondaryNav currentLocation={location} className="bib-secondary-nav" />
+          <Box sx={{ paddingTop: '60px' }}>
+            <LayoutContainer>
+              <LayoutGrid>
+                <Grid
+                  sx={{ width: '100%' }}
+                  container
+                  spacing={{
+                    xs: 1,
+                    sm: 3,
+                    lg: 4,
+                  }}
+                >
+                  <Grid size={3} className="bib-secondary-nav-col">
+                    <SecondaryNav currentLocation={location} className="bib-secondary-nav" />
+                  </Grid>
+                  <Grid size={9} className="bib-main-content-col">
+                    <div>{mainContent}</div>
+                  </Grid>
                 </Grid>
-                <Grid size={9} className="bib-main-content-col">
-                  <div>{mainContent}</div>
-                </Grid>
-              </Grid>
-            </LayoutGrid>
-            {/* </Container> */}
-          </LayoutContainer>
+              </LayoutGrid>
+              {/* </Container> */}
+            </LayoutContainer>
+          </Box>
         ) : (
           <>{mainContent}</>
         )}

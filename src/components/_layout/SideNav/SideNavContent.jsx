@@ -5,7 +5,7 @@ import Link from '@/components/Link'
 import Close from '@/components/Close'
 // import Button from '@/components/Button'
 import noop from '@/utils/noop'
-import { ArrowRight, ArrowUpRight, CalendarPlus, ClockCountdown, Lifebuoy, PaperPlaneTilt } from '@phosphor-icons/react'
+import { ArrowRightIcon, ArrowUpRightIcon, CalendarPlusIcon, ClockCountdownIcon, LifebuoyIcon, PaperPlaneTiltIcon } from '@phosphor-icons/react'
 import { SofiaIcon } from '@/components/CustomIcons'
 import LogoUdeM from '@/images/logo-udem/logo-udem-blanc.svg'
 import LogoBibUBlanc from '@/images/logo-bib/logo-bib-U-blanc.svg'
@@ -83,7 +83,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
 
   function onDrawerClick(event) {
-    console.log('onClose...', event)
+    // console.log('onClose...', event)
     let { target: node } = event
 
     if (node.matches('a[href]')) {
@@ -139,10 +139,10 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
             gap: '22px',
           }}
         >
-          <Button href="https://monudem.umontreal.ca/" variant="outlined" sx={{ color: '#fafdfe', border: '1px solid #e7ebee', fontSize: '14px' }} endIcon={<ArrowUpRight size={28} />}>
+          <Button href="https://monudem.umontreal.ca/" variant="outlined" sx={{ color: '#fafdfe', border: '1px solid #e7ebee', fontSize: '14px' }} endIcon={<ArrowUpRightIcon size={28} />}>
             Mon UdeM
           </Button>
-          <Button href="/nous-soutenir/" variant="contained" sx={(theme) => ({ fontSize: '14px', color: '#222930', backgroundColor: '#eef4f7' })} endIcon={<ArrowRight size={28} />}>
+          <Button href="/nous-soutenir/" variant="contained" sx={(theme) => ({ fontSize: '14px', color: '#222930', backgroundColor: '#eef4f7' })} endIcon={<ArrowRightIcon size={28} />}>
             Je donne
           </Button>
           <Close aria-label="Fermer le menu" sx={{ color: '#fff' }} />
@@ -159,7 +159,8 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
         <Nav aria-label="À propos">
           <NavHeader>À propos</NavHeader>
           <NavList>
-            <NavListItem href="/a-propos/notre-organisation/">Notre équipe</NavListItem>
+            <NavListItem href="/a-propos/notre-organisation/">Notre organisation</NavListItem>
+            <NavListItem href="/a-propos/nos-collections">Nos collections</NavListItem>
             <NavListItem href="/a-propos/mission-vision-valeur">Vision stratégique</NavListItem>
             <NavListItem href="/a-propos/rapports-annuels">Rapports annuels</NavListItem>
             <NavListItem href="/a-propos/politiques-reglement">Politiques et règlement</NavListItem>
@@ -171,23 +172,24 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
         <Nav aria-label="Plateformes" bg>
           <NavHeader>Plateformes</NavHeader>
           <NavList>
-            <NavListItem href="#">Le studio - écosystème numérique</NavListItem>
-            <NavListItem href="#">Calypso: Collections spéciales</NavListItem>
-            <NavListItem href="#">La boîte à outils - guides</NavListItem>
+            <NavListItem href="https://studio.bib.umontreal.ca/">Studio•bib - écosystème numérique</NavListItem>
+            <NavListItem href="https://calypso.bib.umontreal.ca/">Calypso: objets numériques</NavListItem>
+            <NavListItem href="https://boite-outils.bib.umontreal.ca/c.php?g=739631">La boîte à outils - guides</NavListItem>
             <NavListItem href="https://umontreal.on.worldcat.org/discovery?lang=fr">Sofia: outil de découverte</NavListItem>
-            <NavListItem href="#">Bases de données de A à Z</NavListItem>
+            <NavListItem href="https://boite-outils.bib.umontreal.ca/az.php">Bases de données de A à Z</NavListItem>
             <NavListItem href="https://umontreal.scholaris.ca/">Papyrus: dépôt institutionnel</NavListItem>
-            <NavListItem href="#">GéoIndex: données géospatiales</NavListItem>
+            <NavListItem href="https://geoapp.bibl.ulaval.ca/">GéoIndex: données géospatiales</NavListItem>
           </NavList>
         </Nav>
 
         <Nav aria-label="Obtenir un document">
           <NavHeader>Obtenir un document</NavHeader>
           <NavList>
-            <NavListItem href="#">Prêt, renouvellement, retour</NavListItem>
-            <NavListItem href="#">Demande de numérisation</NavListItem>
-            <NavListItem href="#">Suggestion d'achat</NavListItem>
-            <NavListItem href="#">Frais et avis de retard</NavListItem>
+            <NavListItem href="/obtenir/pret-renouvellement-retour/">Prêt, renouvellement, retour</NavListItem>
+            <NavListItem href="/obtenir/numerisation">Demande de numérisation</NavListItem>
+            <NavListItem href="/obtenir/peb">Prêt entre bibliothèques</NavListItem>
+            <NavListItem href="/obtenir/frais-avis">Frais et avis de retard</NavListItem>
+            <NavListItem href="/nous-joindre/suggestion-achat">Suggestion d'achat</NavListItem>
           </NavList>
         </Nav>
 
@@ -197,13 +199,13 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
             <NavListItem href="https://umontreal.on.worldcat.org/discovery?lang=fr" icon={<SofiaIcon color="#fff" fontSize="24px" />}>
               Sofia
             </NavListItem>
-            <NavListItem href="/horaires" icon={<ClockCountdown color="#fff" size={24} />}>
+            <NavListItem href="/horaires" icon={<ClockCountdownIcon color="#fff" size={24} />}>
               Horaires
             </NavListItem>
-            <NavListItem href="https://calendrier.bib.umontreal.ca/r" icon={<CalendarPlus color="#fff" size={24} />}>
+            <NavListItem href="https://calendrier.bib.umontreal.ca/r" icon={<CalendarPlusIcon color="#fff" size={24} />}>
               Réserver une salle
             </NavListItem>
-            <NavListItem href="#" icon={<Lifebuoy color="#fff" size={24} />}>
+            <NavListItem href="https://studio.bib.umontreal.ca/informatique/" icon={<LifebuoyIcon color="#fff" size={24} />}>
               Soutien informatique
             </NavListItem>
           </NavList>
@@ -216,7 +218,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
           </Link>
         </Box>
         <Box>
-          <Button href="/nous-joindre/" variant="outlined" sx={{ color: '#fafdfe', border: '1px solid #e7ebee', fontSize: '14px' }} endIcon={<PaperPlaneTilt size={28} />}>
+          <Button href="/nous-joindre/" variant="outlined" sx={{ color: '#fafdfe', border: '1px solid #e7ebee', fontSize: '14px' }} endIcon={<PaperPlaneTiltIcon size={28} />}>
             Nous joindre
           </Button>
         </Box>

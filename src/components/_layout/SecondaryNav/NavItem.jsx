@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, styled } from '@mui/material'
-import { CaretRight } from '@phosphor-icons/react'
+import { CaretRightIcon } from '@phosphor-icons/react'
 import NavList from './NavList'
 
 const StyledLi = styled('li')({
@@ -55,11 +55,11 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
   }, [lvl])
 
   return (
-    <StyledLi className={`bib-nav2-item lvl-${lvl} ${isActive ? 'is-active' : ''}`}>
+    <StyledLi className={`bib-comp-nav2-item lvl-${lvl} ${isActive ? 'is-active' : ''}`}>
       <Link
         col
         href={path}
-        className={`bib-nav2-item-link lvl-${lvl} ${isActive && 'is-active'}`}
+        className={`bib-comp-nav2-item-link lvl-${lvl} ${isActive && 'is-active'}`}
         sx={{
           ...(lvl > 0 && { paddingLeft: '0.8125rem' }),
           justifyContent: 'space-between',
@@ -71,7 +71,7 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
       >
         {title}
         {children && (
-          <CaretRight
+          <CaretRightIcon
             size="24px"
             color={isActive ? 'var(--bib-palette-bleuPrincipal-main)' : 'currentColor'}
             style={{
@@ -86,7 +86,7 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
         )}
       </Link>
       {children && isActive && (
-        <NavList sx={{ paddingBottom: '8px', paddingTop: '8px' }}>
+        <NavList sx={{ paddingBottom: '8px', paddingTop: '8px', marginLeft: `${lvl * 16}px` }}>
           {children.map((item) => (
             <NavItem key={item.path} item={item} currentLocation={currentLocation} lvl={lvl + 1} />
           ))}

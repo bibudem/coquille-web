@@ -50,7 +50,7 @@ function Title({ title, sticky = false }) {
         component="h2"
         sx={(theme) => ({
           fontSize: '1.5rem', // 26px
-          fontWeight: 500,
+          fontWeight: 400,
           lineHeight: 1.2,
           [theme.breakpoints.up('lg')]: {
             fontSize: '1.7778rem', // 32px
