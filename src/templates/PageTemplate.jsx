@@ -15,6 +15,7 @@ import SEO from '@/components/_layout/SEO'
 import Debug from '@/components/_layout/Debug'
 import LayoutGrid from '../components/utils/LayoutGrid'
 import RetroactionUsager from '@/components/RetroactionUsager'
+import ConditionalWrapper from '@/components/utils/ConditionalWrapper'
 import LayoutContainer from '@/components/utils/LayoutContainer'
 
 import { useSmall } from '@/hooks/use-small'
@@ -60,7 +61,9 @@ export default function PageTemplate({ pageContext, children, data, location }) 
       {hasSecondaryNav && <Breadcrumbs crumbs={crumbs} />}
       <Box id="main-content" component="main" role="main" sx={{ '& > :first-child': { marginTop: 0, paddingTop: 0 } }}>
         {children}
-        <RetroactionUsager />
+        <ConditionalWrapper condition={lvl === 1} wrapper={(children) => <LayoutContainer>{children}</LayoutContainer>}>
+          <RetroactionUsager />
+        </ConditionalWrapper>
       </Box>
     </>
   )
@@ -74,7 +77,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
         }}
       >
         {process.env.NODE_ENV !== 'production' && <Debug />}
-        <div style={{ position: 'absolute', background: '#fff', top: 0, right: 0, padding: '.5em', zIndex: 99999 }}>{lvl}</div>
+        <div style={{ position: 'fixed', background: '#fff', top: 0, right: 0, padding: '.5em', zIndex: 99999 }}>{lvl}</div>
 
         <SkipTo href="#main-content">Aller au contenu</SkipTo>
 
