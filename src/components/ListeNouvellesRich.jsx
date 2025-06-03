@@ -1,27 +1,26 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Skeleton } from '@mui/material'
-import Link from '@/components/Link'
-import Div from '@/components/utils/Div'
-import { CalendarBlank } from '@phosphor-icons/react'
+import { Box, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Skeleton } from '@mui/material'
+import { CalendarBlankIcon } from '@phosphor-icons/react'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import Link from '@/components/Link'
 
 function Header({ children }) {
   return (
-    <Div
+    <Box
       sx={{
         fontSize: '2rem',
         fontWeight: 500,
         lineHeight: 1.2,
       }}
     >
-      {children}
-    </Div>
+      header: {children}
+    </Box>
   )
 }
 
 function Title({ children }) {
   return (
-    <Div
+    <Box
       sx={{
         fontSize: '1.7778rem',
         fontWeight: 500,
@@ -30,13 +29,13 @@ function Title({ children }) {
       }}
     >
       {children}
-    </Div>
+    </Box>
   )
 }
 
 function Excerpt({ children }) {
   return (
-    <Div
+    <Box
       sx={{
         fontSize: '0.8889rem',
         fontWeight: 400,
@@ -46,13 +45,13 @@ function Excerpt({ children }) {
       }}
     >
       {children}
-    </Div>
+    </Box>
   )
 }
 
 function Upper({ children }) {
   return (
-    <Div
+    <Box
       sx={(theme) => ({
         display: 'flex',
         alignItems: 'center',
@@ -64,13 +63,13 @@ function Upper({ children }) {
         color: theme.palette.rougeOrange.main,
       })}
     >
-      <CalendarBlank size={20} color="currentColor" />
+      <CalendarBlankIcon size={20} color="currentColor" />
       {children}
-    </Div>
+    </Box>
   )
 }
 
-export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvelles/', ...rest }) {
+export default function ListNouvelles({ title = 'Nouvelles', id, moreLink = '/nouvelles/', ...rest }) {
   if (typeof title !== 'string') {
     throw new Error('The `title` parameter must be a string')
   }
@@ -123,9 +122,9 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
   data.images.nodes.forEach((node) => {
     images.set(node.name, node.childrenImageSharp[0]?.gatsbyImageData)
   })
-  console.log([...images.entries()])
+
   const nouvelles = data.allFile.nodes.map((node) => {
-    const { id, relativePath, relativeDirectory } = node
+    const { id, relativePath } = node
     const {
       excerpt,
       frontmatter: { authors, date, newsImage, newsUrl, slug, source, title, type },
@@ -147,7 +146,7 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
   })
 
   return (
-    <Div
+    <Box
       component="section"
       sx={(theme) => ({
         display: 'flex',
@@ -156,7 +155,9 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
         '--_lower-icon-color': theme.palette.rougeOrange.main,
       })}
     >
-      <Header flexItem>{title}</Header>
+      <Header flexItem id={id}>
+        {title}
+      </Header>
 
       <List>
         {nouvelles.map(({ id, authors, date, excerpt, images, newsImage, newsUrl, slug, source, title, type }) => (
@@ -204,6 +205,6 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
           </ListItem>
         ))}
       </List>
-    </Div>
+    </Box>
   )
 }

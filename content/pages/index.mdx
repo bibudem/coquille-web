@@ -14,7 +14,7 @@ import ListeEvenements from '@/components/ListeEvenements'
 import ListeNouvelles from '@/components/ListeNouvelles'
 import LayoutGrid from  '@/components/utils/LayoutGrid'
 
-import { BookmarkSimple, PersonSimpleCircle, Users, Video } from '@phosphor-icons/react'
+import { BookmarkSimpleIcon, PersonSimpleCircleIcon, UsersIcon, VideoIcon } from '@phosphor-icons/react'
 import imageEspace from './images/image-arret-bibliothecaire.webp'
 import imageRecherche from './images/recherche-accueil.webp'
 import imageEnseignement from './images/enseignement-accueil.webp'
@@ -40,10 +40,10 @@ import imageEngagement from './images/engagement-accueil.webp'
 
   <LayoutGrid sx={{marginTop: '2rem'}}>
     <Grid container spacing='2.25rem' size={{ sm: 12, md: 7 }}>
-      <ListeEvenements />
+      <ListeEvenements id="evenements" />
     </Grid>
     <Grid container spacing='2.25rem' size={{sm:12, md:5}}>
-      <ListeNouvelles title="Nouvelles" />
+      <ListeNouvelles title="Nouvelles" id="nouvelles" />
     </Grid>
   </LayoutGrid>
 
@@ -59,25 +59,25 @@ import imageEngagement from './images/engagement-accueil.webp'
   >
       <CardWithIcon
         title="Ressources et conseils préparés par nos spécialistes"
-        Icon={BookmarkSimple}
+        Icon={BookmarkSimpleIcon}
         moreText="Voir la boîte à outils"
         href="https://boite-outils.bib.umontreal.ca/"
       />
       <CardWithIcon
         title="Capsules vidéos et webinaires"
-        Icon={Video}
+        Icon={VideoIcon}
         moreText="Accéder à YouTube"
         href="https://www.youtube.com/user/BibliothequesUdeM"
       />
       <CardWithIcon
         title="Service Accessibilité"
-        Icon={PersonSimpleCircle}
+        Icon={PersonSimpleCircleIcon}
         moreText="En savoir plus"
         href="service-accessibilite"
       />
       <CardWithIcon
         title="Soutien personnalisé avec nos spécialistes"
-        Icon={Users}
+        Icon={UsersIcon}
         moreText="Prendre rendez-vous"
         href="./nous-joindre/notre-equipe"
       />
