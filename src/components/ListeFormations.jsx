@@ -1,9 +1,9 @@
-import { List, ListItem, ListItemButton, Skeleton, useTheme } from '@mui/material'
+import { Box, List, ListItem, ListItemButton, Skeleton, useTheme } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import useSWR from 'swr'
 import Button from '@/components/Button'
 import Div from '@/components/utils/Div'
-import { CalendarBlank, ClockCountdown, MapPinSimpleArea } from '@phosphor-icons/react'
+import { CalendarBlankIcon, ClockCountdownIcon, MapPinSimpleAreaIcon } from '@phosphor-icons/react'
 
 const FETCH_TIMEOUT = 2000
 
@@ -13,7 +13,7 @@ function fetcher(...args) {
 
 function Title({ children }) {
   return (
-    <Div
+    <Box
       sx={{
         fontFamily: 'Lora',
         fontSize: '2rem',
@@ -23,14 +23,14 @@ function Title({ children }) {
       }}
     >
       {children}
-    </Div>
+    </Box>
   )
 }
 
 function Upper({ children }) {
   const theme = useTheme()
   return (
-    <Div
+    <Box
       sx={{
         display: 'flex',
         alignItems: 'center',
@@ -42,16 +42,16 @@ function Upper({ children }) {
         color: theme.palette.rougeOrange.main,
       }}
     >
-      <CalendarBlank size="1.25rem" color={theme.palette.rougeOrange.main} />
+      <CalendarBlankIcon size="1.25rem" color={theme.palette.rougeOrange.main} />
       {children}
-    </Div>
+    </Box>
   )
 }
 
 function Lower({ children, typeLocalisation, lieu }) {
   const theme = useTheme()
   return (
-    <Div
+    <Box
       sx={{
         display: 'flex',
         alignItems: 'center',
@@ -63,25 +63,25 @@ function Lower({ children, typeLocalisation, lieu }) {
         color: 'var(--_lower-color)',
       }}
     >
-      <ClockCountdown size="1.25rem" color={theme.palette.bleuPrincipal.main} />
+      <ClockCountdownIcon size="1.25rem" color={theme.palette.bleuPrincipal.main} />
       {children}
       {typeLocalisation === 'en-ligne' && (
         <>
-          <MapPinSimpleArea size="1.25rem" color={theme.palette.bleuPrincipal.main} /> En ligne
+          <MapPinSimpleAreaIcon size="1.25rem" color={theme.palette.bleuPrincipal.main} /> En ligne
         </>
       )}
       {typeLocalisation === 'physique' && (
         <>
-          <MapPinSimpleArea size="1.25rem" color="red" /> {lieu ?? 'En présentiel'}
+          <MapPinSimpleAreaIcon size="1.25rem" color="red" /> {lieu ?? 'En présentiel'}
         </>
       )}
-    </Div>
+    </Box>
   )
 }
 
 function ListeFormationsContainer({ children, sx }) {
   return (
-    <Div
+    <Box
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -90,7 +90,7 @@ function ListeFormationsContainer({ children, sx }) {
       }}
     >
       {children}
-    </Div>
+    </Box>
   )
 }
 
@@ -129,7 +129,7 @@ function ListeFormationsItem({ imageVedette, upper, title, lower, url, ...props 
  * @param {string} [props.moreLink] - Optional link to view more formations
  * @returns {React.ReactElement} A list of formations with optional "see more" button
  */
-export default function ListeFormations({ service = 'https://api.bib.umontreal.ca/formations/', limit = 4, moreText = 'Voir plus de formations', moreLink, ...props }) {
+export default function ListeFormations({ id, service = 'https://api.bib.umontreal.ca/formations/', limit = 4, moreText = 'Voir plus de formations', moreLink, ...props }) {
   if (typeof limit !== 'number') {
     throw new Error('The `limit` parameter must be a number')
   }

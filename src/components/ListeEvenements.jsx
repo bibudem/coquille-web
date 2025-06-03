@@ -4,7 +4,7 @@ import { format } from 'date-fns'
 import { frCA } from 'date-fns/locale'
 import { List, ListItem, ListItemButton, Skeleton, styled, Typography, useTheme } from '@mui/material'
 import Grid from '@mui/material/Grid2'
-import { CalendarBlank, ClockCountdown } from '@phosphor-icons/react'
+import { CalendarBlankIcon, ClockCountdownIcon } from '@phosphor-icons/react'
 import Button from '@/components/Button'
 import Div from '@/components/utils/Div'
 import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
@@ -71,14 +71,13 @@ function Upper({ children }) {
         color: theme.palette.rougeOrange.main,
       }}
     >
-      <CalendarBlank size="1.25rem" color={theme.palette.rougeOrange.main} />
+      <CalendarBlankIcon size="1.25rem" color={theme.palette.rougeOrange.main} />
       {children}
     </Div>
   )
 }
 
-function Lower({ children, url }) {
-  const theme = useTheme()
+function Lower({ url }) {
   return (
     <Div
       sx={{
@@ -98,7 +97,7 @@ function Lower({ children, url }) {
           gap: '.5em',
         }}
       >
-        {/* <ClockCountdown size="1.25rem" color={theme.palette.bleuPrincipal.main} />
+        {/* <ClockCountdownIcon size="1.25rem" color={theme.palette.bleuPrincipal.main} />
         {children} */}
       </Div>
       <Div
@@ -114,10 +113,18 @@ function Lower({ children, url }) {
   )
 }
 
-function ListeEvenementsContainer({ title, moreText, moreLink, children, sx }) {
+function ListeEvenementsContainer({ title, id, moreText, moreLink, children, sx }) {
   return (
     <Grid container spacing="2.25rem" size={12} direction="column">
-      <Typography component="h3" variant="h3">
+      <Typography
+        component="h3"
+        id={id}
+        sx={{
+          fontSize: '32px',
+          fontWeight: 500,
+          lineHeight: 1.2,
+        }}
+      >
         {title}
       </Typography>
       <Div
@@ -186,7 +193,7 @@ function ListeEvenementsItem({ imageVedette, upper, title, lower, url, ...rest }
  * @param {string} [props.moreLink] - Optional link to view more événements
  * @returns {React.ReactElement} A list of événements with optional "see more" button
  */
-export default function ListeEvenements({ title = 'Événements', service = 'https://calendrier.umontreal.ca/activites/export.rss?tx_solr[filter][0]=organisateurs:les-bibliotheques', limit = 3, moreText = 'Tous nos événements', moreLink = 'https://calendrier.umontreal.ca/activites?organisateurs=les-bibliotheques' }) {
+export default function ListeEvenements({ title = 'Événements', id, service = 'https://calendrier.umontreal.ca/activites/export.rss?tx_solr[filter][0]=organisateurs:les-bibliotheques', limit = 3, moreText = 'Tous nos événements', moreLink = 'https://calendrier.umontreal.ca/activites?organisateurs=les-bibliotheques' }) {
   if (typeof limit !== 'number') {
     throw new Error('The `limit` parameter must be a number')
   }
@@ -272,7 +279,7 @@ export default function ListeEvenements({ title = 'Événements', service = 'htt
 
   if (isValidating)
     return (
-      <ListeEvenementsContainer title={title} moreLink={moreLink} moreText={moreText}>
+      <ListeEvenementsContainer title={title} id={id} moreLink={moreLink} moreText={moreText}>
         <List>
           {Array(limit)
             .fill()
@@ -310,6 +317,7 @@ export default function ListeEvenements({ title = 'Événements', service = 'htt
     events && (
       <ListeEvenementsContainer
         title={title}
+        id={id}
         moreLink={moreLink}
         moreText={moreText}
         sx={{
