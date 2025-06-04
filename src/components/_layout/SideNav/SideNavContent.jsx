@@ -161,7 +161,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
           <NavList>
             <NavListItem href="/a-propos/notre-organisation/">Notre organisation</NavListItem>
             <NavListItem href="/a-propos/nos-collections">Nos collections</NavListItem>
-            <NavListItem href="/a-propos/mission-vision-valeur">Vision stratégique</NavListItem>
+            <NavListItem href="/a-propos/mission-vision-valeur">Mission, vision, valeurs et objectifs</NavListItem>
             <NavListItem href="/a-propos/rapports-annuels">Rapports annuels</NavListItem>
             <NavListItem href="/a-propos/politiques-reglement">Politiques et règlement</NavListItem>
             <NavListItem href="/nouvelles/">Nouvelles</NavListItem>
