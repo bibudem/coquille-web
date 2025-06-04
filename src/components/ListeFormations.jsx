@@ -127,7 +127,7 @@ function ListeFormationsItem({ imageVedette, upper, title, lower, url, ...props 
  *
  * @param {Object} props - Les propriétés du composant
  * @param {string} [props.title='Événements'] - Le titre affiché en en-tête de la liste
- * @param {string} [props.id] - L'identifiant HTML unique pour l'élément de titre (pour l'accessibilité)
+ * @param {string} [props.id] - L'identifiant HTML unique pour l'élément de titre
  * @param {string} [props.service='https://calendrier.umontreal.ca/activites/export.rss?tx_solr[filter][0]=organisateurs:les-bibliotheques'] - L'URL du flux RSS des événements
  * @param {number} [props.limit=3] - Le nombre maximum d'événements à afficher (doit être un nombre entre 1 et 500)
  * @param {string} [props.moreText='Tous nos événements'] - Le texte affiché sur le bouton "voir plus"
