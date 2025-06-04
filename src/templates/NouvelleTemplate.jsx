@@ -54,7 +54,7 @@ export default function NouvelleTemplate({ pageContext, children, data, location
       <Breadcrumbs crumbs={crumbs} />
       <main role="main">
         {children}
-        <ConditionalWrapper condition={lvl === 1} wrapper={(children) => <LayoutContainer>{children}</LayoutContainer>}>
+        <ConditionalWrapper condition={lvl < 2} wrapper={(children) => <LayoutContainer>{children}</LayoutContainer>}>
           <RetroactionUsager />
         </ConditionalWrapper>
       </main>

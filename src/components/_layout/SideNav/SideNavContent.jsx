@@ -161,7 +161,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
           <NavList>
             <NavListItem href="/a-propos/notre-organisation/">Notre organisation</NavListItem>
             <NavListItem href="/a-propos/nos-collections">Nos collections</NavListItem>
-            <NavListItem href="/a-propos/mission-vision-valeur">Vision stratégique</NavListItem>
+            <NavListItem href="/a-propos/mission-vision-valeur">Mission, vision, valeurs et objectifs</NavListItem>
             <NavListItem href="/a-propos/rapports-annuels">Rapports annuels</NavListItem>
             <NavListItem href="/a-propos/politiques-reglement">Politiques et règlement</NavListItem>
             <NavListItem href="/nouvelles/">Nouvelles</NavListItem>
@@ -173,7 +173,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
           <NavHeader>Plateformes</NavHeader>
           <NavList>
             <NavListItem href="https://studio.bib.umontreal.ca/">Studio•bib - écosystème numérique</NavListItem>
-            <NavListItem href="https://calypso.bib.umontreal.ca/">Calypso: objets numériques</NavListItem>
+            <NavListItem href="https://calypso.bib.umontreal.ca/">Calypso - objets numériques</NavListItem>
             <NavListItem href="https://boite-outils.bib.umontreal.ca/c.php?g=739631">La boîte à outils - guides</NavListItem>
             <NavListItem href="https://umontreal.on.worldcat.org/discovery?lang=fr">Sofia: outil de découverte</NavListItem>
             <NavListItem href="https://boite-outils.bib.umontreal.ca/az.php">Bases de données de A à Z</NavListItem>

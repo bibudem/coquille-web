@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { Card, CardActionArea, CardContent } from '@mui/material'
+import { Box, Card, CardActionArea, CardContent, Typography } from '@mui/material'
 import Button from '@/components/Button'
 import Link from '@/components/Link'
 import Div from '@/components/utils/Div'
@@ -13,17 +13,19 @@ function getPath(path, slug) {
   return `/nouvelles/${path.replace(/\.mdx$/i, '')}`
 }
 
-function Header({ children }) {
+function Header({ id, children }) {
   return (
-    <Div
+    <Typography
+      component="h3"
+      id={id}
       sx={{
-        fontSize: '2rem',
+        fontSize: '32px',
         fontWeight: 500,
         lineHeight: 1.2,
       }}
     >
       {children}
-    </Div>
+    </Typography>
   )
 }
 
@@ -99,7 +101,7 @@ function Lower({ children, url, type }) {
   )
 }
 
-export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvelles/', moreText = 'Toutes nos nouvelles', ...rest }) {
+export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvelles/', moreText = 'Toutes nos nouvelles', id, ...rest }) {
   if (typeof title !== 'string') {
     throw new Error('The `title` parameter must be a string')
   }
@@ -167,7 +169,7 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
   })
 
   return (
-    <Div
+    <Box
       component="section"
       sx={(theme) => ({
         display: 'flex',
@@ -176,7 +178,9 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
         '--_lower-icon-color': theme.palette.rougeOrange.main,
       })}
     >
-      <Header flexItem>{title}</Header>
+      <Header flexItem id={id}>
+        {title}
+      </Header>
 
       {nouvelles.map(({ id, authors, date, newsImage, url, source, title, type }) => (
         <Card
@@ -247,6 +251,6 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
           </Button>
         </Div>
       )}
-    </Div>
+    </Box>
   )
 }

@@ -5,7 +5,7 @@ slug: etudes
 
 import { Card, CardContent, CardMedia } from '@mui/material'
 import CommentIcon from '@mui/icons-material/Comment'
-import { TextOutdent, Compass, MagnifyingGlass, Laptop, Network, DownloadSimple, Plugs, WifiHigh} from '@phosphor-icons/react'
+import { TextOutdentIcon, CompassIcon, MagnifyingGlassIcon, LaptopIcon, NetworkIcon, DownloadSimpleIcon, PlugsIcon, WifiHighIcon } from '@phosphor-icons/react'
 import SuperHero from '@/components/SuperHero'
 import ListeFormations from '@/components/ListeFormations'
 import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
@@ -27,31 +27,28 @@ import relaxation from '../images/relaxation.webp'
 <Section>
 
   <Carousel1 
-    title="Des outils essentiels pour vos travaux"
+    title={<Typography component="h2" variant="h2Carousel">Des outils essentiels pour vos travaux</Typography>}
     description="Dans le torrent d’information disponible en ligne et sur nos rayons, par où commencer l’exploration? Nos spécialistes ont conçu des guides et sélectionné les ressources les plus pratiques pour vous. Profitez-en!"
     moreText="Voir la boîte à outils"
-    moreHref="https://boite-outils.bib.umontreal.ca/"
+    moreHref="https://boite-outils.bib.umontreal.ca/guides"
   >
     <CardWithIcon
       title="Citer ses sources"
-      Icon={TextOutdent}
+      Icon={TextOutdentIcon}
       moreText="Explorer la citation"
       href="https://boite-outils.bib.umontreal.ca/citer"
-      small
     />
     <CardWithIcon
       title="Ressources par discipline"
-      Icon={Compass}
+      Icon={CompassIcon}
       moreText="Explorer les disciplines"
       href="https://boite-outils.bib.umontreal.ca/disciplines"
-      small
     />
     <CardWithIcon
       title="Trouver et évaluer la fiabilité des sources"
-      Icon={MagnifyingGlass}
+      Icon={MagnifyingGlassIcon}
       moreText="En savoir plus"
       href="https://boite-outils.bib.umontreal.ca/trouver-evaluer"
-      small
     />
   </Carousel1>
 
@@ -109,7 +106,7 @@ import relaxation from '../images/relaxation.webp'
 
 <Section>
   <Carousel1
-    title="Problème informatique? Pas de panique!"
+    title={<Typography component="h2" variant="h2Carousel">Problème informatique? Pas de panique!</Typography>}
     description="Nos comptoirs, nos services et nos spécialistes vous sont accessibles à l’année! De la connexion hors campus à l’impression, en passant par le prêt d’ordinateurs ou de tablettes, notre équipe est là pour vous soutenir. "
     moreText="Voir les ressources informatiques"
     moreHref="https://studio.bib.umontreal.ca/informatique/"
@@ -118,7 +115,7 @@ import relaxation from '../images/relaxation.webp'
   <CardWithIcon
       color="rose300"
       title="Connexion à distance aux logiciels"
-      Icon={Plugs}
+      Icon={PlugsIcon}
       moreText="Consulter la documentation"
       href="https://studio.bib.umontreal.ca/informatique/connexion-distance"
       small
@@ -127,7 +124,7 @@ import relaxation from '../images/relaxation.webp'
     <CardWithIcon
       color="rose300"
       title="Accès à distance (PROXY)"
-      Icon={Network}
+      Icon={NetworkIcon}
       moreText="Consulter la documentation"
       href="https://studio.bib.umontreal.ca/informatique/proxy"
       small
@@ -136,7 +133,7 @@ import relaxation from '../images/relaxation.webp'
     <CardWithIcon
       color="rose300"
       title="Installation et configuration de logiciels"
-      Icon={DownloadSimple}
+      Icon={DownloadSimpleIcon}
       moreText="Consulter la documentation"
       href="https://studio.bib.umontreal.ca/informatique/Logiciels"
       small
@@ -145,7 +142,7 @@ import relaxation from '../images/relaxation.webp'
         <CardWithIcon
       color="rose300"
       title="Accès au réseau sans fil"
-      Icon={WifiHigh}
+      Icon={WifiHighIcon}
       moreText="Consulter la documentation"
       href="https://studio.bib.umontreal.ca/informatique/reseau/"
       small
@@ -158,7 +155,7 @@ import relaxation from '../images/relaxation.webp'
 <Section bg="bleu100">
 
   <Carousel1
-    title={<Typography component="h2">On a votre bien-être à cœur</Typography>}
+    title={<Typography component="h2" variant="h2Carousel">On a votre bien-être à cœur</Typography>}
     description="Une session universitaire, ça passe vite! On a parfois besoin d’une pause, de lire une BD pour le plaisir, de colorier un mandala entre deux séances d’étude. Vous trouverez en bibliothèque des collections axées sur le bien-être et la détente, des jeux, et même un cocon de micro-sieste!"
   >
    <FlipCardWithImage
