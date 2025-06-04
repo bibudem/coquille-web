@@ -2,7 +2,6 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { Box, Card, CardActionArea, CardContent, Typography } from '@mui/material'
 import Button from '@/components/Button'
 import Link from '@/components/Link'
-import Div from '@/components/utils/Div'
 import { isInternalLink } from '@/utils/link'
 import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
 
@@ -31,7 +30,7 @@ function Header({ id, children }) {
 
 function Title({ children }) {
   return (
-    <Div
+    <Box
       sx={{
         fontFamily: 'Lora',
         fontSize: '1.75rem',
@@ -40,13 +39,13 @@ function Title({ children }) {
       }}
     >
       {children}
-    </Div>
+    </Box>
   )
 }
 
 function Upper({ children }) {
   return (
-    <Div
+    <Box
       sx={(theme) => ({
         display: 'flex',
         alignItems: 'center',
@@ -59,13 +58,13 @@ function Upper({ children }) {
       })}
     >
       {children}
-    </Div>
+    </Box>
   )
 }
 
 function Lower({ children, url, type }) {
   return (
-    <Div
+    <Box
       sx={{
         display: 'flex',
         flexGrow: 1,
@@ -75,7 +74,7 @@ function Lower({ children, url, type }) {
         color: 'var(--_lower-color)',
       }}
     >
-      <Div
+      <Box
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -87,7 +86,7 @@ function Lower({ children, url, type }) {
         }}
       >
         {children}
-        <Div
+        <Box
           sx={{
             display: 'flex',
             flexGrow: 1,
@@ -95,12 +94,38 @@ function Lower({ children, url, type }) {
           }}
         >
           {type === 'interne' && url && isInternalLink(url) ? <ArrowRightCircleIcon color="var(--_lower-icon-color)" fontSize={50} /> : <ArrowUpRightCircleIcon color="var(--_lower-icon-color)" fontSize={50} />}
-        </Div>
-      </Div>
-    </Div>
+        </Box>
+      </Box>
+    </Box>
   )
 }
 
+/**
+ * Composant affichant une liste de nouvelles récentes
+ *
+ * @component
+ * @param {Object} props - Les propriétés du composant
+ * @param {string} [props.title='Nouvelles'] - Le titre de la section de nouvelles
+ * @param {string} [props.moreLink='/nouvelles/'] - Le lien vers la page complète des nouvelles
+ * @param {string} [props.moreText='Toutes nos nouvelles'] - Le texte du bouton "voir plus"
+ * @param {string} [props.id] - Un identifiant optionnel pour la section
+ *
+ * @throws {Error} Si les paramètres title, moreLink ou moreText ne sont pas du bon type
+ *
+ * @returns {React.ReactElement} Un composant React affichant une liste de nouvelles
+ *
+ * @example
+ * // Utilisation par défaut
+ * <ListNouvelles />
+ *
+ * @example
+ * // Personnalisation du titre et du lien
+ * <ListNouvelles
+ *   title="Dernières actualités"
+ *   moreLink="/actualites"
+ *   moreText="Voir toutes les actualités"
+ * />
+ */
 export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvelles/', moreText = 'Toutes nos nouvelles', id, ...rest }) {
   if (typeof title !== 'string') {
     throw new Error('The `title` parameter must be a string')
@@ -221,7 +246,7 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
               }}
             >
               <Upper>{date}</Upper>
-              <Div
+              <Box
                 sx={{
                   display: 'flex',
                   flexDirection: 'column',
@@ -233,14 +258,14 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
                 <Lower url={url} type={type}>
                   {source}
                 </Lower>
-              </Div>
+              </Box>
             </CardContent>
           </CardActionArea>
         </Card>
       ))}
 
       {moreLink && (
-        <Div
+        <Box
           sx={{
             display: 'flex',
             justifyContent: 'flex-end',
@@ -249,7 +274,7 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
           <Button primary href={moreLink}>
             {moreText}
           </Button>
-        </Div>
+        </Box>
       )}
     </Box>
   )
