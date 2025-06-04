@@ -15,7 +15,7 @@ import Illustration from '../images/illustration-animaliere.webp'
 
 # Soutenez le fonds des livres rares de l’Université de Montréal
 
-## Le trésor des bibliothèques UdeM
+## Le trésor des bibliothèques de l'UdeM
 
 Quelque 150 000 documents anciens, rares ou précieux forment les collections spéciales de l’Université de Montréal.
 
@@ -56,37 +56,39 @@ La restauration de ces livres a été financée grâce au programme « Adoptez u
 
 En 2023-2024, le Dr Gilles Théorêt, diplômé de l’Université de Montréal, a ainsi adopté notre édition datée de 1632 des Voyages de la Nouvelle France occidentale, dicte Canada de Samuel de Champlain. Ce document, une version révisée et augmentée de l’édition de 1613, est considéré comme la plus importante de toutes les éditions de cet ouvrage. La carte géographique qui l’accompagne est la première représentation occidentale de l’entièreté des Grands Lacs.
 
-<GridOffset
-      columnSpacing="30px"
-      sx={(theme) => ({
-        alignItems: 'center',
-        margin: '1em 0em',
-        [theme.breakpoints.up('md')]: {
-          maxWidth: '80%',
-        },
-        [theme.breakpoints.up('lg')]: {
-          maxWidth: '70%'
-        }
-    })}>
-      <Grid size="auto">
-        <img src={Voyages} style={{width: 'auto', height: '200px', borderRadius: '12px'}} alt="" />
-      </Grid>
-      <Grid size='grow'>
-        <Blockquote source="Dr Gilles Théorêt, diplômé de l’Université de Montréal et adoptant de l’ouvrage Les voyages de la Nouvelle France occidentale">
-          L’histoire peut se perdre ou être déformée par le temps. Il est important d’avoir des sources de première main pour la comprendre.
-        </Blockquote>
-      </Grid>
-    </GridOffset>
+<GridOffset offset={.5}>
+  <Grid container
+    columnSpacing="30px"
+    sx={(theme) => ({
+      alignItems: 'center',
+      margin: '1em 0em',
+      [theme.breakpoints.up('md')]: {
+        maxWidth: '80%',
+      },
+      [theme.breakpoints.up('lg')]: {
+        maxWidth: '70%'
+      }
+  })}>
+    <Grid size="auto">
+      <img src={Voyages} style={{width: 'auto', height: '200px', borderRadius: '12px'}} alt="" />
+    </Grid>
+    <Grid size='grow'>
+      <Blockquote source="Dr Gilles Théorêt, diplômé de l’Université de Montréal et adoptant de l’ouvrage Les voyages de la Nouvelle France occidentale">
+        L’histoire peut se perdre ou être déformée par le temps. Il est important d’avoir des sources de première main pour la comprendre.
+      </Blockquote>
+    </Grid>
+  </Grid>
+</GridOffset>
 
-    ## Soutenez notre héritage culturel
+## Soutenez notre héritage culturel
 
 Votre participation contribuera à restaurer, protéger et conserver des livres et des affiches d'une valeur inestimable.
 
-Chaque geste de générosité nous aide à soutenir les coûts de travaux, tels que :
-- Création d'un boîtier pour un livre ancien : 400 $ - 500 $
-- Reliure d'un livre ancien : 800 $ -1500 $
+Chaque geste de générosité nous aide à soutenir les coûts de travaux, tels que:
+- Création d'un boîtier pour un livre ancien: 400$ - 500$
+- Reliure d'un livre ancien: 800$ - 1500$
 - Restauration d’une reliure d’un livre ancien: 1 000$ - 2 500$
-- Restauration d'une affiche ancienne : 1 500 $ -3000 $
+- Restauration d'une affiche ancienne: 1 500$ - 3 000$
 
 **Chaque don est précieux, tout comme ces livres**. En combinant votre générosité à celle d’autres personnes au grand cœur, nous intensifions notre plan de restauration en fonction des priorités et de la condition des ouvrages pour qu’ils restent accessibles pour les générations futures.
 

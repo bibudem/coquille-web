@@ -13,9 +13,9 @@ import * as styles from './Carousel1.module.css'
 const slidesPerPagPerBreakpoint = {
   xs: 1,
   sm: 2,
-  md: 3,
-  lg: 3,
-  xl: 3,
+  md: 2,
+  lg: 2,
+  xl: 2,
 }
 
 /**
@@ -93,12 +93,6 @@ export default function Carousel1({ title, description, moreText, moreLink, ...r
           <Grid container direction={isSmall ? 'column' : 'row'}>
             <Grid
               size="grow"
-              sx={{
-                '.MuiTypography-root': {
-                  fontSize: '1.25rem!important',
-                  ...variableWidthStyles,
-                },
-              }}
             >
               <Div sx={variableWidthStyles}>
                 {typeof description === 'string' ? (

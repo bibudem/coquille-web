@@ -134,7 +134,6 @@ h2Carousel: {
   '@media (max-width:899.95px)': {
     fontSize: '3rem!important', // 48px - tablette
   },
-
   '@media (max-width:599.95px)': {
     fontSize: '2.5rem!important', // 40px - mobile
   }

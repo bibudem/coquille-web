@@ -4,6 +4,9 @@ slug: pbuq
 secondaryNav:
   title: Entente PBUQ
   order: 4
+superHero:
+  imageName: obtenir
+  title: Obtenir un document
 ---
 
 import Table from '@mui/material/Table';
@@ -13,29 +16,30 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { IdentificationCardIcon, BooksIcon, CalendarDotsIcon, RepeatIcon } from '@phosphor-icons/react'
 
 # Entente du Partenariat des bibliothèques universitaires du Québec (PBUQ)
 
-Cette catégorie inclut les personnes suivantes des universités membres du [Partenariat des bibliothèques universitaires du Québec](https://pbuq.ca/)&nbsp;:
+Cette catégorie inclut les personnes suivantes des établissements universitaires membres du [Partenariat des bibliothèques universitaires du Québec](https://pbuq.ca/):
 
-- la communauté étudiante;
-- les stagiaires postdoctoraux;
-- le corps professoral, enseignant et de recherche;
-- les membres du personnel;
-- le personnel retraité; L'inscription est automatique pour les personnes de cette catégorie.
+- la communauté étudiante
+- les stagiaires postdoctoraux
+- le corps professoral, enseignant et de recherche
+- les membres du personnel
+- le personnel retraité
+
+ L'inscription est automatique pour les personnes de cette catégorie.
 
 ## Modalités générales
 
-<Bloc liste avec icônes>
+<ul style={{ listStyleType: "none", paddingLeft: 0 }}>
+<li style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}><IdentificationCardIcon size={32} color="BleuFonce"/> Emprunt avec: carte de l'établissement d'attache</li>
+<li style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}><BooksIcon size={32} color="BleuFonce"/> Nombre maximum de documents: 100 documents</li>
+<li style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}><CalendarDotsIcon size={32} color="BleuFonce"/> Durée du prêt: 30 jours</li>
+<li style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}><RepeatIcon size={32} color="BleuFonce"/> Renouvellement: automatique, à moins que le document soit réservé ou le dossier expiré ([voir les exceptions](../pret-renouvellement-retour/#exceptions-au-renouvellement-automatique))</li>
+</ul>
 
-- Emprunt avec : carte de l'établissement d'attache
-- Nombre maximum de documents : 100 documents
-- Durée du prêt : 30 jours
-- Renouvellement : automatique, à moins que le document soit réservé ou le dossier expiré [voir les exceptions](../pret-renouvellement-retour/#exceptions-au-renouvellement-automatique).
-
-</Bloc>
-
-La consultation des ressources électroniques est possible sur les postes publics des bibliothèques grâce à un compte d'accès provisoire (compte passant). Demandez-le au comptoir de prêt avec une pièce d'identité.
+La consultation des ressources électroniques est possible sur les ordinateurs publics des bibliothèques grâce à un compte d'accès provisoire (compte passant). Demandez-le au comptoir de prêt avec une pièce d'identité.
 
 ## Modalités détaillées
 
@@ -70,10 +74,10 @@ La consultation des ressources électroniques est possible sur les postes public
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
               <TableCell>Réserve de cours: 3 documents permis, consultation sur place</TableCell>
-              <TableCell align="right">Livres et partitions : 3 heures <br/> Audiovisuel : 6 heures</TableCell>
+              <TableCell align="right">Livres et partitions: 3 heures <br/> Audiovisuel: 6 heures</TableCell>
             </TableRow>
         </TableBody>
       </Table>
     </TableContainer>
 
-Les types de document suivant sont exclus: périodiques, matériel didactique, manuels scolaires, jeux et accessoires didactiques, affiches, trousses et ensembles multi-supports, cartes géographiques et photos aériennes, index et normes.
+Les types de documents suivants sont exclus: périodiques, matériel didactique, manuels scolaires, jeux et accessoires didactiques, affiches, trousses et ensembles multi-supports, cartes géographiques et photos aériennes, index et normes.
