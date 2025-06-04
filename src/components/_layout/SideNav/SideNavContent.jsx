@@ -130,7 +130,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
       onClick={onDrawerClick}
     >
       <SideNavHeaderContainer>
-        <StyledLogoLink to="https://umontreal.ca">
+        <StyledLogoLink to="https://www.umontreal.ca/">
           <LogoUdeM style={{ height: '60px' }} />
         </StyledLogoLink>
         <Box
