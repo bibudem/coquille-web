@@ -5,7 +5,7 @@ slug: etudes
 
 import { Card, CardContent, CardMedia } from '@mui/material'
 import CommentIcon from '@mui/icons-material/Comment'
-import { TextOutdent, Compass, MagnifyingGlass, Laptop, Network, DownloadSimple, Plugs, WifiHigh} from '@phosphor-icons/react'
+import { TextOutdentIcon, CompassIcon, MagnifyingGlassIcon, LaptopIcon, NetworkIcon, DownloadSimpleIcon, PlugsIcon, WifiHighIcon } from '@phosphor-icons/react'
 import SuperHero from '@/components/SuperHero'
 import ListeFormations from '@/components/ListeFormations'
 import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
@@ -30,25 +30,25 @@ import relaxation from '../images/relaxation.webp'
     title="Des outils essentiels pour vos travaux"
     description="Dans le torrent d’information disponible en ligne et sur nos rayons, par où commencer l’exploration? Nos spécialistes ont conçu des guides et sélectionné les ressources les plus pratiques pour vous. Profitez-en!"
     moreText="Voir la boîte à outils"
-    moreHref="https://boite-outils.bib.umontreal.ca/"
+    moreHref="https://boite-outils.bib.umontreal.ca/guides"
   >
     <CardWithIcon
       title="Citer ses sources"
-      Icon={TextOutdent}
+      Icon={TextOutdentIcon}
       moreText="Explorer la citation"
       href="https://boite-outils.bib.umontreal.ca/citer"
       small
     />
     <CardWithIcon
       title="Ressources par discipline"
-      Icon={Compass}
+      Icon={CompassIcon}
       moreText="Explorer les disciplines"
       href="https://boite-outils.bib.umontreal.ca/disciplines"
       small
     />
     <CardWithIcon
       title="Trouver et évaluer la fiabilité des sources"
-      Icon={MagnifyingGlass}
+      Icon={MagnifyingGlassIcon}
       moreText="En savoir plus"
       href="https://boite-outils.bib.umontreal.ca/trouver-evaluer"
       small
@@ -118,7 +118,7 @@ import relaxation from '../images/relaxation.webp'
   <CardWithIcon
       color="rose300"
       title="Connexion à distance aux logiciels"
-      Icon={Plugs}
+      Icon={PlugsIcon}
       moreText="Consulter la documentation"
       href="https://studio.bib.umontreal.ca/informatique/connexion-distance"
       small
@@ -127,7 +127,7 @@ import relaxation from '../images/relaxation.webp'
     <CardWithIcon
       color="rose300"
       title="Accès à distance (PROXY)"
-      Icon={Network}
+      Icon={NetworkIcon}
       moreText="Consulter la documentation"
       href="https://studio.bib.umontreal.ca/informatique/proxy"
       small
@@ -136,7 +136,7 @@ import relaxation from '../images/relaxation.webp'
     <CardWithIcon
       color="rose300"
       title="Installation et configuration de logiciels"
-      Icon={DownloadSimple}
+      Icon={DownloadSimpleIcon}
       moreText="Consulter la documentation"
       href="https://studio.bib.umontreal.ca/informatique/Logiciels"
       small
@@ -145,7 +145,7 @@ import relaxation from '../images/relaxation.webp'
         <CardWithIcon
       color="rose300"
       title="Accès au réseau sans fil"
-      Icon={WifiHigh}
+      Icon={WifiHighIcon}
       moreText="Consulter la documentation"
       href="https://studio.bib.umontreal.ca/informatique/reseau/"
       small
