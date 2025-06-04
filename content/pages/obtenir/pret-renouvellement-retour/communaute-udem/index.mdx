@@ -15,6 +15,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { IdentificationCardIcon, BooksIcon, CalendarDotsIcon, RepeatIcon } from '@phosphor-icons/react'
 
 # Communauté UdeM
 
@@ -30,14 +31,12 @@ L'inscription est automatique pour les personnes de cette catégorie.
 
 ## Modalités générales
 
-<Bloc liste avec icônes>
-
-- Emprunt avec: carte UdeM
-- Nombre maximum de documents: 100 documents, voir exceptions ci-dessous.
-- Durée du prêt: 30 jours
-- Renouvellement: automatique
-
-</Bloc>
+<ul style={{ listStyleType: "none", paddingLeft: 0 }}>
+<li style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}><IdentificationCardIcon size={32} color="BleuFonce"/> Emprunt avec: carte UdeM</li>
+<li style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}><BooksIcon size={32} color="BleuFonce"/> Nombre maximum de documents: 100 documents, voir exceptions ci-dessous.</li>
+<li style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}><CalendarDotsIcon size={32} color="BleuFonce"/> Durée du prêt: 30 jours</li>
+<li style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}><RepeatIcon size={32} color="BleuFonce"/> Renouvellement: automatique</li>
+</ul>
 
 En tant que membre de la communauté UdeM, vous avez accès aux ressources électroniques en bibliothèques et à distance en configurant le [Proxy](https://studio.bib.umontreal.ca/informatique/proxy).
 
