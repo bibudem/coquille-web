@@ -15,6 +15,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { IdentificationCardIcon, BooksIcon, CalendarDotsIcon, RepeatIcon } from '@phosphor-icons/react'
 
 # Ententes avec les cégeps
 
@@ -29,14 +30,12 @@ Pour s'inscrire, vous devez vous présenter à la bibliothèque de votre cégep 
 
 ## Modalités générales
 
-<Bloc liste avec icônes>
-
-- Emprunt avec: carte Bibliothèques UdeM et pièce d'identité avec photo
-- Nombre maximum de documents: 3 documents
-- Durée du prêt: 14 jours
-- Renouvellement: aucun renouvellement
-
-</Bloc>
+<ul style={{ listStyleType: "none", paddingLeft: 0 }}>
+<li style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}><IdentificationCardIcon size={32} color="BleuFonce"/> Emprunt avec: carte Bibliothèques UdeM et pièce d'identité avec photo</li>
+<li style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}><BooksIcon size={32} color="BleuFonce"/> Nombre maximum de documents: 3 documents</li>
+<li style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}><CalendarDotsIcon size={32} color="BleuFonce"/> Durée du prêt: 14 jours</li>
+<li style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}><RepeatIcon size={32} color="BleuFonce"/> Renouvellement: aucun renouvellement</li>
+</ul>
 
 La consultation des ressources électroniques est possible sur les postes publics des bibliothèques grâce à un compte d'accès provisoire (compte passant). Demandez-le au comptoir de prêt avec une pièce d'identité.
 
