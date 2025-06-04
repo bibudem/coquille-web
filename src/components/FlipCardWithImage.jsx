@@ -64,7 +64,7 @@ const StyledTitle = styled('div')(({ theme }) => ({
 
 const Description = styled('div')(({ theme }) => ({
   fontSize: '1rem',
-  maxHeight: '75%',
+  maxHeight: '65%',
   overflowY: 'auto',
   padding: theme.spacing(0.375, 0.75), 
 }))

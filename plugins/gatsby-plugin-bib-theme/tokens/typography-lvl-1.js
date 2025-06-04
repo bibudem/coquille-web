@@ -122,93 +122,21 @@ h6: {
 },
 
 
-h1Niveau2: {
+
+h2Carousel: {
   ...baseTypography,
   fontFamily: fontStack,
-  margin: '24px 0 0.5em',
-  fontSize: '3.389rem', // 61px - desktop par défaut
-  fontWeight: 400,
-  lineHeight: 1.1,
-  letterSpacing: '-0.02em',
-
-  '@media (max-width:899.95px)': {
-    fontSize: '3rem', // 48px - tablette
-  },
-
-  '@media (max-width:599.95px)': {
-    fontSize: '2.5rem', // 40px - mobile
-  }
-},
-
-h2Niveau2: {
-  ...baseTypography,
-  fontFamily: loraStack,
   margin: '0.5em 0',
-  fontSize: '1.875rem', // 30px - desktop (par défaut)
-  fontWeight: 500,
+  fontSize: '3.389rem!important', // 61px - desktop par défaut
+  fontWeight: '500!important',
   lineHeight: 1.2,
-  letterSpacing: '-0.01em',
 
   '@media (max-width:899.95px)': {
-    fontSize: '2.25rem', // 36px - tablette
+    fontSize: '3rem!important', // 48px - tablette
   },
 
   '@media (max-width:599.95px)': {
-    fontSize: '2.5rem', // 40px - mobile
-  }
-},
-
-h3Niveau2: {
-  ...baseTypography,
-  fontFamily: fontStack,
-  margin: '0.5em 0',
-  fontSize: '1.556rem', // 28px - desktop par défaut
-  fontWeight: 500,
-  lineHeight: 1.3,
-  letterSpacing: '-0.01em',
-
-  '@media (max-width:899.95px)': {
-    fontSize: '1.375rem', // 22px - tablette
-  },
-
-  '@media (max-width:599.95px)': {
-    fontSize: '1.25rem', // 20px - mobile
-  }
-},
-
-h4Niveau2: {
-  ...baseTypography,
-  fontFamily: fontStack,
-  margin: '0.5em 0',
-  fontSize: '1.1667rem', // 21px - desktop par défaut
-  fontWeight: 500,
-  lineHeight: 1.4,
-  letterSpacing: '-0.005em',
-
-  '@media (max-width:899.95px)': {
-    fontSize: '1.0625rem', // 17px - tablette
-  },
-
-  '@media (max-width:599.95px)': {
-    fontSize: '1rem', // 16px - mobile
-  }
-},
-
-h5Niveau2: {
-  ...baseTypography,
-  fontFamily: fontStack,
-  margin: '0.5em 0',
-  fontSize: '1.056rem', // 19px - desktop par défaut
-  fontWeight: 500,
-  lineHeight: 1.4,
-  letterSpacing: '-0.005em',
-
-  '@media (max-width:899.95px)': {
-    fontSize: '1rem', // 16px - tablette
-  },
-
-  '@media (max-width:599.95px)': {
-    fontSize: '0.9375rem', // 15px - mobile
+    fontSize: '2.5rem!important', // 40px - mobile
   }
 },
 
