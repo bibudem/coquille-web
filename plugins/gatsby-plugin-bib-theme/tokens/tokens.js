@@ -20,6 +20,7 @@ const jaunePale = '#ffe8ac'
 const orange = '#ffc0cb'
 const rose300 = '#fee1de'
 const rose500 = '#f4bdb7'
+const rose100 = '#fcf3f1'
 const rougeOrange = '#f04e24'
 const vertPale = '#52b782'
 const vertFonce = '#024244'
@@ -64,6 +65,7 @@ export const secondaryColors = {
 	orange: getColorPalette(orange),
 	rose300: getColorPalette(rose300),
 	rose500: getColorPalette(rose500),
+	rose100: getColorPalette(rose100),
 	rougeOrange: getColorPalette(rougeOrange),
 	vertFonce: getColorPalette(vertFonce),
 	vertPale: getColorPalette(vertPale),
