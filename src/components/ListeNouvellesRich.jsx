@@ -69,7 +69,13 @@ function Upper({ children }) {
   )
 }
 
-export default function ListNouvelles({ title = 'Nouvelles', id, moreLink = '/nouvelles/', ...rest }) {
+/**
+ * @param {object} props - Les propriétés du composant.
+ * @param {string} [props.title='Nouvelles'] - Le titre de la liste de nouvelles.
+ * @param {string} props.id - L'identifiant HTML unique pour l'élément de titre.
+ * @returns {JSX.Element} Le composant ListeNouvelles.
+ */
+export default function ListNouvelles({ title = 'Nouvelles', id }) {
   if (typeof title !== 'string') {
     throw new Error('The `title` parameter must be a string')
   }

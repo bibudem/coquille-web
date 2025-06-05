@@ -208,13 +208,14 @@ subtitle1: {
 
   display2: {
     ...baseTypography,
-    fontSize: '2rem', // 32px mobile
+    fontFamily: fontStack,
+    fontSize: '2rem!important', // 32px mobile
     lineHeight: 1.2,
     '@media (min-width:600px)': {
-      fontSize: '3rem', // 48px tablette
+      fontSize: '3rem!important', // 48px tablette
     },
     '@media (min-width:900px)': {
-      fontSize: '3.8125rem', // 61px desktop
+      fontSize: '3.8125rem!important', // 61px desktop
     }
   },
 

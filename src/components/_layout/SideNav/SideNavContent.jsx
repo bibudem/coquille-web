@@ -79,8 +79,8 @@ function NavListItem({ href, children, icon, ...props }) {
 }
 
 export default forwardRef(function SideNavContent({ close = noop, onClose = noop, ...props }, ref) {
-  const [open, setOpen] = useState(false)
-  const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
+  // const [open, setOpen] = useState(false)
+  // const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
 
   function onDrawerClick(event) {
     // console.log('onClose...', event)
@@ -130,7 +130,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
       onClick={onDrawerClick}
     >
       <SideNavHeaderContainer>
-        <StyledLogoLink to="https://umontreal.ca">
+        <StyledLogoLink to="https://www.umontreal.ca/">
           <LogoUdeM style={{ height: '60px' }} />
         </StyledLogoLink>
         <Box
@@ -213,7 +213,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
       </Box>
       <SideNavHeaderContainer>
         <Box>
-          <Link to="/" aria-label="Accueil">
+          <Link to="/" aria-label="Accueil" sx={{ display: 'block' }}>
             <LogoBibUBlanc style={{ width: '200px', height: 'auto', pointerEvents: 'none' }} />
           </Link>
         </Box>

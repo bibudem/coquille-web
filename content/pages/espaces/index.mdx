@@ -40,7 +40,7 @@ import tableHaute from '../images/table-haute.webp'
     tabs={['Salles et espaces pour se concentrer', 'Salles de travail en équipe', 'Salle pour les cycles supérieurs']}
   >
     <Carousel1
-      title={<Typography component="h2" variant="h2Carousel">Bien dans sa bulle</Typography>}
+      title={<Typography component="h2" variant="display3">Bien dans sa bulle</Typography>}
       description="Besoin de concentration pour étudier? Salles d'étude individuelles ou cabines insonorisées, vous n'avez qu'à réserver!"
       moreText="Réserver une salle"
       moreHref="https://calendrier.bib.umontreal.ca/r/new"
@@ -48,6 +48,7 @@ import tableHaute from '../images/table-haute.webp'
     <FlipCardWithImage
         title="Salles de travail individuel"
         Image={salleIndividuelle}
+        small
       >
         <p>Disponibles dans presque toutes les bibliothèques</p>
       </FlipCardWithImage>
@@ -55,6 +56,7 @@ import tableHaute from '../images/table-haute.webp'
       <FlipCardWithImage
         title="Cabines insonorisées"
         Image={cabine}
+        small
       >
         <ul>
           <li>Bibliothèque de droit</li>
@@ -69,6 +71,7 @@ import tableHaute from '../images/table-haute.webp'
       <FlipCardWithImage
         title="Salles silencieuses"
         Image={cabine}
+        small
         >
         <ul>
           <li>Bibliothèque du campus de Laval</li>
@@ -83,7 +86,7 @@ import tableHaute from '../images/table-haute.webp'
     </Carousel1>
 
     <Carousel1
-      title={<Typography component="h2" variant="h2Carousel">Là où peuvent converger les idées</Typography>}
+      title={<Typography component="h2" variant="display3">Là où peuvent converger les idées</Typography>}
       description="Un travail à faire en équipe? Une séance d’étude de groupe? Nous vous offrons des salles de travail communes avec ou sans réservation, des espaces pour parler librement, des banquettes avec écran - tout ce qu’il vous faut pour collaborer!"
       moreText="Réserver une salle"
       moreHref="https://calendrier.bib.umontreal.ca/r/new"
@@ -91,6 +94,7 @@ import tableHaute from '../images/table-haute.webp'
     <FlipCardWithImage
         title="Salles de travail pour 3 à 4 personnes"
         Image={salleEquipe}
+        small
       >
         <p>Disponibles dans presque toutes les bibliothèques</p>
       </FlipCardWithImage>
@@ -98,6 +102,7 @@ import tableHaute from '../images/table-haute.webp'
       <FlipCardWithImage
         title="Salles de travail pour 4 à 8 personnes"
         Image={grandeSalleEquipe}
+        small
       >
         <p>Disponibles :</p>
         <ul>
@@ -109,6 +114,7 @@ import tableHaute from '../images/table-haute.webp'
       <FlipCardWithImage
         title="Espace d'innovation et de créativité"
         Image={cabine}
+        small
       >
         <p>Disponibles :</p>
         <ul>
@@ -119,7 +125,7 @@ import tableHaute from '../images/table-haute.webp'
     </Carousel1>
 
     <Carousel1
-      title={<Typography component="h2" variant="h2Carousel">Cycle supérieurs : c'est par ici!</Typography>}
+      title={<Typography component="h2" variant="display3">Cycle supérieurs : c'est par ici!</Typography>}
       description="Certaines bibliothèques offrent des salles spécifiquement réservées aux étudiants et étudiantes des cycles supérieurs."
       moreText="Réserver une salle"
       moreHref="https://calendrier.bib.umontreal.ca/r/new"
@@ -127,6 +133,7 @@ import tableHaute from '../images/table-haute.webp'
     <FlipCardWithImage
         title="Salles de travail individuel - cycles supérieurs"
         Image={salleCycleSup}
+        small
       >
         <p>Disponibles à la Bibliothèques des lettres et sciences humaines pour toutes les personnes des cycles supérieurs</p>
       </FlipCardWithImage>
@@ -134,6 +141,7 @@ import tableHaute from '../images/table-haute.webp'
       <FlipCardWithImage
         title="Salle de travail - maîtrise en droit"
         Image={salleMaitrise}
+        small
       >
         <ul>
           <li>Pour les personnes de la maitrise en droit seulement</li>
@@ -143,6 +151,7 @@ import tableHaute from '../images/table-haute.webp'
       <FlipCardWithImage
         title="Salle de travail - doctorat en droit"
         Image={salleDoctorat}
+        small
       >
         <p>Disponibles :</p>
         <ul>
@@ -283,7 +292,7 @@ import tableHaute from '../images/table-haute.webp'
   >
 
   <Grid container spacing=".62rem" sx={{margin:'0 0 4rem'}}>
-   <Typography component="h3" variant="h3">L’art d’être à l’avant-garde</Typography>
+   <Typography component="h2" variant="display3">L’art d’être à l’avant-garde</Typography>
     <Typography>La création vous passionne? Bienvenue aux avant-gardistes! Impression 3D, réalité virtuelle, programmation informatique, broderie numérique, voilà tout l’éventail de nouvelles technologies que nous mettons au service de votre inventivité. Profitez-en!</Typography>
     <Grid>
       <CardWithImage
@@ -328,7 +337,7 @@ import tableHaute from '../images/table-haute.webp'
   </Grid>
 
 <Grid container spacing=".62rem" sx={{margin:'0 0 4rem'}}>
-<Typography component="h3" variant="h3">Entrez dans le monde du multimédia</Typography>
+<Typography component="h2" variant="display3">Entrez dans le monde du multimédia</Typography>
 <Typography>Qu’il s’agisse d’enregistrement audio, d’édition numérique, de montage vidéo ou de visualisation de données, nos studios vous ouvrent les portes d’un univers numérique en pleine expansion!</Typography>
     <Grid>
       <CardWithImage

@@ -184,14 +184,16 @@ function ListeEvenementsItem({ imageVedette, upper, title, lower, url, ...rest }
 }
 
 /**
- * Renders a list of événements fetched from a specified service
+ * Affiche une liste d'événements récupérés depuis le Calendrier UdeM
  *
- * @param {Object} props - Component properties
- * @param {string} [props.service='https://calendrier.umontreal.ca/activites/export.rss?tx_solr[filter][0]=organisateurs:les-bibliotheques'] - URL of the événements API
- * @param {number} [props.limit=4] - Maximum number of événements to display (between 1-500)
- * @param {string} [props.moreText='Voir plus de événements'] - Text for the "see more" button
- * @param {string} [props.moreLink] - Optional link to view more événements
- * @returns {React.ReactElement} A list of événements with optional "see more" button
+ * @param {Object} props - Propriétés du composant
+ * @param {string} [props.title='Événements'] - Titre de la section d'événements
+ * @param {string} [props.id] - Identifiant unique pour l'élément de titre
+ * @param {string} [props.service='https://calendrier.umontreal.ca/activites/export.rss?tx_solr[filter][0]=organisateurs:les-bibliotheques'] - URL du service RSS des événements
+ * @param {number} [props.limit=3] - Nombre maximum d'événements à afficher
+ * @param {string} [props.moreText='Tous nos événements'] - Texte du bouton "voir plus"
+ * @param {string} [props.moreLink='https://calendrier.umontreal.ca/activites?organisateurs=les-bibliotheques'] - Lien optionnel pour voir plus d'événements
+ * @returns {React.ReactElement} Une liste d'événements avec un bouton optionnel "voir plus"
  */
 export default function ListeEvenements({ title = 'Événements', id, service = 'https://calendrier.umontreal.ca/activites/export.rss?tx_solr[filter][0]=organisateurs:les-bibliotheques', limit = 3, moreText = 'Tous nos événements', moreLink = 'https://calendrier.umontreal.ca/activites?organisateurs=les-bibliotheques' }) {
   if (typeof limit !== 'number') {
