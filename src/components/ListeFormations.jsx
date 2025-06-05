@@ -2,7 +2,6 @@ import { Box, List, ListItem, ListItemButton, Skeleton, useTheme } from '@mui/ma
 import Grid from '@mui/material/Grid2'
 import useSWR from 'swr'
 import Button from '@/components/Button'
-import Div from '@/components/utils/Div'
 import { CalendarBlankIcon, ClockCountdownIcon, MapPinSimpleAreaIcon } from '@phosphor-icons/react'
 
 const FETCH_TIMEOUT = 2000
@@ -120,14 +119,46 @@ function ListeFormationsItem({ imageVedette, upper, title, lower, url, ...props 
 }
 
 /**
- * Renders a list of formations fetched from a specified service
+ * Composant qui affiche une liste d'événements récupérés depuis un flux RSS
  *
- * @param {Object} props - Component properties
- * @param {string} [props.service='https://api.bib.umontreal.ca/formations/'] - URL of the formations API
- * @param {number} [props.limit=4] - Maximum number of formations to display (between 1-500)
- * @param {string} [props.moreText='Voir plus de formations'] - Text for the "see more" button
- * @param {string} [props.moreLink] - Optional link to view more formations
- * @returns {React.ReactElement} A list of formations with optional "see more" button
+ * Ce composant récupère les données d'événements depuis un service RSS,
+ * les formate et les affiche dans une liste avec images, dates et titres.
+ * Il gère automatiquement les états de chargement et d'erreur.
+ *
+ * @param {Object} props - Les propriétés du composant
+ * @param {string} [props.title='Événements'] - Le titre affiché en en-tête de la liste
+ * @param {string} [props.id] - L'identifiant HTML unique pour l'élément de titre
+ * @param {string} [props.service='https://calendrier.umontreal.ca/activites/export.rss?tx_solr[filter][0]=organisateurs:les-bibliotheques'] - L'URL du flux RSS des événements
+ * @param {number} [props.limit=3] - Le nombre maximum d'événements à afficher (doit être un nombre entre 1 et 500)
+ * @param {string} [props.moreText='Tous nos événements'] - Le texte affiché sur le bouton "voir plus"
+ * @param {string} [props.moreLink='https://calendrier.umontreal.ca/activites?organisateurs=les-bibliotheques'] - L'URL vers laquelle redirige le bouton "voir plus"
+ *
+ * @throws {Error} Lance une erreur si le paramètre `limit` n'est pas un nombre
+ * @throws {Error} Lance une erreur si le paramètre `service` n'est pas une chaîne de caractères
+ * @throws {Error} Lance une erreur si le paramètre `service` n'est pas une URL valide
+ * @throws {Error} Lance une erreur si le paramètre `moreLink` n'est pas une chaîne de caractères
+ * @throws {Error} Lance une erreur si le paramètre `moreLink` n'est pas une URL valide
+ *
+ * @returns {React.ReactElement} Un composant React qui affiche la liste des événements avec :
+ *   - Un titre de section
+ *   - Une liste d'événements avec image, date et titre pour chaque élément
+ *   - Un bouton optionnel "voir plus" si moreLink est fourni
+ *   - Des états de chargement avec des squelettes d'interface
+ *   - La gestion des erreurs de récupération des données
+ *
+ * @example
+ * // Utilisation basique avec les paramètres par défaut
+ * <ListeEvenements />
+ *
+ * @example
+ * // Utilisation avec des paramètres personnalisés
+ * <ListeEvenements
+ *   title="Nos prochains événements"
+ *   id="evenements-section"
+ *   limit={5}
+ *   moreText="Voir tous les événements"
+ *   moreLink="https://example.com/evenements"
+ * />
  */
 export default function ListeFormations({ id, service = 'https://api.bib.umontreal.ca/formations/', limit = 4, moreText = 'Voir plus de formations', moreLink, ...props }) {
   if (typeof limit !== 'number') {
@@ -212,7 +243,7 @@ export default function ListeFormations({ id, service = 'https://api.bib.umontre
         ))}
       </List>
       {moreLink && (
-        <Div
+        <Box
           sx={{
             display: 'flex',
             justifyContent: 'flex-end',
@@ -221,7 +252,7 @@ export default function ListeFormations({ id, service = 'https://api.bib.umontre
           <Button primary href={moreLink}>
             {moreText}
           </Button>
-        </Div>
+        </Box>
       )}
     </ListeFormationsContainer>
   )
