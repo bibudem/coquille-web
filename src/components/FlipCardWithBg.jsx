@@ -1,205 +1,177 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { styled, useTheme } from '@mui/material'
 import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import Grid from '@mui/material/Grid2'
+import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid'
 
 const bgColors = ['bleuPrincipal', 'rose300', 'vertFonce']
 
-const CardContainer = styled('div')({
+const ElegantCard = styled(Card)(({ theme, bgcolor }) => ({
   position: 'relative',
-  width: 337,
-  height: 400,
-  cursor: 'pointer',
-})
+  width: '23rem',
+  height: '25rem',
+  overflow: 'hidden',
+  marginRight: '20px',
+  cursor: 'default',
+  borderRadius: theme.shape.corner.medium,
+  backgroundColor: bgcolor,
+  color: theme.palette.common.white,
+  boxShadow: 'none',
+  transition: `all ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
+  '&:hover, &:focus-within': {
+    transform: 'translateY(-3px)',
+  },
+  '@media (prefers-reduced-motion: reduce)': {
+    transition: 'none',
+  },
+  // Pour écrans petits : réduction fixe en rem
+  [theme.breakpoints.down('sm')]: {
+    width: '18rem',
+    height: '20rem',
+  },
 
-const FlipSide = styled('div')({
-  position: 'absolute',
+  // Pour écrans très petits : encore plus petit
+  [theme.breakpoints.down('xs')]: {
+    width: '14rem',
+    height: '16rem',
+  }
+}))
+
+const CardContainer = styled(Box)({
+  position: 'relative',
   width: '100%',
   height: '100%',
-  backfaceVisibility: 'hidden',
-  transformStyle: 'preserve-3d',
+  outline: 'none',
 })
 
-const Title = styled('div')({
-  fontSize: '1.9375rem',
-  fontWeight: 500,
-  lineHeight: 1.2,
-  fontVariantNumeric: 'lining-nums tabular-nums',
-  fontFeatureSettings: "'liga' off, 'clig' off",
-})
+const TitleContainer = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  bottom: theme.spacing(3),
+  left: theme.spacing(3),
+  right: theme.spacing(8),
+  zIndex: 3,
+  transition: `all ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
+  opacity: 1,
+  transform: 'translateY(0)',
+  '&.hovered': {
+    top: theme.spacing(3),
+    bottom: 'auto',
+    transform: 'translateY(0)',
+  },
+  '@media (prefers-reduced-motion: reduce)': {
+    transition: 'none',
+  },
+}))
 
-/**
- * FlipCardWithBg component that renders a flippable card with a title and icon.
- * @param {Object} props - The component props.
- * @param {string} props.title - The title of the card.
- * @param {React.ComponentType} props.Icon - The icon component to be displayed.
- * @param {'bleuPrincipal' | 'rose300' | 'vertFonce'} [props.bg='bleuPrincipal'] - The background color of the card.
- * @returns {React.ReactElement} - The FlipCardWithBg component.
- */
-export default function FlipCardWithBg({ title, Icon, bg = 'bleuPrincipal', ...rest }) {
-  if (typeof title === 'undefined') {
-    throw new Error('The `title` prop is missing')
-  }
+const StyledTitle = styled('h3')(({ theme }) => ({
+  margin: 0,
+  transition: `all ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
+  '@media (prefers-reduced-motion: reduce)': {
+    transition: 'none',
+  },
+}))
 
-  if (typeof Icon === 'undefined') {
-    throw new Error('The `Icon` prop is missing')
-  }
+const IconWrapper = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  top: theme.spacing(3),
+  right: theme.spacing(3),
+  zIndex: 4,
+  '& svg': {
+    width: 50,
+    height: 50,
+    transition: `all ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
+  },
+  '@media (prefers-reduced-motion: reduce)': {
+    '& svg': {
+      transition: 'none',
+    },
+  },
+}))
 
-  if (!bgColors.includes(bg)) {
-    throw new Error(`The \`bg\` prop accepted values are: ${bgColors.join(', ')}. Received: ${bg}`)
-  }
+const DescriptionContainer = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  bottom: theme.spacing(3),
+  left: theme.spacing(3),
+  right: theme.spacing(3),
+  maxHeight: '65%',
+  overflowY: 'auto',
+  zIndex: 2,
+  opacity: 0,
+  transform: 'translateY(10px)',
+  transition: `all ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
+  '&.visible': {
+    opacity: 1,
+    transform: 'translateY(0)',
+  },
+  '&::-webkit-scrollbar': {
+    width: 6,
+  },
+  '&::-webkit-scrollbar-thumb': {
+    backgroundColor: 'rgba(255,255,255,0.3)',
+    borderRadius: 3,
+    '&:hover': {
+      backgroundColor: 'rgba(255,255,255,0.5)',
+    },
+  },
+  '@media (prefers-reduced-motion: reduce)': {
+    transition: 'none',
+  },
+}))
 
-  const { sx, children, ...props } = rest
+export default function ElegantHoverCard({ title, Icon, bg = 'bleuPrincipal', children, ...rest }) {
+  const [hovered, setHovered] = useState(false)
   const theme = useTheme()
-  const [_bg, setBg] = useState(bg)
 
-  const FlipContainer = styled('div')({
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    backfaceVisibility: 'hidden',
-    transitionProperty: 'transform',
-    borderRadius: theme.shape.corner.small,
-    transitionDuration: `${theme.transitions.easing.md3.emphasizedIn}`,
-    transitionDuration: `${theme.transitions.duration.md3.long4}ms`,
-    transformStyle: 'preserve-3d',
-  })
+  if (!title) throw new Error('The `title` prop is missing')
+  if (!Icon) throw new Error('The `Icon` prop is missing')
+  if (!bgColors.includes(bg)) throw new Error(`Invalid bg value. Accepted: ${bgColors.join(', ')}`)
 
-  useEffect(() => {
-    if (bg) {
-      setBg(theme.palette[bg])
-    }
-  }, [bg])
+  const bgColor = theme.palette[bg]?.main || theme.palette.primary.main
+  const isRose = bg === 'rose300'
+  const textColor = isRose ? theme.palette.common.black : theme.palette.common.white
+  const iconColor = isRose ? 'rgb(240, 78, 36)' : theme.palette.common.white
 
-  function onCardContainerClick() {
-    // console.log('click')
-    // setBg(theme.palette[bg])
-  }
+  const handleFocus = () => setHovered(true)
+  const handleBlur = () => setHovered(false)
 
   return (
-    <CardContainer
-      sx={{
-        borderRadius: theme.shape.corner.small,
-        ...sx,
-        '&:hover, &:focus': {
-          '.flip-container': {
-            transform: 'rotateY(180deg)',
-            transition: `transform ${theme.transitions.duration.md3.long4}ms ${theme.transitions.easing.md3.emphasizedOut}`,
-          },
-        },
-      }}
-      tabIndex="0"
-      onClick={onCardContainerClick}
+    <ElegantCard
+      bgcolor={bgColor}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      role="region"
+      aria-label={`Carte : ${title}`}
+      {...rest}
     >
-      <FlipContainer className="flip-container">
-        <FlipSide>
-          <Card
-            sx={(theme) => ({
-              borderRadius: theme.shape.corner.small,
-              color: _bg.contrastText,
-              boxShadow: 'none',
-              width: 337,
-              height: 400,
-              ...sx,
-            })}
-            {...props}
+      <CardContainer
+        tabIndex={0}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      >
+        <IconWrapper>
+          <Grid
+            sx={{
+              svg: {
+                fill: isRose ? theme.palette.rougeOrange?.main || iconColor : iconColor,
+                fillOpacity: 0.5,
+                width: 45,
+                fontSize: 45,
+                height: 'auto',
+              },
+            }}
           >
-            <CardContent
-              sx={{
-                padding: '1.88rem',
-                height: '100%',
+            <Icon />
+          </Grid>
+        </IconWrapper>
 
-                backgroundColor: _bg.main,
-                flexGrow: 1,
-                width: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                padding: '1.88rem',
-              }}
-            >
-              <Grid
-                container
-                sx={{
-                  alignItems: 'stretch',
-                  alignContent: 'space-between',
-                  height: '100%',
-                }}
-              >
-                <Grid
-                  sx={{
-                    svg: {
-                      fill: bg === 'rose300' ? theme.palette.rougeOrange.main : '#fff',
-                      fillOpacity: 0.5,
-                      width: 55,
-                      fontSize: 55,
-                      height: 'auto',
-                    },
-                  }}
-                >
-                  <Icon />
-                </Grid>
-                <Grid>
-                  <Title>{title}</Title>
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
-        </FlipSide>
-        <FlipSide
-          sx={{
-            transform: 'rotateY(180deg)',
-          }}
-        >
-          <Card
-            sx={(theme) => ({
-              borderRadius: theme.shape.corner.small,
-              background: _bg.main,
-              color: _bg.contrastText,
-              boxShadow: 'none',
-              width: 337,
-              height: 400,
-              ...sx,
-            })}
-            {...props}
-          >
-            <CardContent
-              sx={{
-                padding: '1.88rem',
-                height: '100%',
+        <TitleContainer className={hovered ? 'hovered' : ''}>
+          <StyledTitle sx={{ color: textColor }}>{title}</StyledTitle>
+        </TitleContainer>
 
-                backgroundColor: _bg.main,
-                flexGrow: 1,
-                width: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                padding: '1.88rem',
-              }}
-            >
-              <Grid
-                container
-                sx={{
-                  alignItems: 'center',
-                  height: '100%',
-                }}
-              >
-                <Grid
-                  sx={{
-                    '> :first-child': {
-                      marginTop: 0,
-                    },
-                    '& > :last-child': {
-                      marginBottom: 0,
-                    },
-                  }}
-                >
-                  {children}
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
-        </FlipSide>
-      </FlipContainer>
-    </CardContainer>
+        <DescriptionContainer className={hovered ? 'visible' : ''} sx={{ color: textColor }}>
+          {children}
+        </DescriptionContainer>
+      </CardContainer>
+    </ElegantCard>
   )
 }
