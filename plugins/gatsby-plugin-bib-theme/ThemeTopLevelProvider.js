@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-// import PropTypes from 'prop-types'
-import { useLocation } from "@reach/router"
+import { useLocation } from '@reach/router'
 import { BibThemeLvl1 } from './BibTheme'
 import LightDarkContext from './LightDarkContext'
 
