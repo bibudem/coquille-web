@@ -1,6 +1,6 @@
 import IframeResizer from '@iframe-resizer/react'
 
-export default function SuggestionAchat() {
+export default function FormulaireSuggestionAchat() {
   return (
     <IframeResizer
       license="GPLv3"
