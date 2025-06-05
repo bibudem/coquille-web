@@ -165,7 +165,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
             <NavListItem href="/a-propos/rapports-annuels">Rapports annuels</NavListItem>
             <NavListItem href="/a-propos/politiques-reglement">Politiques et règlement</NavListItem>
             <NavListItem href="/nouvelles/">Nouvelles</NavListItem>
-            <NavListItem href="/a-propos/carriere">Carrières</NavListItem>
+            <NavListItem href="/a-propos/carriere">Carrière</NavListItem>
           </NavList>
         </Nav>
 
