@@ -17,6 +17,10 @@ export default function FormulaireReserveCours({ hostPageUrl = 'https://bib.umon
   src.searchParams.set('hostPageUrl', hostPageUrl)
   src.searchParams.set('successUrl', successUrl)
 
+  function onMessage() {
+    console.log('[onMessage]', arguments)
+  }
+
   return (
     <IframeResizer
       license="GPLv3"
@@ -27,6 +31,7 @@ export default function FormulaireReserveCours({ hostPageUrl = 'https://bib.umon
         border: 'unset',
       }}
       waitForLoad
+      onMessage={onMessage}
     />
   )
 }
