@@ -13,9 +13,9 @@ import * as styles from './Carousel1.module.css'
 const slidesPerPagPerBreakpoint = {
   xs: 1,
   sm: 2,
-  md: 2,
-  lg: 2,
-  xl: 2,
+  md: 3,
+  lg: 3,
+  xl: 3,
 }
 
 /**
@@ -45,23 +45,28 @@ export default function Carousel1({ title, description, moreText, moreLink, ...r
   })
   const [ref, api] = useEmblaCarousel(options)
   const { prevBtnProps, nextBtnProps } = useCarousel(api)
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [scrollSnaps, setScrollSnaps] = useState([])
 
   useEffect(() => {
     setSlides(Children.toArray(children))
   }, [children])
 
   const variableWidthStyles = {
-    [theme.breakpoints.up('md')]: {
-      maxWidth: '69rem',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
     },
-  }
+    [theme.breakpoints.up('md')]: {
+      maxWidth: '100%',
+    },
+}
 
   useEffect(() => {
-    setOptions({
-      ...options,
-      slidesToScroll: slidesPerPagPerBreakpoint[currentBreakpoint.key],
-    })
-  }, [currentBreakpoint])
+  setOptions((prev) => ({
+    ...prev,
+    slidesToScroll: slidesPerPagPerBreakpoint[currentBreakpoint.key] || 1,
+  }))
+}, [currentBreakpoint])
 
   useEffect(() => {
     const slidesPerPage = options.slidesToScroll
@@ -84,6 +89,22 @@ export default function Carousel1({ title, description, moreText, moreLink, ...r
 
   return () => clearInterval(interval)
 }, [api])*/
+
+  useEffect(() => {
+    if (!api) return
+
+    const onSelect = () => {
+      setSelectedIndex(api.selectedScrollSnap())
+    }
+
+    setScrollSnaps(api.scrollSnapList())
+    api.on('select', onSelect)
+    onSelect()
+
+    return () => {
+      api.off('select', onSelect)
+    }
+  }, [api])
 
   return (
     <div>
@@ -133,8 +154,39 @@ export default function Carousel1({ title, description, moreText, moreLink, ...r
           </Grid>
         )}
       </Grid>
+      {scrollSnaps.length > 1 && (
+        <Div
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            mt: 2,
+            gap: 1,
+          }}
+        >
+          {scrollSnaps.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => api?.scrollTo(index)}
+              aria-label={`Aller à la diapositive ${index + 1}`}
+              style={{
+                width: 20,
+                height: 5,
+                borderRadius: '16px',
+                backgroundColor:
+                index === selectedIndex
+                  ? theme.palette.grey[700] 
+                  : theme.palette.grey[400], 
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'background-color 0.3s',
+              }}
+            />
+          ))}
+        </Div>
+      )}
     </div>
   )
+
 }
 
 function SliderItem({ children, ...props }) {
