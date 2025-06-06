@@ -12,6 +12,23 @@ import Voyages from '../images/voyages-nouvelle-france.webp'
 import Corrections from '../images/corrections-manuscrites.webp'
 import Cartons from '../images/cartons-invitation.webp'
 import Illustration from '../images/illustration-animaliere.webp'
+import { Box } from '@mui/material'
+
+export const images = [
+  { src: Cartons,
+    alt: "Cartons d'invitation à des vernissages d'expositions",
+    caption: "Cartons d'invitation à des vernissages d'expositions", },
+  {
+    src: Corrections,
+    alt: "Corrections manuscrites d’un ancien propriétaire",
+    caption: "Corrections manuscrites d’un ancien propriétaire",
+  },
+  {
+    src: Illustration,
+    alt: "Illustration animalière dans « Voyage en Abyssinie »",
+    caption: "Illustration animalière dans « Voyage en Abyssinie »",
+  },
+  ]
 
 # Soutenez le fonds des livres rares de l’Université de Montréal
 
@@ -26,26 +43,46 @@ Les documents de notre collection s’inscrivent dans l’histoire mondiale. Sav
 Ce ne sont que deux exemples dont nous assurons la conservation. Or, cette conservation comprend des travaux de restauration aussi inévitables que le temps qui passe et l’histoire qui se construit. Compte tenu de la grande quantité d’œuvres et de leur valeur, l’Université de Montréal ne peut pas couvrir l’entièreté des frais de restauration et de conservation de ces pièces uniques.
 
 
-<Grid
-  container
-  direction="row"
+
+
+<Box
   sx={{
-  justifyContent: "space-between",
-  alignItems: "center",}}
-> 
-<Grid size={3}>
-<img src={Cartons} style={{width: 'auto', height: '200px', borderRadius: '12px'}} alt="" />
-Cartons d'invitation à des vernissages d'expositions
-</Grid>
-<Grid size={3}>
-<img src={Corrections} style={{width: 'auto', height: '200px', borderRadius: '12px'}} alt="" />
-Corrections manuscrites d’un ancien propriétaire
-</Grid>
-<Grid size={3}>
-<img src={Illustration} style={{width: 'auto', height: '200px', borderRadius: '12px'}} alt="" />
-Illustration animalière dans « Voyage en Abyssinie »
-</Grid>
-</Grid>
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    gap: 2,
+  }}
+>
+  {images.map((image, index) => (
+    <Box
+      key={index}
+      component="figure"
+      sx={{
+        flex: '1 1 170px',
+        minWidth: '170px',
+        margin: 0,
+        '@media (max-width: 600px)': {
+          flexBasis: '100%',
+        },
+      }}
+    >
+      <img
+        src={image.src}
+        alt={image.alt}
+        style={{
+          width: '100%',
+          height: '200px',
+          borderRadius: '12px',
+          objectFit: 'cover',
+        }}
+      />
+      <Typography variant="body2" component="figcaption" sx={{ marginTop: 1 }}>
+        {image.caption}
+      </Typography>
+    </Box>
+  ))}
+</Box>
+
 <Button primary href='https://secureca.reseau.umontreal.ca/s/1857/bp18/interior.aspx?sid=1857&gid=2&pgid=418&cid=1063&dids=587.618.1030.619.864&bledit=1&sort=1&appealcode=H24DA_GWA_BIBLIO24'>Je donne</Button>
 
 ## Documents exceptionnels à adopter
