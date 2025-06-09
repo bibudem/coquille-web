@@ -73,6 +73,10 @@ export default function FooterTail() {
           <FooterLink to="/conditions-utilisation">Conditions d'utilisation</FooterLink>
         </Grid>
         {!isSmall && <Divider />}
+        <Grid>
+          <FooterLink to="/accessibilite-web">Accessibilité web</FooterLink>
+        </Grid>
+        {!isSmall && <Divider />}
         <Box>
           <ButtonBase
             sx={{

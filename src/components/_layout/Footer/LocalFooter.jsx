@@ -190,7 +190,7 @@ export default function LocalFooter() {
                   <FooterLink to="/nous-soutenir/">Nous soutenir</FooterLink>
                 </li>
                 <li>
-                  <FooterLink to="/service-accessibilite">Accessibilité Web</FooterLink>
+                  <FooterLink to="/service-accessibilite">Service Accessibilité</FooterLink>
                 </li>
               </Ul>
             </Box>

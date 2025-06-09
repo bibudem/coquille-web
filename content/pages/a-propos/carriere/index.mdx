@@ -9,6 +9,15 @@ superHero:
 ---
 import { StudentIcon, UsersThreeIcon } from '@phosphor-icons/react'
 import IconeUdeM from '@/components/IconeUdeM';
+import Meilleur from '/content/pages/images/2025-meilleur-employeur.png'
+import { Box } from '@mui/material';
+
+export const logos = [
+  { src: Meilleur, alt: "Palmares 2025 des 100 meilleurs employeurs au Canada" },
+  { src: Meilleur, alt: "Palmares 2025 des 100 meilleurs employeurs au Canada" },
+  { src: Meilleur, alt: "Palmares 2025 des 100 meilleurs employeurs au Canada" },
+  { src: Meilleur, alt: "Palmares 2025 des 100 meilleurs employeurs au Canada" },
+];
 
 # Carrière
 
@@ -60,4 +69,35 @@ Pour les postes de commis étudiant ou étudiante (à temps partiel), de technic
 
 ### L’Université de Montréal, un bon employeur
 
-[4 images / selon ce qui est à jour]
+<Box sx={{ marginTop: 4 }}>
+  <Grid container spacing={2}>
+    {logos.map((logo, index) => (
+      <Grid
+        item
+        key={index}
+        xs={12}
+        sm={6}
+        md={6}
+        lg={3}
+        xl={3}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Box
+          component="img"
+          src={logo.src}
+          alt={logo.alt}
+          sx={{
+            maxWidth: '100%',
+            height: 'auto',
+            maxHeight: '200px', // optionnel, au cas où tu veux limiter la hauteur
+            objectFit: 'contain',
+          }}
+        />
+      </Grid>
+    ))}
+  </Grid>
+</Box>
