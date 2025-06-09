@@ -77,7 +77,6 @@ export default function PageTemplate({ pageContext, children, data, location }) 
         }}
       >
         {process.env.NODE_ENV !== 'production' && <Debug />}
-        <div style={{ position: 'fixed', background: '#fff', top: 0, right: 0, padding: '.5em', zIndex: 99999 }}>{lvl}</div>
 
         <SkipTo href="#main-content">Aller au contenu</SkipTo>
 
