@@ -187,7 +187,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
           <NavList>
             <NavListItem href="/obtenir/pret-renouvellement-retour/">Prêt, renouvellement, retour</NavListItem>
             <NavListItem href="/obtenir/numerisation">Demande de numérisation</NavListItem>
-            <NavListItem href="/obtenir/peb">Prêt entre bibliothèques</NavListItem>
+            <NavListItem href="/obtenir/peb/">Prêt entre bibliothèques</NavListItem>
             <NavListItem href="/obtenir/frais-avis">Frais et avis de retard</NavListItem>
             <NavListItem href="/nous-joindre/suggestion-achat">Suggestion d'achat</NavListItem>
           </NavList>

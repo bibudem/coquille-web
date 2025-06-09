@@ -8,7 +8,8 @@ import PorteeScientifique from '../images/portee-scientifique.webp'
 import Bibliothecaire from '../images/bibliothecaire-montage.webp'
 import CommentIcon from '@mui/icons-material/Comment'
 import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
-import { UserFocusIcon, CubeTransparentIcon, LaptopIcon, DownloadSimpleIcon, PlugsIcon, MagnifyingGlassIcon, PencilSimpleIcon, TextAlignJustifyIcon, BinocularsIcon, TreasureChestIcon, GraphIcon, ArticleIcon, CheckSquareOffsetIcon, ShareNetworkIcon, HandshakeIcon, RepeatIcon } from '@phosphor-icons/react'
+import { UserFocusIcon, CubeTransparentIcon, LaptopIcon, DownloadSimpleIcon, PlugsIcon, MagnifyingGlassIcon, PencilSimpleIcon, TextAlignJustifyIcon, BinocularsIcon, TreasureChestIcon, GraphIcon, ArticleIcon, CheckSquareOffsetIcon, ShareNetworkIcon, HandshakeIcon, RepeatIcon, CompassRoseIcon, ChatTeardropTextIcon, CheckCircleIcon, PathIcon, PlantIcon } from '@phosphor-icons/react'
+import PlantCoeur from '/icons/plante-coeur.svg'
 
 <SuperHero
   title="Amplifier l’impact de vos recherches"
@@ -126,11 +127,50 @@ Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes b
 
 </Section>
 
+<Section>
+  <Carousel1
+    title={<Typography component="h2" variant="h2Carousel">Intelligence artificielle générative</Typography>}
+    description={
+      <>
+        <Typography sx={{pb: 1.5}}>Les organismes subventionnaires l’exigent, vous devez porter une attention particulière au cycle de vie de vos données de recherche. Nous vous aidons à y voir plus clair, de l’élaboration d’un plan de gestion de données jusqu’au partage dans un dépôt fiable et reconnu.</Typography>
+        <Typography>Nos services de gestion des données de recherche sont conçus pour vous aider à organiser, préserver et partager vos données de recherche de manière efficace et sécurisée. Nous offrons des conseils personnalisés et des outils adaptés pour garantir la conformité aux meilleures pratiques et remplir vos obligations.</Typography>
+      </>
+    }
+  >
+    <CardWithIcon
+      title="Utilisation responsable"
+      Icon={PlantIcon}
+      href="https://boite-outils.bib.umontreal.ca/c.php?g=743753&p=5377616"
+    />
+        <CardWithIcon
+      title="Explorer les outils"
+      Icon={CompassRoseIcon}
+      href="https://boite-outils.bib.umontreal.ca/c.php?g=743753&p=5384062"
+
+    />
+    <CardWithIcon
+      title="Interroger l'IAg"
+      Icon={ChatTeardropTextIcon}
+      href="https://boite-outils.bib.umontreal.ca/c.php?g=743753&p=5377612"
+    />
+        <CardWithIcon
+      title="Évaluer les contenus générés"
+      Icon={CheckCircleIcon}
+      href="https://boite-outils.bib.umontreal.ca/c.php?g=743753&p=5377613"
+    />
+            <CardWithIcon
+      title="Citer, déclarer, documenter "
+      Icon={PathIcon}
+      href="https://boite-outils.bib.umontreal.ca/c.php?g=743753&p=5377614"
+    />
+  </Carousel1>
+</Section>
+
 <Section bg="rose300">
   <HeroWithText2
     leftColl={
       <>
-        <Typography variant="h2">Utiliser le droit d’auteur à votre avantage</Typography>
+        <Typography variant="h2" id="droit-auteur">Utiliser le droit d’auteur à votre avantage</Typography>
         <Typography>Que ce soit pour vous aider à protéger les œuvres et les publications issues de vos recherches, utiliser du contenu protégé dans vos travaux ou bien diffuser vos résultats le plus démocratiquement et largement possible, nos spécialistes sont là pour vous outiller et vous accompagner. </Typography>
       </>
     }
@@ -273,6 +313,12 @@ Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes b
       href="https://www.facebook.com/groups/655999033385375/"
       title="Matinées de rédaction"
       description="Travaillez efficacement dans un environnement structuré grâce aux Matinées de rédaction. Les séances sont divisées en cycles de rédaction, suivis de pauses d'échanges informels."
+    />
+        <RichListItemWithLink
+      color='vertFonce'
+      href="https://boite-outils.bib.umontreal.ca/c.php?g=743753&p=5377614"
+      title="Aide à l'utilisation responsable de l'IAg"
+      description="Utilisez nos outils de documentation et de déclaration de l'usage de l’IAg"
     />
     <RichListItemWithLink
       color='vertFonce'
