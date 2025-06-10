@@ -17,8 +17,13 @@ export default function FormulaireReserveCours({ hostPageUrl = 'https://bib.umon
   src.searchParams.set('hostPageUrl', hostPageUrl)
   src.searchParams.set('successUrl', successUrl)
 
-  function onMessage() {
-    console.log('[onMessage]', arguments)
+  function onMessage(event) {
+    const { message } = event
+    if (typeof message === 'object') {
+      if ('navigate' in message) {
+        message.navigate ? location.assign(message.navigate) : location.reload(true)
+      }
+    }
   }
 
   return (
