@@ -35,6 +35,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
   const theme = useTheme()
   const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
   const [lvl, setLvl] = useState(getCurrentPageLevel(location))
+  console.log('page data prop:', data)
 
   const { superHero } = pageContext.frontmatter
 
@@ -136,13 +137,14 @@ export const query = graphql`
 `
 
 export function Head({ pageContext, location }) {
-  const { frontmatter } = pageContext
+  const { frontmatter = {} } = pageContext
+  const { noIndex, title } = frontmatter
   const { pathname } = location
 
   return (
     <>
       <html lang="fr-CA" />
-      <SEO title={frontmatter?.title} pathname={pathname} />
+      <SEO title={title} pathname={pathname} />
       <bib-gtm></bib-gtm>
       {['/espaces', 'nous-joindre'].some((path) => pathname.startsWith(path)) && (
         <>
@@ -156,6 +158,8 @@ export function Head({ pageContext, location }) {
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/udem-urgence.min.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent.min.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent-preferences-btn.min.js"></script>
+
+      {noIndex && <meta name="robots" content="noindex, nofollow" />}
     </>
   )
 }

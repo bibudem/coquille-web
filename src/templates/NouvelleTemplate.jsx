@@ -117,7 +117,8 @@ function convertTZ(date) {
 }
 
 export function Head({ pageContext, location }) {
-  const { date, title, newsUrl, authors } = pageContext.frontmatter
+  const { frontmatter = {} } = pageContext
+  const { date, title, newsUrl, authors, noIndex } = frontmatter
   const { pathname } = location
   const d = convertTZ(date)
 
@@ -142,6 +143,8 @@ export function Head({ pageContext, location }) {
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/udem-urgence.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent-preferences-btn.js"></script>
+
+      {noIndex && <meta name="robots" content="noindex, nofollow" />}
 
       <script type="application/ld+json">{JSON.stringify(jsonld)}</script>
     </>
