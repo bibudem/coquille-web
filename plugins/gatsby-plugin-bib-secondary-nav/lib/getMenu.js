@@ -23,7 +23,8 @@ function buildRecursiveMenu(nodes, menuData) {
 
   function doBuildRecursiveMenu(node) {
     const childrenNodes = getChildrenNodes(node)
-    const children = childrenNodes.map(node => doBuildRecursiveMenu(node))
+    const children = childrenNodes.filter(({ hidden }) => !hidden).map(node => doBuildRecursiveMenu(node))
+
     const { isRoot, hidden, ...props } = node
 
     const menuItem = {
@@ -43,7 +44,6 @@ function buildRecursiveMenu(nodes, menuData) {
 export default function getMenu() {
   const tree = parseTree()
   const menuData = getMenuData(tree)
-  // const menuIndex = new Map(menuData.map(item => ([item.path, item])))
   const rootNodes = menuData.filter(item => item.isRoot)
   const menu = buildRecursiveMenu(rootNodes, menuData)
 
