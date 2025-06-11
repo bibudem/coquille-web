@@ -35,7 +35,6 @@ export default function PageTemplate({ pageContext, children, data, location }) 
   const theme = useTheme()
   const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
   const [lvl, setLvl] = useState(getCurrentPageLevel(location))
-  console.log('page data prop:', data)
 
   const { superHero } = pageContext.frontmatter
 
