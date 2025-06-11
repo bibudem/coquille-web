@@ -84,7 +84,7 @@ export function QuickLinks() {
             </ListItemIcon>
             <ListItemText>Réserver une salle</ListItemText>
           </MenuItem>
-          <MenuItem component={Link} to="#" onClick={handleOnMenuItemClick}>
+          <MenuItem component={Link} to="https://studio.bib.umontreal.ca/informatique/" onClick={handleOnMenuItemClick}>
             <ListItemIcon>
               <Lifebuoy color="#fff" size={24} />
             </ListItemIcon>
