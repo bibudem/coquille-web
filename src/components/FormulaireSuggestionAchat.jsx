@@ -27,7 +27,7 @@ export default function FormulaireSuggestionAchat() {
   useEffect(() => {
     const url = new URL(FORM_URL)
     const hostPageUrl = location.href.replace(/\??ticket=[^&]+/, '')
-    const successUrl = `${hostPageUrl}/succes`
+    const successUrl = `${hostPageUrl}succes`
 
     url.searchParams.set('hostPageUrl', hostPageUrl)
     url.searchParams.set('successUrl', successUrl)
@@ -56,6 +56,7 @@ export default function FormulaireSuggestionAchat() {
       }}
       waitForLoad
       onMessage={onIframeMessage}
+      checkOrigin={['https://jupiter.bib.umontreal.ca']}
     />
   )
 }
