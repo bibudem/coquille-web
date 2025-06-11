@@ -6,10 +6,19 @@ import 'dotenv/config'
 const adapter = GatsbyAdapterNetlifyModule.default
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+const {
+  NODE_ENV,
+  URL: NETLIFY_SITE_URL = 'https://bib.umontreal.ca',
+  DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
+  CONTEXT: NETLIFY_ENV = NODE_ENV
+} = process.env
+const isNetlifyProduction = NETLIFY_ENV === 'production'
+const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
+
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
-const config = {
+export default {
   adapter: adapter({
     excludeDatastoreFromEngineFunction: false,
     imageCDN: false,
@@ -23,7 +32,7 @@ const config = {
     description: `Site Web des Bibliothèques de l'Université de Montréal`,
     twitterUsername: `@bibUdeM`,
     image: `/gatsby-icon.png`,
-    siteUrl: 'https://bib.umontreal.ca',
+    siteUrl,
   },
   trailingSlash: 'ignore',
   plugins: [
@@ -190,8 +199,28 @@ const config = {
         // trailingSlashes: true,
       }
     },
-    'gatsby-plugin-bib-theme'
+    'gatsby-plugin-bib-theme',
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        resolveEnv: () => NETLIFY_ENV,
+        env: {
+          production: {
+            policy: [{ userAgent: '*' }]
+          },
+          'branch-deploy': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null
+          },
+          'deploy-preview': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null
+          }
+        }
+      }
+    }
   ]
 }
 
-export default config

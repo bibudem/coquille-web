@@ -77,7 +77,6 @@ export default function PageTemplate({ pageContext, children, data, location }) 
         }}
       >
         {process.env.NODE_ENV !== 'production' && <Debug />}
-        <div style={{ position: 'fixed', background: '#fff', top: 0, right: 0, padding: '.5em', zIndex: 99999 }}>{lvl}</div>
 
         <SkipTo href="#main-content">Aller au contenu</SkipTo>
 
@@ -137,13 +136,14 @@ export const query = graphql`
 `
 
 export function Head({ pageContext, location }) {
-  const { frontmatter } = pageContext
+  const { frontmatter = {} } = pageContext
+  const { noIndex, title } = frontmatter
   const { pathname } = location
 
   return (
     <>
       <html lang="fr-CA" />
-      <SEO title={frontmatter?.title} pathname={pathname} />
+      <SEO title={title} pathname={pathname} />
       <bib-gtm></bib-gtm>
       {['/espaces', 'nous-joindre'].some((path) => pathname.startsWith(path)) && (
         <>
@@ -157,6 +157,8 @@ export function Head({ pageContext, location }) {
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/udem-urgence.min.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent.min.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent-preferences-btn.min.js"></script>
+
+      {noIndex && <meta name="robots" content="noindex, nofollow" />}
     </>
   )
 }

@@ -1,0 +1,74 @@
+---
+title: Accessibilité web
+---
+
+import { MagnifyingGlassIcon, ClockCountdownIcon, CalendarPlusIcon, LifebuoyIcon, ChatsIcon } from '@phosphor-icons/react'
+import { SofiaIcon, BurgerIcon, ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
+import ArrowRightCircle from '@/icons/arrow-right-circle.svg'
+import ArrowUpRightCircle from '@/icons/arrow-up-right-circle.svg'
+
+export const IconLabel = ({ icon, label, ariaLabel }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+    {React.cloneElement(icon, {
+      'aria-label': ariaLabel || label,
+      role: 'img',
+    })}
+    <span>{label}</span>
+  </div>
+)
+
+# Accessibilité web
+Cette page concerne l’accessibilité technique su site web. Pour plus d’information concernant les services d’accessibilités offerts par les bibliothèques, référez-vous au Service Accessibilité [Lien].
+
+## Standard gouvernemental
+
+Ce site est conforme au Standard sur Standard sur l'accessibilité des sites Web du gouvernement du Québec SGQRI 008 3.0.
+
+## Outils de validation
+### Navigateurs
+
+- Chrome
+- FireFox
+- Safari
+
+### Outils complémentaires
+
+- Siteimprove Accessibility checker
+- WCAG Contrast checker
+- Web Developer
+
+## Description des icônes
+Voici la liste des icônes ayant un rôle fonctionnelle: 
+
+<IconLabel icon={<BurgerIcon size={40} />} label="Ouvrir le menu du site" />
+<IconLabel icon={<MagnifyingGlassIcon size={40} />} label="Rechercher" />
+<IconLabel icon={<SofiaIcon size={45} />} label="Outil de recherche Sofia" />
+<IconLabel icon={<ClockCountdownIcon size={40} />} label="Voir les horaires" />
+<IconLabel icon={<CalendarPlusIcon size={40} />} label="Réserver une salle de travail" />
+<IconLabel icon={<LifebuoyIcon size={40} />} label="Obtenir du soutien informatique" />
+<IconLabel icon={<ChatsIcon size={40} />} label="Clavarder" />
+
+<div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+  <svg
+    width="45"
+    height="45"
+    viewBox="0 0 36 36"
+    fill="none"
+    role="img"
+    aria-label="Déployer ou dissimuler l'élément d'accordéon"
+  >
+    <rect width="35" height="35" x=".5" y=".5" fill="#CCE2F3" rx="17.5" />
+    <path
+      fill="#0057AC"
+      d="M24.213 18.35a.547.547 0 0 1-.547.547h-5.469v5.47a.547.547 0 1 1-1.094 0v-5.47h-5.469a.547.547 0 0 1 0-1.093h5.47v-5.469a.547.547 0 1 1 1.093 0v5.469h5.469a.547.547 0 0 1 .547.547Z"
+    />
+  </svg>
+  <span>Déployer ou dissimuler l'élément d'accordéon</span>
+</div>
+
+<IconLabel icon={<ArrowRightCircle size={40} />} label="Suivre le lien à l'intérieur du site" />
+<IconLabel icon={<ArrowUpRightCircle size={40} />} label="Suivre le lien qui mène à un autre site" />
+
+
+## Aide
+Si vous avez des difficultés à naviguer dans ce site, vous pouvez obtenir de l’aide en contactant le Service Accessibilité : [accessibilite@bib.umontreal.ca](mailto:accessibilite@bib.umontreal.ca).

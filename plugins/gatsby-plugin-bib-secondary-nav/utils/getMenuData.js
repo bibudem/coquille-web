@@ -21,14 +21,11 @@ export default function getMenuData(tree, links = []) {
   const pageAttrs = getPageAttrs(path)
 
   if (pageAttrs) {
-    const { title, order, hidden } = pageAttrs
     // const lvl = getNormalPath(path).split('/').filter(item => item).length
 
     links.push({
+      ...pageAttrs,
       path: getNormalPath(path),
-      title,
-      order,
-      hidden,
       isRoot: isRoot(path),
       // lvl
     })

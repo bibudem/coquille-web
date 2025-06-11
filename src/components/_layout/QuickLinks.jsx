@@ -3,6 +3,7 @@ import { CalendarPlus, Chats, ClockCountdown, Lifebuoy } from '@phosphor-icons/r
 import Div from '@/components/utils/Div'
 import { SofiaIcon } from '@/components/CustomIcons'
 import Link from '@/components/Link'
+import LibChatWidget from '@/components/LibChatWidget';
 
 function ListItemText({ children }) {
   return (
@@ -32,6 +33,15 @@ export function QuickLinks() {
     alert('Action à définir')
   }
 
+  function handleChatClick(event) {
+    event.preventDefault();
+    if (typeof window.openLibChatDirect === 'function') {
+      window.openLibChatDirect();
+    } else {
+      console.error("La fonction openLibChatDirect n'est pas disponible");
+    }
+  }
+
   return (
     <Div
       sx={{
@@ -47,6 +57,7 @@ export function QuickLinks() {
         pointerEvents: 'none',
       }}
     >
+      <LibChatWidget />
       <Paper
         component="nav"
         elevation={3}
@@ -84,13 +95,13 @@ export function QuickLinks() {
             </ListItemIcon>
             <ListItemText>Réserver une salle</ListItemText>
           </MenuItem>
-          <MenuItem component={Link} to="#" onClick={handleOnMenuItemClick}>
+          <MenuItem component={Link} to="https://studio.bib.umontreal.ca/informatique/" onClick={handleOnMenuItemClick}>
             <ListItemIcon>
               <Lifebuoy color="#fff" size={24} />
             </ListItemIcon>
             <ListItemText>Soutien informatique</ListItemText>
           </MenuItem>
-          <MenuItem component={Link} to="#" onClick={handleOnMenuItemClick}>
+          <MenuItem component={Link} to="#" onClick={handleChatClick}>
             <ListItemIcon>
               <Chats color="#fff" size={24} />
             </ListItemIcon>
@@ -108,6 +119,15 @@ export function QuickLinksSm() {
   function handleOnMenuItemClick(event) {
     event.preventDefault()
     alert('Action à définir')
+  }
+
+  function handleChatClick(event) {
+    event.preventDefault();
+    if (typeof window.openLibChatDirect === 'function') {
+      window.openLibChatDirect();
+    } else {
+      console.error("La fonction openLibChatDirect n'est pas disponible");
+    }
   }
 
   return (
@@ -130,6 +150,7 @@ export function QuickLinksSm() {
         boxShadow: theme.shadows[3],
       }}
     >
+      <LibChatWidget />
       <Box
         component="nav"
         elevation={3}
@@ -152,7 +173,7 @@ export function QuickLinksSm() {
         <IconButton component={Link} href="#" onClick={handleOnMenuItemClick} aria-label="Soutien informatique">
           <Lifebuoy color="#fff" size={40} />
         </IconButton>
-        <IconButton component={Link} href="#" onClick={handleOnMenuItemClick} aria-label="Clavarder">
+        <IconButton component={Link} href="#" onClick={handleChatClick} aria-label="Clavarder">
           <Chats color="#fff" size={40} />
         </IconButton>
       </Box>
