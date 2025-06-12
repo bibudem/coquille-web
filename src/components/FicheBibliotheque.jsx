@@ -5,7 +5,7 @@ import MuiAccordion from '@mui/material/Accordion'
 import MuiAccordionSummary from '@mui/material/AccordionSummary'
 import MuiAccordionDetails from '@mui/material/AccordionDetails'
 import Grid from '@mui/material/Grid2'
-import { Door, MapTrifold, Users } from '@phosphor-icons/react'
+import { DoorIcon, MapTrifoldIcon, UsersIcon } from '@phosphor-icons/react'
 import Bloc from '@/components/FicheBibliotheque/Bloc'
 import HoraireAujourdhui from '@/components/FicheBibliotheque/HoraireAujourdhui'
 import { useSmall } from '@/hooks/use-small'
@@ -99,7 +99,7 @@ export default function FicheBibliotheque({ title, id, codeBib, blocHoraires, bl
             <Col>
               <HoraireAujourdhui codeBib={codeBib}>{blocHoraires}</HoraireAujourdhui>
               {blocEspaces && (
-                <Bloc title="Espaces" Icon={Door}>
+                <Bloc title="Espaces" Icon={DoorIcon}>
                   {blocEspaces}
                 </Bloc>
               )}
@@ -107,10 +107,10 @@ export default function FicheBibliotheque({ title, id, codeBib, blocHoraires, bl
           </Grid>
           <Grid size={{ xs: 10, sm: 5, md: 4 }} sx={{ padding: '1.3333rem 0 1.3333rem 1.3333rem' }}>
             <Col>
-              <Bloc title="Adresse" Icon={MapTrifold}>
+              <Bloc title="Adresse" Icon={MapTrifoldIcon}>
                 {blocAdresse}
               </Bloc>
-              <Bloc title="Nous joindre" Icon={Users}>
+              <Bloc title="Nous joindre" Icon={UsersIcon}>
                 {blocNousJoindre}
               </Bloc>
               {children && <Bloc>{children}</Bloc>}
