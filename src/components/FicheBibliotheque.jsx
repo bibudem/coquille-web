@@ -5,7 +5,7 @@ import MuiAccordion from '@mui/material/Accordion'
 import MuiAccordionSummary from '@mui/material/AccordionSummary'
 import MuiAccordionDetails from '@mui/material/AccordionDetails'
 import Grid from '@mui/material/Grid2'
-import { Door, MapTrifold, Users } from '@phosphor-icons/react'
+import { DoorIcon, MapTrifoldIcon, UsersIcon } from '@phosphor-icons/react'
 import Bloc from '@/components/FicheBibliotheque/Bloc'
 import HoraireAujourdhui from '@/components/FicheBibliotheque/HoraireAujourdhui'
 import { useSmall } from '@/hooks/use-small'
@@ -57,7 +57,21 @@ function Col({ children }) {
   )
 }
 
-export default function FicheBibliotheque({ title, codeBib, blocHoraires, blocEspaces, blocAdresse, blocNousJoindre, ...rest }) {
+/**
+ * @description Composant FicheBibliotheque affichant les informations d'une bibliothèque.
+ * @param {object} props - Les propriétés du composant.
+ * @param {string} props.title - Le titre de la bibliothèque.
+ * @param {string} props.id - L'ID de l'accordéon.
+ * @param {string} props.codeBib - Le code de la bibliothèque.
+ * @param {React.ReactNode} props.blocHoraires - Le bloc affichant les horaires.
+ * @param {React.ReactNode} props.blocEspaces - Le bloc affichant les espaces.
+ * @param {React.ReactNode} props.blocAdresse - Le bloc affichant l'adresse.
+ * @param {React.ReactNode} props.blocNousJoindre - Le bloc affichant les informations de contact.
+ * @param {React.ReactNode} props.children - Les enfants du composant, pour du contenu additionnel.
+ * @param {object} props.rest - Les autres propriétés du composant.
+ * @returns {JSX.Element} Un accordéon contenant les informations de la bibliothèque.
+ */
+export default function FicheBibliotheque({ title, id, codeBib, blocHoraires, blocEspaces, blocAdresse, blocNousJoindre, ...rest }) {
   const { children, ...props } = rest
   const isSmall = useSmall('md')
   const imageData = useStaticQuery(graphql`
@@ -78,14 +92,14 @@ export default function FicheBibliotheque({ title, codeBib, blocHoraires, blocEs
 
   return (
     <Accordion className="bib-comp-fiche-bibliotheque">
-      <AccordionSummary>{title}</AccordionSummary>
+      <AccordionSummary id={id}>{title}</AccordionSummary>
       <AccordionDetails>
         <Grid container columns={10} columnSpacing="2rem">
           <Grid size={{ xs: 10, sm: 5, md: 3 }} sx={{ padding: '1.3333rem 0 1.3333rem 1.3333rem' }}>
             <Col>
               <HoraireAujourdhui codeBib={codeBib}>{blocHoraires}</HoraireAujourdhui>
               {blocEspaces && (
-                <Bloc title="Espaces" Icon={Door}>
+                <Bloc title="Espaces" Icon={DoorIcon}>
                   {blocEspaces}
                 </Bloc>
               )}
@@ -93,10 +107,10 @@ export default function FicheBibliotheque({ title, codeBib, blocHoraires, blocEs
           </Grid>
           <Grid size={{ xs: 10, sm: 5, md: 4 }} sx={{ padding: '1.3333rem 0 1.3333rem 1.3333rem' }}>
             <Col>
-              <Bloc title="Adresse" Icon={MapTrifold}>
+              <Bloc title="Adresse" Icon={MapTrifoldIcon}>
                 {blocAdresse}
               </Bloc>
-              <Bloc title="Nous joindre" Icon={Users}>
+              <Bloc title="Nous joindre" Icon={UsersIcon}>
                 {blocNousJoindre}
               </Bloc>
               {children && <Bloc>{children}</Bloc>}
