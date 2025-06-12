@@ -1,6 +1,14 @@
-import { useEffect, useState } from 'react'
-import { AppBar, Container, Slide, Toolbar, useScrollTrigger } from '@mui/material'
-import { styled } from '@mui/material/styles'
+import { useEffect, useState, useCallback } from 'react'
+import {
+  AppBar,
+  Container,
+  Slide,
+  Toolbar,
+  useScrollTrigger,
+  useMediaQuery,
+  IconButton
+} from '@mui/material'
+import { styled, useTheme } from '@mui/material/styles'
 import Link from '@/components/Link'
 import SideNavSm from '@/components/_layout/SideNav/SideNavSm'
 import SideNavContent from '@/components/_layout/SideNav/SideNavContent'
@@ -11,9 +19,6 @@ const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
 
 function HideOnScroll(props) {
   const { children, window } = props
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
     threshold: 150,
@@ -26,27 +31,21 @@ function HideOnScroll(props) {
   )
 }
 
-/**
- * Primary search app bar component for mobile devices
- */
 export default function TopAppBarSm(props) {
   const [open, setOpen] = useState(false)
+  const theme = useTheme()
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'))
 
-  const toggleDrawer = (newState) => () => {
-    setOpen(newState ?? !open)
-  }
+  const toggleDrawer = useCallback((newState) => () => setOpen(newState ?? !open), [])
 
   useEffect(() => {
-    function onClose() {
-      setOpen(false)
+    function onClose(e) {
+      if (e.key === 'Escape') setOpen(false)
     }
-
-    document.documentElement.addEventListener('close', onClose)
-
-    return () => {
-      document.documentElement.removeEventListener('close', onClose)
-    }
+    document.addEventListener('keydown', onClose)
+    return () => document.removeEventListener('keydown', onClose)
   }, [])
+
   return (
     <>
       <Offset />
@@ -55,7 +54,8 @@ export default function TopAppBarSm(props) {
           position="fixed"
           elevation={0}
           sx={{
-            bgcolor: 'transparent',
+            bgcolor: 'background.paper',
+            borderBottom: `1px solid ${theme.palette.divider}`,
           }}
         >
           <Container
@@ -63,51 +63,58 @@ export default function TopAppBarSm(props) {
               '&.MuiContainer-maxWidthXl': {
                 maxWidth: '1500px',
               },
-              py: 0.5,
+              py: 1,
+              px: 2,
             }}
           >
-            <Toolbar>
+            <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
               <Link
                 aria-label="Accueil"
-                noWrap
                 to="/"
                 sx={{
                   display: 'flex',
                   flexDirection: 'column',
-                  color: '#fff',
-                  margin: '10px 0 0 14px',
+                  color: 'text.primary',
+                  textDecoration: 'none',
                 }}
               >
                 <LogoUdeMMonochrome
                   style={{
-                    width: 140,
+                    width: isSmallScreen ? 120 : 140,
                     height: 'auto',
-                    fill: 'currentColor',
                   }}
                 />
                 <span
                   style={{
-                    fontSize: '18px',
+                    fontSize: '16px',
                     fontWeight: 600,
                   }}
                 >
                   les bibliothèques
                 </span>
               </Link>
-              <MenuBurger
+
+              <IconButton
                 onClick={toggleDrawer(true)}
+                aria-label="Ouvrir le menu de navigation"
                 sx={{
-                  position: 'absolute',
-                  zIndex: 1,
-                  right: 16,
+                  ml: 'auto',
+                  color: 'text.primary',
                 }}
-              />
+              >
+                <MenuBurger />
+              </IconButton>
             </Toolbar>
           </Container>
         </AppBar>
       </HideOnScroll>
-      <SideNavSm open={open} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)}>
-        <SideNavContent />
+
+      <SideNavSm
+        open={open}
+        onOpen={toggleDrawer(true)}
+        onClose={toggleDrawer(false)}
+      >
+        <SideNavContent onClose={toggleDrawer(false)} />
       </SideNavSm>
     </>
   )
