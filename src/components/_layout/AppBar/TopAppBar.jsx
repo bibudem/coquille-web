@@ -117,7 +117,7 @@ export default function TopAppBar({ lvl, location = {} }) {
         </Toolbar>
       </AppBar>
       <SideNav open={open} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)}>
-        <SideNavContent />
+        <SideNavContent onClose={toggleDrawer(false)} />
       </SideNav>
     </>
   )
