@@ -5,6 +5,7 @@ import ContrastColor from 'contrast-color'
 
 export default function Debug() {
   const [resolution, setResolution] = useState('')
+  const [devicePixelRatio, setDevicePixelRatio] = useState(null)
   const theme = useTheme()
   const cc = new ContrastColor()
   const queriesLength = theme.breakpoints.keys.length
@@ -29,6 +30,12 @@ export default function Debug() {
     }
   }, queries)
 
+  useEffect(() => {
+    if (window) {
+      setDevicePixelRatio(window.devicePixelRatio)
+    }
+  }, [])
+
   return (
     <Box
       sx={{
@@ -47,9 +54,16 @@ export default function Debug() {
         },
       }}
     >
-      <Box sx={{ padding: '.5em .35em .35em .5em' }}>
+      <Box
+        sx={{
+          padding: '.5em .35em .35em .5em',
+        }}
+      >
         <Box
           sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '.35em',
             color: resolution.color,
             backgroundColor: resolution.bg,
             borderRadius: '2px 2px 0 0',
@@ -57,7 +71,14 @@ export default function Debug() {
             padding: '.325em',
           }}
         >
-          {resolution.key}
+          <Box>{resolution.key}</Box>
+          <Box
+            sx={{
+              fontSize: '.85em',
+            }}
+          >
+            {devicePixelRatio}dpx
+          </Box>
         </Box>
         <Box
           pt={0.25}

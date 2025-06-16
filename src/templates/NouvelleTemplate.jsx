@@ -137,12 +137,12 @@ export function Head({ pageContext, location }) {
       <html lang="fr" />
       <SEO title={title} pathname={pathname} />
       <bib-gtm></bib-gtm>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0.23.0/dist/bib-gtm.min.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0.23.0/dist/bib-avis.min.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0.23.0/dist/bib-retroaction-usager.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0.23.0/dist/udem-urgence.min.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0.23.0/dist/bib-consent.min.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0.23.0/dist/bib-consent-preferences-btn.min.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-gtm.min.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-avis.min.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-retroaction-usager.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/udem-urgence.min.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-consent.min.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-consent-preferences-btn.min.js"></script>
 
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
 

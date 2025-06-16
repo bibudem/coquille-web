@@ -1,12 +1,11 @@
-import { useContext, useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { Container, Paper, IconButton, InputBase } from '@mui/material'
-import { MagnifyingGlass } from '@phosphor-icons/react'
-import { inlineOffset, SuperHeroContext } from '@/components/SuperHero'
+import { MagnifyingGlassIcon } from '@phosphor-icons/react'
+import { inlineOffset } from '@/components/SuperHero'
 import { useSmall } from '@/hooks/use-small'
 
 export default function RechercheSofiaAccueil() {
   const defaultActionUrl = 'https://umontreal.on.worldcat.org/search?clusterResults=true&baseScope=wz:11098&lang=fr&stickyFacetsChecked=on&changedFacet=database&database=Xwc&overrideStickyFacetDefault=true&queryString=kw:'
-  const superHeroSettings = useContext(SuperHeroContext)
   const inputRef = useRef(null)
   const isSmall = useSmall()
 
@@ -16,10 +15,6 @@ export default function RechercheSofiaAccueil() {
     const url = `${defaultActionUrl}${encodeURIComponent(value)}`
     window.location.href = url
   }
-
-  useEffect(() => {
-    console.log('superHeroSettings', superHeroSettings)
-  }, [superHeroSettings])
 
   return (
     !isSmall && (
@@ -54,7 +49,7 @@ export default function RechercheSofiaAccueil() {
           >
             <InputBase inputRef={inputRef} fullWidth placeholder="Rechercher des articles, des livres, des films..." required aria-description="Rechercher dans Sofia" />
             <IconButton type="submit" aria-label="Chercher" color="bleuPrincipal">
-              <MagnifyingGlass size={32} color="currentColor" />
+              <MagnifyingGlassIcon size={32} color="currentColor" />
             </IconButton>
           </Paper>
           <div
