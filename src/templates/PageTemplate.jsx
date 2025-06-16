@@ -24,6 +24,7 @@ import { getLastSundayISODate } from '@/utils/dateTimeUtils'
 
 import commonComponents from './commonComponents'
 import SuperHero from '../components/_layout/SuperHeroLvl2'
+import zIndex from '@mui/material/styles/zIndex'
 
 function getCurrentPageLevel(location) {
   return location.pathname.split('/').filter((item) => item).length
@@ -80,15 +81,26 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         <SkipTo href="#main-content">Aller au contenu</SkipTo>
 
-        <udem-urgence></udem-urgence>
+        <udem-urgence />
+
+        {lvl < 2 && (
+          <bib-avis
+            bouton-fermer
+            style={{
+              '--bib-avis-spacing-inline': '0',
+              position: 'relative',
+              zIndex: theme.zIndex.appBar + 1,
+            }}
+          />
+        )}
 
         {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
-
-        {/* <bib-avis bouton-fermer /> */}
 
         {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
         {lvl > 1 && superHero && <SuperHero title={superHero.title} imageName={superHero.imageName} lvl={lvl} />}
+
+        {lvl >= 2 && <bib-avis bouton-fermer />}
 
         {hasSecondaryNav ? (
           <Box sx={{ paddingTop: '60px' }}>
@@ -151,12 +163,12 @@ export function Head({ pageContext, location }) {
           <link rel="preload" href={`https://api.bib.umontreal.ca/horaires/?debut=${getLastSundayISODate()}&fin=P7D`} as="fetch" crossorigin="anonymous" />
         </>
       )}
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-gtm.min.js"></script>
-      {/* <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-avis.min.js"></script> */}
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-retroaction-usager.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/udem-urgence.min.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent.min.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent-preferences-btn.min.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-gtm.min.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-avis.min.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-retroaction-usager.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/udem-urgence.min.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-consent.min.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-consent-preferences-btn.min.js"></script>
 
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
     </>

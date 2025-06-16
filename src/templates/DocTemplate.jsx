@@ -76,9 +76,9 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
 
-        {/* <bib-avis bouton-fermer /> */}
-
         {isSmall ? <QuickLinksSm /> : <QuickLinks />}
+
+        <bib-avis bouton-fermer></bib-avis>
 
         {mainContent}
 
@@ -110,12 +110,12 @@ export function Head({ pageContext, location }) {
       <html lang="fr-CA" />
       <SEO title={title} pathname={pathname} />
       <bib-gtm></bib-gtm>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-gtm.js"></script>
-      {/* <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-avis.js"></script> */}
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-retroaction-usager.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/udem-urgence.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@0/dist/bib-consent-preferences-btn.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-gtm.min.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-avis.min.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-retroaction-usager.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/udem-urgence.min.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-consent.min.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-consent-preferences-btn.min.js"></script>
 
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
     </>
