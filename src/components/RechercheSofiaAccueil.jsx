@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { Container, Paper, IconButton, InputBase } from '@mui/material'
-import { MagnifyingGlass } from '@phosphor-icons/react'
+import { MagnifyingGlassIcon } from '@phosphor-icons/react'
 import { inlineOffset } from '@/components/SuperHero'
 import { useSmall } from '@/hooks/use-small'
 
@@ -49,7 +49,7 @@ export default function RechercheSofiaAccueil() {
           >
             <InputBase inputRef={inputRef} fullWidth placeholder="Rechercher des articles, des livres, des films..." required aria-description="Rechercher dans Sofia" />
             <IconButton type="submit" aria-label="Chercher" color="bleuPrincipal">
-              <MagnifyingGlass size={32} color="currentColor" />
+              <MagnifyingGlassIcon size={32} color="currentColor" />
             </IconButton>
           </Paper>
           <div
