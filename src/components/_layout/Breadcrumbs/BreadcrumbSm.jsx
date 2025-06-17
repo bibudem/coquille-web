@@ -1,12 +1,9 @@
-import { useEffect, useState } from 'react'
 import { styled } from '@mui/material/styles'
 import MuiBreadcrumbs from '@mui/material/Breadcrumbs'
 import Link from '@mui/material/Link'
-import { CaretDownIcon, HouseLineIcon } from '@phosphor-icons/react'
-import secondaryNavData from '../../../../public/site-navigation.json'
-import { Box, IconButton, Menu, MenuItem } from '@mui/material'
+import { HouseLineIcon } from '@phosphor-icons/react'
 
-const StyledLink = styled(Link)(({ theme }) => ({
+const StyledBreadcrumb = styled(Link)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   textDecoration: 'underline',
@@ -16,150 +13,25 @@ const StyledLink = styled(Link)(({ theme }) => ({
 }))
 
 export default function BreadcrumbsSm({ crumbs }) {
-  console.log('crumbs:', crumbs)
-  const [data, setData] = useState(null)
-
-  useEffect(() => {
-    function getMenuForCrumb(crumbsData, currentNode, currentIndex) {
-      console.group('[x] ' + currentIndex)
-      function stripLastSlash(url) {
-        return url.replace(/\/$/, '')
-      }
-
-      const { crumbsMenu, navData } = crumbsData
-
-      // Renommage de crumbLabel -> label
-      const { crumbLabel: label, ...rest } = currentNode
-      currentNode = { label, ...rest }
-
-      console.log('[x] currentIndex:', currentIndex)
-      console.log('[x] in current data:', crumbsData)
-
-      const currentCrumbPath = stripLastSlash(crumbsData.crumbs[currentIndex].pathname)
-      console.log('[x] currentCrumbPath:', currentCrumbPath)
-
-      // Don't create a menu on the root (first) crumb
-      if (currentIndex === 0) {
-        crumbsMenu.push(currentNode)
-        return crumbsData
-      }
-
-      console.log('[x] navData:', navData)
-
-      const nextNavData = navData.find((node) => {
-        const path = stripLastSlash(node.path)
-
-        return path === currentCrumbPath
-      })
-
-      console.log('[x] nextNavData:', nextNavData)
-
-      if (nextNavData) {
-        const siblings = navData.map(({ title, order, path }) => ({ title, order, pathname: path }))
-
-        crumbsData.crumbsMenu.push({ ...currentNode, siblings })
-        crumbsData.navData = nextNavData.children
-        console.log('[x] out next crumbsData:', crumbsData)
-      }
-
-      console.groupEnd()
-
-      return crumbsData
-    }
-
-    if (secondaryNavData && crumbs) {
-      // const rootPath = `/${currentLocation.pathname
-      //   .split('/')
-      //   .filter((_) => _) // Quick way to get rid of falsy items in the array
-      //   .shift()}/`
-
-      // const rootNode = secondaryNavData.find(({ path }) => path === rootPath)
-      console.log('[x] crumbs:', crumbs)
-      const crumbMenuData = crumbs.reduce(getMenuForCrumb, { crumbsMenu: [], navData: secondaryNavData, crumbs })
-
-      console.log('[x] Result crumb menu:', crumbMenuData)
-
-      setData(crumbMenuData.crumbsMenu)
-    }
-  }, [secondaryNavData, crumbs])
+  // console.log('crumbs:', crumbs)
 
   return (
-    data && (
-      <MuiBreadcrumbs
-        className="bib-comp-breadcrumbs"
-        aria-label="Fil d'ariane"
-        sx={{
-          paddingBottom: '24px',
-          '.MuiBreadcrumbs-li': {
-            display: 'flex',
-            flexWrap: 'nowrap',
-            gap: '.5ch',
-          },
-        }}
-      >
-        {data.map((node, index) => {
-          const { pathname } = node
-          const isLeaf = index === crumbs.length - 1
-          const isRoot = index === 0
-
-          return <Breadcrumb key={pathname} data={node} isLeaf={isLeaf} isRoot={isRoot} sx={{ display: 'flex' }} />
-        })}
-      </MuiBreadcrumbs>
-    )
+    <MuiBreadcrumbs className="bib-comp-breadcrumbs" aria-label="Fil d'ariane" sx={{ paddingBottom: '24px' }}>
+      {crumbs.map(({ pathname, crumbLabel }, index) => (
+        <Breadcrumb pathname={pathname} label={crumbLabel} isLeaf={index === crumbs.length - 1} isRoot={index === 0} />
+      ))}
+    </MuiBreadcrumbs>
   )
 }
 
-function Breadcrumb({ data, isRoot, isLeaf }) {
-  console.log('[x] arguments:', arguments)
-
-  const { pathname, label, siblings } = data
-
+function Breadcrumb({ pathname, label, isLeaf, isRoot }) {
   if (isLeaf) {
     return <span>{label}</span>
   }
 
   return (
-    <>
-      <StyledLink href={isLeaf ? null : pathname}>{isRoot ? <HouseLineIcon size="1.125rem" /> : label}</StyledLink>
-      {siblings && <BreadcrumbMenu data={siblings} />}
-    </>
-  )
-}
-
-function BreadcrumbMenu({ data }) {
-  const [anchorEl, setAnchorEl] = useState(null)
-  const open = Boolean(anchorEl)
-
-  function handleClick(event) {
-    setAnchorEl(event.currentTarget)
-  }
-
-  function handleClose() {
-    setAnchorEl(null)
-  }
-
-  return (
-    <>
-      <IconButton size="small" aria-label="Autres pages de cette section" aria-controls={open ? 'basic-menu' : undefined} aria-haspopup="true" aria-expanded={open ? 'true' : undefined} onClick={handleClick}>
-        <CaretDownIcon size="1em" />
-      </IconButton>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        slotProps={{
-          list: {
-            'aria-labelledby': 'basic-button',
-          },
-        }}
-      >
-        {data.map(({ title, pathname }) => (
-          <MenuItem onClick={handleClose} href={pathname}>
-            {title}
-          </MenuItem>
-        ))}
-      </Menu>
-    </>
+    <StyledBreadcrumb href={isLeaf ? null : pathname} data-is-leaf={isLeaf}>
+      {isRoot ? <HouseLineIcon size="1.125rem" /> : label}
+    </StyledBreadcrumb>
   )
 }
