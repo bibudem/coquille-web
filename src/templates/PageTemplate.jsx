@@ -21,7 +21,7 @@ import { useSmall } from '@/hooks/use-small'
 import { SecondaryNav } from '@/components/_layout/SecondaryNav/SecondaryNav'
 
 import commonComponents from './commonComponents'
-import SuperHero from '../components/_layout/SuperHeroLvl2'
+import SuperHero from '@/components/_layout/SuperHero/SuperHeroLvl2'
 
 function getCurrentPageLevel(location) {
   return location.pathname.split('/').filter((item) => item).length
