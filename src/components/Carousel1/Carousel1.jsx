@@ -57,6 +57,15 @@ export default function Carousel1({ title, description, moreText, moreLink, ...r
     setShowNavigation(slides.length > slidesPerPage)
   }, [options.slidesToScroll, slides.length])
 
+  // Réinitialise Embla APRES le montage et le rendu visible
+  useEffect(() => {
+    if (api) {
+      setTimeout(() => {
+        api.reInit()
+      }, 0)
+    }
+  }, [api])
+
   // Initialise les scroll snaps et écouteurs d'événements
   useEffect(() => {
     if (!api) return
@@ -73,7 +82,6 @@ export default function Carousel1({ title, description, moreText, moreLink, ...r
     api.on('select', onSelect)
     api.on('reInit', updateScrollSnaps)
     api.on('resize', updateScrollSnaps)
-    
     updateScrollSnaps()
     onSelect()
 

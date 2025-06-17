@@ -20,9 +20,8 @@ import useMediaQuery from '@mui/material/useMediaQuery'
  */
 export default function Tabs1({ tabs = [], defaultTab = 1, ariaLabel = '', bg, ...rest }) {
   const { sx, children, ...props } = rest
-  const [value, setValue] = useState(defaultTab)
+  const [value, setValue] = useState(defaultTab.toString())
   const theme = useTheme()
-  // Responsive : true si écran < md (md = 900px par défaut)
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('lg'))
 
   function handleChange(_, newValue) {
@@ -48,30 +47,30 @@ export default function Tabs1({ tabs = [], defaultTab = 1, ariaLabel = '', bg, .
             >
               {tabs.map((tab, index) => (
                 <Tab
-                    key={index}
-                    label={tab}
-                    value={index + 1}
-                    component={Button}
-                    primary
-                    sx={{
-                      fontSize: {
-                        xs: '0.875rem', // ~14px
-                        sm: '1rem',     // ~16px
-                        md: '1.125rem', // ~18px
-                        lg: '1.125rem',  // ~18px
-                      },
-                    }}
-                  />
-
+                  key={index}
+                  label={tab}
+                  value={(index + 1).toString()}
+                  component={Button}
+                  primary
+                  sx={{
+                    fontSize: {
+                      xs: '0.875rem',
+                      sm: '1rem',
+                      md: '1.125rem',
+                      lg: '1.125rem',
+                    },
+                  }}
+                />
               ))}
             </TabList>
           </Grid>
-          <Grid xs={12} lg={8} xl={8}>
+          <Grid xs={12} lg={8} xl={8} sx={{ minHeight: '400px' }}>
             {Children.toArray(children).map((child, index) => (
               <TabPanel
                 key={index}
-                value={index + 1}
-                sx={(theme) => ({
+                value={(index + 1).toString()}
+                sx={{
+                  height: '100%',
                   flexGrow: 1,
                   ...(bg
                     ? {
@@ -83,11 +82,16 @@ export default function Tabs1({ tabs = [], defaultTab = 1, ariaLabel = '', bg, .
                         padding: 0,
                       }),
                   [theme.breakpoints.up('lg')]: {
-                    paddingLeft: '2rem', // ← padding gauche pour lg et xl
+                    paddingLeft: '2rem',
                   },
-                })}
+                }}
               >
-                {child}
+                {/* Passe la prop active au panel enfant */}
+                {child && typeof child === 'object'
+                  ? React.cloneElement(child, {
+                      active: value === (index + 1).toString(),
+                    })
+                  : child}
               </TabPanel>
             ))}
           </Grid>
