@@ -1,9 +1,11 @@
-import { createContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Box, Typography } from '@mui/material'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Section from '@/components/Section'
+import LayoutContainer from '@/components/utils/LayoutContainer'
 import { appBarHeight } from '@/components/_layout/AppBar/TopAppBar'
+import { SuperHeroContext } from '@/components/_layout/SuperHero/SuperHeroContext'
 import { useSmall } from '@/hooks/use-small'
 
 export const inlineOffset = '0 215px'
@@ -12,8 +14,6 @@ const boxSize = {
   height: '230px',
   width: '100%',
 }
-
-export const SuperHeroContext = createContext({})
 
 /**
  * A full-width hero section component with background image and text overlay
@@ -74,9 +74,9 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
   return (
     <>
       <SuperHeroContext.Provider value={contextData}>
-        <div
+        <Box
           className="bib-comp-super-hero"
-          style={{
+          sx={{
             position: 'absolute',
             top: 0,
             left: 0,
@@ -98,20 +98,24 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
             }}
             loading="eager"
           />
-          <div
-            style={{
+          <Box
+            sx={{
               width: '100%',
               height: '100%',
               position: 'absolute',
               background: `rgba(0, 0, 0, 0.20)`,
               zIndex: 1,
             }}
-          ></div>
-          <Section
-            sx={{
-              padding: `0 215px 48px 0`,
+          ></Box>
+          <LayoutContainer
+            id="t"
+            sx={(theme) => ({
               zIndex: 2,
-            }}
+              padding: '0 0 .5rem',
+              [theme.breakpoints.up('md')]: {
+                padding: `0 215px 48px 0`,
+              },
+            })}
           >
             <Box
               sx={{
@@ -131,9 +135,9 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
                 {title}
               </Typography>
             </Box>
-          </Section>
+          </LayoutContainer>
           <div style={{ zIndex: 2 }}>{children}</div>
-        </div>
+        </Box>
         <div
           style={{
             width: boxSize.width,

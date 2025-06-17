@@ -18,6 +18,7 @@ import { Head as HtmlHead } from '../components/_layout/HtmlHead'
 import { useSmall } from '@/hooks/use-small'
 
 import commonComponents from './commonComponents'
+import SuperHero from '@/components/_layout/SuperHero/SuperHeroLvl2'
 
 function getCurrentPageLevel(location) {
   return location.pathname.split('/').filter((item) => item).length
@@ -29,6 +30,8 @@ export default function NouvelleTemplate({ pageContext, children, data, location
   const theme = useTheme()
   const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
   const [lvl, setLvl] = useState(getCurrentPageLevel(location))
+
+  const { superHero } = pageContext.frontmatter
 
   useEffect(() => {
     setLvl(getCurrentPageLevel(location))
@@ -50,8 +53,8 @@ export default function NouvelleTemplate({ pageContext, children, data, location
 
   const mainContent = (
     <>
-      <Breadcrumbs crumbs={crumbs} />
-      <main role="main">
+      {hasSecondaryNav && <Breadcrumbs crumbs={crumbs} />}
+      <main id="main-content" role="main">
         {children}
         <ConditionalWrapper condition={lvl < 2} wrapper={(children) => <LayoutContainer>{children}</LayoutContainer>}>
           <RetroactionUsager />
@@ -74,13 +77,29 @@ export default function NouvelleTemplate({ pageContext, children, data, location
 
         <udem-urgence></udem-urgence>
 
+        {lvl < 2 && (
+          <bib-avis
+            bouton-fermer
+            style={{
+              '--bib-avis-spacing-inline': '0',
+              position: 'relative',
+              zIndex: theme.zIndex.appBar + 1,
+            }}
+          />
+        )}
+
         {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
 
         {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
-        <bib-avis bouton-fermer></bib-avis>
+        {lvl > 1 && superHero && <SuperHero title={superHero.title} imageName={superHero.imageName} lvl={lvl} />}
 
-        <Container>{mainContent}</Container>
+        {lvl >= 2 && <bib-avis bouton-fermer />}
+
+        <Container>
+          <p>lvl: {lvl}</p>
+          {mainContent}
+        </Container>
         <Footer />
         <bib-consent server-request-timeout="5000"></bib-consent>
       </IconContext.Provider>
