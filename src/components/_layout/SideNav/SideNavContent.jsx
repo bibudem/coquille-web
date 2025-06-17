@@ -310,10 +310,10 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
             <NavList>
               <NavListItem href="https://studio.bib.umontreal.ca/">Studio•bib - écosystème numérique</NavListItem>
               <NavListItem href="https://boite-outils.bib.umontreal.ca/c.php?g=739631">La boîte à outils - guides</NavListItem>
-              <NavListItem href="https://umontreal.on.worldcat.org/discovery?lang=fr">Sofia: outil de découverte</NavListItem>
+              <NavListItem href="https://umontreal.on.worldcat.org/discovery?lang=fr">Sofia - outil de découverte</NavListItem>
               <NavListItem href="https://boite-outils.bib.umontreal.ca/az.php">Bases de données de A à Z</NavListItem>
-              <NavListItem href="https://umontreal.scholaris.ca/">Papyrus: dépôt institutionnel</NavListItem>
-              <NavListItem href="https://geoapp.bibl.ulaval.ca/">GéoIndex: données géospatiales</NavListItem>
+              <NavListItem href="https://umontreal.scholaris.ca/">Papyrus - dépôt institutionnel</NavListItem>
+              <NavListItem href="https://geoapp.bibl.ulaval.ca/">GéoIndex - données géospatiales</NavListItem>
               <NavListItem href="https://calypso.bib.umontreal.ca/">Calypso - objets numériques</NavListItem>
             </NavList>
           </Nav>
