@@ -1,5 +1,5 @@
 import FicheBibliotheque from '@/components/FicheBibliotheque'
-import { ArrowSquareOut, PersonSimpleCircle } from '@phosphor-icons/react'
+import { ArrowSquareOutIcon, PersonSimpleCircleIcon } from '@phosphor-icons/react'
 
 <FicheBibliotheque
   title="Lettres et sciences humaines"
@@ -18,18 +18,18 @@ import { ArrowSquareOut, PersonSimpleCircle } from '@phosphor-icons/react'
       <p>Bibliothèque des lettres et sciences humaines</p>
       <p>Pavillon Samuel-Bronfman</p>
       <p>3000 rue Jean Brillant, Montréal, salle 1030</p>
-      <p><Link to="https://www.google.com/maps/place/Pavillon+Samuel-Bronfman,+3000+Jean+Brillant+St,+Montreal,+QC+H3T+1N7,+Canada/@45.499427,-73.616554,4251m/data=!3m1!1e3!4m6!3m5!1s0x4cc919f3c6b6c4fd:0x1783a82167c956!8m2!3d45.4994274!4d-73.6165537!16s%2Fg%2F1tftqq4m?hl=en&entry=ttu&g_ep=EgoyMDI1MDQwOC4wIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
+      <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps/place/Pavillon+Samuel-Bronfman,+3000+Jean+Brillant+St,+Montreal,+QC+H3T+1N7,+Canada/@45.499427,-73.616554,4251m/data=!3m1!1e3!4m6!3m5!1s0x4cc919f3c6b6c4fd:0x1783a82167c956!8m2!3d45.4994274!4d-73.6165537!16s%2Fg%2F1tftqq4m?hl=en&entry=ttu&g_ep=EgoyMDI1MDQwOC4wIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
     </>
   }
   blocNousJoindre={
     <>
       <p>Accueil&nbsp;: 514 343-7430</p>
-      <p>Comptoir de prêt, réserve de cours&nbsp;:</p><ul
-      ><li>514 343-7336</li><li><Link to="#">prblsh@bib.umontreal.ca</Link></li></ul>
+      <p>Comptoir de prêt, réserve de cours&nbsp;:</p>
+      <ul style={{marginLeft:"1em"}}><li>514 343-7336</li><li><Link to="mailto:prblsh@bib.umontreal.ca">prblsh@bib.umontreal.ca</Link></li></ul>
       <p>Bureau de référence&nbsp;:</p>
       <ul
       ><li>514 343-6111, poste 2655</li><li><Link to="#">refblsh@bibl.umontreal.ca</Link></li></ul>
-      <p><Link to="../nous-joindre/notre-equipe" Icon>Répertoire du personnel</Link></p>
+      <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe" Icon>Répertoire du personnel</Link></p>
     </>
   }
 >

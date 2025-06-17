@@ -1,5 +1,5 @@
 import FicheBibliotheque from '@/components/FicheBibliotheque'
-import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
+import {ArrowSquareOutIcon, PersonSimpleCircleIcon} from '@phosphor-icons/react'
 
 <FicheBibliotheque
   title="Livres rares et collections spéciales"
@@ -15,13 +15,14 @@ import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
       <p>Bibliothèque des livres rares et collections spéciales</p>
       <p>Pavillon Samuel-Bronfman</p>
       <p>3000 rue Jean Brillant, salle 4030</p>
-      <p><Link to="https://www.google.com/maps?ll=45.499427,-73.616554&z=15&t=m&hl=fr-FR&gl=US&mapclient=embed&q=Pavillon+Samuel-Bronfman+3000+Jean+Brillant+St+Montreal,+QC+H3T+1N7" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
+      <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.499427,-73.616554&z=15&t=m&hl=fr-FR&gl=US&mapclient=embed&q=Pavillon+Samuel-Bronfman+3000+Jean+Brillant+St+Montreal,+QC+H3T+1N7" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
     </>
   }
   blocNousJoindre={
     <>
-      <p>514 343-6111, poste 39836</p>
-      <p><Link to="../nous-joindre/notre-equipe" Icon>Répertoire du personnel</Link></p>
+      <p>Accueil et prêt :</p>
+      <ul style={{marginLeft:"1em"}}><li>514 343-6111, poste 39836</li><li><Link to="mailto:livresrares@bib.umontreal.ca">livresrares@bib.umontreal.ca</Link></li></ul>
+      <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe" Icon>Répertoire du personnel</Link></p>
     </>
   }
 >

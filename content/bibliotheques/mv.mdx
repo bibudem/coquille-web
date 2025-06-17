@@ -1,5 +1,5 @@
 import FicheBibliotheque from '@/components/FicheBibliotheque'
-import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
+import {ArrowSquareOutIcon, PersonSimpleCircleIcon} from '@phosphor-icons/react'
 
 <FicheBibliotheque
   title="Médecine vétérinaire"
@@ -10,14 +10,19 @@ import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
       <p>Bibliothèque de médecine vétérinaire</p>
       <p>Campus de St-Hyacinthe</p>
       <p>1500, rue des vétérinaires, salle 1541</p>
-      <p><Link to="https://www.google.com/maps/place/1500+Rue+des+V%C3%A9t%C3%A9rinaires/@45.620922,-72.9650018,21z/data=!4m7!3m6!1s0x4cc84e75a6001beb:0x409b244035818f6a!4b1!8m2!3d45.6209162!4d-72.9648717!16s%2Fg%2F11b8txmz30?hl=en&entry=ttu&g_ep=EgoyMDI1MDQxNC4xIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
+      <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps/place/1500+Rue+des+V%C3%A9t%C3%A9rinaires/@45.620922,-72.9650018,21z/data=!4m7!3m6!1s0x4cc84e75a6001beb:0x409b244035818f6a!4b1!8m2!3d45.6209162!4d-72.9648717!16s%2Fg%2F11b8txmz30?hl=en&entry=ttu&g_ep=EgoyMDI1MDQxNC4xIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
     </>
   }
   blocNousJoindre={
     <>
-      <p>Comptoir de prêt&nbsp;: 450 773-8521, poste 8136 ou 514 343-6111, poste 8136</p>
-      <p>Bureau de référence&nbsp;: 450 773-8521, poste 8368</p>
-      <p><Link to="../nous-joindre/notre-equipe" Icon>Répertoire du personnel</Link></p>
+
+    <p>Comptoir de prêt&nbsp;:</p>
+      <ul style={{marginLeft:"1em"}}><li>450 773-8521, poste 8136 ou 514 343-6111, poste 8136</li>
+      <li><Link to="mailto:prmede@bib.umontreal.ca">prmede@bib.umontreal.ca</Link></li></ul>
+      <p>Bureau de référence&nbsp;:</p>
+            <ul style={{marginLeft:"1em"}}><li>450 773-8521, poste 8368</li>
+      <li><Link to="mailto:refmede@bib.umontreal.ca">refmede@bib.umontreal.ca</Link></li></ul>
+      <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe" Icon>Répertoire du personnel</Link></p>
     </>
   }
 >

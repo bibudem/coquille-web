@@ -1,5 +1,5 @@
 import FicheBibliotheque from '@/components/FicheBibliotheque'
-import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
+import {ArrowSquareOutIcon, PersonSimpleCircleIcon} from '@phosphor-icons/react'
 
 <FicheBibliotheque
   title="Mathématiques et informatique"
@@ -17,13 +17,16 @@ import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
       <p>Bibliothèque de mathématiques et informatique</p>
       <p>Pavillon André-Aisenstadt</p>
       <p>2920, chemin de la tour, salle 2405</p>
-      <p><Link to="https://www.google.com/maps/place/UdeM+%E2%80%93+Andr%C3%A9-Aisenstadt+Pavillon/@45.501009,-73.615778,15z/data=!4m6!3m5!1s0x4cc919f308df50f9:0x1c5cdca60001c62e!8m2!3d45.5010087!4d-73.6157778!16s%2Fg%2F11b6v92qlg?hl=en&entry=ttu&g_ep=EgoyMDI1MDQxNC4xIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
+      <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps/place/UdeM+%E2%80%93+Andr%C3%A9-Aisenstadt+Pavillon/@45.501009,-73.615778,15z/data=!4m6!3m5!1s0x4cc919f308df50f9:0x1c5cdca60001c62e!8m2!3d45.5010087!4d-73.6157778!16s%2Fg%2F11b6v92qlg?hl=en&entry=ttu&g_ep=EgoyMDI1MDQxNC4xIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
     </>
   }
   blocNousJoindre={
     <>
-      <p>514 343-6111, poste 1982</p>
-      <p><Link to="../nous-joindre/notre-equipe" Icon>Répertoire du personnel</Link></p>
+      <p>Accueil et prêt&nbsp;:</p>
+      <ul style={{marginLeft:"1em"}}><li>514 343-6111, poste 1982</li>
+      <li><Link to="mailto:prmain@bib.umontreal.ca">prmain@bib.umontreal.ca</Link></li></ul>
+      <p>Référence&nbsp;:sciences@bib.umontreal.ca</p>
+      <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe" Icon>Répertoire du personnel</Link></p>
     </>
   }
 >
