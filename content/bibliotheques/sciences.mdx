@@ -7,7 +7,7 @@ import {ArrowSquareOutIcon, PersonSimpleCircleIcon} from '@phosphor-icons/react'
   codeBib="sciences"
   blocEspaces={
     <ul>
-      <li><Link>Cartothèque</Link></li>
+      <li>Cartothèque</li>
       <li><Link to="https://studio.bib.umontreal.ca/espaces/ateliers">Atelier de fabrication numérique</Link></li>
       <li><Link to="https://studio.bib.umontreal.ca/espaces/studioaudio">Studio d'enregistrement audio</Link></li>
       <li><Link to="https://studio.bib.umontreal.ca/espaces/visualisation">Laboratoire de visualisation</Link></li>
@@ -24,7 +24,10 @@ import {ArrowSquareOutIcon, PersonSimpleCircleIcon} from '@phosphor-icons/react'
   }
   blocNousJoindre={
     <>
-      <p>514 343-6111, poste 5038</p>
+<p>Accueil et prêt&nbsp;:</p>
+      <ul style={{marginLeft:"1em"}}><li>514-343-6111, poste 5038</li>
+      <li><Link to="mailto:prbepc@bib.umontreal.ca">prsci@bib.umontreal.ca</Link></li></ul>
+      <p>Référence&nbsp;:<Link to="mailto:sciences@bib.umontreal.ca">sciences@bib.umontreal.ca</Link></p>
       <p style={{marginTop:"1em"}}><Link to="/nous-joindre/notre-equipe" Icon>Répertoire du personnel</Link></p>
     </>
   }

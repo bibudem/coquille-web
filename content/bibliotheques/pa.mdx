@@ -16,8 +16,11 @@ import {ArrowSquareOutIcon, PersonSimpleCircleIcon} from '@phosphor-icons/react'
   }
   blocNousJoindre={
     <>
-      <p>Comptoir de prêt&nbsp;: 514 343-6111, poste 1895</p>
-      <p>Bureau de référence&nbsp;: 514 343-6111, poste 1851</p>
+      <ul style={{marginLeft:"1em"}}><li>514 343-6111, poste 1895</li>
+      <li><Link to="mailto:prpara@bib.umontreal.ca">prpara@bib.umontreal.ca</Link></li></ul>
+      <p>Bureau de référence&nbsp;:</p>
+            <ul style={{marginLeft:"1em"}}><li>514 343-6111, poste 1851</li>
+      <li><Link to="mailto:refpara@bib.umontreal.ca">refpara@bib.umontreal.ca</Link></li></ul>
       <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe" Icon>Répertoire du personnel</Link></p>
     </>
   }
