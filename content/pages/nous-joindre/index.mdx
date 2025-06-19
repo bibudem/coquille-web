@@ -5,7 +5,7 @@ title: Nous joindre
 import Bibliotheques from '../../bibliotheques/bibliotheques.mdx'
 import SuperHero from '@/components/SuperHero'
 import GridOffset from '@/components/utils/GridOffset'
-import { BookOpenTextIcon, ChatIcon, PencilSimpleIcon, UsersFourIcon, EnvelopeIcon, PhoneIcon } from '@phosphor-icons/react'
+import { BookOpenTextIcon, ChatIcon, PencilSimpleIcon, UsersFourIcon, EnvelopeIcon, PhoneIcon, MapTrifoldIcon, ArrowSquareOutIcon } from '@phosphor-icons/react'
 
 <SuperHero
   title="Nous joindre"
@@ -50,25 +50,39 @@ import { BookOpenTextIcon, ChatIcon, PencilSimpleIcon, UsersFourIcon, EnvelopeIc
       <Card2
         title="Faire une suggestion d'achat"
         Icon={BookOpenTextIcon}
-        href="suggestion-achat/"
+        href="../nous-joindre/suggestion-achat/"
       />
     </Grid>
   </Grid>
 
-  ## Services
+<Typography component="h2" variant="display2" id="liste-bibliotheques" sx={{ marginTop: '1em', marginBottom: '1em' }}> Services</Typography>
 
 <GridOffset offset={1}>
   <AccordionGroup sx={{outline: '1px solid red', width: '100%'}}>
     <Accordion id="mon-accordeon">
       <AccordionSummary>Service Accessibilité</AccordionSummary>
       <AccordionDetails>
-<div style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
+<div style={{ display: 'flex', alignItems: 'center', gap: '0.5em', paddingBottom:'0.7em' }}>
   <EnvelopeIcon size={24} color="var(--bleuPrincipal)" />
   <Link to="mailto:accessibilite@bib.umontreal.ca">accessibilite@bib.umontreal.ca</Link>
   </div>
-<div style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
+<div style={{ display: 'flex', alignItems: 'center', gap: '0.5em', paddingBottom:'0.7em'  }}>
   <PhoneIcon size={24} color="var(--bleuPrincipal)" />
   <Link to="tel:514-343-2135">514 343-2135</Link>
+</div>
+<div style={{ display: 'flex', alignItems: 'start', gap: '0.5em' }}>
+  <MapTrifoldIcon size={24} color="var(--bleuPrincipal)" />
+  <div>
+    <Typography>Pavillon Samuel-Bronfman <br />
+      3000, rue Jean-Brillant <br />
+      1er étage, salle 1085 </Typography>
+    <Link 
+      to="https://www.google.com/maps/place/Pavillon+Samuel-Bronfman,+3000+Jean+Brillant+St,+Montreal,+QC+H3T+1N7,+Canada/@45.499427,-73.616554,4251m/data=!3m1!1e3!4m6!3m5!1s0x4cc919f3c6b6c4fd:0x1783a82167c956!8m2!3d45.4994274!4d-73.6165537!16s%2Fg%2F1tftqq4m?hl=en&entry=ttu&g_ep=EgoyMDI1MDQwOC4wIKXMDSoASAFQAw%3D%3D"
+      Icon={ArrowSquareOutIcon}
+    >
+      Voir l'itinéraire
+    </Link>
+  </div>
 </div>
 </AccordionDetails>
     </Accordion>
@@ -76,7 +90,7 @@ import { BookOpenTextIcon, ChatIcon, PencilSimpleIcon, UsersFourIcon, EnvelopeIc
     <Accordion>
       <AccordionSummary>Prêt entre bibliothèques</AccordionSummary>
       <AccordionDetails>
-<div style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
+<div style={{ display: 'flex', alignItems: 'center', gap: '0.5em', paddingBottom:'0.7em'  }}>
   <EnvelopeIcon size={24} color="var(--bleuPrincipal)" />
   <Link to="mailto:peb@bib.umontreal.ca">peb@bib.umontreal.ca</Link>
 </div>

@@ -1,5 +1,5 @@
 import FicheBibliotheque from '@/components/FicheBibliotheque'
-import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
+import {ArrowSquareOutIcon, PersonSimpleCircleIcon} from '@phosphor-icons/react'
 
 <FicheBibliotheque
   title="Droit"
@@ -15,14 +15,18 @@ import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
       <p>Bibliothèque de droit</p>
       <p>Pavillon Maximilien-Caron</p>
       <p>3101, chemin de la Tour, 4e étage, salle 4433</p>
-      <p><Link to="https://www.google.com/maps?ll=45.498692,-73.616975&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Pavillon+Maximilien-Caron+3101+Tour+Rd+Montreal,+QC+H3T+1N8" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
+      <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.498692,-73.616975&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Pavillon+Maximilien-Caron+3101+Tour+Rd+Montreal,+QC+H3T+1N8" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
     </>
   }
   blocNousJoindre={
     <>
-      <p>Comptoir de prêt&nbsp;: 514 343-7095</p>
-      <p>Bureau de référence&nbsp;: 514 343-7095</p>
-      <p><Link to="../nous-joindre/notre-equipe" Icon>Répertoire du personnel</Link></p>
+      <p>Comptoir de prêt&nbsp;:</p>
+      <ul style={{marginLeft:"1em"}}><li>514 343-6111, poste 37905</li>
+      <li><Link to="mailto:prdroit@bib.umontreal.ca">prdroit@bib.umontreal.ca</Link></li></ul>
+      <p>Bureau de référence&nbsp;:</p>
+            <ul style={{marginLeft:"1em"}}><li>514 343-6111, poste 3756</li>
+      <li><Link to="mailto:refdroi@bib.umontreal.ca">refdroi@bib.umontreal.ca</Link></li></ul>
+      <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe" Icon>Répertoire du personnel</Link></p>
     </>
   }
 >

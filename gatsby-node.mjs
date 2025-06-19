@@ -67,7 +67,9 @@ async function doCreatePages({ graphql, actions, reporter }) {
     const templateFullPath = template ? resolve(`./src/templates/${template.substring(0, 1).toUpperCase()}${template.substring(1)}Template.jsx`) : pageTemplate
 
     const basePath = node.relativeDirectory ? `/${node.relativeDirectory}` : ''
-    const path = `${basePath}/${(node.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')}`
+    //const path = `${basePath}/${(node.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')}`
+    const slugPart = (node.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')
+    const path = `${basePath}/${slugPart}`.replace(/\/+$/, '') + '/'
 
     createPage({
       // As mentioned above you could also query something else like frontmatter.title above and use a helper function
@@ -137,7 +139,9 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
     const templateFullPath = template ? resolve(`./src/templates/${template.substring(0, 1).toUpperCase()}${template.substring(1)}Template.jsx`) : nouvelleTemplate
 
     const basePath = node.relativeDirectory ? `/nouvelles/${node.relativeDirectory}` : '/nouvelles'
-    const path = `${basePath}/${(node.childMdx?.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')}`
+    //const path = `${basePath}/${(node.childMdx?.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')}`
+    const rawSlug = (node.childMdx?.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '');
+    const path = `${basePath}/${rawSlug}`.replace(/\/+$/, '') + '/';
 
     createPage({
       // As mentioned above you could also query something else like frontmatter.title above and use a helper function

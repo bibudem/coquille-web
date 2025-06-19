@@ -1,5 +1,5 @@
 import FicheBibliotheque from '@/components/FicheBibliotheque'
-import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
+import {ArrowSquareOutIcon, PersonSimpleCircleIcon} from '@phosphor-icons/react'
 
 <FicheBibliotheque
   title="Musique"
@@ -11,14 +11,20 @@ import {ArrowSquareOut, PersonSimpleCircle} from '@phosphor-icons/react'
       <p>Bibliothèque de musique</p>
       <p>Pavillon de la faculté de musique</p>
       <p>200, avenue Vincent d'Indy,  salle B-287</p>
-      <p><Link to="https://www.google.com/maps?ll=45.509273,-73.60857&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Pavillon+de+la+Faculte+de+Musique+Av.+Vincent-D%27Indy+Outremont,+QC+H2V+2T2" Icon={ArrowSquareOut}>Voir l'itinéraire</Link></p>
+      <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.509273,-73.60857&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Pavillon+de+la+Faculte+de+Musique+Av.+Vincent-D%27Indy+Outremont,+QC+H2V+2T2" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
     </>
   }
   blocNousJoindre={
     <>
-      <p>Comptoir de prêt&nbsp;: 514 343-6111, poste 39838</p>
-      <p>Bureau de référence&nbsp;: 514 343-6111, poste 4702</p>
-      <p><Link to="../nous-joindre/notre-equipe" Icon>Répertoire du personnel</Link></p>
+
+<p>Accueil: 514-343-6432</p>
+    <p>Comptoir de prêt&nbsp;:</p>
+      <ul style={{marginLeft:"1em"}}><li>514 343-6111, poste 39838</li>
+      <li><Link to="mailto:prmusi@bib.umontreal.ca">prmusi@bib.umontreal.ca</Link></li></ul>
+      <p>Bureau de référence&nbsp;:</p>
+            <ul style={{marginLeft:"1em"}}><li>514-343-6111, poste 4702</li>
+      <li><Link to="mailto:refepcaml@bib.umontreal.ca">refepcaml@bib.umontreal.ca</Link></li></ul>
+      <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe" Icon>Répertoire du personnel</Link></p>
     </>
   }
 >

@@ -8,9 +8,49 @@ superHero:
   title: Nous joindre
 ---
 
-import { Script } from 'gatsby'
+import { useEffect } from 'react';
 
-# Clavarder avec un membre de l'équipe
+export function WidgetClavardage() {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://unequestion.bib.umontreal.ca/load_chat.php?hash=9ee6ed73a6fb1854335aacfa8a7497ef4acaff4303c125783909dacc7b3200b9";
+    script.async = true;
+    document.body.appendChild(script);
 
-<div id="libchat_4686db928ee24b4b79f3a374ba6a0d77"></div>
-<Script src="https://unequestion.bib.umontreal.ca/load_chat.php?hash=4686db928ee24b4b79f3a374ba6a0d77"></Script>
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  return (
+    <div id="libchat_9ee6ed73a6fb1854335aacfa8a7497ef4acaff4303c125783909dacc7b3200b9"></div>
+  );
+}
+
+# Clavardez avec un membre de l'équipe
+
+
+
+<div style={{ display: 'flex', gap: '4rem' }}>
+  <div style={{ flex: 2 }}>
+    <WidgetClavardage />
+  </div>
+  <div style={{ flex: 1 }}>
+    <h2>Horaire</h2>
+    <h3>Aide et référence</h3>
+    <ul>
+      <li>Lundi au jeudi : 9 h à 21 h</li>
+      <li>Vendredi : 9 h à 19 h</li>
+      <li>Samedi et dimanche : 11 h à 17 h</li>
+    </ul>
+    <p><strong>Horaires particuliers :</strong><br />
+    24 juin et 1er juillet : fermé</p>
+
+    <h3>Soutien informatique</h3>
+    <ul>
+      <li>Lundi au vendredi : 9 h à 17 h (selon la disponibilité des techniciens)</li>
+    </ul>
+    <p><strong>Horaires particuliers :</strong><br />
+    24 juin et 1er juillet : fermé</p>
+  </div>
+</div>
