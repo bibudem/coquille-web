@@ -206,7 +206,11 @@ export default {
         resolveEnv: () => NETLIFY_ENV,
         env: {
           production: {
-            policy: [{ userAgent: '*' }]
+            policy: [{
+              userAgent: '*',
+              allow: '/',
+              disallow: ['/consent/']
+            }]
           },
           'branch-deploy': {
             policy: [{ userAgent: '*', disallow: ['/'] }],
