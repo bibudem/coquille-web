@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { styled } from '@mui/material/styles'
 import MuiBreadcrumbs from '@mui/material/Breadcrumbs'
-import Link from '@mui/material/Link'
-import { CaretDownIcon, HouseLineIcon } from '@phosphor-icons/react'
+import { Box, IconButton, Link, Menu, MenuItem } from '@mui/material'
+import { DotsThreeCircleIcon, HouseLineIcon } from '@phosphor-icons/react'
 import secondaryNavData from '../../../../public/site-navigation.json'
-import { Box, IconButton, Menu, MenuItem } from '@mui/material'
+import { SecondaryNav } from '../SecondaryNav/SecondaryNavSm.jsx'
 
 const StyledLink = styled(Link)(({ theme }) => ({
   display: 'flex',
@@ -15,8 +15,9 @@ const StyledLink = styled(Link)(({ theme }) => ({
   },
 }))
 
-export default function BreadcrumbsSm({ crumbs }) {
-  console.log('crumbs:', crumbs)
+export default function BreadcrumbsSm({ crumbs, location }) {
+  console.log('[x] crumbs:', crumbs)
+  console.log('[x] location:', location)
   const [data, setData] = useState(null)
 
   useEffect(() => {
@@ -85,26 +86,35 @@ export default function BreadcrumbsSm({ crumbs }) {
 
   return (
     data && (
-      <MuiBreadcrumbs
-        className="bib-comp-breadcrumbs"
-        aria-label="Fil d'ariane"
+      <Box
         sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
           paddingBottom: '24px',
-          '.MuiBreadcrumbs-li': {
-            display: 'flex',
-            flexWrap: 'nowrap',
-            gap: '.5ch',
-          },
         }}
       >
-        {data.map((node, index) => {
-          const { pathname } = node
-          const isLeaf = index === crumbs.length - 1
-          const isRoot = index === 0
+        <MuiBreadcrumbs
+          className="bib-comp-breadcrumbs"
+          aria-label="Fil d'ariane"
+          sx={{
+            '.MuiBreadcrumbs-li': {
+              display: 'flex',
+              flexWrap: 'nowrap',
+              gap: '.5ch',
+            },
+          }}
+        >
+          {data.map((node, index) => {
+            const { pathname } = node
+            const isLeaf = index === crumbs.length - 1
+            const isRoot = index === 0
 
-          return <Breadcrumb key={pathname} data={node} isLeaf={isLeaf} isRoot={isRoot} sx={{ display: 'flex' }} />
-        })}
-      </MuiBreadcrumbs>
+            return <Breadcrumb key={pathname} data={node} isLeaf={isLeaf} isRoot={isRoot} sx={{ display: 'flex' }} />
+          })}
+        </MuiBreadcrumbs>
+        <BreadcrumbMenu location={location} />
+      </Box>
     )
   )
 }
@@ -121,12 +131,11 @@ function Breadcrumb({ data, isRoot, isLeaf }) {
   return (
     <>
       <StyledLink href={isLeaf ? null : pathname}>{isRoot ? <HouseLineIcon size="1.125rem" /> : label}</StyledLink>
-      {siblings && <BreadcrumbMenu data={siblings} />}
     </>
   )
 }
 
-function BreadcrumbMenu({ data }) {
+function BreadcrumbMenu({ data = [], location }) {
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
 
@@ -140,8 +149,8 @@ function BreadcrumbMenu({ data }) {
 
   return (
     <>
-      <IconButton size="small" aria-label="Autres pages de cette section" aria-controls={open ? 'basic-menu' : undefined} aria-haspopup="true" aria-expanded={open ? 'true' : undefined} onClick={handleClick}>
-        <CaretDownIcon size="1em" />
+      <IconButton size="small" aria-label="Menu de cette section" aria-controls={open ? 'basic-menu' : undefined} aria-haspopup="true" aria-expanded={open ? 'true' : undefined} onClick={handleClick}>
+        <DotsThreeCircleIcon size="1em" />
       </IconButton>
       <Menu
         id="basic-menu"
@@ -154,11 +163,12 @@ function BreadcrumbMenu({ data }) {
           },
         }}
       >
-        {data.map(({ title, pathname }) => (
+        {/* {data.map(({ title, pathname }) => (
           <MenuItem onClick={handleClose} href={pathname}>
             {title}
           </MenuItem>
-        ))}
+        ))} */}
+        <SecondaryNav location={location} />
       </Menu>
     </>
   )
