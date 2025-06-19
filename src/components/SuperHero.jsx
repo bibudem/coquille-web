@@ -104,7 +104,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
               width: '100%',
               height: '100%',
               position: 'absolute',
-              background: `rgba(0, 0, 0, 0.20)`,
+              background: `rgba(0, 0, 0, 0.40)`,
               zIndex: 1,
             }}
           ></div>
