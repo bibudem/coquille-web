@@ -32,12 +32,18 @@ export function SecondaryNav({ currentLocation, ...rest }) {
     }
   }, [secondaryNavData, currentLocation])
 
+  useEffect(() => {
+    if (data) {
+      console.log('ici data:', data)
+    }
+  }, [data])
+
   return (
     data && (
       <Box
         {...props}
         sx={{
-          paddingTop: '28px',
+          padding: '.75em',
           ...sx,
         }}
       >

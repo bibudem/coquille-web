@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { styled } from '@mui/material/styles'
-import MuiBreadcrumbs from '@mui/material/Breadcrumbs'
-import { Box, IconButton, Link, Menu, MenuItem } from '@mui/material'
+import { Box, Breadcrumbs as MuiBreadcrumbs, IconButton, Link, Menu, MenuItem } from '@mui/material'
 import { DotsThreeCircleIcon, HouseLineIcon } from '@phosphor-icons/react'
 import secondaryNavData from '../../../../public/site-navigation.json'
-import { SecondaryNav } from '../SecondaryNav/SecondaryNavSm.jsx'
+import { SecondaryNav } from '../SecondaryNav/SecondaryNavSm'
+import { usePopupState, bindTrigger, bindMenu } from 'material-ui-popup-state/hooks'
 
 const StyledLink = styled(Link)(({ theme }) => ({
   display: 'flex',
@@ -136,6 +136,7 @@ function Breadcrumb({ data, isRoot, isLeaf }) {
 }
 
 function BreadcrumbMenu({ data = [], location }) {
+  const popupState = usePopupState({ variant: 'popover', popupId: 'demoMenu' })
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
 
@@ -149,26 +150,37 @@ function BreadcrumbMenu({ data = [], location }) {
 
   return (
     <>
-      <IconButton size="small" aria-label="Menu de cette section" aria-controls={open ? 'basic-menu' : undefined} aria-haspopup="true" aria-expanded={open ? 'true' : undefined} onClick={handleClick}>
+      <IconButton size="small" aria-label="Menu de cette section" {...bindTrigger(popupState)}>
         <DotsThreeCircleIcon size="1em" />
       </IconButton>
       <Menu
         id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
+        keepMounted
+        elevation={4}
+        // anchorEl={anchorEl}
+        // open={open}
+        // onClose={handleClose}
         slotProps={{
           list: {
             'aria-labelledby': 'basic-button',
           },
         }}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        {...bindMenu(popupState)}
       >
         {/* {data.map(({ title, pathname }) => (
           <MenuItem onClick={handleClose} href={pathname}>
             {title}
           </MenuItem>
         ))} */}
-        <SecondaryNav location={location} />
+        <SecondaryNav currentLocation={location} />
       </Menu>
     </>
   )
