@@ -161,19 +161,19 @@ export function QuickLinksSm() {
           maxWidth: '100%',
         }}
       >
-        <IconButton component={Link} href="https://umontreal.on.worldcat.org/discovery?lang=fr" aria-label="Sofia">
+        <IconButton component={Link} to="https://umontreal.on.worldcat.org/discovery?lang=fr" aria-label="Sofia">
           <SofiaIcon color="#fff" fontSize="40px" />
         </IconButton>
-        <IconButton component={Link} href="/horaires" aria-label="Horaires">
+        <IconButton component={Link} to="/horaires" aria-label="Horaires">
           <ClockCountdown color="#fff" size={40} />
         </IconButton>
-        <IconButton component={Link} href="https://calendrier.bib.umontreal.ca/r" aria-label="Réserver une salle">
+        <IconButton component={Link} to="https://calendrier.bib.umontreal.ca/r" aria-label="Réserver une salle">
           <CalendarPlus color="#fff" size={40} />
         </IconButton>
-        <IconButton component={Link} href="#" onClick={handleOnMenuItemClick} aria-label="Soutien informatique">
+        <IconButton component={Link} to="https://studio.bib.umontreal.ca/informatique/" aria-label="Soutien informatique">
           <Lifebuoy color="#fff" size={40} />
         </IconButton>
-        <IconButton component={Link} href="#" onClick={handleChatClick} aria-label="Clavarder">
+        <IconButton component={Link} to="#" onClick={handleChatClick} aria-label="Clavarder">
           <Chats color="#fff" size={40} />
         </IconButton>
       </Box>
