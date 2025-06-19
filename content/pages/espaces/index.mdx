@@ -38,6 +38,112 @@ import mur from '../images/mur-visualisation.webp'
 />
 
 <Section>
+<Carousel1
+      title={<Typography component="h2" variant="display2">Des lieux qui s'adaptent à vos besoins</Typography>}
+      description="Besoin de concentration pour étudier? Un travail à faire en équipe? Nos bibliothèques sont aménagées pour faire cohabiter travail de groupe et étude en silence, avec ou sans réservation. Explorez nos espaces ou demandez conseil pour trouver le coin qui vous convient! Certaines bibliothèques offrent aussi des salles spécifiquement réservées aux étudiants et étudiantes des cycles supérieurs."
+      moreLink="https://calendrier.bib.umontreal.ca/r/new"
+    >
+    <FlipCardWithImage
+        title="Salles de travail individuel"
+        Image={salleIndividuelle}
+        small
+      >
+        <p>Disponibles dans presque toutes les bibliothèques</p>
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Cabines insonorisées"
+        Image={cabine}
+        small
+      >
+        <ul>
+          <li>Bibliothèque de droit</li>
+          <li>Bibliothèque de kinésiologie</li>
+          <li>Bibliothèque des lettres et sciences humaines</li>
+          <li>Bibliothèque Thérèse-Gouin-Décarie</li>
+          <li>Bibliothèque du Campus de Laval</li>
+          <li>Bibliothèque de la santé</li>
+        </ul>
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Salles silencieuses"
+        Image={cabine}
+        small
+        >
+        <ul>
+          <li>Bibliothèque du campus de Laval</li>
+          <li>Bibliothèque de droit</li>
+          <li>Bibliothèque Marguerite-d'Youville</li>
+          <li>Bibliothèque de médecine vétérinaire</li>
+          <li>Bibliothèque Thérèse-Gouin-Décarie</li>
+          <li>Bibliothèque de la santé</li>
+        </ul>
+      </FlipCardWithImage>
+      <FlipCardWithImage
+        title="Salles de travail pour 3 à 4 personnes"
+        Image={salleEquipe}
+        small
+      >
+        <p>Disponibles dans presque toutes les bibliothèques</p>
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Salles de travail pour 4 à 8 personnes"
+        Image={grandeSalleEquipe}
+        small
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>à déterminer</li>
+          <li>à déterminer</li>
+        </ul>
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Espace d'innovation et de créativité"
+        Image={cabine}
+        small
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>Bibliothèque de Mathématiques et informatique</li>
+        </ul>
+      </FlipCardWithImage>
+<FlipCardWithImage
+        title="Salles de travail individuel - cycles supérieurs"
+        Image={salleCycleSup}
+        small
+      >
+        <p>Disponibles à la Bibliothèques des lettres et sciences humaines pour toutes les personnes des cycles supérieurs</p>
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Salle de travail - maîtrise en droit"
+        Image={salleMaitrise}
+        small
+      >
+        <ul>
+          <li>Pour les personnes de la maitrise en droit seulement</li>
+        </ul>
+      </FlipCardWithImage>
+
+      <FlipCardWithImage
+        title="Salle de travail - doctorat en droit"
+        Image={salleDoctorat}
+        small
+      >
+        <p>Disponibles :</p>
+        <ul>
+          <li>Pour les personnes du doctorat en droit seulement</li>
+        </ul>
+      </FlipCardWithImage>
+
+    </Carousel1>
+
+</Section>
+
+{/*<Section>
   <Tabs1
     tabs={['Salles et espaces pour se concentrer', 'Salles de travail en équipe', 'Salle pour les cycles supérieurs']}
   >
@@ -163,7 +269,7 @@ import mur from '../images/mur-visualisation.webp'
 
     </Carousel1>
   </Tabs1>
-</Section>
+</Section> */}
 
 <Section image={zoneConfort}>
 
