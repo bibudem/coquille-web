@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { styled } from '@mui/material/styles'
 import { Box, Breadcrumbs as MuiBreadcrumbs, IconButton, Link, Menu, MenuItem } from '@mui/material'
-import { DotsThreeCircleIcon, HouseLineIcon } from '@phosphor-icons/react'
-import secondaryNavData from '../../../../public/site-navigation.json'
-import { SecondaryNav } from '../SecondaryNav/SecondaryNavSm'
 import { usePopupState, bindTrigger, bindMenu } from 'material-ui-popup-state/hooks'
+import { DotsThreeCircleIcon, HouseLineIcon } from '@phosphor-icons/react'
+import { SecondaryNav } from '../SecondaryNav/SecondaryNavSm'
+import { useSmall } from '@/hooks/use-small'
+import secondaryNavData from '../../../../public/site-navigation.json'
 
 const StyledLink = styled(Link)(({ theme }) => ({
   display: 'flex',
@@ -19,6 +20,8 @@ export default function BreadcrumbsSm({ crumbs, location }) {
   console.log('[x] crumbs:', crumbs)
   console.log('[x] location:', location)
   const [data, setData] = useState(null)
+  const isSmall = useSmall('md')
+  const isXSmall = useSmall('sm')
 
   useEffect(() => {
     function getMenuForCrumb(crumbsData, currentNode, currentIndex) {
@@ -95,6 +98,7 @@ export default function BreadcrumbsSm({ crumbs, location }) {
         }}
       >
         <MuiBreadcrumbs
+          maxItems={isXSmall ? 2 : isSmall ? 3 : 8}
           className="bib-comp-breadcrumbs"
           aria-label="Fil d'ariane"
           sx={{
@@ -156,7 +160,7 @@ function BreadcrumbMenu({ data = [], location }) {
       <Menu
         id="basic-menu"
         keepMounted
-        elevation={4}
+        elevation={3}
         // anchorEl={anchorEl}
         // open={open}
         // onClose={handleClose}
