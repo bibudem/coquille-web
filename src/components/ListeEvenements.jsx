@@ -2,31 +2,31 @@ import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 import { format } from 'date-fns'
 import { frCA } from 'date-fns/locale'
-import { List, ListItem, ListItemButton, Skeleton, styled, Typography, useTheme } from '@mui/material'
+import { Box, List, ListItem, ListItemButton, Skeleton, styled, Typography, useTheme } from '@mui/material'
 import Grid from '@mui/material/Grid2'
-import { CalendarBlankIcon, ClockCountdownIcon } from '@phosphor-icons/react'
+import { CalendarBlankIcon } from '@phosphor-icons/react'
 import Button from '@/components/Button'
-import Div from '@/components/utils/Div'
-import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
 import { isInternalLink } from '@/utils/link'
+import { useSmall } from '@/hooks/use-small'
+import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
 
 const FETCH_TIMEOUT = 3_000
 
 const Img = styled('img')(({ theme }) => ({
-  width: '100%',
-  height: 'auto',
   objectFit: 'cover',
   objectPosition: 'center',
   borderRadius: theme.shape.corner.medium,
-  width: '15.8125rem',
-  height: '10.5625rem',
+  width: '100%',
+  maxWidth: '80vw',
+  height: 'auto',
+  aspectRatio: 2,
   [theme.breakpoints.up('md')]: {
-    width: '10.8125rem',
-    height: '9.5625rem',
+    width: '100%',
+    // height: '9.5625rem',
   },
   [theme.breakpoints.up('lg')]: {
-    width: '15.8125rem',
-    height: '10.5625rem',
+    // width: '15.8125rem',
+    // height: '10.5625rem',
   },
 }))
 
@@ -42,7 +42,7 @@ function fetcher(...args) {
 
 function Title({ children }) {
   return (
-    <Div
+    <Box
       sx={{
         fontFamily: 'Lora',
         fontSize: '1.75rem',
@@ -52,14 +52,14 @@ function Title({ children }) {
       }}
     >
       {children}
-    </Div>
+    </Box>
   )
 }
 
 function Upper({ children }) {
   const theme = useTheme()
   return (
-    <Div
+    <Box
       sx={{
         display: 'flex',
         alignItems: 'center',
@@ -73,13 +73,13 @@ function Upper({ children }) {
     >
       <CalendarBlankIcon size="1.25rem" color={theme.palette.rougeOrange.main} />
       {children}
-    </Div>
+    </Box>
   )
 }
 
 function Lower({ url }) {
   return (
-    <Div
+    <Box
       sx={{
         display: 'flex',
         alignItems: 'center',
@@ -90,7 +90,7 @@ function Lower({ url }) {
         color: 'var(--_lower-color)',
       }}
     >
-      <Div
+      <Box
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -99,8 +99,8 @@ function Lower({ url }) {
       >
         {/* <ClockCountdownIcon size="1.25rem" color={theme.palette.bleuPrincipal.main} />
         {children} */}
-      </Div>
-      <Div
+      </Box>
+      <Box
         sx={{
           display: 'flex',
           flexGrow: 1,
@@ -108,8 +108,8 @@ function Lower({ url }) {
         }}
       >
         {isInternalLink(url) ? <ArrowRightCircleIcon color="var(--_lower-color)" fontSize={50} /> : <ArrowUpRightCircleIcon color="var(--_lower-color)" fontSize={50} />}
-      </Div>
-    </Div>
+      </Box>
+    </Box>
   )
 }
 
@@ -127,7 +127,7 @@ function ListeEvenementsContainer({ title, id, moreText, moreLink, children, sx 
       >
         {title}
       </Typography>
-      <Div
+      <Box
         sx={(theme) => ({
           display: 'flex',
           flexDirection: 'column',
@@ -140,18 +140,21 @@ function ListeEvenementsContainer({ title, id, moreText, moreLink, children, sx 
         })}
       >
         {children}
-      </Div>
+      </Box>
       {moreLink && (
-        <Div
+        <Box
           sx={{
             display: 'flex',
-            justifyContent: 'flex-end',
+            justifyContent: {
+              xs: 'flex-start',
+              md: 'flex-end',
+            },
           }}
         >
           <Button primary href={moreLink}>
             {moreText}
           </Button>
-        </Div>
+        </Box>
       )}
     </Grid>
   )
@@ -159,11 +162,14 @@ function ListeEvenementsContainer({ title, id, moreText, moreLink, children, sx 
 
 function ListeEvenementsItem({ imageVedette, upper, title, lower, url, ...rest }) {
   const { sx, ...props } = rest
+  const isSmall = useSmall('lg')
+
   return (
     <ListItem {...props} alignItems="flex-start" disableGutters sx={{ ...sx }} {...props}>
       <ListItemButton component="a" href={url} disableGutters /* sx={{ '--bib-palette-action-hover': 'none' }} */>
-        <Grid container spacing="1.5rem" sx={{ width: '100%' }}>
-          <Grid size="auto">{imageVedette}</Grid>
+        <Grid container spacing="1.5rem" sx={{ width: '100%' }} direction={{ xs: 'column', md: 'column' }}>
+          {isSmall && <Grid>{upper}</Grid>}
+          <Grid size="fill">{imageVedette}</Grid>
           <Grid
             size="grow"
             container
@@ -173,7 +179,7 @@ function ListeEvenementsItem({ imageVedette, upper, title, lower, url, ...rest }
               justifyContent: 'flex-start',
             }}
           >
-            <Grid>{upper}</Grid>
+            {!isSmall && <Grid>{upper}</Grid>}
             <Grid>{title}</Grid>
             <Grid>{lower}</Grid>
           </Grid>
@@ -182,6 +188,9 @@ function ListeEvenementsItem({ imageVedette, upper, title, lower, url, ...rest }
     </ListItem>
   )
 }
+
+const SERVICE_URL = 'https://calendrier.umontreal.ca/activites/export.rss?tx_solr[filter][0]=types:activites-culturelles&tx_solr[filter][1]=types:activites-de-reseautage&tx_solr[filter][2]=types:activites-dinformation&tx_solr[filter][3]=types:activites-philanthropiques&tx_solr[filter][4]=types:activites-sportives&tx_solr[filter][5]=types:ceremonies-officielles&tx_solr[filter][6]=types:concours&tx_solr[filter][7]=types:conferences-colloques&tx_solr[filter][8]=types:cours-seminaires&tx_solr[filter][9]=types:journees-thematiques&tx_solr[filter][10]=types:portes-ouvertes&tx_solr[filter][11]=types:soutenances-de-these&tx_solr[filter][12]=organisateurs:les-bibliotheques'
+const MORE_LINK = 'https://calendrier.umontreal.ca/activites?organisateurs=les-bibliotheques'
 
 /**
  * Affiche une liste d'événements récupérés depuis le Calendrier UdeM
@@ -195,7 +204,7 @@ function ListeEvenementsItem({ imageVedette, upper, title, lower, url, ...rest }
  * @param {string} [props.moreLink='https://calendrier.umontreal.ca/activites?organisateurs=les-bibliotheques'] - Lien optionnel pour voir plus d'événements
  * @returns {React.ReactElement} Une liste d'événements avec un bouton optionnel "voir plus"
  */
-export default function ListeEvenements({ title = 'Événements', id, service = 'https://calendrier.umontreal.ca/activites/export.rss?tx_solr[filter][0]=types:activites-culturelles&tx_solr[filter][1]=types:activites-de-reseautage&tx_solr[filter][2]=types:activites-dinformation&tx_solr[filter][3]=types:activites-philanthropiques&tx_solr[filter][4]=types:activites-sportives&tx_solr[filter][5]=types:ceremonies-officielles&tx_solr[filter][6]=types:concours&tx_solr[filter][7]=types:conferences-colloques&tx_solr[filter][8]=types:cours-seminaires&tx_solr[filter][9]=types:journees-thematiques&tx_solr[filter][10]=types:portes-ouvertes&tx_solr[filter][11]=types:soutenances-de-these&tx_solr[filter][12]=organisateurs:les-bibliotheques', limit = 3, moreText = 'Tous nos événements', moreLink = 'https://calendrier.umontreal.ca/activites?organisateurs=les-bibliotheques' }) {
+export default function ListeEvenements({ title = 'Événements', id, service = SERVICE_URL, limit = 3, moreText = 'Tous nos événements', moreLink = MORE_LINK }) {
   if (typeof limit !== 'number') {
     throw new Error('The `limit` parameter must be a number')
   }
