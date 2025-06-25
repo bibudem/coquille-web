@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 import { format } from 'date-fns'
 import { frCA } from 'date-fns/locale'
-import { Box, List, ListItem, ListItemButton, Skeleton, styled, Typography, useTheme } from '@mui/material'
+import { Box, Divider, List, ListItem, ListItemButton, Skeleton, styled, Typography, useTheme } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { CalendarBlankIcon } from '@phosphor-icons/react'
 import Button from '@/components/Button'
@@ -165,27 +165,30 @@ function ListeEvenementsItem({ imageVedette, upper, title, lower, url, ...rest }
   const isSmall = useSmall('lg')
 
   return (
-    <ListItem {...props} alignItems="flex-start" disableGutters sx={{ ...sx }} {...props}>
-      <ListItemButton component="a" href={url} disableGutters /* sx={{ '--bib-palette-action-hover': 'none' }} */>
-        <Grid container spacing="1.5rem" sx={{ width: '100%' }} direction={{ xs: 'column', md: 'column' }}>
-          {isSmall && <Grid>{upper}</Grid>}
-          <Grid size="fill">{imageVedette}</Grid>
-          <Grid
-            size="grow"
-            container
-            direction="column"
-            spacing="1rem"
-            sx={{
-              justifyContent: 'flex-start',
-            }}
-          >
-            {!isSmall && <Grid>{upper}</Grid>}
-            <Grid>{title}</Grid>
-            <Grid>{lower}</Grid>
+    <>
+      <ListItem {...props} alignItems="flex-start" disableGutters sx={{ ...sx }} {...props}>
+        <ListItemButton component="a" href={url} disableGutters sx={{ '--bib-palette-action-hover': 'none' }}>
+          <Grid container spacing="1.5rem" sx={{ width: '100%' }} direction={{ xs: 'column', md: 'column' }}>
+            {isSmall && <Grid>{upper}</Grid>}
+            <Grid size="fill">{imageVedette}</Grid>
+            <Grid
+              size="grow"
+              container
+              direction="column"
+              spacing="1rem"
+              sx={{
+                justifyContent: 'flex-start',
+              }}
+            >
+              {!isSmall && <Grid>{upper}</Grid>}
+              <Grid>{title}</Grid>
+              <Grid>{lower}</Grid>
+            </Grid>
           </Grid>
-        </Grid>
-      </ListItemButton>
-    </ListItem>
+        </ListItemButton>
+      </ListItem>
+      <Divider component="li" aria-hidden="true" sx={{ borderColor: 'bleu200.main', margin: '0' }} />
+    </>
   )
 }
 
@@ -333,7 +336,7 @@ export default function ListeEvenements({ title = 'Événements', id, service = 
         moreText={moreText}
         sx={{
           '--_title-color': theme.palette.bleuFonce.main,
-          '--_lower-color': 'inherit',
+          '--_lower-color': theme.palette.bleuPrincipal.main,
         }}
       >
         <List sx={{ padding: 0 }}>
