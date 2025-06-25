@@ -32,7 +32,7 @@ export default function Debug() {
 
   useEffect(() => {
     if (window) {
-      setDevicePixelRatio(window.devicePixelRatio)
+      setDevicePixelRatio(window.devicePixelRatio.toFixed(2))
     }
   }, [])
 

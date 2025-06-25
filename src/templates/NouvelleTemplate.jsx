@@ -10,17 +10,17 @@ import { QuickLinks, QuickLinksSm } from '@/components/_layout/QuickLinks'
 import Footer from '@/components/_layout/Footer/Footer'
 import Breadcrumbs from '@/components/_layout/Breadcrumbs/Breadcrumbs'
 import SkipTo from '@/components/_layout/SkipTo'
-import SEO from '@/components/_layout/SEO'
 import Debug from '@/components/_layout/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
 import ConditionalWrapper from '@/components/utils/ConditionalWrapper'
+import { Head as HtmlHead } from '../components/_layout/HtmlHead'
 
 import { useSmall } from '@/hooks/use-small'
 
 import commonComponents from './commonComponents'
+import SuperHero from '@/components/_layout/SuperHero/SuperHeroLvl2'
 
 function getCurrentPageLevel(location) {
-  // const pathname = location.pathname.endsWith('/') ? location.pathname.slice(1) : location.pathname
   return location.pathname.split('/').filter((item) => item).length
 }
 
@@ -30,6 +30,8 @@ export default function NouvelleTemplate({ pageContext, children, data, location
   const theme = useTheme()
   const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
   const [lvl, setLvl] = useState(getCurrentPageLevel(location))
+
+  const { superHero } = pageContext.frontmatter
 
   useEffect(() => {
     setLvl(getCurrentPageLevel(location))
@@ -51,8 +53,8 @@ export default function NouvelleTemplate({ pageContext, children, data, location
 
   const mainContent = (
     <>
-      <Breadcrumbs crumbs={crumbs} />
-      <main role="main">
+      {hasSecondaryNav && <Breadcrumbs crumbs={crumbs} />}
+      <main id="main-content" role="main">
         {children}
         <ConditionalWrapper condition={lvl < 2} wrapper={(children) => <LayoutContainer>{children}</LayoutContainer>}>
           <RetroactionUsager />
@@ -75,13 +77,29 @@ export default function NouvelleTemplate({ pageContext, children, data, location
 
         <udem-urgence></udem-urgence>
 
+        {lvl < 2 && (
+          <bib-avis
+            bouton-fermer
+            style={{
+              '--bib-avis-spacing-inline': '0',
+              position: 'relative',
+              zIndex: theme.zIndex.appBar + 1,
+            }}
+          />
+        )}
+
         {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
 
         {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
-        <bib-avis bouton-fermer></bib-avis>
+        {lvl > 1 && superHero && <SuperHero title={superHero.title} imageName={superHero.imageName} lvl={lvl} />}
 
-        <Container>{mainContent}</Container>
+        {lvl >= 2 && <bib-avis bouton-fermer />}
+
+        <Container>
+          <p>lvl: {lvl}</p>
+          {mainContent}
+        </Container>
         <Footer />
         <bib-consent server-request-timeout="5000"></bib-consent>
       </IconContext.Provider>
@@ -116,7 +134,8 @@ function convertTZ(date) {
   return date.replace(/\.000Z$/i, '-05:00')
 }
 
-export function Head({ pageContext, location }) {
+export function Head(props) {
+  const { pageContext, location } = props
   const { frontmatter = {} } = pageContext
   const { date, title, newsUrl, authors, noIndex } = frontmatter
   const { pathname } = location
@@ -133,20 +152,8 @@ export function Head({ pageContext, location }) {
   }
 
   return (
-    <>
-      <html lang="fr" />
-      <SEO title={title} pathname={pathname} />
-      <bib-gtm></bib-gtm>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-gtm.min.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-avis.min.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-retroaction-usager.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/udem-urgence.min.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-consent.min.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-consent-preferences-btn.min.js"></script>
-
-      {noIndex && <meta name="robots" content="noindex, nofollow" />}
-
+    <HtmlHead {...props}>
       <script type="application/ld+json">{JSON.stringify(jsonld)}</script>
-    </>
+    </HtmlHead>
   )
 }

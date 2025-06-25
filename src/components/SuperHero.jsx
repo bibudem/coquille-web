@@ -1,10 +1,11 @@
-import { createContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Section from '@/components/Section'
 import { appBarHeight } from '@/components/_layout/AppBar/TopAppBar'
+import { SuperHeroContext } from '@/components/_layout/SuperHero/SuperHeroContext'
 import { useSmall } from '@/hooks/use-small'
 
 export const inlineOffset = '3.75rem'
@@ -13,8 +14,6 @@ const boxSize = {
   height: '49.75rem',
   width: '100%',
 }
-
-export const SuperHeroContext = createContext({})
 
 /**
  * A full-width hero section component with background image and text overlay
@@ -104,7 +103,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
               width: '100%',
               height: '100%',
               position: 'absolute',
-              background: `rgba(0, 0, 0, 0.20)`,
+              background: `rgba(0, 0, 0, 0.40)`,
               zIndex: 1,
             }}
           ></div>

@@ -1,20 +1,19 @@
-import { createContext, useEffect, useState } from 'react'
-import { Typography } from '@mui/material'
-import Grid from '@mui/material/Grid2'
+import { useEffect, useState } from 'react'
+import { Box, Typography } from '@mui/material'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Section from '@/components/Section'
+import LayoutContainer from '@/components/utils/LayoutContainer'
 import { appBarHeight } from '@/components/_layout/AppBar/TopAppBar'
+import { SuperHeroContext } from '@/components/_layout/SuperHero/SuperHeroContext'
 import { useSmall } from '@/hooks/use-small'
 
-export const inlineOffset = '3.75rem'
+export const inlineOffset = '0 215px'
 
 const boxSize = {
-  height: '49.75rem',
+  height: '230px',
   width: '100%',
 }
-
-export const moreLinkContext = createContext({})
 
 /**
  * A full-width hero section component with background image and text overlay
@@ -24,7 +23,7 @@ export const moreLinkContext = createContext({})
  * @param {string} alt - Alt text for the background image (defaults to empty string)
  * @returns {JSX.Element} A hero section with gradient overlay and text content
  */
-export default function moreLink({ title, subTitle, imageName, alt = '', lvl, ...rest }) {
+export default function SuperHero({ title, subTitle, imageName, alt = '', ...rest }) {
   if (typeof title === 'undefined') {
     throw new Error('title prop is required')
   }
@@ -67,16 +66,17 @@ export default function moreLink({ title, subTitle, imageName, alt = '', lvl, ..
           }
         : {
             inlineOffset,
-            bottomOffset: '4.25rem',
+            bottomOffset: '48px',
           }
     )
   }, [isSmall])
 
   return (
     <>
-      <moreLinkContext.Provider value={contextData}>
-        <div
-          style={{
+      <SuperHeroContext.Provider value={contextData}>
+        <Box
+          className="bib-comp-super-hero"
+          sx={{
             position: 'absolute',
             top: 0,
             left: 0,
@@ -88,7 +88,6 @@ export default function moreLink({ title, subTitle, imageName, alt = '', lvl, ..
           }}
         >
           <GatsbyImage
-            className="bib-comp-super-hero"
             image={image}
             layout="fullWidth"
             alt={alt}
@@ -99,39 +98,53 @@ export default function moreLink({ title, subTitle, imageName, alt = '', lvl, ..
             }}
             loading="eager"
           />
-          <div
-            style={{
+          <Box
+            sx={{
               width: '100%',
               height: '100%',
               position: 'absolute',
               background: `rgba(0, 0, 0, 0.40)`,
               zIndex: 1,
             }}
-          ></div>
-          <Section
-            sx={{
-              padding: `0 0 ${children ? '1rem' : contextData.bottomOffset} ${contextData.inlineOffset}`,
+          ></Box>
+          <LayoutContainer
+            id="t"
+            sx={(theme) => ({
               zIndex: 2,
-            }}
+              padding: '0 0 .5rem',
+              [theme.breakpoints.up('md')]: {
+                padding: `0 215px 48px 0`,
+              },
+            })}
           >
-            <Grid container direction="row">
-              <Grid size={{ xs: 12, md: 8 }}>
-                <Typography variant="display1" component="h1" sx={{ wordBreak: 'break-word' }}>
-                  {title}
-                </Typography>
-                {subTitle}
-              </Grid>
-            </Grid>
-          </Section>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                alignItems: 'flex-end',
+              }}
+            >
+              <Typography
+                component="div"
+                sx={{
+                  fontSize: '61px',
+                  wordBreak: 'break-word',
+                  lineHeight: 1,
+                }}
+              >
+                {title}
+              </Typography>
+            </Box>
+          </LayoutContainer>
           <div style={{ zIndex: 2 }}>{children}</div>
-        </div>
+        </Box>
         <div
           style={{
             width: boxSize.width,
             height: `calc(${boxSize.height} - ${appBarHeight})`,
           }}
         />
-      </moreLinkContext.Provider>
+      </SuperHeroContext.Provider>
     </>
   )
 }
