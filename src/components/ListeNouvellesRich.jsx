@@ -13,7 +13,7 @@ function Header({ children }) {
         lineHeight: 1.2,
       }}
     >
-      header: {children}
+      {children}
     </Box>
   )
 }
