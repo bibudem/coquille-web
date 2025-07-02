@@ -1,17 +1,5 @@
 import { forwardRef, useState } from 'react'
-import { 
-  Box, 
-  Button, 
-  List, 
-  ListItem, 
-  ListItemButton, 
-  ListItemText, 
-  Typography, 
-  ListItemIcon, 
-  useMediaQuery, 
-  useTheme,
-  IconButton
-} from '@mui/material'
+import { Box, Button, List, ListItem, ListItemButton, ListItemText, Typography, ListItemIcon, useMediaQuery, useTheme, IconButton } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import Link from '@/components/Link'
 import Close from '@mui/icons-material/Close'
@@ -56,8 +44,7 @@ const StyledNav = styled('nav')(({ theme }) => ({
 
 function Nav({ bg = false, ...props }) {
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
-  
+
   return (
     <StyledNav
       {...props}
@@ -88,8 +75,7 @@ function NavList(props) {
 
 function NavListItem({ href, children, icon, ...props }) {
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
-  
+
   return (
     <ListItem disablePadding {...props}>
       <ListItemButton
@@ -111,27 +97,30 @@ function NavListItem({ href, children, icon, ...props }) {
         }}
       >
         {icon && (
-          <ListItemIcon sx={{ 
-            minWidth: 'unset',
-            color: 'inherit',
-            [theme.breakpoints.down('md')]: {
-              '& svg': {
-                fontSize: '20px'
-              }
-            }
-          }}>
+          <ListItemIcon
+            sx={{
+              minWidth: 'unset',
+              color: 'inherit',
+              [theme.breakpoints.down('md')]: {
+                '& svg': {
+                  fontSize: '20px',
+                },
+              },
+            }}
+          >
             {icon}
           </ListItemIcon>
         )}
-        <ListItemText 
-          primary={children} 
-          primaryTypographyProps={{
-            sx: {
+        <ListItemText
+          primary={children}
+          slotProps={{
+            primary: {
               color: 'inherit',
               [theme.breakpoints.down('md')]: {
-                fontSize: '15px'
-              }
-            }
+                fontSize: '15px',
+                color: 'red!important',
+              },
+            },
           }}
         />
       </ListItemButton>
@@ -148,7 +137,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
   const handleScroll = (e) => {
     const scrollLeft = e.target.scrollLeft
     setScrollPosition(scrollLeft)
-    
+
     const newActiveIndex = Math.round(scrollLeft / (e.target.scrollWidth / 4))
     setActiveIndex(Math.min(3, Math.max(0, newActiveIndex)))
   }
@@ -183,9 +172,11 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
     >
       <SideNavHeaderContainer>
         <StyledLogoLink to="https://www.umontreal.ca/">
-          <LogoUdeM style={{ 
-            height: 'auto'
-          }} />
+          <LogoUdeM
+            style={{
+              height: 'auto',
+            }}
+          />
         </StyledLogoLink>
         <Box
           sx={{
@@ -197,11 +188,11 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
             },
           }}
         >
-          <Button 
-            href="https://monudem.umontreal.ca/" 
-            variant="outlined" 
-            sx={{ 
-              color: theme.palette.common.white, 
+          <Button
+            href="https://monudem.umontreal.ca/"
+            variant="outlined"
+            sx={{
+              color: theme.palette.common.white,
               borderColor: theme.palette.grey[300],
               '&:hover': {
                 borderColor: theme.palette.grey[300],
@@ -213,21 +204,21 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
                 '& .MuiButton-endIcon': {
                   marginLeft: '4px',
                   '& svg': {
-                    fontSize: '12px'
-                  }
-                }
-              }
-            }} 
+                    fontSize: '12px',
+                  },
+                },
+              },
+            }}
             endIcon={<ArrowUpRightIcon size={28} />}
           >
             Mon UdeM
           </Button>
-          <Button 
-            href="/nous-soutenir/" 
-            variant="contained" 
-            sx={{ 
-              fontSize: '14px', 
-              color: theme.palette.grey[900], 
+          <Button
+            href="/nous-soutenir/"
+            variant="contained"
+            sx={{
+              fontSize: '14px',
+              color: theme.palette.grey[900],
               backgroundColor: theme.palette.grey[100],
               '&:hover': {
                 backgroundColor: theme.palette.grey[200],
@@ -238,26 +229,26 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
                 '& .MuiButton-endIcon': {
                   marginLeft: '4px',
                   '& svg': {
-                    fontSize: '12px'
-                  }
-                }
-              }
-            }} 
+                    fontSize: '12px',
+                  },
+                },
+              },
+            }}
             endIcon={<ArrowRightIcon size={28} />}
           >
             Je donne
           </Button>
-          <IconButton 
+          <IconButton
             aria-label="Fermer le menu"
             onClick={handleCloseClick}
-            sx={{ 
+            sx={{
               color: '#fff',
               padding: '8px',
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                  transform: 'scale(1.1)',
-                  transition: 'all 0.2s ease-in-out',
-                }
+              '&:hover': {
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                transform: 'scale(1.1)',
+                transition: 'all 0.2s ease-in-out',
+              },
             }}
           >
             <Close />
@@ -349,31 +340,35 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
         </Box>
       </Box>
 
-      <Box sx={{ 
-        backgroundColor: isMobile ? theme.palette.bleuFonce.main : 'transparent',
-        [theme.breakpoints.down('md')]: {
-          borderTop: `1px solid ${theme.palette.common.white}`,
-        }
-      }}>
+      <Box
+        sx={{
+          backgroundColor: isMobile ? theme.palette.bleuFonce.main : 'transparent',
+          [theme.breakpoints.down('md')]: {
+            borderTop: `1px solid ${theme.palette.common.white}`,
+          },
+        }}
+      >
         <SideNavHeaderContainer>
           <Box>
             <Link to="/" aria-label="Accueil" sx={{ display: 'block' }}>
-              <LogoBibUBlanc style={{ 
-                width: '200px', 
-                height: 'auto', 
-                pointerEvents: 'none',
-                [theme.breakpoints.down('md')]: {
-                  width: '150px'
-                }
-              }} />
+              <LogoBibUBlanc
+                style={{
+                  width: '200px',
+                  height: 'auto',
+                  pointerEvents: 'none',
+                  [theme.breakpoints.down('md')]: {
+                    width: '150px',
+                  },
+                }}
+              />
             </Link>
           </Box>
           <Box>
-            <Button 
-              href="/nous-joindre/" 
-              variant="outlined" 
-              sx={{ 
-                color: theme.palette.common.white, 
+            <Button
+              href="/nous-joindre/"
+              variant="outlined"
+              sx={{
+                color: theme.palette.common.white,
                 borderColor: theme.palette.grey[300],
                 '&:hover': {
                   borderColor: theme.palette.grey[300],
@@ -385,11 +380,11 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
                   '& .MuiButton-endIcon': {
                     marginLeft: '4px',
                     '& svg': {
-                      fontSize: '20px'
-                    }
-                  }
-                }
-              }} 
+                      fontSize: '20px',
+                    },
+                  },
+                },
+              }}
             >
               Nous joindre
             </Button>
@@ -398,13 +393,15 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
       </Box>
 
       {isMobile && (
-        <Box sx={{ 
-          display: 'flex', 
-          justifyContent: 'center', 
-          gap: 1, 
-          padding: 2,
-          backgroundColor: theme.palette.bleuFonce.main,
-        }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: 1,
+            padding: 2,
+            backgroundColor: theme.palette.bleuFonce.main,
+          }}
+        >
           {[0, 1, 2, 3].map((_, index) => (
             <Box
               key={index}

@@ -1,8 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import {
-  Avatar, Link, TextField, MenuItem, Pagination, Container
-} from '@mui/material'
+import { Avatar, Link, TextField, MenuItem, Pagination, Container } from '@mui/material'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
@@ -50,20 +48,20 @@ export default function RepertoirePersonnel() {
     }
   `)
 
-  const fallbackPicture = data.allFile.nodes.find(node => node.name === '_profile').childImageSharp.gatsbyImageData
+  const fallbackPicture = data.allFile.nodes.find((node) => node.name === '_profile').childImageSharp.gatsbyImageData
 
   const rawRows = data.allListePersonnelXlsxSheet1.nodes.map((person) => {
     const photoId = person.photo?.replace(/\.\w+$/, '')
-    const photo = data.allFile.nodes.find(node => node.name === photoId)?.childImageSharp.gatsbyImageData ?? fallbackPicture
+    const photo = data.allFile.nodes.find((node) => node.name === photoId)?.childImageSharp.gatsbyImageData ?? fallbackPicture
     return { ...person, photo }
   })
 
   const allBibliotheques = Array.from(
     new Set(
-      rawRows.flatMap(person =>
+      rawRows.flatMap((person) =>
         (person.bibliotheque || '')
           .split(/[;|]/)
-          .map(d => d.trim())
+          .map((d) => d.trim())
           .filter(Boolean)
       )
     )
@@ -85,14 +83,8 @@ export default function RepertoirePersonnel() {
   const filteredRows = useMemo(() => {
     const keyword = normalize(search)
 
-    return rawRows.filter(person => {
-      const fieldsToSearch = [
-        person.nom,
-        person.prenom,
-        person.fonction,
-        person.disciplines,
-        person.bibliotheque
-      ].join(' ')
+    return rawRows.filter((person) => {
+      const fieldsToSearch = [person.nom, person.prenom, person.fonction, person.disciplines, person.bibliotheque].join(' ')
 
       const matchSearch = normalize(fieldsToSearch).includes(keyword)
       const matchDiscipline = !disciplineFilter || normalize(person.disciplines || '').includes(normalize(disciplineFilter))
@@ -132,12 +124,14 @@ export default function RepertoirePersonnel() {
                 border: 'none',
               },
             }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search sx={{ color: 'action.active' }} />
-                </InputAdornment>
-              ),
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search sx={{ color: 'action.active' }} />
+                  </InputAdornment>
+                ),
+              },
             }}
           />
 
@@ -169,45 +163,48 @@ export default function RepertoirePersonnel() {
                 color: !bibliothequeFilter ? theme.palette.text.disabled : 'inherit',
               },
             }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                </InputAdornment>
-              ),
-            }}
-            SelectProps={{
-              displayEmpty: true,
-              renderValue: (selected) => {
+            slotProps={{
+              input: {
+                startAdornment: <InputAdornment position="start"></InputAdornment>,
+              },
+
+              select: {
+                displayEmpty: true,
+                renderValue: (selected) => {
                   if (!selected || selected.length === 0) {
                     return (
-                      <span style={{
-                        color: theme.palette.text.disabled,
-                        marginLeft: '8px'
-                      }}>
+                      <span
+                        style={{
+                          color: theme.palette.text.disabled,
+                          marginLeft: '8px',
+                        }}
+                      >
                         Toutes les bibliothèques ou directions
                       </span>
                     )
                   }
                   return (
-                    <span style={{
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      whiteSpace: 'nowrap',
-                      display: 'inline-block',
-                      maxWidth: 'calc(100% - 40px)'
-                    }}>
+                    <span
+                      style={{
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap',
+                        display: 'inline-block',
+                        maxWidth: 'calc(100% - 40px)',
+                      }}
+                    >
                       {selected}
                     </span>
                   )
                 },
-              MenuProps: {
-                PaperProps: {
-                  sx: {
-                    marginTop: '8px',
-                    borderRadius: '16px',
-                    boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
-                    maxHeight: '60vh',
-                    overflow: 'auto',
+                MenuProps: {
+                  PaperProps: {
+                    sx: {
+                      marginTop: '8px',
+                      borderRadius: '16px',
+                      boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
+                      maxHeight: '60vh',
+                      overflow: 'auto',
                       '& .MuiMenuItem-root': {
                         padding: '12px 16px',
                         whiteSpace: 'normal',
@@ -215,12 +212,13 @@ export default function RepertoirePersonnel() {
                         display: 'flex',
                         alignItems: 'center',
                       },
+                    },
                   },
                 },
               },
             }}
           >
-            <MenuItem value="" sx={{  fontStyle: 'italic', color: theme.palette.text.disabled, }}>
+            <MenuItem value="" sx={{ fontStyle: 'italic', color: theme.palette.text.disabled }}>
               Toutes les bibliothèques ou directions
             </MenuItem>
             {allBibliotheques.map((d) => (
@@ -232,7 +230,7 @@ export default function RepertoirePersonnel() {
         </Stack>
 
         <Stack spacing={3}>
-          {paginatedRows.map(person => (
+          {paginatedRows.map((person) => (
             <Box
               key={person.id}
               sx={{
@@ -245,7 +243,7 @@ export default function RepertoirePersonnel() {
             >
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} alignItems="center">
                 <Avatar sx={{ width: 100, height: 100 }}>
-                    <GatsbyImage image={person.photo} alt={`${person.prenom} ${person.nom}`} style={{ width: '100%', height: '100%' }} />
+                  <GatsbyImage image={person.photo} alt={`${person.prenom} ${person.nom}`} style={{ width: '100%', height: '100%' }} />
                 </Avatar>
                 <Typography sx={{ padding: '2rem', fontWeight: '600' }} variant="h5">
                   {person.prenom} {person.nom}
@@ -292,13 +290,7 @@ export default function RepertoirePersonnel() {
         </Stack>
 
         <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-          <Pagination
-            count={Math.ceil(filteredRows.length / ITEMS_PER_PAGE)}
-            page={page}
-            onChange={(_, value) => setPage(value)}
-            color="primary"
-            sx={{ mt: '4rem' }}
-          />
+          <Pagination count={Math.ceil(filteredRows.length / ITEMS_PER_PAGE)} page={page} onChange={(_, value) => setPage(value)} color="primary" sx={{ mt: '4rem' }} />
         </Box>
       </Container>
     </ThemeProvider>

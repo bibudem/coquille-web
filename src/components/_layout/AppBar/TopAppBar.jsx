@@ -7,8 +7,8 @@ import Link from '@/components/Link'
 import SideNav from '@/components/_layout/SideNav/SideNav'
 import SideNavContent from '@/components/_layout/SideNav/SideNavContent'
 import MenuBurger from './MenuBurger'
+import LogoLink from './LogoLink'
 import pages from './menu'
-import LogoLink from './LogoLink.js'
 
 const StyledButton = styled(Button)({
   alignContent: 'center',

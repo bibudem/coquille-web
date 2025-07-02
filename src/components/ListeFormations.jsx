@@ -6,6 +6,11 @@ import { CalendarBlankIcon, ClockCountdownIcon, MapPinSimpleAreaIcon } from '@ph
 
 const FETCH_TIMEOUT = 2000
 
+const imageVedetteSize = {
+  width: 160,
+  height: 160,
+}
+
 function fetcher(...args) {
   return fetch(...args, { signal: AbortSignal.timeout(FETCH_TIMEOUT) }).then((res) => res.json())
 }
@@ -96,7 +101,7 @@ function ListeFormationsContainer({ children, sx }) {
 function ListeFormationsItem({ imageVedette, upper, title, lower, url, ...props }) {
   return (
     <ListItem {...props} alignItems="flex-start" disableGutters>
-      <ListItemButton component="a" href={url}>
+      <ListItemButton component="a" href={url} sx={(theme) => ({ borderRadius: theme.shape.corner.small })}>
         <Grid container spacing={1.5} sx={{ width: '100%' }}>
           <Grid size="auto">{imageVedette}</Grid>
           <Grid
@@ -194,7 +199,7 @@ export default function ListeFormations({ id, service = 'https://api.bib.umontre
           {Array(limit)
             .fill()
             .map((_, i) => (
-              <ListeFormationsItem key={i} imageVedette={<Skeleton variant="rectangular" width={120} height={120} sx={{ borderRadius: theme.shape.corner.small }} />} upper={<Skeleton sx={{ fontSize: '0.875rem', lineHeight: 1.2 }} width={115} />} title={<Skeleton sx={{ fontSize: '2rem' }} />} lower={<Skeleton sx={{ fontSize: '0.875rem', lineHeight: 1.2 }} width={175} />} />
+              <ListeFormationsItem key={i} imageVedette={<Skeleton variant="rectangular" {...imageVedetteSize} sx={{ borderRadius: theme.shape.corner.small, display: 'block' }} />} upper={<Skeleton sx={{ fontSize: '0.875rem', lineHeight: 1.2 }} width={115} />} title={<Skeleton sx={{ fontSize: '2rem' }} />} lower={<Skeleton sx={{ fontSize: '0.875rem', lineHeight: 1.2 }} width={175} />} />
             ))}
         </List>
       </ListeFormationsContainer>
@@ -217,9 +222,9 @@ export default function ListeFormations({ id, service = 'https://api.bib.umontre
                 src={imageVedette}
                 alt=""
                 style={{
+                  ...imageVedetteSize,
                   borderRadius: theme.shape.corner.small,
-                  width: 120,
-                  height: 120,
+                  display: 'block',
                 }}
               />
             }
