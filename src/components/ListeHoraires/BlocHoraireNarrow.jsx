@@ -1,5 +1,6 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState, useMemo } from 'react'
 import { styled } from '@mui/material'
+import { format } from 'date-fns'
 import LayoutTable from '@/components/utils/LayoutTable'
 import Div from '@/components/utils/Div'
 import HoraireNonDisponible from './HoraireNonDisponible'
@@ -7,7 +8,9 @@ import { HoraireBibContext } from './HoraireBibContext'
 
 export default function BlocHoraireNarrow({ codeBib }) {
   const { daysOfWeekHeaders, horaires, services, sortedServices, isLoading, isReady, error } = useContext(HoraireBibContext)
-  const [data, setData] = useState()
+  const [data, setData] = useState(null)
+
+  const todayString = useMemo(() => format(new Date(), 'yyyy-MM-dd'), [])
 
   useEffect(() => {
     if (daysOfWeekHeaders && horaires && services && sortedServices) {
@@ -28,29 +31,32 @@ export default function BlocHoraireNarrow({ codeBib }) {
         const serviceHoraires = currentHoraires[key]
         if (serviceHoraires) {
           const serviceRow = []
-          for (let i = 0; i <= 6; i++) {
+          
+          daysOfWeekHeaders.days.forEach((day, i) => {
+            const isActive = day.isoFormated === todayString
             const sommaire = serviceHoraires[i]?.sommaire ?? '-'
-            const { isoFormated, isActive, formated } = daysOfWeekHeaders.days[i]
+            
             serviceRow.push(
-              <Tr
-                key={i}
-                sx={{
-                  ...(isActive && { backgroundColor: 'bleu100.main' }),
-                }}
+              <Tr 
+                key={`${key}-${day.isoFormated}`}
+                sx={isActive ? { 
+                  backgroundColor: 'bleu200.main',
+                  fontWeight: 600
+                } : {}}
               >
                 <Th>
-                  <time dateTime={isoFormated}>{formated}</time>
+                  <time dateTime={day.isoFormated}>{day.formated}</time>
                 </Th>
                 <Td>
                   <Span>{sommaire}</Span>
                 </Td>
               </Tr>
             )
-          }
+          })
+
           rows.push(
             <Div key={key}>
               <Title>{label}</Title>
-
               <LayoutTable sx={{ width: '100%' }}>
                 <tbody>{serviceRow}</tbody>
               </LayoutTable>
@@ -61,18 +67,12 @@ export default function BlocHoraireNarrow({ codeBib }) {
 
       setData(rows)
     }
-  }, [horaires, services, sortedServices])
+  }, [horaires, services, sortedServices, daysOfWeekHeaders, todayString])
 
   useEffect(() => {
-    console.log('[isLoading]', isLoading)
-  }, [isLoading])
-
-  useEffect(() => {
-    console.log('[isReady]', isReady)
-  }, [isReady])
-
-  useEffect(() => {
-    console.log('[error]', error)
+    if (error) {
+      console.error('[Horaire Error]', error)
+    }
   }, [error])
 
   return (
@@ -83,41 +83,41 @@ export default function BlocHoraireNarrow({ codeBib }) {
         gap: '1rem',
       }}
     >
-      {data}
+      {isLoading ? (
+        <Div>Chargement en cours...</Div>
+      ) : (
+        data
+      )}
     </Div>
   )
 }
 
-function Title({ children }) {
-  return (
-    <Div
-      className="bib-comp-horaire--service-title"
-      sx={(theme) => ({
-        padding: '.5em 8px .5em 0',
-        fontSize: '1.1em',
-        borderBottom: `1px solid ${theme.palette.bleu200.dark}`,
-      })}
-    >
-      {children}
-    </Div>
-  )
-}
+const Title = styled(Div)(({ theme }) => ({
+  padding: '.5em 8px .5em 0',
+  fontSize: '1.1em',
+  fontWeight: 600,
+  borderBottom: `1px solid ${theme.palette.bleu200.dark}`,
+}))
 
 const Td = styled(LayoutTable.Td)({
   padding: '.35em .5em',
   width: '66.6667%',
 })
 
-const Th = styled(LayoutTable.Th)({
+const Th = styled(LayoutTable.Th)(({ theme }) => ({
   padding: '.35em .5em',
   width: '33.3333%',
   fontWeight: 'normal',
   fontVariant: 'small-caps',
   fontVariantCaps: 'all-small-caps',
-})
+  color: theme.palette.text.primary,
+}))
 
 const Tr = styled(LayoutTable.Tr)(({ theme }) => ({
   borderBottom: `1px solid ${theme.palette.bleu200.dark}`,
+  '&:last-child': {
+    borderBottom: 'none',
+  },
 }))
 
 const Span = styled('span')(({ theme }) => ({
