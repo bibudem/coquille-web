@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, useCallback } from 'react'
 import useSWR, { preload } from 'swr'
 import { HoraireBibContext } from './HoraireBibContext'
 import { addWeekISODate } from '@/utils/dateTimeUtils'
@@ -41,6 +41,7 @@ export default function HoraireBibProvider({ children }) {
   const { data: servicesData, error: serviceError, isLoading: serviceIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires/services`, fetcher)
   const { data: listeBibliothequesData, error: listeBibliothequesError, isLoading: listeBibliothequesIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires/liste`, fetcher)
   const fetchedWeeks = new Set([currentWeek])
+
 
   function prevBtnProps() {
     const actualWeek = new Week()
@@ -175,5 +176,18 @@ export default function HoraireBibProvider({ children }) {
     }
   }, [listeBibliothequesError])
 
-  return <HoraireBibContext.Provider value={{ ...horaires, error, isLoading, isReady, ...labels, services, prevBtnProps, nextBtnProps, sortedServices, getHorairesFor }}>{children}</HoraireBibContext.Provider>
+  // Ajout d’un bouton pour revenir à la date du jour dans la page des horaires
+  const actualWeek = useMemo(() => new Week(), [])
+
+  const isCurrentWeek = useCallback(() => {
+    return currentWeek.toString() === actualWeek.toString()
+ }, [currentWeek, actualWeek])
+
+  const resetToToday = () => {
+  setCurrentWeek(new Week()) 
+}
+
+
+
+  return <HoraireBibContext.Provider value={{ ...horaires, error, isLoading, isReady, ...labels, services, prevBtnProps, nextBtnProps, sortedServices, getHorairesFor,isCurrentWeek,resetToToday }}>{children}</HoraireBibContext.Provider>
 }
