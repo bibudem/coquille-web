@@ -102,7 +102,7 @@ export default function BlocHoraireWide({ codeBib }) {
       const todayIndex = daysOfWeekHeaders.days.findIndex((day) => day.isActive)
       const currentHoraires = horaires[codeBib]
 
-      if (currentHoraires.isNotAvailable) {
+      if (currentHoraires && currentHoraires.isNotAvailable) {
         const { key: serviceKey, label: serviceLabel } = sortedServices[0]
         setData([
           <TableRowHeader key={key(codeBib, serviceKey)}>{serviceLabel}</TableRowHeader>,
@@ -120,7 +120,7 @@ export default function BlocHoraireWide({ codeBib }) {
       }
 
       sortedServices.forEach(({ key: serviceKey, label: serviceLabel }) => {
-        if (Reflect.has(currentHoraires, serviceKey)) {
+        if (currentHoraires && Reflect.has(currentHoraires, serviceKey)) {
           const serviceHoraires = currentHoraires[serviceKey]
           for (let i = 0; i <= 6; i++) {
             const currentHeaderIndex = i % 7
