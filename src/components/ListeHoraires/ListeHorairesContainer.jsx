@@ -1,7 +1,13 @@
 import Div from '@/components/utils/Div'
 import LayoutContainer from '@/components/utils/LayoutContainer'
+import codeBibs from 'code-bib'
 
-export default function ListeHorairesContainer({ children }) {
+// Fonction pour normaliser les chaînes (enlever les accents)
+const normalizeString = (str) => {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+}
+
+export default function ListeHorairesContainer({ children, searchTerm = '' }) {
   return (
     <LayoutContainer>
       <Div
@@ -20,7 +26,15 @@ export default function ListeHorairesContainer({ children }) {
           gap: '3rem',
         })}
       >
-        {children}
+        {React.Children.toArray(children).filter(child => {
+          if (child.props?.codeBib) {
+            const bibTitle = codeBibs[child.props.codeBib]?.court || ''
+            const normalizedTitle = normalizeString(bibTitle)
+            const normalizedSearch = normalizeString(searchTerm)
+            return normalizedTitle.includes(normalizedSearch)
+          }
+          return true
+        })}
       </Div>
     </LayoutContainer>
   )
