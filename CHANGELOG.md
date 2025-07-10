@@ -1,5 +1,28 @@
 # Changelog
 
+## [4.1.0](https://github.com/bibudem/coquille-web/compare/v4.0.0...v4.1.0) (2025-07-10)
+
+
+### Features
+
+* feat:  ([9d5eff2](https://github.com/bibudem/coquille-web/commit/9d5eff212a90d61f5abb7e4aa9b0ad7195bf894f))
+* changement personnel ([8a50194](https://github.com/bibudem/coquille-web/commit/8a5019496cbf85df0595a658746757f8fae608d1))
+* **component:** Breadcrumb: on limite l'affichage à 2 items afin de ne pas provoquer l'affichage du fil d'Arianne sur plus d'une ligne. ([2a03b78](https://github.com/bibudem/coquille-web/commit/2a03b78c9da6c9c7b58b59fc42a006296ef3d2f3))
+* **component:** ListeEvenements: ajout de styles pour petites résolutions (xs, sm et md) ([f5e0ecb](https://github.com/bibudem/coquille-web/commit/f5e0ecb99c276491a3b0a44046236abb62712895))
+* **component:** ListeFormations: ajustement de la taille et du style des images vedettes ([a97ef0f](https://github.com/bibudem/coquille-web/commit/a97ef0fb1558d0904d196b08bbdf6afbbb862ee1))
+
+
+### Bug Fixes
+
+* Ajout du fichier sur la politique de dons 2025 et correction du lien dans la section /nous-soutenir/ ([7f48202](https://github.com/bibudem/coquille-web/commit/7f482029f7a17d8bfa5538db19d3e09b1b316c89))
+* **component:** ListeEvenements: finalisation des derniers À faire de la fiche Jira https://bibudem.atlassian.net/browse/OWEB-88 ([e1abb84](https://github.com/bibudem/coquille-web/commit/e1abb84107a2a8d7fc3f0e581ba3b5d584831cf0))
+* **component:** SuperHero: ajout du nom de la fonction (subTitle) ([8be4922](https://github.com/bibudem/coquille-web/commit/8be4922853620e6a47a67e778c07caa33b7447c0))
+* Correction de liens brisés ([6893349](https://github.com/bibudem/coquille-web/commit/689334940bd1fffc45bba77bb6a50ff822915257))
+* Correction du layout des colonnes du bloc "Quoi de neuf" en résolution 'md' sur la page d'accueil ([713bfe3](https://github.com/bibudem/coquille-web/commit/713bfe32b5d5ff716c7a8aa8a3893fd82f5bce19))
+* Fonctionnalité obsolète corrigée ([686ef85](https://github.com/bibudem/coquille-web/commit/686ef85f21eaba54c197be011d6f68e6abc2bf62))
+* retrait de /guides pour la boite à outils ([d16f32b](https://github.com/bibudem/coquille-web/commit/d16f32bd5f8e4c8d21df2bb0793a9282ccdee8c6))
+* robots.txt: retrait du fichier statique et configuration du plugin qui génère le fichier robots.txt ([e6c7cc6](https://github.com/bibudem/coquille-web/commit/e6c7cc6eee9e3e3c462098a27e1fb444da81d047))
+
 ## [3.6.0](https://github.com/bibudem/coquille-web/compare/v3.5.0...v3.6.0) (2025-02-20)
 
 
