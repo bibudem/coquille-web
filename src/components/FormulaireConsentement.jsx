@@ -34,7 +34,7 @@ export default function FormulaireConsentement() {
         }
       });
 
-      console.log('➡️ URL de l’iframe construite:', src.toString());
+      //console.log('URL de l’iframe construite:', src.toString());
       setIframeUrl(src.toString());
     } catch (err) {
       console.error('Erreur dans FormulaireConsentement:', err);
