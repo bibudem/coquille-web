@@ -1,69 +1,83 @@
-// src/components/FormulaireConsentement.jsx
-import IframeResizer from '@iframe-resizer/react'
+import { useEffect, useState } from 'react';
+import IframeResizer from '@iframe-resizer/react';
 
-const FORMULAIRE_URL = 'https://api.bib.umontreal.ca/usagers/formulaire/'
+const FORMULAIRE_URL = 'https://api.bib.umontreal.ca/usagers/formulaire/';
+const CAS_LOGIN_URL = 'https://identification.umontreal.ca/cas/login.ashx';
 
 export default function FormulaireConsentement() {
-  // Détermination de l'environnement
-  const isProduction = typeof window !== 'undefined' && window.location.hostname === 'bib.umontreal.ca'
-  const isPreProduction = typeof window !== 'undefined' && window.location.hostname === 'bib-pp.umontreal.ca'
-  
-  // Configuration des URLs selon l'environnement
-  const BASE_URL = isProduction 
-    ? 'https://bib.umontreal.ca' 
-    : isPreProduction
-      ? 'https://bib-pp.umontreal.ca'
-      : 'http://localhost:8000'
+  const [iframeUrl, setIframeUrl] = useState('');
 
-  const hostPageUrl = `${BASE_URL}${typeof window !== 'undefined' ? window.location.pathname : ''}`
-  const successUrl = `${BASE_URL}/pret-renouvellement-avis/formulaire-consentement`
+  useEffect(() => {
+    try {
+      if (typeof window === 'undefined') return;
 
-  // Construction de l'URL du formulaire
-  const src = new URL(FORMULAIRE_URL)
-  src.searchParams.set('hostPageUrl', hostPageUrl)
-  src.searchParams.set('successUrl', successUrl)
+      const urlParams = new URLSearchParams(window.location.search);
+      const ticket = urlParams.get('ticket');
+      const cleanUrl = `${window.location.origin}/pret-renouvellement-avis`;
 
-  // Gestion du ticket CAS côté client
-  if (typeof window !== 'undefined') {
-    const urlParams = new URLSearchParams(window.location.search)
-    if (urlParams.has('ticket')) {
-      src.searchParams.set('ticket', urlParams.get('ticket'))
-      window.history.replaceState(null, '', window.location.pathname)
+      //console.log('Ticket CAS:', ticket);
+
+      if (!ticket) {
+        const serviceParam = encodeURIComponent(cleanUrl);
+        window.location.href = `${CAS_LOGIN_URL}?service=${serviceParam}`;
+        return;
+      }
+
+      const src = new URL(FORMULAIRE_URL);
+      src.searchParams.set('ticket', ticket);
+      src.searchParams.set('hostPageUrl', cleanUrl);
+      src.searchParams.set('successUrl', cleanUrl);
+
+      urlParams.forEach((value, key) => {
+        if (key !== 'ticket') {
+          src.searchParams.set(key, value);
+        }
+      });
+
+      console.log('➡️ URL de l’iframe construite:', src.toString());
+      setIframeUrl(src.toString());
+    } catch (err) {
+      console.error('Erreur dans FormulaireConsentement:', err);
+    }
+  }, []);
+
+  function handleMessage(event) {
+    const { data } = event;
+
+    if (typeof data === 'object') {
+      if (data?.authenticate) {
+        const serviceUrl = encodeURIComponent(window.location.href);
+        window.location.href = `${CAS_LOGIN_URL}?service=${serviceUrl}`;
+        return;
+      }
+
+      if (data?.navigate) {
+        window.location.href = data.navigate;
+      }
     }
   }
 
-  function onMessage(event) {
-    const { data } = event
-    if (typeof data === 'object') {
-      // Gestion de l'authentification CAS
-      if (data?.authenticate) {
-        window.location.replace(
-          `https://identification.umontreal.ca/cas/login.ashx?service=${encodeURIComponent(window.location.href)}`
-        )
-      }
-      // Gestion de la navigation
-      else if (data?.navigate) {
-        data.navigate ? window.location.assign(data.navigate) : window.location.reload()
-      }
-    }
+  if (!iframeUrl || !iframeUrl.startsWith('http')) {
+    return <div>Chargement du formulaire…</div>;
   }
 
   return (
     <IframeResizer
       license="GPLv3"
-      src={src.href}
+      src={iframeUrl}
       style={{
         width: '100%',
         minHeight: '160vh',
-        height:'auto',
         border: 'none',
       }}
-      checkOrigin={[BASE_URL, FORMULAIRE_URL]}
-      log={!isProduction}
-      waitForLoad
-      onMessage={onMessage}
-      scrolling={true} // Désactive les barres de défilement internes
-    sizeWidth={true}
+      checkOrigin={[
+        'https://bib.umontreal.ca',
+        'https://bib-pp.umontreal.ca',
+        'http://localhost:8000',
+        'https://api.bib.umontreal.ca',
+      ]}
+      onMessage={handleMessage}
+      scrolling={true}
     />
-  )
+  );
 }
