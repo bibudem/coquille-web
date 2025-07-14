@@ -263,7 +263,7 @@ const tokens = {
 					scrollPaddingTop: '100px',
 					// Adaptation pour les écrans plus larges
 					[theme.breakpoints.up('md')]: {
-						scrollPaddingTop: '80px',
+						scrollPaddingTop: '90px',
 					},
 					},
 					// Règles pour les éléments cibles
@@ -272,7 +272,7 @@ const tokens = {
 					scrollMarginTop: '100px',
 					// Adaptation pour desktop
 					[theme.breakpoints.up('md')]: {
-						scrollMarginTop: '80px',
+						scrollMarginTop: '90px',
 					},
 					},
 					// Solution de repli pour anciens navigateurs
@@ -281,13 +281,13 @@ const tokens = {
 						display: 'block',
 						content: '""',
 						// Valeurs mobiles
-						marginTop: '-10px',
+						marginTop: '-100px',
 						height: '100px',
 						visibility: 'hidden',
 						// Adaptation desktop
 						[theme.breakpoints.up('md')]: {
-						marginTop: '-80px',
-						height: '80px',
+						marginTop: '-90px',
+						height: '90px',
 						},
 					}
 					},
