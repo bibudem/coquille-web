@@ -15,6 +15,11 @@ const boxSize = {
   width: '100%',
 }
 
+const mobileBoxSize = {
+  height: '30rem', // Hauteur réduite pour mobile
+  width: '100%',
+}
+
 /**
  * A full-width hero section component with background image and text overlay
  * @param {string} title - The main heading text to display (required)
@@ -61,8 +66,8 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
     setContextData(
       isSmall
         ? {
-            inlineOffset: '20px',
-            bottomOffset: '2rem',
+            inlineOffset: '1.5rem', // Réduit le padding sur mobile
+            bottomOffset: '1.5rem', // Réduit le padding sur mobile
           }
         : {
             inlineOffset,
@@ -79,7 +84,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
             position: 'absolute',
             top: 0,
             left: 0,
-            ...boxSize,
+            ...(isSmall ? mobileBoxSize : boxSize), 
             color: '#fff',
             display: 'flex',
             flexDirection: 'column',
@@ -115,7 +120,14 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
           >
             <Grid container direction="row">
               <Grid size={{ xs: 12, md: 8 }}>
-                <Typography variant="display1" component="h1" sx={{ wordBreak: 'break-word' }}>
+                <Typography 
+                  variant="display1" 
+                  component="h1" 
+                  sx={{ 
+                    wordBreak: 'break-word',
+                    fontSize: isSmall ? '2.5rem' :'3.75rem'
+                  }}
+                >
                   {title}
                 </Typography>
                 {subTitle}
@@ -126,8 +138,8 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
         </div>
         <div
           style={{
-            width: boxSize.width,
-            height: `calc(${boxSize.height} - ${appBarHeight})`,
+            width: '100%',
+            height: `calc(${isSmall ? mobileBoxSize.height : boxSize.height} - ${appBarHeight})`,
           }}
         />
       </SuperHeroContext.Provider>
