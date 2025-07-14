@@ -260,19 +260,19 @@ const tokens = {
 					'--bib-comp-retroaction-usager-size': theme.typography.body2.fontSize,
 					scrollBehavior: 'smooth',
 					// Valeur par défaut pour mobile
-					scrollPaddingTop: '130px',
+					scrollPaddingTop: '100px',
 					// Adaptation pour les écrans plus larges
 					[theme.breakpoints.up('md')]: {
-						scrollPaddingTop: '100px',
+						scrollPaddingTop: '80px',
 					},
 					},
 					// Règles pour les éléments cibles
 					'[id]': {
 					// Valeur mobile par défaut
-					scrollMarginTop: '130px',
+					scrollMarginTop: '100px',
 					// Adaptation pour desktop
 					[theme.breakpoints.up('md')]: {
-						scrollMarginTop: '100px',
+						scrollMarginTop: '80px',
 					},
 					},
 					// Solution de repli pour anciens navigateurs
@@ -282,12 +282,12 @@ const tokens = {
 						content: '""',
 						// Valeurs mobiles
 						marginTop: '-10px',
-						height: '130px',
+						height: '100px',
 						visibility: 'hidden',
 						// Adaptation desktop
 						[theme.breakpoints.up('md')]: {
-						marginTop: '-100px',
-						height: '100px',
+						marginTop: '-80px',
+						height: '80px',
 						},
 					}
 					},
