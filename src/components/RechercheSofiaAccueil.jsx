@@ -17,41 +17,52 @@ export default function RechercheSofiaAccueil() {
   }
 
   return (
-    !isSmall && (
-      <div
-        style={{
-          background: 'linear-gradient(90deg, rgba(34, 41, 48, 0.00) 30%, rgba(34, 41, 48, 0.46) 44%, rgba(106, 128, 150, 0.46) 100%)',
+    <div
+      style={{
+        background: isSmall 
+          ? 'rgba(34, 41, 48, 0.46)' 
+          : 'linear-gradient(90deg, rgba(34, 41, 48, 0.00) 30%, rgba(34, 41, 48, 0.46) 44%, rgba(106, 128, 150, 0.46) 100%)',
+      }}
+    >
+      <Container
+        disableGutters
+        sx={{
+          padding: isSmall 
+            ? '1.5rem 1.5rem 1.5rem 1.5rem' 
+            : `2.875rem 4.125rem 2.875rem ${inlineOffset}`,
+          height: isSmall ? 'auto' : '9.5625rem',
+          display: 'flex',
+          flexDirection: isSmall ? 'column' : 'row',
+          alignItems: 'center',
+          gap: '1rem',
         }}
       >
-        <Container
-          disableGutters
-          sx={{
-            padding: `2.875rem 4.125rem 2.875rem ${inlineOffset}`,
-            height: '9.5625rem',
+        <Paper
+          component="form"
+          action={defaultActionUrl}
+          onSubmit={onFormSubmit}
+          sx={(theme) => ({
+            width: isSmall ? '100%' : '65%',
+            borderRadius: theme.shape.corner.full,
             display: 'flex',
+            gap: '.8889rem',
             alignItems: 'center',
-            gap: '1rem',
-          }}
+            padding: isSmall ? '0 1rem' : '0 1rem 0 2rem',
+            height: isSmall ? 56 : 80,
+          })}
         >
-          <Paper
-            component="form"
-            action={defaultActionUrl}
-            onSubmit={onFormSubmit}
-            sx={(theme) => ({
-              width: '65%',
-              borderRadius: theme.shape.corner.full,
-              display: 'flex',
-              gap: '.8889rem',
-              alignItems: 'center',
-              padding: '0 1rem 0 2rem',
-              height: 80,
-            })}
-          >
-            <InputBase inputRef={inputRef} fullWidth placeholder="Rechercher des articles, des livres, des films..." required aria-description="Rechercher dans Sofia" />
-            <IconButton type="submit" aria-label="Chercher" color="bleuPrincipal">
-              <MagnifyingGlassIcon size={32} color="currentColor" />
-            </IconButton>
-          </Paper>
+          <InputBase 
+            inputRef={inputRef} 
+            fullWidth 
+            placeholder="Rechercher des articles, des livres, des films..." 
+            required 
+            aria-description="Rechercher dans Sofia" 
+          />
+          <IconButton type="submit" aria-label="Chercher" color="bleuPrincipal">
+            <MagnifyingGlassIcon size={isSmall ? 24 : 32} color="currentColor" />
+          </IconButton>
+        </Paper>
+        {!isSmall && (
           <div
             style={{
               color: '#fff',
@@ -65,8 +76,8 @@ export default function RechercheSofiaAccueil() {
             <br />
             un monde de savoirs à explorer
           </div>
-        </Container>
-      </div>
-    )
+        )}
+      </Container>
+    </div>
   )
 }
