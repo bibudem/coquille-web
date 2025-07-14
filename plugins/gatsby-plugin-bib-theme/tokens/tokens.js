@@ -258,7 +258,39 @@ const tokens = {
 			styleOverrides: (theme) => ({
 				':root': {
 					'--bib-comp-retroaction-usager-size': theme.typography.body2.fontSize,
-				},
+					scrollBehavior: 'smooth',
+					// Valeur par défaut pour mobile
+					scrollPaddingTop: '130px',
+					// Adaptation pour les écrans plus larges
+					[theme.breakpoints.up('md')]: {
+						scrollPaddingTop: '100px',
+					},
+					},
+					// Règles pour les éléments cibles
+					'[id]': {
+					// Valeur mobile par défaut
+					scrollMarginTop: '130px',
+					// Adaptation pour desktop
+					[theme.breakpoints.up('md')]: {
+						scrollMarginTop: '100px',
+					},
+					},
+					// Solution de repli pour anciens navigateurs
+					'@supports not (scroll-padding-top: 0)': {
+					'[id]::before': {
+						display: 'block',
+						content: '""',
+						// Valeurs mobiles
+						marginTop: '-10px',
+						height: '130px',
+						visibility: 'hidden',
+						// Adaptation desktop
+						[theme.breakpoints.up('md')]: {
+						marginTop: '-100px',
+						height: '100px',
+						},
+					}
+					},
 				h1: { ...theme.typography.h1 },
 				h2: { ...theme.typography.h2 },
 				h3: { ...theme.typography.h3 },
