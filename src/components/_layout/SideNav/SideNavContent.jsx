@@ -288,8 +288,12 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
           {/* Nouvelle section pour le menu principal mobile */}
           {isMobile && (
               <Nav aria-label="Menu principal" bg={false}>
-                <NavHeader>Menu</NavHeader>
+                <NavHeader></NavHeader>
                 <NavList>
+                  {/* Lien vers l'accueil */}
+                  <NavListItem href="/">
+                    Accueil
+                  </NavListItem>
                   {pages.map((page) => (
                     <NavListItem 
                       key={page.url} 
