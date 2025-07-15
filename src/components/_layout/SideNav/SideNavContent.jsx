@@ -8,15 +8,14 @@ import { ArrowRightIcon, ArrowUpRightIcon, CalendarPlusIcon, ClockCountdownIcon,
 import { SofiaIcon } from '@/components/CustomIcons'
 import LogoUdeM from '@/images/logo-udem/logo-udem-blanc.svg'
 import LogoBibUBlanc from '@/images/logo-bib/logo-bib-U-blanc.svg'
+import pages from '../AppBar/menu'
 
 const SideNavHeaderContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   padding: '21px 21px 32px',
   alignItems: 'center',
   justifyContent: 'space-between',
-  [theme.breakpoints.down('md')]: {
-    backgroundColor: theme.palette.bleuFonce.main,
-  },
+  backgroundColor: theme.palette.bleuFonce.main,
 }))
 
 const StyledLogoLink = styled(Link)({
@@ -44,12 +43,15 @@ const StyledNav = styled('nav')(({ theme }) => ({
 
 function Nav({ bg = false, ...props }) {
   const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
 
   return (
     <StyledNav
       {...props}
       sx={{
-        backgroundColor: bg ? theme.palette.bleuFonce.main : theme.palette.bleuPrincipal.main,
+        backgroundColor: isMobile 
+          ? (bg ? theme.palette.bleuFonce.main : theme.palette.bleuPrincipal.main)
+          : (bg ? theme.palette.bleuFonce.main : theme.palette.bleuPrincipal.main),
       }}
     />
   )
@@ -91,7 +93,7 @@ function NavListItem({ href, children, icon, ...props }) {
             backgroundColor: 'unset',
             color: theme.palette.common.white,
           },
-          [theme.breakpoints.down('md')]: {
+          [theme.breakpoints.down('lg')]: {
             py: '8px',
           },
         }}
@@ -101,7 +103,7 @@ function NavListItem({ href, children, icon, ...props }) {
             sx={{
               minWidth: 'unset',
               color: 'inherit',
-              [theme.breakpoints.down('md')]: {
+              [theme.breakpoints.down('lg')]: {
                 '& svg': {
                   fontSize: '20px',
                 },
@@ -116,7 +118,7 @@ function NavListItem({ href, children, icon, ...props }) {
           slotProps={{
             primary: {
               color: 'inherit',
-              [theme.breakpoints.down('md')]: {
+              [theme.breakpoints.down('lg')]: {
                 fontSize: '15px',
                 color: 'red!important',
               },
@@ -130,7 +132,7 @@ function NavListItem({ href, children, icon, ...props }) {
 
 export default forwardRef(function SideNavContent({ close = noop, onClose = noop, ...props }, ref) {
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
   const [scrollPosition, setScrollPosition] = useState(0)
   const [activeIndex, setActiveIndex] = useState(0)
 
@@ -261,7 +263,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
           flex: 1,
           borderTop: `1px solid ${theme.palette.common.white}`,
           borderBottom: `1px solid ${theme.palette.common.white}`,
-          [theme.breakpoints.down('md')]: {
+          [theme.breakpoints.down('lg')]: {
             overflow: 'hidden',
           },
         }}
@@ -270,7 +272,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
           sx={{
             display: 'flex',
             flex: 1,
-            [theme.breakpoints.down('md')]: {
+            [theme.breakpoints.down('lg')]: {
               overflowX: 'auto',
               overflowY: 'hidden',
               scrollSnapType: 'x mandatory',
@@ -283,7 +285,23 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
           }}
           onScroll={isMobile ? handleScroll : undefined}
         >
-          <Nav aria-label="À propos">
+          {/* Nouvelle section pour le menu principal mobile */}
+          {isMobile && (
+              <Nav aria-label="Menu principal" bg={false}>
+                <NavHeader>Menu</NavHeader>
+                <NavList>
+                  {pages.map((page) => (
+                    <NavListItem 
+                      key={page.url} 
+                      href={page.url}
+                    >
+                      {page.label}
+                    </NavListItem>
+                  ))}
+                </NavList>
+              </Nav>
+          )}
+          <Nav aria-label="À propos" bg={true}>
             <NavHeader>À propos</NavHeader>
             <NavList>
               <NavListItem href="/a-propos/notre-organisation/">Notre organisation</NavListItem>
@@ -296,7 +314,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
             </NavList>
           </Nav>
 
-          <Nav aria-label="Plateformes" bg>
+          <Nav aria-label="Plateformes" bg={false}>
             <NavHeader>Plateformes</NavHeader>
             <NavList>
               <NavListItem href="https://studio.bib.umontreal.ca/">Studio•bib - écosystème numérique</NavListItem>
@@ -309,7 +327,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
             </NavList>
           </Nav>
 
-          <Nav aria-label="Obtenir un document">
+          <Nav aria-label="Obtenir un document" bg={true}>
             <NavHeader>Obtenir un document</NavHeader>
             <NavList>
               <NavListItem href="/obtenir/pret-renouvellement-retour/">Prêt, renouvellement, retour</NavListItem>
@@ -320,7 +338,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
             </NavList>
           </Nav>
 
-          <Nav aria-label="Liens rapides" bg>
+          <Nav aria-label="Liens rapides" bg={false}>
             <NavHeader sx={{ visibility: 'hidden' }}>Liens rapides</NavHeader>
             <NavList>
               <NavListItem href="https://umontreal.on.worldcat.org/discovery?lang=fr" icon={<SofiaIcon color="white" fontSize="24px" />}>
@@ -343,7 +361,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
       <Box
         sx={{
           backgroundColor: isMobile ? theme.palette.bleuFonce.main : 'transparent',
-          [theme.breakpoints.down('md')]: {
+          [theme.breakpoints.down('lg')]: {
             borderTop: `1px solid ${theme.palette.common.white}`,
           },
         }}
@@ -357,7 +375,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
                   height: 'auto',
                   pointerEvents: 'none',
                   [theme.breakpoints.down('md')]: {
-                    width: '150px',
+                    width: '90px',
                   },
                 }}
               />
