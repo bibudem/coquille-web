@@ -18,7 +18,7 @@ const sizes = {
     height: 332,
   },
   large: {
-    width: 335,
+    width: 353,
     height: 400,
   },
 }
@@ -150,6 +150,7 @@ export default function CardWithIcon({ title, Icon, color = 'bleuPrincipal', mor
       sx={(theme) => ({
         borderRadius: theme.shape.corner.small,
         boxShadow: 'none',
+        marginRight: '15px',
         width: cardSize.width,
         height: cardSize.height,
         transition: `width ${theme.transitions.duration.md3.medium1}ms ${theme.transitions.easing.md3.emphasized}`,
