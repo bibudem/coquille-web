@@ -10,6 +10,8 @@ import Bloc from '@/components/FicheBibliotheque/Bloc'
 import HoraireAujourdhui from '@/components/FicheBibliotheque/HoraireAujourdhui'
 import { useSmall } from '@/hooks/use-small'
 import PlusIcon from '@/components/FicheBibliotheque/plus.svg'
+import { useEffect, useState } from 'react'
+import { useLocation } from '@reach/router'
 
 const Accordion = styled((props) => <MuiAccordion disableGutters elevation={0} square {...props} />)(({ theme }) => ({
   color: theme.palette.bleuFonce.main,
@@ -74,6 +76,16 @@ function Col({ children }) {
 export default function FicheBibliotheque({ title, id, codeBib, blocHoraires, blocEspaces, blocAdresse, blocNousJoindre, ...rest }) {
   const { children, ...props } = rest
   const isSmall = useSmall('md')
+  const [expanded, setExpanded] = useState(false)
+  const location = useLocation()
+
+  useEffect(() => {
+    // Vérifier si l'URL contient une ancre correspondant à l'ID de l'accordéon
+    if (location.hash === `#${id}`) {
+      setExpanded(true)
+    }
+  }, [location.hash, id])
+
   const imageData = useStaticQuery(graphql`
     query FicheBibliothequeImageQuery {
       allFile(filter: { sourceInstanceName: { eq: "bibliotheques" }, relativePath: { glob: "images/*" } }) {
@@ -91,8 +103,13 @@ export default function FicheBibliotheque({ title, id, codeBib, blocHoraires, bl
   const image = imageData.allFile.nodes.find((node) => node.name === codeBib)?.childrenImageSharp[0].gatsbyImageData
 
   return (
-    <Accordion className="bib-comp-fiche-bibliotheque">
-      <AccordionSummary id={id}>{title}</AccordionSummary>
+    <Accordion className="bib-comp-fiche-bibliotheque" expanded={expanded} onChange={() => setExpanded(!expanded)}>
+      <AccordionSummary id={id}>
+        {/* Ajout d'un lien d'ancre autour du titre */}
+        <a href={`#${id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+          {title}
+        </a>
+      </AccordionSummary>
       <AccordionDetails>
         <Grid container columns={10} columnSpacing="2rem">
           <Grid size={{ xs: 10, sm: 5, md: 3 }} sx={{ padding: '1.3333rem 0 1.3333rem 1.3333rem' }}>
