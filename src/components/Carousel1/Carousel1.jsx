@@ -12,7 +12,7 @@ import * as styles from './Carousel1.module.css'
 
 const slidesPerPagPerBreakpoint = {
   xs: 1,
-  sm: 2,
+  sm: 1,
   md: 2,
   lg: 3,
   xl: 3,
@@ -26,7 +26,7 @@ export default function Carousel1({ title, description, moreText, moreLink, ...r
   const theme = useTheme()
   const isSmall = useSmall()
   const [options, setOptions] = useState({
-    align: 'start',
+    align: isSmall ? 'start' : 'center', // Modifié pour mieux gérer l'alignement
     dragFree: false,
     loop: false,
     skipSnaps: false,
@@ -37,36 +37,45 @@ export default function Carousel1({ title, description, moreText, moreLink, ...r
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [scrollSnaps, setScrollSnaps] = useState([])
 
-  // Met à jour la liste des slides à chaque changement d'enfants
   useEffect(() => {
     setSlides(Children.toArray(children))
   }, [children])
 
-  // Met à jour slidesToScroll selon le breakpoint
   useEffect(() => {
     const slidesToScroll = slidesPerPagPerBreakpoint[currentBreakpoint.key] || 1
     setOptions((prev) => ({
       ...prev,
       slidesToScroll,
+      align: currentBreakpoint.key === 'xs' || currentBreakpoint.key === 'sm' ? 'start' : 'center', // Ajustement dynamique
     }))
   }, [currentBreakpoint])
 
-  // Affiche la navigation seulement si nécessaire
   useEffect(() => {
     const slidesPerPage = options.slidesToScroll
     setShowNavigation(slides.length > slidesPerPage)
   }, [options.slidesToScroll, slides.length])
 
-  // Réinitialise Embla APRES le montage et le rendu visible
+  // Réinitialisation plus robuste avec vérification de la taille
   useEffect(() => {
-    if (api) {
-      setTimeout(() => {
-        api.reInit()
-      }, 0)
+    if (!api) return
+    
+    const handleResize = () => {
+      api.reInit()
     }
-  }, [api])
+    
+    // Ajout d'un délai pour s'assurer que le DOM est mis à jour
+    const timer = setTimeout(() => {
+      api.reInit()
+    }, 100)
+    
+    window.addEventListener('resize', handleResize)
+    
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [api, currentBreakpoint])
 
-  // Initialise les scroll snaps et écouteurs d'événements
   useEffect(() => {
     if (!api) return
 
@@ -92,10 +101,8 @@ export default function Carousel1({ title, description, moreText, moreLink, ...r
     }
   }, [api])
 
-  // Fonction pour aller à un slide spécifique
   const scrollTo = useCallback((index) => api && api.scrollTo(index), [api])
 
-  // Styles responsives pour la description
   const variableWidthStyles = {
     [theme.breakpoints.down('sm')]: { width: '100%' },
     [theme.breakpoints.up('md')]: { maxWidth: '100%' },
@@ -132,11 +139,16 @@ export default function Carousel1({ title, description, moreText, moreLink, ...r
             )}
           </Grid>
         </Grid>
-        <Div sx={{ minWidth: '100%' }}>
+        <Div sx={{ 
+          minWidth: '100%',
+          overflow: 'hidden', 
+        }}>
           <div className={styles.embla} ref={ref} {...props}>
             <div className={styles.embla__container}>
               {slides.map((child, index) => (
-                <SliderItem key={index}>{child}</SliderItem>
+                <SliderItem key={index} isSmall={isSmall}>
+                  {child}
+                </SliderItem>
               ))}
             </div>
           </div>
@@ -181,9 +193,20 @@ export default function Carousel1({ title, description, moreText, moreLink, ...r
   )
 }
 
-function SliderItem({ children, ...props }) {
+function SliderItem({ children, isSmall, ...props }) {
   return (
-    <Div xs={{ display: 'flex', flexShrink: 0 }} {...props}>
+    <Div 
+      sx={{ 
+        display: 'flex', 
+        flexShrink: 0,
+        // Ajustement des marges pour les grandes tailles
+        marginRight: isSmall ? 0 : '15px',
+        '&:last-child': {
+          marginRight: 0
+        }
+      }} 
+      {...props}
+    >
       {children}
     </Div>
   )
