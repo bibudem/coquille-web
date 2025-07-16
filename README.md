@@ -131,3 +131,25 @@ Consultez la [documentation de Material UI](https://mui.com/material-ui/all-comp
 ## Pour créer une nouvelle release
 
 - npm version minor -m "Bump v%s"
+
+## Bibliothèques et Points de service
+
+| Titre                                                                  | ID                   |
+|------------------------------------------------------------------------|----------------------|
+| Aménagement                                                            | amenagement          |
+| Parc                                                                   | parc                 |
+| Centre de conservation Lionel-Groulx                                   | conservation         |
+| Livres rares et collections spéciales                                  | lrcs                 |
+| Droit                                                                  | droit                |
+| Thérèse-Gouin-Décarie                                                  | tgd                  |
+| Point de service : À venir - Jardin Botanique, Brossard, Médecine      | jardin-botanique     |
+| Kinésiologie                                                           | kinesiologie         |
+| Campus de Laval                                                        | laval                |
+| Centre de conservation 101, boul. Marcel-Laurin                        | marcel-laurin        |
+| Mathématiques et informatique                                          | math-info            |
+| Musique                                                                | musique              |
+| Médecine vétérinaire                                                   | medecine-veterinaire |
+| Marguerite-d'Youville                                                  | marguerite-d-youville|
+| Santé                                                                  | sante                |
+| Hubert-Reeves                                                          | Hubert-reeves        |
+| Lettres et sciences humaines                                           | lsh                  |
