@@ -67,8 +67,7 @@ export default function FormulaireSuggestionAchat() {
         'https://jupiter.bib.umontreal.ca',
         'https://bib.umontreal.ca',
         'https://bib-pp.umontreal.ca',
-        'http://localhost:8000',
-        'https://api.bib.umontreal.ca',
+        'http://localhost:8000'
       ]}
       onMessage={handleMessage}
       scrolling={true}
