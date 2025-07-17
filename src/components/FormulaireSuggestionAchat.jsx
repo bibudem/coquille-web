@@ -17,7 +17,7 @@ export default function FormulaireSuggestionAchat() {
 
     if (ticket && !ticketUsed) {
       const src = new URL(FORMULAIRE_URL)
-      const successUrl = `${cleanUrl}?submit=succes`
+      const successUrl = `${cleanUrl}?submit=ok`
 
       src.searchParams.set('ticket', ticket)
       src.searchParams.set('hostPageUrl', cleanUrl)
