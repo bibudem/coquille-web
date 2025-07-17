@@ -1,62 +1,76 @@
 import IframeResizer from '@iframe-resizer/react'
 import { useEffect, useState } from 'react'
 
-const NAV_TYPES = ['assign', 'reload', 'replace']
-const FORM_URL = 'https://jupiter.bib.umontreal.ca/formulaires/suggestions-achat-3.asp'
+const FORMULAIRE_URL = 'https://jupiter.bib.umontreal.ca/formulaires/suggestions-achat-3.asp'
+const CAS_LOGIN_URL = 'https://identification.umontreal.ca/cas/login.ashx'
 
 export default function FormulaireSuggestionAchat() {
-  const [src, setSrc] = useState(null)
+  const [iframeUrl, setIframeUrl] = useState('')
+  const [ticketUsed, setTicketUsed] = useState(false)
 
-  function onIframeMessage(event) {
-    console.log('[iframeResizer] event:', event)
-    const { message } = event
-    if (typeof message === 'object') {
-      if ('authenticate' in message) {
-        if (typeof message.authenticate === 'string' && NAV_TYPES.indexOf(message.authenticate) >= 0) {
-          return location[NAV_TYPES[NAV_TYPES.indexOf(message.authenticate)]]('https://identification.umontreal.ca/cas/login.ashx?service=' + location.href)
-        }
+  useEffect(() => {
+    if (typeof window === 'undefined') return
 
-        // typeof message.authenticate === 'boolean'
-        location.replace('https://identification.umontreal.ca/cas/login.ashx?service=' + location.href)
-      } else if ('navigate' in message) {
-        message.navigate ? location.assign(message.navigate) : location.reload(true)
-      }
+    const urlParams = new URLSearchParams(window.location.search)
+    const ticket = urlParams.get('ticket')
+    const cleanUrl = `${window.location.origin}/nous-joindre/suggestion-achat/`
+
+    if (ticket && !ticketUsed) {
+      const src = new URL(FORMULAIRE_URL)
+      const successUrl = `${cleanUrl}?submit=ok`
+
+      src.searchParams.set('ticket', ticket)
+      src.searchParams.set('hostPageUrl', cleanUrl)
+      src.searchParams.set('successUrl', successUrl)
+
+      // Ajouter les autres paramètres éventuels
+      urlParams.forEach((value, key) => {
+        if (key !== 'ticket') src.searchParams.set(key, value)
+      })
+
+      setIframeUrl(src.toString())
+      setTicketUsed(true)
+
+      // Le nettoyage de l'URL doit se faire plus tard
+      // Pas ici pour éviter de supprimer le ticket trop vite
+    } else if (!ticket && !ticketUsed) {
+      // Pas de ticket, redirection vers CAS
+      const serviceUrl = encodeURIComponent(cleanUrl)
+      window.location.href = `${CAS_LOGIN_URL}?service=${serviceUrl}`
+    }
+  }, [ticketUsed])
+
+  const handleMessage = (event) => {
+    const { data } = event
+    if (typeof data === 'object' && data?.authenticate) {
+      const cleanUrl = `${window.location.origin}/nous-joindre/suggestion-achat/`
+      window.location.href = `${CAS_LOGIN_URL}?service=${encodeURIComponent(cleanUrl)}`
+    }
+
+    // Nettoyer l'URL après réception d'un message de l'iframe (donc après chargement)
+    if (typeof window !== 'undefined' && window.history) {
+      const cleanUrl = `${window.location.origin}/nous-joindre/suggestion-achat/`
+      window.history.replaceState(null, '', cleanUrl)
     }
   }
 
-  useEffect(() => {
-    const url = new URL(FORM_URL)
-    const hostPageUrl = location.href.replace(/\??ticket=[^&]+/, '')
-    const successUrl = `${hostPageUrl}succes`
-
-    url.searchParams.set('hostPageUrl', hostPageUrl)
-    url.searchParams.set('successUrl', successUrl)
-
-    if (location.search.indexOf('ticket=') > 0) {
-      const ticket = location.search.split('ticket=')[1].split('&')[0]
-
-      // Get rid of the ticket parameter in the current URL
-      history.replaceState(null, '', hostPageUrl)
-
-      // Then pass it to the child window
-      url.searchParams.set('ticket', ticket)
-    }
-    setSrc(url.href)
-  }, [])
+  if (!iframeUrl) {
+    return <div>Chargement du formulaire...</div>
+  }
 
   return (
     <IframeResizer
       license="GPLv3"
-      // src="https://jupiter.bib.umontreal.ca/formulaires/suggestions-achat-3.asp?hostPageUrl=https%3A%2F%2Fbib.umontreal.ca%2Fnous-joindre%2Fsuggestion-achat&successUrl=https%3A%2F%2Fbib.umontreal.ca%2Fnous-joindre%2Fsuggestion-achat"
-      src={src}
-      style={{
-        width: '100%',
-        height: '100vh',
-        border: 'unset',
-      }}
-      waitForLoad
-      onMessage={onIframeMessage}
-      checkOrigin={['https://jupiter.bib.umontreal.ca']}
+      src={iframeUrl}
+      style={{ width: '100%', minHeight: '100vh', border: 'none' }}
+      checkOrigin={[
+        'https://jupiter.bib.umontreal.ca',
+        'https://bib.umontreal.ca',
+        'https://bib-pp.umontreal.ca',
+        'http://localhost:8000'
+      ]}
+      onMessage={handleMessage}
+      scrolling={true}
     />
   )
 }
