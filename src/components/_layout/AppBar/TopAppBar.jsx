@@ -78,19 +78,10 @@ export default function TopAppBar({ lvl, location = {} }) {
           <Box
             sx={{
               flexGrow: 0,
+              display: { xs: 'none', sm: 'block' },
             }}
           >
-            <Link
-              aria-label="Accueil"
-              variant="h6"
-              noWrap
-              to="/"
-              sx={{
-                display: { xs: 'none', sm: 'block', color: 'inherit' },
-              }}
-            >
-              <LogoLink trigger={trigger} />
-            </Link>
+            <LogoLink trigger={trigger} />
           </Box>
           <Box sx={{ flexGrow: 1 }} />
           <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
