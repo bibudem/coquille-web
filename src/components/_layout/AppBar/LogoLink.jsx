@@ -17,7 +17,6 @@ export default function LogoLink({ trigger }) {
         component="a"
         href="https://www.umontreal.ca"
         rel="noopener noreferrer"
-        target="_blank"
         sx={{
           display: 'flex',
           alignItems: 'center',
