@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { Box, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Skeleton } from '@mui/material'
+import { Box, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Skeleton,Typography } from '@mui/material'
 import { CalendarBlankIcon } from '@phosphor-icons/react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Link from '@/components/Link'
@@ -162,7 +162,9 @@ export default function ListNouvelles({ title = 'Nouvelles', id }) {
       })}
     >
       <Header flexItem id={id}>
-        {title}
+        <Typography variant="h1" sx={{ fontSize: '2.5rem', fontWeight: 500, lineHeight: 1.2 }}>
+          {title}
+        </Typography>
       </Header>
 
       <List>
