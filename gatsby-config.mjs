@@ -1,10 +1,13 @@
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import GatsbyAdapterNetlifyModule from 'gatsby-adapter-netlify'
 import 'dotenv/config'
 
-const adapter = GatsbyAdapterNetlifyModule.default
+
 const __dirname = dirname(fileURLToPath(import.meta.url))
+
+/*
+const adapter = GatsbyAdapterNetlifyModule.default
+import GatsbyAdapterNetlifyModule from 'gatsby-adapter-netlify'
 
 const {
   NODE_ENV,
@@ -13,16 +16,25 @@ const {
   CONTEXT: NETLIFY_ENV = NODE_ENV
 } = process.env
 const isNetlifyProduction = NETLIFY_ENV === 'production'
-const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
+const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL*/
 
+// On récupère juste NODE_ENV
+const { NODE_ENV } = process.env
+
+const siteUrl =
+  NODE_ENV === 'production'
+    ? 'https://bib.umontreal.ca'
+    : process.env.HOST_ENV === 'pp'
+      ? 'https://bib-pp.umontreal.ca'
+      : 'http://localhost:8000'
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
 export default {
-  adapter: adapter({
+  /*adapter: adapter({
     excludeDatastoreFromEngineFunction: false,
     imageCDN: false,
-  }),
+  }),*/
   flags: {
     // DEV_SSR: true,
   },
