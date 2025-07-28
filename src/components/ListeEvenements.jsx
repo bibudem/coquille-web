@@ -209,18 +209,6 @@ function ListeEvenementsItem({ imageVedette, upper, title, lower, url, ...rest }
 const SERVICE_URL = 'https://calendrier.umontreal.ca/activites/export.rss?tx_solr[filter][0]=types:activites-culturelles&tx_solr[filter][1]=types:activites-de-reseautage&tx_solr[filter][2]=types:activites-dinformation&tx_solr[filter][3]=types:activites-philanthropiques&tx_solr[filter][4]=types:activites-sportives&tx_solr[filter][5]=types:ceremonies-officielles&tx_solr[filter][6]=types:concours&tx_solr[filter][7]=types:conferences-colloques&tx_solr[filter][8]=types:cours-seminaires&tx_solr[filter][9]=types:journees-thematiques&tx_solr[filter][10]=types:portes-ouvertes&tx_solr[filter][11]=types:soutenances-de-these&tx_solr[filter][12]=organisateurs:les-bibliotheques'
 const MORE_LINK = 'https://calendrier.umontreal.ca/activites?organisateurs=les-bibliotheques'
 
-/**
- * Affiche une liste d'événements récupérés depuis le Calendrier UdeM
- *
- * @param {Object} props - Propriétés du composant
- * @param {string} [props.title='Événements'] - Titre de la section d'événements
- * @param {string} [props.id] - Identifiant unique pour l'élément de titre
- * @param {string} [props.service='https://calendrier.umontreal.ca/activites/export.rss?tx_solr[filter][0]=types:activites-culturelles&tx_solr[filter][1]=types:activites-de-reseautage&tx_solr[filter][2]=types:activites-dinformation&tx_solr[filter][3]=types:activites-philanthropiques&tx_solr[filter][4]=types:activites-sportives&tx_solr[filter][5]=types:ceremonies-officielles&tx_solr[filter][6]=types:concours&tx_solr[filter][7]=types:conferences-colloques&tx_solr[filter][8]=types:cours-seminaires&tx_solr[filter][9]=types:journees-thematiques&tx_solr[filter][10]=types:portes-ouvertes&tx_solr[filter][11]=types:soutenances-de-these&tx_solr[filter][12]=organisateurs:les-bibliotheques'] - URL du service RSS des événements
- * @param {number} [props.limit=3] - Nombre maximum d'événements à afficher
- * @param {string} [props.moreText='Tous nos événements'] - Texte du bouton "voir plus"
- * @param {string} [props.moreLink='https://calendrier.umontreal.ca/activites?organisateurs=les-bibliotheques'] - Lien optionnel pour voir plus d'événements
- * @returns {React.ReactElement} Une liste d'événements avec un bouton optionnel "voir plus"
- */
 export default function ListeEvenements({ 
   title = 'Événements', 
   id, 
