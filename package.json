@@ -55,7 +55,6 @@
     "gray-matter": "^4.0.3",
     "material-ui-popup-state": "^5.3.6",
     "modern-normalize": "^3.0.1",
-    "node-fetch": "^3.3.2",
     "postcss": "^8.5.1",
     "postcss-preset-env": "^10.1.3",
     "prop-types": "^15.8.1",
@@ -63,8 +62,7 @@
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.16.0",
     "regexp.escape": "^2.0.1",
-    "swr": "^2.3.3",
-    "xml2js": "^0.6.2"
+    "swr": "^2.3.3"
   },
   "overrides": {
     "xlsx": "https://cdn.sheetjs.com/xlsx-latest/xlsx-latest.tgz",
