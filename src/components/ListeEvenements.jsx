@@ -41,10 +41,7 @@ function fetcher(...args) {
         throw new Error('Erreur de parsing du XML: ' + errorNode.textContent)
       }
       
-      /*if (!data.querySelector('channel') || !data.querySelector('item')) {
-        throw new Error('Structure RSS invalide')
-      }*/
-     if (!data.querySelector('channel')) {
+      if (!data.querySelector('channel') || !data.querySelector('item')) {
         throw new Error('Structure RSS invalide')
       }
       
