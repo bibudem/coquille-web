@@ -6,7 +6,9 @@ import {
   ListItemAvatar, 
   CircularProgress,
   Button,
-  Typography
+  Typography,
+  useMediaQuery,
+  useTheme
 } from '@mui/material'
 import { 
   CalendarBlank, 
@@ -55,12 +57,12 @@ const Upper = React.memo(({ children }) => {
   )
 })
 
-
-
 export default function ListeNouvellesCombinees({ 
   title = 'Nouvelles', 
   id = 'nouvelles-combinees'
 }) {
+  const theme = useTheme()
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
   const [news, setNews] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -252,60 +254,182 @@ export default function ListeNouvellesCombinees({
     >
       <List>
         {news.slice(0, displayCount).map((item, index) => (
-          <ListItem key={`${id}-${index}-${item.id || item.link}`} disableGutters>
-            <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
-              <Box sx={{ display: 'flex', gap: '30px', width: '100%' }}>
-                <ListItemAvatar>
-                  {item.type === 'interne' && item.image ? (
-                    <GatsbyImage
-                      image={item.image}
-                      alt={item.imageAlt}
-                      style={{
-                        width: 120,
-                        height: 120,
+          <ListItem 
+            key={`${id}-${index}-${item.id || item.link}`} 
+            disableGutters
+            sx={{
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              gap: isSmallScreen ? '1rem' : '0',
+            }}
+          >
+            <Box sx={{ 
+              width: '100%', 
+              display: 'flex', 
+              flexDirection: 'column',
+              gap: '1rem',
+            }}>
+              {/* Image en pleine largeur sur mobile */}
+              <Box sx={{ 
+                width: '100%',
+                display: 'flex',
+                flexDirection: isSmallScreen ? 'column' : 'row',
+                gap: isSmallScreen ? '1rem' : '30px',
+              }}>
+                {!isSmallScreen && (
+                  <ListItemAvatar>
+                    {item.type === 'interne' && item.image ? (
+                      <Link to={item.link}
+                        sx={{
+                          display: 'block',
+                          transition: 'transform 0.1s ease',
+                          '&:hover': {
+                            transform: 'scale(1.01)',
+                          }
+                        }}>
+                        <GatsbyImage
+                          image={item.image}
+                          alt={item.imageAlt}
+                          style={{
+                            width: 120,
+                            height: 120,
+                            borderRadius: '12px',
+                          }}
+                        />
+                      </Link>
+                    ) : item.type === 'udem' && item.imageUrl ? (
+                      <Link to={item.link}
+                        target="_blank"
+                        sx={{
+                          display: 'block',
+                          transition: 'transform 0.1s ease',
+                          '&:hover': {
+                            transform: 'scale(1.01)',
+                          }
+                        }}>
+                        <img
+                          src={item.imageUrl}
+                          alt=""
+                          loading="lazy"
+                          style={{
+                            width: 120,
+                            height: 120,
+                            borderRadius: '12px',
+                            objectFit: 'cover',
+                          }}
+                        />
+                      </Link>
+                    ) : (
+                      <Box sx={{ 
+                        width: 120, 
+                        height: 120, 
                         borderRadius: '12px',
-                      }}
-                    />
-                  ) : item.type === 'udem' && item.imageUrl ? (
-                    <img
-                      src={item.imageUrl}
-                      alt=""
-                      loading="lazy"
-                      style={{
-                        width: 120,
-                        height: 120,
+                        bgcolor: 'grey.100',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}>
+                        <BookOpen size={40} color="disabled" />
+                      </Box>
+                    )}
+                  </ListItemAvatar>
+                )}
+
+                {isSmallScreen && (
+                  <Box sx={{ width: '100%' }}>
+                    {item.type === 'interne' && item.image ? (
+                      <Link to={item.link}
+                        sx={{
+                          display: 'block',
+                          transition: 'transform 0.1s ease',
+                          '&:hover': {
+                            transform: 'scale(1.01)',
+                          }
+                        }}>
+                        <GatsbyImage
+                          image={item.image}
+                          alt={item.imageAlt}
+                          style={{
+                            width: '100%',
+                            height: 'auto',
+                            maxHeight: '200px',
+                            borderRadius: '12px',
+                            objectFit: 'cover',
+                          }}
+                        />
+                      </Link>
+                    ) : item.type === 'udem' && item.imageUrl ? (
+                      <Link to={item.link}
+                        target="_blank"
+                        sx={{
+                          display: 'block',
+                          transition: 'transform 0.1s ease',
+                          '&:hover': {
+                            transform: 'scale(1.01)',
+                          }
+                        }}>
+                        <img
+                          src={item.imageUrl}
+                          alt=""
+                          loading="lazy"
+                          style={{
+                            width: '100%',
+                            height: 'auto',
+                            maxHeight: '200px',
+                            borderRadius: '12px',
+                            objectFit: 'cover',
+                          }}
+                        />
+                      </Link>
+                    ) : (
+                      <Box sx={{ 
+                        width: '100%', 
+                        height: '120px', 
                         borderRadius: '12px',
-                        objectFit: 'cover',
-                      }}
-                    />
-                  ) : (
-                    <Box sx={{ 
-                      width: 120, 
-                      height: 120, 
-                      borderRadius: '12px',
-                      bgcolor: 'grey.100',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
-                      <BookOpen size={40} color="disabled" />
-                    </Box>
-                  )}
-                </ListItemAvatar>
+                        bgcolor: 'grey.100',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}>
+                        <BookOpen size={40} color="disabled" />
+                      </Box>
+                    )}
+                  </Box>
+                )}
+
                 <Box sx={{ flex: 1 }}>
                   <Upper>{item.formattedDate}</Upper>
-                  <Title>{item.title}</Title>
+                  <Link
+                    to={item.link}
+                    target={item.type === 'udem' ? '_blank' : undefined}
+                    sx={{
+                      textDecoration: 'none',
+                      color: 'inherit!important',
+                      '&:hover': {
+                        ...(item.type === 'udem'
+                          ? { '& h3': { color: 'rgba(0, 87, 172) !important', textDecoration: 'none' } }
+                          : { color: 'rgba(0, 87, 172)!important', textDecoration: 'none' })
+                      }
+                    }}
+                  >
+                    <Title>{item.title}</Title>
+                  </Link>
                   <Excerpt>
                     {item.type === 'udem' 
                       ? item.description
                           .replace(/<[^>]+>/g, '')
                           .replace(/&[^;]+;/g, ' ')
-                          .substring(0, 300)
-                      : item.excerpt?.substring(0, 300)}...
+                          .substring(0, isSmallScreen ? 150 : 300)
+                      : item.excerpt?.substring(0, isSmallScreen ? 150 : 300)}...
                   </Excerpt>
                 </Box>
               </Box>
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+
+              <Box sx={{ 
+                display: 'flex', 
+                justifyContent: isSmallScreen ? 'flex-start' : 'flex-end',
+                width: '100%',
+              }}>
                 {item.type === 'udem' ? (
                   <Button
                     component={Link}
@@ -319,7 +443,10 @@ export default function ListeNouvellesCombinees({
                         </svg>
                       </span>
                     }
-                    sx={{ textTransform: 'none' }}
+                    sx={{ 
+                      textTransform: 'none',
+                      ml: isSmallScreen ? 0 : 'auto',
+                    }}
                   >
                     Lire plus
                   </Button>
@@ -327,7 +454,10 @@ export default function ListeNouvellesCombinees({
                   <Button
                     component={Link}
                     to={item.link}  
-                    sx={{ textTransform: 'none' }}
+                    sx={{ 
+                      textTransform: 'none',
+                      ml: isSmallScreen ? 0 : 'auto',
+                    }}
                     endIcon={<ArrowRight size={20} />}
                   >
                     Lire plus
@@ -365,36 +495,38 @@ export default function ListeNouvellesCombinees({
 
       <Box sx={{ textAlign: 'center', mt: 2 }}>
         <Button
-          href="https://nouvelles.umontreal.ca/"
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{ 
-            textTransform: 'none',
-            backgroundColor: '#0057ac',
-            color: 'white',
-            '&:hover': {
-              backgroundColor: '#02478b',
-            },
-            padding: '8px 24px',
-            borderRadius: '40px',
-            fontWeight: 500,
-            fontSize: '0.875rem',
-            minWidth: '200px',
-            transition: 'all 0.3s ease',
-            '& .MuiButton-endIcon': {
-              marginLeft: '8px',
-              '& svg': {
-                width: '18px',
-                height: '18px',
+            href="https://nouvelles.umontreal.ca/"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{ 
+              textTransform: 'none',
+              backgroundColor: '#0057ac',
+              color: 'white',
+              '&:hover': {
+                backgroundColor: '#02478b',
+              },
+              padding: '8px 24px',
+              borderRadius: '40px',
+              fontWeight: 500,
+              fontSize: '0.875rem',
+              minWidth: '200px',
+              transition: 'all 0.3s ease',
+              '& .MuiButton-endIcon': {
+                marginLeft: '8px',
+                '& svg': {
+                  width: '18px',
+                  height: '18px',
+                }
               }
-            }
-          }}
-          endIcon={
-            <ArrowSquareOut size={24} />
-          }
-        >
-          Voir toutes les nouvelles UdeM
-        </Button>
+            }}
+          >
+            Voir toutes les nouvelles UdeM
+            <span className="MuiButton-icon MuiButton-endIcon MuiButton-iconSizeMedium css-1g78ho2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#616161" viewBox="0 0 256 256">
+                <path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"></path>
+              </svg>
+            </span>
+          </Button>
       </Box>
 
       {loading && (
