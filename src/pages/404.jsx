@@ -23,12 +23,12 @@ const NotFoundPage = () => {
       {/* Barre de navigation responsive */}
       {isSmallScreen ? (
         <>
-          <TopAppBarSm location={location} />
+          <TopAppBarSm />
           <QuickLinksSm />
         </>
       ) : (
         <>
-          <TopAppBar location={location} />
+          <TopAppBar />
           <QuickLinks />
         </>
       )}
