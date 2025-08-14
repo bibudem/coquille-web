@@ -59,12 +59,16 @@ const Header = React.memo(({ id, children }) => (
 
 const Title = React.memo(({ children }) => (
   <Box
-    sx={{
+    sx={(theme) => ({
       fontFamily: 'Lora',
       fontSize: '1.75rem',
       fontWeight: 500,
       lineHeight: 1.3,
-    }}
+      [theme.breakpoints.down('sm')]: {
+        fontSize: '1.5rem',
+        lineHeight: 1.2,
+      },
+    })}
   >
     {children}
   </Box>
