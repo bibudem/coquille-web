@@ -74,7 +74,7 @@ export default function FooterTail() {
         </Grid>
         {!isSmall && <Divider />}
         <Grid>
-          <FooterLink to="/accessibilite-web">Accessibilité web</FooterLink>
+          <FooterLink to="/accessibilite-web">Accessibilité</FooterLink>
         </Grid>
         {!isSmall && <Divider />}
         <Box>

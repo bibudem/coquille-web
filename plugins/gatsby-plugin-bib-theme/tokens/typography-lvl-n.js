@@ -7,28 +7,28 @@ export default {
   htmlFontSize: 18,
 
   h1: {
-    fontFamily: fontStack,
-    fontWeight: 600,
-    margin: '0.5em 0',             // semibold
-    fontSize: '3.389rem',        // desktop (61px)
-    '@media (max-width:899px)': {
-      fontSize: '3rem',          // tablette (env. 54px)
+      fontFamily: fontStack,
+      fontWeight: 600,
+      margin: '0.5em 0',               // semibold
+      fontSize: '3.125rem',               // desktop (56px)
+      '@media (max-width:899px)': {
+        fontSize: '3rem',           // tablette (~48px)
+      },
+      '@media (max-width:599px)': {
+        fontSize: '2.25rem',           // mobile (~36px)
+      },
     },
-    '@media (max-width:599px)': {
-      fontSize: '2.5rem',        // mobile (env. 40px)
-    },
-  },
 
-  h2: {
+h2: {
     fontFamily: loraStack,
     fontWeight: 500,
-    margin: '0.5em 0',             // medium
-    fontSize: '1.889rem',        // desktop (34px)
+    margin: '0.5em 0',                // medium
+    fontSize: '1.889rem',             // desktop (34px)
     '@media (max-width:899px)': {
-      fontSize: '1.75rem',       // tablette (28px approx)
+      fontSize: '1.65rem',            // tablette (~28px)
     },
     '@media (max-width:599px)': {
-      fontSize: '1.6rem',        // mobile (25.6px approx)
+      fontSize: '1.4rem',             // mobile (~25.6px)
     },
   },
 
