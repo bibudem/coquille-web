@@ -13,15 +13,7 @@ function ListItemText({ children, trigger }) {
         fontSize: '1rem',
         fontWeight: 400,
         lineHeight: 1.6,
-        marginLeft: '5px',
-        transition: 'opacity 0.2s ease',
-        '.MuiMenuItem-root:hover &': {
-          opacity: 1,
-        },
-        // Pour les petits écrans, toujours montrer le texte
-        '@media (max-width: 900px)': {
-          opacity: 1,
-        }
+        marginLeft: '5px'
       }}
     >
       {children}
