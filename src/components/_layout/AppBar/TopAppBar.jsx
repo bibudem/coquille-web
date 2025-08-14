@@ -9,6 +9,7 @@ import SideNavContent from '@/components/_layout/SideNav/SideNavContent'
 import MenuBurger from './MenuBurger'
 import LogoLink from './LogoLink'
 import pages from './menu'
+import { useLocation } from '@reach/router'
 
 const StyledButton = styled(Button)({
   alignContent: 'center',
@@ -25,7 +26,10 @@ export const appBarHeight = '5rem'
 /**
  * Primary app bar component
  */
-export default function TopAppBar({ lvl, location = {} }) {
+export default function TopAppBar({ lvl, location: propLocation = {} }) {
+  /* Récupération automatique de la localisation via Gatsby */
+  const gatsbyLocation = useLocation()
+  const location = propLocation || gatsbyLocation
   const [open, setOpen] = useState(false)
   const theme = useTheme()
   const trigger = useScrollTrigger({
@@ -65,7 +69,7 @@ export default function TopAppBar({ lvl, location = {} }) {
         sx={{
           '--AppBar-background': trigger ? '#fff' : 'transparent',
           '--AppBar-color': trigger ? '#222930' : theme.palette.grey['50'],
-          backgroundImage: trigger ? 'none' : 'linear-gradient(180deg, rgba(0,0,0,0.10) 90%, rgba(0,0,0,0) 100%)',
+          backgroundImage: trigger ? 'none' : 'linear-gradient(180deg, rgba(0,0,0,0.4) 90%, rgba(0,0,0,0) 100%)',
           ...transitionProps,
           transitionProperty: 'background-color, box-shadow',
           '.MuiToolbar-root': {
@@ -86,7 +90,8 @@ export default function TopAppBar({ lvl, location = {} }) {
           <Box sx={{ flexGrow: 1 }} />
           <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
             {pages.map(({ url, label }) => {
-              const isActive = location.pathname.startsWith(url)
+              // Sécurisation : si "location" ou "pathname" est undefined,
+              const isActive = location?.pathname?.startsWith(url) || false
               return (
                 <StyledButton
                   size="large"

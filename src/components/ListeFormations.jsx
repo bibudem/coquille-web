@@ -1,34 +1,32 @@
-import { Box, List, ListItem, ListItemButton, Skeleton, useTheme } from '@mui/material'
+import { Box, List, ListItem, ListItemButton, Skeleton, Typography, useTheme } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import useSWR from 'swr'
 import Button from '@/components/Button'
-import { CalendarBlankIcon, ClockCountdownIcon, MapPinSimpleAreaIcon } from '@phosphor-icons/react'
+import { ArrowUpRightCircleIcon } from '@/components/CustomIcons'
+import { CalendarBlankIcon, ClockCountdownIcon, MapPinSimpleAreaIcon,ArrowUpRight } from '@phosphor-icons/react'
 
 const FETCH_TIMEOUT = 2000
-
-const imageVedetteSize = {
-  width: 160,
-  height: 160,
-}
 
 function fetcher(...args) {
   return fetch(...args, { signal: AbortSignal.timeout(FETCH_TIMEOUT) }).then((res) => res.json())
 }
 
 function Title({ children }) {
+  const theme = useTheme()
   return (
-    <Box
-      sx={{
+    <Typography
+      variant='h3'
+      sx={(theme) => ({
         fontFamily: 'Lora',
-        fontSize: '2rem',
-        fontWeight: 500,
-        lineHeight: 1.2,
-        color: 'var(--_title-color)',
-      }}
+        [theme.breakpoints.down('sm')]: {
+          fontSize: '1.25rem',
+          lineHeight: 1.2,
+        },
+      })}
     >
       {children}
-    </Box>
-  )
+    </Typography>
+  );
 }
 
 function Upper({ children }) {
@@ -99,11 +97,60 @@ function ListeFormationsContainer({ children, sx }) {
 }
 
 function ListeFormationsItem({ imageVedette, upper, title, lower, url, ...props }) {
+  const theme = useTheme()
+  
+  const imageVedetteSize = {
+    width: 150,
+    height: 'auto',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      height: 'auto',
+    },
+  };
+
   return (
     <ListItem {...props} alignItems="flex-start" disableGutters>
-      <ListItemButton component="a" href={url} sx={(theme) => ({ borderRadius: theme.shape.corner.small })}>
-        <Grid container spacing={1.5} sx={{ width: '100%' }}>
-          <Grid size="auto">{imageVedette}</Grid>
+      <ListItemButton
+        component="a"
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        sx={(theme) => ({
+          borderRadius: theme.shape.corner.small,
+          [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            padding: 0,
+          },
+          position: 'relative', 
+        })}
+      >
+        <Grid
+          container
+          spacing={1.5}
+          sx={{
+            width: '100%',
+            [theme.breakpoints.down('sm')]: {
+              flexDirection: 'column',
+            },
+          }}
+        >
+          <Grid
+            size="auto"
+            sx={(theme) => ({
+              width: imageVedetteSize.width,
+              [theme.breakpoints.down('sm')]: {
+                width: '100%',
+                img: {
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block',
+                },
+              },
+            })}
+          >
+            {imageVedette}
+          </Grid>
           <Grid
             size="grow"
             container
@@ -111,11 +158,30 @@ function ListeFormationsItem({ imageVedette, upper, title, lower, url, ...props 
             spacing={0}
             sx={{
               justifyContent: 'space-between',
+              [theme.breakpoints.down('sm')]: {
+                gap: '.5rem',
+                padding: '0.75rem',
+              },
             }}
           >
             <Grid>{upper}</Grid>
             <Grid>{title}</Grid>
             <Grid>{lower}</Grid>
+          </Grid>
+          {/* Nouveau Grid pour l'icône positionnée à droite au milieu */}
+          <Grid
+            size="auto"
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              paddingRight: '1rem',
+              [theme.breakpoints.down('sm')]: {
+                display: 'none', // Cache l'icône en version mobile
+              },
+            }}
+          >
+            <ArrowUpRightCircleIcon color="var(--_lower-icon-color)" fontSize={50} />
           </Grid>
         </Grid>
       </ListItemButton>
@@ -192,7 +258,16 @@ export default function ListeFormations({ id, service = 'https://api.bib.umontre
   // Handles error and loading state
   if (error) return <></>
 
-  if (isValidating)
+  if (isValidating) {
+    const imageVedetteSize = {
+      width: 150,
+      height: 'auto',
+      [theme.breakpoints.down('sm')]: {
+        width: '100%',
+        height: 'auto',
+      },
+    };
+
     return (
       <ListeFormationsContainer>
         <List>
@@ -204,6 +279,7 @@ export default function ListeFormations({ id, service = 'https://api.bib.umontre
         </List>
       </ListeFormationsContainer>
     )
+  }
 
   return (
     <ListeFormationsContainer
@@ -222,7 +298,8 @@ export default function ListeFormations({ id, service = 'https://api.bib.umontre
                 src={imageVedette}
                 alt=""
                 style={{
-                  ...imageVedetteSize,
+                  width: '100%',
+                  height: 'auto',
                   borderRadius: theme.shape.corner.small,
                   display: 'block',
                 }}
@@ -245,17 +322,30 @@ export default function ListeFormations({ id, service = 'https://api.bib.umontre
         ))}
       </List>
       {moreLink && (
-        <Box
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+        }}
+      >
+        <Button 
+          primary 
+          href={moreLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          endIcon={
+            <ArrowUpRight size={24}/>
+          }
           sx={{
-            display: 'flex',
-            justifyContent: 'flex-end',
+            '& .MuiButton-endIcon': {
+              marginLeft: '7px' 
+            }
           }}
         >
-          <Button primary href={moreLink}>
-            {moreText}
-          </Button>
-        </Box>
-      )}
+          {moreText}
+        </Button>
+      </Box>
+    )}
     </ListeFormationsContainer>
   )
 }

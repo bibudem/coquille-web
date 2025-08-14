@@ -19,6 +19,7 @@ import {
 import Link from '@/components/Link'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { ArrowUpRightCircleIcon, ArrowRightCircleIcon } from '@/components/CustomIcons'
 
 // Composants mémoïsés
 const Header = React.memo(({ children }) => (
@@ -425,45 +426,25 @@ export default function ListeNouvellesCombinees({
                 </Box>
               </Box>
 
-              <Box sx={{ 
+              <Box 
+              component={Link}
+              to={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ 
                 display: 'flex', 
                 justifyContent: isSmallScreen ? 'flex-start' : 'flex-end',
                 width: '100%',
-              }}>
-                {item.type === 'udem' ? (
-                  <Button
-                    component={Link}
-                    to={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    endIcon={
-                      <span className="MuiButton-icon MuiButton-endIcon MuiButton-iconSizeMedium css-1g78ho2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#616161" viewBox="0 0 256 256">
-                          <path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"></path>
-                        </svg>
-                      </span>
-                    }
-                    sx={{ 
-                      textTransform: 'none',
-                      ml: isSmallScreen ? 0 : 'auto',
-                    }}
-                  >
-                    Lire plus
-                  </Button>
+              }}
+            >
+              {!isSmallScreen && (
+                item.type === 'udem' ? (
+                  <ArrowUpRightCircleIcon color="#0057ac" fontSize={50} />
                 ) : (
-                  <Button
-                    component={Link}
-                    to={item.link}  
-                    sx={{ 
-                      textTransform: 'none',
-                      ml: isSmallScreen ? 0 : 'auto',
-                    }}
-                    endIcon={<ArrowRight size={20} />}
-                  >
-                    Lire plus
-                  </Button>
-                )}
-              </Box>
+                  <ArrowRightCircleIcon color="#0057ac" fontSize={50} />
+                )
+              )}
+            </Box>
             </Box>
           </ListItem>
         ))}
