@@ -39,7 +39,7 @@ h1: {
   fontFamily: fontStack,
   margin: '0.5em 0',
   fontWeight: 600,             // semibold
-  fontSize: '3.389rem',        // desktop (61px)
+  fontSize: '3.125rem',        // desktop (56px)
   lineHeight: 1.2,
   '@media (max-width:899px)': {
     fontSize: '3rem',          // tablette (~48px)
@@ -56,11 +56,11 @@ h2: {
   fontSize: '2.125rem',        // desktop (34px)
   lineHeight: 1.2,
   '@media (max-width:899px)': {
-    fontSize: '1.75rem',       // tablette (~28px)
+    fontSize: '1.65rem',       // tablette (~28px)
     fontWeight: 600,           // semi-bold sur tablette
   },
   '@media (max-width:599px)': {
-    fontSize: '1.75rem',       // mobile (~28px) même taille que tablette
+    fontSize: '1.6rem',       // mobile (~25.6px)
   },
 },
 h3: {
@@ -68,7 +68,7 @@ h3: {
   fontFamily: fontStack,
   margin: '0.5em 0',
   fontWeight: 500,             // medium
-  fontSize: '1.75rem',         // desktop (28px)
+  fontSize: '1.65rem',         // desktop (28px)
   lineHeight: 1.2,
   '@media (max-width:899px)': {
     fontSize: '1.56rem',       // tablette (~25px)
@@ -127,7 +127,7 @@ h2Carousel: {
   ...baseTypography,
   fontFamily: fontStack,
   margin: '0.5em 0',
-  fontSize: '3.389rem!important', // 61px - desktop par défaut
+  fontSize: '3.125rem!important', // 61px - desktop par défaut
   fontWeight: '500!important',
   lineHeight: 1.2,
 
@@ -202,7 +202,7 @@ subtitle1: {
       fontSize: '4rem', // 64px tablette
     },
     '@media (min-width:900px)': {
-      fontSize: '6.875rem', // 110px desktop
+      fontSize: '6.5rem', // 110px desktop
     }
   },
 
@@ -215,13 +215,13 @@ subtitle1: {
       fontSize: '3rem!important', // 48px tablette
     },
     '@media (min-width:900px)': {
-      fontSize: '3.8125rem!important', // 61px desktop
+      fontSize: '3.5rem!important', // 61px desktop
     }
   },
 
   display3: {
     ...baseTypography,
-    fontSize: '1.75rem', // 28px mobile
+    fontSize: '1.65rem', // 28px mobile
     lineHeight: 1.2,
     '@media (min-width:900px)': {
       fontSize: '2.125rem', // 34px desktop
