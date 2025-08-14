@@ -1,11 +1,11 @@
-import { ListItemIcon, ListItemText as MuiListItemText, MenuItem, MenuList, Paper, useScrollTrigger, useTheme, IconButton, Box } from '@mui/material'
+import { ListItemIcon, ListItemText as MuiListItemText, MenuItem, MenuList, Paper, useScrollTrigger, useTheme, IconButton, Box, useMediaQuery } from '@mui/material'
 import { CalendarPlus, Chats, ClockCountdown, Lifebuoy } from '@phosphor-icons/react'
 import Div from '@/components/utils/Div'
 import { SofiaIcon } from '@/components/CustomIcons'
 import Link from '@/components/Link'
 import LibChatWidget from '@/components/LibChatWidget';
 
-function ListItemText({ children }) {
+function ListItemText({ children, trigger }) {
   return (
     <MuiListItemText
       disableTypography
@@ -13,6 +13,14 @@ function ListItemText({ children }) {
         fontSize: '1rem',
         fontWeight: 400,
         lineHeight: 1.6,
+        transition: 'opacity 0.2s ease',
+        '.MuiMenuItem-root:hover &': {
+          opacity: 1,
+        },
+        // Pour les petits écrans, toujours montrer le texte
+        '@media (max-width: 900px)': {
+          opacity: 1,
+        }
       }}
     >
       {children}
@@ -27,6 +35,7 @@ export function QuickLinks() {
   })
 
   const theme = useTheme()
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'))
 
   function handleOnMenuItemClick(event) {
     event.preventDefault()
@@ -67,45 +76,62 @@ export function QuickLinks() {
           zIndex: theme.zIndex.drawer,
           pointerEvents: 'none',
           color: '#fff',
-          transform: trigger ? 'translateX(185px)' : 'translateX(0)',
+          transform: trigger ? 'translateX(calc(100% - 65px))' : 'translateX(0)',
           transitionTimingFunction: theme.transitions.easing.md3[trigger ? 'emphasizedDecelerate' : 'emphasizedAccelerate'],
           transitionDuration: `${theme.transitions.duration.md3[trigger ? 'medium4' : 'short4']}ms`,
           backgroundColor: theme.vars.palette.bleuPrincipal.main,
           pointerEvents: 'auto',
           borderRadius: '12px 0 0 12px',
-          transitionProperty: `transform`,
+          transitionProperty: 'transform',
+          '&:hover': {
+            transform: isLargeScreen && trigger ? 'translateX(0)' : null,
+            transitionTimingFunction: theme.transitions.easing.md3.emphasizedDecelerate,
+            transitionDuration: `${theme.transitions.duration.md3.medium4}ms`,
+          },
         })}
       >
-        <MenuList>
-          <MenuItem component={Link} to="https://umontreal.on.worldcat.org/discovery?lang=fr">
+        <MenuList sx={{
+          padding: '8px 0',
+          '& .MuiMenuItem-root': {
+            borderRadius: '6px',
+            padding: '8px 16px',
+            margin: '0 8px',
+            transition: 'background-color 0.2s ease',
+            minHeight: '48px',
+            '&:hover': {
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            }
+          }
+        }}>
+          <MenuItem component={Link} to="https://umontreal.on.worldcat.org/discovery?lang=fr" target="_blank"  rel="noopener noreferrer">
             <ListItemIcon>
               <SofiaIcon color="#fff" fontSize='24px' />
             </ListItemIcon>
-            <ListItemText>Sofia</ListItemText>
+            <ListItemText trigger={trigger}>Sofia</ListItemText>
           </MenuItem>
           <MenuItem component={Link} to="/horaires">
             <ListItemIcon>
               <ClockCountdown color="#fff" size={24} />
             </ListItemIcon>
-            <ListItemText>Horaires</ListItemText>
+            <ListItemText trigger={trigger}>Horaires</ListItemText>
           </MenuItem>
-          <MenuItem component={Link} to="https://calendrier.bib.umontreal.ca/r">
+          <MenuItem component={Link} to="https://calendrier.bib.umontreal.ca/r" target="_blank"  rel="noopener noreferrer">
             <ListItemIcon>
               <CalendarPlus color="#fff" size={24} />
             </ListItemIcon>
-            <ListItemText>Réserver une salle</ListItemText>
+            <ListItemText trigger={trigger}>Réserver une salle</ListItemText>
           </MenuItem>
-          <MenuItem component={Link} to="https://studio.bib.umontreal.ca/informatique/" onClick={handleOnMenuItemClick}>
+          <MenuItem component={Link} to="https://studio.bib.umontreal.ca/informatique/" target="_blank"  rel="noopener noreferrer">
             <ListItemIcon>
               <Lifebuoy color="#fff" size={24} />
             </ListItemIcon>
-            <ListItemText>Soutien informatique</ListItemText>
+            <ListItemText trigger={trigger}>Soutien informatique</ListItemText>
           </MenuItem>
           <MenuItem component={Link} to="#" onClick={handleChatClick}>
             <ListItemIcon>
               <Chats color="#fff" size={24} />
             </ListItemIcon>
-            <ListItemText>Clavarder</ListItemText>
+            <ListItemText trigger={trigger}>Clavarder</ListItemText>
           </MenuItem>
         </MenuList>
       </Paper>
