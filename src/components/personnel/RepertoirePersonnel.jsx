@@ -1,23 +1,23 @@
-import { useState, useMemo } from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-import { Avatar, Link, TextField, MenuItem, Pagination, Container } from '@mui/material'
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
-import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
-import { Search, LibraryBooks } from '@mui/icons-material'
-import { EnvelopeSimple, Phone } from '@phosphor-icons/react'
-import InputAdornment from '@mui/material/InputAdornment'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import tokens from '../../../plugins/gatsby-plugin-bib-theme/tokens/tokens.js'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { frFR } from '@mui/x-data-grid/locales'
+import { useState, useMemo, useEffect } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { Avatar, Link, TextField, MenuItem, Pagination, Container, Chip } from '@mui/material';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import { Search, LibraryBooks, Close } from '@mui/icons-material';
+import { EnvelopeSimple, Phone } from '@phosphor-icons/react';
+import InputAdornment from '@mui/material/InputAdornment';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import tokens from '../../../plugins/gatsby-plugin-bib-theme/tokens/tokens.js';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { frFR } from '@mui/x-data-grid/locales';
 
-const theme = createTheme(tokens, frFR)
-const ITEMS_PER_PAGE = 8
+const theme = createTheme(tokens, frFR);
+const ITEMS_PER_PAGE = 8;
 
 function ucfirst(str = '') {
-  return str.charAt(0).toUpperCase() + str.slice(1)
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 export default function RepertoirePersonnel() {
@@ -46,15 +46,15 @@ export default function RepertoirePersonnel() {
         }
       }
     }
-  `)
+  `);
 
-  const fallbackPicture = data.allFile.nodes.find((node) => node.name === '_profile').childImageSharp.gatsbyImageData
+  const fallbackPicture = data.allFile.nodes.find((node) => node.name === '_profile').childImageSharp.gatsbyImageData;
 
   const rawRows = data.allListePersonnelXlsxSheet1.nodes.map((person) => {
-    const photoId = person.photo?.replace(/\.\w+$/, '')
-    const photo = data.allFile.nodes.find((node) => node.name === photoId)?.childImageSharp.gatsbyImageData ?? fallbackPicture
-    return { ...person, photo }
-  })
+    const photoId = person.photo?.replace(/\.\w+$/, '');
+    const photo = data.allFile.nodes.find((node) => node.name === photoId)?.childImageSharp.gatsbyImageData ?? fallbackPicture;
+    return { ...person, photo };
+  });
 
   const allBibliotheques = Array.from(
     new Set(
@@ -65,12 +65,49 @@ export default function RepertoirePersonnel() {
           .filter(Boolean)
       )
     )
-  ).sort()
+  ).sort();
 
-  const [search, setSearch] = useState('')
-  const [disciplineFilter, setDisciplineFilter] = useState('')
-  const [bibliothequeFilter, setBibliothequeFilter] = useState('')
-  const [page, setPage] = useState(1)
+  // État pour gérer l'URL et éviter les conflits
+  const [hash, setHash] = useState('');
+  const [isManualFilterChange, setIsManualFilterChange] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const handleHashChange = () => {
+        const decodedHash = decodeURIComponent(window.location.hash.substring(1));
+        setHash(decodedHash);
+        setIsManualFilterChange(false);
+      };
+
+      // Écouter les changements d'URL
+      window.addEventListener('hashchange', handleHashChange);
+      handleHashChange(); // Initialisation
+
+      return () => window.removeEventListener('hashchange', handleHashChange);
+    }
+  }, []);
+
+  const [search, setSearch] = useState('');
+  const [disciplineFilter, setDisciplineFilter] = useState('');
+  const [bibliothequeFilter, setBibliothequeFilter] = useState('');
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    if (hash && !isManualFilterChange) {
+      const findMatchingBibliotheque = (hash) => {
+        return allBibliotheques.find(b => 
+          normalize(b) === normalize(hash) ||
+          b.toLowerCase().includes(hash.toLowerCase()) ||
+          hash.toLowerCase().includes(b.toLowerCase())
+        );
+      };
+
+      const matchingBibliotheque = findMatchingBibliotheque(hash);
+      if (matchingBibliotheque) {
+        setBibliothequeFilter(matchingBibliotheque);
+      }
+    }
+  }, [hash, allBibliotheques, isManualFilterChange]);
 
   function normalize(str = '') {
     return str
@@ -78,27 +115,50 @@ export default function RepertoirePersonnel() {
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
       .toLowerCase()
+      .replace(/[^a-z0-9]/g, '');
   }
 
+  const handleBibliothequeChange = (e) => {
+    setBibliothequeFilter(e.target.value);
+    setPage(1);
+    setIsManualFilterChange(true);
+    
+    // Mettre à jour l'URL sans recharger la page
+    if (typeof window !== 'undefined') {
+      const newHash = e.target.value ? `#${encodeURIComponent(e.target.value)}` : '';
+      window.history.pushState(null, null, window.location.pathname + newHash);
+    }
+  };
+
+  const handleRemoveBibliothequeFilter = () => {
+    setBibliothequeFilter('');
+    setPage(1);
+    setIsManualFilterChange(true);
+    
+    if (typeof window !== 'undefined') {
+      window.history.pushState(null, null, window.location.pathname);
+    }
+  };
+
   const filteredRows = useMemo(() => {
-    const keyword = normalize(search)
+    const keyword = normalize(search);
 
     return rawRows.filter((person) => {
-      const fieldsToSearch = [person.nom, person.prenom, person.fonction, person.disciplines, person.bibliotheque].join(' ')
+      const fieldsToSearch = [person.nom, person.prenom, person.fonction, person.disciplines, person.bibliotheque].join(' ');
 
-      const matchSearch = normalize(fieldsToSearch).includes(keyword)
-      const matchDiscipline = !disciplineFilter || normalize(person.disciplines || '').includes(normalize(disciplineFilter))
-      const matchBibliotheque = !bibliothequeFilter || normalize(person.bibliotheque || '').includes(normalize(bibliothequeFilter))
+      const matchSearch = normalize(fieldsToSearch).includes(keyword);
+      const matchDiscipline = !disciplineFilter || normalize(person.disciplines || '').includes(normalize(disciplineFilter));
+      const matchBibliotheque = !bibliothequeFilter || normalize(person.bibliotheque || '').includes(normalize(bibliothequeFilter));
 
-      return matchSearch && matchDiscipline && matchBibliotheque
-    })
-  }, [search, disciplineFilter, bibliothequeFilter, rawRows])
+      return matchSearch && matchDiscipline && matchBibliotheque;
+    });
+  }, [search, disciplineFilter, bibliothequeFilter, rawRows]);
 
-  const paginatedRows = filteredRows.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE)
-
+  const paginatedRows = filteredRows.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 4 }, py: 4 }}>
+
         <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mb: 3 }}>
           <TextField
             placeholder="Chercher un nom, une discipline, etc."
@@ -228,6 +288,26 @@ export default function RepertoirePersonnel() {
             ))}
           </TextField>
         </Stack>
+        {/* Afficher le filtre actif si présent */}
+        {bibliothequeFilter && (
+          <Box sx={{ mb: 2, display: 'flex', alignItems: 'center' }}>
+            <Chip
+              label={bibliothequeFilter}
+              onDelete={handleRemoveBibliothequeFilter}
+              deleteIcon={<Close />}
+              sx={{
+                marginTop: '10px',
+                padding: '4px 8px',
+                '& .MuiChip-deleteIcon': {
+                  color: '#1976d2',
+                  '&:hover': {
+                    color: '#0d47a1',
+                  },
+                },
+              }}
+            />
+          </Box>
+        )}
 
         <Stack spacing={3}>
           {paginatedRows.map((person) => (
