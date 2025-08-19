@@ -214,9 +214,9 @@ export default function LocalFooter() {
         alignItems: 'center',
         gap: 2
       }}>
-        <FooterLink to="tel:+15143437111">
+        <FooterLink to="tel:+15143437771">
           <Siren color="#f04e24" size={24} />
-          Urgence UdeM 514 343-7111
+          Urgence UdeM 514 343-7771
         </FooterLink>
       </Box>
     </FooterContainer>
