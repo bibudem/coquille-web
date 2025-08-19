@@ -14,6 +14,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { frFR } from '@mui/x-data-grid/locales';
 import { bibliotheques } from '@/utils/bibliotheques.js';
 
+
 const theme = createTheme(tokens, frFR);
 const ITEMS_PER_PAGE = 8;
 
@@ -115,6 +116,18 @@ export default function RepertoirePersonnel() {
   const [disciplineFilter, setDisciplineFilter] = useState('');
   const [bibliothequeFilter, setBibliothequeFilter] = useState('');
   const [page, setPage] = useState(1);
+
+  // Scroll vers le haut à chaque changement de filtre ou de page
+useEffect(() => {
+  if (typeof window !== 'undefined') {
+    const filtersContainer = document.querySelector('#filters-container');
+    if (filtersContainer) {
+      filtersContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+}, [page, bibliothequeFilter, disciplineFilter, search]);
 
  useEffect(() => {
   if (hash && !isManualFilterChange) {
