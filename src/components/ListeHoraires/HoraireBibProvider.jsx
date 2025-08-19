@@ -1,23 +1,15 @@
-import { useEffect, useMemo, useState, useCallback } from 'react'
+import { useEffect, useMemo, useState, useCallback, useRef } from 'react'
 import useSWR, { preload } from 'swr'
 import { HoraireBibContext } from './HoraireBibContext'
 import { addWeekISODate } from '@/utils/dateTimeUtils'
 import { useSmall } from '@/hooks/use-small'
 import Week from './Week'
 
-// const fetcher = (...args) => {
-//   return fetch(...args).then((res) => res.json())
-// }
-
 const fetcher = async (...args) => {
   const res = await fetch(...args)
-
-  // If the status code is not in the range 200-299,
-  // we still try to parse and throw it.
   if (!res.ok) {
     try {
       const error = new Error('An error occurred while fetching the data.')
-      // Attach extra info to the error object.
       error.info = await res.json()
       error.status = res.status
       throw error
@@ -25,7 +17,6 @@ const fetcher = async (...args) => {
       console.error('Could not create error after fetch:', e)
     }
   }
-
   return res.json()
 }
 
@@ -37,11 +28,23 @@ export default function HoraireBibProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
   const isSmall = useSmall('md')
-  const { data: horairesData, error: horairesDataError, isLoading: horairesDataIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires?debut=${currentWeek}&fin=P7D`, fetcher)
-  const { data: servicesData, error: serviceError, isLoading: serviceIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires/services`, fetcher)
-  const { data: listeBibliothequesData, error: listeBibliothequesError, isLoading: listeBibliothequesIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires/liste`, fetcher)
-  const fetchedWeeks = new Set([currentWeek])
 
+  // Correction: on s'assure d'obtenir le string ISO YYYY-MM-DD pour l'API
+  const weekStart = currentWeek && typeof currentWeek.toDate === 'function'
+    ? currentWeek.toDate().toISOString().slice(0, 10)
+    : String(currentWeek)
+
+  const { data: horairesData, error: horairesDataError, isLoading: horairesDataIsLoading } = useSWR(
+    `https:///api.bib.umontreal.ca/horaires?debut=${weekStart}&fin=P7D`,
+    fetcher
+  )
+  const { data: servicesData, error: serviceError, isLoading: serviceIsLoading } = useSWR(
+    `https:///api.bib.umontreal.ca/horaires/services`, fetcher)
+  const { data: listeBibliothequesData, error: listeBibliothequesError, isLoading: listeBibliothequesIsLoading } = useSWR(
+    `https:///api.bib.umontreal.ca/horaires/liste`, fetcher)
+
+  // Utilise useRef pour persister le cache de semaines.
+  const fetchedWeeksRef = useRef(new Set())
 
   function prevBtnProps() {
     const actualWeek = new Week()
@@ -54,12 +57,11 @@ export default function HoraireBibProvider({ children }) {
   function nextBtnProps() {
     return {
       onClick: () => setCurrentWeek(currentWeek.nextWeek()),
-      // disabled: currentWeek.toDate() <= actualWeek.toDate(),
     }
   }
 
   function getHorairesFor(codeBib) {
-    console.log('[getHorairesFor(%s)] %o (horaires: %o)', codeBib, horaires.horaires[codeBib], horaires.horaires)
+    if (!horaires || !horaires.horaires) return { isNotAvailable: true }
     return horaires.horaires[codeBib] ?? { isNotAvailable: true }
   }
 
@@ -67,56 +69,43 @@ export default function HoraireBibProvider({ children }) {
     if (servicesData) {
       return Object.values(servicesData).sort((service1, service2) => service1.order - service2.order)
     }
+    return []
   }, [servicesData])
+
 
   const horaires = useMemo(() => {
     if (!servicesData || !horairesData || !listeBibliothequesData) {
-      console.log('[%s] No horairesData !! servicesData:', currentWeek, horairesData, servicesData)
-      return
+      // Ne loggue qu'en développement si besoin
+      // console.log('[%s] Données incomplètes', currentWeek)
+      return { horaires: {}, labels: {}, setCurrentWeek }
     }
 
     function parseData(horairesData) {
       const result = {}
-
-      console.log('ici:', horairesData)
       horairesData.evenements?.forEach((horaire) => {
         const { bibliotheque: codeBib, service } = horaire
-
-        if (!Reflect.has(result, codeBib)) {
-          result[codeBib] = {}
-        }
-
-        if (!Reflect.has(result[codeBib], service)) {
-          result[codeBib][service] = []
-        }
-
+        if (!Reflect.has(result, codeBib)) result[codeBib] = {}
+        if (!Reflect.has(result[codeBib], service)) result[codeBib][service] = []
         result[codeBib][service].push(horaire)
       })
-
       Object.keys(listeBibliothequesData).forEach((codeBib) => {
         if (!Reflect.has(result, codeBib)) {
           result[codeBib] = { isNotAvailable: true }
         }
       })
-
       return result
     }
 
-    const { labels } = horairesData
-
-    const parsedData = {
+    const labels = horairesData.labels || {}
+    return {
       horaires: parseData(horairesData),
       labels,
       setCurrentWeek,
     }
-
-    return parsedData
-  }, [horairesData, services])
+  }, [horairesData, servicesData, listeBibliothequesData])
 
   useEffect(() => {
-    if (servicesData) {
-      setServices(servicesData)
-    }
+    if (servicesData) setServices(servicesData)
   }, [servicesData])
 
   useEffect(() => {
@@ -126,7 +115,6 @@ export default function HoraireBibProvider({ children }) {
         days: currentWeek.formatDaysOfWeekHeader(),
         weekDate: currentWeek.toDate(),
       }
-
       setLabels({
         currentWeekTitle,
         daysOfWeekHeaders,
@@ -134,21 +122,25 @@ export default function HoraireBibProvider({ children }) {
     }
   }, [currentWeek, isSmall])
 
+  // Correction: utilise le cache ref, pas un nouveau Set ! 
   useEffect(() => {
     if (currentWeek) {
       const nextWeek = addWeekISODate(currentWeek, 1)
+    // Si c'est un objet Date :
+    const nextWeekIso = nextWeek instanceof Date
+      ? nextWeek.toISOString().slice(0, 10)
+      : String(nextWeek)
 
-      // Le bloc d'horaires de la semaine suivante
-      // est mis en cache pour plus de rapidité
-      if (!fetchedWeeks.has(nextWeek)) {
-        fetchedWeeks.add(nextWeek)
-        preload(`https:///api.bib.umontreal.ca/horaires?debut=${nextWeek}&fin=P7D`, fetcher)
-      }
+    if (!fetchedWeeksRef.current.has(nextWeekIso)) {
+      fetchedWeeksRef.current.add(nextWeekIso)
+      preload(`https:///api.bib.umontreal.ca/horaires?debut=${nextWeekIso}&fin=P7D`, fetcher)
+    }
+
     }
   }, [currentWeek])
 
   useEffect(() => {
-    setIsReady((!!horairesData && !!servicesData) || !!listeBibliothequesData)
+    setIsReady(!!horairesData && !!servicesData && !!listeBibliothequesData)
   }, [horairesData, servicesData, listeBibliothequesData])
 
   useEffect(() => {
@@ -176,18 +168,32 @@ export default function HoraireBibProvider({ children }) {
     }
   }, [listeBibliothequesError])
 
-  // Ajout d’un bouton pour revenir à la date du jour dans la page des horaires
+  // Helper
   const actualWeek = useMemo(() => new Week(), [])
+  const isCurrentWeek = useCallback(() => currentWeek.toString() === actualWeek.toString(), [currentWeek, actualWeek])
+  const resetToToday = () => setCurrentWeek(new Week())
 
-  const isCurrentWeek = useCallback(() => {
-    return currentWeek.toString() === actualWeek.toString()
- }, [currentWeek, actualWeek])
-
-  const resetToToday = () => {
-  setCurrentWeek(new Week()) 
-}
-
-
-
-  return <HoraireBibContext.Provider value={{ ...horaires, error, isLoading, isReady, ...labels, services, prevBtnProps, nextBtnProps, sortedServices, getHorairesFor,isCurrentWeek,resetToToday }}>{children}</HoraireBibContext.Provider>
+  // Correction: sécurité si horaires ou labels sont encore vides
+  return (
+    <HoraireBibContext.Provider
+      value={{
+        horaires: horaires.horaires,
+        labels: horaires.labels,
+        setCurrentWeek,
+        error,
+        isLoading,
+        isReady,
+        services,
+        prevBtnProps,
+        nextBtnProps,
+        sortedServices,
+        getHorairesFor,
+        isCurrentWeek,
+        resetToToday,
+        ...labels,
+      }}
+    >
+      {children}
+    </HoraireBibContext.Provider>
+  )
 }

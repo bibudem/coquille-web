@@ -1,6 +1,8 @@
 import Div from '@/components/utils/Div'
 import LayoutContainer from '@/components/utils/LayoutContainer'
 import codeBibs from 'code-bib'
+import { useLocation } from '@reach/router'
+import { useEffect } from 'react'
 
 // Fonction pour normaliser les chaînes (enlever les accents)
 const normalizeString = (str) => {
@@ -8,6 +10,19 @@ const normalizeString = (str) => {
 }
 
 export default function ListeHorairesContainer({ children, searchTerm = '' }) {
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.hash) {
+      // Petit délai pour s'assurer que tout est rendu
+      setTimeout(() => {
+        const element = document.getElementById(location.hash.substring(1))
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    }
+  }, [location.hash, searchTerm]) 
   return (
     <LayoutContainer>
       <Div

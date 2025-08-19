@@ -15,34 +15,51 @@ export default function BlocHoraireNarrow({ codeBib }) {
   useEffect(() => {
     if (daysOfWeekHeaders && horaires && services && sortedServices) {
       const rows = []
-      const currentHoraires = horaires[codeBib]
+      const currentHoraires = horaires?.[codeBib] // ✅ sécurisation
 
-      if (currentHoraires.isNotAvailable) {
+      // Cas 1: pas d'horaires disponibles du tout
+      if (!currentHoraires) {
         setData(
           <Div>
-            <Title>{services.regulier.label}</Title>
+            <Title>{services?.regulier?.label ?? 'Horaire'}</Title>
             <HoraireNonDisponible />
           </Div>
         )
         return
       }
 
+      // Cas 2: horaires marqués comme non disponibles
+      if (currentHoraires.isNotAvailable) {
+        setData(
+          <Div>
+            <Title>{services?.regulier?.label ?? 'Horaire'}</Title>
+            <HoraireNonDisponible />
+          </Div>
+        )
+        return
+      }
+
+      // Cas 3: horaires normaux
       sortedServices.forEach(({ key, label }) => {
         const serviceHoraires = currentHoraires[key]
         if (serviceHoraires) {
           const serviceRow = []
-          
+
           daysOfWeekHeaders.days.forEach((day, i) => {
             const isActive = day.isoFormated === todayString
             const sommaire = serviceHoraires[i]?.sommaire ?? '-'
-            
+
             serviceRow.push(
-              <Tr 
+              <Tr
                 key={`${key}-${day.isoFormated}`}
-                sx={isActive ? { 
-                  backgroundColor: 'bleu200.main',
-                  fontWeight: 600
-                } : {}}
+                sx={
+                  isActive
+                    ? {
+                        backgroundColor: 'bleu200.main',
+                        fontWeight: 600,
+                      }
+                    : {}
+                }
               >
                 <Th>
                   <time dateTime={day.isoFormated}>{day.formated}</time>
@@ -83,11 +100,7 @@ export default function BlocHoraireNarrow({ codeBib }) {
         gap: '1rem',
       }}
     >
-      {isLoading ? (
-        <Div>Chargement en cours...</Div>
-      ) : (
-        data
-      )}
+      {isLoading ? <Div>Chargement en cours...</Div> : data}
     </Div>
   )
 }
