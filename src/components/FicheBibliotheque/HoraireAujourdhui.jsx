@@ -8,18 +8,15 @@ import Div from '@/components/utils/Div'
 import ConditionalWrapper from '@/components/utils/ConditionalWrapper'
 import { useSmall } from '@/hooks/use-small'
 import Bloc from './Bloc'
+import { getBiblioByCode } from '@/utils/api-horraire-bibliotheques.js' 
 
 const fetcher = (url) => fetch(url).then((r) => r.json())
 
-const Dl = styled('dl')(({ theme }) => ({
+const Dl = styled('dl')(() => ({
   margin: 0,
   display: 'flex',
   flexDirection: 'column',
   gap: '6px',
-  // [theme.breakpoints.up('md')]: {
-  //   fontWeight: 600,
-  //   lineHeight: 1.2,
-  // },
 }))
 
 const Dt = styled('dt')(({ theme }) => ({
@@ -48,29 +45,16 @@ const Dd = styled('dd')(({ theme }) => ({
 function ALink({ href, children }) {
   const isSmall = useSmall('md')
   return isSmall ? (
-    <Button primary href={href}>
-      {children}
-    </Button>
+    <Button primary href={href}>{children}</Button>
   ) : (
-    <Link to={href} Icon>
-      {children}
-    </Link>
+    <Link to={href} Icon>{children}</Link>
   )
 }
 
-/**
- * Renders today's library service hours for a specific library branch
- *
- * @param {Object} props - Component properties
- * @param {string} props.codeBib - The unique identifier for the library branch
- * @returns {React.ReactElement|null} A Bloc component displaying today's service hours or null if no events
- */
 export default function HoraireAujourdhui({ codeBib, ...rest }) {
   const { children } = rest
 
-  if (typeof children === 'boolean' && !children) {
-    return null
-  }
+  if (typeof children === 'boolean' && !children) return null
 
   const { data: services } = useSWR('https://api.bib.umontreal.ca/horaires/services', fetcher)
   const { data, error } = useSWR('https://api.bib.umontreal.ca/horaires/?fin=P1D', fetcher)
@@ -78,35 +62,36 @@ export default function HoraireAujourdhui({ codeBib, ...rest }) {
 
   if (error) {
     console.error(error)
-    return
+    return null
   }
 
   const evenements = useMemo(() => {
     if (data && services) {
       return data?.evenements
         .filter(({ bibliotheque }) => bibliotheque === codeBib)
-        .map(({ service, sommaire }) => ({
-          service: services[service].label,
+        .map(({ service, sommaire, bibliotheque }) => ({
+          service: services[service]?.label || service,
           sommaire,
+          bibliotheque,
         }))
     }
-
     return null
-  }, [data, services])
+  }, [data, services, codeBib])
+
+  const idBibliotheque = evenements?.[0]?.bibliotheque || ''
+
+  // Utilisation de la fonction utilitaire
+  const biblioInfo = getBiblioByCode(idBibliotheque)
 
   return (
     evenements && (
       <Bloc title="Aujourd'hui" Icon={ClockCountdown} flex>
-        {evenements.map(({ service, sommaire }) => (
+        {evenements.map(({ service, sommaire }, i) => (
           <ConditionalWrapper
+            key={i}
             condition={isSmall}
             wrapper={(children) => (
-              <Div
-                sx={{
-                  display: 'flex',
-                  gap: '1em',
-                }}
-              >
+              <Div sx={{ display: 'flex', gap: '1em' }}>
                 <ClockCountdown size={26} color="var(--bib-palette-primary-main)" />
                 {children}
               </Div>
@@ -118,9 +103,13 @@ export default function HoraireAujourdhui({ codeBib, ...rest }) {
             </Dl>
           </ConditionalWrapper>
         ))}
-        <div>
-          <ALink href="/horaires/">Tous les horaires</ALink>
-        </div>
+        {biblioInfo && (
+          <div>
+            <ALink href={`/horaires#${biblioInfo.ancre}`}>
+              Tous les horaires
+            </ALink>
+          </div>
+        )}
         {children}
       </Bloc>
     )

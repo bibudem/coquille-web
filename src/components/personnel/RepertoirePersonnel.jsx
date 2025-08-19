@@ -12,6 +12,7 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import tokens from '../../../plugins/gatsby-plugin-bib-theme/tokens/tokens.js';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { frFR } from '@mui/x-data-grid/locales';
+import { bibliotheques } from '@/utils/bibliotheques.js';
 
 const theme = createTheme(tokens, frFR);
 const ITEMS_PER_PAGE = 8;
@@ -19,6 +20,29 @@ const ITEMS_PER_PAGE = 8;
 function ucfirst(str = '') {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+function normalize(str = '') {
+  return str
+    .toString()
+    .normalize('NFD')                 // décomposer accents
+    .replace(/[\u0300-\u036f]/g, '')  // enlever accents
+    .toLowerCase()
+    .replace(/['’]/g, '')             // enlever apostrophes
+    .replace(/\s+/g, '')              // enlever espaces
+}
+
+// Fonction pour trouver une bibliothèque par ID, titre ou autreTitre
+const findBibliothequeByAnchor = (anchor) => {
+  if (!anchor) return null;
+  
+  const normalizedAnchor = normalize(anchor);
+  
+  return bibliotheques.find(bib => 
+    normalize(bib.id) === normalizedAnchor ||
+    normalize(bib.titre) === normalizedAnchor ||
+    normalize(bib.autreTitre) === normalizedAnchor
+  );
+};
 
 export default function RepertoirePersonnel() {
   const data = useStaticQuery(graphql`
@@ -92,31 +116,35 @@ export default function RepertoirePersonnel() {
   const [bibliothequeFilter, setBibliothequeFilter] = useState('');
   const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    if (hash && !isManualFilterChange) {
-      const findMatchingBibliotheque = (hash) => {
-        return allBibliotheques.find(b => 
-          normalize(b) === normalize(hash) ||
-          b.toLowerCase().includes(hash.toLowerCase()) ||
-          hash.toLowerCase().includes(b.toLowerCase())
-        );
-      };
+ useEffect(() => {
+  if (hash && !isManualFilterChange) {
+    const foundBibliotheque = findBibliothequeByAnchor(hash);
 
-      const matchingBibliotheque = findMatchingBibliotheque(hash);
-      if (matchingBibliotheque) {
-        setBibliothequeFilter(matchingBibliotheque);
+    if (foundBibliotheque) {
+      const existsInData = allBibliotheques.some(bibName => {
+        return (
+          normalize(bibName) === normalize(foundBibliotheque.titre) ||
+          normalize(bibName) === normalize(foundBibliotheque.autreTitre) ||
+          normalize(bibName) === normalize(foundBibliotheque.id)
+        );
+      });
+
+      if (existsInData) {
+        setBibliothequeFilter(foundBibliotheque.titre);
+        return;
       }
     }
-  }, [hash, allBibliotheques, isManualFilterChange]);
 
-  function normalize(str = '') {
-    return str
-      .toString()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .toLowerCase()
-      .replace(/[^a-z0-9]/g, '');
+    // fallback direct si rien trouvé
+    const matchingBibliotheque = allBibliotheques.find(b =>
+      normalize(b) === normalize(hash)
+    );
+    if (matchingBibliotheque) {
+      setBibliothequeFilter(matchingBibliotheque);
+    }
   }
+}, [hash, allBibliotheques, isManualFilterChange]);
+
 
   const handleBibliothequeChange = (e) => {
     setBibliothequeFilter(e.target.value);
@@ -148,13 +176,32 @@ export default function RepertoirePersonnel() {
 
       const matchSearch = normalize(fieldsToSearch).includes(keyword);
       const matchDiscipline = !disciplineFilter || normalize(person.disciplines || '').includes(normalize(disciplineFilter));
-      const matchBibliotheque = !bibliothequeFilter || normalize(person.bibliotheque || '').includes(normalize(bibliothequeFilter));
+      
+      // Filtrage bibliothèque avec support multi-critères
+      const matchBibliotheque = !bibliothequeFilter || 
+        (person.bibliotheque && person.bibliotheque.split(/[;|]/).some(bibName => {
+          const trimmedBibName = bibName.trim();
+          
+          // Vérifier si le nom correspond directement
+          if (normalize(trimmedBibName) === normalize(bibliothequeFilter)) {
+            return true;
+          }
+          
+          // Vérifier si le nom correspond à une bibliothèque de la config
+          const foundBib = findBibliothequeByAnchor(trimmedBibName);
+          if (foundBib && normalize(foundBib.titre) === normalize(bibliothequeFilter)) {
+            return true;
+          }
+          
+          return false;
+        }));
 
       return matchSearch && matchDiscipline && matchBibliotheque;
     });
   }, [search, disciplineFilter, bibliothequeFilter, rawRows]);
 
   const paginatedRows = filteredRows.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
+  
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 4 }, py: 4 }}>
@@ -201,10 +248,7 @@ export default function RepertoirePersonnel() {
             size="small"
             fullWidth
             value={bibliothequeFilter}
-            onChange={(e) => {
-              setBibliothequeFilter(e.target.value)
-              setPage(1)
-            }}
+            onChange={handleBibliothequeChange}
             displayEmpty
             sx={{
               height: '45px',
@@ -288,6 +332,7 @@ export default function RepertoirePersonnel() {
             ))}
           </TextField>
         </Stack>
+        
         {/* Afficher le filtre actif si présent */}
         {bibliothequeFilter && (
           <Box sx={{ mb: 2, display: 'flex', alignItems: 'center' }}>
