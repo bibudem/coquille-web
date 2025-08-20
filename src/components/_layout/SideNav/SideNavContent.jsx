@@ -4,9 +4,7 @@ import { styled } from '@mui/material/styles'
 import Link from '@/components/Link'
 import Close from '@mui/icons-material/Close'
 import noop from '@/utils/noop'
-import { ArrowRightIcon, ArrowUpRightIcon, CalendarPlusIcon, ClockCountdownIcon, LifebuoyIcon, PaperPlaneTiltIcon } from '@phosphor-icons/react'
-import { SofiaIcon } from '@/components/CustomIcons'
-import LogoUdeM from '@/images/logo-udem/logo-udem-blanc.svg'
+import { ArrowRightIcon } from '@phosphor-icons/react'
 import LogoBibUBlanc from '@/images/logo-bib/logo-bib-U-blanc.svg'
 import pages from '../AppBar/menu'
 
@@ -185,6 +183,27 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
             }}
           />
         </Link>
+        
+        {/* Menu principal desktop */}
+        {!isMobile && (
+           <NavList 
+              sx={{ 
+                display: 'flex', 
+                gap: 3,       
+                px: 3  
+              }}
+            >
+              {pages.map((page) => (
+                <NavListItem 
+                  key={page.url} 
+                  href={page.url}
+                >
+                  {page.label}
+                </NavListItem>
+              ))}
+            </NavList>
+
+        )}
         <Box
           sx={{
             display: 'flex',
@@ -216,6 +235,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
                 },
               },
             }}
+             endIcon={<ArrowRightIcon size={28} />}
           >
             Nous joindre
           </Button>
@@ -313,7 +333,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
             <NavHeader>Les bibliothèques</NavHeader>
             <NavList>
               <NavListItem href="/a-propos/notre-organisation/">Notre organisation</NavListItem>
-              <NavListItem href="/a-propos/mission-vision-valeur">Notre mission, notre vision, nos valeurs et nos objectifs</NavListItem>
+              <NavListItem href="/a-propos/mission-vision-valeur">Notre mission, notre vision et nos valeurs</NavListItem>
               <NavListItem href="/a-propos/nos-collections">Nos collections</NavListItem>
               <NavListItem href="/a-propos/politiques-reglement">Nos politiques et règlement</NavListItem>
               <NavListItem href="/a-propos/rapports-annuels">Nos rapports annuels</NavListItem>
