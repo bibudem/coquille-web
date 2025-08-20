@@ -152,7 +152,7 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
       ref={ref}
       sx={{
         width: '100vw',
-        height: '100vh',
+        height: 'auto',
         fontSize: '16px',
         fontFeatureSettings: '"liga" off, "clig" off',
         fontVariantNumeric: 'lining-nums tabular-nums',
@@ -170,16 +170,16 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
       }}
       role="presentation"
     >
-      <SideNavHeaderContainer>
-        <Link to="/" aria-label="Accueil" sx={{ display: 'block' }}>
+      <SideNavHeaderContainer  sx={{ display: 'flex',
+              [theme.breakpoints.down('md')]: {
+                display: 'block',
+              }}}>
+        <Link to="/" aria-label="Accueil">
           <LogoBibUBlanc
             style={{
               width: '170px',
               height: 'auto',
               pointerEvents: 'none',
-              [theme.breakpoints.down('md')]: {
-                width: '90px',
-              },
             }}
           />
         </Link>
@@ -225,15 +225,8 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
               },
               fontSize: '14px',
               [theme.breakpoints.down('md')]: {
-                fontSize: '12px',
-                padding: '6px 12px',
-                '& .MuiButton-endIcon': {
-                  marginLeft: '4px',
-                  '& svg': {
-                    fontSize: '20px',
-                  },
-                },
-              },
+              width: '100%',
+               },
             }}
              endIcon={<ArrowRightIcon size={28} />}
           >
@@ -250,15 +243,8 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
                 backgroundColor: theme.palette.grey[200],
               },
               [theme.breakpoints.down('md')]: {
-                fontSize: '12px',
-                padding: '5px 8px',
-                '& .MuiButton-endIcon': {
-                  marginLeft: '4px',
-                  '& svg': {
-                    fontSize: '12px',
-                  },
-                },
-              },
+              width: '100%',
+               },
             }}
             endIcon={<ArrowRightIcon size={28} />}
           >
@@ -275,6 +261,9 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
                 transform: 'scale(1.1)',
                 transition: 'all 0.2s ease-in-out',
               },
+              [theme.breakpoints.down('md')]: {
+              marginTop: '-7.5rem',
+            },
             }}
           >
             <Close />
