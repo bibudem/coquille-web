@@ -1,5 +1,5 @@
 import { GlobalStyles as MuiGlobalStyles } from '@mui/material'
-import typographyLvl1 from '../tokens/typography-lvl-1.js'
+import typography from '../tokens/typography-bib.js'
 import 'modern-normalize/modern-normalize.css'
 import './header-anchors.css'
 import './pdf-links.css'
@@ -13,7 +13,7 @@ export default function GlobalStyles() {
 
       return {
         header,
-        styles: typographyLvl1[header],
+        styles: typography[header],
       }
     })
     .reduce((headers, { header, styles }) => {

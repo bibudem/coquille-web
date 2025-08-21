@@ -8,15 +8,7 @@ import { isInternalLink } from '@/utils/link'
 
 function Header({ children }) {
   return (
-    <h3
-      style={{
-        margin: 0,
-        padding: 0,
-        fontSize: '2rem',
-        fontWeight: 500,
-        lineHeight: 1.2,
-      }}
-    >
+    <h3>
       {children}
     </h3>
   )
