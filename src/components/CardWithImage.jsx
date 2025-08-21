@@ -1,18 +1,10 @@
-import { CardMedia, styled, useTheme } from '@mui/material'
+import { CardMedia, styled, Typography, useTheme } from '@mui/material'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardActionArea from '@mui/material/CardActionArea'
 import Grid from '@mui/material/Grid2'
 import { useIsExternal } from '@/hooks/use-is-external'
 import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
-
-const Title = styled('div')({
-  flexGrow: 1,
-  fontFamily: 'Lora',
-  fontSize: '1.875rem',
-  fontWeight: 400,
-  lineHeight: 1.2,
-})
 
 /**
  * CardWithImage component that renders a card with a banner image, title, icon, and link.
@@ -90,7 +82,7 @@ export default function CardWithImage({ title, Image, href, moreText = 'En savoi
             padding: '2rem',
           }}
         >
-          <Title>{title}</Title>
+          <Typography component='h4' variant='h4'>{title}</Typography>
           <Grid
             container
             sx={{

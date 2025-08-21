@@ -89,6 +89,12 @@ export default function CardWithIcon({ title, Icon, color = 'bleuPrincipal', mor
       iconColor: '#f04e2488',
       linkIconColor: theme.palette.rougeOrange.main,
     },
+    jaune: { //quick fix, à rajouter par la suite dans la palette. Emir
+      bg: '#ffca40', 
+      hoverBg: '#ffdb81',
+      iconColor: '#BC8800',
+      linkIconColor: '#000',
+},
   }
 
   if (typeof title === 'undefined') {

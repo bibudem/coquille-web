@@ -1,5 +1,5 @@
 import { ListItemIcon, ListItemText as MuiListItemText, MenuItem, MenuList, Paper, useScrollTrigger, useTheme, IconButton, Box, useMediaQuery } from '@mui/material'
-import { CalendarPlus, Chats, ClockCountdown, Lifebuoy } from '@phosphor-icons/react'
+import { CalendarBlank, Chats, ClockCountdown, Wrench } from '@phosphor-icons/react'
 import Div from '@/components/utils/Div'
 import { SofiaIcon } from '@/components/CustomIcons'
 import Link from '@/components/Link'
@@ -110,15 +110,15 @@ export function QuickLinks() {
           </MenuItem>
           <MenuItem component={Link} to="https://calendrier.bib.umontreal.ca/r" target="_blank"  rel="noopener noreferrer">
             <ListItemIcon>
-              <CalendarPlus color="#fff" size={24} />
+              <CalendarBlank color="#fff" size={24} />
             </ListItemIcon>
             <ListItemText trigger={trigger}>Réserver une salle</ListItemText>
           </MenuItem>
           <MenuItem component={Link} to="https://studio.bib.umontreal.ca/informatique/" target="_blank"  rel="noopener noreferrer">
             <ListItemIcon>
-              <Lifebuoy color="#fff" size={24} />
+              <Wrench color="#fff" size={24} />
             </ListItemIcon>
-            <ListItemText trigger={trigger}>Soutien informatique</ListItemText>
+            <ListItemText trigger={trigger}>Ressources informatiques</ListItemText>
           </MenuItem>
           <MenuItem component={Link} to="#" onClick={handleChatClick}>
             <ListItemIcon>
@@ -187,10 +187,10 @@ export function QuickLinksSm() {
           <ClockCountdown color="#fff" size={40} />
         </IconButton>
         <IconButton component={Link} to="https://calendrier.bib.umontreal.ca/r" aria-label="Réserver une salle">
-          <CalendarPlus color="#fff" size={40} />
+          <CalendarBlank color="#fff" size={40} />
         </IconButton>
-        <IconButton component={Link} to="https://studio.bib.umontreal.ca/informatique/" aria-label="Soutien informatique">
-          <Lifebuoy color="#fff" size={40} />
+        <IconButton component={Link} to="https://studio.bib.umontreal.ca/informatique/" aria-label="Ressources informatiques">
+          <Wrench color="#fff" size={40} />
         </IconButton>
         <IconButton component={Link} to="#" onClick={handleChatClick} aria-label="Clavarder">
           <Chats color="#fff" size={40} />

@@ -1,6 +1,6 @@
 import { extendTheme, responsiveFontSizes } from '@mui/material/styles'
 import { darken, lighten, getContrastRatio } from '@mui/material/styles'
-import typography from './typography-lvl-1'
+import typography from './typography-bib'
 
 //
 // Couleur principale

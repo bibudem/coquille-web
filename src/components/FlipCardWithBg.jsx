@@ -63,7 +63,7 @@ const TitleContainer = styled('div')(({ theme }) => ({
   },
 }))
 
-const StyledTitle = styled('h3')(({ theme }) => ({
+const StyledTitle = styled('h4')(({ theme }) => ({
   margin: 0,
   transition: `all ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
   '@media (prefers-reduced-motion: reduce)': {
