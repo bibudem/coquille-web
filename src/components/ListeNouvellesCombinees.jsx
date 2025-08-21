@@ -23,19 +23,19 @@ import { ArrowUpRightCircleIcon, ArrowRightCircleIcon } from '@/components/Custo
 
 // Composants mémoïsés
 const Header = React.memo(({ children }) => (
-  <Typography variant="h1" sx={{ fontSize: '2.5rem', fontWeight: 500, lineHeight: 1.2 }}>
+  <Typography component='h2'variant="h2" >
     {children}
   </Typography>
 ))
 
 const Title = React.memo(({ children }) => (
-  <Typography variant="h3" sx={{ fontSize: '1.7778rem', fontWeight: 500, lineHeight: 1.2 }}>
+  <Typography variant="h4">
     {children}
   </Typography>
 ))
 
 const Excerpt = React.memo(({ children }) => (
-  <Typography variant="body1" sx={{ fontSize: '0.8889rem', lineHeight: 1.2, letterSpacing: '0.16px' }}>
+  <Typography variant="body1">
     {children}
   </Typography>
 ))

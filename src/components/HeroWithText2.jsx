@@ -41,10 +41,6 @@ export default function HeroWithText2({ leftColl, rightColl, leftFooter, rightFo
         sx={{
           alignItems: 'center',
           '.MuiTypography-h2, .MuiTypography-h3': {
-            fontFamily: 'Figtree',
-            fontSize: '3.8125rem',
-            fontWeight: 400,
-            lineHeight: 1.2,
             marginBottom: '2rem',
           },
           ...sx,

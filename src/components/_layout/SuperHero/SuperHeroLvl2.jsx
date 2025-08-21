@@ -125,12 +125,8 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
               }}
             >
               <Typography
-                component="div"
-                sx={{
-                  fontSize: '61px',
-                  wordBreak: 'break-word',
-                  lineHeight: 1,
-                }}
+                component="h1"
+                variant="textWhite"
               >
                 {title}
               </Typography>

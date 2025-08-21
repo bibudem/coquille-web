@@ -75,13 +75,6 @@ export default function HeroWithImage({ align = 'left', footer, Image, ...rest }
         gap={{ xs: '2rem', md: 0 }}
         sx={{
           alignItems: 'center',
-          '.MuiTypography-h2, .MuiTypography-h3': {
-            fontFamily: 'Figtree',
-            fontSize: '3.8125rem',
-            fontWeight: 400,
-            lineHeight: 1.2,
-            marginBottom: '2rem',
-          },
           ...sx,
         }}
         {...rest}

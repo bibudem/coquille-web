@@ -27,24 +27,36 @@ export function WidgetClavardage() {
   );
 }
 
-# Clavardez avec un membre de l'équipe
+## Clavardez avec un membre de l'équipe
 
-
-
-<div style={{ display: 'flex', gap: '4rem' }}>
-  <div style={{ flex: 2 }}>
+<Grid container spacing={4} alignItems="flex-start">
+  {/* Zone clavardage */}
+  <Grid item xs={12} md={8} lg={8} xl={9}>
     <WidgetClavardage />
-  </div>
-  <div style={{ flex: 1 }}>
-    <h2>Horaire</h2>
-    <p>Aide et référence</p>
-    <ul>
-      <li>Lundi au vendredi : 9 h à 17 h</li>
-    </ul>
-    <p>Soutien informatique</p>
-    <ul>
-      <li>Lundi au vendredi : 9 h à 17 h </li>
-    </ul>
-    <p>(selon la disponibilité des techniciens)</p>
-  </div>
-</div>
+  </Grid>
+
+  {/* Zone horaire */}
+  <Grid item xs={12} md={4} lg={4} xl={3}>
+    <Box sx={{marginTop:'-1rem'}}>
+      <h4>Horaire</h4>
+      <p>Aide et référence</p>
+      <ul>
+        <li>Lundi au vendredi 9h-22h</li>
+        <li>Samedi et dimanche 11h-17h</li>
+      </ul>
+
+      <Alert severity="info" sx={{ mt: 2 }}>
+        <strong>Horaire spécial :</strong><br />
+        Lundi 1er septembre – Fête du travail : Fermé<br />
+        Mardi 30 septembre – Journée nationale de la vérité et de la réconciliation : 9h-17h<br />
+        Lundi 13 octobre – Action de grâce : 9h-17h
+      </Alert>
+
+      <p>Soutien informatique</p>
+      <ul>
+        <li>Lundi au vendredi : 9 h à 17 h</li>
+      </ul>
+      <p>(selon la disponibilité des techniciens)</p>
+    </Box>
+  </Grid>
+</Grid>

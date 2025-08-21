@@ -322,13 +322,13 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
             <NavHeader>Les bibliothèques</NavHeader>
             <NavList>
               <NavListItem href="/a-propos/notre-organisation/">Notre organisation</NavListItem>
-              <NavListItem href="/a-propos/mission-vision-valeur">Notre mission, notre vision et nos valeurs</NavListItem>
-              <NavListItem href="/a-propos/nos-collections">Nos collections</NavListItem>
-              <NavListItem href="/a-propos/politiques-reglement">Nos politiques et règlement</NavListItem>
-              <NavListItem href="/a-propos/rapports-annuels">Nos rapports annuels</NavListItem>
+              <NavListItem href="/a-propos/mission-vision-valeur">Mission, vision et valeurs</NavListItem>
+              <NavListItem href="/a-propos/nos-collections">Collections</NavListItem>
+              <NavListItem href="/a-propos/politiques-reglement">Politiques et réglement</NavListItem>
+              <NavListItem href="/a-propos/rapports-annuels">Rapports annuels</NavListItem>
               <NavListItem href="/nouvelles/">Nouvelles</NavListItem>
               <NavListItem href="/a-propos/carriere">Carrière</NavListItem>
-              <NavListItem href="/horaires">Nos heures d'ouverture</NavListItem>
+              <NavListItem href="/horaires">Heures d'ouverture</NavListItem>
               <NavListItem href="/nous-joindre/">Nous joindre</NavListItem>
 
 
@@ -360,38 +360,13 @@ export default forwardRef(function SideNavContent({ close = noop, onClose = noop
               <NavListItem href="/obtenir/peb/">Prêt entre bibliothèques</NavListItem>
               <NavListItem href="/obtenir/frais-avis">Frais et avis de retard</NavListItem>
               <NavListItem href="/nous-joindre/suggestion-achat/">Suggestion d'achat</NavListItem>
-              <NavListItem href="/service-accessibilite/">Service accessibilité</NavListItem>
+              <NavListItem href="/service-accessibilite/">Service Accessibilité</NavListItem>
             </NavList>
           </Nav>
 
 
         </Box>
       </Box>
-
-      {isMobile && (
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: 1,
-            padding: 2,
-            backgroundColor: theme.palette.bleuFonce.main,
-          }}
-        >
-          {[0, 1, 2, 3].map((_, index) => (
-            <Box
-              key={index}
-              sx={{
-                width: 10,
-                height: 10,
-                borderRadius: '50%',
-                backgroundColor: activeIndex === index ? theme.palette.common.white : 'rgba(255, 255, 255, 0.5)',
-                transition: 'all 0.3s ease',
-              }}
-            />
-          ))}
-        </Box>
-      )}
     </Box>
   )
 })

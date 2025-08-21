@@ -14,16 +14,7 @@ function fetcher(...args) {
 function Title({ children }) {
   const theme = useTheme()
   return (
-    <Typography
-      variant='h3'
-      sx={(theme) => ({
-        fontFamily: 'Lora',
-        [theme.breakpoints.down('sm')]: {
-          fontSize: '1.25rem',
-          lineHeight: 1.2,
-        },
-      })}
-    >
+    <Typography  component='h4' variant='h4'>
       {children}
     </Typography>
   );
