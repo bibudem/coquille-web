@@ -125,7 +125,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
               }}
             >
               <Typography
-                component="h1"
+                component="h3"
                 variant="textWhite"
               >
                 {title}
