@@ -7,12 +7,14 @@ import Section from '@/components/Section'
 import { appBarHeight } from '@/components/_layout/AppBar/TopAppBar'
 import { SuperHeroContext } from '@/components/_layout/SuperHero/SuperHeroContext'
 import { useSmall } from '@/hooks/use-small'
+import zIndex from '@mui/material/styles/zIndex'
 
 export const inlineOffset = '3.75rem'
 
 const boxSize = {
   height: '95vh',
   width: '100%',
+  zIndex: '1'
 }
 
 const mobileBoxSize = {
@@ -139,7 +141,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
         <div
           style={{
             width: '100%',
-            height: `calc(${isSmall ? mobileBoxSize.height : boxSize.height} - 150px)`,
+            height: `calc(${isSmall ? mobileBoxSize.height : boxSize.height} - 5rem)`,
           }}
         />
       </SuperHeroContext.Provider>

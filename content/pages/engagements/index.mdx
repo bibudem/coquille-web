@@ -8,17 +8,13 @@ import SuperHero from '@/components/SuperHero'
 import empreinte from '../images/empreinte.webp'
 import GridOffset from '@/components/utils/GridOffset'
 
-<Box sx={{
-  width: '100%',
-  overflowX: 'hidden',
-  maxWidth: '100vw'
-}}>
+<Box>
 <SuperHero
   title="Pour un monde équitable et durable"
   imageName="engagements"
 />
 
-<Section>
+<Section bg='bleu100'>
 <Carousel1
     title={<Typography component="h2" variant="h2">La science ouverte, notre conviction</Typography>}
     description={
@@ -64,7 +60,7 @@ import GridOffset from '@/components/utils/GridOffset'
 
   </Carousel1>
 </Section>
-<Section>
+<Section >
 
 <Typography component="h2" variant="h2">Soutien à la publication et à l’édition savante en libre accès</Typography>
 
@@ -272,7 +268,7 @@ import GridOffset from '@/components/utils/GridOffset'
   </GridOffset>
 </Section>
 
-<Section>
+<Section bg='bleu100'>
 <Carousel1
     title={<Typography component="h2" variant="h2">La science en français, notre singularité</Typography>}
     description={

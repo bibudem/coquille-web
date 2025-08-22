@@ -34,11 +34,7 @@ import realiteVirtuelle from '../images/realite-virtuelle.webp'
 import artTextile from '../images/art-textile.webp'
 import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
 
-<Box sx={{
-  width: '100%',
-  overflowX: 'hidden',
-  maxWidth: '100vw'
-}}>
+<Box>
 
 <SuperHero
   title="De l'espace pour réfléchir, découvrir et s'enrichir"
@@ -288,21 +284,14 @@ import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
     container
     spacing={2}
     sx={{
-      paddingTop:'338px',
-      paddingBottom: '185px',
+      paddingTop:'3rem',
+      paddingBottom: '3rem',
     }}>
     <Grid size={{xs:12, md:6}} offset={{md:6}}>
 
     <Typography
       component='h2'
-      variant='h2' 
-      sx={{
-        fontFamily:'Figtree',
-        fontWeight:400,
-        lineHeight:1.2,
-        fontSize:'3.8125rem!important',
-        marginBottom:'2rem',
-      }}
+      variant='h2'
     >Votre zone de confort</Typography>
 
     Rien de mieux par moments que de retrouver ses repères dans un lieu familier et accueillant. Nos nombreux espaces de détente sont là pour vous accueillir, le temps d’un souffle ou d’une sieste. Faites comme chez vous!
@@ -315,7 +304,7 @@ import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
 <Section bg="bleu100">
 
 <Carousel1
-    title={<Typography component="h2" variant="h2Carousel" id="travail-actif">Un esprit sain dans un corps sain</Typography>}
+    title={<Typography component="h2" variant="h2" id="travail-actif">Un esprit sain dans un corps sain</Typography>}
     description="Étudier sans y laisser la forme, c’est tout un défi! Pour vous aider, nous vous proposons une panoplie de vélos-pupitres, chaise-ballons, planches d’équilibre, tables à hauteur ajustable. Faites de l’exercice tout en musclant votre cerveau!"
   >
    <FlipCardWithImage
@@ -411,7 +400,7 @@ import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
   >
 
   <Grid container spacing=".62rem" sx={{margin:'0 0 4rem'}}>
-   <Typography component="h2" variant="display3">L’art d’être à l’avant-garde</Typography>
+   <Typography component="h2" variant="h2">L’art d’être à l’avant-garde</Typography>
     <Typography>La création vous passionne? Bienvenue aux avant-gardistes! Impression 3D, réalité virtuelle, programmation informatique, broderie numérique, voilà tout l’éventail de nouvelles technologies que nous mettons au service de votre inventivité. Profitez-en!</Typography>
     <Grid>
       <CardWithImage
@@ -456,7 +445,7 @@ import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
   </Grid>
 
 <Grid container spacing=".62rem" sx={{margin:'0 0 4rem'}}>
-<Typography component="h2" variant="display3">Entrez dans le monde du multimédia</Typography>
+<Typography component="h2" variant="h2">Entrez dans le monde du multimédia</Typography>
 <Typography>Qu’il s’agisse d’enregistrement audio, d’édition numérique, de montage vidéo ou de visualisation de données, nos studios vous ouvrent les portes d’un univers numérique en pleine expansion!</Typography>
     <Grid>
       <CardWithImage
@@ -511,7 +500,7 @@ import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
 
 <Section>
 
-<Typography component="h2" variant="display2" id="liste-bibliotheques">On aime la visite!</Typography>
+<Typography component="h2" variant="h2" id="liste-bibliotheques">On aime la visite!</Typography>
 
   Découvrez ici les différents points de service du réseau des bibliothèques de l’UdeM. De la Montagne à Laval, en passant par la Rive-Sud et le MIL, il y a du choix!
 
