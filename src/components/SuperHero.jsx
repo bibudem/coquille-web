@@ -11,12 +11,12 @@ import { useSmall } from '@/hooks/use-small'
 export const inlineOffset = '3.75rem'
 
 const boxSize = {
-  height: '49.75rem',
+  height: '95vh',
   width: '100%',
 }
 
 const mobileBoxSize = {
-  height: '30rem', // Hauteur réduite pour mobile
+  height: '85vh', // Hauteur réduite pour mobile
   width: '100%',
 }
 
@@ -139,7 +139,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
         <div
           style={{
             width: '100%',
-            height: `calc(${isSmall ? mobileBoxSize.height : boxSize.height} - ${appBarHeight})`,
+            height: `calc(${isSmall ? mobileBoxSize.height : boxSize.height} - 5rem)`,
           }}
         />
       </SuperHeroContext.Provider>

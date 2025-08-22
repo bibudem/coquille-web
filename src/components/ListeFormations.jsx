@@ -90,15 +90,6 @@ function ListeFormationsContainer({ children, sx }) {
 function ListeFormationsItem({ imageVedette, upper, title, lower, url, ...props }) {
   const theme = useTheme()
   
-  const imageVedetteSize = {
-    width: 150,
-    height: 'auto',
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
-      height: 'auto',
-    },
-  };
-
   return (
     <ListItem {...props} alignItems="flex-start" disableGutters>
       <ListItemButton
@@ -129,12 +120,14 @@ function ListeFormationsItem({ imageVedette, upper, title, lower, url, ...props 
           <Grid
             size="auto"
             sx={(theme) => ({
-              width: imageVedetteSize.width,
+              width: 150,
               [theme.breakpoints.down('sm')]: {
                 width: '100%',
-                img: {
+                '& img': {
                   width: '100%',
                   height: 'auto',
+                  maxHeight: '200px', 
+                  objectFit: 'cover', 
                   display: 'block',
                 },
               },
@@ -217,6 +210,7 @@ function ListeFormationsItem({ imageVedette, upper, title, lower, url, ...props 
  *   moreText="Toutes nos formations"
  *   moreLink="https://example.com/formations"
  * />
+
  */
 
 export default function ListeFormations({ id, service = 'https://api.bib.umontreal.ca/formations/', limit = 4, moreText = 'Voir plus de formations', moreLink, ...props }) {
@@ -250,22 +244,33 @@ export default function ListeFormations({ id, service = 'https://api.bib.umontre
   if (error) return <></>
 
   if (isValidating) {
-    const imageVedetteSize = {
-      width: 150,
-      height: 'auto',
-      [theme.breakpoints.down('sm')]: {
-        width: '100%',
-        height: 'auto',
-      },
-    };
-
     return (
       <ListeFormationsContainer>
         <List>
           {Array(limit)
             .fill()
             .map((_, i) => (
-              <ListeFormationsItem key={i} imageVedette={<Skeleton variant="rectangular" {...imageVedetteSize} sx={{ borderRadius: theme.shape.corner.small, display: 'block' }} />} upper={<Skeleton sx={{ fontSize: '0.875rem', lineHeight: 1.2 }} width={115} />} title={<Skeleton sx={{ fontSize: '2rem' }} />} lower={<Skeleton sx={{ fontSize: '0.875rem', lineHeight: 1.2 }} width={175} />} />
+              <ListeFormationsItem 
+                key={i} 
+                imageVedette={
+                  <Skeleton 
+                    variant="rectangular" 
+                    width={150} 
+                    height={100}
+                    sx={{ 
+                      borderRadius: theme.shape.corner.small, 
+                      display: 'block',
+                      [theme.breakpoints.down('sm')]: {
+                        width: '100%',
+                        height: 200,
+                      },
+                    }} 
+                  />
+                } 
+                upper={<Skeleton sx={{ fontSize: '0.875rem', lineHeight: 1.2 }} width={115} />} 
+                title={<Skeleton sx={{ fontSize: '2rem' }} />} 
+                lower={<Skeleton sx={{ fontSize: '0.875rem', lineHeight: 1.2 }} width={175} />} 
+              />
             ))}
         </List>
       </ListeFormationsContainer>
@@ -290,7 +295,7 @@ export default function ListeFormations({ id, service = 'https://api.bib.umontre
                 alt=""
                 style={{
                   width: '100%',
-                  height: 'auto',
+                  height: '150px',
                   borderRadius: theme.shape.corner.small,
                   display: 'block',
                 }}
