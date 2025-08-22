@@ -34,6 +34,9 @@ export default function PageTemplate({ pageContext, children, data, location }) 
   const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
   const [lvl, setLvl] = useState(getCurrentPageLevel(location))
 
+  // Déterminer si on est sur la page d'accueil
+  const isHomePage = location.pathname === '/' || location.pathname === '' ;
+
   const { superHero } = pageContext.frontmatter
 
   useEffect(() => {
@@ -59,9 +62,12 @@ export default function PageTemplate({ pageContext, children, data, location }) 
       {hasSecondaryNav && <Breadcrumbs crumbs={crumbs} location={location} />}
       <Box id="main-content" component="main" role="main" sx={{ '& > :first-child': { marginTop: 0, paddingTop: 0 } }}>
         {children}
-        <ConditionalWrapper condition={lvl < 2} wrapper={(children) => <LayoutContainer>{children}</LayoutContainer>}>
-          <RetroactionUsager />
-        </ConditionalWrapper>
+        {/* Condition pour afficher RetroactionUsager seulement si pas sur la page d'accueil */}
+        {!isHomePage && (
+          <ConditionalWrapper condition={lvl < 2} wrapper={(children) => <LayoutContainer>{children}</LayoutContainer>}>
+            <RetroactionUsager />
+          </ConditionalWrapper>
+        )}
       </Box>
     </>
   )

@@ -7,7 +7,6 @@ const FooterRoot = styled('footer', {
   name: 'BibFooter',
   slot: 'root',
 })({
-  paddingTop: 100,
   fontSize: '1rem',
 })
 

@@ -7,18 +7,21 @@ import Section from '@/components/Section'
 import { appBarHeight } from '@/components/_layout/AppBar/TopAppBar'
 import { SuperHeroContext } from '@/components/_layout/SuperHero/SuperHeroContext'
 import { useSmall } from '@/hooks/use-small'
+import zIndex from '@mui/material/styles/zIndex'
 
 export const inlineOffset = '3.75rem'
 
 const boxSize = {
-  height: '49.75rem',
+  height: '95vh',
   width: '100%',
+  zIndex: '1'
 }
 
 const mobileBoxSize = {
-  height: '30rem', // Hauteur réduite pour mobile
+  height: '85vh', // Hauteur réduite pour mobile
   width: '100%',
-}
+};
+
 
 /**
  * A full-width hero section component with background image and text overlay
@@ -66,8 +69,8 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
     setContextData(
       isSmall
         ? {
-            inlineOffset: '1.5rem', // Réduit le padding sur mobile
-            bottomOffset: '1.5rem', // Réduit le padding sur mobile
+            inlineOffset: '1.5rem', 
+            bottomOffset: '1.5rem', 
           }
         : {
             inlineOffset,
@@ -139,7 +142,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
         <div
           style={{
             width: '100%',
-            height: `calc(${isSmall ? mobileBoxSize.height : boxSize.height} - ${appBarHeight})`,
+            height: `calc(${isSmall ? mobileBoxSize.height : boxSize.height} - ${isSmall ? '5rem' : '8rem'})`,
           }}
         />
       </SuperHeroContext.Provider>

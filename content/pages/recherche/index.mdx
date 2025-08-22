@@ -10,11 +10,7 @@ import CommentIcon from '@mui/icons-material/Comment'
 import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
 import { UserFocusIcon, CubeTransparentIcon, LaptopIcon, DownloadSimpleIcon, PlugsIcon, MagnifyingGlassIcon, PencilSimpleIcon, TextAlignJustifyIcon, BinocularsIcon, TreasureChestIcon, GraphIcon, ArticleIcon, CheckSquareOffsetIcon, ShareNetworkIcon, HandshakeIcon, RepeatIcon, CompassRoseIcon, ChatTeardropTextIcon, CheckCircleIcon, PathIcon, PlantIcon } from '@phosphor-icons/react'
 
-<Box sx={{
-  width: '100%',
-  overflowX: 'hidden',
-  maxWidth: '100vw'
-}}>
+<Box>
 <SuperHero
   title="Amplifier l’impact de vos recherches"
   imageName='recherche'
@@ -35,7 +31,7 @@ import { UserFocusIcon, CubeTransparentIcon, LaptopIcon, DownloadSimpleIcon, Plu
   </HeroWithImage>
 </Section>
 
-<Section>
+<Section bg='bleu100'>
 <Typography component="h2" variant="h2">Diffusez et faites rayonner vos connaissances scientifiques</Typography> 
 <RichList>
     <RichListItemWithLink
@@ -53,7 +49,7 @@ import { UserFocusIcon, CubeTransparentIcon, LaptopIcon, DownloadSimpleIcon, Plu
 </Section>
 
 
-<Section bg='rose300'>
+<Section>
   <Carousel1
     title={<Typography component="h2" variant="h2">La science ouverte et le libre accès, une culture institutionnelle</Typography>}
     description="Nous sommes activement engagées dans le projet de la science ouverte, qui vise à démocratiser l’accès à la science tout en favorisant la réutilisation des savoirs: libre accès, données ouvertes, logiciels ouverts, science citoyenne, etc. "
