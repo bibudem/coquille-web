@@ -75,6 +75,7 @@ export default function LocalFooter() {
         <Typography variant="h4" sx={{
           px: { xs: 3, md: 8 },
           mb: 4,
+          paddingTop: 1,
           fontSize: { xs: '1.25rem', md: '1.5rem' },
           textAlign: { xs: 'center', md: 'left' }
         }}>

@@ -72,7 +72,7 @@ export default function HeroWithImage({ align = 'left', footer, Image, ...rest }
         container
         spacing={0}
         direction={{ xs: 'column', md: 'row' }}
-        gap={{ xs: '2rem', md: 0 }}
+        gap={{ xs: '2.5rem', md: 0 }}
         sx={{
           alignItems: 'center',
           ...sx,
