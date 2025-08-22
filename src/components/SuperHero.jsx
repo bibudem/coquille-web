@@ -139,7 +139,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
         <div
           style={{
             width: '100%',
-            height: `calc(${isSmall ? mobileBoxSize.height : boxSize.height} - 5rem)`,
+            height: `calc(${isSmall ? mobileBoxSize.height : boxSize.height} - 150px)`,
           }}
         />
       </SuperHeroContext.Provider>
