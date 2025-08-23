@@ -47,6 +47,22 @@ export default function PageTemplate({ pageContext, children, data, location }) 
     setHasSecondaryNav(lvl > 1)
   }, [lvl])
 
+  useEffect(() => {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    udem-urgence a.title div {
+      padding-left: 1rem !important;
+    }
+  `;
+  document.head.appendChild(style);
+
+  return () => {
+    if (document.head.contains(style)) {
+      document.head.removeChild(style);
+    }
+  };
+}, []);
+
   if (typeof window !== 'undefined') {
     window.bib = window.bib || {}
     window.bib.theme = theme
@@ -84,7 +100,12 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         <SkipTo href="#main-content">Aller au contenu</SkipTo>
 
-        <udem-urgence />
+        <udem-urgence
+          style={{
+            position: 'relative',
+            zIndex: theme.zIndex.appBar + 1,
+          }}
+        />
 
         {lvl < 2 && (
           <bib-avis
