@@ -47,21 +47,32 @@ export default function PageTemplate({ pageContext, children, data, location }) 
     setHasSecondaryNav(lvl > 1)
   }, [lvl])
 
-  useEffect(() => {
-  const style = document.createElement('style');
-  style.innerHTML = `
-    udem-urgence a.title div {
-      padding-left: 1rem !important;
-    }
-  `;
-  document.head.appendChild(style);
-
-  return () => {
-    if (document.head.contains(style)) {
-      document.head.removeChild(style);
-    }
+// Applique un décalage de marge sur les éléments "a.title" du composant <udem-urgence>.
+// Compatible avec le DOM classique et les Shadow DOM ouverts.
+// Utilise MutationObserver pour réappliquer le style si le contenu est réinséré dynamiquement.
+useEffect(() => {
+  if (typeof window === 'undefined') return;
+  const applyShift = () => {
+    document.querySelectorAll('udem-urgence').forEach((host) => {
+      const roots = [host, host.shadowRoot].filter(Boolean); // light DOM + Shadow DOM (open)
+      roots.forEach((root) => {
+        const el = root.querySelector('a.title div, a.title');
+        if (el) {
+          el.style.display = 'inline-block';
+          el.style.setProperty('margin-left', '9rem', 'important');
+          el.style.setProperty('font-size', '15px', 'important');
+        }
+      });
+    });
   };
+
+  applyShift();
+  const obs = new MutationObserver(applyShift);
+  obs.observe(document.documentElement, { childList: true, subtree: true });
+
+  return () => obs.disconnect();
 }, []);
+//fin du style injecté a udem-urgence
 
   if (typeof window !== 'undefined') {
     window.bib = window.bib || {}
