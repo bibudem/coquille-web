@@ -141,10 +141,14 @@ function ListeFormationsItem({ imageVedette, upper, title, lower, url, ...props 
             direction="column"
             spacing={0}
             sx={{
-              justifyContent: 'space-between',
+              flex: 1,
+              minWidth: 0,
+              justifyContent: 'flex-start',
+              '& > *:not(:last-child)': {
+                marginBottom: '.5rem',
+              },
               [theme.breakpoints.down('sm')]: {
-                gap: '.5rem',
-                padding: '0.75rem',
+                width: '100%',
               },
             }}
           >
@@ -152,6 +156,7 @@ function ListeFormationsItem({ imageVedette, upper, title, lower, url, ...props 
             <Grid>{title}</Grid>
             <Grid>{lower}</Grid>
           </Grid>
+
           {/* Nouveau Grid pour l'icône positionnée à droite au milieu */}
           <Grid
             size="auto"
@@ -295,9 +300,11 @@ export default function ListeFormations({ id, service = 'https://api.bib.umontre
                 alt=""
                 style={{
                   width: '100%',
-                  height: '150px',
-                  borderRadius: theme.shape.corner.small,
+                  height: 'auto',
+                  maxHeight: '160px',
+                  objectFit: 'cover',
                   display: 'block',
+                  borderRadius: theme.shape.corner.small,
                 }}
               />
             }
