@@ -27,13 +27,13 @@ const ElegantCard = styled(Card)(({ theme, bgcolor }) => ({
   // Pour écrans petits : réduction fixe en rem
   [theme.breakpoints.down('sm')]: {
     width: '18rem',
-    height: '20rem',
+    height: '20.5rem',
   },
 
   // Pour écrans très petits : encore plus petit
   [theme.breakpoints.down('xs')]: {
     width: '14rem',
-    height: '16rem',
+    height: '16.5rem',
   }
 }))
 
@@ -44,7 +44,7 @@ const CardContainer = styled(Box)({
   outline: 'none',
 })
 
-const TitleContainer = styled('div')(({ theme }) => ({
+const TitleContainer = styled('h4')(({ theme }) => ({
   position: 'absolute',
   bottom: theme.spacing(3),
   left: theme.spacing(3),
@@ -54,7 +54,7 @@ const TitleContainer = styled('div')(({ theme }) => ({
   opacity: 1,
   transform: 'translateY(0)',
   '&.hovered': {
-    top: theme.spacing(3),
+    top: '0',
     bottom: 'auto',
     transform: 'translateY(0)',
   },
@@ -64,7 +64,6 @@ const TitleContainer = styled('div')(({ theme }) => ({
 }))
 
 const StyledTitle = styled('h4')(({ theme }) => ({
-  margin: 0,
   transition: `all ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
   '@media (prefers-reduced-motion: reduce)': {
     transition: 'none',
@@ -93,8 +92,10 @@ const DescriptionContainer = styled(Box)(({ theme }) => ({
   bottom: theme.spacing(3),
   left: theme.spacing(3),
   right: theme.spacing(3),
-  maxHeight: '65%',
+  maxHeight: '52%',
   overflowY: 'auto',
+  fontSize: '1rem',
+  fontWeight: '350',
   zIndex: 2,
   opacity: 0,
   transform: 'translateY(10px)',

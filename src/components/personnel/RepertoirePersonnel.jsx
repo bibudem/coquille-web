@@ -96,21 +96,23 @@ export default function RepertoirePersonnel() {
   const [hash, setHash] = useState('');
   const [isManualFilterChange, setIsManualFilterChange] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const handleHashChange = () => {
-        const decodedHash = decodeURIComponent(window.location.hash.substring(1));
-        setHash(decodedHash);
-        setIsManualFilterChange(false);
-      };
+ useEffect(() => {
+  if (typeof window !== 'undefined') {
+    const handleHashChange = () => {
+      const decodedHash = decodeURIComponent(window.location.hash.substring(1));
+      setHash(decodedHash);
+      setIsManualFilterChange(false);
+      
+      // Ajoutez cette ligne pour remonter en haut quand le hash change
+      window.scrollTo(0, 0);
+    };
 
-      // Écouter les changements d'URL
-      window.addEventListener('hashchange', handleHashChange);
-      handleHashChange(); // Initialisation
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange();
 
-      return () => window.removeEventListener('hashchange', handleHashChange);
-    }
-  }, []);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }
+}, []);
 
   const [search, setSearch] = useState('');
   const [disciplineFilter, setDisciplineFilter] = useState('');
