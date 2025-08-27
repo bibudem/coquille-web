@@ -10,10 +10,11 @@ const {
   NODE_ENV,
   URL: NETLIFY_SITE_URL = 'https://bib.umontreal.ca',
   DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
-  CONTEXT: NETLIFY_ENV = NODE_ENV
+  CONTEXT: NETLIFY_ENV = NODE_ENV,
 } = process.env
 const isNetlifyProduction = NETLIFY_ENV === 'production'
 const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
+const GOOGLE_ANALYTICS_ID = '372324686'
 
 /**
  * @type {import('gatsby').GatsbyConfig}
@@ -36,6 +37,17 @@ export default {
   },
   trailingSlash: 'ignore',
   plugins: [
+    // Plugin Google Analytics - Ajouté ici
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [ GOOGLE_ANALYTICS_ID ],
+        pluginConfig: {
+          head: true, // Charge le script dans le head
+          respectDNT: true, // Respecte le "Do Not Track"
+        },
+      },
+    },
     'gatsby-plugin-provide-react',
     {
       resolve: 'gatsby-plugin-mdx',
