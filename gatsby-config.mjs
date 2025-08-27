@@ -43,7 +43,7 @@ export default {
       options: {
         trackingIds: [ GOOGLE_ANALYTICS_ID ],
         pluginConfig: {
-          head: true, // Charge le script dans le head
+          head: true, 
           respectDNT: true, // Respecte le "Do Not Track"
         },
       },
