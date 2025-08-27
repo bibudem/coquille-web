@@ -15,6 +15,7 @@ const {
 const isNetlifyProduction = NETLIFY_ENV === 'production'
 const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
 const GOOGLE_ANALYTICS_ID = '372324686'
+const CLARITY_PROJECT_ID = 't10hsivmt0'
 
 /**
  * @type {import('gatsby').GatsbyConfig}
@@ -46,6 +47,12 @@ export default {
           head: true, 
           respectDNT: true, // Respecte le "Do Not Track"
         },
+      },
+       // Clarity – integration
+      resolve: 'gatsby-plugin-clarity',
+      options: {
+        clarity_project_id: CLARITY_PROJECT_ID,
+        enable_on_dev_env: false,
       },
     },
     'gatsby-plugin-provide-react',
