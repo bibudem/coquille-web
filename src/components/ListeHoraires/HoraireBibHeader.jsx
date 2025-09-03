@@ -36,7 +36,7 @@ export default function Banner({ ...rest }) {
             flexDirection: 'column',
             fontSize: '1rem',
             padding: '20px 0',
-            marginTop: '-5rem',
+            marginTop: '-1rem',
             transition: `padding ${theme.transitions.duration.md3.short4}ms ${theme.transitions.easing.md3.emphasized}`,
             [theme.breakpoints.up('sm')]: {
               fontSize: '1.2rem',
