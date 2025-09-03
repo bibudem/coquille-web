@@ -21,6 +21,7 @@ import CardWithImage from '@/components/CardWithImage'
 import Carousel1 from '@/components/Carousel1'
 import FlipCardWithBg from '@/components/FlipCardWithBg'
 import FlipCardWithImage from '@/components/FlipCardWithImage'
+import ImageHoverCard from '@/components/ImageHoverCard'
 import HeroWithImage from '@/components/HeroWithImage'
 import HeroWithText from '@/components/HeroWithText'
 import HeroWithText2 from '@/components/HeroWithText2'
@@ -49,6 +50,7 @@ export default {
   Divider,
   FlipCardWithBg,
   FlipCardWithImage,
+  ImageHoverCard,
   Grid,
   HeroWithImage,
   HeroWithText,

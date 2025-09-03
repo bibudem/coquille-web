@@ -17,7 +17,7 @@ const ElegantCard = styled(Card)(({ theme, bgcolor }) => ({
   backgroundColor: bgcolor,
   color: theme.palette.common.white,
   boxShadow: 'none',
-  transition: `all ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
+  transition: 'all 0.4s cubic-bezier(.17,.67,.5,1.03)',
   '&:hover, &:focus-within': {
     transform: 'translateY(-3px)',
   },
@@ -50,7 +50,7 @@ const TitleContainer = styled('h4')(({ theme }) => ({
   left: theme.spacing(3),
   right: theme.spacing(8),
   zIndex: 3,
-  transition: `all ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
+  transition: 'all 0.4s cubic-bezier(.17,.67,.5,1.03)',
   opacity: 1,
   transform: 'translateY(0)',
   '&.hovered': {
@@ -64,7 +64,7 @@ const TitleContainer = styled('h4')(({ theme }) => ({
 }))
 
 const StyledTitle = styled('h4')(({ theme }) => ({
-  transition: `all ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
+  transition: 'all 0.4s cubic-bezier(.17,.67,.5,1.03)',
   '@media (prefers-reduced-motion: reduce)': {
     transition: 'none',
   },
@@ -99,7 +99,7 @@ const DescriptionContainer = styled(Box)(({ theme }) => ({
   zIndex: 2,
   opacity: 0,
   transform: 'translateY(10px)',
-  transition: `all ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
+  transition: 'all 0.4s cubic-bezier(.17,.67,.5,1.03)',
   '&.visible': {
     opacity: 1,
     transform: 'translateY(0)',
