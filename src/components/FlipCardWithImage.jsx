@@ -70,15 +70,19 @@ const TitleContainer = styled('div')(({ theme }) => ({
   }
 }))
 
-const StyledTitle = styled('h3')(({ theme }) => ({
+const StyledTitle = styled('h4')(({ theme }) => ({
   color: theme.palette.common.white,
   margin: 0,
   transition: `all ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
 }))
 
+const Subtitle = styled('h6')(({ theme }) => ({
+  color: '#e5f0f8',
+}))
+
 const DescriptionContainer = styled('div')(({ theme }) => ({
   width: '100%',
-  maxHeight: '65%',
+  maxHeight: '75%',
   marginTop: theme.spacing(2),
   overflow: 'hidden'
 }))
@@ -101,7 +105,7 @@ const ScrollableDescription = styled('div')(({ theme }) => ({
   }
 }))
 
-export default function ImageHoverCard({ title, Image, children }) {
+export default function FlipCardWithImage({ title, subtitle, Image, children }) {
   const [isHovered, setIsHovered] = useState(false)
   const theme = useTheme()
 
@@ -123,6 +127,11 @@ export default function ImageHoverCard({ title, Image, children }) {
       <Overlay className="overlay">
         <Fade in={isHovered} timeout={500}>
           <DescriptionContainer>
+            {subtitle && (
+              <Subtitle >
+                {subtitle}
+              </Subtitle>
+            )}
             <ScrollableDescription>
               {children}
             </ScrollableDescription>
