@@ -182,7 +182,7 @@ function ListeEvenementsItem({ imageVedette, upper, title, lower, url, ...rest }
           disableGutters 
           sx={{ '--bib-palette-action-hover': 'none' }}
         >
-          <Grid container spacing="1.5rem" sx={{ width: '100%' }} direction={{ xs: 'column', md: 'column' }}>
+          <Grid container spacing="1.5rem" sx={{ width: '100%' }} direction={{ xs: 'column', md: 'row' }}>
             {isSmall && <Grid>{upper}</Grid>}
             <Grid size="fill">{imageVedette}</Grid>
             <Grid
