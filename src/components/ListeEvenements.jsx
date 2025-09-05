@@ -17,12 +17,11 @@ const Img = styled('img')(({ theme }) => ({
   objectFit: 'cover',
   objectPosition: 'center',
   borderRadius: theme.shape.corner.medium,
-  width: '100%',
-  maxWidth: '80vw',
-  height: 'auto',
-  aspectRatio: 2,
+  width: '15.8125rem',
+  height: '10.5625rem',
   [theme.breakpoints.up('md')]: {
-    width: '100%',
+    width: '10.8125rem',
+    height: '10.5625rem',
   },
 }))
 
@@ -62,6 +61,7 @@ function Title({ children }) {
         fontSize: '1.75rem',
         fontWeight: 500,
         lineHeight: 1.5,
+        paddingTop: '1.5rem',
         color: 'var(--_title-color)',
       }}
     >
@@ -122,7 +122,7 @@ function Lower({ url }) {
 
 function ListeEvenementsContainer({ title, id, moreText, moreLink, children, sx }) {
   return (
-    <Grid container spacing="2.25rem" size={12} direction="column">
+    <Grid container spacing="1.25rem" size={12} direction="column">
       <Typography
         component="h3"
         id={id}
@@ -182,7 +182,7 @@ function ListeEvenementsItem({ imageVedette, upper, title, lower, url, ...rest }
           disableGutters 
           sx={{ '--bib-palette-action-hover': 'none' }}
         >
-          <Grid container spacing="1.5rem" sx={{ width: '100%' }} direction={{ xs: 'column', md: 'column' }}>
+          <Grid container spacing="1.5rem" sx={{ width: '100%' }} direction={{ xs: 'column', md: 'row' }}>
             {isSmall && <Grid>{upper}</Grid>}
             <Grid size="fill">{imageVedette}</Grid>
             <Grid
