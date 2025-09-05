@@ -13,11 +13,12 @@ const CardContainer = styled('div')(({ theme, image }) => ({
   backgroundSize: 'cover',
   backgroundPosition: 'top',
   border: '#E5F0F8 1px solid',
-  boxShadow: '0 1px 1px #E5F0F8',
+  boxShadow: '0 1px 5px #E5F0F8',
   transition: 'all 0.4s cubic-bezier(.17,.67,.5,1.03)',
 
   '&:hover, &.hovered': {
-    boxShadow: '0 1px 10px #003f7f49',
+    boxShadow: '0 1px 5px #686a6d49',
+    transform: 'translateY(-2px)',
   },
   
   [theme.breakpoints.down('sm')]: {
