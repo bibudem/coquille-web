@@ -25,6 +25,7 @@ import ImageHoverCard from '@/components/ImageHoverCard'
 import HeroWithImage from '@/components/HeroWithImage'
 import HeroWithText from '@/components/HeroWithText'
 import HeroWithText2 from '@/components/HeroWithText2'
+import SuperHero2 from '@/components/SuperHero2'
 import IconInSquare from '@/components/IconInSquare'
 import Link from '@/components/Link'
 import RichList from '@/components/RichList'
@@ -67,6 +68,7 @@ export default {
   Section,
   Tabs1,
   Typography,
+  SuperHero2,
   /* Dummies: */
   Hero,
   Bloc

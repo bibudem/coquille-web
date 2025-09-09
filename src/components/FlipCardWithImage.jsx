@@ -8,7 +8,6 @@ const CardContainer = styled('div')(({ theme, image }) => ({
   height: '25rem',
   overflow: 'hidden',
   marginRight: '20px',
-  overflow: 'hidden',
   cursor: 'default',
   borderRadius: theme.shape.corner.medium,
   backgroundImage: `
@@ -18,25 +17,44 @@ const CardContainer = styled('div')(({ theme, image }) => ({
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
-  '&:hover': {
-    transform: 'translateY(-3px)',
-    '& .overlay': {
-      background: 'linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5) 65%, transparent 100%)'
-    }
+  
+  // Voile sombre global (au hover/focus)
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    inset: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    transition: 'background-color 0.3s ease',
+    zIndex: 1,
+    pointerEvents: 'none',
   },
-   // Pour écrans petits : réduction fixe en rem
+  
+  // Dégradé en bas pour renforcer le contraste du titre
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '50%',
+    background: 'linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent)',
+    pointerEvents: 'none',
+  },
+  
+  '&:hover::before, &:focus::before': {
+    backgroundColor: 'rgba(7, 31, 56, 0.7)',
+  },
+  
   [theme.breakpoints.down('sm')]: {
     width: '18rem',
     height: '20rem',
   },
-
-  // Pour écrans très petits : encore plus petit
+  
   [theme.breakpoints.down('xs')]: {
     width: '14rem',
     height: '16rem',
   }
 }))
-
 
 const Overlay = styled('div')(({ theme }) => ({
   position: 'absolute',
@@ -51,6 +69,7 @@ const Overlay = styled('div')(({ theme }) => ({
   transition: `all ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
   cursor: 'default',
   zIndex: 2
+  
 }))
 
 const TitleContainer = styled('div')(({ theme }) => ({
@@ -60,17 +79,19 @@ const TitleContainer = styled('div')(({ theme }) => ({
   right: theme.spacing(3),
   zIndex: 3,
   transition: `all ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
+  
   '&.hovered': {
     bottom: 'auto',
     top: theme.spacing(3),
     transform: 'translateY(0) scale(0.95)',
   },
+  
   '&:not(.hovered)': {
     transform: 'translateY(10px)'
   }
 }))
 
-const StyledTitle = styled('h4')(({ theme }) => ({
+const StyledTitle = styled('h3')(({ theme }) => ({
   color: theme.palette.common.white,
   margin: 0,
   transition: `all ${theme.transitions.duration.md3.medium3}ms ${theme.transitions.easing.md3.emphasized}`,
@@ -83,22 +104,26 @@ const Subtitle = styled('h6')(({ theme }) => ({
 const DescriptionContainer = styled('div')(({ theme }) => ({
   width: '100%',
   maxHeight: '75%',
+  color: '#e5f0f8',
   marginTop: theme.spacing(2),
   overflow: 'hidden'
 }))
 
 const ScrollableDescription = styled('div')(({ theme }) => ({
   fontSize: '1rem',
-  color: theme.palette.common.white,
   maxHeight: '100%',
   overflowY: 'auto',
+  zIndex: 1000,
   paddingRight: theme.spacing(1),
+  
   '&::-webkit-scrollbar': {
     width: '6px'
   },
+  
   '&::-webkit-scrollbar-thumb': {
     backgroundColor: 'rgba(255,255,255,0.4)',
     borderRadius: '6px',
+    
     '&:hover': {
       backgroundColor: 'rgba(255,255,255,0.6)'
     }
@@ -111,11 +136,14 @@ export default function FlipCardWithImage({ title, subtitle, Image, children }) 
 
   if (!Image) throw new Error('The `Image` prop is missing')
 
+  const handleMouseEnter = () => setIsHovered(true)
+  const handleMouseLeave = () => setIsHovered(false)
+
   return (
     <CardContainer
       image={Image}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       role="region"
       aria-label={title}
       tabIndex={0}
@@ -124,14 +152,10 @@ export default function FlipCardWithImage({ title, subtitle, Image, children }) 
         <StyledTitle>{title}</StyledTitle>
       </TitleContainer>
 
-      <Overlay className="overlay">
+      <Overlay>
         <Fade in={isHovered} timeout={500}>
           <DescriptionContainer>
-            {subtitle && (
-              <Subtitle >
-                {subtitle}
-              </Subtitle>
-            )}
+            {subtitle && <Subtitle>{subtitle}</Subtitle>}
             <ScrollableDescription>
               {children}
             </ScrollableDescription>

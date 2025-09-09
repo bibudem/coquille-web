@@ -173,6 +173,22 @@ subtitle1: {
     textOverflow: 'ellipsis',
     cursor: 'pointer'
   },
+  // Styles display personnalisés
+    titreSecondaire: {
+      ...baseTypography,
+      fontSize: '2.75rem', // mobile par défaut
+      fontWeight: 600,
+      lineHeight: 1.1,
+      '@media (min-width:600px)': {
+        fontSize: '3rem',  // tablettes
+      },
+      '@media (min-width:900px)': {
+        fontSize: '4.5rem', // laptop
+      },
+      '@media (min-width:1200px)': {
+        fontSize: '5.75rem',  // grands écrans
+      },
+    },
 
   // Styles display personnalisés
   display1: {
