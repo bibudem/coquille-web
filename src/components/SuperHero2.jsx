@@ -18,24 +18,22 @@ export const BOTTOM_OFFSET_XS = '1.5rem'
 // Dimensions pour différentes tailles d'écran
 const BOX_SIZES = {
   desktop: {
-    height: '70vh',
+    height: '65vh',  
+    minHeight: '28rem', 
     width: '100%',
-    minHeight: '400px',
-    maxHeight: '800px'
   },
   tablet: {
-    height: '55vh',
+    height: '60vh',  
+    minHeight: '24rem',
     width: '100%',
-    minHeight: '350px',
-    maxHeight: '600px'
   },
   mobile: {
-    height: '55vh',
+    height: '55vh',  
+    minHeight: '20rem',
     width: '100%',
-    minHeight: '300px',
-    maxHeight: '500px'
   }
 }
+
 
 // Valeurs par défaut pour le contexte
 const DEFAULT_CONTEXT = {
@@ -191,14 +189,9 @@ export default function SuperHero2({
         {/* Contenu textuel */}
         <Section
           sx={{
-            padding: {
-              xs: `0 0 ${children ? '0.75rem' : contextData.bottomOffset} ${contextData.inlineOffset}`,
-              sm: `0 0 ${children ? '1rem' : contextData.bottomOffset} ${contextData.inlineOffset}`,
-              md: `0 0 ${children ? '1rem' : contextData.bottomOffset} ${contextData.inlineOffset}`
-            },
             zIndex: 2,
             width: '100%',
-            position: 'relative', // Important pour le contexte d'empilement
+            position: 'relative', 
           }}
         >
           <Grid container>
@@ -206,10 +199,6 @@ export default function SuperHero2({
               <Typography 
                 component="h1"
                 variant="titreSecondaire"
-                sx={{
-                  wordWrap: 'break-word',
-                  overflowWrap: 'break-word',
-                }}
               >
                 {title}
               </Typography>
