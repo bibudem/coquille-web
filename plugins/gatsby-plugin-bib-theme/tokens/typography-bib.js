@@ -174,9 +174,9 @@ subtitle1: {
     cursor: 'pointer'
   },
   // Styles display personnalisés
-    titreSecondaire: {
+    titreSuperHero: {
       ...baseTypography,
-      fontSize: '3.5rem', // mobile par défaut
+      fontSize: '2.5rem', // mobile par défaut
       fontWeight: 600,
       lineHeight: 1.1,
       paddingBottom: '1rem',
@@ -187,7 +187,24 @@ subtitle1: {
         fontSize: '4.5rem',
       },
       '@media (min-width:1200px)': { // lg+
-        fontSize: '5rem',   // ajuste selon tes besoins
+        fontSize: '4.5rem',   // ajuste selon tes besoins
+      }
+    },
+
+    titreSuperHeroSmall: {
+      ...baseTypography,
+      fontSize: '2.25rem', // mobile par défaut
+      fontWeight: 600,
+      lineHeight: 1.1,
+      paddingBottom: '1rem',
+      '@media (min-width:600px)': {  // sm+
+        fontSize: '3rem',
+      },
+      '@media (min-width:900px)': {  // md+
+        fontSize: '3.5rem',
+      },
+      '@media (min-width:1200px)': { // lg+
+        fontSize: '4rem',   // ajuste selon tes besoins
       }
     },
 

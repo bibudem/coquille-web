@@ -17,23 +17,41 @@ export const BOTTOM_OFFSET_XS = '1.5rem'
 
 // Dimensions pour différentes tailles d'écran
 const BOX_SIZES = {
-  desktop: {
-    height: '65vh',  
-    minHeight: '28rem', 
-    width: '100%',
+  default: {
+    desktop: {
+      height: '65vh',  
+      minHeight: '28rem', 
+      width: '100%',
+    },
+    tablet: {
+      height: '55vh',  
+      minHeight: '24rem',
+      width: '100%',
+    },
+    mobile: {
+      height: '58vh',  
+      minHeight: '20rem',
+      width: '100%',
+    }
   },
-  tablet: {
-    height: '60vh',  
-    minHeight: '24rem',
-    width: '100%',
-  },
-  mobile: {
-    height: '55vh',  
-    minHeight: '20rem',
-    width: '100%',
+  small: {
+    desktop: {
+      height: '30vh',  
+      minHeight: '12rem', 
+      width: '100%',
+    },
+    tablet: {
+      height: '32vh',  
+      minHeight: '10rem',
+      width: '100%',
+    },
+    mobile: {
+      height: '34vh',  
+      minHeight: '8rem',
+      width: '100%',
+    }
   }
 }
-
 
 // Valeurs par défaut pour le contexte
 const DEFAULT_CONTEXT = {
@@ -48,6 +66,7 @@ const DEFAULT_CONTEXT = {
  * @param {string} imageName - Name of the image file to use as background (required)
  * @param {string} alt - Alt text for the background image (defaults to empty string)
  * @param {number} lvl - Niveau de superposition (optionnel)
+ * @param {string} size - Taille de la section: 'default' ou 'small' (défaut: 'default')
  * @returns {JSX.Element} A hero section with gradient overlay and text content
  */
 export default function SuperHero2({ 
@@ -57,6 +76,7 @@ export default function SuperHero2({
   alt = '', 
   lvl, 
   children, 
+  size = 'default',
   ...rest 
 }) {
   // Validation des props requises
@@ -66,6 +86,11 @@ export default function SuperHero2({
 
   if (typeof imageName === 'undefined') {
     throw new Error('imageName prop is required')
+  }
+
+  // Validation de la taille
+  if (size !== 'default' && size !== 'small') {
+    throw new Error('size prop must be either "default" or "small"')
   }
 
   const theme = useTheme()
@@ -123,11 +148,13 @@ export default function SuperHero2({
     }
   }, [isXs, isMedium, isLarge])
 
-  // Déterminer les dimensions en fonction de la taille d'écran
+  // Déterminer les dimensions en fonction de la taille d'écran et de la prop size
   const getBoxSize = () => {
-    if (isXs) return BOX_SIZES.mobile
-    if (isMedium) return BOX_SIZES.tablet
-    return BOX_SIZES.desktop
+    const sizeConfig = BOX_SIZES[size] || BOX_SIZES.default
+    
+    if (isXs) return sizeConfig.mobile
+    if (isMedium) return sizeConfig.tablet
+    return sizeConfig.desktop
   }
 
   const currentBoxSize = getBoxSize()
@@ -146,7 +173,6 @@ export default function SuperHero2({
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-end',
-          marginBottom: isXs ? '2rem' : isMedium ? '3rem' : '4rem',
           overflow: 'hidden', 
         }}
         {...rest}
@@ -181,25 +207,32 @@ export default function SuperHero2({
               left: 0,
               width: '100%',
               height: '100%',
-              background: `rgba(0, 0, 0, 0.40)`,
+              background: `rgba(0, 0, 0, 0.50)`,
             }}
           />
         </div>
         
         {/* Contenu textuel */}
         <Section
-          sx={{
-            zIndex: 2,
-            width: '100%',
-            position: 'relative', 
-          }}
-        >
+            sx={{
+              zIndex: 2,
+              width: '100%',
+              position: 'relative', 
+              ...(size === 'small' ? { marginBottom: '-4rem!important' } : {})
+            }}
+          >
           <Grid container>
-            <Grid size={{ xs: 12, sm: 10, md: 8 }}>
-              <Typography 
-                component="h1"
-                variant="titreSecondaire"
-              >
+            <Grid
+              size={{
+                xs: 12,
+                sm: 10,
+                md: size === 'small' ? 12 : 8,
+              }}
+               >
+              <Typography
+                  component="h1"
+                  variant={size === 'small' ? 'titreSuperHeroSmall' : 'titreSuperHero'}
+                >
                 {title}
               </Typography>
               {subTitle && React.isValidElement(subTitle) && 
