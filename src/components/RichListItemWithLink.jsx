@@ -4,7 +4,12 @@ import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
 import Button from '@/components/Button'
 import Div from '@/components/utils/Div'
 import { useSmall } from '@/hooks/use-small'
-import { isInternalLink } from '@/utils/link'
+
+// Définition locale de la fonction isInternalLink
+function isInternalLink(url) {
+  if (!url) return true
+  return !url.match(/^https?:\/\//) && !url.match(/^mailto:/) && !url.match(/^tel:/)
+}
 
 function Header({ children }) {
   return (
@@ -61,11 +66,6 @@ export default function RichListItemWithLink({ title, description, href, linkTex
 
   const [colors, setColors] = useState(colorsSettings.default)
 
-  function onButtonClick(event) {
-    event.preventDefault()
-    event.stopPropagation()
-  }
-
   const isInternal = isInternalLink(href)
 
   useEffect(() => {
@@ -119,7 +119,7 @@ export default function RichListItemWithLink({ title, description, href, linkTex
             }
           />
           {linkText ? (
-            <Button primary href={href} onClick={onButtonClick} sx={{ flex: 'none', marginBottom: flexSettings?.marginBottom }}>
+            <Button primary href={href} sx={{ flex: 'none', marginBottom: flexSettings?.marginBottom }}>
               {linkText}
             </Button>
           ) : (
@@ -133,7 +133,6 @@ export default function RichListItemWithLink({ title, description, href, linkTex
                   backgroundColor: colors.icon.bg,
                 },
               }}
-              onClick={onButtonClick}
             >
               {isInternal ? <ArrowRight size={24} color={colors.icon.color} /> : <ArrowUpRight size={24} color={colors.icon.color} />}
             </IconButton>

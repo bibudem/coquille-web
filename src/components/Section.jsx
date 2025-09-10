@@ -7,7 +7,6 @@ const baseStyles = {
   px: { xs: 0, md: 0 },
   backgroundColor: 'transparent',
   color: 'inherit',
-  transition: 'all 0.3s ease-in-out',
 }
 
 /**
@@ -27,7 +26,8 @@ const baseStyles = {
  */
 export default function Section({ 
   bg, 
-  image, 
+  image,
+  marginTop, 
   fixedWidth = false, 
   minHeight = 'auto',
   textAlign = 'left',
@@ -75,6 +75,12 @@ export default function Section({
       const color = getSecondaryColor(bg)
       newStyles.backgroundColor = color.main
       newStyles.color = color.contrastText
+    }
+
+    if (marginTop) {
+      newStyles.marginTop = {     
+        md: '3rem',   
+      }
     }
 
     if (image) {

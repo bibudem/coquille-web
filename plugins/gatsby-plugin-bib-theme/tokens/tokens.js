@@ -220,15 +220,84 @@ const tokens = {
 					fontWeight: 400,
 					minHeight: '3.125rem', // 50px
 					padding: '6px 20px 6px 25px',
+					marginTop: '1rem',
 					variants: [
 						{
 							props: { variant: 'contained' },
 							style: {
 								color: '#fafdfe',
 								boxShadow: 'none',
-							}
-						}
+							},
+						},
+						// Nouvelle variante bleu
+						{
+						props: { variant: 'contained', color: 'blue' },
+						style: {
+							backgroundColor: '#0057AC',
+							'&:hover': {
+							backgroundColor: '#033669ff',
+							},
+						},
+						},
+						// Variante blueOutline (sans icône)
+						{
+						props: { className: 'blueOutlineNoIcon' },
+							style: {
+								color: '#0057AC',
+								fontWeight: 400,
+								border: '1px solid #0057AC',
+								backgroundColor: 'transparent',
+								'&:hover': {
+								backgroundColor: '#0057AC',
+								color: 'white',
+								},
+								
+								// Cache l'icône si présente
+								'& .MuiButton-startIcon, & .MuiButton-endIcon': {
+								display: 'none',
+								}
+							},
+						},
+						{
+						props: { className: 'whiteOutlineNoIcon' },
+							style: {
+								color: '#fff',
+								fontWeight: 400,
+								border: '1px solid #fff',
+								backgroundColor: 'transparent',
+								'&:hover': {
+								backgroundColor: '#fff',
+								color: '#0B113A',
+								},
+								
+								// Cache l'icône si présente
+								'& .MuiButton-startIcon, & .MuiButton-endIcon': {
+								display: 'none',
+								}
+							},
+						},
 					],
+					'&.mt1': {
+						marginTop: theme.spacing(1),
+					},
+					'&.mt4': {
+						marginTop: theme.spacing(4),
+					},
+					'&.right': {
+						marginLeft: 'auto !important',
+                        display: 'flex',
+                        width: 'fit-content', 
+					},
+					'&.center': {
+						marginLeft: 'auto',
+						marginRight: 'auto',
+						display: 'flex',
+						width: 'fit-content', 
+					},
+					'&.left': {
+						marginRight: 'auto',
+						display: 'flex',
+					},
 					'.MuiButton-icon svg': {
 						fill: 'currentColor',
 					},
