@@ -176,18 +176,19 @@ subtitle1: {
   // Styles display personnalisés
     titreSecondaire: {
       ...baseTypography,
-      fontSize: '2.75rem', // mobile par défaut
+      fontSize: '3.5rem', // mobile par défaut
       fontWeight: 600,
       lineHeight: 1.1,
-      '@media (min-width:600px)': {
-        fontSize: '3rem',  // tablettes
+      paddingBottom: '1rem',
+      '@media (min-width:600px)': {  // sm+
+        fontSize: '3.75rem',
       },
-      '@media (min-width:900px)': {
-        fontSize: '4.5rem', // laptop
+      '@media (min-width:900px)': {  // md+
+        fontSize: '4.5rem',
       },
-      '@media (min-width:1200px)': {
-        fontSize: '5.75rem',  // grands écrans
-      },
+      '@media (min-width:1200px)': { // lg+
+        fontSize: '5rem',   // ajuste selon tes besoins
+      }
     },
 
   // Styles display personnalisés
