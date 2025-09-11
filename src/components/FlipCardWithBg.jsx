@@ -3,6 +3,7 @@ import { styled, useTheme } from '@mui/material'
 import Card from '@mui/material/Card'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
 const bgColors = ['bleuPrincipal', 'rose300', 'vertFonce']
 
@@ -44,7 +45,7 @@ const CardContainer = styled(Box)({
   outline: 'none',
 })
 
-const TitleContainer = styled('h4')(({ theme }) => ({
+const TitleContainer = styled(Box)(({ theme }) => ({
   position: 'absolute',
   bottom: theme.spacing(3),
   left: theme.spacing(3),
@@ -54,7 +55,7 @@ const TitleContainer = styled('h4')(({ theme }) => ({
   opacity: 1,
   transform: 'translateY(0)',
   '&.hovered': {
-    top: '0',
+    top: '1rem',
     bottom: 'auto',
     transform: 'translateY(0)',
   },
@@ -63,7 +64,8 @@ const TitleContainer = styled('h4')(({ theme }) => ({
   },
 }))
 
-const StyledTitle = styled('h4')(({ theme }) => ({
+const StyledTitle = styled(Typography)(({ theme }) => ({
+  ...theme.typography.h4Figtree,
   transition: 'all 0.4s cubic-bezier(.17,.67,.5,1.03)',
   '@media (prefers-reduced-motion: reduce)': {
     transition: 'none',
@@ -166,7 +168,9 @@ export default function ElegantHoverCard({ title, Icon, bg = 'bleuPrincipal', ch
         </IconWrapper>
 
         <TitleContainer className={hovered ? 'hovered' : ''}>
-          <StyledTitle sx={{ color: textColor }}>{title}</StyledTitle>
+          <StyledTitle variant="h4Figtree" sx={{ color: textColor }}>
+            {title}
+          </StyledTitle>
         </TitleContainer>
 
         <DescriptionContainer className={hovered ? 'visible' : ''} sx={{ color: textColor }}>

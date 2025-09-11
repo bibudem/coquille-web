@@ -1,4 +1,4 @@
-import { CardMedia, styled, Typography, useTheme } from '@mui/material'
+import { CardMedia, Typography, useTheme } from '@mui/material'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardActionArea from '@mui/material/CardActionArea'
@@ -6,32 +6,12 @@ import Grid from '@mui/material/Grid2'
 import { useIsExternal } from '@/hooks/use-is-external'
 import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
 
-/**
- * CardWithImage component that renders a card with a banner image, title, icon, and link.
- * @param {Object} props - The component props
- * @param {string} props.title - The title text displayed in the card
- * @param {string} props.Image - The image URL to be displayed as banner
- * @param {string} props.href - The URL the card links to
- * @param {string} [props.moreText='En savoir plus'] - Optional text for the "learn more" link
- * @param {Object} [props.sx] - Optional MUI system styles to apply to the card
- * @throws {Error} When required props title, Image or href are missing
- * @returns {React.ReactElement} A clickable card component with image, title and link
- */
 export default function CardWithImage({ title, Image, href, moreText = 'En savoir plus', ...rest }) {
-  if (typeof title === 'undefined') {
-    throw new Error('The `title` prop is missing')
-  }
-
-  if (typeof Image === 'undefined') {
-    throw new Error('The `Image` prop is missing')
-  }
-
-  if (typeof href === 'undefined') {
-    throw new Error('The `href` prop is missing')
-  }
+  if (typeof title === 'undefined') throw new Error('The `title` prop is missing')
+  if (typeof Image === 'undefined') throw new Error('The `Image` prop is missing')
+  if (typeof href === 'undefined') throw new Error('The `href` prop is missing')
 
   const { sx, ...props } = rest
-
   const theme = useTheme()
   const { linkProps, linkIcon } = useIsExternal(href, {
     icons: {
@@ -46,7 +26,9 @@ export default function CardWithImage({ title, Image, href, moreText = 'En savoi
         borderRadius: theme.shape.corner.small,
         boxShadow: 'none',
         width: 330,
-        height: 417,
+        height: 500, 
+        display: 'flex',
+        flexDirection: 'column',
         ...sx,
       })}
       {...props}
@@ -56,39 +38,56 @@ export default function CardWithImage({ title, Image, href, moreText = 'En savoi
         href={href}
         {...linkProps}
         sx={{
-          height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          flexWrap: 'nowrap',
+          flex: 1,
           '&:hover .bib-comp-card-with-image--more-text': {
             color: theme.palette.bleuPrincipal.main,
           },
         }}
       >
         <CardMedia
-          image={Image}
+          component="img"
+          src={Image}
+          alt={title}
           sx={{
-            width: 330,
+            width: '100%',
             height: 220,
+            objectFit: 'cover',
+            display: 'block',
           }}
         />
         <CardContent
           sx={{
             backgroundColor: theme.palette.background.paper,
-            flexGrow: 1,
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
-            padding: '2rem',
+            flexGrow: 1,
+            padding: '1rem',
+            overflow: 'hidden', // ✅ empêche de dépasser du Card fixe
           }}
         >
-          <Typography component='h4' variant='h4'>{title}</Typography>
+          <Typography
+            component="h4"
+            variant="h4"
+            sx={{
+              mb: 1,
+              overflow: 'hidden',
+              textOverflow: 'clip', // ✅ pas de "..."
+              display: '-webkit-box',
+              WebkitBoxOrient: 'vertical',
+              WebkitLineClamp: '3', // ✅ limite le titre à 3 lignes max
+            }}
+          >
+            {title}
+          </Typography>
           <Grid
             container
             sx={{
-              flexGrow: 0,
               alignItems: 'center',
               width: '100%',
+              marginTop: 'auto',
             }}
           >
             <Grid

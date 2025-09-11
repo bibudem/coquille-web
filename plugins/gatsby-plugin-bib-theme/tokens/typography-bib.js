@@ -85,6 +85,19 @@ const typography = {
       lineHeight: 1.2
     }
   },
+  
+  h4Figtree: {
+  ...baseTypography,
+  fontFamily: fontStack, // version sans-serif (Figtree)
+  margin: '0.5em 0',
+  fontWeight: 500,
+  fontSize: '1.875rem', // 30px desktop
+  lineHeight: 1.2,
+  '@media (max-width:899px)': {
+    fontSize: '1.25rem', // 20px mobile
+    lineHeight: 1.2
+  }
+},
 
   h5: {
     ...baseTypography,
