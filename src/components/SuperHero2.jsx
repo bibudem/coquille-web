@@ -19,7 +19,7 @@ export const BOTTOM_OFFSET_XS = '1.5rem'
 const BOX_SIZES = {
   default: {
     desktop: {
-      height: '36rem',  
+      height: '34rem',  
       minHeight: '32rem',
       maxHeight: '44rem',
       width: '100%',
@@ -51,7 +51,7 @@ const BOX_SIZES = {
       width: '100%',
     },
     mobile: {
-      height: '14rem',   
+      height: '15rem',   
       minHeight: '10rem',
       maxHeight: '18rem',
       width: '100%',
