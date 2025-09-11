@@ -193,10 +193,10 @@ subtitle1: {
 
     titreSuperHeroSmall: {
       ...baseTypography,
-      fontSize: '2.25rem', // mobile par défaut
+      fontSize: '2.1rem', // mobile par défaut
       fontWeight: 600,
       lineHeight: 1.1,
-      paddingBottom: '1rem',
+      paddingBottom: '2rem',
       '@media (min-width:600px)': {  // sm+
         fontSize: '3rem',
       },
