@@ -90,7 +90,7 @@ export default function TopAppBarSm(props) {
                     fontWeight: 600,
                   }}
                 >
-                  les bibliothèques
+                  Les bibliothèques
                 </span>
               </Link>
 
