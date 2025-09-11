@@ -15,43 +15,50 @@ export const BOTTOM_OFFSET_DESKTOP = '4.25rem'
 export const BOTTOM_OFFSET_MOBILE = '2rem'
 export const BOTTOM_OFFSET_XS = '1.5rem'
 
-// Dimensions pour différentes tailles d'écran
+// Dimensions pour différentes tailles d'écran (plus stables au zoom)
 const BOX_SIZES = {
   default: {
     desktop: {
-      height: '65vh',  
-      minHeight: '28rem', 
+      height: '36rem',  
+      minHeight: '32rem',
+      maxHeight: '44rem',
       width: '100%',
     },
     tablet: {
-      height: '55vh',  
-      minHeight: '24rem',
+      height: '30rem',  
+      minHeight: '26rem',
+      maxHeight: '36rem',
       width: '100%',
     },
     mobile: {
-      height: '58vh',  
-      minHeight: '20rem',
+      height: '26rem',   
+      minHeight: '22rem',
+      maxHeight: '30rem',
       width: '100%',
     }
   },
   small: {
     desktop: {
-      height: '30vh',  
-      minHeight: '12rem', 
+      height: '18rem',   
+      minHeight: '14rem',
+      maxHeight: '22rem',
       width: '100%',
     },
     tablet: {
-      height: '32vh',  
-      minHeight: '10rem',
+      height: '16rem',  
+      minHeight: '12rem',
+      maxHeight: '20rem',
       width: '100%',
     },
     mobile: {
-      height: '34vh',  
-      minHeight: '8rem',
+      height: '14rem',   
+      minHeight: '10rem',
+      maxHeight: '18rem',
       width: '100%',
     }
   }
 }
+
 
 // Valeurs par défaut pour le contexte
 const DEFAULT_CONTEXT = {
