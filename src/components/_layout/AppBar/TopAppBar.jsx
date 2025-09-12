@@ -98,7 +98,27 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
           zIndex: 5,
         }}
       >
-        <Toolbar disableGutters sx={{ margin: '0 auto', width: '100%', maxWidth: theme.breakpoints.values.xl, paddingLeft: '1.44rem', paddingRight: '1.25rem' }}>
+        <Toolbar
+  disableGutters
+  sx={{
+    margin: '0 auto',
+    width: '100%',
+    maxWidth: theme.breakpoints.values.xl,
+    px: '1.25rem',
+    height: appBarHeight,
+    display: 'flex',
+    alignItems: 'center',
+    '& .MuiStack-root': {
+      alignItems: 'center',
+    },
+    '& .MuiButton-root': {
+      margin: 0,
+      paddingTop: 0,
+      paddingBottom: 0,
+      lineHeight: 1.2, // réduit l’espace vertical du texte
+    },
+  }}
+>
           <Box
             sx={{
               flexGrow: 0,
