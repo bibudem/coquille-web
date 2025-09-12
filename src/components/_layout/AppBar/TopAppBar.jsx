@@ -17,8 +17,28 @@ const StyledButton = styled(Button)({
   color: 'inherit',
   fontSize: '0.875rem',
   fontWeight: 400,
-  display: 'block',
+  display: 'inline-block',
+  position: 'relative',
   textTransform: 'none',
+  textDecoration: 'none',
+  cursor: 'pointer',
+
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    left: 0,
+    bottom: 0,
+    width: '100%',
+    height: '2px',
+    backgroundColor: 'currentColor',
+    transform: 'scaleX(0)',
+    transformOrigin: 'left',
+    transition: 'transform 0.3s ease-in-out',
+  },
+
+  '&:hover::after': {
+    transform: 'scaleX(1)',
+  },
 })
 
 export const appBarHeight = '5rem'
