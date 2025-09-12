@@ -64,6 +64,7 @@ const Title = React.memo(({ children }) => (
       fontSize: '1.75rem',
       fontWeight: 500,
       lineHeight: 1.3,
+      wordSpacing: '-0.2em',
       [theme.breakpoints.down('sm')]: {
         fontSize: '1.5rem',
         lineHeight: 1.2,
