@@ -17,8 +17,28 @@ const StyledButton = styled(Button)({
   color: 'inherit',
   fontSize: '0.875rem',
   fontWeight: 400,
-  display: 'block',
+  display: 'inline-block',
+  position: 'relative',
   textTransform: 'none',
+  textDecoration: 'none',
+  cursor: 'pointer',
+
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    left: 0,
+    bottom: 0,
+    width: '100%',
+    height: '2px',
+    backgroundColor: 'currentColor',
+    transform: 'scaleX(0)',
+    transformOrigin: 'left',
+    transition: 'transform 0.3s ease-in-out',
+  },
+
+  '&:hover::after': {
+    transform: 'scaleX(1)',
+  },
 })
 
 export const appBarHeight = '5rem'
@@ -78,7 +98,27 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
           zIndex: 5,
         }}
       >
-        <Toolbar disableGutters sx={{ margin: '0 auto', width: '100%', maxWidth: theme.breakpoints.values.xl, paddingLeft: '1.44rem', paddingRight: '1.25rem' }}>
+        <Toolbar
+  disableGutters
+  sx={{
+    margin: '0 auto',
+    width: '100%',
+    maxWidth: theme.breakpoints.values.xl,
+    px: '1.25rem',
+    height: appBarHeight,
+    display: 'flex',
+    alignItems: 'center',
+    '& .MuiStack-root': {
+      alignItems: 'center',
+    },
+    '& .MuiButton-root': {
+      margin: 0,
+      paddingTop: 0,
+      paddingBottom: 0,
+      lineHeight: 1.2, // réduit l’espace vertical du texte
+    },
+  }}
+>
           <Box
             sx={{
               flexGrow: 0,

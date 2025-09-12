@@ -73,18 +73,20 @@ const typography = {
     }
   },
 
-  h4: {
-    ...baseTypography,
-    fontFamily: loraStack,
-    margin: '0.5em 0',
-    fontWeight: 500,
-    fontSize: '1.875rem', // 30px desktop
+h4: {
+  ...baseTypography,
+  fontFamily: loraStack,
+  margin: '0.5em 0',
+  fontWeight: 500,
+  fontSize: '1.875rem',
+  lineHeight: 1.2,
+  wordSpacing: '-0.2em', 
+  '@media (max-width:899px)': {
+    fontSize: '1.25rem',
     lineHeight: 1.2,
-    '@media (max-width:899px)': {
-      fontSize: '1.25rem', // 20px mobile
-      lineHeight: 1.2
-    }
-  },
+    wordSpacing: '-0.05em',
+  }
+},
   
   h4Figtree: {
   ...baseTypography,
