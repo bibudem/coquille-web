@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Button } from '@mui/material'
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import useSWR from 'swr'
 import Link from '@/components/Link'
@@ -8,7 +8,10 @@ import Link from '@/components/Link'
  */
 
 /**
- * @param {CodeBib} bib
+ * @param {Object} props - Propriétés du composant
+ * @param {CodeBib} props.bib - Le code de bibliothèque pour laquelle afficher les horaires
+ * @param {string} [props.service='https://api.bib.umontreal.ca/horaires'] - L'URL de base du service d'API des horaires
+ * @param {boolean} [props.lienHoraires=false] - Indique si un lien vers la page des horaires doit être affiché
  */
 
 export default function HoraireAujourdHui({ bib, service = 'https://api.bib.umontreal.ca/horaires', lienHoraires = false }) {
