@@ -5,6 +5,9 @@
   "description": "",
   "author": "Christian Rémillard",
   "keywords": [],
+  "engines": {
+    "node": "^20.11.1"
+  },
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=\"--max-old-space-size=4096 \" npm run gatsby:develop",
     "build": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" gatsby build",
