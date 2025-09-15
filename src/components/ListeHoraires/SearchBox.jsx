@@ -1,5 +1,5 @@
 import { IconButton, InputBase, Paper, useMediaQuery, useTheme } from '@mui/material'
-import { MagnifyingGlass } from '@phosphor-icons/react'
+import { MagnifyingGlassIcon } from '@phosphor-icons/react'
 import Div from '@/components/utils/Div'
 import { styled } from '@mui/material/styles'
 
@@ -21,11 +21,11 @@ const SearchPaper = styled(Paper)(({ theme }) => ({
     borderColor: theme.palette.primary.main,
   },
   [theme.breakpoints.down('md')]: {
-    maxWidth: '66%', 
+    maxWidth: '66%',
   },
   [theme.breakpoints.down('sm')]: {
-    maxWidth: '75%', 
-  }
+    maxWidth: '75%',
+  },
 }))
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -33,15 +33,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     padding: '22px 0 22px 32px',
     '&::placeholder': {
       color: theme.palette.text.secondary,
-      opacity: 1
+      opacity: 1,
     },
   },
   flexGrow: 1,
   [theme.breakpoints.down('sm')]: {
     '& .MuiInputBase-input': {
       padding: '18px 0 18px 24px', // Padding réduit sur mobile
-    }
-  }
+    },
+  },
 }))
 
 export default function SearchBox({ value, onChange }) {
@@ -49,7 +49,7 @@ export default function SearchBox({ value, onChange }) {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
 
   return (
-    <SearchPaper 
+    <SearchPaper
       component="form"
       sx={{
         marginLeft: 'auto',
@@ -58,39 +58,33 @@ export default function SearchBox({ value, onChange }) {
         [theme.breakpoints.down('sm')]: {
           marginTop: '16px',
           marginLeft: '16px !important',
-          marginRight: '16px !important'
-        }
+          marginRight: '16px !important',
+        },
       }}
     >
-      <StyledInputBase
-        value={value}
-        onChange={onChange}
-        placeholder="Chercher une bibliothèque ou un service"
-        inputProps={{ 'aria-label': 'Chercher une bibliothèque ou un service' }}
-        fullWidth
-      />
+      <StyledInputBase value={value} onChange={onChange} placeholder="Chercher une bibliothèque ou un service" inputProps={{ 'aria-label': 'Chercher une bibliothèque ou un service' }} fullWidth />
       <Div
         sx={{
           display: 'flex',
           alignItems: 'center',
           paddingRight: '12px',
           [theme.breakpoints.down('sm')]: {
-            paddingRight: '8px'
-          }
+            paddingRight: '8px',
+          },
         }}
       >
-        <IconButton 
-          color="primary" 
-          sx={{ 
+        <IconButton
+          color="primary"
+          sx={{
             p: '10px',
             [theme.breakpoints.down('sm')]: {
-              p: '8px'
-            } 
-          }} 
+              p: '8px',
+            },
+          }}
           aria-label="Chercher"
           type="submit"
         >
-          <MagnifyingGlass size={isSmallScreen ? 28 : 32} color="currentColor" />
+          <MagnifyingGlassIcon size={isSmallScreen ? 28 : 32} color="currentColor" />
         </IconButton>
       </Div>
     </SearchPaper>
