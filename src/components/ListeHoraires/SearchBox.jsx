@@ -1,5 +1,6 @@
 import { IconButton, InputBase, Paper, useMediaQuery, useTheme } from '@mui/material'
-import { MagnifyingGlassIcon } from '@phosphor-icons/react'
+import { Layout, MagnifyingGlassIcon } from '@phosphor-icons/react'
+import LayoutContainer from '@/components/utils/LayoutContainer'
 import Div from '@/components/utils/Div'
 import { styled } from '@mui/material/styles'
 
@@ -49,44 +50,44 @@ export default function SearchBox({ value, onChange }) {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
 
   return (
-    <SearchPaper
-      component="form"
-      sx={{
-        marginLeft: 'auto',
-        marginTop: '20px',
-        marginRight: '5%',
-        [theme.breakpoints.down('sm')]: {
-          marginTop: '16px',
-          marginLeft: '16px !important',
-          marginRight: '16px !important',
-        },
-      }}
-    >
-      <StyledInputBase value={value} onChange={onChange} placeholder="Chercher une bibliothèque ou un service" inputProps={{ 'aria-label': 'Chercher une bibliothèque ou un service' }} fullWidth />
-      <Div
+    <LayoutContainer>
+      <SearchPaper
+        component="form"
         sx={{
-          display: 'flex',
-          alignItems: 'center',
-          paddingRight: '12px',
+          marginLeft: 'auto',
+          marginTop: '20px',
           [theme.breakpoints.down('sm')]: {
-            paddingRight: '8px',
+            marginTop: '16px',
+            marginLeft: '16px !important',
           },
         }}
       >
-        <IconButton
-          color="primary"
+        <StyledInputBase value={value} onChange={onChange} placeholder="Chercher une bibliothèque ou un service" inputProps={{ 'aria-label': 'Chercher une bibliothèque ou un service' }} fullWidth />
+        <Div
           sx={{
-            p: '10px',
+            display: 'flex',
+            alignItems: 'center',
+            paddingRight: '12px',
             [theme.breakpoints.down('sm')]: {
-              p: '8px',
+              paddingRight: '8px',
             },
           }}
-          aria-label="Chercher"
-          type="submit"
         >
-          <MagnifyingGlassIcon size={isSmallScreen ? 28 : 32} color="currentColor" />
-        </IconButton>
-      </Div>
-    </SearchPaper>
+          <IconButton
+            color="primary"
+            sx={{
+              p: '10px',
+              [theme.breakpoints.down('sm')]: {
+                p: '8px',
+              },
+            }}
+            aria-label="Chercher"
+            type="submit"
+          >
+            <MagnifyingGlassIcon size={isSmallScreen ? 28 : 32} color="currentColor" />
+          </IconButton>
+        </Div>
+      </SearchPaper>
+    </LayoutContainer>
   )
 }
