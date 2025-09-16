@@ -84,9 +84,10 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
   return (
     <>
       <AppBar
-        position="sticky"
-        elevation={trigger ? 2 : 0}
+        position="fixed"
+        elevation={0}
         sx={{
+
           '--AppBar-background': trigger ? '#fff' : 'transparent',
           '--AppBar-color': trigger ? '#222930' : theme.palette.grey['50'],
           backgroundImage: trigger ? 'none' : 'linear-gradient(180deg, rgba(0,0,0,0.4) 90%, rgba(0,0,0,0) 100%)',
@@ -148,11 +149,15 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
             <JeDonneButton trigger={trigger} transitionProps={transitionProps} />
           </Stack>
           <Box sx={{ paddingLeft: '2rem' }}>
-            <MenuBurger onClick={toggleDrawer(true)} />
+            <MenuBurger open={open} onClick={toggleDrawer(true)} />
           </Box>
         </Toolbar>
       </AppBar>
-      <SideNav open={open} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)}>
+      <SideNav
+        open={open}
+        onOpen={toggleDrawer(true)}
+        onClose={toggleDrawer(false)}
+      >
         <SideNavContent onClose={toggleDrawer(false)} />
       </SideNav>
     </>
