@@ -49,6 +49,14 @@ Les pages à éditer sont dans le dossier `content/`. Vous pouvez modifier le co
 | `npm run build`   | Build your production site to `./dist/`                           |
 | `npm run preview` | Preview your build locally, before deploying, at `localhost:9000` |
 
+## Pour créer une nouvelle release
+
+Commitez tous vos changements en attente, puis exécutez la commande suivante:
+
+```
+npm version minor -m "Bump v%s" && git push
+```
+
 ### Déploiement automatique
 
 Rafraîchissez cette page pour une mise à jour du statut de déploiement.
@@ -78,10 +86,10 @@ Le prototype utilise la librairie [Material UI](https://mui.com/material-ui/). T
 | [Button](https://mui.com/material-ui/react-button/)                                                                                                                                                                                                                                                   | @mui/material              |
 | [Box](https://mui.com/material-ui/react-box/)                                                                                                                                                                                                                                                         | @mui/material              |
 | HeroWithImage                                                                                                                                                                                                                                                                                         | @bibudem/coquille-web      |
-| HeroWithText                                                                                                                                                                                                                                                                                         | @bibudem/coquille-web      |
-| CardWithIcon                                                                                                                                                                                                                                                                                                 | @bibudem/coquille-web      |
+| HeroWithText                                                                                                                                                                                                                                                                                          | @bibudem/coquille-web      |
+| CardWithIcon                                                                                                                                                                                                                                                                                          | @bibudem/coquille-web      |
 | [Carousel](https://learus.github.io/react-material-ui-carousel/)                                                                                                                                                                                                                                      | react-material-ui-carousel |
-| [Divider](https://mui.com/material-ui/react-divider/)                                                                                                                                                                                                                                                 | @mui/material<br />        |
+| [Divider](https://mui.com/material-ui/react-divider/)                                                                                                                                                                                                                                                 | @mui/material              |
 | [Grid v2](https://mui.com/material-ui/react-grid2/)                                                                                                                                                                                                                                                   | @mui/material              |
 | IconInSquare                                                                                                                                                                                                                                                                                          | @bibudem/coquille-web      |
 | Link                                                                                                                                                                                                                                                                                                  | @bibudem/coquille-web      |
@@ -128,28 +136,24 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Consultez la [documentation de Material UI](https://mui.com/material-ui/all-components/) pour la liste complète des composants disponibles.
 
-## Pour créer une nouvelle release
-
-- npm version minor -m "Bump v%s"
-
 ## Bibliothèques et Points de service
 
-| Titre                                                                  | ID                   |
-|------------------------------------------------------------------------|----------------------|
-| Aménagement                                                            | amenagement          |
-| Parc                                                                   | parc                 |
-| Centre de conservation Lionel-Groulx                                   | conservation         |
-| Livres rares et collections spéciales                                  | lrcs                 |
-| Droit                                                                  | droit                |
-| Thérèse-Gouin-Décarie                                                  | tgd                  |
-| Point de service : À venir - Jardin Botanique, Brossard, Médecine      | jardin-botanique     |
-| Kinésiologie                                                           | kinesiologie         |
-| Campus de Laval                                                        | laval                |
-| Centre de conservation 101, boul. Marcel-Laurin                        | marcel-laurin        |
-| Mathématiques et informatique                                          | math-info            |
-| Musique                                                                | musique              |
-| Médecine vétérinaire                                                   | medecine-veterinaire |
-| Marguerite-d'Youville                                                  | marguerite-d-youville|
-| Santé                                                                  | sante                |
-| Hubert-Reeves                                                          | Hubert-reeves        |
-| Lettres et sciences humaines                                           | lsh                  |
+| Titre                                                             | ID                    |
+| ----------------------------------------------------------------- | --------------------- |
+| Aménagement                                                       | amenagement           |
+| Parc                                                              | parc                  |
+| Centre de conservation Lionel-Groulx                              | conservation          |
+| Livres rares et collections spéciales                             | lrcs                  |
+| Droit                                                             | droit                 |
+| Thérèse-Gouin-Décarie                                             | tgd                   |
+| Point de service : À venir - Jardin Botanique, Brossard, Médecine | jardin-botanique      |
+| Kinésiologie                                                      | kinesiologie          |
+| Campus de Laval                                                   | laval                 |
+| Centre de conservation 101, boul. Marcel-Laurin                   | marcel-laurin         |
+| Mathématiques et informatique                                     | math-info             |
+| Musique                                                           | musique               |
+| Médecine vétérinaire                                              | medecine-veterinaire  |
+| Marguerite-d'Youville                                             | marguerite-d-youville |
+| Santé                                                             | sante                 |
+| Hubert-Reeves                                                     | Hubert-reeves         |
+| Lettres et sciences humaines                                      | lsh                   |

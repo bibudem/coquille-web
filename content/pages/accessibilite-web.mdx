@@ -1,12 +1,12 @@
 ---
 title: Accessibilité web
 ---
-<Box>
+import { Box, Container, Typography } from '@mui/material'
 import { MagnifyingGlassIcon, ClockCountdownIcon, CalendarPlusIcon, LifebuoyIcon, ChatsIcon } from '@phosphor-icons/react'
+import LayoutContainer from '@/components/utils/LayoutContainer'
 import { SofiaIcon, BurgerIcon, ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
 import ArrowRightCircle from '@/icons/arrow-right-circle.svg'
 import ArrowUpRightCircle from '@/icons/arrow-up-right-circle.svg'
-import { Box, Container, Typography } from '@mui/material'
 
 export const IconLabel = ({ icon, label, ariaLabel }) => (
   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
@@ -19,12 +19,12 @@ export const IconLabel = ({ icon, label, ariaLabel }) => (
 )
 
 <SuperHero2 title="Accessibilité web" imageName="default" size="small" />
-<Container maxWidth="xl" >
+<LayoutContainer>
 <Section sx={{ paddingRight: {lg: '5rem !important',xl: '4rem !important'}}}>
 <Typography variant="body1" >
   Cette page concerne l'accessibilité technique du site web. Pour plus d'informations 
   concernant les services d'accessibilité offerts par les bibliothèques, référez-vous 
-  au Service Accessibilité [Lien].
+  au [Service Accessibilité](/service-accessibilite/).
 </Typography>
 
 ### Standard gouvernemental
@@ -81,5 +81,4 @@ Voici la liste des icônes ayant un rôle fonctionnelle:
 Si vous avez des difficultés à naviguer dans ce site, vous pouvez obtenir de l’aide en contactant le Service Accessibilité : [accessibilite@bib.umontreal.ca](mailto:accessibilite@bib.umontreal.ca).
 
 </Section>
-</Container>
-</Box>
+</LayoutContainer>

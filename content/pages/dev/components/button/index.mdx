@@ -8,6 +8,41 @@ template: doc
 
   # Button
 
+  ## Propriétés
+
+<table style={{ borderCollapse: 'collapse', border: '1px solid black',  }}>
+  <thead>
+    <tr>
+      <th>Propriété</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Défaut</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>primary</code></td>
+      <td>booléen</td>
+      <td>Bouton principal.</td>
+      <td><code>false</code></td>
+    </tr>
+    <tr>
+      <td><code>secondary</code></td>
+      <td>booléen</td>
+      <td>Bouton secondaire.</td>
+      <td><code>false</code></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4">^1 Les propriétés `primary` et `secondary` sont mutuellement exclusives.</td>
+    </tr>
+    <tr>
+      <td colspan="4">^2 En plus des propriétés listées, le composant accepte toutes <a href="https://mui.com/material-ui/react-button/">les propriétés du composant `<Button>` de MUI</a>.</td>  
+    </tr>
+  </tfoot>
+</table>
+
   ## Variant `outlined` (défaut)
 
   <Button primary href="#">Primary</Button>
