@@ -14,11 +14,11 @@ export default function SideNavSm({ children, ...props }) {
       sx={{
         '> .MuiPaper-root': {
           width: '100%',
-          marginTop: appBarHeight,
           padding:'1rem',
           backgroundColor: '#222930',
-          height:'auto',
-          height: `calc(100% - ${appBarHeight})`,
+          top: appBarHeight, 
+          height: 'auto',  
+          maxHeight: `calc(100% - ${appBarHeight})`, 
         },
       }}
     >
