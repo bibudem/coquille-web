@@ -95,7 +95,6 @@ export default function PageTemplate({ pageContext, children, data, location }) 
           <bib-avis
             bouton-fermer
             style={{
-              marginTop:'5rem',
               '--bib-avis-spacing-inline': '0',
               position: 'relative',
               zIndex: theme.zIndex.appBar + 1,
@@ -109,11 +108,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         {lvl > 1 && superHero && <SuperHero title={superHero.title} imageName={superHero.imageName} lvl={lvl} />}
 
-        {lvl >= 2 && <bib-avis bouton-fermer style={{
-              
-              position: 'relative',
-              zIndex: theme.zIndex.appBar + 1,
-            }}/>}
+        {lvl >= 2 && <bib-avis bouton-fermer />}
 
         {hasSecondaryNav ? (
           isMedium ? (

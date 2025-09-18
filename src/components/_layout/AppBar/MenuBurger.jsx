@@ -9,9 +9,13 @@ export default function MenuBurger({ open, onClick, sx = {} }) {
       aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
       sx={{
         color: 'inherit',
-        fontSize: '2.5rem',
+        fontSize: '3.5rem',
         zIndex: 1400,
+        paddingLeft: '2rem',
         ...sx,
+        '&:hover': {
+          backgroundColor: 'transparent',
+        },
       }}
     >
       {open ? (

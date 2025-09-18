@@ -75,7 +75,7 @@ const cards = [
       { label: 'GéoIndex – Données géospatiales', href: '#' },
       { label: 'Calypso – Objets numériques', href: '#' },
     ],
-    cta: { label: 'Toutes les ressources', href: '#' },
+    //cta: { label: 'Toutes les ressources', href: '#' },
     footerColor: '#52B782',
     bgColor: '#2a3440',
   },
@@ -298,28 +298,30 @@ export default function MenuSection({  }) {
 
                     <CardActions sx={{ p: 0 }}>
                       {/* Footer CTA */}
-                      <Box sx={{ 
-                        fontWeight: 500, 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        gap: '8px',
-                        color: card.footerColor,
-                        pt: 1
-                      }}>
-                        <StyledLink 
-                          href={card.cta.href} 
-                          sx={{
-                            color: 'inherit',
-                            fontSize: '1rem',
-                            '&:hover': {
+                      {card.cta?.href && card.cta?.label && (
+                        <Box sx={{ 
+                          fontWeight: 500, 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          gap: '8px',
+                          color: card.footerColor,
+                          pt: 1
+                        }}>
+                          <StyledLink 
+                            href={card.cta.href} 
+                            sx={{
                               color: 'inherit',
-                              textDecoration: 'underline',
-                            }
-                          }}
-                        >
-                          {card.cta.label} →
-                        </StyledLink>
-                      </Box>
+                              fontSize: '1rem',
+                              '&:hover': {
+                                color: 'inherit',
+                                textDecoration: 'underline',
+                              }
+                            }}
+                          >
+                            {card.cta.label} →
+                          </StyledLink>
+                        </Box>
+                      )}
                     </CardActions>
                   </Card>
                 </Grid>
