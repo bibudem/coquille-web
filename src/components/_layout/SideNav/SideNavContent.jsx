@@ -1,372 +1,363 @@
-import { forwardRef, useState } from 'react'
-import { Box, Button, List, ListItem, ListItemButton, ListItemText, Typography, ListItemIcon, useMediaQuery, useTheme, IconButton } from '@mui/material'
-import { styled } from '@mui/material/styles'
-import Link from '@/components/Link'
-import Close from '@mui/icons-material/Close'
-import noop from '@/utils/noop'
-import { ArrowRightIcon } from '@phosphor-icons/react'
-import LogoBibUBlanc from '@/images/logo-bib/logo-bib-U-blanc.svg'
+"use client"
+
+import { 
+  Box, Grid, Typography, List, ListItem, ListItemText,Button, 
+  useTheme, useMediaQuery, Card, CardContent, CardActions,Collapse
+} from '@mui/material';
+import { useState } from 'react'
+import { styled } from '@mui/material/styles';
+import Link from '@/components/Link';
+import Studiobib from '@/images/burger/studiobib.png'
+import BoiteOutils from '@/images/burger/boite-outils.png'
+import AutresResources from '@/images/burger/autres-resources.png'
 import pages from '../AppBar/menu'
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { 
+  Books,
+  DoorOpen,
+  FolderOpen,
+  ClockCountdown,
+  AddressBook,
+  Info,
+  House,
+  ArrowRight
+} from '@phosphor-icons/react';
 
-const SideNavHeaderContainer = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  padding: '21px 21px 32px',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  backgroundColor: theme.palette.bleuFonce.main,
-}))
-
-const StyledLogoLink = styled(Link)({
-  width: '100px',
-  whiteSpace: 'nowrap',
-})
-
-const StyledNav = styled('nav')(({ theme }) => ({
-  padding: '80px 48px',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '32px',
-  [theme.breakpoints.down('md')]: {
-    padding: '40px 24px',
-    minWidth: '85vw',
-    scrollSnapAlign: 'start',
-    '&:first-of-type': {
-      paddingLeft: '32px',
+// Style pour les liens dans les cartes avec effet hover
+const StyledLink = styled(Link)(({ theme }) => ({
+  color: "#c8cbcfff",
+  textDecoration: 'none',
+  fontSize: '1.125rem',
+  fontWeight: '300',
+  display: 'block',
+  padding: '0.25rem 0',
+  transition: 'all 0.2s ease',
+  "&:hover": {
+      color: "white"
     },
-    '&:last-child': {
-      paddingRight: '32px',
-    },
+}));
+
+
+// --- Données pour alimenter les cartes ---
+const cards = [
+  {
+    icon: Studiobib,
+    title: 'Studio·bib',
+    links: [
+      { label: 'Accès hors campus', href: '#' },
+      { label: 'Soutien informatique', href: '#' },
+      { label: 'Technologies créatives', href: '#' },
+      { label: 'Productions médias', href: '#' },
+    ],
+    cta: { label: 'Aller plus loin', href: '#' },
+    footerColor: '#FFCA40',
+    bgColor: '#2a3440',
   },
-}))
+  {
+    icon: BoiteOutils,
+    title: 'Boîte à outils',
+    links: [
+      { label: 'Base de données A-Z', href: '#' },
+      { label: 'Guides disciplinaires', href: '#' },
+      { label: 'Comment citer', href: '#' },
+      { label: 'Droit d\'auteur', href: '#' },
+    ],
+    cta: { label: 'Découvrir tous les outils', href: '#' },
+    footerColor: '#F04E24',
+    bgColor: '#2a3440',
+  },
+  {
+    icon: AutresResources,
+    title: 'Ressources',
+    links: [
+      { label: 'Outil de recherche Sofia', href: '#' },
+      { label: 'Papyrus – dépôt institutionnel', href: '#' },
+      { label: 'GéoIndex – Données géospatiales', href: '#' },
+      { label: 'Calypso – Objets numériques', href: '#' },
+    ],
+    //cta: { label: 'Toutes les ressources', href: '#' },
+    footerColor: '#52B782',
+    bgColor: '#2a3440',
+  },
+];
 
-function Nav({ bg = false, ...props }) {
-  const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
+// --- Boutons latéraux avec icônes ---
+const quickLinks = [
+  { label: 'Obtenir un document', href: '/obtenir/', icon: Books },
+  { label: 'Réserver une salle', href: '/reserver', icon: DoorOpen },
+  { label: 'Mon dossier', href: 'https://umontreal.account.worldcat.org/account', icon: FolderOpen },
+  { label: 'Horaires', href: '/horaires', icon: ClockCountdown },
+  { label: 'Nous joindre', href: '/nous-joindre/', icon: AddressBook },
+  { label: 'À propos', href: '/a-propos/', icon: Info },
+];
+
+function MobileQuickLinks() {
+  const [open, setOpen] = useState(false);
+
+  const buttonSx = {
+    justifyContent: "space-between",
+    backgroundColor: "transparent",
+    color: "#c8cbcfff",
+    border: "1px solid rgba(255,255,255,0.2)",
+    borderRadius: "8px",
+    textTransform: "none",
+    padding: "0.75rem 1rem",
+    transition: "all 0.3s ease",
+    fontSize: "1rem",
+    width: "100%",
+    "&:hover": {
+      backgroundColor: "rgba(255,255,255,0.1)",
+      borderColor: "rgba(255,255,255,0.4)",
+      color: "white"
+    },
+  };
+
+  const collapseLinkSx = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "transparent",
+    color: "#c8cbcfff",
+    borderRadius: "8px",
+    textDecoration: "none!important",
+    padding: "0.75rem 1rem",
+    fontSize: "1rem",
+    width: "100%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "1rem",
+    "&:hover": {
+      backgroundColor: "rgba(255,255,255,0.1)",
+      color: "white"
+    },
+  };
 
   return (
-    <StyledNav
-      {...props}
-      sx={{
-        backgroundColor: isMobile 
-          ? (bg ? theme.palette.bleuFonce.main : theme.palette.bleuPrincipal.main)
-          : (bg ? theme.palette.bleuFonce.main : theme.palette.bleuPrincipal.main),
-      }}
-    />
-  )
-}
-
-const StyledNavHeader = styled(Typography)(({ theme }) => ({
-  fontSize: '28px',
-  fontWeight: 500,
-  lineHeight: 1.2,
-  color: theme.palette.common.white,
-  [theme.breakpoints.down('md')]: {
-    fontSize: '24px',
-  },
-}))
-
-function NavHeader({ children, ...props }) {
-  return <StyledNavHeader {...props} component="h2" children={children} />
-}
-
-function NavList(props) {
-  return <List disablePadding {...props} />
-}
-
-function NavListItem({ href, children, icon, ...props }) {
-  const theme = useTheme()
-
-  return (
-    <ListItem disablePadding {...props}>
-      <ListItemButton
-        disableGutters
+    <Box sx={{ mb: 2, display: "flex", flexDirection: "column", gap: 1 }}>
+      {/* Accueil */}
+      <Button
         component={Link}
-        to={href}
-        sx={{
-          gap: '15px',
-          textDecoration: 'none',
-          color: theme.palette.common.white,
-          '&:hover': {
-            textDecoration: 'underline',
-            backgroundColor: 'unset',
-            color: theme.palette.common.white,
-          },
-          [theme.breakpoints.down('lg')]: {
-            py: '8px',
-          },
-        }}
+        to="/"
+        endIcon={<House size={20} />}
+        variant="outlined"
+        sx={buttonSx}
       >
-        {icon && (
-          <ListItemIcon
-            sx={{
-              minWidth: 'unset',
-              color: 'inherit',
-              [theme.breakpoints.down('lg')]: {
-                '& svg': {
-                  fontSize: '20px',
-                },
-              },
-            }}
-          >
-            {icon}
-          </ListItemIcon>
-        )}
-        <ListItemText
-          primary={children}
-          slotProps={{
-            primary: {
-              color: 'inherit',
-              [theme.breakpoints.down('lg')]: {
-                fontSize: '15px',
-                color: 'red!important',
-              },
-            },
-          }}
-        />
-      </ListItemButton>
-    </ListItem>
-  )
-}
+        Accueil
+      </Button>
 
-export default forwardRef(function SideNavContent({ close = noop, onClose = noop, ...props }, ref) {
-  const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
-  const [scrollPosition, setScrollPosition] = useState(0)
-  const [activeIndex, setActiveIndex] = useState(0)
-
-  const handleScroll = (e) => {
-    const scrollLeft = e.target.scrollLeft
-    setScrollPosition(scrollLeft)
-
-    const newActiveIndex = Math.round(scrollLeft / (e.target.scrollWidth / 4))
-    setActiveIndex(Math.min(3, Math.max(0, newActiveIndex)))
-  }
-
-  const handleCloseClick = (e) => {
-    e.stopPropagation()
-    onClose(e)
-  }
-
-  return (
-    <Box
-      ref={ref}
-      sx={{
-        width: '100vw',
-        height: 'auto',
-        fontSize: '16px',
-        fontFeatureSettings: '"liga" off, "clig" off',
-        fontVariantNumeric: 'lining-nums tabular-nums',
-        display: 'flex',
-        flexDirection: 'column',
-        transition: 'transform 0.3s ease-in-out',
-        [theme.breakpoints.up('md')]: {
-          minWidth: 'calc(100% - 30px)',
-          width: '100%',
-        },
-        [theme.breakpoints.up('xl')]: {
-          minWidth: '1380px',
-          width: '80vw',
-        },
-      }}
-      role="presentation"
-    >
-      <SideNavHeaderContainer  sx={{ display: 'flex',
-              [theme.breakpoints.down('md')]: {
-                display: 'block',
-              }}}>
-        <Link to="/" aria-label="Accueil">
-          <LogoBibUBlanc
+      {/* Liens rapides toggle */}
+      <Button
+        onClick={() => setOpen(!open)}
+        variant="outlined"
+        sx={{
+          ...buttonSx,
+          ...(open && {
+            backgroundColor: "rgba(255,255,255,0.1)",
+            borderColor: "rgba(255,255,255,0.4)",
+          }),
+        }}
+        endIcon={
+          <ExpandMoreIcon
             style={{
-              width: '170px',
-              height: 'auto',
-              pointerEvents: 'none',
+              transform: open ? "rotate(90deg)" : "rotate(0deg)",
+              transition: "transform 0.3s ease",
             }}
           />
-        </Link>
-        
-        {/* Menu principal desktop */}
-        {!isMobile && (
-           <NavList 
-              sx={{ 
-                display: 'flex', 
-                gap: 3,       
-                px: 3  
-              }}
-            >
-              {pages.map((page) => (
-                <NavListItem 
-                  key={page.url} 
-                  href={page.url}
-                >
-                  {page.label}
-                </NavListItem>
-              ))}
-            </NavList>
-
-        )}
-        <Box
-          sx={{
-            display: 'flex',
-            gap: '22px',
-            alignItems: 'center',
-            [theme.breakpoints.down('md')]: {
-              gap: '10px',
-            },
-          }}
-        >
-          <Button
-            href="/nous-joindre/"
-            variant="outlined"
-            sx={{
-              color: theme.palette.common.white,
-              borderColor: theme.palette.grey[300],
-              '&:hover': {
-                borderColor: theme.palette.grey[300],
-              },
-              fontSize: '14px',
-              [theme.breakpoints.down('md')]: {
-              width: '100%',
-               },
-            }}
-             endIcon={<ArrowRightIcon size={28} />}
-          >
-            Nous joindre
-          </Button>
-          <Button
-            href="/nous-soutenir/"
-            variant="contained"
-            sx={{
-              fontSize: '14px',
-              color: theme.palette.grey[900],
-              backgroundColor: theme.palette.grey[100],
-              '&:hover': {
-                backgroundColor: theme.palette.grey[200],
-              },
-              [theme.breakpoints.down('md')]: {
-              width: '100%',
-               },
-            }}
-            endIcon={<ArrowRightIcon size={28} />}
-          >
-            Je donne
-          </Button>
-          <IconButton
-            aria-label="Fermer le menu"
-            onClick={handleCloseClick}
-            sx={{
-              color: '#fff',
-              padding: '8px',
-              '&:hover': {
-                backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                transform: 'scale(1.1)',
-                transition: 'all 0.2s ease-in-out',
-              },
-              [theme.breakpoints.down('md')]: {
-              marginTop: '-7.5rem',
-            },
-            }}
-          >
-            <Close />
-          </IconButton>
-        </Box>
-      </SideNavHeaderContainer>
-      <Box
-        sx={{
-          display: 'flex',
-          flex: 1,
-          borderTop: `1px solid ${theme.palette.common.white}`,
-          borderBottom: `1px solid ${theme.palette.common.white}`,
-          [theme.breakpoints.down('lg')]: {
-            overflow: 'hidden',
-          },
-        }}
+        }
       >
-        <Box
-          sx={{
-            display: 'flex',
-            flex: 1,
-            [theme.breakpoints.down('lg')]: {
-              overflowX: 'auto',
-              overflowY: 'hidden',
-              scrollSnapType: 'x mandatory',
-              '&::-webkit-scrollbar': {
-                display: 'none',
-              },
-              msOverflowStyle: 'none',
-              scrollbarWidth: 'none',
-            },
-          }}
-          onScroll={isMobile ? handleScroll : undefined}
-        >
-          {/* Nouvelle section pour le menu principal mobile */}
-          {isMobile && (
-              <Nav aria-label="Menu principal" bg={false}>
-                <NavHeader></NavHeader>
-                <NavList>
-                  {/* Lien vers l'accueil */}
-                  <NavListItem href="/">
-                    Accueil
-                  </NavListItem>
-                  {pages.map((page) => (
-                    <NavListItem 
-                      key={page.url} 
-                      href={page.url}
-                    >
-                      {page.label}
-                    </NavListItem>
-                  ))}
-                </NavList>
-              </Nav>
-          )}
-          <Nav aria-label="Les bibliothèques" bg={true}>
-            <NavHeader>Les bibliothèques</NavHeader>
-            <NavList>
-              <NavListItem href="/a-propos/notre-organisation/">Notre organisation</NavListItem>
-              <NavListItem href="/a-propos/mission-vision-valeur">Mission, vision et valeurs</NavListItem>
-              <NavListItem href="/a-propos/nos-collections">Collections</NavListItem>
-              <NavListItem href="/a-propos/politiques-reglement">Politiques et réglement</NavListItem>
-              <NavListItem href="/a-propos/rapports-annuels">Rapports annuels</NavListItem>
-              <NavListItem href="/nouvelles/">Nouvelles</NavListItem>
-              <NavListItem href="/a-propos/carriere">Carrière</NavListItem>
-              <NavListItem href="/horaires">Heures d'ouverture</NavListItem>
-              <NavListItem href="/nous-joindre/">Nous joindre</NavListItem>
+        Liens rapides
+      </Button>
 
+      {/* Contenu toggle avec liens simples */}
+      <Collapse in={open}>
+        <Box sx={{ mt: 1, display: "flex", flexDirection: "column", gap: 1 }}>
+          {/* Pages */}
+          {pages.map((page, i) => (
+            <Link key={`page-${i}`} to={page.url} sx={collapseLinkSx}>
+              {page.label} <ArrowRight size={16} />
+            </Link>
+          ))}
 
-            </NavList>
-          </Nav>
-
-          <Nav aria-label="Vos ressources" bg={false}>
-            <NavHeader>Vos ressources</NavHeader>
-            <NavList>
-              <NavListItem href="https://calendrier.bib.umontreal.ca/r">Réservation de salles</NavListItem>
-              <NavListItem href="https://umontreal.on.worldcat.org/discovery?lang=fr">Sofia - accès aux collections</NavListItem>
-              <NavListItem href="https://boite-outils.bib.umontreal.ca/az.php">Bases de données de A à Z</NavListItem>
-              <NavListItem href="https://boite-outils.bib.umontreal.ca/">La boîte à outils - ressources et guides spécialisés</NavListItem>
-              <NavListItem href="https://studio.bib.umontreal.ca/">Studio•bib - soutien informatique et à la création numérique</NavListItem>
-              <NavListItem href="https://geoapp.bibl.ulaval.ca/">GéoIndex - données géospatiales</NavListItem>
-              <NavListItem href="https://umontreal.scholaris.ca/">Papyrus - dépôt institutionnel</NavListItem>
-              <NavListItem href="https://calypso.bib.umontreal.ca/">Calypso - collections numérisées</NavListItem>
-              <NavListItem href="https://studio.bib.umontreal.ca/informatique/">Soutien informatique</NavListItem>
-
-
-            </NavList>
-          </Nav>
-
-          <Nav aria-label="Obtenir un document" bg={true}>
-            <NavHeader>Obtenir un document</NavHeader>
-            <NavList>
-              <NavListItem href="/obtenir/pret-renouvellement-retour/">Prêt, renouvellement, retour</NavListItem>
-              <NavListItem href="/obtenir/numerisation">Demande de numérisation</NavListItem>
-              <NavListItem href="/obtenir/peb/">Prêt entre bibliothèques</NavListItem>
-              <NavListItem href="/obtenir/frais-avis">Frais et avis de retard</NavListItem>
-              <NavListItem href="/nous-joindre/suggestion-achat/">Suggestion d'achat</NavListItem>
-              <NavListItem href="/service-accessibilite/">Service Accessibilité</NavListItem>
-            </NavList>
-          </Nav>
-
-
+          {/* QuickLinks */}
+          {quickLinks.map((btn, i) => {
+            const IconComponent = btn.icon;
+            return (
+              <Link key={`quick-${i}`} to={btn.href} sx={collapseLinkSx}>
+                {btn.label} <IconComponent size={20} />
+              </Link>
+            );
+          })}
         </Box>
-      </Box>
+      </Collapse>
     </Box>
-  )
-})
+  );
+}
+
+export default function MenuSection({  }) {
+  const theme = useTheme()
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('lg'))
+
+  // Ordre des cartes pour mobile (inversé)
+  const mobileCardOrder = [2, 1, 0]; // Ressources, Boîte à outils, Studio·bib
+  const desktopCardOrder = [0, 1, 2]; // Ordre original
+
+  return (
+    <>
+      {/* Section principale du menu */}
+      <Box sx={{ padding: { xs: '0', md: '0' } }}>
+        <Grid container spacing={2}>
+          
+          {/* Section des boutons - En premier sur mobile */}
+          <Grid item xs={12} lg={3} sx={{ 
+            order: { xs: 1, lg: 2 } // Ordre modifié pour mobile
+          }}>
+            <Box sx={{ 
+              display: 'flex', 
+              flexDirection: 'column', 
+              height: '100%',
+              justifyContent: { md: 'flex-start' },
+              gap: 1
+            }}>
+              {/* Affichage compact pour mobile */}
+              {isSmallScreen ? (
+                <MobileQuickLinks />
+              ) : (
+                <>
+                  {quickLinks.map((btn, i) => {
+                    const IconComponent = btn.icon;
+                    return (
+                      <Button
+                        key={i}
+                        fullWidth
+                        href={btn.href}
+                        startIcon={<IconComponent size={20} />}
+                        variant="outlined"
+                        sx={{
+                          justifyContent: 'flex-start',
+                          backgroundColor: 'transparent',
+                          color: '#c8cbcfff',
+                          borderColor: 'rgba(255,255,255,0.2)',
+                          borderRadius: '8px',
+                          textTransform: 'none',
+                          padding: '0.75rem 1rem',
+                          transition: 'all 0.2s ease',
+                          fontSize: '1rem',
+                          '&:hover': {
+                            backgroundColor: 'rgba(255,255,255,0.1)',
+                            borderColor: 'rgba(255,255,255,0.4)',
+                            color: "white"
+                          },
+                        }}
+                      >
+                        {btn.label}
+                      </Button>
+                    );
+                  })}
+                </>
+              )}
+            </Box>
+          </Grid>
+
+          {/* Section des cartes - En second sur mobile */}
+          <Grid item xs={12} lg={9} sx={{ 
+            order: { xs: 2, lg: 1 } // Ordre modifié pour mobile
+          }}>
+            <Grid container spacing={2} alignItems="stretch">
+              {(isSmallScreen ? mobileCardOrder : desktopCardOrder).map((cardIndex, i) => {
+                const card = cards[cardIndex];
+                return (
+                  <Grid item xs={12} sm={4} md={4} key={i} sx={{ display: 'flex' }}>
+                    <Card
+                      sx={{
+                        backgroundColor: '#2a3440',
+                        borderRadius: '8px',
+                        padding: '2rem',
+                        color: 'white',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        width: '100%',
+                        position: 'relative',
+                        overflow: 'hidden',
+                        '&::after': {
+                          content: '""',
+                          position: 'absolute',
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          height: '5px',
+                          backgroundColor: card.footerColor,
+                          borderRadius: '0 0 8px 8px',
+                        },
+                        '&:hover': {
+                          boxShadow: `0 5px 0 0 ${card.footerColor}`,
+                          transition: 'all 0.3s ease'
+                        },
+                      }}
+                    >
+                      <CardContent sx={{ flexGrow: 1, p: 0, pb: '16px !important' }}>
+                        {/* Icone + titre */}
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                          <Box
+                            component="img"
+                            src={card.icon}
+                            alt={card.title}
+                            sx={{ width: 80, height: 80 }}
+                          />
+                          <Typography variant="h6">{card.title}</Typography>
+                        </Box>
+
+                        {/* Liste des liens */}
+                        <List dense sx={{ mb: 1 }}>
+                          {card.links.map((link, idx) => (
+                            <ListItem key={idx} disablePadding sx={{ py: 0.5 }}>
+                              <ListItemText
+                                primary={
+                                  <StyledLink href={link.href}>
+                                    → {link.label}
+                                  </StyledLink>
+                                }
+                              />
+                            </ListItem>
+                          ))}
+                        </List>
+                      </CardContent>
+
+                      <CardActions sx={{ p: 0 }}>
+                        {/* Footer CTA */}
+                        {card.cta?.href && card.cta?.label && (
+                          <Box sx={{ 
+                            fontWeight: 500, 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            gap: '8px',
+                            color: card.footerColor,
+                            pt: 1
+                          }}>
+                            <StyledLink 
+                              href={card.cta.href} 
+                              sx={{
+                                color: 'inherit',
+                                fontSize: '1rem',
+                                '&:hover': {
+                                  color: 'inherit',
+                                  textDecoration: 'underline',
+                                }
+                              }}
+                            >
+                              {card.cta.label} →
+                            </StyledLink>
+                          </Box>
+                        )}
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Grid>
+        </Grid>
+      </Box>
+    </>
+  );
+}
