@@ -181,6 +181,7 @@ import { parseStringPromise } from 'xml2js'
 import fetch from 'node-fetch'
 
 const fetchUdeMNews = async () => {
+  console.log('ici -------------------------------------------------------------------------------------------------------------------------------------')
   try {
     const response = await fetch('https://nouvelles.umontreal.ca/recherche/export.rss?tx_solr[filter][0]=types:udem_article&q=bibliotheques/')
     if (!response.ok) {
