@@ -1,5 +1,19 @@
 # Changelog
 
+## [4.1.0](https://github.com/bibudem/coquille-web/compare/v4.0.2...v4.1.0) (2025-09-19)
+
+
+### Features
+
+* **component:** FicheBibliotheque: le bloc 'blocNousJoindre' est maintenant facultatif. ([963183c](https://github.com/bibudem/coquille-web/commit/963183c9174fea47fe8d6a545a3eb4a90a82a3eb))
+
+
+### Bug Fixes
+
+* **component:** bib-consent: Correction du lien (v0 -&gt; v1.1) vers le script qui implémente le composant. ([65732cd](https://github.com/bibudem/coquille-web/commit/65732cd514d29913792037ebed3da5c95711454f))
+* **component:** ListeFormations: correction du nom d'une icône importée (ArrowUpRight -&gt; ArrowUpRightIcon). ([e9fbf7c](https://github.com/bibudem/coquille-web/commit/e9fbf7c9f47e7cb4b6985768d0aa1fb304c67118))
+* Correction de l'URL du fil RSS des activités UdeM. ([ce613b1](https://github.com/bibudem/coquille-web/commit/ce613b11ca00610eff97bc72776f320d192fce19))
+
 ## 1.0.0 (2025-09-17)
 
 
