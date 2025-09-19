@@ -92,7 +92,7 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
         sx={{
           '--AppBar-background': trigger ? '#fff' : 'transparent',
           '--AppBar-color': trigger ? '#222930' : theme.palette.grey['50'],
-          backgroundImage: trigger ? 'none' : 'linear-gradient(180deg, rgba(0,0,0,0.4) 90%, rgba(0,0,0,0) 100%)',
+          backgroundImage: trigger ? 'none' : 'linear-gradient(180deg, rgba(0,0,0,0.5) 90%, rgba(0,0,0,0) 100%)',
           ...transitionProps,
           transitionProperty: 'background-color, box-shadow',
           '.MuiToolbar-root': {
