@@ -182,9 +182,10 @@ import fetch from 'node-fetch'
 
 const fetchUdeMNews = async () => {
   try {
-    const response = await fetch('https://nouvelles.umontreal.ca/recherche/export.rss?tx_solr[filter][0]=types:udem_article&q=bibliotheque')
+    const response = await fetch('https://nouvelles.umontreal.ca/recherche/export.rss?tx_solr[filter][0]=types:udem_article&q=bibliotheques/')
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
+      console.warn(`Flux RSS indisponible (HTTP ${response.status}), retour d'une liste vide`)
+      return [] // Retourne un tableau vide au lieu de planter
     }
 
     const xmlText = await response.text()
@@ -209,9 +210,10 @@ const fetchUdeMNews = async () => {
     })
   } catch (error) {
     console.error('Erreur lors du fetch RSS UdeM:', error)
-    return []
+    return [] // Retourne un tableau vide au lieu de planter
   }
 }
+
 
 function formatDate(dateString) {
   if (!dateString) return ''
