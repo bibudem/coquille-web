@@ -174,13 +174,24 @@ function JeDonneButton({ trigger, transitionProps }) {
       borderColor: trigger ? theme.palette.bleuFonce.main : '#fff',
       backgroundColor: 'transparent',
       color: trigger ? theme.palette.bleuFonce.main : '#fff',
-      transition: 'color 0.3s ease, border-color 0.3s ease',
+      transition: `${theme.transitions.easing.md3.standardDecelerate}`,
       fontSize: '0.875rem',
 
-      // style de l’icône
+      // style de l'icône
       '.MuiButton-endIcon svg': {
         fill: trigger ? theme.palette.rougeOrange.main : '#fff',
-        transition: 'fill 0.3s ease',
+      },
+
+      // Effet hover
+      '&:hover': {
+        backgroundColor: theme.palette.bleuFonce.main,
+        color: '#fff',
+        borderColor: theme.palette.bleuFonce.main,
+        
+        // Effet hover sur l'icône
+        '.MuiButton-endIcon svg': {
+          fill: '#fff',
+        },
       },
 
       ...transitionProps,
