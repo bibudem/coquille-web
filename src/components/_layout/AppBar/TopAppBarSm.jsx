@@ -52,31 +52,34 @@ export default function TopAppBarSm(props) {
           }}
         >
           <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
-            <Link
-              aria-label="Accueil"
-              to="/"
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                color: 'text.primary',
-                textDecoration: 'none',
-              }}
-            >
-              <LogoUdeMMonochrome
-                style={{
-                  width: isSmallScreen ? 120 : 140,
-                  height: 'auto',
-                }}
-              />
-              <span
-                style={{
-                  fontSize: '16px',
-                  fontWeight: 600,
+            {/* Logo - caché quand le menu est ouvert */}
+            {!open && (
+              <Link
+                aria-label="Accueil"
+                to="/"
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  color: 'text.primary',
+                  textDecoration: 'none',
                 }}
               >
-                Les bibliothèques
-              </span>
-            </Link>
+                <LogoUdeMMonochrome
+                  style={{
+                    width: isSmallScreen ? 120 : 140,
+                    height: 'auto',
+                  }}
+                />
+                <span
+                  style={{
+                    fontSize: '16px',
+                    fontWeight: 600,
+                  }}
+                >
+                  Les bibliothèques
+                </span>
+              </Link>
+            )}
 
             <IconButton
               onClick={toggleDrawer(true)}
