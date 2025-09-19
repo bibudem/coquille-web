@@ -180,52 +180,47 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
 import { parseStringPromise } from 'xml2js'
 import fetch from 'node-fetch'
 
-export const fetchUdeMNews = async () => {
-  const RSS_URL = 'https://nouvelles.umontreal.ca/recherche/export.rss?tx_solr[filter][0]=types:udem_article&q=bibliotheques/'
-
+const fetchUdeMNews = async () => {
   try {
-    const response = await fetch(RSS_URL)
+    const response = await fetch(
+      "https://nouvelles.umontreal.ca/recherche/export.rss?tx_solr[filter][0]=types:udem_article&q=bibliotheques"
+    )
+
     if (!response.ok) {
-      console.warn(`Flux RSS indisponible (HTTP ${response.status}), retour d'une liste vide`)
-      return []
+      console.warn(
+        `Flux RSS indisponible (HTTP ${response.status}), retour d'une liste vide`
+      )
+      return [] // Retourne un tableau vide au lieu de planter
     }
 
     const xmlText = await response.text()
-    const result = await parseStringPromise(xmlText, { trim: true, explicitArray: false })
+    const result = await parseStringPromise(xmlText)
 
-    const items = result?.rss?.channel?.item
-    if (!items) return []
-
-    return (Array.isArray(items) ? items : [items]).map(item => {
-      const description = item.description || ''
-      const cdataMatch = description.match(/<!\[CDATA\[(.*?)\]\]>/s)
-      const cleanDescription = cdataMatch?.[1] || description
-
-      const pubDate = item.pubDate || new Date().toISOString()
-      const dateObj = new Date(pubDate)
+    return result.rss.channel[0].item.map((item) => {
+      const description = item.description?.[0] || ""
+      const cdataContent =
+        description.match(/<!\[CDATA\[(.*?)\]\]>/s)?.[1] || description
 
       return {
-        title: item.title?.trim() || 'Sans titre',
-        link: item.link?.trim() || '#',
-        description: cleanDescription.replace(/<[^>]+>/g, '').trim(),
-        pubDate,
-        formattedDate: dateObj.toLocaleDateString('fr', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
+        title: item.title?.[0]?.trim() || "Sans titre",
+        link: item.link?.[0]?.trim() || "#",
+        description: cdataContent.trim(),
+        pubDate: item.pubDate?.[0] || new Date().toISOString(),
+        enclosure: item.enclosure?.[0]?.$?.url || null,
+        formattedDate: new Date(
+          item.pubDate?.[0] || Date.now()
+        ).toLocaleDateString("fr", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
         }),
-        enclosure: item.enclosure?.$.url || null,
-        creator: item['dc:creator'] || null,
-        category: item.category || null,
-        media: item['media:content']?.$.url || null,
       }
     })
   } catch (error) {
-    console.error('Erreur lors du fetch RSS UdeM:', error)
+    console.error("Erreur lors du fetch RSS UdeM:", error)
     return []
   }
 }
-
 
 
 function formatDate(dateString) {
