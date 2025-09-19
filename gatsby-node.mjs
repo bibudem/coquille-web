@@ -182,7 +182,7 @@ import fetch from 'node-fetch'
 
 const fetchUdeMNews = async () => {
   try {
-    const response = await fetch('https://calendrier.umontreal.ca/activites/export.rss?tx_solr[filter][0]=types:activites-culturelles&tx_solr[filter][1]=types:activites-de-reseautage&tx_solr[filter][2]=types:activites-dinformation&tx_solr[filter][3]=types:activites-philanthropiques&tx_solr[filter][4]=types:activites-sportives&tx_solr[filter][5]=types:ceremonies-officielles&tx_solr[filter][6]=types:concours&tx_solr[filter][7]=types:conferences-colloques&tx_solr[filter][8]=types:cours-seminaires&tx_solr[filter][9]=types:journees-thematiques&tx_solr[filter][10]=types:portes-ouvertes&tx_solr[filter][11]=types:soutenances-de-these&tx_solr[filter][12]=organisateurs:les-bibliotheques')
+    const response = await fetch('https://nouvelles.umontreal.ca/recherche/export.rss?tx_solr[filter][0]=types:udem_article&q=bibliotheque')
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
