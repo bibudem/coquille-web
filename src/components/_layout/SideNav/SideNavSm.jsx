@@ -1,5 +1,4 @@
 import { SwipeableDrawer } from '@mui/material'
-import { appBarHeight } from '../AppBar/TopAppBarSm'
 
 export default function SideNavSm({ children, ...props }) {
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
@@ -14,11 +13,9 @@ export default function SideNavSm({ children, ...props }) {
       sx={{
         '> .MuiPaper-root': {
           width: '100%',
-          padding:'1rem',
-          backgroundColor: '#222930',
-          top: appBarHeight, 
-          height: 'auto',  
-          maxHeight: `calc(100% - ${appBarHeight})`, 
+          '> .MuiBox-root': {
+            width: '100%',
+          },
         },
       }}
     >
