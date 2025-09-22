@@ -35,7 +35,7 @@ function formatDate(dateString) {
     return date.toLocaleDateString('fr', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
     })
   } catch (error) {
     console.error('Error formatting date:', error)
@@ -122,11 +122,7 @@ const Lower = React.memo(({ children, url, type }) => (
           justifyContent: 'flex-end',
         }}
       >
-        {type === 'interne' && url && isInternalLink(url) ? (
-          <ArrowRightCircleIcon color="var(--_lower-icon-color)" fontSize={50} />
-        ) : (
-          <ArrowUpRightCircleIcon color="var(--_lower-icon-color)" fontSize={50} />
-        )}
+        {type === 'interne' && url && isInternalLink(url) ? <ArrowRightCircleIcon color="var(--_lower-icon-color)" fontSize={50} /> : <ArrowUpRightCircleIcon color="var(--_lower-icon-color)" fontSize={50} />}
       </Box>
     </Box>
   </Box>
@@ -190,12 +186,7 @@ const NewsCard = React.memo(({ news }) => (
   </Card>
 ))
 
-export default function ListeNouvellesAccueil({ 
-  title = 'Nouvelles', 
-  moreLink = '/nouvelles/', 
-  moreText = 'Toutes nos nouvelles', 
-  id 
-}) {
+export default function ListeNouvellesAccueil({ title = 'Nouvelles', moreLink = '/nouvelles/', moreText = 'Toutes nos nouvelles', id }) {
   // Validation des props
   const isValid = useMemo(() => {
     try {
@@ -213,24 +204,13 @@ export default function ListeNouvellesAccueil({
   // Requête GraphQL
   const { localNews, udemNews } = useStaticQuery(graphql`
     query ListeNouvellesCombineesQuery {
-      localNews: allFile(
-        filter: { 
-          sourceInstanceName: { eq: "nouvelles" }, 
-          extension: { eq: "mdx" } 
-        }, 
-        sort: { 
-          childMdx: { 
-            frontmatter: { 
-              date: DESC 
-            } 
-          } 
-        }
-      ) {
+      localNews: allFile(filter: { sourceInstanceName: { eq: "nouvelles" }, extension: { eq: "mdx" } }, sort: { childMdx: { frontmatter: { date: DESC } } }) {
         nodes {
           id
           relativePath
           childMdx {
             frontmatter {
+              pubDate: date
               date(formatString: "LL", locale: "fr")
               newsUrl
               slug
@@ -241,8 +221,8 @@ export default function ListeNouvellesAccueil({
           }
         }
       }
-      
-      udemNews: allUdemNews(sort: { fields: pubDate, order: DESC }) {
+
+      udemNews: allUdemNews(sort: { pubDate: DESC }) {
         nodes {
           id
           title
@@ -257,33 +237,37 @@ export default function ListeNouvellesAccueil({
   // Transformation et combinaison des données
   const combinedNews = useMemo(() => {
     try {
-      const local = localNews.nodes.map(node => {
-        const frontmatter = node.childMdx?.frontmatter || {}
+      const local = localNews.nodes.map((node) => {
+        const { id, relativePath, childMdx } = node
+        const { date, pubDate, slug, source, title, type, newsUrl } = childMdx?.frontmatter || {}
         return {
-          id: node.id,
-          date: formatDate(frontmatter.date),
-          url: frontmatter.type === 'interne' 
-            ? getPath(node.relativePath, frontmatter.slug)
-            : frontmatter.newsUrl || '#',
-          source: frontmatter.source || 'Bibliothèque',
-          title: frontmatter.title || 'Sans titre',
-          type: frontmatter.type || 'interne'
+          id,
+          pubDate,
+          date: formatDate(date),
+          url: type === 'interne' ? getPath(relativePath, slug) : newsUrl || '#',
+          source: source || 'Bibliothèque',
+          title: title || 'Sans titre',
+          type: type || 'interne',
         }
       })
 
-      const udem = udemNews.nodes.map(node => ({
+      const udem = udemNews.nodes.map((node) => ({
         id: node.id,
+        pubDate: node.pubDate,
         date: node.formattedDate || formatDate(node.pubDate),
         url: node.link || '#',
         source: 'UdeM Nouvelles',
         title: node.title || 'Sans titre',
-        type: 'externe'
+        type: 'externe',
       }))
 
-      return [...local, ...udem]
-        .filter(news => news.date && news.title)
-        .sort((a, b) => new Date(b.date) - new Date(a.date))
+      const combined = [...local, ...udem]
+        // Filtrer les nouvelles sans date ou titre, trier par date décroissante et limiter à 2 nouvelles
+        .filter((news) => news.date && news.title)
+        .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
         .slice(0, 2)
+
+      return combined
     } catch (error) {
       console.error('Error processing news data:', error)
       return []
@@ -291,19 +275,11 @@ export default function ListeNouvellesAccueil({
   }, [localNews, udemNews])
 
   if (!isValid) {
-    return (
-      <Box sx={{ p: 2, backgroundColor: 'error.light', color: 'error.contrastText' }}>
-        Configuration invalide - Veuillez vérifier les paramètres
-      </Box>
-    )
+    return <Box sx={{ p: 2, backgroundColor: 'error.light', color: 'error.contrastText' }}>Configuration invalide - Veuillez vérifier les paramètres</Box>
   }
 
   if (combinedNews.length === 0) {
-    return (
-      <Box sx={{ p: 2, textAlign: 'center' }}>
-        Aucune nouvelle disponible pour le moment
-      </Box>
-    )
+    return <Box sx={{ p: 2, textAlign: 'center' }}>Aucune nouvelle disponible pour le moment</Box>
   }
 
   return (
