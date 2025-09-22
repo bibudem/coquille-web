@@ -189,7 +189,7 @@ export default function ListeNouvellesCombinees({ id = 'nouvelles-combinees' }) 
       <Box sx={{ padding: 2, textAlign: 'center' }}>
         Aucune nouvelle récente n'a été trouvée.
         <Box sx={{ mt: 2 }}>
-          <Button href="https://nouvelles.umontreal.ca" target="_blank" rel="noopener noreferrer" endIcon={<ArrowSquareOutIcon size={16} />}>
+          <Button href="https://nouvelles.umontreal.ca" rel="noopener noreferrer" endIcon={<ArrowSquareOutIcon size={16} />}>
             Voir toutes les nouvelles UdeM
           </Button>
         </Box>
@@ -262,7 +262,6 @@ export default function ListeNouvellesCombinees({ id = 'nouvelles-combinees' }) 
                     ) : item.type === 'udem' && item.imageUrl ? (
                       <Link
                         to={item.link}
-                        target="_blank"
                         sx={{
                           display: 'block',
                           transition: 'transform 0.1s ease',
@@ -329,7 +328,6 @@ export default function ListeNouvellesCombinees({ id = 'nouvelles-combinees' }) 
                     ) : item.type === 'udem' && item.imageUrl ? (
                       <Link
                         to={item.link}
-                        target="_blank"
                         sx={{
                           display: 'block',
                           transition: 'transform 0.1s ease',
@@ -373,7 +371,6 @@ export default function ListeNouvellesCombinees({ id = 'nouvelles-combinees' }) 
                   <Upper>{item.formattedDate}</Upper>
                   <Link
                     to={item.link}
-                    target={item.type === 'udem' ? '_blank' : undefined}
                     sx={{
                       textDecoration: 'none',
                       color: 'inherit!important',
@@ -399,7 +396,6 @@ export default function ListeNouvellesCombinees({ id = 'nouvelles-combinees' }) 
               <Box
                 component={Link}
                 to={item.link}
-                target="_blank"
                 rel="noopener noreferrer"
                 sx={{
                   display: 'flex',
@@ -441,7 +437,6 @@ export default function ListeNouvellesCombinees({ id = 'nouvelles-combinees' }) 
       <Box sx={{ textAlign: 'center', mt: 2 }}>
         <Button
           href="https://nouvelles.umontreal.ca/"
-          target="_blank"
           rel="noopener noreferrer"
           sx={{
             textTransform: 'none',
