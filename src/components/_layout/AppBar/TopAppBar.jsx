@@ -15,7 +15,7 @@ const StyledButton = styled(Button)({
   alignContent: 'center',
   my: 2,
   color: 'inherit',
-  fontSize: '0.875rem',
+  fontSize: '1rem',
   fontWeight: 400,
   display: 'inline-block',
   position: 'relative',
@@ -29,11 +29,14 @@ const StyledButton = styled(Button)({
     left: 0,
     bottom: 0,
     width: '100%',
-    height: '2px',
+    height: '1px',
     backgroundColor: 'currentColor',
     transform: 'scaleX(0)',
     transformOrigin: 'left',
     transition: 'transform 0.3s ease-in-out',
+  },
+  '&:hover': {
+    backgroundColor: 'transparent',
   },
 
   '&:hover::after': {
@@ -89,7 +92,7 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
         sx={{
           '--AppBar-background': trigger ? '#fff' : 'transparent',
           '--AppBar-color': trigger ? '#222930' : theme.palette.grey['50'],
-          backgroundImage: trigger ? 'none' : 'linear-gradient(180deg, rgba(0,0,0,0.4) 90%, rgba(0,0,0,0) 100%)',
+          backgroundImage: trigger ? 'none' : 'linear-gradient(180deg, rgba(0,0,0,0.5) 90%, rgba(0,0,0,0) 100%)',
           ...transitionProps,
           transitionProperty: 'background-color, box-shadow',
           '.MuiToolbar-root': {
@@ -99,26 +102,26 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
         }}
       >
         <Toolbar
-  disableGutters
-  sx={{
-    margin: '0 auto',
-    width: '100%',
-    maxWidth: theme.breakpoints.values.xl,
-    px: '1.25rem',
-    height: appBarHeight,
-    display: 'flex',
-    alignItems: 'center',
-    '& .MuiStack-root': {
-      alignItems: 'center',
-    },
-    '& .MuiButton-root': {
-      margin: 0,
-      paddingTop: 0,
-      paddingBottom: 0,
-      lineHeight: 1.2, // réduit l’espace vertical du texte
-    },
-  }}
->
+            disableGutters
+            sx={{
+              margin: '0 auto',
+              width: '100%',
+              maxWidth: theme.breakpoints.values.xl,
+              px: '1.25rem',
+              height: appBarHeight,
+              display: 'flex',
+              alignItems: 'center',
+              '& .MuiStack-root': {
+                alignItems: 'center',
+              },
+              '& .MuiButton-root': {
+                margin: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
+                lineHeight: 1.2, // réduit l’espace vertical du texte
+              },
+            }}
+          >
           <Box
             sx={{
               flexGrow: 0,
@@ -147,12 +150,16 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
             })}
             <JeDonneButton trigger={trigger} transitionProps={transitionProps} />
           </Stack>
-          <Box sx={{ paddingLeft: '2rem' }}>
-            <MenuBurger onClick={toggleDrawer(true)} />
+          <Box >
+            <MenuBurger open={open} onClick={toggleDrawer(true)} />
           </Box>
         </Toolbar>
       </AppBar>
-      <SideNav open={open} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)}>
+       <SideNav
+        open={open}
+        onOpen={toggleDrawer(true)}
+        onClose={toggleDrawer(false)}
+      >
         <SideNavContent onClose={toggleDrawer(false)} />
       </SideNav>
     </>
@@ -160,33 +167,47 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
 }
 
 function JeDonneButton({ trigger, transitionProps }) {
-  const theme = useTheme()
+  const theme = useTheme();
+
   const styles = useMemo(() => {
     return {
-      color: trigger ? '#fafdfe' : '#0B113A',
-      bgcolor: trigger ? 'bleuFonce.main' : '#fff',
-      ...transitionProps,
-      transitionProperty: 'color, background-color',
-      '.MuiButton-icon svg': {
-        fill: trigger ? '#fafdfe' : theme.palette.rougeOrange.main,
-        ...transitionProps,
-        transitionProperty: 'fill',
+      borderColor: trigger ? theme.palette.bleuFonce.main : '#fff',
+      backgroundColor: 'transparent',
+      color: trigger ? theme.palette.bleuFonce.main : '#fff',
+      transition: `${theme.transitions.easing.md3.standardDecelerate}`,
+      fontSize: '0.875rem',
+
+      // style de l'icône
+      '.MuiButton-endIcon svg': {
+        fill: trigger ? theme.palette.rougeOrange.main : '#fff',
       },
-    }
-  }, [trigger, transitionProps])
+
+      // Effet hover
+      '&:hover': {
+        backgroundColor: theme.palette.bleuFonce.main,
+        color: '#fff',
+        borderColor: theme.palette.bleuFonce.main,
+        
+        // Effet hover sur l'icône
+        '.MuiButton-endIcon svg': {
+          fill: '#fff',
+        },
+      },
+
+      ...transitionProps,
+    };
+  }, [trigger, transitionProps, theme]);
 
   return (
     <Button
-      variant="contained"
+      variant="outlined"
       disableElevation
       size="large"
       href="/nous-soutenir/"
-      sx={{
-        ...styles,
-      }}
-      endIcon={<ArrowRightIcon color={theme.palette.rougeOrange.main} />}
+      sx={styles}
+      endIcon={<ArrowRightIcon />}
     >
       Je donne
     </Button>
-  )
+  );
 }

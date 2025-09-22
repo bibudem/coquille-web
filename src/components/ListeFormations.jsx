@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid2'
 import useSWR from 'swr'
 import Button from '@/components/Button'
 import { ArrowUpRightCircleIcon } from '@/components/CustomIcons'
-import { CalendarBlankIcon, ClockCountdownIcon, MapPinSimpleAreaIcon,ArrowUpRight } from '@phosphor-icons/react'
+import { CalendarBlankIcon, ClockCountdownIcon, MapPinSimpleAreaIcon, ArrowUpRightIcon } from '@phosphor-icons/react'
 
 const FETCH_TIMEOUT = 2000
 
@@ -14,10 +14,10 @@ function fetcher(...args) {
 function Title({ children }) {
   const theme = useTheme()
   return (
-    <Typography  component='h4' variant='h4'>
+    <Typography component="h4" variant="h4">
       {children}
     </Typography>
-  );
+  )
 }
 
 function Upper({ children }) {
@@ -89,7 +89,7 @@ function ListeFormationsContainer({ children, sx }) {
 
 function ListeFormationsItem({ imageVedette, upper, title, lower, url, ...props }) {
   const theme = useTheme()
-  
+
   return (
     <ListItem {...props} alignItems="flex-start" disableGutters>
       <ListItemButton
@@ -104,7 +104,7 @@ function ListeFormationsItem({ imageVedette, upper, title, lower, url, ...props 
             alignItems: 'flex-start',
             padding: 0,
           },
-          position: 'relative', 
+          position: 'relative',
         })}
       >
         <Grid
@@ -126,8 +126,8 @@ function ListeFormationsItem({ imageVedette, upper, title, lower, url, ...props 
                 '& img': {
                   width: '100%',
                   height: 'auto',
-                  maxHeight: '200px', 
-                  objectFit: 'cover', 
+                  maxHeight: '200px',
+                  objectFit: 'cover',
                   display: 'block',
                 },
               },
@@ -255,26 +255,26 @@ export default function ListeFormations({ id, service = 'https://api.bib.umontre
           {Array(limit)
             .fill()
             .map((_, i) => (
-              <ListeFormationsItem 
-                key={i} 
+              <ListeFormationsItem
+                key={i}
                 imageVedette={
-                  <Skeleton 
-                    variant="rectangular" 
-                    width={150} 
+                  <Skeleton
+                    variant="rectangular"
+                    width={150}
                     height={100}
-                    sx={{ 
-                      borderRadius: theme.shape.corner.small, 
+                    sx={{
+                      borderRadius: theme.shape.corner.small,
                       display: 'block',
                       [theme.breakpoints.down('sm')]: {
                         width: '100%',
                         height: 200,
                       },
-                    }} 
+                    }}
                   />
-                } 
-                upper={<Skeleton sx={{ fontSize: '0.875rem', lineHeight: 1.2 }} width={115} />} 
-                title={<Skeleton sx={{ fontSize: '2rem' }} />} 
-                lower={<Skeleton sx={{ fontSize: '0.875rem', lineHeight: 1.2 }} width={175} />} 
+                }
+                upper={<Skeleton sx={{ fontSize: '0.875rem', lineHeight: 1.2 }} width={115} />}
+                title={<Skeleton sx={{ fontSize: '2rem' }} />}
+                lower={<Skeleton sx={{ fontSize: '0.875rem', lineHeight: 1.2 }} width={175} />}
               />
             ))}
         </List>
@@ -325,30 +325,28 @@ export default function ListeFormations({ id, service = 'https://api.bib.umontre
         ))}
       </List>
       {moreLink && (
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'flex-end',
-        }}
-      >
-        <Button 
-          primary 
-          href={moreLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          endIcon={
-            <ArrowUpRight size={24}/>
-          }
+        <Box
           sx={{
-            '& .MuiButton-endIcon': {
-              marginLeft: '7px' 
-            }
+            display: 'flex',
+            justifyContent: 'flex-end',
           }}
         >
-          {moreText}
-        </Button>
-      </Box>
-    )}
+          <Button
+            primary
+            href={moreLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            endIcon={<ArrowUpRightIcon size={24} />}
+            sx={{
+              '& .MuiButton-endIcon': {
+                marginLeft: '7px',
+              },
+            }}
+          >
+            {moreText}
+          </Button>
+        </Box>
+      )}
     </ListeFormationsContainer>
   )
 }
