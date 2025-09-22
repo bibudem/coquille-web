@@ -7,5 +7,3 @@ _temp/
 # Environment variables
 .env*
 /.idea
-
-plugins/gatsby-plugin-mdx/dist

@@ -127,11 +127,9 @@ export default function FicheBibliotheque({ title, id, codeBib, blocHoraires, bl
               <Bloc title="Adresse" Icon={MapTrifoldIcon}>
                 {blocAdresse}
               </Bloc>
-              {blocNousJoindre && (
-                <Bloc title="Nous joindre" Icon={UsersIcon}>
-                  {blocNousJoindre}
-                </Bloc>
-              )}
+              <Bloc title="Nous joindre" Icon={UsersIcon}>
+                {blocNousJoindre}
+              </Bloc>
               {children && <Bloc>{children}</Bloc>}
             </Col>
           </Grid>
