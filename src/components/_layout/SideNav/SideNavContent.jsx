@@ -1,8 +1,8 @@
 "use client"
 
 import { 
-  Box, Grid, Typography, List, ListItem, ListItemText,Button, 
-  useTheme, useMediaQuery, Card, CardContent, CardActions,Collapse
+  Box, Grid, Typography, List, ListItem, ListItemText, Button, 
+  useTheme, useMediaQuery, Card, CardContent, CardActions, Collapse
 } from '@mui/material';
 import { useState } from 'react'
 import { styled } from '@mui/material/styles';
@@ -33,10 +33,48 @@ const StyledLink = styled(Link)(({ theme }) => ({
   padding: '0.25rem 0',
   transition: 'all 0.2s ease',
   "&:hover": {
-      color: "white"
-    },
+    color: "white"
+  },
 }));
 
+// Composant de lien sécurisé pour gérer internes/externes
+const SecureLink = ({ href, children, ...props }) => {
+  // Vérifie si c'est une URL externe
+  const isExternal = href?.startsWith('http') || href?.startsWith('//');
+  
+  if (isExternal) {
+    return (
+      <a 
+        href={href} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  }
+  
+  return (
+    <Link href={href} {...props}>
+      {children}
+    </Link>
+  );
+};
+
+// Style appliqué au SecureLink
+const StyledSecureLink = styled(SecureLink)(({ theme }) => ({
+  color: "#c8cbcfff",
+  textDecoration: 'none',
+  fontSize: '1.125rem',
+  fontWeight: '300',
+  display: 'block',
+  padding: '0.25rem 0',
+  transition: 'all 0.2s ease',
+  "&:hover": {
+    color: "white"
+  },
+}));
 
 // --- Données pour alimenter les cartes ---
 const cards = [
@@ -70,10 +108,10 @@ const cards = [
     icon: AutresResources,
     title: 'Ressources',
     links: [
-      { label: 'Outil de recherche Sofia', href: '#' },
-      { label: 'Papyrus – dépôt institutionnel', href: '#' },
-      { label: 'GéoIndex – Données géospatiales', href: '#' },
-      { label: 'Calypso – Objets numériques', href: '#' },
+      { label: 'Outil de recherche Sofia', href: 'https://umontreal.on.worldcat.org/discovery?lang=fr' },
+      { label: 'Papyrus – dépôt institutionnel', href: 'https://umontreal.scholaris.ca/' },
+      { label: 'GéoIndex – Données géospatiales', href: 'https://geoapp.bibl.ulaval.ca/' },
+      { label: 'Calypso – Objets numériques', href: 'https://calypso.bib.umontreal.ca/' },
     ],
     //cta: { label: 'Toutes les ressources', href: '#' },
     footerColor: '#52B782',
@@ -84,7 +122,7 @@ const cards = [
 // --- Boutons latéraux avec icônes ---
 const quickLinks = [
   { label: 'Obtenir un document', href: '/obtenir/', icon: Books },
-  { label: 'Réserver une salle', href: '/reserver', icon: DoorOpen },
+  { label: 'Réserver une salle', href: 'https://calendrier.bib.umontreal.ca/r', icon: DoorOpen },
   { label: 'Mon dossier', href: 'https://umontreal.account.worldcat.org/account', icon: FolderOpen },
   { label: 'Horaires', href: '/horaires', icon: ClockCountdown },
   { label: 'Nous joindre', href: '/nous-joindre/', icon: AddressBook },
@@ -112,6 +150,24 @@ function MobileQuickLinks() {
     },
   };
 
+  const typographyLinkSx = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "transparent",
+    color: "#c8cbcfff",
+    textDecoration: "none",
+    padding: "0.75rem 1rem",
+    transition: "all 0.3s ease",
+    fontSize: "1.25rem", // Taille pour variant="h6"
+    fontWeight: 500,
+    width: "100%",
+    "&:hover": {
+      color: "white",
+      textDecoration: "none"
+    },
+  };
+
   const collapseLinkSx = {
     display: "flex",
     justifyContent: "space-between",
@@ -122,7 +178,6 @@ function MobileQuickLinks() {
     textDecoration: "none!important",
     padding: "0.75rem 1rem",
     fontSize: "1rem",
-    width: "100%",
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: "1rem",
@@ -135,15 +190,12 @@ function MobileQuickLinks() {
   return (
     <Box sx={{ mb: 2, display: "flex", flexDirection: "column", gap: 1 }}>
       {/* Accueil */}
-      <Button
-        component={Link}
+      <Link
         to="/"
-        endIcon={<House size={20} />}
-        variant="outlined"
-        sx={buttonSx}
+        sx={typographyLinkSx}
       >
-        Accueil
-      </Button>
+        <Box component="span">Accueil</Box>
+      </Link>
 
       {/* Liens rapides toggle */}
       <Button
@@ -181,8 +233,21 @@ function MobileQuickLinks() {
           {/* QuickLinks */}
           {quickLinks.map((btn, i) => {
             const IconComponent = btn.icon;
+            const isExternal = btn.href?.startsWith('http');
+            
             return (
-              <Link key={`quick-${i}`} to={btn.href} sx={collapseLinkSx}>
+              <Link
+                key={`quick-${i}`}
+                component={isExternal ? 'a' : Link}
+                {...(isExternal ? {
+                  href: btn.href,
+                  target: "_blank",
+                  rel: "noopener noreferrer"
+                } : {
+                  to: btn.href
+                })}
+                sx={collapseLinkSx}
+              >
                 {btn.label} <IconComponent size={20} />
               </Link>
             );
@@ -225,11 +290,20 @@ export default function MenuSection({  }) {
                 <>
                   {quickLinks.map((btn, i) => {
                     const IconComponent = btn.icon;
+                    const isExternal = btn.href?.startsWith('http');
+                    
                     return (
                       <Button
                         key={i}
                         fullWidth
-                        href={btn.href}
+                        component={isExternal ? 'a' : Link}
+                        {...(isExternal ? {
+                          href: btn.href,
+                          target: "_blank",
+                          rel: "noopener noreferrer"
+                        } : {
+                          to: btn.href
+                        })}
                         startIcon={<IconComponent size={20} />}
                         variant="outlined"
                         sx={{
@@ -313,9 +387,9 @@ export default function MenuSection({  }) {
                             <ListItem key={idx} disablePadding sx={{ py: 0.5 }}>
                               <ListItemText
                                 primary={
-                                  <StyledLink href={link.href}>
+                                  <StyledSecureLink href={link.href}>
                                     → {link.label}
-                                  </StyledLink>
+                                  </StyledSecureLink>
                                 }
                               />
                             </ListItem>
@@ -334,7 +408,7 @@ export default function MenuSection({  }) {
                             color: card.footerColor,
                             pt: 1
                           }}>
-                            <StyledLink 
+                            <StyledSecureLink 
                               href={card.cta.href} 
                               sx={{
                                 color: 'inherit',
@@ -346,7 +420,7 @@ export default function MenuSection({  }) {
                               }}
                             >
                               {card.cta.label} →
-                            </StyledLink>
+                            </StyledSecureLink>
                           </Box>
                         )}
                       </CardActions>
