@@ -23,20 +23,6 @@ import {
   ArrowRight
 } from '@phosphor-icons/react';
 
-// Style pour les liens dans les cartes avec effet hover
-const StyledLink = styled(Link)(({ theme }) => ({
-  color: "#c8cbcfff",
-  textDecoration: 'none',
-  fontSize: '1.125rem',
-  fontWeight: '300',
-  display: 'block',
-  padding: '0.25rem 0',
-  transition: 'all 0.2s ease',
-  "&:hover": {
-    color: "white"
-  },
-}));
-
 // Composant de lien sécurisé pour gérer internes/externes
 const SecureLink = ({ href, children, ...props }) => {
   // Vérifie si c'est une URL externe
@@ -66,7 +52,7 @@ const SecureLink = ({ href, children, ...props }) => {
 const StyledSecureLink = styled(SecureLink)(({ theme }) => ({
   color: "#c8cbcfff",
   textDecoration: 'none',
-  fontSize: '1.125rem',
+  fontSize: '1rem',
   fontWeight: '300',
   display: 'block',
   padding: '0.25rem 0',
@@ -159,7 +145,7 @@ function MobileQuickLinks() {
     textDecoration: "none",
     padding: "0.75rem 1rem",
     transition: "all 0.3s ease",
-    fontSize: "1.25rem", // Taille pour variant="h6"
+    fontSize: "1rem", // Taille pour variant="h6"
     fontWeight: 500,
     width: "100%",
     "&:hover": {
@@ -171,7 +157,8 @@ function MobileQuickLinks() {
   const collapseLinkSx = {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
+    gap: "0.5rem",
+    alignItems: "left",
     backgroundColor: "transparent",
     color: "#c8cbcfff",
     borderRadius: "8px",
@@ -179,7 +166,6 @@ function MobileQuickLinks() {
     padding: "0.75rem 1rem",
     fontSize: "1rem",
     marginLeft: "auto",
-    marginRight: "auto",
     marginTop: "1rem",
     "&:hover": {
       backgroundColor: "rgba(255,255,255,0.1)",
@@ -273,7 +259,7 @@ export default function MenuSection({  }) {
         <Grid container spacing={2}>
           
           {/* Section des boutons - En premier sur mobile */}
-          <Grid item xs={12} lg={3} sx={{ 
+          <Grid item xs={12} lg={2} sx={{ 
             order: { xs: 1, lg: 2 } // Ordre modifié pour mobile
           }}>
             <Box sx={{ 
@@ -281,7 +267,6 @@ export default function MenuSection({  }) {
               flexDirection: 'column', 
               height: '100%',
               justifyContent: { md: 'flex-start' },
-              gap: 1
             }}>
               {/* Affichage compact pour mobile */}
               {isSmallScreen ? (
@@ -333,7 +318,7 @@ export default function MenuSection({  }) {
           </Grid>
 
           {/* Section des cartes - En second sur mobile */}
-          <Grid item xs={12} lg={9} sx={{ 
+          <Grid item xs={12} lg={10} sx={{ 
             order: { xs: 2, lg: 1 } // Ordre modifié pour mobile
           }}>
             <Grid container spacing={2} alignItems="stretch">
