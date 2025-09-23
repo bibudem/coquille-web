@@ -9,13 +9,13 @@ export default function SideNav({ children, ...props }) {
       anchor="right"
       variant="temporary"
       transitionDuration={{
-        enter: theme.transitions.duration.md3.medium3, 
-        exit: theme.transitions.duration.md3.medium2, 
+        enter: theme.transitions.duration.md3.medium3,
+        exit: theme.transitions.duration.md3.medium2,
       }}
       SlideProps={{
         easing: {
-          enter: theme.transitions.easing.md3.emphasizedDecelerate, 
-          exit: theme.transitions.easing.md3.emphasizedAccelerate,  
+          enter: theme.transitions.easing.md3.emphasizedDecelerate,
+          exit: theme.transitions.easing.md3.emphasizedAccelerate,
         },
       }}
       slotProps={{
