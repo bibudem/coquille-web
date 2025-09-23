@@ -143,7 +143,7 @@ function MobileQuickLinks() {
     backgroundColor: "transparent",
     color: "#c8cbcfff",
     textDecoration: "none",
-    padding: "0.75rem 1rem",
+    padding: "0.25rem 0.25rem",
     transition: "all 0.3s ease",
     fontSize: "1rem", // Taille pour variant="h6"
     fontWeight: 500,
@@ -156,16 +156,14 @@ function MobileQuickLinks() {
 
   const collapseLinkSx = {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "flex-start", 
     gap: "0.5rem",
-    alignItems: "left",
     backgroundColor: "transparent",
     color: "#c8cbcfff",
     borderRadius: "8px",
     textDecoration: "none!important",
     padding: "0.75rem 1rem",
     fontSize: "1rem",
-    marginLeft: "auto",
     marginTop: "1rem",
     "&:hover": {
       backgroundColor: "rgba(255,255,255,0.1)",
@@ -174,7 +172,7 @@ function MobileQuickLinks() {
   };
 
   return (
-    <Box sx={{ mb: 2, display: "flex", flexDirection: "column", gap: 1 }}>
+    <Box sx={{ mb: 1, display: "flex", flexDirection: "column", gap: 0.5 }}>
       {/* Accueil */}
       <Link
         to="/"
@@ -208,7 +206,7 @@ function MobileQuickLinks() {
 
       {/* Contenu toggle avec liens simples */}
       <Collapse in={open}>
-        <Box sx={{ mt: 1, display: "flex", flexDirection: "column", gap: 1 }}>
+        <Box sx={{ mt: 1, display: "flex", flexDirection: "column", gap: 1, backgroundColor: "#2a3440", }}>
           {/* Pages */}
           {pages.map((page, i) => (
             <Link key={`page-${i}`} to={page.url} sx={collapseLinkSx}>
@@ -220,18 +218,22 @@ function MobileQuickLinks() {
           {quickLinks.map((btn, i) => {
             const IconComponent = btn.icon;
             const isExternal = btn.href?.startsWith('http');
-            
-            return (
+
+            return isExternal ? (
+              <Box
+                key={`quick-${i}`}
+                component="a"
+                href={btn.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={collapseLinkSx}
+              >
+                {btn.label} <IconComponent size={20} />
+              </Box>
+            ) : (
               <Link
                 key={`quick-${i}`}
-                component={isExternal ? 'a' : Link}
-                {...(isExternal ? {
-                  href: btn.href,
-                  target: "_blank",
-                  rel: "noopener noreferrer"
-                } : {
-                  to: btn.href
-                })}
+                to={btn.href}
                 sx={collapseLinkSx}
               >
                 {btn.label} <IconComponent size={20} />
