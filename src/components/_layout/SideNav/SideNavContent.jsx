@@ -46,7 +46,7 @@ const SecureLink = ({ href, children, ...props }) => {
 const StyledSecureLink = styled(SecureLink)(({ theme }) => ({
   color: "#c8cbcfff",
   textDecoration: 'none',
-  fontSize: '0.875rem',
+  fontSize: '1rem',
   fontWeight: '300',
   display: 'block',
   padding: '0.25rem 0',

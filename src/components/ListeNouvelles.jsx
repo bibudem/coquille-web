@@ -4,165 +4,214 @@ import Button from '@/components/Button'
 import Link from '@/components/Link'
 import { isInternalLink } from '@/utils/link'
 import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
+import React, { useMemo } from 'react'
 
 function getPath(path, slug) {
-  if (slug) {
-    return `/nouvelles/${path.split('/').slice(0, -1).join('/')}/${slug}`
+  try {
+    if (!path) return '/nouvelles'
+    if (slug) {
+      const pathParts = path.split('/').slice(0, -1)
+      return `/nouvelles/${pathParts.join('/')}/${slug}`.replace(/\/+/g, '/')
+    }
+    return `/nouvelles/${path.replace(/\.mdx$/i, '')}`.replace(/\/+/g, '/')
+  } catch (error) {
+    console.error('Error generating path:', error)
+    return '/nouvelles'
   }
-  return `/nouvelles/${path.replace(/\.mdx$/i, '')}`
 }
 
-function Header({ id, children }) {
-  return (
-    <Typography
-      component="h3"
-      id={id}
-      sx={{
-        fontSize: '32px',
-        fontWeight: 500,
+function formatDate(dateString) {
+  if (!dateString) return ''
+
+  try {
+    // Si la date est déjà formatée en français (venant de GraphQL)
+    if (typeof dateString === 'string' && dateString.match(/\d{1,2} \p{L}+ \d{4}/u)) {
+      return dateString
+    }
+
+    const date = new Date(dateString)
+    if (isNaN(date.getTime())) return ''
+
+    return date.toLocaleDateString('fr', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+  } catch (error) {
+    console.error('Error formatting date:', error)
+    return ''
+  }
+}
+
+const Header = React.memo(({ id, children }) => (
+  <Typography
+    component="h3"
+    id={id}
+    sx={{
+      fontSize: '32px',
+      fontWeight: 500,
+      lineHeight: 1.2,
+    }}
+  >
+    {children}
+  </Typography>
+))
+
+const Title = React.memo(({ children }) => (
+  <Box
+    sx={(theme) => ({
+      fontFamily: 'Lora',
+      fontSize: '1.75rem',
+      fontWeight: 500,
+      lineHeight: 1.3,
+      wordSpacing: '-0.2em',
+      [theme.breakpoints.down('sm')]: {
+        fontSize: '1.5rem',
         lineHeight: 1.2,
-      }}
-    >
-      {children}
-    </Typography>
-  )
-}
+      },
+    })}
+  >
+    {children}
+  </Box>
+))
 
-function Title({ children }) {
-  return (
+const Upper = React.memo(({ children }) => (
+  <Box
+    sx={(theme) => ({
+      display: 'flex',
+      alignItems: 'center',
+      gap: '.5em',
+      fontSize: '0.875rem',
+      fontWeight: 400,
+      lineHeight: 1,
+      letterSpacing: '.00875rem',
+      color: theme.palette.rougeOrange.main,
+    })}
+  >
+    {children}
+  </Box>
+))
+
+const Lower = React.memo(({ children, url, type }) => (
+  <Box
+    sx={{
+      display: 'flex',
+      flexGrow: 1,
+      alignItems: 'flex-end',
+      fontSize: '1rem',
+      lineHeight: 1,
+      color: 'var(--_lower-color)',
+    }}
+  >
     <Box
       sx={{
-        fontFamily: 'Lora',
-        fontSize: '1.75rem',
-        fontWeight: 500,
-        lineHeight: 1.3,
-        wordSpacing: '-0.2em',
-      }}
-    >
-      {children}
-    </Box>
-  )
-}
-
-function Upper({ children }) {
-  return (
-    <Box
-      sx={(theme) => ({
         display: 'flex',
         alignItems: 'center',
         gap: '.5em',
-        fontSize: '0.875rem',
+        fontSize: '.875rem',
         fontWeight: 400,
-        lineHeight: 1,
-        letterSpacing: '.00875rem',
-        color: theme.palette.rougeOrange.main,
-      })}
-    >
-      {children}
-    </Box>
-  )
-}
-
-function Lower({ children, url, type }) {
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexGrow: 1,
-        alignItems: 'flex-end',
-        fontSize: '1rem',
-        lineHeight: 1,
-        color: 'var(--_lower-color)',
+        letterSpacing: '0.00875rem',
+        width: '100%',
       }}
     >
+      {children}
       <Box
         sx={{
           display: 'flex',
-          alignItems: 'center',
-          gap: '.5em',
-          fontSize: '.875rem',
-          fontWeight: 400,
-          letterSpacing: '0.00875rem',
-          width: '100%',
+          flexGrow: 1,
+          justifyContent: 'flex-end',
         }}
       >
-        {children}
+        {type === 'interne' && url && isInternalLink(url) ? <ArrowRightCircleIcon color="var(--_lower-icon-color)" fontSize={50} /> : <ArrowUpRightCircleIcon color="var(--_lower-icon-color)" fontSize={50} />}
+      </Box>
+    </Box>
+  </Box>
+))
+
+const NewsCard = React.memo(({ news }) => (
+  <Card
+    sx={(theme) => ({
+      boxShadow: 'none',
+      borderRadius: theme.shape.corner.small,
+      backgroundColor: theme.palette.rose300.main,
+    })}
+  >
+    <CardActionArea
+      component={Link}
+      to={news.url}
+      target={news.type === 'externe' ? '_blank' : undefined}
+      rel={news.type === 'externe' ? 'noopener noreferrer' : undefined}
+      sx={(theme) => ({
+        '.MuiCardActionArea-focusHighlight': {
+          transitionDuration: `${theme.transitions.duration.md3.medium1}ms`,
+          transitionTimingFunction: theme.transitions.easing.md3.emphasized,
+        },
+        rect: {
+          transition: `opacity ${theme.transitions.duration.md3.medium1}ms ${theme.transitions.easing.md3.emphasized}`,
+        },
+        ':hover': {
+          textDecoration: 'none',
+          rect: {
+            opacity: 0,
+            transition: `opacity ${theme.transitions.duration.md3.medium1}ms ${theme.transitions.easing.md3.emphasized}`,
+          },
+        },
+      })}
+    >
+      <CardContent
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.94rem',
+          height: '19.0625rem',
+          padding: '1.88rem',
+        }}
+      >
+        <Upper>{news.date || 'Date inconnue'}</Upper>
         <Box
           sx={{
             display: 'flex',
+            flexDirection: 'column',
+            alignSelf: 'stretch',
             flexGrow: 1,
-            justifyContent: 'flex-end',
           }}
         >
-          {type === 'interne' && url && isInternalLink(url) ? <ArrowRightCircleIcon color="var(--_lower-icon-color)" fontSize={50} /> : <ArrowUpRightCircleIcon color="var(--_lower-icon-color)" fontSize={50} />}
+          <Title>{news.title || 'Sans titre'}</Title>
+          <Lower url={news.url} type={news.type}>
+            {news.source || 'Source inconnue'}
+          </Lower>
         </Box>
-      </Box>
-    </Box>
-  )
-}
+      </CardContent>
+    </CardActionArea>
+  </Card>
+))
 
-/**
- * Composant affichant une liste de nouvelles récentes
- *
- * @component
- * @param {Object} props - Les propriétés du composant
- * @param {string} [props.title='Nouvelles'] - Le titre de la section de nouvelles
- * @param {string} [props.moreLink='/nouvelles/'] - Le lien vers la page complète des nouvelles
- * @param {string} [props.moreText='Toutes nos nouvelles'] - Le texte du bouton "voir plus"
- * @param {string} [props.id] - Un identifiant optionnel pour la section
- *
- * @throws {Error} Si les paramètres title, moreLink ou moreText ne sont pas du bon type
- *
- * @returns {React.ReactElement} Un composant React affichant une liste de nouvelles
- *
- * @example
- * // Utilisation par défaut
- * <ListNouvelles />
- *
- * @example
- * // Personnalisation du titre et du lien
- * <ListNouvelles
- *   title="Dernières actualités"
- *   moreLink="/actualites"
- *   moreText="Voir toutes les actualités"
- * />
- */
-export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvelles/', moreText = 'Toutes nos nouvelles', id, ...rest }) {
-  if (typeof title !== 'string') {
-    throw new Error('The `title` parameter must be a string')
-  }
+export default function ListeNouvellesAccueil({ title = 'Nouvelles', moreLink = '/nouvelles/', moreText = 'Toutes nos nouvelles', id }) {
+  // Validation des props
+  const isValid = useMemo(() => {
+    try {
+      if (typeof title !== 'string') throw new Error('title must be a string')
+      if (typeof moreText !== 'string') throw new Error('moreText must be a string')
+      if (typeof moreLink !== 'string') throw new Error('moreLink must be a string')
+      new URL(moreLink, 'https://bib.umontreal.ca')
+      return true
+    } catch (error) {
+      console.error('Invalid props:', error)
+      return false
+    }
+  }, [title, moreText, moreLink])
 
-  if (typeof moreText !== 'string') {
-    throw new Error('The `moreText` parameter must be a string')
-  }
-
-  if (typeof moreLink !== 'string') {
-    throw new Error('The `moreLink` parameter must be a url')
-  }
-
-  try {
-    new URL(moreLink, 'https://bib.umontreal.ca')
-  } catch (e) {
-    throw new Error('The `moreLink` parameter must be a valid url')
-  }
-
-  const data = useStaticQuery(graphql`
-    query ListeNouvellesQuery {
-      allFile(filter: { sourceInstanceName: { eq: "nouvelles" }, extension: { eq: "mdx" } }, sort: { childMdx: { frontmatter: { date: DESC } } }, limit: 2) {
+  // Requête GraphQL
+  const { localNews, udemNews } = useStaticQuery(graphql`
+    query ListeNouvellesCombineesQuery {
+      localNews: allFile(filter: { sourceInstanceName: { eq: "nouvelles" }, extension: { eq: "mdx" } }, sort: { childMdx: { frontmatter: { date: DESC } } }) {
         nodes {
           id
-          name
           relativePath
           childMdx {
             frontmatter {
-              authors
+              pubDate: date
               date(formatString: "LL", locale: "fr")
-              newsImage {
-                name
-                alt
-                legend
-                source
-              }
               newsUrl
               slug
               source
@@ -172,27 +221,66 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
           }
         }
       }
+
+      udemNews: allUdemNews(sort: { pubDate: DESC }) {
+        nodes {
+          id
+          title
+          link
+          pubDate
+          formattedDate
+        }
+      }
     }
   `)
 
-  const nouvelles = data.allFile.nodes.map((node) => {
-    const { id, relativePath } = node
-    const {
-      frontmatter: { authors, date, newsImage, newsUrl, slug, source, title, type },
-    } = node.childMdx
-    const url = type === 'interne' ? getPath(relativePath, slug) : newsUrl
-    return {
-      id,
-      authors,
-      date,
-      newsImage,
-      url,
-      slug,
-      source,
-      title,
-      type,
+  // Transformation et combinaison des données
+  const combinedNews = useMemo(() => {
+    try {
+      const local = localNews.nodes.map((node) => {
+        const { id, relativePath, childMdx } = node
+        const { date, pubDate, slug, source, title, type, newsUrl } = childMdx?.frontmatter || {}
+        return {
+          id,
+          pubDate,
+          date: formatDate(date),
+          url: type === 'interne' ? getPath(relativePath, slug) : newsUrl || '#',
+          source: source || 'Bibliothèque',
+          title: title || 'Sans titre',
+          type: type || 'interne',
+        }
+      })
+
+      const udem = udemNews.nodes.map((node) => ({
+        id: node.id,
+        pubDate: node.pubDate,
+        date: node.formattedDate || formatDate(node.pubDate),
+        url: node.link || '#',
+        source: 'UdeM Nouvelles',
+        title: node.title || 'Sans titre',
+        type: 'externe',
+      }))
+
+      const combined = [...local, ...udem]
+        // Filtrer les nouvelles sans date ou titre, trier par date décroissante et limiter à 2 nouvelles
+        .filter((news) => news.date && news.title)
+        .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
+        .slice(0, 2)
+
+      return combined
+    } catch (error) {
+      console.error('Error processing news data:', error)
+      return []
     }
-  })
+  }, [localNews, udemNews])
+
+  if (!isValid) {
+    return <Box sx={{ p: 2, backgroundColor: 'error.light', color: 'error.contrastText' }}>Configuration invalide - Veuillez vérifier les paramètres</Box>
+  }
+
+  if (combinedNews.length === 0) {
+    return <Box sx={{ p: 2, textAlign: 'center' }}>Aucune nouvelle disponible pour le moment</Box>
+  }
 
   return (
     <Box
@@ -204,79 +292,17 @@ export default function ListNouvelles({ title = 'Nouvelles', moreLink = '/nouvel
         '--_lower-icon-color': theme.palette.rougeOrange.main,
       })}
     >
-      <Header flexItem id={id}>
-        {title}
-      </Header>
+      <Header id={id}>{title}</Header>
 
-      {nouvelles.map(({ id, authors, date, newsImage, url, source, title, type }) => (
-        <Card
-          key={id}
-          sx={(theme) => ({
-            boxShadow: 'none',
-            borderRadius: theme.shape.corner.small,
-            backgroundColor: theme.palette.rose300.main,
-          })}
-        >
-          <CardActionArea
-            component={Link}
-            to={url}
-            sx={(theme) => ({
-              '.MuiCardActionArea-focusHighlight': {
-                transitionDuration: `${theme.transitions.duration.md3.medium1}ms`,
-                transitionTimingFunction: theme.transitions.easing.md3.emphasized,
-              },
-              rect: {
-                transition: `opacity ${theme.transitions.duration.md3.medium1}ms ${theme.transitions.easing.md3.emphasized}`,
-              },
-              ':hover': {
-                textDecoration: 'none',
-                rect: {
-                  opacity: 0,
-                  transition: `opacity ${theme.transitions.duration.md3.medium1}ms ${theme.transitions.easing.md3.emphasized}`,
-                },
-              },
-            })}
-          >
-            <CardContent
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.94rem',
-                height: '19.0625rem',
-                padding: '1.88rem',
-              }}
-            >
-              <Upper>{date}</Upper>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignSelf: 'stretch',
-                  flexGrow: 1,
-                }}
-              >
-                <Title>{title}</Title>
-                <Lower url={url} type={type}>
-                  {source}
-                </Lower>
-              </Box>
-            </CardContent>
-          </CardActionArea>
-        </Card>
+      {combinedNews.map((news) => (
+        <NewsCard key={news.id} news={news} />
       ))}
 
-      {moreLink && (
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-          }}
-        >
-          <Button primary href={moreLink}>
-            {moreText}
-          </Button>
-        </Box>
-      )}
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Button primary href={moreLink}>
+          {moreText}
+        </Button>
+      </Box>
     </Box>
   )
 }
