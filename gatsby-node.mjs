@@ -140,8 +140,8 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
 
     const basePath = node.relativeDirectory ? `/nouvelles/${node.relativeDirectory}` : '/nouvelles'
     //const path = `${basePath}/${(node.childMdx?.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')}`
-    const rawSlug = (node.childMdx?.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')
-    const path = `${basePath}/${rawSlug}`.replace(/\/+$/, '') + '/'
+    const rawSlug = (node.childMdx?.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '');
+    const path = `${basePath}/${rawSlug}`.replace(/\/+$/, '') + '/';
 
     createPage({
       // As mentioned above you could also query something else like frontmatter.title above and use a helper function
@@ -182,7 +182,7 @@ import fetch from 'node-fetch'
 
 const fetchUdeMNews = async () => {
   try {
-    const response = await fetch('https://nouvelles.umontreal.ca/recherche/export.rss?tx_solr[filter][0]=types:udem_article&tx_solr[filter][1]=services:les-bibliotheques')
+    const response = await fetch('https://nouvelles.umontreal.ca/rss/sujets/bibliotheques/')
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
@@ -191,7 +191,6 @@ const fetchUdeMNews = async () => {
     const result = await parseStringPromise(xmlText)
 
     return result.rss.channel[0].item.map(item => {
-      const pubDate = item.pubDate ? new Date(item.pubDate?.[0]) : new Date().toISOString()
       const description = item.description?.[0] || ''
       const cdataContent = description.match(/<!\[CDATA\[(.*?)\]\]>/s)?.[1] || description
 
@@ -199,9 +198,9 @@ const fetchUdeMNews = async () => {
         title: item.title?.[0]?.trim() || 'Sans titre',
         link: item.link?.[0]?.trim() || '#',
         description: cdataContent.trim(),
-        pubDate: pubDate.toISOString(),
+        pubDate: item.pubDate?.[0] || new Date().toISOString(),
         enclosure: item.enclosure?.[0]?.$?.url || null,
-        formattedDate: pubDate.toLocaleDateString('fr', {
+        formattedDate: new Date(item.pubDate?.[0] || Date.now()).toLocaleDateString('fr', {
           year: 'numeric',
           month: 'long',
           day: 'numeric'

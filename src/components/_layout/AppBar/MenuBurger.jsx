@@ -1,28 +1,27 @@
 import { IconButton } from '@mui/material'
-import { X as CloseIcon } from '@phosphor-icons/react'
 import { BurgerIcon } from '@/components/CustomIcons'
 
-export default function MenuBurger({ open, onClick, sx = {} }) {
+const fabStyles = {
+  width: 50,
+  height: 50,
+}
+
+const iconStyles = {
+  fontSize: '34px',
+}
+
+export default function MenuBurger({ sx, ...props }) {
   return (
     <IconButton
-      onClick={onClick}
-      aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+      aria-label="Ouvrir le menu du site"
       sx={{
-        color: 'inherit',
-        fontSize: '3.5rem',
-        zIndex: 1400,
-        paddingLeft: '2rem',
         ...sx,
-        '&:hover': {
-          backgroundColor: 'transparent',
-        },
+        ...fabStyles,
+        color: 'currentcolor',
       }}
+      {...props}
     >
-      {open ? (
-        <CloseIcon size={32} weight="bold" />
-      ) : (
-        <BurgerIcon size={32} weight="bold" />
-      )}
+      <BurgerIcon sx={{ ...iconStyles }} />
     </IconButton>
   )
 }
