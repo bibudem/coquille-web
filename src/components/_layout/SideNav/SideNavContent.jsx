@@ -25,24 +25,18 @@ import {
 
 // Composant de lien sécurisé pour gérer internes/externes
 const SecureLink = ({ href, children, ...props }) => {
-  // Vérifie si c'est une URL externe
   const isExternal = href?.startsWith('http') || href?.startsWith('//');
   
   if (isExternal) {
     return (
-      <a 
-        href={href} 
-        target="_blank" 
-        rel="noopener noreferrer"
-        {...props}
-      >
+      <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
         {children}
       </a>
     );
   }
   
   return (
-    <Link href={href} {...props}>
+    <Link to={href} {...props}> 
       {children}
     </Link>
   );
@@ -82,7 +76,7 @@ const cards = [
     title: 'Boîte à outils',
     links: [
       { label: 'Base de données A-Z', href: 'https://boite-outils.bib.umontreal.ca/az.php' },
-      { label: 'Guides disciplinaires', href: 'https://boite-outils.bib.umontreal.ca/srch.php?q=Guides+disciplinaires' },
+      { label: 'Guides disciplinaires', href: 'https://boite-outils.bib.umontreal.ca/disciplines' },
       { label: 'Comment citer', href: 'https://boite-outils.bib.umontreal.ca/citer' },
       { label: 'Droit d\'auteur', href: 'https://boite-outils.bib.umontreal.ca/recherche/droit-auteur' },
     ],
@@ -98,6 +92,7 @@ const cards = [
       { label: 'Papyrus – dépôt institutionnel', href: 'https://umontreal.scholaris.ca/' },
       { label: 'GéoIndex – Données géospatiales', href: 'https://geoapp.bibl.ulaval.ca/' },
       { label: 'Calypso – Objets numériques', href: 'https://calypso.bib.umontreal.ca/' },
+      { label: 'Service Accessibilité', href: '/service-accessibilite/' },
     ],
     //cta: { label: 'Toutes les ressources', href: '#' },
     footerColor: '#52B782',
