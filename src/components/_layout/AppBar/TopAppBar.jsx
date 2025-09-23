@@ -87,20 +87,25 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
   return (
     <>
       <AppBar
-        position="sticky"
-        elevation={trigger ? 2 : 0}
-        sx={{
-          '--AppBar-background': trigger ? '#fff' : 'transparent',
-          '--AppBar-color': trigger ? '#222930' : theme.palette.grey['50'],
-          backgroundImage: trigger ? 'none' : 'linear-gradient(180deg, rgba(0,0,0,0.5) 90%, rgba(0,0,0,0) 100%)',
-          ...transitionProps,
-          transitionProperty: 'background-color, box-shadow',
-          '.MuiToolbar-root': {
-            height: appBarHeight,
-          },
-          zIndex: 5,
-        }}
-      >
+          position="sticky"
+          elevation={trigger ? 2 : 0}
+          sx={{
+            '--AppBar-background': trigger ? '#fff' : 'transparent',
+            '--AppBar-color': trigger ? '#222930' : theme.palette.grey['50'],
+            backgroundImage: trigger ? 'none' : 'linear-gradient(180deg, rgba(0,0,0,0.5) 90%, rgba(0,0,0,0) 100%)',
+            // Transition améliorée
+            transition: `
+              background-color ${theme.transitions.duration.md3.medium4}ms ${theme.transitions.easing.md3.emphasizedDecelerate},
+              box-shadow ${theme.transitions.duration.md3.medium4}ms ${theme.transitions.easing.md3.emphasizedDecelerate},
+              background-image ${theme.transitions.duration.md3.medium4}ms ${theme.transitions.easing.md3.emphasizedDecelerate}
+            `,
+            '.MuiToolbar-root': {
+              height: appBarHeight,
+              transition: `height ${theme.transitions.duration.md3.short4}ms ease-in-out`,
+            },
+            zIndex: 5,
+          }}
+        >
         <Toolbar
             disableGutters
             sx={{
