@@ -155,7 +155,7 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
             })}
             <JeDonneButton trigger={trigger} transitionProps={transitionProps} />
           </Stack>
-          <Box sx={{ ml: '1.25rem' }} >
+          <Box >
             <MenuBurger open={open} onClick={toggleDrawer(true)} />
           </Box>
         </Toolbar>
