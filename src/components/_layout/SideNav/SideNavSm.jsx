@@ -8,8 +8,10 @@ export default function SideNavSm({ children, ...props }) {
     <SwipeableDrawer
       anchor="right"
       variant="temporary"
-      disableBackdropTransition={!iOS}
-      disableDiscovery={iOS}
+      transitionDuration={{
+        enter: theme.transitions.duration.md3.medium3,
+        exit: theme.transitions.duration.md3.medium3,
+      }}
       {...props}
       sx={{
         '> .MuiPaper-root': {
@@ -19,11 +21,6 @@ export default function SideNavSm({ children, ...props }) {
           top: appBarHeight, 
           height: 'auto',  
           maxHeight: `calc(100% - ${appBarHeight})`, 
-          boxShadow: 'rgba(0,0,0,0.2) -6px 0px 16px',
-          transition: `
-            box-shadow ${theme.transitions.duration.md3.short4}ms ${theme.transitions.easing.md3.emphasized},
-            border-radius ${theme.transitions.duration.md3.short3}ms ${theme.transitions.easing.md3.standard}
-          `,
         },
       }}
     >
