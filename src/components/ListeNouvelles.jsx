@@ -65,7 +65,7 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
           }
         }
       }
-      allUdemNews(sort: { fields: pubDate, order: DESC }) {
+      allUdemNews(sort: { pubDate: DESC }) {
         nodes {
           id
           title
