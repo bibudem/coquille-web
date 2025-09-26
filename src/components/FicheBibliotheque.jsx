@@ -19,7 +19,6 @@ const Accordion = styled((props) => <MuiAccordion disableGutters elevation={0} s
     display: 'none',
   },
   '& .MuiAlert-root, & .MuiAlert-message': {
-    fontSize: '13px',
     color: 'inherit',
   },
 }))
