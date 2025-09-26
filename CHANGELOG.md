@@ -1,5 +1,28 @@
 # Changelog
 
+## [4.1.0](https://github.com/bibudem/coquille-web/compare/v4.0.2...v4.1.0) (2025-09-26)
+
+
+### Features
+
+* add JeDonneButton outline avec hover effects ([958b60b](https://github.com/bibudem/coquille-web/commit/958b60b7f9c3320fbb0b9b67257812adc4d80e1f))
+* add JeDonneButton outline avec hover effects ([f32a0de](https://github.com/bibudem/coquille-web/commit/f32a0de1fd31590b0f3fae86e6b31595adfeb455))
+* **component:** FicheBibliotheque: le bloc 'blocNousJoindre' est maintenant facultatif. ([963183c](https://github.com/bibudem/coquille-web/commit/963183c9174fea47fe8d6a545a3eb4a90a82a3eb))
+
+
+### Bug Fixes
+
+* Changements aux fiches de bibliothèques. ([cf95c02](https://github.com/bibudem/coquille-web/commit/cf95c02d4478853bd675b91374ad2eecbb15b205))
+* Changements aux pages Espaces et Études. ([6de85f2](https://github.com/bibudem/coquille-web/commit/6de85f254d8a487fb21bf7f461c4ef1ee704b931))
+* **component:** bib-consent: Correction du lien (v0 -&gt; v1.1) vers le script qui implémente le composant. ([65732cd](https://github.com/bibudem/coquille-web/commit/65732cd514d29913792037ebed3da5c95711454f))
+* **component:** ListeFormations: correction du nom d'une icône importée (ArrowUpRight -&gt; ArrowUpRightIcon). ([e9fbf7c](https://github.com/bibudem/coquille-web/commit/e9fbf7c9f47e7cb4b6985768d0aa1fb304c67118))
+* **component:** ListeNouvelles (anciennement ListeNouvellesCombinees): restauration du contenu original du fichier. ([7459ed3](https://github.com/bibudem/coquille-web/commit/7459ed3d664c8429cb0a8422b40648f74271353b))
+* **component:** ListeNouvelles: retrait des target="_blank" dans les liens. ([0c4e079](https://github.com/bibudem/coquille-web/commit/0c4e07965b1dfe0668e2082279c54e26d696b1eb))
+* **component:** ListeNouvellesAccueil: correction du tri par date dans la liste des nouvelles. ([b1e38be](https://github.com/bibudem/coquille-web/commit/b1e38bea7d5b3ffd2d226ccc60f140ec88480342))
+* **component:** ListeNouvellesCombinees: correction du nom des icones importées. ([41f2220](https://github.com/bibudem/coquille-web/commit/41f22209fb0614b5ff23d6af4cb17b08e536196e))
+* Correction de l'URL du fil RSS des activités UdeM. ([ce613b1](https://github.com/bibudem/coquille-web/commit/ce613b11ca00610eff97bc72776f320d192fce19))
+* Correction de la liste des 'origins' autorisés à se connecter à bib-consent-server. ([4718b7d](https://github.com/bibudem/coquille-web/commit/4718b7d4fc108063b331b8da66a93b9501363aa5))
+
 ## 1.0.0 (2025-09-17)
 
 
