@@ -8,9 +8,9 @@ import { ArrowSquareOutIcon, PersonSimpleCircleIcon } from '@phosphor-icons/reac
   blocEspaces={
     <ul>
       <li>Amphithéâtre</li>
-      <li>Studio d’enregistrement audio</li>
-      <li>Studio d’enregistrement vidéo</li>
-      <li>Salles Accessibilité</li>
+      <li><Link to="https://studio.bib.umontreal.ca/espaces/studiobalado">Studio d'enregistrement balado vidéo</Link></li>
+      <li><Link to="https://studio.bib.umontreal.ca/espaces/studiovideo">Studio d’enregistrement vidéo</Link></li>
+      <li><Link to="/service-accessibilite/#acces-a-des-salles-de-travail-adaptees">Salles Accessibilité</Link></li>
     </ul>
   }
   blocAdresse={
@@ -23,10 +23,16 @@ import { ArrowSquareOutIcon, PersonSimpleCircleIcon } from '@phosphor-icons/reac
   }
   blocNousJoindre={
     <>
-      <p>Comptoir de prêt, réserve de cours&nbsp;:</p>
-      <ul style={{marginLeft:"1em"}}><li>514 343-7336</li><li><Link to="mailto:pret-lsh@bib.umontreal.ca">pret-lsh@bib.umontreal.ca</Link></li></ul>
-      <p>Bureau de référence&nbsp;:</p>
-      <ul style={{marginLeft:"1em"}}><li>514 343-6111, poste 2655</li><li><Link to="#">lsh@bib.umontreal.ca</Link></li></ul>
+      <p>Comptoir de prêt, réserve de cours</p>
+      <ul style={{ marginLeft: "1em" }}>
+        <li>514 343-7336</li>
+        <li><Link to="mailto:pret-lsh@bib.umontreal.ca">pret-lsh@bib.umontreal.ca</Link></li>
+      </ul>
+      <p>Bureau de référence</p>
+      <ul style={{ marginLeft: "1em" }}>
+        <li>514 343-6111, poste 2655</li>
+        <li><Link to="#">lsh@bib.umontreal.ca</Link></li>
+      </ul>
       <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#lsh" Icon>Répertoire du personnel</Link></p>
     </>
   }
