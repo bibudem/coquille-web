@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Box, List, ListItem, ListItemAvatar, CircularProgress, Button, Typography, useMediaQuery, useTheme } from '@mui/material'
-import { CalendarBlank, ArrowSquareOut, BookOpen, ArrowRight } from '@phosphor-icons/react'
+import { CalendarBlankIcon, ArrowSquareOutIcon, BookOpenIcon } from '@phosphor-icons/react'
 import Link from '@/components/Link'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
@@ -31,7 +31,7 @@ const Upper = React.memo(({ children }) => {
         color: theme.palette.rougeOrange.main,
       })}
     >
-      <CalendarBlank size={20} color="currentColor" />
+      <CalendarBlankIcon size={20} color="currentColor" />
       {children}
     </Box>
   )
@@ -182,7 +182,7 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
       <Box sx={{ padding: 2, textAlign: 'center' }}>
         Aucune nouvelle récente n'a été trouvée.
         <Box sx={{ mt: 2 }}>
-          <Button href="https://nouvelles.umontreal.ca" target="_blank" rel="noopener noreferrer" endIcon={<ArrowSquareOut size={16} />}>
+          <Button href="https://nouvelles.umontreal.ca" target="_blank" rel="noopener noreferrer" endIcon={<ArrowSquareOutIcon size={16} />}>
             Voir toutes les nouvelles UdeM
           </Button>
         </Box>
@@ -288,7 +288,7 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
                           justifyContent: 'center',
                         }}
                       >
-                        <BookOpen size={40} color="disabled" />
+                        <BookOpenIcon size={40} color="disabled" />
                       </Box>
                     )}
                   </ListItemAvatar>
@@ -356,7 +356,7 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
                           justifyContent: 'center',
                         }}
                       >
-                        <BookOpen size={40} color="disabled" />
+                        <BookOpenIcon size={40} color="disabled" />
                       </Box>
                     )}
                   </Box>
