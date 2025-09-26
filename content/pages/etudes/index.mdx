@@ -10,14 +10,6 @@ import SuperHero2 from '@/components/SuperHero2'
 import ListeFormations from '@/components/ListeFormations'
 import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
 import imageBienvenue from '../images/espaces-montage.webp'
-import Cocon from '../images/cocon.webp'
-import troussePetits from '../images/trousse-petits.webp'
-import collectionBienEtre from '../images/collection-bien-etre.webp'
-import collectionDetente from '../images/collection-detente.webp'
-import luminotherapie from '../images/luminotherapie.webp'
-import coloriage from '../images/coloriage.webp'
-import relaxation from '../images/relaxation.webp'
-import jeuxSociete from '../images/jeux-societe.webp'
 
 
 <SuperHero2
@@ -73,8 +65,7 @@ import jeuxSociete from '../images/jeux-societe.webp'
 
 <Section bg='vertFonce'>
 
-  <Typography component="h2" variant="h2"> Des services personnalisés</Typography>
-
+  <Typography component="h2" variant="h2">Des services personnalisés</Typography>
 
   <RichList bg="vertFonce">
     <RichListItemWithLink 
@@ -159,123 +150,32 @@ import jeuxSociete from '../images/jeux-societe.webp'
 
 </Section>
 
-<Section bg="bleu100">
+<Section image={zoneConfort}>
 
-  <Carousel1
-    title={<Typography component="h2" variant="h2" id="bien-etre">On a votre bien-être à cœur</Typography>}
-    description="Une session universitaire, ça passe vite! On a parfois besoin d’une pause, de lire une BD pour le plaisir, de colorier un mandala entre deux séances d’étude. Vous trouverez en bibliothèque des collections axées sur le bien-être et la détente, des jeux, et même un cocon de micro-sieste!"
-  >
-  
-  <FlipCardWithImage
-    title="Cocon de micro-sieste"
-    subtitle="Disponibles :"
-    Image={Cocon}
-  >
-    <ul>
-      <li>Bibliothèque de Kinésiologie</li> 
-      <li>Bibliothèque de médecine vétérinaire</li>
-      <li>Bibliothèque Thérèse-Gouin-Décarie</li>
-    </ul>
-  </FlipCardWithImage>
+  <Grid
+    container
+    spacing={2}
+    sx={{
+      paddingTop:'3rem',
+      paddingBottom: '3rem',
+    }}>
+    <Grid size={{xs:12, md:6}} offset={{md:6}}>
 
-  <FlipCardWithImage
-    title="Espaces de relaxation"
-    Image={relaxation}
-  >
-    Disponibles dans presque toutes les bibliothèques
-  </FlipCardWithImage>
+    <Typography
+      component='h2'
+      variant='h2'
+    >Votre zone de confort</Typography>
 
-  <FlipCardWithImage
-    title="Trousse pour petits visiteurs"
-    Image={troussePetits}
-   >
-    <p>Disponible à la Bibliothèque de droit</p>
-  </FlipCardWithImage>
+    Rien de mieux par moments que de retrouver ses repères dans un lieu familier et accueillant. Nos nombreux espaces de détente sont là pour vous accueillir, le temps d’un souffle ou d’une sieste. Faites comme chez vous!
+     <Button 
+          className="whiteOutlineNoIcon"
+          href="#liste-bibliotheques" 
+        >
+          Découvrez nos bibliothèques
+      </Button>
+    </Grid>
+  </Grid>
 
-  <FlipCardWithImage
-    title="Collection bien être"
-    subtitle="Plusieurs documents en ligne et collections imprimées disponibles:"
-    Image={collectionBienEtre}
-  >
-      <ul>
-        <li>Bibliothèque du Campus de Laval</li>
-        <li>Bibliothèque de la santé</li>
-        <li>Bibliothèque de lettres et sciences humaines</li>
-        <li>Bibliothèque de médecine vétérinaire</li>
-        <li>Bibliothèque de musique</li>
-        <li>Bibliothèque Thérèse-Gouin-Décarie</li>
-      </ul>
-  </FlipCardWithImage>
-
-  <FlipCardWithImage
-    title="Collection détente"
-    subtitle="Bandes dessinées et romans graphiques:"
-    Image={collectionDetente}
-  >
-    <ul>
-      <li>Bibliothèque d’aménagement</li>
-      <li>Bibliothèque de droit</li>
-      <li>Bibliothèque Hubert-Reeves</li>
-      <li>Bibliothèque de la santé</li>
-      <li>Local des étudiants de la Faculté de médecine</li>
-      <li>Bibliothèque de kinésiologie</li>
-      <li>Bibliothèque de mathématiques et informatique</li>
-      <li>Bibliothèque de musique</li>
-      <li>Bibliothèque Marguerite-d'Youville</li>
-    </ul>
-  </FlipCardWithImage>
-
-  <FlipCardWithImage
-    title="Jeux de société"
-    subtitle="Disponibles :"
-    Image={jeuxSociete}
-  >
-    <ul>
-      <li>Bibliothèque d’aménagement</li>
-      <li>Bibliothèque de droit</li>
-      <li>Bibliothèque de la santé</li>
-      <li>Bibliothèque de mathématiques et informatique</li>
-      <li>Bibliothèque de médecine vétérinaire</li>
-      <li>Bibliothèque de musique</li>
-      <li>Bibliothèque Thérèse-Gouin-Décarie</li>
-    </ul>
-  </FlipCardWithImage>
-
-  <FlipCardWithImage
-    title="Luminothérapie"
-    subtitle="Disponibles :"
-    Image={luminotherapie}
-  >
-    <ul>
-      <li>Bibliothèque d'aménagement</li>
-      <li>Bibliothèque de droit</li>
-      <li>Bibliothèque de la santé</li>
-      <li>Bibliothèque de kinésiologie</li>
-      <li>Bibliothèque des lettres et sciences humaines</li>
-      <li>Bibliothèque de mathématiques et informatique</li>
-      <li>Bibliothèque de médecine vétérinaire</li>
-      <li>Bibliothèque de musique</li>
-      <li>Bibliothèque du Campus de Laval</li>
-    </ul>
-  </FlipCardWithImage>
-
-  <FlipCardWithImage
-    title="Coloriage et mandalas"
-    subtitle="Disponibles :"
-    Image={coloriage}
-  >
-    <ul>
-      <li>Bibliothèque de droit</li>
-      <li>Bibliothèque de la santé</li>
-      <li>Bibliothèque de kinésiologie</li>
-      <li>Bibliothèque de médecine vétérinaire</li>
-      <li>Bibliothèque de musique</li>
-      <li>Bibliothèque Marguerite-d'Youville</li>
-    </ul>
-  </FlipCardWithImage>
-
-
-  </Carousel1>
 </Section>
 
 <Section>
