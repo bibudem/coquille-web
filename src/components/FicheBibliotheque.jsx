@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+import { useLocation } from '@reach/router'
 import { graphql, useStaticQuery } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { styled, SvgIcon } from '@mui/material'
@@ -10,8 +12,6 @@ import Bloc from '@/components/FicheBibliotheque/Bloc'
 import HoraireAujourdhui from '@/components/FicheBibliotheque/HoraireAujourdhui'
 import { useSmall } from '@/hooks/use-small'
 import PlusIcon from '@/components/FicheBibliotheque/plus.svg'
-import { useEffect, useState } from 'react'
-import { useLocation } from '@reach/router'
 
 const Accordion = styled((props) => <MuiAccordion disableGutters elevation={0} square {...props} />)(({ theme }) => ({
   color: theme.palette.bleuFonce.main,
