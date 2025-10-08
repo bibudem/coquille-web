@@ -6,18 +6,26 @@ slug: espaces
 import Alert from '@mui/material/Alert'
 import SuperHero2 from '@/components/SuperHero2'
 import Bibliotheques from '../../bibliotheques/bibliotheques.mdx'
+import cabine from '../images/cabine.webp'
+import Cocon from '../images/cocon.webp'
+import CollectionBienEtre from '../images/collection-bien-etre.webp'
+import CollectionDetente from '../images/collection-detente.webp'
+import Coloriage from '../images/coloriage.webp'
 import imageAccessible from '../images/marguerite-youville-espace.webp'
+import Luminotherapie from '../images/luminotherapie.webp'
+import JeuxSociete from '../images/jeux-societe.webp'
 import zoneConfort from '../images/confort-espaces.webp'
 import impression3d from '../images/impression-3d.webp'
+import Relaxation from '../images/relaxation.webp'
 import systemesEmbarques from '../images/systemes-embarques.webp'
 import studioVideo from '../images/studio-video.webp'
 import studioAudio from '../images/studio-audio.webp'
 import salleIndividuelle from '../images/salle-individuelle.webp'
-import cabine from '../images/cabine.webp'
 import salleEquipe from '../images/salle-equipe.webp'
 import salleCycleSup from '../images/cycle-sup.webp'
 import salleMaitrise from '../images/cycle-sup-droit-maitrise.webp'
 import salleDoctorat from '../images/cycle-sup-droit-doctorat.webp'
+import TroussePetits from '../images/trousse-petits.webp'
 import grandeSalleEquipe from '../images/grande-salle-equipe.webp'
 import veloPupitre from '../images/velo-pupitre.webp'
 import pedalier from '../images/pedalier.webp'
@@ -52,7 +60,7 @@ import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
         Image={salleIndividuelle}
         small
       >
-        Disponibles dans presque toutes les bibliothèques
+        <Button href="https://calendrier.bib.umontreal.ca/r" style={{backgroundColor: '#fff', color: 'var(--bib-palette-text-primary)'}}>Réservez votre salle</Button>
       </FlipCardWithImage>
 
       <FlipCardWithImage
@@ -61,19 +69,11 @@ import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
         Image={cabine}
         small
       >
-        <ul>
-          <li>Bibliothèque de droit</li>
-          <li>Bibliothèque de kinésiologie</li>
-          <li>Bibliothèque des lettres et sciences humaines</li>
-          <li>Bibliothèque Thérèse-Gouin-Décarie</li>
-          <li>Bibliothèque du campus de Laval</li>
-          <li>Bibliothèque de musique</li>
-        </ul>
+        <Button href="https://calendrier.bib.umontreal.ca/r" style={{backgroundColor: '#fff', color: 'var(--bib-palette-text-primary)'}}>Réservez votre cabine</Button>
       </FlipCardWithImage>
 
       <FlipCardWithImage
         title="Salles silencieuses"
-        subtitle="Disponibles :"
         Image={salleSilencieuse}
         small
         >
@@ -86,12 +86,13 @@ import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
           <li>Bibliothèque de la santé</li>
         </ul>
       </FlipCardWithImage>
+
       <FlipCardWithImage
         title="Salles de travail pour 3 à 4 personnes"
         Image={salleEquipe}
         small
       >
-        Disponibles dans presque toutes les bibliothèques
+        <Button href="https://calendrier.bib.umontreal.ca/r" style={{backgroundColor: '#fff', color: 'var(--bib-palette-text-primary)'}}>Réservez votre salle</Button>
       </FlipCardWithImage>
 
       <FlipCardWithImage
@@ -99,25 +100,30 @@ import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
         Image={grandeSalleEquipe}
         small
       >
-        <p>Disponibles dans presque toutes les bibliothèques</p>
+        <Button href="https://calendrier.bib.umontreal.ca/r" style={{backgroundColor: '#fff', color: 'var(--bib-palette-text-primary)'}}>Réservez votre salle</Button>
       </FlipCardWithImage>
 
       <FlipCardWithImage
-        title="Espace d'innovation et de créativité"
+        title="Espaces d'innovation et de créativité"
         Image={realiteVirtuelle}
         small
       >
-        Bibliothèque de Mathématiques et informatique
+        <ul>
+          <li>Bibliothèque de Mathématiques et informatique</li>
+          <li>Bibliothèque Marguerite-d'Youville</li>
+        </ul>
         
+        <Button href="https://calendrier.bib.umontreal.ca/r" style={{backgroundColor: '#fff', color: 'var(--bib-palette-text-primary)'}}>Réservez votre salle</Button>
       </FlipCardWithImage>
+
       <FlipCardWithImage
         title="Salles de travail individuel - cycles supérieurs"
         Image={salleCycleSup}
         small
       >
-        Sous réservation, à la Bibliothèques des lettres et sciences humaines pour toutes les personnes des cycles supérieurs
+        <p>Sous réservation, à la Bibliothèques des lettres et sciences humaines pour toutes les personnes des cycles supérieurs</p>
         
-
+        <Button href="https://calendrier.bib.umontreal.ca/r" style={{backgroundColor: '#fff', color: 'var(--bib-palette-text-primary)'}}>Réservez votre salle</Button>
       </FlipCardWithImage>
 
       <FlipCardWithImage
@@ -125,7 +131,7 @@ import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
         Image={salleMaitrise}
         small
       >
-        À la Bibliothèque de droit, pour les personnes du doctorat en droit seulement, aucune réservation nécessaire.
+        Salle située à la Bibliothèque de droit. Informez-vous au comptoir de la bibliothèque pour y accéder.
       </FlipCardWithImage>
 
       <FlipCardWithImage
@@ -133,7 +139,7 @@ import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
         Image={salleDoctorat}
         small
       >
-        À la Bibliothèque de droit, pour les personnes du doctorat en droit seulement, aucune réservation nécessaire.
+        Salle située à la Bibliothèque de droit. Informez-vous au comptoir de la bibliothèque pour y accéder.
       </FlipCardWithImage>
 
     </Carousel1>
@@ -146,160 +152,123 @@ import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
       </Button>
 </Section>
 
-{/*<Section>
-  <Tabs1
-    tabs={['Salles et espaces pour se concentrer', 'Salles de travail en équipe', 'Salle pour les cycles supérieurs']}
+<Section bg="bleu100">
+
+  <Carousel1
+    title={<Typography component="h2" variant="h2" id="bien-etre">On a votre bien-être à cœur</Typography>}
+    description="Une session universitaire, ça passe vite! On a parfois besoin d’une pause, de lire une BD pour le plaisir, de colorier un mandala entre deux séances d’étude. Vous trouverez en bibliothèque des collections axées sur le bien-être et la détente, des jeux, et même un cocon de micro-sieste!"
   >
-    <Carousel1
-      title={<Typography component="h2" variant="display3">Bien dans sa bulle</Typography>}
-      description="Besoin de concentration pour étudier? Salles d'étude individuelles ou cabines insonorisées, vous n'avez qu'à réserver!"
-      moreText="Réserver une salle"
-      moreLink="https://calendrier.bib.umontreal.ca/r/new"
-    >
-    <FlipCardWithImage
-        title="Salles de travail individuel"
-        Image={salleIndividuelle}
-        small
-      >
-        <p>Disponibles dans presque toutes les bibliothèques</p>
-      </FlipCardWithImage>
+  
+  <FlipCardWithImage
+    title="Cocon de micro-sieste"
+    subtitle="Disponibles :"
+    Image={Cocon}
+  >
+    <ul>
+      <li>Bibliothèque de Kinésiologie</li> 
+      <li>Bibliothèque de médecine vétérinaire</li>
+      <li>Bibliothèque Thérèse-Gouin-Décarie</li>
+    </ul>
+  </FlipCardWithImage>
 
-      <FlipCardWithImage
-        title="Cabines insonorisées"
-        Image={cabine}
-        small
-      >
-        <ul>
-          <li>Bibliothèque de droit</li>
-          <li>Bibliothèque de kinésiologie</li>
-          <li>Bibliothèque des lettres et sciences humaines</li>
-          <li>Bibliothèque Thérèse-Gouin-Décarie</li>
-          <li>Bibliothèque du campus de Laval</li>
-          <li>Bibliothèque de la santé</li>
-        </ul>
-      </FlipCardWithImage>
+  <FlipCardWithImage
+    title="Espaces de relaxation"
+    Image={Relaxation}
+  >
+    Disponibles dans presque toutes les bibliothèques
+  </FlipCardWithImage>
 
-      <FlipCardWithImage
-        title="Salles silencieuses"
-        Image={cabine}
-        small
-        >
-        <ul>
-          <li>Bibliothèque du campus de Laval</li>
-          <li>Bibliothèque de droit</li>
-          <li>Bibliothèque Marguerite-d'Youville</li>
-          <li>Bibliothèque de médecine vétérinaire</li>
-          <li>Bibliothèque Thérèse-Gouin-Décarie</li>
-          <li>Bibliothèque de la santé</li>
-        </ul>
-      </FlipCardWithImage>
+  <FlipCardWithImage
+    title="Trousse pour petits visiteurs"
+    Image={TroussePetits}
+   >
+    <p>Disponible à la Bibliothèque de droit</p>
+  </FlipCardWithImage>
 
-    </Carousel1>
+  <FlipCardWithImage
+    title="Collection bien être"
+    subtitle="Plusieurs documents en ligne et collections imprimées disponibles:"
+    Image={CollectionBienEtre}
+  >
+      <ul>
+        <li>Bibliothèque du Campus de Laval</li>
+        <li>Bibliothèque de la santé</li>
+        <li>Bibliothèque de lettres et sciences humaines</li>
+        <li>Bibliothèque de médecine vétérinaire</li>
+        <li>Bibliothèque de musique</li>
+        <li>Bibliothèque Thérèse-Gouin-Décarie</li>
+      </ul>
+  </FlipCardWithImage>
 
-    <Carousel1
-      title={<Typography component="h2" variant="display3">Là où peuvent converger les idées</Typography>}
-      description="Un travail à faire en équipe? Une séance d’étude de groupe? Nous vous offrons des salles de travail communes avec ou sans réservation, des espaces pour parler librement, des banquettes avec écran - tout ce qu’il vous faut pour collaborer!"
-      moreText="Réserver une salle"
-      moreLink="https://calendrier.bib.umontreal.ca/r/new"
-    >
-    <FlipCardWithImage
-        title="Salles de travail pour 3 à 4 personnes"
-        Image={salleEquipe}
-        small
-      >
-        <p>Disponibles dans presque toutes les bibliothèques</p>
-      </FlipCardWithImage>
+  <FlipCardWithImage
+    title="Collection détente"
+    subtitle="Bandes dessinées et romans graphiques:"
+    Image={CollectionDetente}
+  >
+    <ul>
+      <li>Bibliothèque d’aménagement</li>
+      <li>Bibliothèque de droit</li>
+      <li>Bibliothèque Hubert-Reeves</li>
+      <li>Bibliothèque de la santé</li>
+      <li>Local des étudiants de la Faculté de médecine</li>
+      <li>Bibliothèque de kinésiologie</li>
+      <li>Bibliothèque de mathématiques et informatique</li>
+      <li>Bibliothèque de musique</li>
+      <li>Bibliothèque Marguerite-d'Youville</li>
+    </ul>
+  </FlipCardWithImage>
 
-      <FlipCardWithImage
-        title="Salles de travail pour 4 à 8 personnes"
-        Image={grandeSalleEquipe}
-        small
-      >
-        <p>Disponibles :</p>
-        <ul>
-          <li>à déterminer</li>
-          <li>à déterminer</li>
-        </ul>
-      </FlipCardWithImage>
+  <FlipCardWithImage
+    title="Jeux de société"
+    subtitle="Disponibles :"
+    Image={JeuxSociete}
+  >
+    <ul>
+      <li>Bibliothèque d’aménagement</li>
+      <li>Bibliothèque de droit</li>
+      <li>Bibliothèque de la santé</li>
+      <li>Bibliothèque de mathématiques et informatique</li>
+      <li>Bibliothèque de médecine vétérinaire</li>
+      <li>Bibliothèque de musique</li>
+      <li>Bibliothèque Thérèse-Gouin-Décarie</li>
+    </ul>
+  </FlipCardWithImage>
 
-      <FlipCardWithImage
-        title="Espace d'innovation et de créativité"
-        Image={cabine}
-        small
-      >
-        <p>Disponibles :</p>
-        <ul>
-          <li>Bibliothèque de Mathématiques et informatique</li>
-        </ul>
-      </FlipCardWithImage>
+  <FlipCardWithImage
+    title="Luminothérapie"
+    subtitle="Disponibles :"
+    Image={Luminotherapie}
+  >
+    <ul>
+      <li>Bibliothèque d'aménagement</li>
+      <li>Bibliothèque de droit</li>
+      <li>Bibliothèque de la santé</li>
+      <li>Bibliothèque de kinésiologie</li>
+      <li>Bibliothèque des lettres et sciences humaines</li>
+      <li>Bibliothèque de mathématiques et informatique</li>
+      <li>Bibliothèque de médecine vétérinaire</li>
+      <li>Bibliothèque de musique</li>
+      <li>Bibliothèque du Campus de Laval</li>
+    </ul>
+  </FlipCardWithImage>
 
-    </Carousel1>
+  <FlipCardWithImage
+    title="Coloriage et mandalas"
+    subtitle="Disponibles :"
+    Image={Coloriage}
+  >
+    <ul>
+      <li>Bibliothèque de droit</li>
+      <li>Bibliothèque de la santé</li>
+      <li>Bibliothèque de kinésiologie</li>
+      <li>Bibliothèque de médecine vétérinaire</li>
+      <li>Bibliothèque de musique</li>
+      <li>Bibliothèque Marguerite-d'Youville</li>
+    </ul>
+  </FlipCardWithImage>
 
-    <Carousel1
-      title={<Typography component="h2" variant="display3">Cycle supérieurs : c'est par ici!</Typography>}
-      description="Certaines bibliothèques offrent des salles spécifiquement réservées aux étudiants et étudiantes des cycles supérieurs."
-      moreText="Réserver une salle"
-      moreLink="https://calendrier.bib.umontreal.ca/r/new"
-    >
-    <FlipCardWithImage
-        title="Salles de travail individuel - cycles supérieurs"
-        Image={salleCycleSup}
-        small
-      >
-        <p>Disponibles à la Bibliothèques des lettres et sciences humaines pour toutes les personnes des cycles supérieurs</p>
-      </FlipCardWithImage>
 
-      <FlipCardWithImage
-        title="Salle de travail - maîtrise en droit"
-        Image={salleMaitrise}
-        small
-      >
-        <ul>
-          <li>Pour les personnes de la maitrise en droit seulement</li>
-        </ul>
-      </FlipCardWithImage>
-
-      <FlipCardWithImage
-        title="Salle de travail - doctorat en droit"
-        Image={salleDoctorat}
-        small
-      >
-        <p>Disponibles :</p>
-        <ul>
-          <li>Pour les personnes du doctorat en droit seulement</li>
-        </ul>
-      </FlipCardWithImage>
-
-    </Carousel1>
-  </Tabs1>
-</Section> */}
-
-<Section image={zoneConfort}>
-
-  <Grid
-    container
-    spacing={2}
-    sx={{
-      paddingTop:'3rem',
-      paddingBottom: '3rem',
-    }}>
-    <Grid size={{xs:12, md:6}} offset={{md:6}}>
-
-    <Typography
-      component='h2'
-      variant='h2'
-    >Votre zone de confort</Typography>
-
-    Rien de mieux par moments que de retrouver ses repères dans un lieu familier et accueillant. Nos nombreux espaces de détente sont là pour vous accueillir, le temps d’un souffle ou d’une sieste. Faites comme chez vous!
-     <Button 
-          className="whiteOutlineNoIcon"
-          href="#liste-bibliotheques" 
-        >
-          Découvrez nos bibliothèques
-      </Button>
-    </Grid>
-  </Grid>
-
+  </Carousel1>
 </Section>
 
 <Section bg="bleu100">
@@ -338,7 +307,7 @@ import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
 
     </FlipCardWithImage>
     <FlipCardWithImage
-        title="Disques d'équilibre "
+        title="Disques d'équilibre"
         subtitle="Disponibles :"
         Image={disqueEquilibre}
       >
@@ -350,7 +319,7 @@ import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
         </ul>
     </FlipCardWithImage>
     <FlipCardWithImage
-      title="Planche d'équilibre "
+      title="Planches d'équilibre"
       subtitle="Disponibles :"
       Image={placheEquilibre}
     >
@@ -358,46 +327,44 @@ import decoupeuseVinyle from '../images/decoupeuse-vinyle.webp'
           <li>Bibliothèque d'aménagement </li>
           <li>Bibliothèque du campus Laval </li>
           <li>Bibliothèque de droit </li>
-          <li>Bibliothèque de Kinésiologie </li>
+          <li>Bibliothèque de kinésiologie </li>
           <li>Bibliothèque de la santé </li>
         </ul>
       </FlipCardWithImage>
 
       <FlipCardWithImage
-        title="Table à hauteur ajustable "
+        title="Tables à hauteur ajustable"
         Image={tableAjustable}
       >
         Disponibles dans presque toutes les bibliothèques
 
       </FlipCardWithImage>
       <FlipCardWithImage
-        title="Tapis antifatigue pour le travail debout "
+        title="Tapis antifatigue pour le travail debout"
         Image={tapisFatigue}
       >
         Disponibles dans presque toutes les bibliothèques
       </FlipCardWithImage>
             
       <FlipCardWithImage
-        title="Chaise ballon avec dossier "
+        title="Chaises ballon avec dossier"
         subtitle="Disponibles :"
         Image={chaiseBallon}
       >
         <ul>
-          <li>Bibliothèque de Kinésiologie</li> 
+          <li>Bibliothèque de kinésiologie</li> 
           <li>Bibliothèque de médecine vétérinaire</li> 
         </ul>
       </FlipCardWithImage>
           
     <FlipCardWithImage
-        title="Table haute"
+        title="Tables haute"
         Image={tableHaute}
       >
-        Disponibles à la Bibliothèque de Kinésiologie
+        Disponibles à la Bibliothèque de kinésiologie
       </FlipCardWithImage>
 
       </Carousel1>
-
-
 </Section>
 
 <Section bg='jaune'>

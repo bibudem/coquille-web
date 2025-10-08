@@ -7,7 +7,7 @@ import {ArrowSquareOutIcon, PersonSimpleCircleIcon} from '@phosphor-icons/react'
   codeBib="cs"
   blocEspaces={
     <ul>
-      <li>Salle de séminaire</li>
+      <li><Link to="https://calendrier.bib.umontreal.ca/space/34702">Salle de séminaire</Link></li>
     </ul>
   }
   blocAdresse={
@@ -20,8 +20,11 @@ import {ArrowSquareOutIcon, PersonSimpleCircleIcon} from '@phosphor-icons/react'
   }
   blocNousJoindre={
     <>
-      <p>Accueil et prêt :</p>
-      <ul style={{marginLeft:"1em"}}><li>514 343-6111, poste 39836</li><li><Link to="mailto:livresrares@bib.umontreal.ca">livresrares@bib.umontreal.ca</Link></li></ul>
+      <p>Accueil et prêt</p>
+      <ul style={{ marginLeft: "1em" }}>
+        <li>514 343-6111, poste 39836</li>
+        <li><Link to="mailto:livresrares@bib.umontreal.ca">livresrares@bib.umontreal.ca</Link></li>
+      </ul>
       <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#lrcs" Icon>Répertoire du personnel</Link></p>
     </>
   }
