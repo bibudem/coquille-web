@@ -80,11 +80,9 @@ h4: {
   fontWeight: 500,
   fontSize: '1.875rem',
   lineHeight: 1.2,
-  wordSpacing: '-0.2em', 
   '@media (max-width:899px)': {
     fontSize: '1.25rem',
     lineHeight: 1.2,
-    wordSpacing: '-0.05em',
   }
 },
   
