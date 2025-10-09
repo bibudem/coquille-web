@@ -23,15 +23,12 @@ h2: {
     fontFamily: loraStack,
     fontWeight: 500,
     margin: '0.5em 0',                // medium
-    fontSize: '1.889rem',  
-    wordSpacing: '-0.2em',            
+    fontSize: '1.889rem',             
     '@media (max-width:899px)': {
       fontSize: '1.65rem',  
-      wordSpacing: '-0.2em',          // tablette (~28px)
     },
     '@media (max-width:599px)': {
       fontSize: '1.4rem', 
-      wordSpacing: '-0.2em',            // mobile (~25.6px)
     },
   },
 
