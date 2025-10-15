@@ -96,10 +96,7 @@ export default function NouvelleTemplate({ pageContext, children, data, location
 
         {lvl >= 2 && <bib-avis bouton-fermer />}
 
-        <Container>
-          <p>lvl: {lvl}</p>
-          {mainContent}
-        </Container>
+        <Container>{mainContent}</Container>
         <Footer />
         <bib-consent server-request-timeout="5000"></bib-consent>
       </IconContext.Provider>

@@ -9,7 +9,8 @@
     "theme",
     "accessibilite",
     "dependencies",
-    "component"
+    "component",
+    "nouvelles"
   ],
   "editor.unusualLineTerminators": "auto"
 }
