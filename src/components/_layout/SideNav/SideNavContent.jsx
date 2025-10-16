@@ -1,16 +1,18 @@
+'use client'
+
+import { Box, Grid, Typography, List, ListItem, ListItemText, Button, useTheme, useMediaQuery, Card, CardContent, CardActions, Collapse } from '@mui/material'
 import { useState } from 'react'
-import { Box, Grid2, Typography, List, ListItem, ListItemText, Button, useTheme, useMediaQuery, Card, CardContent, CardActions, Collapse } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import { BooksIcon, DoorOpenIcon, FolderOpenIcon, ClockCountdownIcon, AddressBookIcon, InfoIcon, ArrowRightIcon, CalendarDotsIcon } from '@phosphor-icons/react'
 import Link from '@/components/Link'
 import Studiobib from '@/images/burger/studiobib.png'
 import BoiteOutils from '@/images/burger/boite-outils.png'
 import AutresResources from '@/images/burger/autres-resources.png'
 import pages from '../AppBar/menu'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { Books, DoorOpen, FolderOpen, ClockCountdown, AddressBook, Info, House, ArrowRight, CalendarDotsIcon } from '@phosphor-icons/react'
 
-// Style appliqué au SecureLink
-const StyledLink = styled(Link)({
+// Style appliqué au Link
+const StyledLink = styled(Link)(({ theme }) => ({
   color: '#c8cbcfff',
   textDecoration: 'none',
   fontSize: '1rem',
@@ -21,7 +23,7 @@ const StyledLink = styled(Link)({
   '&:hover': {
     color: 'white',
   },
-})
+}))
 
 // --- Données pour alimenter les cartes ---
 const cards = [
@@ -69,13 +71,13 @@ const cards = [
 
 // --- Boutons latéraux avec icônes ---
 const quickLinks = [
-  { label: 'Obtenir un document', href: '/obtenir/', icon: BooksIcon },
-  { label: 'Réserver une salle', href: 'https://calendrier.bib.umontreal.ca/r', icon: DoorOpenIcon },
-  { label: 'Mon dossier', href: 'https://umontreal.account.worldcat.org/account', icon: FolderOpenIcon },
+  { label: 'Obtenir un document', href: '/obtenir/', icon: Books },
+  { label: 'Réserver une salle', href: 'https://calendrier.bib.umontreal.ca/r', icon: DoorOpen },
+  { label: 'Mon dossier', href: 'https://umontreal.account.worldcat.org/account', icon: FolderOpen },
   { label: 'Calendrier des formations', href: 'https://calendrier.bib.umontreal.ca/calendar?cid=7690&t=m&d=0000-00-00&cal=7690&inc=0', icon: CalendarDotsIcon },
-  { label: 'Horaires', href: '/horaires', icon: ClockCountdownIcon },
-  { label: 'Nous joindre', href: '/nous-joindre/', icon: AddressBookIcon },
-  { label: 'À propos', href: '/a-propos/', icon: InfoIcon },
+  { label: 'Horaires', href: '/horaires', icon: ClockCountdown },
+  { label: 'Nous joindre', href: '/nous-joindre/', icon: AddressBook },
+  { label: 'À propos', href: '/a-propos/', icon: Info },
 ]
 
 function MobileQuickLinks() {
@@ -127,6 +129,7 @@ function MobileQuickLinks() {
     textDecoration: 'none!important',
     padding: '0.75rem 1rem',
     fontSize: '1rem',
+    marginTop: '1rem',
     '&:hover': {
       backgroundColor: 'rgba(255,255,255,0.1)',
       color: 'white',
@@ -169,22 +172,25 @@ function MobileQuickLinks() {
           {/* Pages */}
           {pages.map((page, i) => (
             <Link key={`page-${i}`} to={page.url} sx={collapseLinkSx}>
-              {page.label} <ArrowRightIcon size={16} />
+              {page.label} <ArrowRight size={16} />
             </Link>
           ))}
 
           {/* QuickLinks */}
-          <Grid2 container direction="row" gap=".75rem">
-            {quickLinks.map((btn, i) => {
-              const IconComponent = btn.icon
+          {quickLinks.map((btn, i) => {
+            const IconComponent = btn.icon
+            const isExternal = btn.href?.startsWith('http')
 
-              return (
-                <Link key={`quick-${i}`} to={btn.href} sx={collapseLinkSx}>
-                  {btn.label} <IconComponent size={20} />
-                </Link>
-              )
-            })}
-          </Grid2>
+            return isExternal ? (
+              <Box key={`quick-${i}`} component="a" href={btn.href} target="_blank" rel="noopener noreferrer" sx={collapseLinkSx}>
+                {btn.label} <IconComponent size={20} />
+              </Box>
+            ) : (
+              <Link key={`quick-${i}`} to={btn.href} sx={collapseLinkSx}>
+                {btn.label} <IconComponent size={20} />
+              </Link>
+            )
+          })}
         </Box>
       </Collapse>
     </Box>
@@ -203,9 +209,9 @@ export default function MenuSection({}) {
     <>
       {/* Section principale du menu */}
       <Box sx={{ padding: { xs: '0', md: '0' } }}>
-        <Grid2 container spacing={2} wrap={isSmallScreen ? 'wrap' : 'nowrap'}>
+        <Grid container spacing={2}>
           {/* Section des boutons - En premier sur mobile */}
-          <Grid2
+          <Grid
             item
             xs={12}
             lg={2}
@@ -225,16 +231,25 @@ export default function MenuSection({}) {
               {isSmallScreen ? (
                 <MobileQuickLinks />
               ) : (
-                <Grid2 container direction="column" gap="0.75rem">
+                <>
                   {quickLinks.map((btn, i) => {
                     const IconComponent = btn.icon
+                    const isExternal = btn.href?.startsWith('http')
 
                     return (
                       <Button
                         key={i}
                         fullWidth
-                        component={Link}
-                        to={btn.href}
+                        component={isExternal ? 'a' : Link}
+                        {...(isExternal
+                          ? {
+                              href: btn.href,
+                              target: '_blank',
+                              rel: 'noopener noreferrer',
+                            }
+                          : {
+                              to: btn.href,
+                            })}
                         startIcon={<IconComponent size={20} />}
                         variant="outlined"
                         sx={{
@@ -245,7 +260,6 @@ export default function MenuSection({}) {
                           borderRadius: '8px',
                           textTransform: 'none',
                           padding: '0.75rem 1rem',
-                          margin: '0',
                           transition: 'all 0.2s ease',
                           fontSize: '1rem',
                           '&:hover': {
@@ -259,13 +273,13 @@ export default function MenuSection({}) {
                       </Button>
                     )
                   })}
-                </Grid2>
+                </>
               )}
             </Box>
-          </Grid2>
+          </Grid>
 
           {/* Section des cartes - En second sur mobile */}
-          <Grid2
+          <Grid
             item
             xs={12}
             lg={10}
@@ -273,11 +287,11 @@ export default function MenuSection({}) {
               order: { xs: 2, lg: 1 }, // Ordre modifié pour mobile
             }}
           >
-            <Grid2 container spacing={2} alignItems="stretch" wrap="nowrap">
+            <Grid container spacing={2} alignItems="stretch">
               {(isSmallScreen ? mobileCardOrder : desktopCardOrder).map((cardIndex, i) => {
                 const card = cards[cardIndex]
                 return (
-                  <Grid2 item xs={12} sm={4} md={4} key={i} sx={{ display: 'flex' }}>
+                  <Grid item xs={12} sm={4} md={4} key={i} sx={{ display: 'flex' }}>
                     <Card
                       sx={{
                         backgroundColor: '#2a3440',
@@ -353,12 +367,12 @@ export default function MenuSection({}) {
                         )}
                       </CardActions>
                     </Card>
-                  </Grid2>
+                  </Grid>
                 )
               })}
-            </Grid2>
-          </Grid2>
-        </Grid2>
+            </Grid>
+          </Grid>
+        </Grid>
       </Box>
     </>
   )
