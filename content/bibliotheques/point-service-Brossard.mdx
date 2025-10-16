@@ -1,0 +1,22 @@
+import FicheBibliotheque from '@/components/FicheBibliotheque'
+import {ArrowSquareOutIcon, PersonSimpleCircleIcon} from '@phosphor-icons/react'
+
+<FicheBibliotheque
+  title="Point de service : Brossard"
+  id="brossard"
+  blocEspaces= {
+    <Alert>
+      <p>Ce point de service permet de récupérer des documents ou de les retourner.</p>
+      <p>Nous vous recommandons de vérifier l'horaire du point de service avant de vous déplacer.</p>
+    </Alert>
+  }
+  blocAdresse={
+    <>
+      <p>Point de service Brossard</p>
+      <p>2000, rue de l’Éclipse</p>
+      <p>Brossard (Québec) J4Z 0S2</p>
+      <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps/place/2000+R.+de+l'%C3%89clipse,+Brossard,+QC+J4Z+0S2/@45.4472216,-73.4343575,1064m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4cc90f05b64ae619:0xc49194e396d285f1!8m2!3d45.4472179!4d-73.4317826!16s%2Fg%2F11ldtpkmh_?entry=ttu&g_ep=EgoyMDI1MTAxMy4wIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+    </>
+  }
+>
+</FicheBibliotheque>

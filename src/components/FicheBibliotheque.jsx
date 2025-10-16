@@ -112,24 +112,29 @@ export default function FicheBibliotheque({ title, id, codeBib, blocHoraires, bl
       </AccordionSummary>
       <AccordionDetails>
         <Grid container columns={10} columnSpacing="2rem">
-          <Grid size={{ xs: 10, sm: 5, md: 3 }} sx={{ padding: '1.3333rem 0 1.3333rem 1.3333rem' }}>
-            <Col>
-              <HoraireAujourdhui codeBib={codeBib}>{blocHoraires}</HoraireAujourdhui>
-              {blocEspaces && (
-                <Bloc title="Espaces" Icon={DoorIcon}>
-                  {blocEspaces}
-                </Bloc>
-              )}
-            </Col>
-          </Grid>
+          {(codeBib || blocEspaces || children) && (
+            <Grid size={{ xs: 10, sm: 5, md: 3 }} sx={{ padding: '1.3333rem 0 1.3333rem 1.3333rem' }}>
+              <Col>
+                {codeBib && <HoraireAujourdhui codeBib={codeBib}>{blocHoraires}</HoraireAujourdhui>}
+
+                {blocEspaces && (
+                  <Bloc title="Espaces" Icon={DoorIcon}>
+                    {blocEspaces}
+                  </Bloc>
+                )}
+              </Col>
+            </Grid>
+          )}
           <Grid size={{ xs: 10, sm: 5, md: 4 }} sx={{ padding: '1.3333rem 0 1.3333rem 1.3333rem' }}>
             <Col>
               <Bloc title="Adresse" Icon={MapTrifoldIcon}>
                 {blocAdresse}
               </Bloc>
-              <Bloc title="Nous joindre" Icon={UsersIcon}>
-                {blocNousJoindre}
-              </Bloc>
+              {blocNousJoindre && (
+                <Bloc title="Nous joindre" Icon={UsersIcon}>
+                  {blocNousJoindre}
+                </Bloc>
+              )}
               {children && <Bloc>{children}</Bloc>}
             </Col>
           </Grid>
