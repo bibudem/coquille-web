@@ -1,5 +1,5 @@
 ---
-title: test
+title: Test Microsoft Clarity
 template: blank
 noindex: true
 ---
@@ -13,3 +13,15 @@ import { Script } from "gatsby"
 
 <bib-consent server-url="/dev/consent-server/" debug></bib-consent>
 <bib-clarity project-id="tgulnfuto1" debug></bib-clarity>
+
+<div>
+  <p>Ouvrez la console du navigateur pour voir les messages de Clarity.</p>
+  <div><button></button></div>
+</div>
+
+<Script>{`
+  document.addEventListener('clarity-ready', function() {
+    console.log('Clarity is ready');
+  });
+  `}
+</Script>
