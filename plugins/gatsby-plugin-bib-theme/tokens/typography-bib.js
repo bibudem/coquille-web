@@ -175,13 +175,13 @@ subtitle1: {
   // Variante personnalisée
   carteProfilLink: {
     ...baseTypography,
-    fontSize: '1rem', // 16px
+    fontSize: '0.875rem', // 16px
     fontWeight: 400,
     color: '#0057AC',
     textDecoration: 'underline solid',
     display: 'flex',
     alignItems: 'center',
-    margin: '0 0 10px 10px',
+    marginTop: '10px',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     cursor: 'pointer'
