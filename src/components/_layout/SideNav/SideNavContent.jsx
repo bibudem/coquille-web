@@ -329,7 +329,7 @@ export default function MenuSection({}) {
                         <List dense sx={{ mb: 1 }}>
                           {card.links.map((link, idx) => (
                             <ListItem key={idx} disablePadding sx={{ py: 0.5 }}>
-                              <ListItemText primary={<StyledLink href={link.href}>→ {link.label}</StyledLink>} />
+                              <ListItemText primary={<StyledLink to={link.href}>→ {link.label}</StyledLink>} />
                             </ListItem>
                           ))}
                         </List>
@@ -349,7 +349,7 @@ export default function MenuSection({}) {
                             }}
                           >
                             <StyledLink
-                              href={card.cta.href}
+                              to={card.cta.href}
                               sx={{
                                 color: 'inherit',
                                 fontSize: '1rem',
