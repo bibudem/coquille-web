@@ -1,5 +1,42 @@
 # Changelog
 
+## [4.2.0](https://github.com/bibudem/coquille-web/compare/v4.1.0...v4.2.0) (2025-10-17)
+
+
+### Features
+
+* Ajout d'une fiche pour le point de service Brossard. ([021b8a2](https://github.com/bibudem/coquille-web/commit/021b8a2c6bf47674e728fcd2db43aa2a9961e642))
+* Ajout d'une image de la salle multisensorielle de la BLSH sur la page du service d'accessibilité. ([b4d92ca](https://github.com/bibudem/coquille-web/commit/b4d92caf15f3737b69a0741dad57b877b0ca3a73))
+* Ajout d'une image de la salle multisensorielle de la BLSH sur la page du service d'accessibilité. ([9dcb10a](https://github.com/bibudem/coquille-web/commit/9dcb10a392fd840cc8751b0580963c806ce15458))
+* Ajout d'une image de la salle multisensorielle de la BLSH sur la page du service d'accessibilité. ([5f3f973](https://github.com/bibudem/coquille-web/commit/5f3f973d8f41793f62eafa125e01df88a23faafd))
+* Ajout de sections concernant les REL ([d3a9c09](https://github.com/bibudem/coquille-web/commit/d3a9c09e00577093fc09d859e368a5f21ccc3b47))
+* **component:** Button: Prise en charge des liens vers des fichiers pdf ([0bffe18](https://github.com/bibudem/coquille-web/commit/0bffe187b67fd5634aa5bc7e655f280579298485))
+* **component:** FicheBibliotheque: codeBib ainsi que le bloc Nous joindre sont maintenant facultatifs. ([6c2c9a8](https://github.com/bibudem/coquille-web/commit/6c2c9a8caad4782410d95eb5d6992c2c846a6ec5))
+* **component:** SideNav: Ajout d'un lien "Calendrier des formations" dans le menu lattéral. ([221c797](https://github.com/bibudem/coquille-web/commit/221c797b7f5d5e51cebe95a7073364646266f19b))
+* **component:** SideNav: Ajout d'un lien "Calendrier des formations" dans le menu lattéral. ([d347b23](https://github.com/bibudem/coquille-web/commit/d347b23ca94723199e332a08bc35c0cb6b2df75f))
+* **component:** SideNav: Changement de l'icône pour Boîte à outils ([9bf1b93](https://github.com/bibudem/coquille-web/commit/9bf1b936ca4e655dcae21b5f0bb64d4fe9e37ffe))
+* Mise à jour de la bio de notre directrice. ([561556e](https://github.com/bibudem/coquille-web/commit/561556e196c03cee1a95f956854d8f80caf5d2e3))
+* **nouvelles:** Ajout d'une nouvelles concernant le concours de bourses de la BLRCS ([f9a0565](https://github.com/bibudem/coquille-web/commit/f9a0565bb588defce75ab6bd8b3f0e92d8f4a7f3))
+* **nouvelles:** Ajout de la nouvelle locale sur les heures d'ouverture à la BLSH. ([0134a06](https://github.com/bibudem/coquille-web/commit/0134a06d01d060754429c0b2f3379e173079af9d))
+
+
+### Bug Fixes
+
+* **component:** SideNavContent: les liens du menu latéral ne fonctionnaient plus ([5472fdc](https://github.com/bibudem/coquille-web/commit/5472fdc7c7778a54c4868e4193dfc89d85d5ea76))
+* Correction courriel pages PEB à propos de la grève à Postes Canada. ([5a39f30](https://github.com/bibudem/coquille-web/commit/5a39f302a3c5633d816501631126e39a48d4c00f))
+* Correction courriel pour la Bibliothèque d'aménagement. ([8a54c77](https://github.com/bibudem/coquille-web/commit/8a54c77d528139351f0776686de0ad82818d8a8d))
+* Correction d'éléments facultatifs dans ce composant. ([f0cfd13](https://github.com/bibudem/coquille-web/commit/f0cfd1319777f5fe0d58647eef831cccb06e7ea2))
+* Correction de documentation autochtone pour publications autochtones. ([788bb27](https://github.com/bibudem/coquille-web/commit/788bb272a0208b131e6d560eac1fae7114056029))
+* Correction de texte ([efc906c](https://github.com/bibudem/coquille-web/commit/efc906c95f58c7fbef0b0cdea5b5de2c6665957a))
+* Correction des localisations où on trouve des cocons de micro-sieste ([6920576](https://github.com/bibudem/coquille-web/commit/6920576cd74764da8f4acf7e152730e51a4cb789))
+* Correction/clarification du texte concernant le PEB sur la page Obtenir. ([7c98f13](https://github.com/bibudem/coquille-web/commit/7c98f13c7f8e3b83b9b5835420aaa9e04d0026fa))
+* Corrections mineures. ([d1ca028](https://github.com/bibudem/coquille-web/commit/d1ca0288bc269728cace4a399c83070c485e52aa))
+* **icons:** Remplacement du logo Studio.Bib dans le menu lattéral. ([33142e7](https://github.com/bibudem/coquille-web/commit/33142e795b7529aaf0931c6ada3edeb40500a2f0))
+* Mise à jour de la biographie de notre directrice. ([a0a6263](https://github.com/bibudem/coquille-web/commit/a0a62632dbdc8838ebd9b64e14207b395679c0b7))
+* Précision ajoutée aux conditions d'admissibilité au programme de financement de monographies. ([69df2e5](https://github.com/bibudem/coquille-web/commit/69df2e54ab6a9aa6a1d891fc64280db524ea3e04))
+* Suppression d'un pdf qui n'est pas situé dans le dossier /static ([36bee12](https://github.com/bibudem/coquille-web/commit/36bee128d134393c28b93032e156f47a6d12c9a8))
+* Supression d'un fichier inutile. ([b8dc9ad](https://github.com/bibudem/coquille-web/commit/b8dc9adba5226c177d982e89f787dc05a6ba382d))
+
 ## 1.0.0 (2025-09-17)
 
 
