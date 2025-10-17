@@ -1,15 +1,13 @@
-'use client'
-
-import { Box, Grid, Typography, List, ListItem, ListItemText, Button, useTheme, useMediaQuery, Card, CardContent, CardActions, Collapse } from '@mui/material'
 import { useState } from 'react'
+import { Box, Button, Card, CardContent, CardActions, Collapse, Grid2 as Grid, List, ListItem, ListItemText, Typography, useMediaQuery, useTheme } from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { styled } from '@mui/material/styles'
+import { AddressBookIcon, ArrowRightIcon, BooksIcon, CalendarDotsIcon, ClockCountdownIcon, DoorOpenIcon, FolderOpenIcon, InfoIcon } from '@phosphor-icons/react'
 import Link from '@/components/Link'
 import Studiobib from '@/images/burger/studiobib.png'
-import BoiteOutils from '@/images/burger/boite-outils.png'
+import BoiteOutils from '@/images/burger/icone-boite-outils-orange.webp'
 import AutresResources from '@/images/burger/autres-resources.png'
 import pages from '../AppBar/menu'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import { Books, DoorOpen, FolderOpen, ClockCountdown, AddressBook, Info, House, ArrowRight, CalendarDotsIcon } from '@phosphor-icons/react'
 
 // Style appliqué au Link
 const StyledLink = styled(Link)(({ theme }) => ({
@@ -71,13 +69,13 @@ const cards = [
 
 // --- Boutons latéraux avec icônes ---
 const quickLinks = [
-  { label: 'Obtenir un document', href: '/obtenir/', icon: Books },
-  { label: 'Réserver une salle', href: 'https://calendrier.bib.umontreal.ca/r', icon: DoorOpen },
-  { label: 'Mon dossier', href: 'https://umontreal.account.worldcat.org/account', icon: FolderOpen },
+  { label: 'Obtenir un document', href: '/obtenir/', icon: BooksIcon },
+  { label: 'Réserver une salle', href: 'https://calendrier.bib.umontreal.ca/r', icon: DoorOpenIcon },
+  { label: 'Mon dossier', href: 'https://umontreal.account.worldcat.org/account', icon: FolderOpenIcon },
   { label: 'Calendrier des formations', href: 'https://calendrier.bib.umontreal.ca/calendar?cid=7690&t=m&d=0000-00-00&cal=7690&inc=0', icon: CalendarDotsIcon },
-  { label: 'Horaires', href: '/horaires', icon: ClockCountdown },
-  { label: 'Nous joindre', href: '/nous-joindre/', icon: AddressBook },
-  { label: 'À propos', href: '/a-propos/', icon: Info },
+  { label: 'Horaires', href: '/horaires', icon: ClockCountdownIcon },
+  { label: 'Nous joindre', href: '/nous-joindre/', icon: AddressBookIcon },
+  { label: 'À propos', href: '/a-propos/', icon: InfoIcon },
 ]
 
 function MobileQuickLinks() {
@@ -172,7 +170,7 @@ function MobileQuickLinks() {
           {/* Pages */}
           {pages.map((page, i) => (
             <Link key={`page-${i}`} to={page.url} sx={collapseLinkSx}>
-              {page.label} <ArrowRight size={16} />
+              {page.label} <ArrowRightIcon size={16} />
             </Link>
           ))}
 
