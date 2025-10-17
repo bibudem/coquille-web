@@ -52,6 +52,7 @@ export default function ListePersonnel() {
           photo
           prenom
           fonction
+          direction
           disciplines
           courriel
         }

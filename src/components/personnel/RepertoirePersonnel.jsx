@@ -62,6 +62,7 @@ export default function RepertoirePersonnel() {
           nom
           prenom
           fonction
+          direction
           disciplines
           courriel
           telephone
@@ -176,7 +177,7 @@ export default function RepertoirePersonnel() {
     const keyword = normalize(search);
 
     return rawRows.filter((person) => {
-      const fieldsToSearch = [person.nom, person.prenom, person.fonction, person.disciplines, person.bibliotheque].join(' ');
+      const fieldsToSearch = [person.nom, person.prenom, person.fonction, person.disciplines, person.bibliotheque, person.direction].join(' ');
 
       const matchSearch = normalize(fieldsToSearch).includes(keyword);
       const matchDiscipline = !disciplineFilter || normalize(person.disciplines || '').includes(normalize(disciplineFilter));
@@ -379,14 +380,24 @@ export default function RepertoirePersonnel() {
                 </Typography>
               </Stack>
 
-              <Grid container spacing={2} sx={{ mt: 2 }}>
-                <Grid item xs={12} md={4} xl={4}>
+              <Grid container spacing={2} sx={{ mt: 2, mr: 2 }}>
+                <Grid item xs={12} md={4} xl={4} sx={{ pr: '0.5rem' }}>
                   <Typography component="h6" sx={{ mt: '0.5rem', mb: '0.75rem', fontWeight: '600' }}>
                     {ucfirst(person.fonction)}
                   </Typography>
-                  <Typography variant="body2" sx={{ mr: '0.5rem' }}>
-                    {(person.disciplines || '').split('|').join(', ')}
+                  {person.direction && (
+                    <Typography variant="subtitle1" sx={{ pr: '0.5rem' }}>
+                      {ucfirst(person.direction.trim())}
+                     </Typography>
+                   )}
+                  {person.disciplines && (
+                  <Typography variant="body2" sx={{ pr: '0.5rem',mt: '0.5rem' }}>
+                    {person.disciplines
+                      .split(/[;|]/)
+                      .map((d) => ucfirst(d.trim()))
+                      .join(', ')}
                   </Typography>
+                   )}
                 </Grid>
 
                 <Grid item xs={12} md={4} xl={4}>
@@ -407,11 +418,14 @@ export default function RepertoirePersonnel() {
                 </Grid>
 
                 <Grid item xs={12} md={4} xl={4}>
-                  {person.bibliotheque?.split(';').map((nom, index) => (
-                    <Typography key={index} variant="body2">
-                      {ucfirst(nom.trim())}
-                    </Typography>
-                  ))}
+                  {(person.bibliotheque || '')
+                    .split(/[;|]/)
+                    .filter(Boolean)
+                    .map((nom, index) => (
+                       <Typography key={index} variant="body2">
+                          {ucfirst(nom.trim())}
+                       </Typography>
+                       ))}
                 </Grid>
               </Grid>
             </Box>
