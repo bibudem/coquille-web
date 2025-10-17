@@ -1,7 +1,8 @@
 import { Button as MuiButton } from '@mui/material'
 import { Link as GatsbyLink } from 'gatsby'
-import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
+import { ArrowRightIcon, ArrowUpRightIcon } from '@phosphor-icons/react'
 import { isInternalLink } from '@/utils/link'
+import { useEffect, useState } from 'react'
 
 const config = {
   primary: {
@@ -33,7 +34,8 @@ const commonIconProps = {
  * @returns {JSX.Element} The rendered Material-UI Button component.
  */
 export default function Button({ primary, secondary, href, ...rest }) {
-  const { children, color, endIcon, disableElevation, disableEndIcon, sx, variant, ...props } = rest
+  const { children, color, endIcon, disableElevation, disableEndIcon, sx, variant, className, target, ...props } = rest
+  const [isPdfLink, setIsPdfLink] = useState(false)
 
   if (primary && secondary) {
     throw new Error('The primary and secondary props are mutually exclusive.')
@@ -55,7 +57,7 @@ export default function Button({ primary, secondary, href, ...rest }) {
     const linkIsInternal = isInternalLink(href)
 
     if (!disableEndIcon) {
-      buttonProps.endIcon = endIcon ?? (linkIsInternal ? <ArrowRight {...commonIconProps} /> : <ArrowUpRight {...commonIconProps} />)
+      buttonProps.endIcon = endIcon ?? (linkIsInternal ? <ArrowRightIcon {...commonIconProps} /> : <ArrowUpRightIcon {...commonIconProps} />)
     }
 
     if (!linkIsInternal) {
@@ -65,6 +67,22 @@ export default function Button({ primary, secondary, href, ...rest }) {
     if (linkIsInternal) {
       buttonProps.component = GatsbyLink
     }
+  }
+
+  useEffect(() => {
+    if (typeof href === 'string' && href.toLowerCase().endsWith('.pdf')) {
+      setIsPdfLink(true)
+    } else {
+      setIsPdfLink(false)
+    }
+  }, [href])
+
+  if (isPdfLink) {
+    buttonProps.className = `${className ? (className.trim() === 'no-pdf-icon' ? '' : className) : ''} no-pdf-icon`.trim()
+    buttonProps.target = '_blank'
+  } else {
+    buttonProps.className = className
+    buttonProps.target = target
   }
 
   return (
