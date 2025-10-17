@@ -4,9 +4,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { styled } from '@mui/material/styles'
 import { AddressBookIcon, ArrowRightIcon, BooksIcon, CalendarDotsIcon, ClockCountdownIcon, DoorOpenIcon, FolderOpenIcon, InfoIcon } from '@phosphor-icons/react'
 import Link from '@/components/Link'
-import Studiobib from '@/images/burger/studiobib.png'
+import Studiobib from '@/images/burger/logo-studio-bib-noir-petit.webp'
 import BoiteOutils from '@/images/burger/icone-boite-outils-orange.webp'
-import AutresResources from '@/images/burger/autres-resources.png'
+import AutresResources from '@/images/burger/autres-resources.webp'
 import pages from '../AppBar/menu'
 
 // Style appliqué au Link
