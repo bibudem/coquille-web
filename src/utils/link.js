@@ -22,7 +22,16 @@ export function isInternalLink(href) {
   }
 
   try {
+    href = href.trim()
+    // TODO: handle ws:, wss: and bloc: shemes.
     const url = new URL(href, 'https://bib.umontreal.ca')
+
+    if (url.origin === 'null') {
+      // This is not a valid scheme (e.g., mailto:, tel:, etc.)
+      // @see: https://developer.mozilla.org/en-US/docs/Web/API/URL/origin
+      return false
+    }
+
     return testHostname(url.hostname)
   } catch (error) {
     throw new Error('Could not parse url:', href)
