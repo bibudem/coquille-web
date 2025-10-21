@@ -1,22 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Divider, IconButton, ListItem, ListItemButton, ListItemText, useTheme } from '@mui/material'
-import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
+import { ArrowRightIcon, ArrowUpRightIcon } from '@phosphor-icons/react'
 import Button from '@/components/Button'
 import Div from '@/components/utils/Div'
+import { isInternalLink } from '@/utils/link'
 import { useSmall } from '@/hooks/use-small'
 
-// Définition locale de la fonction isInternalLink
-function isInternalLink(url) {
-  if (!url) return true
-  return !url.match(/^https?:\/\//) && !url.match(/^mailto:/) && !url.match(/^tel:/)
-}
-
 function Header({ children }) {
-  return (
-    <h3>
-      {children}
-    </h3>
-  )
+  return <h3>{children}</h3>
 }
 
 function Description({ children }) {
@@ -134,7 +125,7 @@ export default function RichListItemWithLink({ title, description, href, linkTex
                 },
               }}
             >
-              {isInternal ? <ArrowRight size={24} color={colors.icon.color} /> : <ArrowUpRight size={24} color={colors.icon.color} />}
+              {isInternal ? <ArrowRightIcon size={24} color={colors.icon.color} /> : <ArrowUpRightIcon size={24} color={colors.icon.color} />}
             </IconButton>
           )}
         </ListItemButton>
