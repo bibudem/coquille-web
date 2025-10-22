@@ -22,8 +22,11 @@ export function isInternalLink(href) {
   }
 
   try {
-    href = href.trim()
-    // TODO: handle ws:, wss: and bloc: shemes.
+    if (typeof href === 'string') {
+      href = href.trim()
+    }
+
+    // TODO: handle ws:, wss: and bloc: schemes.
     const url = new URL(href, 'https://bib.umontreal.ca')
 
     if (url.origin === 'null') {
