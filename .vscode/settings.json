@@ -10,7 +10,8 @@
     "accessibilite",
     "dependencies",
     "component",
-    "nouvelles"
+    "nouvelles",
+    "repertoire-personnel"
   ],
   "editor.unusualLineTerminators": "auto"
 }
