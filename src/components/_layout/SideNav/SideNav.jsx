@@ -18,7 +18,6 @@ export default function SideNav({ children, ...props }) {
             backgroundColor: '#222930',
             color: '#fff',
             padding: '2rem',
-            width: '85vw',
             top: appBarHeight,
             height: 'auto',
             maxHeight: `calc(100% - ${appBarHeight})`,

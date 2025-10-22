@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles'
 import { AddressBookIcon, ArrowRightIcon, BooksIcon, CalendarDotsIcon, ClockCountdownIcon, DoorOpenIcon, FolderOpenIcon, InfoIcon } from '@phosphor-icons/react'
 import Link from '@/components/Link'
 import Studiobib from '@/images/burger/logo-studio-bib-noir-petit.webp'
-import BoiteOutils from '@/images/burger/icone-boite-outils-orange.webp'
+import BoiteOutils from '@/images/burger/icone-boite-outils-orange2.webp'
 import AutresResources from '@/images/burger/autres-resources.webp'
 import pages from '../AppBar/menu'
 
@@ -289,7 +289,7 @@ export default function MenuSection({}) {
               {(isSmallScreen ? mobileCardOrder : desktopCardOrder).map((cardIndex, i) => {
                 const card = cards[cardIndex]
                 return (
-                  <Grid item xs={12} sm={4} md={4} key={i} sx={{ display: 'flex' }}>
+                  <Grid item   key={i} sx={{ display: 'flex' }}>
                     <Card
                       sx={{
                         backgroundColor: '#2a3440',
@@ -299,7 +299,14 @@ export default function MenuSection({}) {
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'space-between',
-                        width: '100%',
+                        width: { 
+                          xs: '25rem',
+                          sm: '20rem',
+                          md: '15rem',    
+                          lg: '16rem', 
+                          xl: '18rem',
+                        },
+                        height: '30rem',
                         position: 'relative',
                         overflow: 'hidden',
                         '&::after': {
@@ -321,7 +328,7 @@ export default function MenuSection({}) {
                       <CardContent sx={{ flexGrow: 1, p: 0, pb: '16px !important' }}>
                         {/* Icone + titre */}
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-                          <Box component="img" src={card.icon} alt={card.title} sx={{ width: 80, height: 80 }} />
+                          <Box component="img" src={card.icon} alt={card.title} sx={{ width: 80, height: 80, borderRadius: '50%' }} />
                           <Typography variant="h6">{card.title}</Typography>
                         </Box>
 
