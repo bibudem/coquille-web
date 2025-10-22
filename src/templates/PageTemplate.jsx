@@ -47,6 +47,25 @@ export default function PageTemplate({ pageContext, children, data, location }) 
     setHasSecondaryNav(lvl > 1)
   }, [lvl])
 
+   // NOUVEAU : Gestion du scroll vers les ancres
+  useEffect(() => {
+    if (location.hash) {
+      // Petit délai pour s'assurer que le DOM est complètement chargé
+      const timer = setTimeout(() => {
+        const element = document.getElementById(location.hash.substring(1));
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [location.hash, location.pathname]);
+  
+
   if (typeof window !== 'undefined') {
     window.bib = window.bib || {}
     window.bib.theme = theme
