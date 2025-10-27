@@ -98,7 +98,9 @@ export default function NouvelleTemplate({ pageContext, children, data, location
 
         <Container>{mainContent}</Container>
         <Footer />
-        <bib-consent server-request-timeout="5000"></bib-consent>
+
+        <bib-consent></bib-consent>
+        <bib-clarity></bib-clarity>
       </IconContext.Provider>
     </MDXProvider>
   )

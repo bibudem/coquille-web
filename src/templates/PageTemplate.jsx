@@ -35,7 +35,7 @@ export default function PageTemplate({ pageContext, children, data, location }) 
   const [lvl, setLvl] = useState(getCurrentPageLevel(location))
 
   // Déterminer si on est sur la page d'accueil
-  const isHomePage = location.pathname === '/' || location.pathname === '' ;
+  const isHomePage = location.pathname === '/' || location.pathname === ''
 
   const { superHero } = pageContext.frontmatter
 
@@ -47,24 +47,23 @@ export default function PageTemplate({ pageContext, children, data, location }) 
     setHasSecondaryNav(lvl > 1)
   }, [lvl])
 
-   // NOUVEAU : Gestion du scroll vers les ancres
+  // NOUVEAU : Gestion du scroll vers les ancres
   useEffect(() => {
     if (location.hash) {
       // Petit délai pour s'assurer que le DOM est complètement chargé
       const timer = setTimeout(() => {
-        const element = document.getElementById(location.hash.substring(1));
+        const element = document.getElementById(location.hash.substring(1))
         if (element) {
-          element.scrollIntoView({ 
+          element.scrollIntoView({
             behavior: 'smooth',
-            block: 'start'
-          });
+            block: 'start',
+          })
         }
-      }, 100);
-      
-      return () => clearTimeout(timer);
+      }, 100)
+
+      return () => clearTimeout(timer)
     }
-  }, [location.hash, location.pathname]);
-  
+  }, [location.hash, location.pathname])
 
   if (typeof window !== 'undefined') {
     window.bib = window.bib || {}
@@ -162,7 +161,8 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         <Footer />
 
-        <bib-consent server-request-timeout="5000"></bib-consent>
+        <bib-consent></bib-consent>
+        <bib-clarity></bib-clarity>
       </IconContext.Provider>
     </MDXProvider>
   )
