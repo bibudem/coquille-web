@@ -28,11 +28,11 @@ import Droit from '../../images/collspec/collection-speciale-droit.png'
 
 
 export const collections = [
-  {
-    title: 'Claude Gingras',
-    description: 'Rassemblant plus de 17 000 disques vinyle, 11 700 disques compacts, 2 400 partitions annotées, ainsi que des notes de concerts, des ouvrages spécialisés et autres documents, la collection Claude-Gingras revisite l’histoire de la musique classique d’ici et d’ailleurs à travers le regard du célèbre critique musical sur plus de soixante ans de carrière. Cette expérience virtuelle vous invite à découvrir la richesse de la collection à travers le regard affûté de Claude Gingras. Le projet de mise en valeur de la collection Claude-Gingras a été rendu possible grâce à la générosité de Madame Jacqueline Desmarais et de sa succession, en hommage à son amitié avec Claude Gingras et à leur passion commune pour la musique classique.',
-    Image: null,
-  },
+  // {
+  //   title: 'Claude Gingras',
+  //   description: 'Rassemblant plus de 17 000 disques vinyle, 11 700 disques compacts, 2 400 partitions annotées, ainsi que des notes de concerts, des ouvrages spécialisés et autres documents, la collection Claude-Gingras revisite l’histoire de la musique classique d’ici et d’ailleurs à travers le regard du célèbre critique musical sur plus de soixante ans de carrière. Cette expérience virtuelle vous invite à découvrir la richesse de la collection à travers le regard affûté de Claude Gingras. Le projet de mise en valeur de la collection Claude-Gingras a été rendu possible grâce à la générosité de Madame Jacqueline Desmarais et de sa succession, en hommage à son amitié avec Claude Gingras et à leur passion commune pour la musique classique.',
+  //   Image: null,
+  // },
   {
     title: 'Canadiana et Americana',
     description: 'Le fonds consacré à l’histoire du Québec, du Canada et de l’Amérique en général constitue l’un des fleurons de notre bibliothèque. Composé de monographies (dont plusieurs livres anciens), de périodiques, d’archives et de documents iconographiques, il s’articule principalement autour deux collections particulières d’exception : la collection Baby (classée au Registre des biens culturels du Québec) et la collection Louis-Melzack. Ajoutées aux titres appartenant à notre collection générale, elles forment un ensemble documentaire d’une richesse exceptionnelle.',
@@ -162,7 +162,25 @@ Pour en savoir plus sur les livres rares et anciens, et sur nos collections, con
 
 La Bibliothèque des livres rares et collections spéciales est également accessible en semaine, au 4e étage de la [Bibliothèque des lettres et sciences humaines](https://bib.umontreal.ca/nous-joindre). 
 
-La Bibliothèque des livres rares et collections spéciales est soutenue par une généreuse communauté de donateurs et donatrices. C’est grâce à leur appui que l’Université de Montréal peut, entre autres, renforcer ses efforts pour préserver, rendre accessible et développer cette collection unique. Merci de [nous soutenir](../nous-soutenir/) 
+La Bibliothèque des livres rares et collections spéciales est soutenue par une généreuse communauté de donateurs et donatrices. C’est grâce à leur appui que l’Université de Montréal peut, entre autres, renforcer ses efforts pour préserver, rendre accessible et développer cette collection unique. Merci de [nous soutenir](../nous-soutenir/).
 
+<Box
+  sx={ theme => ({
+    margin: '2rem 2rem',
+    padding: '1rem 1.5rem',
+    border: `3px solid ${theme.palette.rougeOrange.main}`,
+    borderRadius: theme.shape.corner.medium,
+  })}
+>
+  <Typography variant="h3" component="h2" align="center">
+    Collection Claude-Gingras
+  </Typography>
+
+  Rassemblant plus de 17 000 disques vinyle, 11 700 disques compacts, 2 400 partitions annotées, ainsi que des notes de concerts, des ouvrages spécialisés et autres documents, la collection Claude-Gingras revisite l’histoire de la musique classique d’ici et d’ailleurs à travers le regard du célèbre critique musical sur plus de soixante ans de carrière.
+
+  Cette expérience virtuelle vous invite à découvrir la richesse de la collection à travers le regard affûté de Claude Gingras.
+
+  Le projet de mise en valeur de la collection Claude-Gingras a été rendu possible grâce à la générosité de Madame Jacqueline Desmarais et de sa succession, en hommage à son amitié avec Claude Gingras et à leur passion commune pour la musique classique.
+</Box>
 
 <CollectionsDisplay />
