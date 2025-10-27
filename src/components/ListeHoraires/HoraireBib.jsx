@@ -1,9 +1,8 @@
-import { styled, Typography } from '@mui/material'
+import { Box, styled, Typography } from '@mui/material'
 import codeBibs from 'code-bib'
 import slugify from '@sindresorhus/slugify'
-import { Link } from '@phosphor-icons/react'
+import { LinkIcon } from '@phosphor-icons/react'
 import BlocHoraire from './BlocHoraire'
-import Div from '@/components/utils/Div'
 import { useSmall } from '@/hooks/use-small'
 
 const A = styled('a')({
@@ -23,8 +22,9 @@ const A = styled('a')({
 
 function Title({ title, sticky = false }) {
   const id = slugify(title)
+
   return (
-    <Div
+    <Box
       sx={
         sticky
           ? (theme) => ({
@@ -67,9 +67,9 @@ function Title({ title, sticky = false }) {
         {title}
       </Typography>
       <A className="anchor" href={`#${id}`} aria-label={`Permalien: ${title}`}>
-        <Link size="1.125rem" color="currentColor" weight="bold" />
+        <LinkIcon size="1.125rem" color="currentColor" weight="bold" />
       </A>
-    </Div>
+    </Box>
   )
 }
 
@@ -77,24 +77,24 @@ export default function HoraireBib({ codeBib, children }) {
   const isLG = useSmall('lg')
   const isSM = useSmall('md')
 
-  const miscContent = children && <Div sx={{ flexGrow: 1, display: 'flex', alignItems: 'flex-end', fontSize: '0.8889rem' }}>{children}</Div>
+  const miscContent = children && <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'flex-end', fontSize: '0.8889rem' }}>{children}</Box>
 
   return isSM ? (
-    <Div>
-      <Div>
+    <Box>
+      <Box>
         <Title title={codeBibs[codeBib].court} />
-        <Div
+        <Box
           sx={{
             marginBottom: '.5em',
           }}
         >
           {children}
-        </Div>
-      </Div>
+        </Box>
+      </Box>
       <BlocHoraire codeBib={codeBib} />
-    </Div>
+    </Box>
   ) : (
-    <Div
+    <Box
       sx={(theme) => ({
         display: 'flex',
         flexDirection: 'column',
@@ -108,7 +108,7 @@ export default function HoraireBib({ codeBib, children }) {
         },
       })}
     >
-      <Div
+      <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -116,9 +116,9 @@ export default function HoraireBib({ codeBib, children }) {
       >
         <Title title={codeBibs[codeBib].court} />
         {!isLG && miscContent}
-      </Div>
+      </Box>
       <BlocHoraire codeBib={codeBib} />
       {isLG && miscContent}
-    </Div>
+    </Box>
   )
 }

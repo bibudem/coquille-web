@@ -83,7 +83,8 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         <Footer />
 
-        <bib-consent server-request-timeout="5000"></bib-consent>
+        <bib-consent></bib-consent>
+        <bib-clarity></bib-clarity>
       </IconContext.Provider>
     </MDXProvider>
   )

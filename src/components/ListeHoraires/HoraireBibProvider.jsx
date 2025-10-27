@@ -30,18 +30,11 @@ export default function HoraireBibProvider({ children }) {
   const isSmall = useSmall('md')
 
   // Correction: on s'assure d'obtenir le string ISO YYYY-MM-DD pour l'API
-  const weekStart = currentWeek && typeof currentWeek.toDate === 'function'
-    ? currentWeek.toDate().toISOString().slice(0, 10)
-    : String(currentWeek)
+  const weekStart = currentWeek && typeof currentWeek.toDate === 'function' ? currentWeek.toDate().toISOString().slice(0, 10) : String(currentWeek)
 
-  const { data: horairesData, error: horairesDataError, isLoading: horairesDataIsLoading } = useSWR(
-    `https:///api.bib.umontreal.ca/horaires?debut=${weekStart}&fin=P7D`,
-    fetcher
-  )
-  const { data: servicesData, error: serviceError, isLoading: serviceIsLoading } = useSWR(
-    `https:///api.bib.umontreal.ca/horaires/services`, fetcher)
-  const { data: listeBibliothequesData, error: listeBibliothequesError, isLoading: listeBibliothequesIsLoading } = useSWR(
-    `https:///api.bib.umontreal.ca/horaires/liste`, fetcher)
+  const { data: horairesData, error: horairesDataError, isLoading: horairesDataIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires?debut=${weekStart}&fin=P7D`, fetcher)
+  const { data: servicesData, error: serviceError, isLoading: serviceIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires/services`, fetcher)
+  const { data: listeBibliothequesData, error: listeBibliothequesError, isLoading: listeBibliothequesIsLoading } = useSWR(`https:///api.bib.umontreal.ca/horaires/liste`, fetcher)
 
   // Utilise useRef pour persister le cache de semaines.
   const fetchedWeeksRef = useRef(new Set())
@@ -72,7 +65,6 @@ export default function HoraireBibProvider({ children }) {
     return []
   }, [servicesData])
 
-
   const horaires = useMemo(() => {
     if (!servicesData || !horairesData || !listeBibliothequesData) {
       // Ne loggue qu'en développement si besoin
@@ -84,10 +76,16 @@ export default function HoraireBibProvider({ children }) {
       const result = {}
       horairesData.evenements?.forEach((horaire) => {
         const { bibliotheque: codeBib, service } = horaire
-        if (!Reflect.has(result, codeBib)) result[codeBib] = {}
-        if (!Reflect.has(result[codeBib], service)) result[codeBib][service] = []
+
+        if (!Reflect.has(result, codeBib)) {
+          result[codeBib] = {}
+        }
+        if (!Reflect.has(result[codeBib], service)) {
+          result[codeBib][service] = []
+        }
         result[codeBib][service].push(horaire)
       })
+
       Object.keys(listeBibliothequesData).forEach((codeBib) => {
         if (!Reflect.has(result, codeBib)) {
           result[codeBib] = { isNotAvailable: true }
@@ -122,20 +120,17 @@ export default function HoraireBibProvider({ children }) {
     }
   }, [currentWeek, isSmall])
 
-  // Correction: utilise le cache ref, pas un nouveau Set ! 
+  // Correction: utilise le cache ref, pas un nouveau Set !
   useEffect(() => {
     if (currentWeek) {
       const nextWeek = addWeekISODate(currentWeek, 1)
-    // Si c'est un objet Date :
-    const nextWeekIso = nextWeek instanceof Date
-      ? nextWeek.toISOString().slice(0, 10)
-      : String(nextWeek)
+      // Si c'est un objet Date :
+      const nextWeekIso = nextWeek instanceof Date ? nextWeek.toISOString().slice(0, 10) : String(nextWeek)
 
-    if (!fetchedWeeksRef.current.has(nextWeekIso)) {
-      fetchedWeeksRef.current.add(nextWeekIso)
-      preload(`https:///api.bib.umontreal.ca/horaires?debut=${nextWeekIso}&fin=P7D`, fetcher)
-    }
-
+      if (!fetchedWeeksRef.current.has(nextWeekIso)) {
+        fetchedWeeksRef.current.add(nextWeekIso)
+        preload(`https:///api.bib.umontreal.ca/horaires?debut=${nextWeekIso}&fin=P7D`, fetcher)
+      }
     }
   }, [currentWeek])
 
