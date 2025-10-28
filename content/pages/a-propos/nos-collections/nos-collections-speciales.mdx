@@ -8,7 +8,9 @@ superHero:
   title: À propos
 ---
 
-import { Box, Typography, useTheme, useMediaQuery } from '@mui/material'
+import { Card, CardContent, CardMedia, Box, Typography, useTheme, useMediaQuery } from '@mui/material'
+import { StaticImage, GatsbyImage } from "gatsby-plugin-image"
+
 import Canadiana from '../../images/collspec/cartons-invitation.png'
 import Guerre from '../../images/collspec/guerre-Dernierquart.webp'
 import Education from '../../images/collspec/education-Villeneuve.png'
@@ -24,7 +26,7 @@ import SansImage from '../../images/collspec/collection-sans-image.webp'
 import SansImage2 from '../../images/collspec/collection-sans-image2.webp'
 import LettreEtSciencesHumaines from '../../images/collspec/collection-speciale-lettres-sciences-humaines.png'
 import Droit from '../../images/collspec/collection-speciale-droit.png'
-
+import ClaudeGingras from '../../images/a-propos/nos-collections/Photo_ClaudeG_bureau_matahari-carufel.webp'
 
 
 export const collections = [
@@ -164,23 +166,30 @@ La Bibliothèque des livres rares et collections spéciales est également acces
 
 La Bibliothèque des livres rares et collections spéciales est soutenue par une généreuse communauté de donateurs et donatrices. C’est grâce à leur appui que l’Université de Montréal peut, entre autres, renforcer ses efforts pour préserver, rendre accessible et développer cette collection unique. Merci de [nous soutenir](../nous-soutenir/).
 
-<Box
-  sx={ theme => ({
-    margin: '2rem 2rem',
-    padding: '1rem 1.5rem',
-    border: `3px solid ${theme.palette.rougeOrange.main}`,
-    borderRadius: theme.shape.corner.medium,
-  })}
->
-  <Typography variant="h3" component="h2" align="center">
-    Collection Claude-Gingras
-  </Typography>
-
-  Rassemblant plus de 17 000 disques vinyle, 11 700 disques compacts, 2 400 partitions annotées, ainsi que des notes de concerts, des ouvrages spécialisés et autres documents, la collection Claude-Gingras revisite l’histoire de la musique classique d’ici et d’ailleurs à travers le regard du célèbre critique musical sur plus de soixante ans de carrière.
-
-  Cette expérience virtuelle vous invite à découvrir la richesse de la collection à travers le regard affûté de Claude Gingras.
-
-  Le projet de mise en valeur de la collection Claude-Gingras a été rendu possible grâce à la générosité de Madame Jacqueline Desmarais et de sa succession, en hommage à son amitié avec Claude Gingras et à leur passion commune pour la musique classique.
-</Box>
+<Card sx={theme=>({
+  maxWidth: '80vw',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  borderRadius: theme.shape.corner.medium,
+  border: `3px solid ${theme.palette.rougeOrange.main}`,
+  boxShadow: 'none',
+  })}>
+  <CardMedia
+    sx={theme => ({
+      height: 280,
+      backgroundPositionY: '75%'
+    })}
+    image={ClaudeGingras}
+    title="Claude Gingras dans son bureau."
+  />
+  <CardContent>
+    <Typography gutterBottom variant="h3" component="h2">
+      Collection Claude-Gingras
+    </Typography>
+    <Typography variant="body1" sx={{ color: 'text.prinary', marginBottom: '1em' }}>Rassemblant plus de 17 000 disques vinyle, 11 700 disques compacts, 2 400 partitions annotées, ainsi que des notes de concerts, des ouvrages spécialisés et autres documents, la collection Claude-Gingras revisite l’histoire de la musique classique d’ici et d’ailleurs à travers le regard du célèbre critique musical sur plus de soixante ans de carrière.</Typography>
+    <Typography variant="body1" sx={{ color: 'text.prinary', marginBottom: '1em' }}>Cette expérience virtuelle vous invite à découvrir la richesse de la collection à travers le regard affûté de Claude Gingras.</Typography>
+    <Typography variant="body1" sx={{ color: 'text.prinary', marginBottom: '1em' }}>Le projet de mise en valeur de la collection Claude-Gingras a été rendu possible grâce à la générosité de Madame Jacqueline Desmarais et de sa succession, en hommage à son amitié avec Claude Gingras et à leur passion commune pour la musique classique.</Typography>
+  </CardContent>
+</Card>
 
 <CollectionsDisplay />
