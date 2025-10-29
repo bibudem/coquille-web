@@ -1,0 +1,21 @@
+import FicheBibliotheque from '@/components/FicheBibliotheque'
+import {ArrowSquareOutIcon, PersonSimpleCircleIcon} from '@phosphor-icons/react'
+
+<FicheBibliotheque
+  title="Point de service : Place Dupuis"
+  id="place-dupuis"
+  blocEspaces= {
+    <Alert>
+      <p>L'accès au point de service de la Place Dupuis est réservé aux personnes autorisées à accéder aux locaux de la Faculté de médecine à Place Dupuis.</p>
+    </Alert>
+  }
+  blocAdresse={
+    <>
+      <p>Point de service : Place Dupuis</p>
+      <p>845, rue Sainte-Catherine Est</p>
+      <p>Montréal (Québec)  H2L 4L8</p>
+      <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?rlz=1C1GCEU_frCA1110CA1110&um=1&ie=UTF-8&fb=1&gl=ca&sa=X&geocode=KZ2mj4ayG8lMMeakBvJ3Oq0v&daddr=Place+Dupuis,+845+Rue+Sainte-Catherine+E,+Montréal,+QC+H2L+4L8" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+    </>
+  }
+>
+</FicheBibliotheque>
