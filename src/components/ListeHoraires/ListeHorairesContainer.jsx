@@ -1,12 +1,15 @@
-import Div from '@/components/utils/Div'
-import LayoutContainer from '@/components/utils/LayoutContainer'
-import codeBibs from 'code-bib'
 import { useLocation } from '@reach/router'
 import { useEffect } from 'react'
+import { Box } from '@mui/material'
+import LayoutContainer from '@/components/utils/LayoutContainer'
+import codeBibs from 'code-bib'
 
 // Fonction pour normaliser les chaînes (enlever les accents)
 const normalizeString = (str) => {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
 }
 
 export default function ListeHorairesContainer({ children, searchTerm = '' }) {
@@ -22,10 +25,10 @@ export default function ListeHorairesContainer({ children, searchTerm = '' }) {
         }
       }, 100)
     }
-  }, [location.hash, searchTerm]) 
+  }, [location.hash, searchTerm])
   return (
     <LayoutContainer>
-      <Div
+      <Box
         sx={(theme) => ({
           paddingTop: '2.1667rem',
           [theme.breakpoints.down('md')]: {
@@ -40,8 +43,9 @@ export default function ListeHorairesContainer({ children, searchTerm = '' }) {
           flexDirection: 'column',
           gap: '3rem',
         })}
+        data-clarity-unmask="true"
       >
-        {React.Children.toArray(children).filter(child => {
+        {React.Children.toArray(children).filter((child) => {
           if (child.props?.codeBib) {
             const bibTitle = codeBibs[child.props.codeBib]?.court || ''
             const normalizedTitle = normalizeString(bibTitle)
@@ -50,7 +54,7 @@ export default function ListeHorairesContainer({ children, searchTerm = '' }) {
           }
           return true
         })}
-      </Div>
+      </Box>
     </LayoutContainer>
   )
 }
