@@ -8,7 +8,7 @@ import PorteeScientifique from '../images/portee-scientifique.webp'
 import Bibliothecaire from '../images/bibliothecaire-montage.webp'
 import CommentIcon from '@mui/icons-material/Comment'
 import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
-import { UserFocusIcon, CubeTransparentIcon, LaptopIcon, DownloadSimpleIcon, PlugsIcon, MagnifyingGlassIcon, PencilSimpleIcon, TextAlignJustifyIcon, BinocularsIcon, TreasureChestIcon, GraphIcon, ArticleIcon, CheckSquareOffsetIcon, ShareNetworkIcon, HandshakeIcon, RepeatIcon, CompassRoseIcon, ChatTeardropTextIcon, CheckCircleIcon, PathIcon, PlantIcon } from '@phosphor-icons/react'
+import { UserFocusIcon, CubeTransparentIcon, HandDepositIcon, LaptopIcon, DownloadSimpleIcon, PlugsIcon, MagnifyingGlassIcon, PencilSimpleIcon, TextAlignJustifyIcon, BinocularsIcon, TreasureChestIcon, GraphIcon, ArticleIcon, CheckSquareOffsetIcon, ShareNetworkIcon, HandshakeIcon, RepeatIcon, CompassRoseIcon, ChatTeardropTextIcon, CheckCircleIcon, PathIcon, PlantIcon } from '@phosphor-icons/react'
 
 <Box>
 <SuperHero2
@@ -271,6 +271,11 @@ Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes b
       Icon={MagnifyingGlassIcon}
       href="https://boite-outils.bib.umontreal.ca/recherche/gestion-donnees-recherche/depots"
     />
+    <CardWithIcon
+      title="Accéder au dépôt institutionnel Borealis.ca"
+      Icon={HandDepositIcon}
+      href="https://borealisdata.ca/dataverse/montreal"
+    />
   </Carousel1>
 </Section>
 
@@ -327,7 +332,7 @@ Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes b
     />
     <RichListItemWithLink
       color='vertFonce'
-      href="../nous-joindre/notre-equipe"
+      href="/nous-joindre/notre-equipe"
       title="Accompagnement personnalisé au doctorat"
       description="Vous pouvez planifier une série de rencontres individuelles avec votre bibliothécaire disciplinaire pour recevoir un soutien dans toutes les étapes de votre doctorat, de la recherche documentaire jusqu’à la rédaction de votre thèse, en passant par la mise en place de veille et par l’aide à la création de corpus de recherche."
     />
