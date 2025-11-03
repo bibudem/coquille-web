@@ -12,7 +12,7 @@ function Copyright() {
 
   return (
     <div {...namespaces} style={{ fontSize: 'inherit', fontWeight: 'inherit', lineHeight: 'inherit' }}>
-      <FooterLink to="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">
+      <FooterLink to="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">
         <span property="dct:title">Ce site</span> est sous licence CC BY 4.0
       </FooterLink>
     </div>
