@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { Box, Typography } from '@mui/material'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import Section from '@/components/Section'
 import LayoutContainer from '@/components/utils/LayoutContainer'
 import { appBarHeight } from '@/components/_layout/AppBar/TopAppBar'
 import { SuperHeroContext } from '@/components/_layout/SuperHero/SuperHeroContext'
@@ -75,7 +74,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
     <>
       <SuperHeroContext.Provider value={contextData}>
         <Box
-          className="bib-comp-super-hero"
+          className="bib-comp-super-hero2"
           sx={{
             position: 'absolute',
             top: 0,
@@ -88,6 +87,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
           }}
         >
           <GatsbyImage
+            className="bib-comp-super-hero2--image"
             image={image}
             layout="fullWidth"
             alt={alt}
@@ -108,7 +108,6 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
             }}
           ></Box>
           <LayoutContainer
-            id="t"
             sx={(theme) => ({
               zIndex: 2,
               padding: '0 0 .5rem',
@@ -124,18 +123,17 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
                 alignItems: 'flex-end',
               }}
             >
-              <Typography
-                component="h2"
-                variant="textWhite"
-              >
+              <Typography component="h2" variant="textWhite" className="bib-comp-super-hero2--title">
                 {title}
               </Typography>
             </Box>
           </LayoutContainer>
-          <div style={{ zIndex: 2 }}>{children}</div>
+          <Box sx={{ zIndex: 2 }} className="bib-comp-super-hero2--description">
+            {children}
+          </Box>
         </Box>
-        <div
-          style={{
+        <Box
+          sx={{
             width: boxSize.width,
             height: `calc(${boxSize.height} - ${appBarHeight})`,
           }}

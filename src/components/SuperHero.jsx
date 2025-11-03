@@ -1,27 +1,24 @@
 import { useEffect, useState } from 'react'
-import { Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Section from '@/components/Section'
-import { appBarHeight } from '@/components/_layout/AppBar/TopAppBar'
 import { SuperHeroContext } from '@/components/_layout/SuperHero/SuperHeroContext'
 import { useSmall } from '@/hooks/use-small'
-import zIndex from '@mui/material/styles/zIndex'
 
 export const inlineOffset = '3.75rem'
 
 const boxSize = {
   height: '95vh',
   width: '100%',
-  zIndex: '1'
+  zIndex: '1',
 }
 
 const mobileBoxSize = {
   height: '85vh', // Hauteur réduite pour mobile
   width: '100%',
-};
-
+}
 
 /**
  * A full-width hero section component with background image and text overlay
@@ -69,8 +66,8 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
     setContextData(
       isSmall
         ? {
-            inlineOffset: '1.5rem', 
-            bottomOffset: '1.5rem', 
+            inlineOffset: '1.5rem',
+            bottomOffset: '1.5rem',
           }
         : {
             inlineOffset,
@@ -82,12 +79,13 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
   return (
     <>
       <SuperHeroContext.Provider value={contextData}>
-        <div
-          style={{
+        <Box
+          className="bib-comp-super-hero"
+          sx={{
             position: 'absolute',
             top: 0,
             left: 0,
-            ...(isSmall ? mobileBoxSize : boxSize), 
+            ...(isSmall ? mobileBoxSize : boxSize),
             color: '#fff',
             display: 'flex',
             flexDirection: 'column',
@@ -95,7 +93,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
           }}
         >
           <GatsbyImage
-            className="bib-comp-super-hero"
+            className="bib-comp-super-hero--image"
             image={image}
             layout="fullWidth"
             alt={alt}
@@ -106,15 +104,15 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
             }}
             loading="eager"
           />
-          <div
-            style={{
+          <Box
+            sx={{
               width: '100%',
               height: '100%',
               position: 'absolute',
               background: `rgba(0, 0, 0, 0.40)`,
               zIndex: 1,
             }}
-          ></div>
+          ></Box>
           <Section
             sx={{
               padding: `0 0 ${children ? '1rem' : contextData.bottomOffset} ${contextData.inlineOffset}`,
@@ -123,12 +121,13 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
           >
             <Grid container direction="row">
               <Grid size={{ xs: 12, md: 8 }}>
-                <Typography 
-                  variant="display1" 
-                  component="h1" 
-                  sx={{ 
+                <Typography
+                  variant="display1"
+                  component="h1"
+                  className="bib-comp-super-hero--title"
+                  sx={{
                     wordBreak: 'break-word',
-                    fontSize: isSmall ? '2.5rem' :'3.75rem'
+                    fontSize: isSmall ? '2.5rem' : '3.75rem',
                   }}
                 >
                   {title}
@@ -137,8 +136,10 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
               </Grid>
             </Grid>
           </Section>
-          <div style={{ zIndex: 2 }}>{children}</div>
-        </div>
+          <Box sx={{ zIndex: 2 }} className="bib-comp-super-hero--description">
+            {children}
+          </Box>
+        </Box>
         <div
           style={{
             width: '100%',
