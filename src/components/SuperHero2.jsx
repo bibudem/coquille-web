@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Typography, useTheme, useMediaQuery } from '@mui/material'
+import { Typography, useTheme, useMediaQuery, Box } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
@@ -19,51 +19,50 @@ export const BOTTOM_OFFSET_XS = '1.5rem'
 const BOX_SIZES = {
   default: {
     desktop: {
-      height: '34rem',  
+      height: '34rem',
       minHeight: '32rem',
       maxHeight: '44rem',
       width: '100%',
     },
     tablet: {
-      height: '30rem',  
+      height: '30rem',
       minHeight: '26rem',
       maxHeight: '36rem',
       width: '100%',
     },
     mobile: {
-      height: '26rem',   
+      height: '26rem',
       minHeight: '22rem',
       maxHeight: '30rem',
       width: '100%',
-    }
+    },
   },
   small: {
     desktop: {
-      height: '18rem',   
+      height: '18rem',
       minHeight: '14rem',
       maxHeight: '22rem',
       width: '100%',
     },
     tablet: {
-      height: '16rem',  
+      height: '16rem',
       minHeight: '12rem',
       maxHeight: '20rem',
       width: '100%',
     },
     mobile: {
-      height: '15rem',   
+      height: '15rem',
       minHeight: '10rem',
       maxHeight: '18rem',
       width: '100%',
-    }
-  }
+    },
+  },
 }
-
 
 // Valeurs par défaut pour le contexte
 const DEFAULT_CONTEXT = {
   inlineOffset: INLINE_OFFSET_DESKTOP,
-  bottomOffset: BOTTOM_OFFSET_DESKTOP
+  bottomOffset: BOTTOM_OFFSET_DESKTOP,
 }
 
 /**
@@ -76,16 +75,7 @@ const DEFAULT_CONTEXT = {
  * @param {string} size - Taille de la section: 'default' ou 'small' (défaut: 'default')
  * @returns {JSX.Element} A hero section with gradient overlay and text content
  */
-export default function SuperHero2({ 
-  title, 
-  subTitle, 
-  imageName, 
-  alt = '', 
-  lvl, 
-  children, 
-  size = 'default',
-  ...rest 
-}) {
+export default function SuperHero2({ title, subTitle, imageName, alt = '', lvl, children, size = 'default', ...rest }) {
   // Validation des props requises
   if (typeof title === 'undefined') {
     throw new Error('title prop is required')
@@ -105,7 +95,7 @@ export default function SuperHero2({
   const isSmall = useSmall()
   const isMedium = useMediaQuery(theme.breakpoints.between('sm', 'md')) // 600px - 900px
   const isLarge = useMediaQuery(theme.breakpoints.up('md')) // >= 900px
-  
+
   const [contextData, setContextData] = useState(DEFAULT_CONTEXT)
 
   // Requête GraphQL pour les images
@@ -158,7 +148,7 @@ export default function SuperHero2({
   // Déterminer les dimensions en fonction de la taille d'écran et de la prop size
   const getBoxSize = () => {
     const sizeConfig = BOX_SIZES[size] || BOX_SIZES.default
-    
+
     if (isXs) return sizeConfig.mobile
     if (isMedium) return sizeConfig.tablet
     return sizeConfig.desktop
@@ -170,8 +160,8 @@ export default function SuperHero2({
   return (
     <SuperHeroContext.Provider value={contextData}>
       {/* Conteneur principal du hero */}
-      <div
-        style={{
+      <Box
+        sx={{
           position: 'absolute',
           top: 0,
           left: 0,
@@ -180,13 +170,13 @@ export default function SuperHero2({
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-end',
-          overflow: 'hidden', 
+          overflow: 'hidden',
         }}
         {...rest}
       >
         {/* Conteneur pour l'image et l'overlay */}
-        <div
-          style={{
+        <Box
+          sx={{
             position: 'absolute',
             top: 0,
             left: 0,
@@ -196,19 +186,20 @@ export default function SuperHero2({
         >
           {/* Image de fond */}
           <GatsbyImage
+            className="bib-comp-super-hero--image"
             image={image}
             alt={alt}
             style={{
               width: '100%',
               height: '100%',
-              objectFit: 'cover'
+              objectFit: 'cover',
             }}
             loading="eager"
           />
-          
+
           {/* Overlay sombre - même dimensions que l'image */}
-          <div
-            style={{
+          <Box
+            sx={{
               position: 'absolute',
               top: 0,
               left: 0,
@@ -217,17 +208,17 @@ export default function SuperHero2({
               background: `rgba(0, 0, 0, 0.50)`,
             }}
           />
-        </div>
-        
+        </Box>
+
         {/* Contenu textuel */}
         <Section
-            sx={{
-              zIndex: 2,
-              width: '100%',
-              position: 'relative', 
-              ...(size === 'small' ? { marginBottom: '-4rem!important' } : {})
-            }}
-          >
+          sx={{
+            zIndex: 2,
+            width: '100%',
+            position: 'relative',
+            ...(size === 'small' ? { marginBottom: '-4rem!important' } : {}),
+          }}
+        >
           <Grid container>
             <Grid
               size={{
@@ -235,41 +226,41 @@ export default function SuperHero2({
                 sm: 10,
                 md: size === 'small' ? 12 : 8,
               }}
-               >
-              <Typography
-                  component="h1"
-                  variant={size === 'small' ? 'titreSuperHeroSmall' : 'titreSuperHero'}
-                >
+            >
+              <Typography className="bib-comp-super-hero2--title" component="h1" variant={size === 'small' ? 'titreSuperHeroSmall' : 'titreSuperHero'}>
                 {title}
               </Typography>
-              {subTitle && React.isValidElement(subTitle) && 
+              {subTitle &&
+                React.isValidElement(subTitle) &&
                 React.cloneElement(subTitle, {
                   sx: {
                     mt: {
                       xs: 1,
                       sm: 1.5,
-                      md: 2
-                    }
-                  }
-                })
-              }
+                      md: 2,
+                    },
+                  },
+                })}
             </Grid>
           </Grid>
         </Section>
-        
+
         {/* Contenu enfant */}
         {children && (
-          <div style={{ 
-            zIndex: 2, 
-            width: '100%',
-            padding: isXs ? '0 1rem 1rem' : `0 ${contextData.inlineOffset} ${contextData.bottomOffset}`,
-            position: 'relative', // Important pour le contexte d'empilement
-          }}>
+          <Box
+            sx={{
+              zIndex: 2,
+              width: '100%',
+              padding: isXs ? '0 1rem 1rem' : `0 ${contextData.inlineOffset} ${contextData.bottomOffset}`,
+              position: 'relative', // Important pour le contexte d'empilement
+            }}
+            className="bib-comp-super-hero2--description"
+          >
             {children}
-          </div>
+          </Box>
         )}
-      </div>
-      
+      </Box>
+
       {/* Espaceur pour préserver l'espace dans le flux du document */}
       <div style={{ width: '100%', height: spacerHeight }} />
     </SuperHeroContext.Provider>
