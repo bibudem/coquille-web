@@ -16,6 +16,7 @@ export function Head({ pageContext, location, ...rest }) {
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1.3/dist/bib-consent.min.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1.3/dist/bib-consent-preferences-btn.min.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1.3/dist/bib-clarity.min.js"></script>
+      <script src="https://corvee.bib.umontreal.ca/loader.js" defer></script>
       <bib-gtm></bib-gtm>
 
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
