@@ -42,7 +42,7 @@ const cards = [
     icon: BoiteOutils,
     title: 'Boîte à outils',
     links: [
-      { label: 'Base de données A-Z', href: 'https://boite-outils.bib.umontreal.ca/az.php' },
+      { label: 'Bases de données A-Z', href: 'https://boite-outils.bib.umontreal.ca/az.php' },
       { label: 'Guides disciplinaires', href: 'https://boite-outils.bib.umontreal.ca/disciplines' },
       { label: 'Comment citer', href: 'https://boite-outils.bib.umontreal.ca/citer' },
       { label: "Droit d'auteur", href: 'https://boite-outils.bib.umontreal.ca/recherche/droit-auteur' },
@@ -289,7 +289,7 @@ export default function MenuSection({}) {
               {(isSmallScreen ? mobileCardOrder : desktopCardOrder).map((cardIndex, i) => {
                 const card = cards[cardIndex]
                 return (
-                  <Grid item   key={i} sx={{ display: 'flex' }}>
+                  <Grid item key={i} sx={{ display: 'flex' }}>
                     <Card
                       sx={{
                         backgroundColor: '#2a3440',
@@ -299,11 +299,11 @@ export default function MenuSection({}) {
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'space-between',
-                        width: { 
+                        width: {
                           xs: '25rem',
                           sm: '20rem',
-                          md: '15rem',    
-                          lg: '16rem', 
+                          md: '15rem',
+                          lg: '16rem',
                           xl: '18rem',
                         },
                         height: '30rem',
