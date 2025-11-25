@@ -8,7 +8,7 @@ export const bibliotheques = [
   { id: "jardin-botanique", titre: "Point de service : À venir - Jardin Botanique, Brossard, Médecine", autreTitre: "Point de service : À venir - Jardin Botanique, Brossard, Médecine" },
   { id: "kinesiologie", titre: "Kinésiologie", autreTitre: "Bibliothèque de kinésiologie" },
   { id: "laval", titre: "Campus de Laval", autreTitre: "Bibliothèque du campus de l'UdeM à Laval" },
-  { id: "marcel-laurin", titre: "Centre de conservation 101, boul. Marcel-Laurin", autreTitre: "Centre de conservation 101, boul. Marcel-Laurin" },
+  { id: "marcel-laurin", titre: "Centre de conservation Marcel-Laurin", autreTitre: "Centre de conservation 101, boul. Marcel-Laurin" },
   { id: "math-info", titre: "Mathématiques et informatique", autreTitre: "Bibliothèque de mathématiques et informatique" },
   { id: "musique", titre: "Musique", autreTitre: "Bibliothèque de musique" },
   { id: "medecine-veterinaire", titre: "Médecine vétérinaire", autreTitre: "Bibliothèque de médecine vétérinaire" },
@@ -16,4 +16,4 @@ export const bibliotheques = [
   { id: "sante", titre: "Santé", autreTitre: "Bibliothèque de la santé" },
   { id: "Hubert-reeves", titre: "Hubert-Reeves", autreTitre: "Bibliothèque Hubert-Reeves" },
   { id: "lsh", titre: "Lettres et sciences humaines", autreTitre: "Bibliothèque des lettres et sciences humaines" },
-];
+]
