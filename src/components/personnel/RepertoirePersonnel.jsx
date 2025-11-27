@@ -1,49 +1,44 @@
-import { useState, useMemo, useEffect } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import { Avatar, Link, TextField, MenuItem, Pagination, Container, Chip } from '@mui/material';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import { Search, LibraryBooks, Close } from '@mui/icons-material';
-import { EnvelopeSimple, Phone } from '@phosphor-icons/react';
-import InputAdornment from '@mui/material/InputAdornment';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import tokens from '../../../plugins/gatsby-plugin-bib-theme/tokens/tokens.js';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { frFR } from '@mui/x-data-grid/locales';
-import { bibliotheques } from '@/utils/bibliotheques.js';
+import { useState, useMemo, useEffect } from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import { Avatar, Link, TextField, MenuItem, Pagination, Container, Chip } from '@mui/material'
+import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import { Search, LibraryBooks, Close } from '@mui/icons-material'
+import { EnvelopeSimple, Phone } from '@phosphor-icons/react'
+import InputAdornment from '@mui/material/InputAdornment'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import tokens from '../../../plugins/gatsby-plugin-bib-theme/tokens/tokens.js'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { frFR } from '@mui/x-data-grid/locales'
+import { bibliotheques } from '@/utils/bibliotheques.js'
 
-
-const theme = createTheme(tokens, frFR);
-const ITEMS_PER_PAGE = 8;
+const theme = createTheme(tokens, frFR)
+const ITEMS_PER_PAGE = 8
 
 function ucfirst(str = '') {
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
 function normalize(str = '') {
   return str
     .toString()
-    .normalize('NFD')                 // décomposer accents
-    .replace(/[\u0300-\u036f]/g, '')  // enlever accents
+    .normalize('NFD') // décomposer accents
+    .replace(/[\u0300-\u036f]/g, '') // enlever accents
     .toLowerCase()
-    .replace(/['’]/g, '')             // enlever apostrophes
-    .replace(/\s+/g, '')              // enlever espaces
+    .replace(/['’]/g, '') // enlever apostrophes
+    .replace(/\s+/g, '') // enlever espaces
 }
 
 // Fonction pour trouver une bibliothèque par ID, titre ou autreTitre
 const findBibliothequeByAnchor = (anchor) => {
-  if (!anchor) return null;
-  
-  const normalizedAnchor = normalize(anchor);
-  
-  return bibliotheques.find(bib => 
-    normalize(bib.id) === normalizedAnchor ||
-    normalize(bib.titre) === normalizedAnchor ||
-    normalize(bib.autreTitre) === normalizedAnchor
-  );
-};
+  if (!anchor) return null
+
+  const normalizedAnchor = normalize(anchor)
+
+  return bibliotheques.find((bib) => normalize(bib.id) === normalizedAnchor || normalize(bib.titre) === normalizedAnchor || normalize(bib.autreTitre) === normalizedAnchor)
+}
 
 export default function RepertoirePersonnel() {
   const data = useStaticQuery(graphql`
@@ -72,15 +67,15 @@ export default function RepertoirePersonnel() {
         }
       }
     }
-  `);
+  `)
 
-  const fallbackPicture = data.allFile.nodes.find((node) => node.name === '_profile').childImageSharp.gatsbyImageData;
+  const fallbackPicture = data.allFile.nodes.find((node) => node.name === '_profile').childImageSharp.gatsbyImageData
 
   const rawRows = data.allListePersonnelXlsxSheet1.nodes.map((person) => {
-    const photoId = person.photo?.replace(/\.\w+$/, '');
-    const photo = data.allFile.nodes.find((node) => node.name === photoId)?.childImageSharp.gatsbyImageData ?? fallbackPicture;
-    return { ...person, photo };
-  });
+    const photoId = person.photo?.replace(/\.\w+$/, '')
+    const photo = data.allFile.nodes.find((node) => node.name === photoId)?.childImageSharp.gatsbyImageData ?? fallbackPicture
+    return { ...person, photo }
+  })
 
   const allBibliotheques = Array.from(
     new Set(
@@ -91,126 +86,119 @@ export default function RepertoirePersonnel() {
           .filter(Boolean)
       )
     )
-  ).sort();
+  ).sort()
 
   // État pour gérer l'URL et éviter les conflits
-  const [hash, setHash] = useState('');
-  const [isManualFilterChange, setIsManualFilterChange] = useState(false);
+  const [hash, setHash] = useState('')
+  const [isManualFilterChange, setIsManualFilterChange] = useState(false)
 
- useEffect(() => {
-  if (typeof window !== 'undefined') {
-    const handleHashChange = () => {
-      const decodedHash = decodeURIComponent(window.location.hash.substring(1));
-      setHash(decodedHash);
-      setIsManualFilterChange(false);
-      
-      // Ajoutez cette ligne pour remonter en haut quand le hash change
-      window.scrollTo(0, 0);
-    };
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const handleHashChange = () => {
+        const decodedHash = decodeURIComponent(window.location.hash.substring(1))
+        setHash(decodedHash)
+        setIsManualFilterChange(false)
 
-    window.addEventListener('hashchange', handleHashChange);
-    handleHashChange();
+        // Ajoutez cette ligne pour remonter en haut quand le hash change
+        window.scrollTo(0, 0)
+      }
 
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }
-}, []);
+      window.addEventListener('hashchange', handleHashChange)
+      handleHashChange()
 
-  const [search, setSearch] = useState('');
-  const [disciplineFilter, setDisciplineFilter] = useState('');
-  const [bibliothequeFilter, setBibliothequeFilter] = useState('');
-  const [page, setPage] = useState(1);
-  
+      return () => window.removeEventListener('hashchange', handleHashChange)
+    }
+  }, [])
 
- useEffect(() => {
-  if (hash && !isManualFilterChange) {
-    const foundBibliotheque = findBibliothequeByAnchor(hash);
+  const [search, setSearch] = useState('')
+  const [disciplineFilter, setDisciplineFilter] = useState('')
+  const [bibliothequeFilter, setBibliothequeFilter] = useState('')
+  const [page, setPage] = useState(1)
 
-    if (foundBibliotheque) {
-      const existsInData = allBibliotheques.some(bibName => {
-        return (
-          normalize(bibName) === normalize(foundBibliotheque.titre) ||
-          normalize(bibName) === normalize(foundBibliotheque.autreTitre) ||
-          normalize(bibName) === normalize(foundBibliotheque.id)
-        );
-      });
+  useEffect(() => {
+    if (hash && !isManualFilterChange) {
+      const foundBibliotheque = findBibliothequeByAnchor(hash)
 
-      if (existsInData) {
-        setBibliothequeFilter(foundBibliotheque.titre);
-        return;
+      if (foundBibliotheque) {
+        const existsInData = allBibliotheques.some((bibName) => {
+          return normalize(bibName) === normalize(foundBibliotheque.titre) || normalize(bibName) === normalize(foundBibliotheque.autreTitre) || normalize(bibName) === normalize(foundBibliotheque.id)
+        })
+
+        if (existsInData) {
+          setBibliothequeFilter(foundBibliotheque.titre)
+          return
+        }
+      }
+
+      // fallback direct si rien trouvé
+      const matchingBibliotheque = allBibliotheques.find((b) => normalize(b) === normalize(hash))
+      if (matchingBibliotheque) {
+        setBibliothequeFilter(matchingBibliotheque)
       }
     }
-
-    // fallback direct si rien trouvé
-    const matchingBibliotheque = allBibliotheques.find(b =>
-      normalize(b) === normalize(hash)
-    );
-    if (matchingBibliotheque) {
-      setBibliothequeFilter(matchingBibliotheque);
-    }
-  }
-}, [hash, allBibliotheques, isManualFilterChange]);
-
+  }, [hash, allBibliotheques, isManualFilterChange])
 
   const handleBibliothequeChange = (e) => {
-    setBibliothequeFilter(e.target.value);
-    setPage(1);
-    setIsManualFilterChange(true);
-    
+    setBibliothequeFilter(e.target.value)
+    setPage(1)
+    setIsManualFilterChange(true)
+
     // Mettre à jour l'URL sans recharger la page
     if (typeof window !== 'undefined') {
-      const newHash = e.target.value ? `#${encodeURIComponent(e.target.value)}` : '';
-      window.history.pushState(null, null, window.location.pathname + newHash);
+      const newHash = e.target.value ? `#${encodeURIComponent(e.target.value)}` : ''
+      window.history.pushState(null, null, window.location.pathname + newHash)
     }
-  };
+  }
 
   const handleRemoveBibliothequeFilter = () => {
-    setBibliothequeFilter('');
-    setPage(1);
-    setIsManualFilterChange(true);
-    
+    setBibliothequeFilter('')
+    setPage(1)
+    setIsManualFilterChange(true)
+
     if (typeof window !== 'undefined') {
-      window.history.pushState(null, null, window.location.pathname);
+      window.history.pushState(null, null, window.location.pathname)
     }
-  };
+  }
 
   const filteredRows = useMemo(() => {
-    const keyword = normalize(search);
+    const keyword = normalize(search)
 
     return rawRows.filter((person) => {
-      const fieldsToSearch = [person.nom, person.prenom, person.fonction, person.disciplines, person.bibliotheque, person.direction].join(' ');
+      const fieldsToSearch = [person.nom, person.prenom, person.fonction, person.disciplines, person.bibliotheque, person.direction].join(' ')
 
-      const matchSearch = normalize(fieldsToSearch).includes(keyword);
-      const matchDiscipline = !disciplineFilter || normalize(person.disciplines || '').includes(normalize(disciplineFilter));
-      
+      const matchSearch = normalize(fieldsToSearch).includes(keyword)
+      const matchDiscipline = !disciplineFilter || normalize(person.disciplines || '').includes(normalize(disciplineFilter))
+
       // Filtrage bibliothèque avec support multi-critères
-      const matchBibliotheque = !bibliothequeFilter || 
-        (person.bibliotheque && person.bibliotheque.split(/[;|]/).some(bibName => {
-          const trimmedBibName = bibName.trim();
-          
-          // Vérifier si le nom correspond directement
-          if (normalize(trimmedBibName) === normalize(bibliothequeFilter)) {
-            return true;
-          }
-          
-          // Vérifier si le nom correspond à une bibliothèque de la config
-          const foundBib = findBibliothequeByAnchor(trimmedBibName);
-          if (foundBib && normalize(foundBib.titre) === normalize(bibliothequeFilter)) {
-            return true;
-          }
-          
-          return false;
-        }));
+      const matchBibliotheque =
+        !bibliothequeFilter ||
+        (person.bibliotheque &&
+          person.bibliotheque.split(/[;|]/).some((bibName) => {
+            const trimmedBibName = bibName.trim()
 
-      return matchSearch && matchDiscipline && matchBibliotheque;
-    });
-  }, [search, disciplineFilter, bibliothequeFilter, rawRows]);
+            // Vérifier si le nom correspond directement
+            if (normalize(trimmedBibName) === normalize(bibliothequeFilter)) {
+              return true
+            }
 
-  const paginatedRows = filteredRows.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
-  
+            // Vérifier si le nom correspond à une bibliothèque de la config
+            const foundBib = findBibliothequeByAnchor(trimmedBibName)
+            if (foundBib && normalize(foundBib.titre) === normalize(bibliothequeFilter)) {
+              return true
+            }
+
+            return false
+          }))
+
+      return matchSearch && matchDiscipline && matchBibliotheque
+    })
+  }, [search, disciplineFilter, bibliothequeFilter, rawRows])
+
+  const paginatedRows = filteredRows.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE)
+
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 4 }, py: 4 }}>
-
         <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mb: 3 }}>
           <TextField
             placeholder="Chercher un nom, une discipline, etc."
@@ -337,7 +325,7 @@ export default function RepertoirePersonnel() {
             ))}
           </TextField>
         </Stack>
-        
+
         {/* Afficher le filtre actif si présent */}
         {bibliothequeFilter && (
           <Box sx={{ mb: 2, display: 'flex', alignItems: 'center' }}>
@@ -388,16 +376,16 @@ export default function RepertoirePersonnel() {
                   {person.direction && (
                     <Typography variant="subtitle1" sx={{ pr: '0.5rem' }}>
                       {ucfirst(person.direction.trim())}
-                     </Typography>
-                   )}
+                    </Typography>
+                  )}
                   {person.disciplines && (
-                  <Typography variant="body2" sx={{ pr: '0.5rem',mt: '0.5rem' }}>
-                    {person.disciplines
-                      .split(/[;|]/)
-                      .map((d) => ucfirst(d.trim()))
-                      .join(', ')}
-                  </Typography>
-                   )}
+                    <Typography variant="body2" sx={{ pr: '0.5rem', mt: '0.5rem' }}>
+                      {person.disciplines
+                        .split(/[;|]/)
+                        .map((d) => ucfirst(d.trim()))
+                        .join(', ')}
+                    </Typography>
+                  )}
                 </Grid>
 
                 <Grid item xs={12} md={4} xl={4}>
@@ -422,10 +410,10 @@ export default function RepertoirePersonnel() {
                     .split(/[;|]/)
                     .filter(Boolean)
                     .map((nom, index) => (
-                       <Typography key={index} variant="body2">
-                          {ucfirst(nom.trim())}
-                       </Typography>
-                       ))}
+                      <Typography key={index} variant="body2">
+                        {ucfirst(nom.trim())}
+                      </Typography>
+                    ))}
                 </Grid>
               </Grid>
             </Box>
