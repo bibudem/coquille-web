@@ -1,0 +1,224 @@
+---
+title: Engagements
+noIndex: true
+---
+
+import { styled } from '@mui/material'
+import { ArrowsOutIcon, BookOpenIcon, BooksIcon, FlowerLotusIcon, GiftIcon, GraduationCapIcon, HandCoinsIcon, HeadCircuitIcon, LockSimpleOpenIcon, MegaphoneIcon, PencilLineIcon , PersonSimpleCircleIcon, PlantIcon, RainbowIcon, UsersFourIcon} from '@phosphor-icons/react';
+import SuperHero2 from '@/components/SuperHero2'
+import empreinte from '../images/empreinte.webp'
+import GridOffset from '@/components/utils/GridOffset'
+import Timeline from '@mui/lab/Timeline'
+import TimelineItem from '@mui/lab/TimelineItem'
+import TimelineSeparator from '@mui/lab/TimelineSeparator'
+import MUITimelineConnector from '@mui/lab/TimelineConnector'
+import MUITimelineContent from '@mui/lab/TimelineContent'
+import MUITimelineDot from '@mui/lab/TimelineDot'
+import MUITimelineOppositeContent from '@mui/lab/TimelineOppositeContent'
+
+export const TimelineDot = styled(MUITimelineDot)(({ theme }) => ({
+  alignItems: 'center',
+  aspectRatio: '1',
+  backgroundColor: theme.palette.grey[800]
+}))
+
+
+export const TimelineContent = styled(MUITimelineContent)(({ theme }) => ({
+  paddingBlock: '1.4em',
+  ['& :first-child']: {
+    marginTop: 0,
+  },
+  ['& :last-child']: {
+    marginBottom: 0,
+  }
+}))
+
+export const TimelineConnector = styled(MUITimelineConnector)(({ theme }) => ({
+  minHeight: '0.5em',
+}))
+
+export const TimelineOppositeContent = styled(MUITimelineOppositeContent)(({ theme }) => ({
+  order: -1,
+  color: theme.palette.text.secondary,
+}))
+
+<Box>
+<SuperHero2
+  title="Pour un monde équitable et durable"
+  imageName="engagements"
+/>
+
+<Section bg='bleu100' marginTop='3rem'>
+<Carousel1
+    title={<Typography component="h2" variant="h2">La science ouverte, notre conviction</Typography>}
+    description={
+      <>
+        <Typography sx={{pb: 1.5}}>Selon l’UNESCO, la science ouverte vise à rendre la recherche scientifique de tous les domaines accessibles à tous les publics, au bénéfice des scientifiques et de la société dans son ensemble.</Typography>
+        <Typography sx={{pb: 1.5}}>En développant des infrastructures ouvertes et en facilitant l’accès aux savoirs scientifiques, notamment via le libre accès, les bibliothèques de l’UdeM participent activement à la démocratisation des savoirs et favorisent le dialogue entre différents systèmes de connaissance et acteurs de la société.</Typography>
+        <Typography>Consulter <Link to="/engagements/engagement-science-ouverte.pdf">l'engagement des bibliothèques de l’UdeM en faveur de la science ouverte</Link>.</Typography>
+      </>
+    }
+  >
+    <FlipCardWithBg
+      title="Ambassadrices du libre accès"
+      Icon={MegaphoneIcon}
+    >
+      <p>Appui à la Politique de l’Université de Montréal sur le libre accès aux publications savantes, notamment par une offre de formation, par la promotion, par l’intégration à nos services-conseils et diverses autres initiatives.</p>
+    </FlipCardWithBg>
+
+    <FlipCardWithBg
+      title="Financement de projets en libre accès"
+      Icon={HandCoinsIcon}
+    >
+      <p>Dédication d’environ 2,5 % du budget annuel de documentation des bibliothèques au financement d’initiatives de publication en libre accès.</p>
+    </FlipCardWithBg>
+
+    <FlipCardWithBg
+      title="Accès aux résultats et aux données de recherche"
+      Icon={ArrowsOutIcon}
+    >
+      <p>Accompagnement des équipes de recherche pour le partage des résultats et des données de recherche par des services de soutien au dépôt dans Papyrus et Borealis, les dépôts de l’UdeM, ou dans d’autres dépôts ouverts.</p>
+    </FlipCardWithBg>
+
+    <FlipCardWithBg
+      title="Plateformes et contenus ouverts"
+      Icon={LockSimpleOpenIcon}
+    >
+      <p>Utilisation de la licence Creative Commons CC-By sur le code source des plateformes développées et sur les contenus produits par notre équipe dès que cela est possible. Plusieurs projets de numérisation visent également à élargir l’accès aux ressources.</p>
+    </FlipCardWithBg>
+
+    <FlipCardWithBg
+      title="Soutien pour les ressources éducatives libres"
+      Icon={GraduationCapIcon}
+    >
+      <p>Soutien à l’utilisation et à la création de ressources éducatives ouvertes pour enrichir l’apprentissage.</p>
+    </FlipCardWithBg>
+
+  </Carousel1>
+</Section>
+<Section >
+  <Typography id="historique" component="h2" variant="h2">Histoire de l'engagement des bibliothèques pour la science ouverte</Typography>
+
+  Les temps forts de l'engagement des bibliothèques&nbsp;:
+
+  <Timeline>
+    <TimelineItem>
+      <TimelineSeparator>
+        <TimelineDot>1990</TimelineDot>
+        <TimelineConnector />
+      </TimelineSeparator>
+      <TimelineContent>Lancement du SDAESH, actuel Service Accessibilité</TimelineContent>
+    </TimelineItem>
+
+    <TimelineItem>
+      <TimelineSeparator>
+        <TimelineDot>2005</TimelineDot>
+        <TimelineConnector />
+      </TimelineSeparator>
+      <TimelineContent>Lancement de Papyrus</TimelineContent>
+    </TimelineItem>
+
+    <TimelineItem>
+      <TimelineSeparator>
+        <TimelineDot>2011</TimelineDot>
+        <TimelineConnector />
+      </TimelineSeparator>
+      <TimelineContent>Premiers guides sur le libre accès</TimelineContent>
+    </TimelineItem>
+
+    <TimelineItem>
+      <TimelineSeparator>
+        <TimelineDot>2012</TimelineDot>
+        <TimelineConnector />
+      </TimelineSeparator>
+      <TimelineContent>Lancement du Dataverse Scholars Portal, actuel Boréalis</TimelineContent>
+    </TimelineItem>
+
+    <TimelineItem>
+      <TimelineSeparator>
+        <TimelineDot>2019</TimelineDot>
+        <TimelineConnector />
+      </TimelineSeparator>
+      <TimelineOppositeContent>
+        <p>Première politique de diffusion en libre accès du FRQ</p>
+        <p>Première politique de l'UdeM sur le libre accès aux publications savantes</p>
+      </TimelineOppositeContent>
+      <TimelineContent>
+        <p>Les bibliothèques de l'UdeM rejoignent Boréalis</p>
+        <p>Lancement sur service OJS pour le soutien aux revues savantes</p>
+      </TimelineContent>
+    </TimelineItem>
+
+    <TimelineItem>
+      <TimelineOppositeContent>
+        <p>Feuille de route fédérale pour la science ouverte</p>
+      </TimelineOppositeContent>
+      <TimelineSeparator>
+        <TimelineDot>2020</TimelineDot>
+        <TimelineConnector />
+      </TimelineSeparator>
+      <TimelineContent></TimelineContent>
+    </TimelineItem>
+
+    <TimelineItem>
+      <TimelineOppositeContent>
+        <p>Recommandation de l'UNESCO pour une science ouverte</p>
+      </TimelineOppositeContent>
+      <TimelineSeparator>
+        <TimelineDot>2021</TimelineDot>
+        <TimelineConnector />
+      </TimelineSeparator>
+      <TimelineContent></TimelineContent>
+    </TimelineItem>
+
+    <TimelineItem>
+      <TimelineOppositeContent>
+        <p>Plan d’action 2022 - 2027 pour la recherche à l'UdeM, affirmant l'adhésion aux principes de la science ouverte</p>
+        <p>Adoption des principes DORA par l'UdeM</p>
+      </TimelineOppositeContent>
+      <TimelineSeparator>
+        <TimelineDot>2022</TimelineDot>
+        <TimelineConnector />
+      </TimelineSeparator>
+      <TimelineContent></TimelineContent>
+    </TimelineItem>
+
+    <TimelineItem>
+      <TimelineOppositeContent>
+      </TimelineOppositeContent>
+      <TimelineSeparator>
+        <TimelineDot>2023</TimelineDot>
+        <TimelineConnector />
+      </TimelineSeparator>
+      <TimelineContent>
+        <p>Le financement d'initiatives sur le libre accès inscrit dans le budget des bibliothèques</p>
+        </TimelineContent>
+    </TimelineItem>
+
+    <TimelineItem>
+      <TimelineOppositeContent>
+      </TimelineOppositeContent>
+      <TimelineSeparator>
+        <TimelineDot>2024</TimelineDot>
+        <TimelineConnector />
+      </TimelineSeparator>
+      <TimelineContent>
+        <p>Création de la Direction de l'Engagement et de l'innovation sociale</p>
+        </TimelineContent>
+    </TimelineItem>
+
+    <TimelineItem>
+      <TimelineOppositeContent>
+      </TimelineOppositeContent>
+      <TimelineSeparator>
+        <TimelineDot>2025</TimelineDot>
+      </TimelineSeparator>
+      <TimelineContent>
+        <p>Lancement de Pressbooks</p>
+        <p>Création du groupe de travail *Collections et Premiers Peuples*</p>
+        <p>Engagement des bibliothèques pour la science ouverte</p>
+        </TimelineContent>
+    </TimelineItem>
+  </Timeline>
+</Section>
+</Box>
