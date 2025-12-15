@@ -19,7 +19,12 @@ import Paper from '@mui/material/Paper';
 
 ## Prêts aux institutions externes
 
-[See English version](https://bib.umontreal.ca/obtenir/peb/ill-external-libraries/)
+[See English version](/obtenir/peb/ill-external-libraries)
+
+<Alert severity="warning">
+  <AlertTitle>Fermeture du service pour la période des Fêtes</AlertTitle>
+  Le service sera suspendu du 24 décembre 2025 au 4 janvier 2026. Seules les demandes de copies seront traitées les 22 et 23 décembre 2025. Le service reprendra normalement le 5 janvier 2026.
+</Alert>
 
 Les bibliothèques UdeM utilisent le système WorldShare ILL Tipasa d’OCLC. Si le système de votre établissement n’est pas compatible avec ce dernier, vous pouvez nous envoyer une demande de prêt de livres ou de copie d’articles et de chapitres en suivant les indications ci-dessous.
 
@@ -128,23 +133,23 @@ associées au RUISS UdeM</TableCell>
 #### Hors Canada
 
  <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="frais hors Canada">
-        <TableHead>
-          <TableRow>
-            <TableCell></TableCell>
-            <TableCell align="right">Prêts</TableCell>
-            <TableCell align="right">Copies</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell>
-              Autres bibliothèques et établissements hors Canada<br />
-              (à moins d'ententes particulières)
-            </TableCell>
-            <TableCell align="right">35,00 $ US</TableCell>
-            <TableCell align="right">25,00 $ US</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+  <Table sx={{ minWidth: 650 }} aria-label="frais hors Canada">
+    <TableHead>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell align="right">Prêts</TableCell>
+        <TableCell align="right">Copies</TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <TableCell>
+          Autres bibliothèques et établissements hors Canada<br />
+          (à moins d'ententes particulières)
+        </TableCell>
+        <TableCell align="right">35,00 $ US</TableCell>
+        <TableCell align="right">25,00 $ US</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</TableContainer>
