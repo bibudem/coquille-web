@@ -17,8 +17,8 @@ const StyledLink = styled(Link)(({ theme }) => ({
 }))
 
 export default function BreadcrumbsSm({ crumbs, location }) {
-  console.log('[x] crumbs:', crumbs)
-  console.log('[x] location:', location)
+  // console.log('[x] crumbs:', crumbs)
+  // console.log('[x] location:', location)
   const [data, setData] = useState(null)
   const isSmall = useSmall('md')
   const isXSmall = useSmall('sm')
@@ -36,11 +36,11 @@ export default function BreadcrumbsSm({ crumbs, location }) {
       const { crumbLabel: label, ...rest } = currentNode
       currentNode = { label, ...rest }
 
-      console.log('[x] currentIndex:', currentIndex)
-      console.log('[x] in current data:', crumbsData)
+      // console.log('[x] currentIndex:', currentIndex)
+      // console.log('[x] in current data:', crumbsData)
 
       const currentCrumbPath = stripLastSlash(crumbsData.crumbs[currentIndex].pathname)
-      console.log('[x] currentCrumbPath:', currentCrumbPath)
+      // console.log('[x] currentCrumbPath:', currentCrumbPath)
 
       // Don't create a menu on the root (first) crumb
       if (currentIndex === 0) {
@@ -48,7 +48,7 @@ export default function BreadcrumbsSm({ crumbs, location }) {
         return crumbsData
       }
 
-      console.log('[x] navData:', navData)
+      // console.log('[x] navData:', navData)
 
       const nextNavData = navData.find((node) => {
         const path = stripLastSlash(node.path)
@@ -56,14 +56,14 @@ export default function BreadcrumbsSm({ crumbs, location }) {
         return path === currentCrumbPath
       })
 
-      console.log('[x] nextNavData:', nextNavData)
+      // console.log('[x] nextNavData:', nextNavData)
 
       if (nextNavData) {
         const siblings = navData.map(({ title, order, path }) => ({ title, order, pathname: path }))
 
         crumbsData.crumbsMenu.push({ ...currentNode, siblings })
         crumbsData.navData = nextNavData.children
-        console.log('[x] out next crumbsData:', crumbsData)
+        // console.log('[x] out next crumbsData:', crumbsData)
       }
 
       console.groupEnd()
@@ -78,10 +78,10 @@ export default function BreadcrumbsSm({ crumbs, location }) {
       //   .shift()}/`
 
       // const rootNode = secondaryNavData.find(({ path }) => path === rootPath)
-      console.log('[x] crumbs:', crumbs)
+      // console.log('[x] crumbs:', crumbs)
       const crumbMenuData = crumbs.reduce(getMenuForCrumb, { crumbsMenu: [], navData: secondaryNavData, crumbs })
 
-      console.log('[x] Result crumb menu:', crumbMenuData)
+      // console.log('[x] Result crumb menu:', crumbMenuData)
 
       setData(crumbMenuData.crumbsMenu)
     }
@@ -124,8 +124,6 @@ export default function BreadcrumbsSm({ crumbs, location }) {
 }
 
 function Breadcrumb({ data, isRoot, isLeaf }) {
-  console.log('[x] arguments:', arguments)
-
   const { pathname, label, siblings } = data
 
   if (isLeaf) {
