@@ -3,11 +3,13 @@ title: Engagements
 noIndex: true
 ---
 
+import { useState } from 'react'
 import { styled } from '@mui/material'
 import { ArrowsOutIcon, BookOpenIcon, BooksIcon, FlowerLotusIcon, GiftIcon, GraduationCapIcon, HandCoinsIcon, HeadCircuitIcon, LockSimpleOpenIcon, MegaphoneIcon, PencilLineIcon , PersonSimpleCircleIcon, PlantIcon, RainbowIcon, UsersFourIcon} from '@phosphor-icons/react';
 import SuperHero2 from '@/components/SuperHero2'
 import empreinte from '../images/empreinte.webp'
 import GridOffset from '@/components/utils/GridOffset'
+import { Tabs2, TabPanel2 } from '@/components/Tabs2'
 import Timeline from '@mui/lab/Timeline'
 import TimelineItem from '@mui/lab/TimelineItem'
 import TimelineSeparator from '@mui/lab/TimelineSeparator'
@@ -43,59 +45,43 @@ export const TimelineOppositeContent = styled(MUITimelineOppositeContent)(({ the
 }))
 
 <Box>
-<SuperHero2
-  title="Pour un monde équitable et durable"
-  imageName="engagements"
-/>
+  <SuperHero2
+    title="Pour un monde équitable et durable"
+    imageName="engagements"
+  />
 
 <Section bg='bleu100' marginTop='3rem'>
-<Carousel1
-    title={<Typography component="h2" variant="h2">La science ouverte, notre conviction</Typography>}
-    description={
-      <>
-        <Typography sx={{pb: 1.5}}>Selon l’UNESCO, la science ouverte vise à rendre la recherche scientifique de tous les domaines accessibles à tous les publics, au bénéfice des scientifiques et de la société dans son ensemble.</Typography>
-        <Typography sx={{pb: 1.5}}>En développant des infrastructures ouvertes et en facilitant l’accès aux savoirs scientifiques, notamment via le libre accès, les bibliothèques de l’UdeM participent activement à la démocratisation des savoirs et favorisent le dialogue entre différents systèmes de connaissance et acteurs de la société.</Typography>
-        <Typography>Consulter <Link to="/engagements/engagement-science-ouverte.pdf">l'engagement des bibliothèques de l’UdeM en faveur de la science ouverte</Link>.</Typography>
-      </>
-    }
-  >
-    <FlipCardWithBg
-      title="Ambassadrices du libre accès"
-      Icon={MegaphoneIcon}
+  <Tabs2
+    tabs={[
+      'Promotion du libre accès',
+      'Publications scientifiques ouvertes',
+      'Données de recherche ouvertes',
+      'Ressources éducatives libres',
+      'Logiciels libres',
+      'Matériel libre'
+    ]}
     >
-      <p>Appui à la Politique de l’Université de Montréal sur le libre accès aux publications savantes, notamment par une offre de formation, par la promotion, par l’intégration à nos services-conseils et diverses autres initiatives.</p>
-    </FlipCardWithBg>
-
-    <FlipCardWithBg
-      title="Financement de projets en libre accès"
-      Icon={HandCoinsIcon}
-    >
-      <p>Dédication d’environ 2,5 % du budget annuel de documentation des bibliothèques au financement d’initiatives de publication en libre accès.</p>
-    </FlipCardWithBg>
-
-    <FlipCardWithBg
-      title="Accès aux résultats et aux données de recherche"
-      Icon={ArrowsOutIcon}
-    >
-      <p>Accompagnement des équipes de recherche pour le partage des résultats et des données de recherche par des services de soutien au dépôt dans Papyrus et Borealis, les dépôts de l’UdeM, ou dans d’autres dépôts ouverts.</p>
-    </FlipCardWithBg>
-
-    <FlipCardWithBg
-      title="Plateformes et contenus ouverts"
-      Icon={LockSimpleOpenIcon}
-    >
-      <p>Utilisation de la licence Creative Commons CC-By sur le code source des plateformes développées et sur les contenus produits par notre équipe dès que cela est possible. Plusieurs projets de numérisation visent également à élargir l’accès aux ressources.</p>
-    </FlipCardWithBg>
-
-    <FlipCardWithBg
-      title="Soutien pour les ressources éducatives libres"
-      Icon={GraduationCapIcon}
-    >
-      <p>Soutien à l’utilisation et à la création de ressources éducatives ouvertes pour enrichir l’apprentissage.</p>
-    </FlipCardWithBg>
-
-  </Carousel1>
+    <Box>
+      Sensibilisation à la science ouverte et promotion de bonnes pratiques et alternatives responsables pour la recherche
+    </Box>
+    <Box>
+      Mise à disposition d'un dépôt institutionnel
+    </Box>
+    <Box>
+      Soutien et accompagnement pour le partage des données de recherche dans un entrepôt partagé pérenne
+    </Box>
+    <Box>
+      Aide à la création de REL pour enrichir l’apprentissage dans un contexte de collaboration québécoise
+    </Box>
+    <Box>
+      Utilisation de logiciels libres dans nos plateformes et dans nos services pour promouvoir des alternatives ouvertes aux logiciels propriétaires
+    </Box>
+    <Box>
+    Mise en valeur de la production de matériel ouvert et favorisation d'un cadre de recherche encourageant le partage et l'échange
+    </Box>
+  </Tabs2>
 </Section>
+
 <Section >
   <Typography id="historique" component="h2" variant="h2">Histoire de l'engagement des bibliothèques pour la science ouverte</Typography>
 
