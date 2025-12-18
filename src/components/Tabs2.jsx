@@ -91,7 +91,7 @@ export function Tabs2({ tabs = [], defaultTab = 1, ariaLabel = '', bg, orientati
       <Box
         sx={{
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: orientation === 'horizontal' ? 'column' : 'row',
         }}
       >
         <MUITabs
