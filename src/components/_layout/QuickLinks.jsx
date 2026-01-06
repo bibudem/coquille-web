@@ -3,7 +3,7 @@ import { CalendarBlank, Chats, ClockCountdown, Wrench } from '@phosphor-icons/re
 import Div from '@/components/utils/Div'
 import { SofiaIcon } from '@/components/CustomIcons'
 import Link from '@/components/Link'
-import LibChatWidget from '@/components/LibChatWidget';
+import LibChatWidget from '@/components/LibChatWidget'
 
 function ListItemText({ children, trigger }) {
   return (
@@ -13,7 +13,7 @@ function ListItemText({ children, trigger }) {
         fontSize: '1rem',
         fontWeight: 400,
         lineHeight: 1.6,
-        marginLeft: '5px'
+        marginLeft: '5px',
       }}
     >
       {children}
@@ -36,11 +36,11 @@ export function QuickLinks() {
   }
 
   function handleChatClick(event) {
-    event.preventDefault();
+    event.preventDefault()
     if (typeof window.openLibChatDirect === 'function') {
-      window.openLibChatDirect();
+      window.openLibChatDirect()
     } else {
-      console.error("La fonction openLibChatDirect n'est pas disponible");
+      console.error("La fonction openLibChatDirect n'est pas disponible")
     }
   }
 
@@ -83,22 +83,24 @@ export function QuickLinks() {
           },
         })}
       >
-        <MenuList sx={{
-          padding: '8px 0',
-          '& .MuiMenuItem-root': {
-            borderRadius: '6px',
-            padding: '8px 16px',
-            margin: '0 8px',
-            transition: 'background-color 0.2s ease',
-            minHeight: '48px',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            }
-          }
-        }}>
-          <MenuItem component={Link} to="https://umontreal.on.worldcat.org/discovery?lang=fr" target="_blank"  rel="noopener noreferrer">
+        <MenuList
+          sx={{
+            padding: '8px 0',
+            '& .MuiMenuItem-root': {
+              borderRadius: '6px',
+              padding: '8px 16px',
+              margin: '0 8px',
+              transition: 'background-color 0.2s ease',
+              minHeight: '48px',
+              '&:hover': {
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              },
+            },
+          }}
+        >
+          <MenuItem component={Link} to="https://umontreal.on.worldcat.org/discovery?lang=fr" target="_blank" rel="noopener noreferrer">
             <ListItemIcon>
-              <SofiaIcon color="#fff" fontSize='24px' />
+              <SofiaIcon color="#fff" fontSize="24px" />
             </ListItemIcon>
             <ListItemText trigger={trigger}>Sofia</ListItemText>
           </MenuItem>
@@ -108,13 +110,13 @@ export function QuickLinks() {
             </ListItemIcon>
             <ListItemText trigger={trigger}>Horaires</ListItemText>
           </MenuItem>
-          <MenuItem component={Link} to="https://calendrier.bib.umontreal.ca/r" target="_blank"  rel="noopener noreferrer">
+          <MenuItem component={Link} to="https://calendrier.bib.umontreal.ca/r">
             <ListItemIcon>
               <CalendarBlank color="#fff" size={24} />
             </ListItemIcon>
             <ListItemText trigger={trigger}>Réserver une salle</ListItemText>
           </MenuItem>
-          <MenuItem component={Link} to="https://studio.bib.umontreal.ca/informatique/" target="_blank"  rel="noopener noreferrer">
+          <MenuItem component={Link} to="https://studio.bib.umontreal.ca/informatique/">
             <ListItemIcon>
               <Wrench color="#fff" size={24} />
             </ListItemIcon>
@@ -141,11 +143,11 @@ export function QuickLinksSm() {
   }
 
   function handleChatClick(event) {
-    event.preventDefault();
+    event.preventDefault()
     if (typeof window.openLibChatDirect === 'function') {
-      window.openLibChatDirect();
+      window.openLibChatDirect()
     } else {
-      console.error("La fonction openLibChatDirect n'est pas disponible");
+      console.error("La fonction openLibChatDirect n'est pas disponible")
     }
   }
 
