@@ -3,6 +3,7 @@ node_modules/
 public
 ~*
 _temp/
+desktop.ini
 
 # Environment variables
 .env*
