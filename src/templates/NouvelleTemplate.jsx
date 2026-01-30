@@ -76,25 +76,13 @@ export default function NouvelleTemplate({ pageContext, children, data, location
         <SkipTo href="#main-content">Aller au contenu</SkipTo>
 
         <udem-urgence></udem-urgence>
-
-        {lvl < 2 && (
-          <bib-avis
-            bouton-fermer
-            style={{
-              '--bib-avis-spacing-inline': '0',
-              position: 'relative',
-              zIndex: theme.zIndex.appBar + 1,
-            }}
-          />
-        )}
+        <bib-avis bouton-fermer />
 
         {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
 
         {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
         {lvl > 1 && superHero && <SuperHero title={superHero.title} imageName={superHero.imageName} lvl={lvl} />}
-
-        {lvl >= 2 && <bib-avis bouton-fermer />}
 
         <Container>{mainContent}</Container>
         <Footer />
