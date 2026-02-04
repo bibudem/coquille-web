@@ -14,7 +14,7 @@ const {
 } = process.env
 const isNetlifyProduction = NETLIFY_ENV === 'production'
 const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
-const GOOGLE_ANALYTICS_ID = '372324686'
+const GOOGLE_ANALYTICS_ID = 'G-V8J6YFFD4F'
 const CLARITY_PROJECT_ID = 't10hsivmt0'
 
 /**
