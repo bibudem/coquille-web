@@ -38,17 +38,19 @@ export default {
   },
   trailingSlash: 'ignore',
   plugins: [
-    // Plugin Google Analytics - Ajouté ici
+    // Plugin Google Analytics
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingIds: [ GOOGLE_ANALYTICS_ID ],
+        trackingIds: [GOOGLE_ANALYTICS_ID],
         pluginConfig: {
           head: true, 
-          respectDNT: true, // Respecte le "Do Not Track"
+          respectDNT: true,
         },
       },
-       // Clarity – integration
+    },
+    // Plugin Clarity
+    {
       resolve: 'gatsby-plugin-clarity',
       options: {
         clarity_project_id: CLARITY_PROJECT_ID,
