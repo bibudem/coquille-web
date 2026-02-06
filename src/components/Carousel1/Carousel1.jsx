@@ -101,6 +101,59 @@ export default function Carousel1({ title, description, moreText, moreLink, ...r
     }
   }, [api])
 
+  // Support horizontal navigation with mouse wheel / trackpad gestures.
+  useEffect(() => {
+    if (!api) return
+
+    const root = api.rootNode()
+    if (!root) return
+
+    let wheelAccum = 0
+    let resetTimer = null
+    const threshold = 24
+    const reset = () => {
+      wheelAccum = 0
+      if (resetTimer) {
+        clearTimeout(resetTimer)
+        resetTimer = null
+      }
+    }
+
+    const onWheel = (event) => {
+      const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY)
+        ? event.deltaX
+        : event.deltaY
+
+      if (!delta) return
+
+      wheelAccum += delta
+      if (!resetTimer) {
+        resetTimer = setTimeout(reset, 200)
+      }
+
+      if (Math.abs(wheelAccum) < threshold) return
+
+      const direction = wheelAccum > 0 ? 1 : -1
+      reset()
+
+      const canScroll = direction > 0 ? api.canScrollNext() : api.canScrollPrev()
+      if (!canScroll) return
+
+      event.preventDefault()
+      if (direction > 0) {
+        api.scrollNext()
+      } else {
+        api.scrollPrev()
+      }
+    }
+
+    root.addEventListener('wheel', onWheel, { passive: false })
+    return () => {
+      reset()
+      root.removeEventListener('wheel', onWheel)
+    }
+  }, [api])
+
   const scrollTo = useCallback((index) => api && api.scrollTo(index), [api])
 
   const variableWidthStyles = {
