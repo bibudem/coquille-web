@@ -3,7 +3,7 @@ title: Engagements
 slug: engagements
 ---
 
-import { ArrowsOutIcon, BookOpenIcon, BooksIcon, FlowerLotusIcon, GiftIcon, GraduationCapIcon, HandCoinsIcon, HeadCircuitIcon, LockSimpleOpenIcon, MegaphoneIcon, PencilLineIcon , PersonSimpleCircleIcon, PlantIcon, RainbowIcon, UsersFourIcon, ChatCircle} from '@phosphor-icons/react';
+import { ArrowsOutIcon, BookOpenIcon, BooksIcon, FlowerLotusIcon, GiftIcon, GraduationCapIcon, HandCoinsIcon, HeadCircuitIcon, LockSimpleOpenIcon, MegaphoneIcon, PencilLineIcon , PersonSimpleCircleIcon, PlantIcon, RainbowIcon, UsersFourIcon, ChatCircle, NewspaperClippingIcon } from '@phosphor-icons/react';
 import SuperHero2 from '@/components/SuperHero2'
 import empreinte from '../images/empreinte.webp'
 import GridOffset from '@/components/utils/GridOffset'
@@ -59,7 +59,14 @@ import GridOffset from '@/components/utils/GridOffset'
     >
       <p>Soutien à l’utilisation et à la création de ressources éducatives ouvertes pour enrichir l’apprentissage.</p>
     </FlipCardWithBg>
+    
+  <FlipCardWithBg
+      title="Ateliers Wikipédia"
+      Icon={NewspaperClippingIcon}
+    >
+      <p>Des ateliers d’initiation et de soutien à l’enrichissement de cette encyclopédie universelle, gratuite et accessible. [Pour en savoir plus](./ateliers-wiki/)</p>
 
+  </FlipCardWithBg>
   </Carousel1>
 </Section>
 <Section >
@@ -109,15 +116,24 @@ import GridOffset from '@/components/utils/GridOffset'
         <p>Travail pour rendre accessibles nos ressources et services à toute la communauté UdeM, notamment grâce à notre Service Accessibilité, qui offre des locaux adaptés, des logiciels spécialisés, de la documentation adaptée et un soutien personnalisé.</p>
       </FlipCardWithBg>
 
+    <FlipCardWithBg
+      title="La lecture en cadeau"
+      bg="rose300"
+      Icon={GiftIcon}
+    >
+      <p> Coordination avec la Librairie de l’UdeM de la campagne UdeM de collecte de livres jeunesse neufs pour la Fondation pour l’alphabétisation. Les livres recueillis sont remis à des enfants fréquentant des écoles et centres de la petite enfance de communautés autochtones inscrits au programme. [Pour en savoir plus](./lecture-cadeau/)</p>
+
+
+
+    </FlipCardWithBg>
+
       <FlipCardWithBg
         title="Bibliothèques vivantes"
         bg="rose300"
         Icon={ChatCircle}
       >
-        <p>Les bibliothèques vivantes sont des activités de partage des savoirs permettant d'échanger autrement, humainement et sans intermédiaire technologique. </p>
-        <Link to="/engagements/bibliotheques-vivantes">
-          En savoir plus
-        </Link>
+        <p>Les bibliothèques vivantes sont des activités de partage des savoirs permettant d'échanger autrement, humainement et sans intermédiaire technologique. [Pour en savoir plus](./bibliotheques-vivantes/)</p>
+
       </FlipCardWithBg>
 
           <FlipCardWithBg
@@ -204,13 +220,6 @@ import GridOffset from '@/components/utils/GridOffset'
       <p>Attention particulière portée à l’acquisition de publications écrite par des autrices et auteurs issus des Premiers Peuples ou portant sur des sujets liés aux réalités autochtones.  </p>
     </FlipCardWithBg>
 
-    <FlipCardWithBg
-      title="La lecture en cadeau"
-      bg="vertFonce"
-      Icon={GiftIcon}
-    >
-      <p> Coordination avec la Librairie de l’UdeM de la campagne UdeM de collecte de livres jeunesse neufs pour la Fondation pour l’alphabétisation. Les livres recueillis sont remis à des enfants fréquentant des écoles et centres de la petite enfance de communautés autochtones inscrits au programme.</p>
-    </FlipCardWithBg>
   </Carousel1>
 </Section>
 
