@@ -4,8 +4,8 @@ slug: recherche
 ---
 
 import SuperHero2 from '@/components/SuperHero2'
-import PorteeScientifique from '../images/portee-scientifique.webp'
-import Bibliothecaire from '../images/bibliothecaire-montage.webp'
+import PorteeScientifique from './portee-scientifique.webp'
+import Bibliothecaire from './bibliothecaire-montage.webp'
 import CommentIcon from '@mui/icons-material/Comment'
 import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
 import { UserFocusIcon, CubeTransparentIcon, HandDepositIcon, LaptopIcon, DownloadSimpleIcon, PlugsIcon, MagnifyingGlassIcon, PencilSimpleIcon, TextAlignJustifyIcon, BinocularsIcon, TreasureChestIcon, GraphIcon, ArticleIcon, CheckSquareOffsetIcon, ShareNetworkIcon, HandshakeIcon, RepeatIcon, CompassRoseIcon, ChatTeardropTextIcon, CheckCircleIcon, PathIcon, PlantIcon } from '@phosphor-icons/react'
@@ -19,7 +19,7 @@ import { UserFocusIcon, CubeTransparentIcon, HandDepositIcon, LaptopIcon, Downlo
   <HeroWithImage
     Image={Bibliothecaire}
     align="right"
-    footer={<Button href="../nous-joindre/notre-equipe" primary>Contacter votre bibliothécaire disciplinaire</Button>}
+    footer={<Button href="/nous-joindre/notre-equipe" primary>Contacter votre bibliothécaire disciplinaire</Button>}
   >
     <Typography component="h2" variant="h2">Premier arrêt, votre bibliothécaire disciplinaire</Typography>
 
@@ -338,7 +338,7 @@ Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes b
     />
     <RichListItemWithLink
       color='vertFonce'
-      href="../espaces/"
+      href="/espaces/"
       title="Espaces dédiés aux cycles supérieurs"
       description="Salles individuelles réservables, salles communes équipées de casiers pour votre documentation: l’offre varie d’une bibliothèque à l’autre, consultez le répertoire!"
     />
