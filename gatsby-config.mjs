@@ -14,7 +14,7 @@ const {
 } = process.env
 const isNetlifyProduction = NETLIFY_ENV === 'production'
 const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
-const GOOGLE_ANALYTICS_ID = 'G-V8J6YFFD4F'
+// const GOOGLE_ANALYTICS_ID = 'G-V8J6YFFD4F'
 const CLARITY_PROJECT_ID = 't10hsivmt0'
 
 /**
@@ -38,17 +38,17 @@ export default {
   },
   trailingSlash: 'ignore',
   plugins: [
-    // Plugin Google Analytics
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: [GOOGLE_ANALYTICS_ID],
-        pluginConfig: {
-          head: true, 
-          respectDNT: true,
-        },
-      },
-    },
+    // // Plugin Google Analytics
+    // {
+    //   resolve: `gatsby-plugin-google-gtag`,
+    //   options: {
+    //     trackingIds: [GOOGLE_ANALYTICS_ID],
+    //     pluginConfig: {
+    //       head: true, 
+    //       respectDNT: true,
+    //     },
+    //   },
+    // },
     // Plugin Clarity
     {
       resolve: 'gatsby-plugin-clarity',
