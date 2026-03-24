@@ -1,7 +1,6 @@
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { Container } from '@mui/material'
-import SEO from '@/components/_layout/SEO'
 import Debug from '@/components/_layout/Debug'
 
 export default function PageTemplate({ children }) {
@@ -25,16 +24,14 @@ export const query = graphql`
   }
 `
 
-export function Head({ pageContext, location }) {
+export function Head({ pageContext }) {
   const { frontmatter } = pageContext
-  const { pathname } = location
   return (
     <>
       <html lang="fr" />
-      <SEO title={frontmatter?.title} pathname={pathname}>
-        <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1.3/dist/bib-consent-server.js"></script>
-        <meta name="robots" content="noindex"></meta>
-      </SEO>
+      <title>{frontmatter?.title}</title>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-consent-server.js"></script>
+      <meta name="robots" content="noindex"></meta>
     </>
   )
 }
