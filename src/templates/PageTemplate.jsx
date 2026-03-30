@@ -91,80 +91,83 @@ export default function PageTemplate({ pageContext, children, data, location }) 
   )
 
   return (
-    <MDXProvider components={commonComponents}>
-      <IconContext.Provider
-        value={{
-          size: '2rem',
-          color: theme.palette.grey['700'],
-        }}
-      >
-        {process.env.NODE_ENV !== 'production' && <Debug />}
-
-        <SkipTo href="#main-content">Aller au contenu</SkipTo>
-
-        <udem-urgence
-          style={{
-            position: 'relative',
-            zIndex: theme.zIndex.appBar + 1,
+    <>
+      <bib-gtm></bib-gtm>
+      <MDXProvider components={commonComponents}>
+        <IconContext.Provider
+          value={{
+            size: '2rem',
+            color: theme.palette.grey['700'],
           }}
-        />
+        >
+          {process.env.NODE_ENV !== 'production' && <Debug />}
 
-        {lvl < 2 && (
-          <bib-avis
-            bouton-fermer
+          <SkipTo href="#main-content">Aller au contenu</SkipTo>
+
+          <udem-urgence
             style={{
-              '--bib-avis-spacing-inline': '0',
               position: 'relative',
               zIndex: theme.zIndex.appBar + 1,
             }}
           />
-        )}
 
-        {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
+          {lvl < 2 && (
+            <bib-avis
+              bouton-fermer
+              style={{
+                '--bib-avis-spacing-inline': '0',
+                position: 'relative',
+                zIndex: theme.zIndex.appBar + 1,
+              }}
+            />
+          )}
 
-        {isSmall ? <QuickLinksSm /> : <QuickLinks />}
+          {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
 
-        {lvl > 1 && superHero && <SuperHero title={superHero.title} imageName={superHero.imageName} lvl={lvl} />}
+          {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
-        {lvl >= 2 && <bib-avis bouton-fermer />}
+          {lvl > 1 && superHero && <SuperHero title={superHero.title} imageName={superHero.imageName} lvl={lvl} />}
 
-        {hasSecondaryNav ? (
-          isMedium ? (
-            <Box sx={{ paddingLeft: '20px', paddingRight: '20px', paddingTop: '60px' }}>{mainContent}</Box>
+          {lvl >= 2 && <bib-avis bouton-fermer />}
+
+          {hasSecondaryNav ? (
+            isMedium ? (
+              <Box sx={{ paddingLeft: '20px', paddingRight: '20px', paddingTop: '60px' }}>{mainContent}</Box>
+            ) : (
+              <Box sx={{ paddingTop: '60px' }}>
+                <LayoutContainer>
+                  <LayoutGrid>
+                    <Grid
+                      sx={{ width: '100%' }}
+                      container
+                      spacing={{
+                        xs: 1,
+                        sm: 3,
+                        lg: 4,
+                      }}
+                    >
+                      <Grid size={3} className="bib-secondary-nav-col">
+                        <SecondaryNav currentLocation={location} className="bib-secondary-nav" />
+                      </Grid>
+                      <Grid size={9} className="bib-main-content-col">
+                        <div>{mainContent}</div>
+                      </Grid>
+                    </Grid>
+                  </LayoutGrid>
+                </LayoutContainer>
+              </Box>
+            )
           ) : (
-            <Box sx={{ paddingTop: '60px' }}>
-              <LayoutContainer>
-                <LayoutGrid>
-                  <Grid
-                    sx={{ width: '100%' }}
-                    container
-                    spacing={{
-                      xs: 1,
-                      sm: 3,
-                      lg: 4,
-                    }}
-                  >
-                    <Grid size={3} className="bib-secondary-nav-col">
-                      <SecondaryNav currentLocation={location} className="bib-secondary-nav" />
-                    </Grid>
-                    <Grid size={9} className="bib-main-content-col">
-                      <div>{mainContent}</div>
-                    </Grid>
-                  </Grid>
-                </LayoutGrid>
-              </LayoutContainer>
-            </Box>
-          )
-        ) : (
-          <>{mainContent}</>
-        )}
+            <>{mainContent}</>
+          )}
 
-        <Footer />
+          <Footer />
 
-        <bib-consent></bib-consent>
-        <bib-clarity></bib-clarity>
-      </IconContext.Provider>
-    </MDXProvider>
+          <bib-consent></bib-consent>
+          <bib-clarity></bib-clarity>
+        </IconContext.Provider>
+      </MDXProvider>
+    </>
   )
 }
 

@@ -64,33 +64,36 @@ export default function NouvelleTemplate({ pageContext, children, data, location
   )
 
   return (
-    <MDXProvider components={commonComponents}>
-      <IconContext.Provider
-        value={{
-          size: '2rem',
-          color: theme.palette.grey['700'],
-        }}
-      >
-        {process.env.NODE_ENV !== 'production' && <Debug />}
+    <>
+      <bib-gtm></bib-gtm>
+      <MDXProvider components={commonComponents}>
+        <IconContext.Provider
+          value={{
+            size: '2rem',
+            color: theme.palette.grey['700'],
+          }}
+        >
+          {process.env.NODE_ENV !== 'production' && <Debug />}
 
-        <SkipTo href="#main-content">Aller au contenu</SkipTo>
+          <SkipTo href="#main-content">Aller au contenu</SkipTo>
 
-        <udem-urgence></udem-urgence>
-        <bib-avis bouton-fermer />
+          <udem-urgence></udem-urgence>
+          <bib-avis bouton-fermer />
 
-        {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
+          {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
 
-        {isSmall ? <QuickLinksSm /> : <QuickLinks />}
+          {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
-        {lvl > 1 && superHero && <SuperHero title={superHero.title} imageName={superHero.imageName} lvl={lvl} />}
+          {lvl > 1 && superHero && <SuperHero title={superHero.title} imageName={superHero.imageName} lvl={lvl} />}
 
-        <Container>{mainContent}</Container>
-        <Footer />
+          <Container>{mainContent}</Container>
+          <Footer />
 
-        <bib-consent></bib-consent>
-        <bib-clarity></bib-clarity>
-      </IconContext.Provider>
-    </MDXProvider>
+          <bib-consent></bib-consent>
+          <bib-clarity></bib-clarity>
+        </IconContext.Provider>
+      </MDXProvider>
+    </>
   )
 }
 
