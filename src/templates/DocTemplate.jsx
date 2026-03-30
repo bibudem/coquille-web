@@ -60,36 +60,34 @@ export default function PageTemplate({ pageContext, children, data, location }) 
   )
 
   return (
-    <>
-      <bib-gtm></bib-gtm>
-      <MDXProvider components={commonComponents}>
-        <IconContext.Provider
-          value={{
-            size: '2rem',
-            color: theme.palette.grey['700'],
-          }}
-        >
-          {process.env.NODE_ENV !== 'production' && <Debug />}
+    <MDXProvider components={commonComponents}>
+      <IconContext.Provider
+        value={{
+          size: '2rem',
+          color: theme.palette.grey['700'],
+        }}
+      >
+        {process.env.NODE_ENV !== 'production' && <Debug />}
 
-          <SkipTo href="#main-content">Aller au contenu</SkipTo>
+        <SkipTo href="#main-content">Aller au contenu</SkipTo>
 
-          <udem-urgence></udem-urgence>
+        <udem-urgence></udem-urgence>
 
-          {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
+        {isMedium ? <TopAppBarSm /> : <TopAppBar lvl={lvl} location={location} />}
 
-          {isSmall ? <QuickLinksSm /> : <QuickLinks />}
+        {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
-          <bib-avis bouton-fermer></bib-avis>
+        <bib-avis bouton-fermer></bib-avis>
 
-          {mainContent}
+        {mainContent}
 
-          <Footer />
+        <Footer />
 
-          <bib-consent></bib-consent>
-          <bib-clarity></bib-clarity>
-        </IconContext.Provider>
-      </MDXProvider>
-    </>
+        <bib-consent></bib-consent>
+        <bib-gtm></bib-gtm>
+        <bib-clarity></bib-clarity>
+      </IconContext.Provider>
+    </MDXProvider>
   )
 }
 
