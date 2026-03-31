@@ -30,7 +30,7 @@ export function Head({ pageContext }) {
     <>
       <html lang="fr" />
       <title>{frontmatter?.title}</title>
-      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1.3.10/dist/bib-consent-server.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-consent-server.js"></script>
       <meta name="robots" content="noindex"></meta>
     </>
   )
