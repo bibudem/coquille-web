@@ -24,7 +24,7 @@ export function SecondaryNav({ currentLocation, navigationOrder = false, ...rest
     if (secondaryNavData && currentLocation) {
       const rootPath = `/${currentLocation.pathname
         .split('/')
-        .filter((_) => _) // Quick way to get rid of falsy items in the array
+        .filter(Boolean) // Quick way to get rid of falsy items in the array
         .shift()}/`
       const rootNode = secondaryNavData.find(({ path }) => path === rootPath)
 
