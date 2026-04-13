@@ -28,9 +28,11 @@ function getCurrentPageLevel(location) {
 }
 
 export default function PageTemplate({ pageContext, children, data, location }) {
+  console.log('############################## PageTemplate data:', data)
   const isSmall = useSmall('md')
   const isMedium = useSmall('lg')
   const theme = useTheme()
+  const [currentPath, setCurrentPath] = useState(null)
   const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
   const [lvl, setLvl] = useState(getCurrentPageLevel(location))
 
@@ -38,6 +40,12 @@ export default function PageTemplate({ pageContext, children, data, location }) 
   const isHomePage = location.pathname === '/' || location.pathname === ''
 
   const { superHero } = pageContext.frontmatter
+
+  useEffect(() => {
+    const relativePath = data.file.relativePath
+    const pathFromRelative = `/${relativePath.replace(/\.mdx?$/, '').replace(/index$/, '')}`
+    setCurrentPath(pathFromRelative)
+  }, [data])
 
   useEffect(() => {
     setLvl(getCurrentPageLevel(location))
@@ -170,10 +178,8 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
 export const query = graphql`
   query ($id: String!) {
-    mdx(id: { eq: $id }) {
-      frontmatter {
-        title
-      }
+    file(id: { eq: $id }) {
+      relativePath
     }
   }
 `
