@@ -1,6 +1,8 @@
-import { Box, ButtonBase } from '@mui/material'
+import { Box, ButtonBase, SvgIcon } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { useSmall } from '@/hooks/use-small'
+import ByIcon from '@/icons/by.svg'
+import CcIcon from '@/icons/cc.svg'
 import FooterLink from './FooterLink'
 import FooterContainer from './FooterContainer'
 
@@ -12,8 +14,10 @@ function Copyright() {
 
   return (
     <div {...namespaces} style={{ fontSize: 'inherit', fontWeight: 'inherit', lineHeight: 'inherit' }}>
-      <FooterLink to="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">
-        <span property="dct:title">Ce site</span> est sous licence CC BY 4.0
+      <FooterLink to="/conditions-utilisation" target="_blank" rel="license noopener noreferrer">
+        <SvgIcon component={CcIcon} inheritViewBox sx={{ width: '1ex', height: '1ex', marginRight: '4px', fill: 'currentColor', circle: { fill: 'none' } }} />
+        <SvgIcon component={ByIcon} inheritViewBox sx={{ width: '1ex', height: '1ex', marginRight: '4px', fill: 'currentColor', circle: { fill: 'none' } }} />
+        <span property="dct:title">Sauf indications contraires, ce site</span> est sous licence CC BY 4.0
       </FooterLink>
     </div>
   )
