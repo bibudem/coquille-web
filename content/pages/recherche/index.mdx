@@ -8,7 +8,7 @@ import PorteeScientifique from '../images/portee-scientifique.webp'
 import Bibliothecaire from '../images/bibliothecaire-montage.webp'
 import CommentIcon from '@mui/icons-material/Comment'
 import { ArrowRightCircleIcon, SofiaIcon } from '@/components/CustomIcons'
-import { UserFocusIcon, CubeTransparentIcon, HandDepositIcon, LaptopIcon, DownloadSimpleIcon, PlugsIcon, MagnifyingGlassIcon, PencilSimpleIcon, TextAlignJustifyIcon, BinocularsIcon, TreasureChestIcon, GraphIcon, ArticleIcon, CheckSquareOffsetIcon, ShareNetworkIcon, HandshakeIcon, RepeatIcon, CompassRoseIcon, ChatTeardropTextIcon, CheckCircleIcon, PathIcon, PlantIcon } from '@phosphor-icons/react'
+import { ArrowsOutIcon, ArticleIcon, BinocularsIcon, ChatTeardropTextIcon, CheckCircleIcon, CheckSquareOffsetIcon, CompassRoseIcon, CubeTransparentIcon, DownloadSimpleIcon, EyeIcon, GraduationCapIcon, GraphIcon, HandDepositIcon, HandshakeIcon, LaptopIcon, LockSimpleIcon, LockSimpleOpenIcon, MagnifyingGlassIcon, PanoramaIcon, PathIcon, PencilSimpleIcon, PlantIcon, PlugsIcon, RepeatIcon, ShareNetworkIcon, TextAlignJustifyIcon, ToolboxIcon, TreasureChestIcon, UserFocusIcon } from '@phosphor-icons/react'
 
 <Box>
 <SuperHero2
@@ -30,28 +30,10 @@ import { UserFocusIcon, CubeTransparentIcon, HandDepositIcon, LaptopIcon, Downlo
   </HeroWithImage>
 </Section>
 
-<Section bg='bleu100'>
-<Typography component="h2" variant="h2">Diffusez et faites rayonner vos connaissances scientifiques</Typography> 
-<RichList>
-    <RichListItemWithLink
-      title="Rédiger et produire"
-      description="Nous vous proposons une panoplie de ressources et d'aides à la rédaction savante et à la production d'outils de diffusion de vos recherches."
-      href="/recherche/rediger"
-    />
-    <RichListItemWithLink 
-      title="Diffuser vos savoirs"
-      description="Nous vous proposons une multitude de services pour optimiser la publication, la diffusion et la conservation des résultats de vos travaux de recherche."
-      href="/recherche/diffuser/"
-    />
-  </RichList>
-
-</Section>
-
-
 <Section>
   <Carousel1
-    title={<Typography component="h2" variant="h2">La science ouverte et le libre accès, une culture institutionnelle</Typography>}
-    description="Nous sommes activement engagées dans le projet de la science ouverte, qui vise à démocratiser l’accès à la science tout en favorisant la réutilisation des savoirs: libre accès, données ouvertes, logiciels ouverts, science citoyenne, etc. "
+    title={<Typography component="h2" variant="h2">Obtenez du soutien pour participer à la science ouverte et publier en libre accès</Typography>}
+    description="Participez à la science ouverte, un effort international pour démocratiser l’accès à la science tout en favorisant la réutilisation des savoirs en publiant vos travaux et données en libre accès. Nous sommes là pour vous conseiller et vous accompagner dans le choix des licences, des plateformes, et tout au long du processus de diffusion."
   >
     <CardWithIcon
       color="vertFonce"
@@ -85,7 +67,148 @@ import { UserFocusIcon, CubeTransparentIcon, HandDepositIcon, LaptopIcon, Downlo
 
 </Section>
 
-<Section bg='bleu600'>
+<Section bg='rose300'>
+  <Carousel1
+    title={<Typography component="h2" variant="h2">Diffusez et faites rayonner vos connaissances scientifiques</Typography>}
+    description={
+      <>
+        <Typography sx={{pb: 1.5}}>Faire rayonner votre recherche dans un monde de surabondance d’information et de mésinformation, c’est une tâche pour laquelle nous pouvons vous aider! Notre équipe vous accompagne pour le choix des plateformes les plus appropriées et de votre stratégie de diffusion. Vous pourrez ainsi optimiser vos efforts de publication ainsi que la diffusion, la découvrabilité et la conservation des résultats de vos travaux de recherche.</Typography>
+      </>
+    }
+  >
+    <CardWithIcon
+      title="Publier un article"
+      Icon={HandDepositIcon}
+      href="/recherche/diffuser/#publier-un-article"
+    />
+    <CardWithIcon
+      title="Diffuser en libre accès"
+      Icon={LockSimpleOpenIcon}
+      href="/recherche/diffuser/#diffuser-en-libre-acces"
+    />
+    <CardWithIcon
+      title="Soutien à l'édition savante"
+      Icon={CompassRoseIcon}
+      href="/recherche/diffuser/#explorer-les-formats-de-diffusion"
+    />
+    <CardWithIcon
+      title="Explorer les formats de diffusion"
+      Icon={ArrowsOutIcon}
+      href="/recherche/diffuser/#explorer-les-formats-de-diffusion"
+    />
+    <CardWithIcon
+      title="Soutien aux ressources éducatives libres (REL)"
+      Icon={GraduationCapIcon}
+      href="/recherche/diffuser/#soutien-aux-ressources-educatives-libres-rel"
+    />
+  </Carousel1>
+
+</Section>
+
+<Section bg="bleu200">
+  <HeroWithText2
+    leftColl={
+      <>
+        <Typography component='h2' variant="h2" id="enrichissez-votre-recherche">Enrichissez votre recherche avec nos ressources et nos aides à la rédaction et à la production de communication savante</Typography>
+        <Typography>Que vous ayez seulement besoin de mettre à jour votre corpus avec les dernières publications ou au contraire que vous soyez à la première étape de votre parcours de recherche, nos bibliothécaires peuvent vous accompagner dans tout le processus et vous aiguiller vers les sources les plus pertinentes pour répondre à votre question de recherche.</Typography>
+      </>
+    }
+    leftFooter={
+      <Button primary href="/recherche/diffuser/">Consulter notre page Rédiger et produire</Button>
+    }
+    rightColl={
+      <>
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <EyeIcon color='#52b782' size={50} />
+              </Grid>
+              Veille documentaire
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <ShareNetworkIcon color='#52b782' size={50} />
+              </Grid>
+              Gestion de bibliographies
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+              }}
+            >
+
+              <Grid size="auto">
+                <ToolboxIcon color='#52b782' size={50} />
+              </Grid>
+
+              Guides pratiques
+
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                p: 2,
+                fontWeight: 600,
+              }}
+            >
+              <Grid size="auto">
+                <PanoramaIcon color='#52b782' size={50} />
+              </Grid>
+              Cours PLU6058 - Rechercher et exploiter la documentation
+            </Box>
+          </Grid>
+        </Grid>
+      </>
+    
+    }
+  />
+
+</Section>
+
+<Section bg='vertFonce'>
+
+  <Typography component="h2" variant="h2" id="produisez-syntheses-connaissance">Produisez des synthèses de connaissances</Typography>
+
+  <Typography>Nous offrons un service de soutien pour la réalisation des synthèses de la connaissance, avec un niveau d’implication variable selon vos besoins.</Typography>
+
+  <RichList>
+    <RichListItemWithLink
+      title="Consultation"
+      color='vertFonce'
+      href="/nous-joindre/notre-equipe"
+      description="Service-conseil pour l’élaboration d’une synthèse de connaissance telle qu’une revue systématique, un examen de la portée ou une revue de littérature. Votre bibliothécaire disciplinaire pourra déterminer avec vous quels sont vos besoins. Consultez notre répertoire pour trouver vos bibliothécaires disciplinaires."
+    />
+    <RichListItemWithLink
+      title="Collaboration"
+      color='vertFonce'
+      href="https://umontreal.libwizard.com/id/1263c5dd74d6a3183cd489d87cc0b04d"
+      description="Service de soutien où votre bibliothécaire est responsable de la conception et de l'exécution des recherches bibliographiques. Pour l’instant, le service de collaboration s’adresse aux personnes et équipes qui souhaitent mener une synthèse des connaissances dans le but final de publier un article scientifique. Pour utiliser le service, il faut soit étudier ou faire de la recherche à l’UdeM, soit être membre du personnel. Une validation du statut actif sera effectuée."
+    />
+  </RichList>
+
+</Section>
+
+<Section bg='vertPale'>
 
   <HeroWithImage
     Image={PorteeScientifique}
@@ -104,7 +227,6 @@ Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes b
 
 </HeroWithImage>
 </Section>
-
 
 <Section bg='bleu200'>
   <HeroWithText 
@@ -133,27 +255,32 @@ Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes b
   >
     <CardWithIcon
       title="Utilisation responsable"
+      color="vertFonce"
       Icon={PlantIcon}
       href="https://boite-outils.bib.umontreal.ca/c.php?g=743753&p=5377616"
     />
-        <CardWithIcon
+    <CardWithIcon
       title="Explorer les outils"
+      color="vertFonce"
       Icon={CompassRoseIcon}
       href="https://boite-outils.bib.umontreal.ca/c.php?g=743753&p=5384062"
 
     />
     <CardWithIcon
       title="Interroger l'IAg"
+      color="vertFonce"
       Icon={ChatTeardropTextIcon}
       href="https://boite-outils.bib.umontreal.ca/c.php?g=743753&p=5377612"
     />
-        <CardWithIcon
+    <CardWithIcon
       title="Évaluer les contenus générés"
+      color="vertFonce"
       Icon={CheckCircleIcon}
       href="https://boite-outils.bib.umontreal.ca/c.php?g=743753&p=5377613"
     />
-            <CardWithIcon
-      title="Citer, déclarer, documenter "
+    <CardWithIcon
+      title="Citer, déclarer, documenter"
+      color="vertFonce"
       Icon={PathIcon}
       href="https://boite-outils.bib.umontreal.ca/c.php?g=743753&p=5377614"
     />
@@ -164,7 +291,7 @@ Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes b
   <HeroWithText2
     leftColl={
       <>
-        <Typography component='h2' variant="h2" id="droit-auteur">Le droit d’auteur en recherche</Typography>
+        <Typography component='h2' variant="h2" id="droit-auteur">Comprenez le droit d’auteur en contexte de recherche</Typography>
         <Typography>Que ce soit pour vous aider à protéger les œuvres et les publications issues de vos recherches, utiliser du contenu protégé dans vos travaux ou bien diffuser vos résultats le plus démocratiquement et largement possible, nos spécialistes sont là pour vous outiller et vous accompagner. </Typography>
       </>
     }
@@ -248,7 +375,7 @@ Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes b
 
 <Section>
   <Carousel1
-    title={<Typography component="h2" variant="h2">Gestion des données de recherche</Typography>}
+    title={<Typography component="h2" variant="h2">Gérez vos données de recherche</Typography>}
     description={
       <>
         <Typography sx={{pb: 1.5}}>Les organismes subventionnaires l’exigent, vous devez porter une attention particulière au cycle de vie de vos données de recherche. Nous vous aidons à y voir plus clair, de l’élaboration d’un plan de gestion de données jusqu’au partage dans un dépôt fiable et reconnu.</Typography>
@@ -258,22 +385,26 @@ Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes b
   >
     <CardWithIcon
       title="Rédiger un plan de gestion de données"
+      color="vertFonce"
       Icon={PencilSimpleIcon}
       href="https://boite-outils.bib.umontreal.ca/recherche/gestion-donnees-recherche?p=5243845"
     />
-        <CardWithIcon
+    <CardWithIcon
       title="Normaliser et documenter les données avec des métadonnées"
+      color="vertFonce"
       Icon={TextAlignJustifyIcon}
       href="https://boite-outils.bib.umontreal.ca/recherche/gestion-donnees-recherche?p=5343034"
 
     />
     <CardWithIcon
       title="Partager et trouver des données dans un dépôt"
+      color="vertFonce"
       Icon={MagnifyingGlassIcon}
       href="https://boite-outils.bib.umontreal.ca/recherche/gestion-donnees-recherche?p=5243849"
     />
     <CardWithIcon
       title="Accéder au dépôt institutionnel Borealis.ca"
+      color="vertFonce"
       Icon={HandDepositIcon}
       href="https://borealisdata.ca/dataverse/montreal"
     />
@@ -304,7 +435,7 @@ Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes b
 
 <Section bg='vertFonce'>
 
-  <Typography component="h2" variant="h2" id="services-cycles-superieurs">Nos services pour les cycles supérieurs </Typography>
+  <Typography component="h2" variant="h2" id="services-cycles-superieurs">Nos services pour les cycles supérieurs</Typography>
 
   <RichList>
     <RichListItemWithLink
@@ -313,7 +444,7 @@ Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes b
       title="Matinées de rédaction"
       description="Travaillez efficacement dans un environnement structuré grâce aux Matinées de rédaction. Les séances sont divisées en cycles de rédaction, suivis de pauses d'échanges informels."
     />
-        <RichListItemWithLink
+    <RichListItemWithLink
       color='vertFonce'
       href="https://boite-outils.bib.umontreal.ca/c.php?g=743753&p=5377614"
       title="Aide à l'utilisation responsable de l'IAg"
@@ -339,7 +470,7 @@ Nous pouvons vous conseiller et vous guider dans l’utilisation des méthodes b
     />
     <RichListItemWithLink
       color='vertFonce'
-      href="../espaces/"
+      href="/espaces/"
       title="Espaces dédiés aux cycles supérieurs"
       description="Salles individuelles réservables, salles communes équipées de casiers pour votre documentation: l’offre varie d’une bibliothèque à l’autre, consultez le répertoire!"
     />
