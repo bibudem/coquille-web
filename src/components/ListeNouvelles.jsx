@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState, memo } from 'react'
 import { Box, List, ListItem, ListItemAvatar, CircularProgress, Button, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { CalendarBlank, ArrowSquareOut, BookOpen, ArrowRight } from '@phosphor-icons/react'
 import Link from '@/components/Link'
@@ -7,17 +7,17 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { ArrowUpRightCircleIcon, ArrowRightCircleIcon } from '@/components/CustomIcons'
 
 // Composants mémoïsés
-const Header = React.memo(({ children }) => (
+const Header = memo(({ children }) => (
   <Typography component="h2" variant="h2">
     {children}
   </Typography>
 ))
 
-const Title = React.memo(({ children }) => <Typography variant="h4">{children}</Typography>)
+const Title = memo(({ children }) => <Typography variant="h4">{children}</Typography>)
 
-const Excerpt = React.memo(({ children }) => <Typography variant="body1">{children}</Typography>)
+const Excerpt = memo(({ children }) => <Typography variant="body1">{children}</Typography>)
 
-const Upper = React.memo(({ children }) => {
+const Upper = memo(({ children }) => {
   return (
     <Box
       sx={(theme) => ({
@@ -65,7 +65,7 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
           }
         }
       }
-      allUdemNews(sort: { fields: pubDate, order: DESC }) {
+      allUdemNews(sort: { pubDate: DESC }) {
         nodes {
           id
           title
@@ -73,6 +73,7 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
           description
           pubDate # champ string ISO, formatted en JS
           enclosure
+          type
         }
       }
       images: allFile(filter: { sourceInstanceName: { eq: "nouvelles" }, internal: { mediaType: { glob: "image/*" } } }) {
@@ -90,6 +91,7 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
     try {
       // Extraction nouvelles locales
       const localNews = data.allFile.nodes
+        .filter((node) => node.childMdx.frontmatter.type === 'interne')
         .map((node) => {
           const mdx = node.childMdx
           if (!mdx) return null
