@@ -91,16 +91,18 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
     try {
       // Extraction nouvelles locales
       const localNews = data.allFile.nodes
-        .filter((node) => node.childMdx.frontmatter.type === 'interne')
+        .filter(({ childMdx }) => childMdx.frontmatter.type === 'interne')
         .map((node) => {
           const mdx = node.childMdx
           if (!mdx) return null
+
+          const { id } = node
 
           const imageNode = data.images.nodes.find((img) => img.name === mdx.frontmatter.newsImage?.name)
           const year = mdx.frontmatter.date ? new Date(mdx.frontmatter.date).getFullYear() : null
           const link = year ? `/nouvelles/${year}/${mdx.frontmatter.slug}` : `/nouvelles/${mdx.frontmatter.slug}`
           return {
-            id: node.id,
+            id,
             type: 'interne',
             title: mdx.frontmatter.title,
             excerpt: mdx.excerpt,
