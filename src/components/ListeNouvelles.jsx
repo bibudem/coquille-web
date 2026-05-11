@@ -1,9 +1,9 @@
 import { useEffect, useState, memo } from 'react'
 import { Box, List, ListItem, ListItemAvatar, CircularProgress, Button, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { CalendarBlank, ArrowSquareOut, BookOpen, ArrowRight } from '@phosphor-icons/react'
-import Link from '@/components/Link'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import Link from '@/components/Link'
 import { ArrowUpRightCircleIcon, ArrowRightCircleIcon } from '@/components/CustomIcons'
 
 // Composants mémoïsés
@@ -54,6 +54,7 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
             excerpt(pruneLength: 200)
             frontmatter {
               date # ISO string
+              newsUrl
               newsImage {
                 name
                 alt
@@ -91,16 +92,18 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
     try {
       // Extraction nouvelles locales
       const localNews = data.allFile.nodes
-        .filter((node) => node.childMdx.frontmatter.type === 'interne')
+        .filter(({ childMdx }) => childMdx.frontmatter.type === 'interne')
         .map((node) => {
           const mdx = node.childMdx
           if (!mdx) return null
+
+          const { id } = node
 
           const imageNode = data.images.nodes.find((img) => img.name === mdx.frontmatter.newsImage?.name)
           const year = mdx.frontmatter.date ? new Date(mdx.frontmatter.date).getFullYear() : null
           const link = year ? `/nouvelles/${year}/${mdx.frontmatter.slug}` : `/nouvelles/${mdx.frontmatter.slug}`
           return {
-            id: node.id,
+            id,
             type: 'interne',
             title: mdx.frontmatter.title,
             excerpt: mdx.excerpt,
@@ -120,16 +123,57 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
         })
         .filter(Boolean)
 
+      // Extraction nouvelles externes
+      const externalNews = data.allFile.nodes
+        .filter(({ childMdx }) => childMdx.frontmatter.type === 'externe')
+        .map((node) => {
+          const { childMdx } = node
+          if (!childMdx) {
+            return null
+          }
+
+          const { id } = node
+          const { frontmatter, excerpt } = childMdx
+          const { title, newsUrl: link, date = null, newsImage } = frontmatter
+
+          const newsDate = date ? new Date(date) : null
+
+          const imageNode = data.images.nodes.find((img) => img.name === newsImage?.name)
+          const year = date ? new Date(date).getFullYear() : null
+
+          return {
+            id,
+            type: 'externe',
+            title,
+            excerpt,
+            // garder date brute ISO pour tri
+            date,
+            formattedDate: newsDate
+              ? new Date(newsDate).toLocaleDateString('fr', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })
+              : '',
+            link,
+            image: imageNode?.childrenImageSharp?.[0]?.gatsbyImageData || null,
+            imageAlt: newsImage?.alt || '',
+          }
+        })
+        .filter(Boolean)
+
       // Extraction nouvelles UdeM
       const udemNews = data.allUdemNews.nodes.map((node) => {
         // formater date pubDate en string locale FR
-        const dateObj = node.pubDate ? new Date(node.pubDate) : null
+        const dateObj = node.pubDate ? new Date(`${node.pubDate}T00:00:00-04:00`) : null
+        const { id, description, enclosure: imageUrl = null, link, pubDate: date = null, title } = node
+
         return {
-          id: node.id,
+          id,
           type: 'udem',
-          title: node.title,
-          description: node.description,
-          date: node.pubDate || null,
+          title: `[udem] ${title}`,
+          description,
+          date,
           formattedDate: dateObj
             ? dateObj.toLocaleDateString('fr', {
                 year: 'numeric',
@@ -137,13 +181,13 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
                 day: 'numeric',
               })
             : '',
-          link: node.link,
-          imageUrl: node.enclosure || null,
+          link,
+          imageUrl,
         }
       })
 
       // Fusionner et trier par date décroissante
-      const combinedNews = [...localNews, ...udemNews].sort((a, b) => {
+      const combinedNews = [...localNews, ...externalNews].sort((a, b) => {
         const dateA = a.date ? new Date(a.date).getTime() : 0
         const dateB = b.date ? new Date(b.date).getTime() : 0
         return dateB - dateA
@@ -153,6 +197,7 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
     } catch (err) {
       setError('Erreur lors du chargement des nouvelles')
       console.error(err)
+      throw err
     } finally {
       setLoading(false)
     }
@@ -368,7 +413,7 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
                   <Upper>{item.formattedDate}</Upper>
                   <Link
                     to={item.link}
-                    target={item.type === 'udem' ? '_blank' : undefined}
+                    dataTest="ici"
                     sx={{
                       textDecoration: 'none',
                       color: 'inherit!important',
