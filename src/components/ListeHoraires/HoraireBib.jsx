@@ -4,6 +4,7 @@ import slugify from '@sindresorhus/slugify'
 import { LinkIcon } from '@phosphor-icons/react'
 import BlocHoraire from './BlocHoraire'
 import { useSmall } from '@/hooks/use-small'
+import { Link } from "gatsby"
 
 const A = styled('a')({
   color: 'inherit',
@@ -66,9 +67,13 @@ function Title({ title, sticky = false }) {
       >
         {title}
       </Typography>
-      <A className="anchor" href={`#${id}`} aria-label={`Permalien: ${title}`}>
+      {/*<A className="anchor" href={`#${id}`} aria-label={`Permalien: ${title}`}>
         <LinkIcon size="1.125rem" color="currentColor" weight="bold" />
-      </A>
+      </A>*/}
+
+      <Link className="anchor" to={`/nous-joindre/#${id}`} aria-label={`Permalien: ${title}`}>
+        <LinkIcon size="1.125rem" color="currentColor" weight="bold" />
+      </Link>
     </Box>
   )
 }
