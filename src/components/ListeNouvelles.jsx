@@ -153,6 +153,7 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric',
+                  timeZone: 'UTC',
                 })
               : '',
             link,
@@ -171,7 +172,7 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
         return {
           id,
           type: 'udem',
-          title: `[udem] ${title}`,
+          title,
           description,
           date,
           formattedDate: dateObj
@@ -179,6 +180,7 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
+                timeZone: 'UTC',
               })
             : '',
           link,
