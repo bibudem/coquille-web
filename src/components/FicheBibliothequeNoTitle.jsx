@@ -127,7 +127,8 @@ export default function FicheBibliothequeNoTitle({ title, id, codeBib, blocHorai
               </Col>
             </Grid>
           )}
-          <Grid size={{ xs: 10, sm: 5, md: 4 }} sx={{ padding: '1.3333rem 0 1.3333rem 1.3333rem' }}>
+          {/*<Grid size={{ xs: 10, sm: 5, md: 4 }} sx={{ padding: '1.3333rem 0 1.3333rem 1.3333rem' }}>*/}
+          <Grid size={{ xs: 10, sm: 5, md: 6 }} sx={{ padding: '1.3333rem 0 1.3333rem 1.3333rem' }}>
             <Col>
               <Bloc title="Adresse" Icon={MapTrifoldIcon}>
                 {blocAdresse}

@@ -57,7 +57,7 @@ export default function TitleHoraireBib({ title, sticky = false }) {
             width: 240,
           },
           ['@media (min-width: 1370px) ']: {
-            width: 270,
+            width:750//270,
           },
           [theme.breakpoints.up('xl')]: {
             width: 300,

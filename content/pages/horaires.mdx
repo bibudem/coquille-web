@@ -17,25 +17,7 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
 />
 
 <ListeHoraires>
-  {/*<HoraireBib codeBib="am" />
-  <HoraireBib codeBib="laval"/>
-  <HoraireBib codeBib="conservation"/>
-
-  <HoraireBib codeBib="marcel-laurin"/>
-<h5>Le Centre de conservation – 101, boul. Marcel-Laurin est ouvert sur rendez-vous seulement. Contactez-nous avant de vous déplacer. </h5>
-  <HoraireBib codeBib="dr"/>
-  <HoraireBib codeBib="sciences"/>
-  <HoraireBib codeBib="ki"/>
-  <HoraireBib codeBib="ss"/>
-  <HoraireBib codeBib="cs"/>
-  <HoraireBib codeBib="pa"/>
-  <HoraireBib codeBib="mi"/>
-  <HoraireBib codeBib="mv"/>
-  <HoraireBib codeBib="mu"/>
-  <HoraireBib codeBib="antenne-paramedicale"/>
-  <HoraireBib codeBib="sa"/>
-  <HoraireBib codeBib="ed"/>*/}
-
+  
 <TitleHoraireBib title="Aménagement" />
 <HorairesHorizontalTabs
     tabALabel="Horaires"
@@ -190,7 +172,6 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
 </HorairesHorizontalTabs>
 
 <h5>Le Centre de conservation – 101, boul. Marcel-Laurin est ouvert sur rendez-vous seulement. Contactez-nous avant de vous déplacer. </h5>
-
 <TitleHoraireBib title="Droit" />
 <HorairesHorizontalTabs
     tabALabel="Horaires"
@@ -280,7 +261,7 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
 </HorairesHorizontalTabs>
 
 <TitleHoraireBib title="Kinésiologie" />
-<HorairesHorizontalTabs
+  <HorairesHorizontalTabs
     tabALabel="Horaires"
     tabBLabel="Emplacement"
   >
@@ -288,35 +269,34 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
       
   <FicheBibliothequeNoTitle
       title="Kinésiologie"
-  id="kinesiologie"
-  codeBib="ki"
-  blocEspaces={false}
-  blocAdresse={
-    <>
-      <p>Bibliothèque de kinésiologie</p>
-      <p>Centre d'éducation physique et des sports (CEPSUM)</p>
-      <p>2100, boul. Édouard-Montpetit, 8e étage, salle 8259</p>
-      <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.508257,-73.612766&z=15&t=m&hl=en&gl=US&mapclient=embed&q=CEPSUM+2100+Edouard+Montpetit+Blvd+Montreal,+QC+H3T+1J4" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
-    </>
-  }
-  blocNousJoindre={
-    <>
-      <p>Accueil et prêt</p>
-      <ul style={{ marginLeft: "1em" }}>
-        <li>514 343-6111, poste 3792</li>
-        <li><Link to="mailto=pret-kinesiologie@bib.umontreal.ca">pret-kinesiologie@bib.umontreal.ca</Link></li>
-      </ul>
-      <p>Référence</p>
-      <ul style={{ marginLeft: "1em" }}>
-        <li><Link to="sante@bib.umontreal.ca">sante@bib.umontreal.ca</Link></li>
-      </ul>
-      <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#kinesiologie" Icon>Répertoire du personnel</Link></p>
-    </>
-  }
+      id="kinesiologie"
+      codeBib="ki"
+      blocEspaces={false}
+      blocAdresse={
+        <>
+          <p>Bibliothèque de kinésiologie</p>
+          <p>Centre d'éducation physique et des sports (CEPSUM)</p>
+          <p>2100, boul. Édouard-Montpetit, 8e étage, salle 8259</p>
+          <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.508257,-73.612766&z=15&t=m&hl=en&gl=US&mapclient=embed&q=CEPSUM+2100+Edouard+Montpetit+Blvd+Montreal,+QC+H3T+1J4" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+        </>
+      }
+      blocNousJoindre={
+        <>
+          <p>Accueil et prêt</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-6111, poste 3792</li>
+            <li><Link to="mailto=pret-kinesiologie@bib.umontreal.ca">pret-kinesiologie@bib.umontreal.ca</Link></li>
+          </ul>
+          <p>Référence</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li><Link to="sante@bib.umontreal.ca">sante@bib.umontreal.ca</Link></li>
+          </ul>
+          <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#kinesiologie" Icon>Répertoire du personnel</Link></p>
+        </>
+      }
   >
   </FicheBibliothequeNoTitle>
 </HorairesHorizontalTabs>
-
 <TitleHoraireBib title="Lettres et sciences humaines" />
 <HorairesHorizontalTabs
     tabALabel="Horaires"
@@ -479,7 +459,6 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
   >
   </FicheBibliothequeNoTitle>
 </HorairesHorizontalTabs>
-
 <TitleHoraireBib title="Médecine vétérinaire" />
 <HorairesHorizontalTabs
     tabALabel="Horaires"
