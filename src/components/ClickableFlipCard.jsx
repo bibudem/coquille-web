@@ -197,7 +197,7 @@ export const HorizontalCardList = ({ items = [] }) => {
           style={{
             width: '100%',
             marginTop: '1rem',
-            background: '#f8fafc',
+            background: '#00407f',
             borderTop: '1px solid #e2e8f0',
             borderBottom: '1px solid #e2e8f0',
             padding: '2rem 0',

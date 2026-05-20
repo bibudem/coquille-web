@@ -24,6 +24,7 @@ const rose100 = '#fcf3f1'
 const rougeOrange = '#f04e24'
 const vertPale = '#52b782'
 const vertFonce = '#024244'
+const violetFonce= '#5f34e7'  //'#5539cc'
 
 const LIGHTEN_FACTOR = .4
 const DARKEN_FACTOR = .3
@@ -69,6 +70,7 @@ export const secondaryColors = {
 	rougeOrange: getColorPalette(rougeOrange),
 	vertFonce: getColorPalette(vertFonce),
 	vertPale: getColorPalette(vertPale),
+	violetFonce:getColorPalette(violetFonce),
 }
 
 const tokens = {
