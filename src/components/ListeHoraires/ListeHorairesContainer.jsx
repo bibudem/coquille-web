@@ -14,7 +14,7 @@ const normalizeString = (str) => {
 
 export default function ListeHorairesContainer({ children, searchTerm = '' }) {
   const location = useLocation()
-
+  
   useEffect(() => {
     if (location.hash) {
       // Petit délai pour s'assurer que tout est rendu

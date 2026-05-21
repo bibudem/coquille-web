@@ -6,10 +6,9 @@ import {ArrowSquareOutIcon} from '@phosphor-icons/react';
 
 export const HorairesHorizontalTabs = ({ 
   defaultTab = 'A',
+  codeBib='',
   onTabChange = null,
   children = null,
-  /*componentA = DefaultComponentA,
-  componentB = DefaultComponentB,*/
   componentA = null,
   componentB = null,
   componentAProps = {},

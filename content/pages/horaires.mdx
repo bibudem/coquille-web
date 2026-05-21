@@ -16,130 +16,131 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
   imageName="horaire"
 />
 
+
 <ListeHoraires>
-  
+
 <TitleHoraireBib title="Aménagement" />
 <HorairesHorizontalTabs
+    codeBib="am"
     tabALabel="Horaires"
     tabBLabel="Emplacement"
     >
     <HoraireBibNoTitle codeBib="am" />
-      
     <FicheBibliothequeNoTitle
-    title="Aménagement"
-    id="amenagement"
-    codeBib="am"
-    blocEspaces={false}
-    blocAdresse={
-      <>
-        <p>Bibliothèque d'aménagement</p>
-        <p>Pavillon de la Faculté de l'aménagement</p>
-        <p>2940, chemin de la Côte-Sainte-Catherine, salle 1162</p>
-        <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps/place/Pavillon+de+la+Facult%C3%A9+de+I'am%C3%A9nagement,+2940+Chem.+de+la+C%C3%B4te-Sainte-Catherine,+Montr%C3%A9al,+QC+H3S+2C2,+Canada/@45.504475,-73.620621,4251m/data=!3m1!1e3!4m6!3m5!1s0x4cc91992da0f9677:0xda3129520f89d791!8m2!3d45.504475!4d-73.6206208!16s%2Fg%2F1tghp63h?hl=en&entry=ttu&g_ep=EgoyMDI1MDQwOS4wIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
-      </>
-    }
-    blocNousJoindre={
-      <>
-        <p>Comptoir de prêt, réserve de cours</p>
-        <ul style={{ marginLeft: "1em" }}>
-          <li>514 343-6111, poste 2737</li>
-          <li><Link to="mailto:pret-amenagement@bib.umontreal.ca">pret-amenagement@bib.umontreal.ca</Link></li>
-        </ul>
-        <p>Bureau de référence</p>
-        <ul style={{ marginLeft: "1em" }}>
-          <li>514 343-6111, poste 39837</li>
-          <li><Link to="mailto:amenagement@bib.umontreal.ca">amenagement@bib.umontreal.ca</Link></li>
-        </ul>
-        <p style={{ marginTop: "1em" }}><Link to="/nous-joindre/notre-equipe/#amenagement">Répertoire du personnel</Link></p>
-      </>
-    }
+      title="Aménagement"
+      id="amenagement"
+      codeBib="am"
+      blocEspaces={false}
+      blocAdresse={
+        <>
+          <p>Bibliothèque d'aménagement</p>
+          <p>Pavillon de la Faculté de l'aménagement</p>
+          <p>2940, chemin de la Côte-Sainte-Catherine, salle 1162</p>
+          <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps/place/Pavillon+de+la+Facult%C3%A9+de+I'am%C3%A9nagement,+2940+Chem.+de+la+C%C3%B4te-Sainte-Catherine,+Montr%C3%A9al,+QC+H3S+2C2,+Canada/@45.504475,-73.620621,4251m/data=!3m1!1e3!4m6!3m5!1s0x4cc91992da0f9677:0xda3129520f89d791!8m2!3d45.504475!4d-73.6206208!16s%2Fg%2F1tghp63h?hl=en&entry=ttu&g_ep=EgoyMDI1MDQwOS4wIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+        </>
+      }
+      blocNousJoindre={
+        <>
+          <p>Comptoir de prêt, réserve de cours</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-6111, poste 2737</li>
+            <li><Link to="mailto:pret-amenagement@bib.umontreal.ca">pret-amenagement@bib.umontreal.ca</Link></li>
+          </ul>
+          <p>Bureau de référence</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-6111, poste 39837</li>
+            <li><Link to="mailto:amenagement@bib.umontreal.ca">amenagement@bib.umontreal.ca</Link></li>
+          </ul>
+          <p style={{ marginTop: "1em" }}><Link to="/nous-joindre/notre-equipe/#amenagement">Répertoire du personnel</Link></p>
+        </>
+      }
   >
   </FicheBibliothequeNoTitle>
 </HorairesHorizontalTabs>
 
 <TitleHoraireBib title="Campus de Laval" />
 <HorairesHorizontalTabs
+    codeBib="laval"
     tabALabel="Horaires"
     tabBLabel="Emplacement"
     >
     <HoraireBibNoTitle codeBib="laval" />
-      
     <FicheBibliothequeNoTitle
-    title="Campus de Laval"
-  id="laval"
-  codeBib="laval"
-  blocEspaces={
-    <ul>
-      <li><Link to="https://calendrier.bib.umontreal.ca/space/17823">Didacthèque</Link></li>
-    </ul>
-  }
-  blocAdresse={
-    <>
-      <p>Bibliothèque du campus de l'UdeM à Laval</p>
-      <p>Campus de l'UdeM à Laval</p>
-      <p>1700, rue Jacques-Tétreault, salle 2200</p>
-      <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.55873,-73.721038&z=15&t=m&hl=en&gl=US&mapclient=embed&cid=4376201812221272737" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
-    </>
-  }
-  blocNousJoindre={
-    <>
-      <p>Comptoir de prêt</p>
-      <ul style={{ marginLeft: "1em" }}>
-        <li>514 343-6111, poste 45161</li>
-        <li><Link to="mailto:pret-laval@bib.umontreal.ca">pret-laval@bib.umontreal.ca</Link>
-        </li>
-      </ul>
-      <p>Bureau de référence</p>
-      <ul style={{ marginLeft: "1em" }}>
-        <li>514 343-6111, poste 45160</li>
-        <li><Link to="mailto:refepcaml@bib.umontreal.ca">refepcaml@bib.umontreal.ca</Link></li>
-      </ul>
-      <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#laval" Icon>Répertoire du personnel</Link></p>
-    </>
-  }
+      title="Campus de Laval"
+      id="laval"
+      codeBib="laval"
+      blocEspaces={
+        <ul>
+          <li><Link to="https://calendrier.bib.umontreal.ca/space/17823">Didacthèque</Link></li>
+        </ul>
+      }
+      blocAdresse={
+        <>
+          <p>Bibliothèque du campus de l'UdeM à Laval</p>
+          <p>Campus de l'UdeM à Laval</p>
+          <p>1700, rue Jacques-Tétreault, salle 2200</p>
+          <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.55873,-73.721038&z=15&t=m&hl=en&gl=US&mapclient=embed&cid=4376201812221272737" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+        </>
+      }
+      blocNousJoindre={
+        <>
+          <p>Comptoir de prêt</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-6111, poste 45161</li>
+            <li><Link to="mailto:pret-laval@bib.umontreal.ca">pret-laval@bib.umontreal.ca</Link>
+            </li>
+          </ul>
+          <p>Bureau de référence</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-6111, poste 45160</li>
+            <li><Link to="mailto:refepcaml@bib.umontreal.ca">refepcaml@bib.umontreal.ca</Link></li>
+          </ul>
+          <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#laval" Icon>Répertoire du personnel</Link></p>
+        </>
+      }
   >
   </FicheBibliothequeNoTitle>
 </HorairesHorizontalTabs>
 
 <TitleHoraireBib title="Centre de conservation Lionel-Groulx" />
 <HorairesHorizontalTabs
+    codeBib="conservation"
     tabALabel="Horaires"
     tabBLabel="Emplacement"
     >
     <HoraireBibNoTitle codeBib="conservation" />
       
     <FicheBibliothequeNoTitle
-    title="Centre de conservation Lionel-Groulx"
-    id="conservation"
-    codeBib="conservation"
-    blocEspaces= {false}
-    blocAdresse={
-    <>
-      <p>Centre de conservation Lionel-Groulx</p>
-      <p>Pavillon Lionel-Groulx</p>
-      <p>3150, rue Jean-Brillant</p>
-      <p>salle C-1017-16 (par la porte C-1059)</p>
-      <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.499267,-73.618308&z=15&t=m&hl=en&gl=US&mapclient=embed&cid=5977889247530305618" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
-    </>
-  }
-  blocNousJoindre={
-    <>
-      <p>Accueil et prêt</p>
-      <ul style={{ marginLeft: "1em" }}>
-        <li>514 343-6111, poste 42680</li>
-        <li><Link to="mailto:pret-conservation@bib.umontreal.ca">pret-conservation@bib.umontreal.ca</Link></li>
-      </ul>
-      <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#conservation" Icon>Répertoire du personnel</Link></p>
-    </>
-  }
+      title="Centre de conservation Lionel-Groulx"
+      id="conservation"
+      codeBib="conservation"
+      blocEspaces= {false}
+      blocAdresse={
+      <>
+        <p>Centre de conservation Lionel-Groulx</p>
+        <p>Pavillon Lionel-Groulx</p>
+        <p>3150, rue Jean-Brillant</p>
+        <p>salle C-1017-16 (par la porte C-1059)</p>
+        <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.499267,-73.618308&z=15&t=m&hl=en&gl=US&mapclient=embed&cid=5977889247530305618" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+      </>
+    }
+    blocNousJoindre={
+      <>
+        <p>Accueil et prêt</p>
+        <ul style={{ marginLeft: "1em" }}>
+          <li>514 343-6111, poste 42680</li>
+          <li><Link to="mailto:pret-conservation@bib.umontreal.ca">pret-conservation@bib.umontreal.ca</Link></li>
+        </ul>
+        <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#conservation" Icon>Répertoire du personnel</Link></p>
+      </>
+    }
   >
   </FicheBibliothequeNoTitle>
 </HorairesHorizontalTabs>
 
 <TitleHoraireBib title="Centre de conservation 101, boul. Marcel-Laurin" />
-<HorairesHorizontalTabs tabALabel="Horaires" tabBLabel="Emplacement">
-  <HoraireBibNoTitle codeBib="marcel-laurin" />
-      
+<HorairesHorizontalTabs codeBib="marcel-laurin" tabALabel="Horaires" tabBLabel="Emplacement">
+  <HoraireBibNoTitle codeBib="marcel-laurin" />  
   <FicheBibliothequeNoTitle
     title="Centre de conservation 101, boul. Marcel-Laurin"
     id="marcel-laurin"
@@ -174,11 +175,11 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
 <h5>Le Centre de conservation – 101, boul. Marcel-Laurin est ouvert sur rendez-vous seulement. Contactez-nous avant de vous déplacer. </h5>
 <TitleHoraireBib title="Droit" />
 <HorairesHorizontalTabs
+    codeBib="dr"
     tabALabel="Horaires"
     tabBLabel="Emplacement"
     >
     <HoraireBibNoTitle codeBib="dr" />
-      
     <FicheBibliothequeNoTitle
       title="Droit"
       id="droit"
@@ -216,11 +217,11 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
 
 <TitleHoraireBib title="Hubert-Reeves" />
 <HorairesHorizontalTabs
+    codeBib="sciences"
     tabALabel="Horaires"
     tabBLabel="Emplacement"
   >
   <HoraireBibNoTitle codeBib="sciences" />
-      
   <FicheBibliothequeNoTitle
       title="Hubert-Reeves"
       id="Hubert-reeves"
@@ -262,11 +263,11 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
 
 <TitleHoraireBib title="Kinésiologie" />
   <HorairesHorizontalTabs
+    codeBib="ki"
     tabALabel="Horaires"
     tabBLabel="Emplacement"
   >
   <HoraireBibNoTitle codeBib="ki" />
-      
   <FicheBibliothequeNoTitle
       title="Kinésiologie"
       id="kinesiologie"
@@ -297,8 +298,10 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
   >
   </FicheBibliothequeNoTitle>
 </HorairesHorizontalTabs>
+
 <TitleHoraireBib title="Lettres et sciences humaines" />
 <HorairesHorizontalTabs
+    codeBib="ss"
     tabALabel="Horaires"
     tabBLabel="Emplacement"
   >
@@ -345,6 +348,7 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
 
 <TitleHoraireBib title="Livres rares et collections spéciales" />
 <HorairesHorizontalTabs
+    codeBib="cs"
     tabALabel="Horaires"
     tabBLabel="Emplacement"
   >
@@ -382,6 +386,7 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
 
 <TitleHoraireBib title="Marguerite-d'Youville" />
 <HorairesHorizontalTabs
+    codeBib="pa"
     tabALabel="Horaires"
     tabBLabel="Emplacement"
   >
@@ -419,6 +424,7 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
 
 <TitleHoraireBib title="Mathématiques et informatique" />
 <HorairesHorizontalTabs
+    codeBib="mi"
     tabALabel="Horaires"
     tabBLabel="Emplacement"
   >
@@ -461,6 +467,7 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
 </HorairesHorizontalTabs>
 <TitleHoraireBib title="Médecine vétérinaire" />
 <HorairesHorizontalTabs
+    codeBib="mv"
     tabALabel="Horaires"
     tabBLabel="Emplacement"
   >
@@ -498,6 +505,7 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
 
 <TitleHoraireBib title="Musique" />
 <HorairesHorizontalTabs
+    codeBib="mu"
     tabALabel="Horaires"
     tabBLabel="Emplacement"
   >
@@ -540,6 +548,7 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
 
 <TitleHoraireBib title="Parc" />
 <HorairesHorizontalTabs
+    codeBib="antenne-paramedicale"
     tabALabel="Horaires"
     tabBLabel="Emplacement"
   >
@@ -571,6 +580,7 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
 
 <TitleHoraireBib title="Santé" />
 <HorairesHorizontalTabs
+    codeBib="sa"
     tabALabel="Horaires"
     tabBLabel="Emplacement"
   >
@@ -609,6 +619,7 @@ import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
 
 <TitleHoraireBib title="Thérèse-Gouin-Décarie" />
 <HorairesHorizontalTabs
+    codeBib="ed"
     tabALabel="Horaires"
     tabBLabel="Emplacement"
   >
