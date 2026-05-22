@@ -63,7 +63,6 @@ function Title({ children }) {
         lineHeight: 1.5,
         paddingTop: '1.5rem',
         color: 'var(--_title-color)',
-        wordSpacing: '-0.2em',
       }}
     >
       {children}
