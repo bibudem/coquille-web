@@ -14,7 +14,7 @@ const normalizeString = (str) => {
 
 export default function ListeHorairesContainer({ children, searchTerm = '' }) {
   const location = useLocation()
-
+  
   useEffect(() => {
     if (location.hash) {
       // Petit délai pour s'assurer que tout est rendu
@@ -41,7 +41,7 @@ export default function ListeHorairesContainer({ children, searchTerm = '' }) {
           },
           display: 'flex',
           flexDirection: 'column',
-          gap: '3rem',
+          gap:'0' /*'3rem'*/,
         })}
         data-clarity-unmask="true"
       >

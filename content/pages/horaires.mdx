@@ -5,29 +5,666 @@ title: Horaires
 import ListeHoraires from '@/components/ListeHoraires'
 import HoraireBib from '@/components/HoraireBib'
 import SuperHero2 from '@/components/SuperHero2'
+import {ArrowSquareOutIcon} from '@phosphor-icons/react'
+import HoraireBibNoTitle from '@/components/HoraireBibNoTitle'
+import TitleHoraireBib from '@/components/TitleHoraireBib'
+import FicheBibliothequeNoTitle from '@/components/FicheBibliothequeNoTitle'
+import HorairesHorizontalTabs from '@/components/HorairesHorizontalTabs'
 
 <SuperHero2
   title="Horaires"
   imageName="horaire"
 />
 
-<ListeHoraires>
-  <HoraireBib codeBib="am" />
-  <HoraireBib codeBib="laval"/>
-  <HoraireBib codeBib="conservation"/>
 
-  <HoraireBib codeBib="marcel-laurin"/>
+<ListeHoraires>
+
+<TitleHoraireBib title="Aménagement" />
+<HorairesHorizontalTabs
+    codeBib="am"
+    tabALabel="Horaires"
+    tabBLabel="Emplacement"
+    >
+    <HoraireBibNoTitle codeBib="am" />
+    <FicheBibliothequeNoTitle
+      title="Aménagement"
+      id="amenagement"
+      codeBib="am"
+      blocEspaces={false}
+      blocAdresse={
+        <>
+          <p>Bibliothèque d'aménagement</p>
+          <p>Pavillon de la Faculté de l'aménagement</p>
+          <p>2940, chemin de la Côte-Sainte-Catherine, salle 1162</p>
+          <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps/place/Pavillon+de+la+Facult%C3%A9+de+I'am%C3%A9nagement,+2940+Chem.+de+la+C%C3%B4te-Sainte-Catherine,+Montr%C3%A9al,+QC+H3S+2C2,+Canada/@45.504475,-73.620621,4251m/data=!3m1!1e3!4m6!3m5!1s0x4cc91992da0f9677:0xda3129520f89d791!8m2!3d45.504475!4d-73.6206208!16s%2Fg%2F1tghp63h?hl=en&entry=ttu&g_ep=EgoyMDI1MDQwOS4wIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+        </>
+      }
+      blocNousJoindre={
+        <>
+          <p>Comptoir de prêt, réserve de cours</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-6111, poste 2737</li>
+            <li><Link to="mailto:pret-amenagement@bib.umontreal.ca">pret-amenagement@bib.umontreal.ca</Link></li>
+          </ul>
+          <p>Bureau de référence</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-6111, poste 39837</li>
+            <li><Link to="mailto:amenagement@bib.umontreal.ca">amenagement@bib.umontreal.ca</Link></li>
+          </ul>
+          <p style={{ marginTop: "1em" }}><Link to="/nous-joindre/notre-equipe/#amenagement">Répertoire du personnel</Link></p>
+        </>
+      }
+  >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+
+<TitleHoraireBib title="Campus de Laval" />
+<HorairesHorizontalTabs
+    codeBib="laval"
+    tabALabel="Horaires"
+    tabBLabel="Emplacement"
+    >
+    <HoraireBibNoTitle codeBib="laval" />
+    <FicheBibliothequeNoTitle
+      title="Campus de Laval"
+      id="laval"
+      codeBib="laval"
+      blocEspaces={
+        <ul>
+          <li><Link to="https://calendrier.bib.umontreal.ca/space/17823">Didacthèque</Link></li>
+        </ul>
+      }
+      blocAdresse={
+        <>
+          <p>Bibliothèque du campus de l'UdeM à Laval</p>
+          <p>Campus de l'UdeM à Laval</p>
+          <p>1700, rue Jacques-Tétreault, salle 2200</p>
+          <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.55873,-73.721038&z=15&t=m&hl=en&gl=US&mapclient=embed&cid=4376201812221272737" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+        </>
+      }
+      blocNousJoindre={
+        <>
+          <p>Comptoir de prêt</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-6111, poste 45161</li>
+            <li><Link to="mailto:pret-laval@bib.umontreal.ca">pret-laval@bib.umontreal.ca</Link>
+            </li>
+          </ul>
+          <p>Bureau de référence</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-6111, poste 45160</li>
+            <li><Link to="mailto:refepcaml@bib.umontreal.ca">refepcaml@bib.umontreal.ca</Link></li>
+          </ul>
+          <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#laval" Icon>Répertoire du personnel</Link></p>
+        </>
+      }
+  >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+
+<TitleHoraireBib title="Centre de conservation Lionel-Groulx" />
+<HorairesHorizontalTabs
+    codeBib="conservation"
+    tabALabel="Horaires"
+    tabBLabel="Emplacement"
+    >
+    <HoraireBibNoTitle codeBib="conservation" />
+      
+    <FicheBibliothequeNoTitle
+      title="Centre de conservation Lionel-Groulx"
+      id="conservation"
+      codeBib="conservation"
+      blocEspaces= {false}
+      blocAdresse={
+      <>
+        <p>Centre de conservation Lionel-Groulx</p>
+        <p>Pavillon Lionel-Groulx</p>
+        <p>3150, rue Jean-Brillant</p>
+        <p>salle C-1017-16 (par la porte C-1059)</p>
+        <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.499267,-73.618308&z=15&t=m&hl=en&gl=US&mapclient=embed&cid=5977889247530305618" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+      </>
+    }
+    blocNousJoindre={
+      <>
+        <p>Accueil et prêt</p>
+        <ul style={{ marginLeft: "1em" }}>
+          <li>514 343-6111, poste 42680</li>
+          <li><Link to="mailto:pret-conservation@bib.umontreal.ca">pret-conservation@bib.umontreal.ca</Link></li>
+        </ul>
+        <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#conservation" Icon>Répertoire du personnel</Link></p>
+      </>
+    }
+  >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+
+<TitleHoraireBib title="Centre de conservation 101, boul. Marcel-Laurin" />
+<HorairesHorizontalTabs codeBib="marcel-laurin" tabALabel="Horaires" tabBLabel="Emplacement">
+  <HoraireBibNoTitle codeBib="marcel-laurin" />  
+  <FicheBibliothequeNoTitle
+    title="Centre de conservation 101, boul. Marcel-Laurin"
+    id="marcel-laurin"
+    codeBib="marcel-laurin"
+    blocEspaces={false}
+    blocAdresse={
+      <>
+        <p>Centre de conservation – 101, boul. Marcel-Laurin</p>
+        <p>101, boul. Marcel-Laurin, suite 150</p>
+        <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.503789,-73.670906&z=15&t=m&hl=fr&gl=CA&mapclient=embed&q=101+Blvd.+Marcel-Laurin+Saint-Laurent,+QC+H4N+2M3" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+      </>
+    }
+    blocNousJoindre={
+      <>
+        <p>Accueil et prêt</p>
+        <ul style={{ marginLeft: "1em" }}>
+          <li>514 343-6111, poste 42680</li>
+          <li><Link to="mailto:pr101ml@bib.umontreal.ca">pr101ml@bib.umontreal.ca</Link></li>
+        </ul>
+        <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#marcel-laurin" Icon>Répertoire du personnel</Link></p>
+      </>
+    }
+  >
+  <Alert>
+    <p>L’emprunt se fait par réservation dans Sofia ou par numérisation d'article ou de chapitre de livre. Le délai de livraison est de 3 à 9 jours pour les documents imprimés.</p>
+    <p>La consultation de documents sur place est possible sur rendez-vous seulement. Veuillez nous écrire pour prendre rendez-vous.</p>
+  </Alert>
+    >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+
 <h5>Le Centre de conservation – 101, boul. Marcel-Laurin est ouvert sur rendez-vous seulement. Contactez-nous avant de vous déplacer. </h5>
-  <HoraireBib codeBib="dr"/>
-  <HoraireBib codeBib="sciences"/>
-  <HoraireBib codeBib="ki"/>
-  <HoraireBib codeBib="ss"/>
-  <HoraireBib codeBib="cs"/>
-  <HoraireBib codeBib="pa"/>
-  <HoraireBib codeBib="mi"/>
-  <HoraireBib codeBib="mv"/>
-  <HoraireBib codeBib="mu"/>
-  <HoraireBib codeBib="antenne-paramedicale"/>
-  <HoraireBib codeBib="sa"/>
-  <HoraireBib codeBib="ed"/>
+<TitleHoraireBib title="Droit" />
+<HorairesHorizontalTabs
+    codeBib="dr"
+    tabALabel="Horaires"
+    tabBLabel="Emplacement"
+    >
+    <HoraireBibNoTitle codeBib="dr" />
+    <FicheBibliothequeNoTitle
+      title="Droit"
+      id="droit"
+      codeBib="dr"
+      blocEspaces={
+        <ul>
+          <li>Salles de travail pour les cycles supérieurs</li>
+        </ul>
+      }
+      blocAdresse={
+        <>
+          <p>Bibliothèque de droit</p>
+          <p>Pavillon Maximilien-Caron</p>
+          <p>3101, chemin de la Tour, 4e étage, salle 4433</p>
+          <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.498692,-73.616975&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Pavillon+Maximilien-Caron+3101+Tour+Rd+Montreal,+QC+H3T+1N8" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+        </>
+      }
+      blocNousJoindre={
+        <>
+          <p>Comptoir de prêt</p>
+          <ul style={{marginLeft:"1em"}}><li>514 343-6111, poste 3790</li>
+            <li><Link to="mailto:pret-droit@bib.umontreal.ca">pret-droit@bib.umontreal.ca</Link></li>
+          </ul>
+          <p>Bureau de référence</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-6111, poste 3756</li>
+            <li><Link to="mailto:droit@bib.umontreal.ca">droit@bib.umontreal.ca</Link></li>
+          </ul>
+          <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#droit" Icon>Répertoire du personnel</Link></p>
+        </>
+      }
+  >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+
+<TitleHoraireBib title="Hubert-Reeves" />
+<HorairesHorizontalTabs
+    codeBib="sciences"
+    tabALabel="Horaires"
+    tabBLabel="Emplacement"
+  >
+  <HoraireBibNoTitle codeBib="sciences" />
+  <FicheBibliothequeNoTitle
+      title="Hubert-Reeves"
+      id="Hubert-reeves"
+      codeBib="sciences"
+      blocEspaces={
+        <ul>
+          <li>Cartothèque</li>
+          <li><Link to="https://studio.bib.umontreal.ca/espaces/ateliers/">Atelier de fabrication</Link></li>
+          <li><Link to="https://studio.bib.umontreal.ca/espaces/studiosbaladoaudio/">Studio balado audio</Link></li>
+          <li><Link to="https://studio.bib.umontreal.ca/espaces/visualisation/">Laboratoire de visualisation</Link></li>
+          <li><Link to="/service-accessibilite#salle-adaptee-a-la-bibliotheque-hubert-reeves">Salle Accessibilité</Link></li>
+        </ul>
+      }
+      blocAdresse={
+        <>
+          <p>Bibliothèque Hubert-Reeves</p>
+          <p>Complexe des sciences du campus MIL</p>
+          <p>1375, avenue Thérèse-Lavoie-Roux, salle A-150</p>
+          <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+        </>
+      }
+      blocNousJoindre={
+        <>
+          <p>Accueil et prêt</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514-343-6111, poste 5038</li>
+            <li><Link to="mailto:pret-hr@bib.umontreal.ca">pret-hr@bib.umontreal.ca</Link></li>
+          </ul>
+          <p>Bureau de référence</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li><Link to="mailto:sciences@bib.umontreal.ca">sciences@bib.umontreal.ca</Link></li>
+          </ul>
+          <p style={{marginTop:"1em"}}><Link to="/nous-joindre/notre-equipe/#Hubert-reeves" Icon>Répertoire du personnel</Link></p>
+        </>
+      }
+  >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+
+<TitleHoraireBib title="Kinésiologie" />
+  <HorairesHorizontalTabs
+    codeBib="ki"
+    tabALabel="Horaires"
+    tabBLabel="Emplacement"
+  >
+  <HoraireBibNoTitle codeBib="ki" />
+  <FicheBibliothequeNoTitle
+      title="Kinésiologie"
+      id="kinesiologie"
+      codeBib="ki"
+      blocEspaces={false}
+      blocAdresse={
+        <>
+          <p>Bibliothèque de kinésiologie</p>
+          <p>Centre d'éducation physique et des sports (CEPSUM)</p>
+          <p>2100, boul. Édouard-Montpetit, 8e étage, salle 8259</p>
+          <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.508257,-73.612766&z=15&t=m&hl=en&gl=US&mapclient=embed&q=CEPSUM+2100+Edouard+Montpetit+Blvd+Montreal,+QC+H3T+1J4" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+        </>
+      }
+      blocNousJoindre={
+        <>
+          <p>Accueil et prêt</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-6111, poste 3792</li>
+            <li><Link to="mailto=pret-kinesiologie@bib.umontreal.ca">pret-kinesiologie@bib.umontreal.ca</Link></li>
+          </ul>
+          <p>Référence</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li><Link to="sante@bib.umontreal.ca">sante@bib.umontreal.ca</Link></li>
+          </ul>
+          <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#kinesiologie" Icon>Répertoire du personnel</Link></p>
+        </>
+      }
+  >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+
+<TitleHoraireBib title="Lettres et sciences humaines" />
+<HorairesHorizontalTabs
+    codeBib="ss"
+    tabALabel="Horaires"
+    tabBLabel="Emplacement"
+  >
+  <HoraireBibNoTitle codeBib="ss" />
+  <FicheBibliothequeNoTitle
+      title="Lettres et sciences humaines"
+      id="lsh"
+      codeBib="ss"
+      blocEspaces={
+        <ul>
+          <li><Link to="https://studio.bib.umontreal.ca/espaces/amphitheatre">Amphithéâtre</Link></li>
+          <li><Link to="https://studio.bib.umontreal.ca/espaces/zines">Atelier de zines</Link></li>
+          <li><Link to="https://studio.bib.umontreal.ca/espaces/studiobaladovideo/">Studio balado vidéo</Link></li>
+          <li><Link to="https://studio.bib.umontreal.ca/espaces/studiovideo/">Studio vidéo</Link></li>
+          <li><Link to="/service-accessibilite/#acces-a-des-salles-de-travail-adaptees">Salles Accessibilité</Link></li>
+        </ul>
+      }
+      blocAdresse={
+        <>
+          <p>Bibliothèque des lettres et sciences humaines</p>
+          <p>Pavillon Samuel-Bronfman</p>
+          <p>3000 rue Jean Brillant, Montréal, salle 1030</p>
+          <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps/place/Pavillon+Samuel-Bronfman,+3000+Jean+Brillant+St,+Montreal,+QC+H3T+1N7,+Canada/@45.499427,-73.616554,4251m/data=!3m1!1e3!4m6!3m5!1s0x4cc919f3c6b6c4fd:0x1783a82167c956!8m2!3d45.4994274!4d-73.6165537!16s%2Fg%2F1tftqq4m?hl=en&entry=ttu&g_ep=EgoyMDI1MDQwOC4wIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+        </>
+      }
+      blocNousJoindre={
+        <>
+          <p>Comptoir de prêt, réserve de cours</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-7336</li>
+            <li><Link to="mailto:pret-lsh@bib.umontreal.ca">pret-lsh@bib.umontreal.ca</Link></li>
+          </ul>
+          <p>Bureau de référence</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-6111, poste 2655</li>
+            <li><Link to="#">lsh@bib.umontreal.ca</Link></li>
+          </ul>
+          <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#lsh" Icon>Répertoire du personnel</Link></p>
+        </>
+      }
+  >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+
+<TitleHoraireBib title="Livres rares et collections spéciales" />
+<HorairesHorizontalTabs
+    codeBib="cs"
+    tabALabel="Horaires"
+    tabBLabel="Emplacement"
+  >
+  <HoraireBibNoTitle codeBib="cs" />
+  <FicheBibliothequeNoTitle
+      title="Livres rares et collections spéciales"
+      id="lrcs"
+      codeBib="cs"
+      blocEspaces={
+        <ul>
+          <li><Link to="https://calendrier.bib.umontreal.ca/space/34702">Salle de séminaire</Link></li>
+        </ul>
+      }
+      blocAdresse={
+        <>
+          <p>Bibliothèque des livres rares et collections spéciales</p>
+          <p>Pavillon Samuel-Bronfman</p>
+          <p>3000 rue Jean Brillant, salle 4030</p>
+          <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.499427,-73.616554&z=15&t=m&hl=fr-FR&gl=US&mapclient=embed&q=Pavillon+Samuel-Bronfman+3000+Jean+Brillant+St+Montreal,+QC+H3T+1N7" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+        </>
+      }
+      blocNousJoindre={
+        <>
+          <p>Accueil et prêt</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-6111, poste 39836</li>
+            <li><Link to="mailto:livresrares@bib.umontreal.ca">livresrares@bib.umontreal.ca</Link></li>
+          </ul>
+          <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#lrcs" Icon>Répertoire du personnel</Link></p>
+        </>
+      }
+  >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+
+<TitleHoraireBib title="Marguerite-d'Youville" />
+<HorairesHorizontalTabs
+    codeBib="pa"
+    tabALabel="Horaires"
+    tabBLabel="Emplacement"
+  >
+  <HoraireBibNoTitle codeBib="pa" />
+  <FicheBibliothequeNoTitle
+      title="Marguerite-d'Youville"
+      id="marguerite-d-youville"
+      codeBib="pa"
+      blocEspaces={false}
+      blocAdresse={
+        <>
+          <p>Bibliothèque Marguerite-d'Youville</p>
+          <p>Pavillon Marguerite-d'Youville</p>
+          <p>2375, chemin de la Côte-Sainte-Catherine, salle 2120</p>
+          <p style={{marginTop:"1em"}} ><Link to="https://www.google.com/maps?ll=45.509365,-73.618392&z=15&t=m&hl=en&gl=US&mapclient=embed&cid=14455154458948229137" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+        </>
+      }
+      blocNousJoindre={
+        <>
+          <p>Accueil et prêt</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-6111, poste 1895</li>
+            <li><Link to="mailto:pret-my@bib.umontreal.ca">pret-my@bib.umontreal.ca</Link></li>
+          </ul>
+          <p>Bureau de référence</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li><Link to="mailto:marguerite-d-youville@bib.umontreal.ca">marguerite-d-youville@bib.umontreal.ca</Link></li>
+          </ul>
+          <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#marguerite-d-youville">Répertoire du personnel</Link></p>
+        </>
+      }
+  >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+
+<TitleHoraireBib title="Mathématiques et informatique" />
+<HorairesHorizontalTabs
+    codeBib="mi"
+    tabALabel="Horaires"
+    tabBLabel="Emplacement"
+  >
+  <HoraireBibNoTitle codeBib="mi" />
+  <FicheBibliothequeNoTitle
+      title="Mathématiques et informatique"
+      id="math-info"
+      codeBib="mi"
+      blocEspaces={
+        <ul>
+          <li><Link to="https://studio.bib.umontreal.ca/espaces/ateliers/">Atelier de fabrication</Link></li>
+          <li><Link to="https://studio.bib.umontreal.ca/espaces/studiosbaladoaudio/">Studio balado audio</Link></li>
+          <li>Studio d'innovation et de créativité</li>
+        </ul>
+      }
+      blocAdresse={
+        <>
+          <p>Bibliothèque de mathématiques et informatique</p>
+          <p>Pavillon André-Aisenstadt</p>
+          <p>2920, chemin de la tour, salle 2405</p>
+          <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps/place/UdeM+%E2%80%93+Andr%C3%A9-Aisenstadt+Pavillon/@45.501009,-73.615778,15z/data=!4m6!3m5!1s0x4cc919f308df50f9:0x1c5cdca60001c62e!8m2!3d45.5010087!4d-73.6157778!16s%2Fg%2F11b6v92qlg?hl=en&entry=ttu&g_ep=EgoyMDI1MDQxNC4xIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+        </>
+      }
+      blocNousJoindre={
+        <>
+          <p>Accueil et prêt</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>514 343-6111, poste 1982</li>
+            <li><Link to="mailto:pret-mi@bib.umontreal.ca">pret-mi@bib.umontreal.ca</Link></li>
+          </ul>
+          <p>Référence</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li><Link to="mailto:sciences@bib.umontreal.ca">sciences@bib.umontreal.ca</Link></li>
+          </ul>
+          <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#math-info" Icon>Répertoire du personnel</Link></p>
+        </>
+      }
+  >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+<TitleHoraireBib title="Médecine vétérinaire" />
+<HorairesHorizontalTabs
+    codeBib="mv"
+    tabALabel="Horaires"
+    tabBLabel="Emplacement"
+  >
+  <HoraireBibNoTitle codeBib="mv" />
+  <FicheBibliothequeNoTitle
+      title="Médecine vétérinaire"
+      id="medecine-veterinaire"
+      codeBib="mv"
+      blocAdresse={
+        <>
+          <p>Bibliothèque de médecine vétérinaire</p>
+          <p>Campus de St-Hyacinthe</p>
+          <p>1500, rue des vétérinaires, salle 1541</p>
+          <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps/place/1500+Rue+des+V%C3%A9t%C3%A9rinaires/@45.620922,-72.9650018,21z/data=!4m7!3m6!1s0x4cc84e75a6001beb:0x409b244035818f6a!4b1!8m2!3d45.6209162!4d-72.9648717!16s%2Fg%2F11b8txmz30?hl=en&entry=ttu&g_ep=EgoyMDI1MDQxNC4xIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+        </>
+      }
+      blocNousJoindre={
+        <>
+          <p>Comptoir de prêt</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>450 773-8521, poste 8136 ou 514 343-6111, poste 8136</li>
+            <li><Link to="mailto:pret-mv@bib.umontreal.ca">pret-mv@bib.umontreal.ca</Link></li>
+          </ul>
+          <p>Bureau de référence</p>
+          <ul style={{ marginLeft: "1em" }}>
+            <li>450 773-8521, poste 8368</li>
+            <li><Link to="mailto:medecine-veterinaire@bib.umontreal.ca">medecine-veterinaire@bib.umontreal.ca</Link></li>
+          </ul>
+          <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#medecine-veterinaire" Icon>Répertoire du personnel</Link></p>
+        </>
+      }
+  >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+
+<TitleHoraireBib title="Musique" />
+<HorairesHorizontalTabs
+    codeBib="mu"
+    tabALabel="Horaires"
+    tabBLabel="Emplacement"
+  >
+  <HoraireBibNoTitle codeBib="mu" />
+  <FicheBibliothequeNoTitle
+    title="Musique"
+    id="musique"
+    codeBib="mu"
+    blocEspaces={false}
+    blocAdresse={
+      <>
+        <p>Bibliothèque de musique</p>
+        <p>Pavillon de la faculté de musique</p>
+        <p>200, avenue Vincent d'Indy,  salle B-287</p>
+        <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.509273,-73.60857&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Pavillon+de+la+Faculte+de+Musique+Av.+Vincent-D%27Indy+Outremont,+QC+H2V+2T2" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+      </>
+    }
+    blocNousJoindre={
+      <>
+        <p>Accueil</p>
+        <ul>
+          <li><Link to="tel:+15143436432">514-343-6432</Link></li>
+        </ul>
+        <p>Comptoir de prêt</p>
+        <ul style={{ marginLeft: "1em" }}>
+          <li>514 343-6111, poste 39838</li>
+          <li><Link to="mailto:pret-musique@bib.umontreal.ca">pret-musique@bib.umontreal.ca</Link></li>
+        </ul>
+        <p>Bureau de référence</p>
+        <ul style={{ marginLeft: "1em" }}>
+          <li>514-343-6111, poste 4702</li>
+          <li><Link to="mailto:musique@bib.umontreal.ca">musique@bib.umontreal.ca</Link></li>
+        </ul>
+        <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#musique" Icon>Répertoire du personnel</Link></p>
+      </>
+    }
+  >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+
+<TitleHoraireBib title="Parc" />
+<HorairesHorizontalTabs
+    codeBib="antenne-paramedicale"
+    tabALabel="Horaires"
+    tabBLabel="Emplacement"
+  >
+  <HoraireBibNoTitle codeBib="antenne-paramedicale" />
+  <FicheBibliothequeNoTitle
+    title="Parc"
+    id="parc"
+    codeBib="antenne-paramedicale"
+    blocEspaces={false}
+    blocAdresse={
+      <>
+        <p>Bibliothèque du Parc</p>
+        <p>Pavillon 7077, avenue du Parc</p>
+        <p>7077, avenue du Parc, salle U-529</p>
+        <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps/place/7077+Park+Ave,+Montreal,+QC+H3N+1X7,+Canada/@45.529968,-73.620079,15z/data=!4m6!3m5!1s0x4cc9190c5700fc5d:0x866f7fddd5daea6b!8m2!3d45.5299681!4d-73.6200789!16s%2Fg%2F11csh49b37?hl=en&entry=ttu&g_ep=EgoyMDI1MDQxNC4xIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+        
+      </>
+    }
+    blocNousJoindre={
+      <>
+        <p>Accueil et prêt: 514 343-6111, poste 39833</p>
+        <p><Link to="mailto7077duParc@bib.umontreal.ca">7077duParc@bib.umontreal.ca</Link></p>
+        <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#parc" Icon>Répertoire du personnel</Link></p>
+      </>
+    }
+  >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+
+<TitleHoraireBib title="Santé" />
+<HorairesHorizontalTabs
+    codeBib="sa"
+    tabALabel="Horaires"
+    tabBLabel="Emplacement"
+  >
+  <HoraireBibNoTitle codeBib="sa" />
+  <FicheBibliothequeNoTitle
+    title="Santé"
+    id="sante"
+    codeBib="sa"
+    blocEspaces={false}
+    blocAdresse={
+      <>
+        <p>Bibliothèque de la santé</p>
+        <p>Pavillon Roger Gaudry</p>
+        <p>2900, boul. Édouard-Montpetit, 6e étage, salle L-623</p>
+        <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps/place/University+of+Montreal+-+Roger-Gaudry+Building/@45.50273,-73.615076,15z/data=!4m6!3m5!1s0x4cc919f327eaaaab:0x35829fb5993f11a6!8m2!3d45.5027303!4d-73.6150758!16s%2Fg%2F11c42_t8fq?hl=en&entry=ttu&g_ep=EgoyMDI1MDQxNC4xIKXMDSoASAFQAw%3D%3D" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+      </>
+    }
+    blocNousJoindre={
+      <>
+        <p>Comptoir de prêt&nbsp;:</p>
+        <ul style={{ marginLeft: "1em" }}>
+          <li>514 343-6111, poste 3544</li>
+          <li><Link to="mailto:pret-sante@bib.umontreal.ca">pret-sante@bib.umontreal.ca</Link></li>
+        </ul>
+        <p>Bureau de référence&nbsp;:</p>
+        <ul style={{ marginLeft: "1em" }}>
+          <li>514 343-6111, poste 6826</li>
+          <li><Link to="mailto:sante@bib.umontreal.ca">sante@bib.umontreal.ca</Link></li>
+        </ul>
+        <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#sante" Icon>Répertoire du personnel</Link></p>
+      </>
+    }
+  >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+
+<TitleHoraireBib title="Thérèse-Gouin-Décarie" />
+<HorairesHorizontalTabs
+    codeBib="ed"
+    tabALabel="Horaires"
+    tabBLabel="Emplacement"
+  >
+  <HoraireBibNoTitle codeBib="ed" />
+  <FicheBibliothequeNoTitle
+    title="Thérèse-Gouin-Décarie"
+    id="tgd"
+    codeBib="ed"
+    blocEspaces={
+      <ul>
+        <li><Link to="https://calendrier.bib.umontreal.ca/space/19189">Didacthèque</Link></li>
+        <li><Link to="https://studio.bib.umontreal.ca/espaces/ateliers/">Atelier de fabrication</Link></li>
+        <li><Link to="https://studio.bib.umontreal.ca/espaces/studiovideo/">Studio vidéo</Link></li>
+        <li><Link to="https://calendrier.bib.umontreal.ca/space/23805">Cocon de micro-sieste</Link></li>
+      </ul>
+    }
+    blocAdresse={
+      <>
+        <p>Bibliothèque Thérèse-Gouin-Décarie</p>
+        <p>Pavillon Marie-Victorin</p>
+        <p>90, avenue Vincent-d'Indy, salle G-205</p>
+        <p style={{marginTop:"1em"}}><Link to="https://www.google.com/maps?ll=45.510687,-73.61158&z=15&t=m&hl=en&gl=US&mapclient=embed&cid=10344974121678518049" Icon={ArrowSquareOutIcon}>Voir l'itinéraire</Link></p>
+      </>
+    }
+    blocNousJoindre={
+      <>
+        <p>Accueil</p>
+        <ul style={{ marginLeft: "1em" }}>
+          <li><Link to="tel:+15143437242">514 343-7242</Link></li>
+        </ul>
+        <p>Comptoir de prêt</p>
+        <ul style={{ marginLeft: "1em" }}>
+          <li>514 343-6111, poste 1705</li>
+          <li><Link to="mailto:pret-tgd@bib.umontreal.ca">pret-tgd@bib.umontreal.ca</Link></li>
+        </ul>
+        <p>Bureau de référence</p>
+        <ul style={{ marginLeft: "1em" }}>
+          <li>514 343-6111, poste 1706</li>
+          <li><Link to="mailto:refepcaml@bib.umontreal.ca">refepcaml@bib.umontreal.ca</Link></li>
+        </ul>
+        <p style={{marginTop:"1em"}}><Link to="../nous-joindre/notre-equipe/#tgd" Icon>Répertoire du personnel</Link></p>
+      </>
+    }
+  >
+  </FicheBibliothequeNoTitle>
+</HorairesHorizontalTabs>
+
 </ListeHoraires>
