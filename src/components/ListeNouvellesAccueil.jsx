@@ -4,7 +4,7 @@ import Button from '@/components/Button'
 import Link from '@/components/Link'
 import { isInternalLink } from '@/utils/link'
 import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
-import React, { useMemo } from 'react'
+import { memo, useMemo } from 'react'
 
 function getPath(path, slug) {
   try {
@@ -44,7 +44,7 @@ function formatDate(dateString) {
   }
 }
 
-const Header = React.memo(({ id, children }) => (
+const Header = memo(({ id, children }) => (
   <Typography
     component="h3"
     id={id}
@@ -58,7 +58,7 @@ const Header = React.memo(({ id, children }) => (
   </Typography>
 ))
 
-const Title = React.memo(({ children }) => (
+const Title = memo(({ children }) => (
   <Box
     sx={(theme) => ({
       fontFamily: 'Lora',
@@ -75,7 +75,7 @@ const Title = React.memo(({ children }) => (
   </Box>
 ))
 
-const Upper = React.memo(({ children }) => (
+const Upper = memo(({ children }) => (
   <Box
     sx={(theme) => ({
       display: 'flex',
@@ -92,7 +92,7 @@ const Upper = React.memo(({ children }) => (
   </Box>
 ))
 
-const Lower = React.memo(({ children, url, type }) => (
+const Lower = memo(({ children, url, type }) => (
   <Box
     sx={{
       display: 'flex',
@@ -128,7 +128,7 @@ const Lower = React.memo(({ children, url, type }) => (
   </Box>
 ))
 
-const NewsCard = React.memo(({ news }) => (
+const NewsCard = memo(({ news }) => (
   <Card
     sx={(theme) => ({
       boxShadow: 'none',
@@ -221,16 +221,6 @@ export default function ListeNouvellesAccueil({ title = 'Nouvelles', moreLink = 
           }
         }
       }
-
-      udemNews: allUdemNews(sort: { pubDate: DESC }) {
-        nodes {
-          id
-          title
-          link
-          pubDate
-          formattedDate
-        }
-      }
     }
   `)
 
@@ -251,17 +241,7 @@ export default function ListeNouvellesAccueil({ title = 'Nouvelles', moreLink = 
         }
       })
 
-      const udem = udemNews.nodes.map((node) => ({
-        id: node.id,
-        pubDate: node.pubDate,
-        date: node.formattedDate || formatDate(node.pubDate),
-        url: node.link || '#',
-        source: 'UdeM Nouvelles',
-        title: node.title || 'Sans titre',
-        type: 'externe',
-      }))
-
-      const combined = [...local, ...udem]
+      const combined = [...local]
         // Filtrer les nouvelles sans date ou titre, trier par date décroissante et limiter à 2 nouvelles
         .filter((news) => news.date && news.title)
         .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
