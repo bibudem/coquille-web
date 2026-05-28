@@ -51,9 +51,13 @@ export default function NouvelleTemplate({ pageContext, children, data, location
     breadcrumb: { crumbs },
   } = pageContext
 
+  // Suppression du noeud "2026"
+  const newCrumbs = [...crumbs]
+  newCrumbs.splice(2, 1)
+
   const mainContent = (
     <>
-      {hasSecondaryNav && <Breadcrumbs crumbs={crumbs} />}
+      {hasSecondaryNav && <Breadcrumbs crumbs={newCrumbs} />}
       <main id="main-content" role="main">
         {children}
         <ConditionalWrapper condition={lvl < 2} wrapper={(children) => <LayoutContainer>{children}</LayoutContainer>}>
