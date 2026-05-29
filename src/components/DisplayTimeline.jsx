@@ -1,5 +1,5 @@
 // components/DisplayTimeline.jsx
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import TimelineDefault from './TimelineDefault';
 import HeroWithText from './HeroWithText';
 

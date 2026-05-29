@@ -12,340 +12,342 @@ superHero:
 import GridOffset from '@/components/utils/GridOffset';
 import Bibliothecaire from '../images/bibliothecaire-montage.webp';
 import {HeadCircuitIcon, UserFocusIcon} from '@phosphor-icons/react';
-import ClickableFlipCard, {CompactInteractiveFlipCard, HorizontalCardList}  from  '@/components/ClickableFlipCard';
 import DisplayTimeline from '@/components/DisplayTimeline';
+import DialogueOuverteHorizontalTabs from '@/components/DialogueOuverteHorizontalTabs';
+import TimelineDefault from '@/components/TimelineDefault';
 
-
-<Section bg='bleu100' marginTop='3rem'>
-<Carousel1
-    title={<Typography component="h2" variant="h2">Introduction</Typography>}
-    description={
-      <>
-        <Typography sx={{pb: 1.5}}>La science ouverte vise à rendre la recherche scientifique de tous les domaines accessibles à tous les publics, au bénéfice des scientifiques et de la société dans son ensemble.</Typography>
-        
-      </>
-    }
+<Section bg='bleu100'>
+  <Grid style={{
+      display: "grid",
+      gridTemplateColumns: "75% 25%",
+      gap: "5px",
+      width: "100%",
+      padding: "5px",
+      }}
   >
-  </Carousel1>
+      {/* LEFT GRID - 75% */}
+      <Grid style={{
+          minWidth: 0, // IMPORTANT
+          display: "grid",
+          gridTemplateAreas: `
+          "top"
+          `,
+          gridTemplateRows: "auto",
+          gap: "5px",
+          }}
+      >
+          {/* TOP */}
+          <Box
+            style={{
+                gridArea: "top",
+                border: "1px thin black",
+                borderRadius: "2px",
+                minHeight: "80px",
+                padding: "5px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+          >
+              <p> 
+                <Typography component="h2" variant="h2">Le tableau de bord de la science ouverte des bibliothèques de l'UdeM.</Typography>
+
+                <Typography component="subtitle1" variant="subtitle1"> La science ouverte vise à rendre la recherche scientifique de tous les domaines accessibles à tous les publics, au bénéfice des scientifiques et de la société dans son ensemble.</Typography>
+              </p>
+          </Box>
+    </Grid>
+
+    {/* RIGHT GRID - 25% */}
+    <Box style={{
+        minWidth: 0, // IMPORTANT
+        border: "1px solid thin black",
+        borderRadius: "8px",
+        minHeight: "450px",
+        padding: "20px",
+        justifyContent: "center",
+        alignItems: "center",
+        }}
+    >
+        <p style={{textAlign: 'left'}}>[add image]</p>
+    </Box>
+  </Grid>
 </Section>
 
-<Section bg='vertFonce' marginTop='3rem'>
+<Section bg='vertFonce'> 
   <Typography component="h2" variant="h2" id="connaissances-scientifiques-ouvertes">Les connaissances scientifiques ouvertes </Typography>
   <Typography sx={{pb: 1.5}}>Selon l’UNESCO : « Les connaissances scientifiques ouvertes désignent le libre accès aux publications scientifiques, aux données de recherche, aux ressources éducatives libres, aux logiciels, et aux codes sources et au matériel ».</Typography>
   <GridOffset offset="1">
     <AccordionGroupScienceOuverte color="vertPale">
-      <Accordion>
+      <Accordion style={{ padding: '0 2rem 0 2rem' }}>
+        {/* Promotion du libre accès */}
         <AccordionSummary>Promotion du libre accès</AccordionSummary>
-        <AccordionDetails style={{ padding: 0, backgroundColor: '#52b782' }}>
-        <div
-        style={{
-        display: "grid",
-        gridTemplateColumns: "2fr 1fr",
-        border: "1px solid #cccccc",
-        
-        }}
-        >
-        {/* Row 1 collapse */}
-        <div style={{
-        border: "1px solid #cccccc collapse",
-        padding: '0px',
-        margin: 0,
-        lineHeight: 1,
-        display: "flex",
-        textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}><p style={{display: 'flex'}}>Sensibilisation à la science ouverte et promotion de bonnes pratiques
-        et alternatives responsables pour la recherche</p></div>
-        <div style={{
-        border: "1px solid #ccc collapse",
-        padding: 0,
-        margin: 0,
-        lineHeight: 1,
-        display: "center",
-        padding: '1rem 0 0 1rem',
-        textAlign:'center' 
-        }}><span style={{fontSize: '25px', fontWeight: 'bold' }}>[Nombre]</span>
-        <Button primary href="science-ouverte" style={{fontSize: '15px'}}>formations liées à la science ouverte</Button></div>
-        {/* Row 2 */}
-        <div style={{
-        border: "1px solid #ccc collapse",
-        padding: '0px',
-        margin: 0,
-        lineHeight: 1,
-        display: "flex",
-        textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}>
-        <Button secondary href="#science-ouverte">Engagement des bibliothèques pour la science ouverte</Button>
-        </div>
-        <div style={{
-        border: "1px solid #ccc collapse",
-        padding: 0,
-        margin: 0,
-        lineHeight: 1,
-        display: "flex",
-        textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}></div>
-        {/* Row 3 */}
-        <div style={{
-        border: "1px solid #ccc collapse",
-        padding: '0px',
-        margin: 0,
-        lineHeight: 1,
-        display: "flex",
-        textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}>
-        <Button secondary href="#science-ouverte">Guides sur le libre accès</Button>
-        
-        </div>
-        <div style={{
-        border: "1px solid #ccc collapse",
-        padding: 0,
-        margin: 0,
-        lineHeight: 1,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        }}> </div>
-        {/* Row 4 */}
-        <div style={{
-        border: "1px solid #ccc collapse",
-        padding: '0px',
-        margin: 0,
-        lineHeight: 1,
-        display: "flex",
-        textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}> 
-        <Button primary href="science-ouverte"><p style={{display: 'flex'}}>Financement d'initiatives de libre accès et promotion du modèle diamant pour l'édition savante</p></Button>
-        </div>
-        <div
-        style={{
-        display: "grid",
-        }}
-        >
-        <div style={{
-        border: "1px solid #ccc collapse",
-        padding: 0,
-        margin: 0,
-        lineHeight: 1,
-        display: "flex",
-        textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}></div>
-        </div>
-        {/* Row 5 */}
-        <div
-        style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        }}
-        >
-        <div style={{
-        border: "1px solid #ccc collapse",
-        padding: 0,
-        margin: 0,
-        lineHeight: 1,
-        display: "flex",
-        textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}> [add icone]</div>
-        <div style={{
-        border: "1px solid #ccc collapse",
-        padding: 0,
-        margin: 0,
-        lineHeight: 1,
-        display: "flex",
-        textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}> [add icone] <br/><br/><Button secondary href="#science-ouverte">Et plus encore à découvrir ici</Button></div>
-        </div>
-        <div
-        style={{
-        display: "grid",
-        }}
-        >
-        <div style={{
-        border: "1px solid #ccc collapse",
-        padding: 0,
-        margin: 0,
-        lineHeight: 1,
-        display: "bottom",
-        textAlign: 'center',
-        padding: '1rem 0 0 1rem'
-        }}><span style={{fontSize: '25px', fontWeight: 'bold' }}>2.5 %</span><br/>
-         du budget dédié au financement d'initiatives<br/>sur le libre accès</div>
-        </div>
+          <AccordionDetails style={{ padding: '1rem 1rem 1rem 1rem', backgroundColor: 'rgb(213, 250, 231)' }}>
+            <div
+              style={{
+              display: "grid",
+              gridTemplateColumns: "2fr 1fr",
+              border: "1px solid #cccccc collapse"
+              }}
+            >
+                {/* Row 1 collapse */}
+                <div style={{
+                  border: "1px solid #cccccc collapse",
+                  margin: 0,
+                  lineHeight: 1,
+                  display: "flex",
+                  textAlign: 'left',
+                  padding: '0 0 0 1rem'
+                  }}
+                >
+                    <p style={{textAlign: 'left'}}>Sensibilisation à la science ouverte et promotion de bonnes pratiques et alternatives responsables pour la recherche</p>
+                </div>
+                <div style={{
+                    border: "1px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    display: "center",
+                    padding: '0 0 0 1rem',
+                    textAlign:'center' 
+                  }}
+                >
+                    <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>[Nombre]</b><br/>formations <br/> liées à<br/> la science ouverte</p>
+                </div>
+                {/* Row 2 collapse */}
+                <div style={{
+                    border: "1px solid #ccc collapse", 
+                    margin: 0,
+                    lineHeight: 1,
+                    display: "flex",
+                    textAlign: 'left',
+                    padding: '0 0 0 1rem'
+                }}>
+                    <p><Button secondary href="#science-ouverte">Engagement des bibliothèques pour la science ouverte</Button>
+                    <Button secondary href="#science-ouverte">Guides sur le libre accès</Button></p>
+                </div>
+                <div style={{
+                  border: "1px solid #ccc collapse",
+                  margin: 0,
+                  lineHeight: 1,
+                  display: "flex",
+                  textAlign: 'left',
+                  padding: '0 0 0 1rem'
+                }}>
+                </div>
+                {/* Row 3 */}
+                <div style={{
+                  border: "1px solid #ccc collapse",
+                  margin: 0,
+                  lineHeight: 1,
+                  display: "flex",
+                  textAlign: 'left',
+                  padding: '0 0 0 1rem'
+                  }}
+                >
+                    <p style={{display: 'left'}}>Financement d'initiatives de libre accès et promotion du modèle diamant pour l'édition savante</p>
+                </div>
+                <div style={{
+                  border: "1px solid #ccc collapse ",
+                  margin: 0,
+                  lineHeight: 1,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  }}> 
+                </div>
+                {/* Row 5 */}
+                <div
+                    style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    }}
+                >
+                    <div style={{
+                        border: "1px solid #ccc collapse",
+                        margin: 0,
+                        lineHeight: 1,
+                        display: "flex",
+                        textAlign: 'left',
+                        padding: '0 0 0 1rem'
+                        }}> [add icone]</div>
+                    <div style={{
+                        border: "1px solid #ccc collapse ",
+                        margin: 0,
+                        lineHeight: 1,
+                        display: "flex",
+                        textAlign: 'left',
+                        padding: '0 0 0 1rem'
+                        }}> [add icone] <br/><br/><Button secondary href="#science-ouverte">Et plus encore à découvrir ici</Button></div>
+                </div>
+                <div
+                  style={{
+                  display: "grid",
+                  }}
+                >
+                      <div style={{
+                          border: "1px solid #ccc collapse",
+                          margin: 0,
+                          lineHeight: 1,
+                          display: "bottom",
+                          textAlign: 'center',
+                          padding: '0 0 0 1rem'
+                          }}>
+                               <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>2.5 %</b><br/>du budget dédié au financement d'initiatives<br/>sur le libre accès</p>
+                      </div>
+                    </div>
 
-        {/* Row 6 collapse */}
-        <div style={{
-        border: "1px solid #cccccc collapse",
-        padding: '0px',
-        margin: 0,
-        lineHeight: 1,
-        display: "flex",
-        textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}><p style={{display: 'flex'}}>Négotiation d'accord avec les éditeurs pour permettre à la communauté
-        de recherche de l'UdeM d'avoir un rabais pour publier en libre accès </p></div>
-        <div style={{
-        border: "1px solid #ccc collapse",
-        padding: 0,
-        margin: 0,
-        lineHeight: 1,
-        display: "center",
-        textAlign: 'center',
-        padding: '1rem 0 0 1rem'
-        }}><span style={{fontSize: '25px', fontWeight: 'bold' }}>[Montant]</span><br/>CAD financé par les bibliothèques pour les accords avec les éditeurs</div>
-        </div>
+                {/* Row 6 collapse */}
+                <div style={{
+                    border: "1px solid #cccccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    display: "flex",
+                    textAlign: 'left',
+                    padding: '0 0 0 1rem'
+                }}>
+                      <p style={{display: 'left'}}>Négotiation d'accord avec les éditeurs pour permettre à la communauté de recherche de l'UdeM d'avoir un rabais pour publier en libre accès </p>
+                </div>
+                <div style={{
+                    border: "1px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    display: "center",
+                    textAlign: 'center',
+                    padding: '0 0 0 1rem'
+                }}>
+                    <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>[Montant]</b><br/>CAD financé par les bibliothèques pour les accords avec les éditeurs</p>
+                </div>
+                </div>
         </AccordionDetails>
       </Accordion>
       {/* Publications scientifiques ouvertes */}
-      <Accordion>
+      <Accordion style={{ padding: '0 2rem 0 2rem' }}>
         <AccordionSummary>Publications scientifiques ouvertes</AccordionSummary>
-        <AccordionDetails style={{ padding: 0, backgroundColor: '#52b782' }}>
+        <AccordionDetails style={{ padding: '1rem 1rem 1rem 1rem', backgroundColor: 'rgb(213, 250, 231)' }}>
         <div
         style={{
         display: "grid",
         gridTemplateColumns: "2fr 1fr",
-        border: "0.5px solid #ccc",
+        border: "0.5px solid #ccc collapse",
         }}
         >
         {/* Row 1 */}
         <div style={{
         border: "0.5px solid #ccc collapse",
-        padding: '0px',
         margin: 0,
         lineHeight: 1,
         textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}><Button primary href="science-ouverte"><p style={{}}>Mise à disposition d'un dépôt institutionnel</p></Button></div>
+        padding: '0 0 0 1rem'
+        }}>
+          <p style={{}}>Mise à disposition d'un dépôt institutionnel</p>
+        </div>
         <div style={{
         border: "0.5px solid #ccc collapse",
         margin: 0,
         lineHeight: 1,
         display:'center',
         textAlign: 'center',
-        padding: '1rem 0 0 1rem'
-        }}><span style={{fontSize: '25px', fontWeight: 'bold' }}>41607</span><br/>
-        <Button primary href="science-ouverte" style={{fontSize: '15px' }}>documents sur Papyrus</Button></div>
+        padding: '0 0 0 1rem'
+        }}>
+          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>41607</b><br/>documents sur Papyrus</p>
+        </div>
         {/* Row 2 */}
         <div style={{
         border: "0.5px solid #ccc collapse",
-        padding: '0px',
         margin: 0,
         lineHeight: 1,
         textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}><Button primary href="science-ouverte"><p style={{}}>Aide au dépôt des thèses et mémoires en libre accès sur le dépot institutionnel Papyrus pour la diplomation</p></Button></div>
+        padding: '0 0 0 1rem'
+        }}>
+          <p style={{}}>Aide au dépôt des thèses et mémoires en libre accès sur le dépot institutionnel Papyrus pour la diplomation</p>
+        </div>
         <div style={{
         border: "0.5px solid #ccc collapse",
         margin: 0,
         lineHeight: 1,
         textAlign: 'center',
-        padding: '1rem 0 0 1rem'
-        }}><span style={{fontSize: '25px', fontWeight: 'bold' }}>[Nombre]</span> <br/> Thèses et mémoires déposés en [année]</div>
+        padding: '0 0 0 1rem'
+        }}>
+          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>[Nombre]</b><br/>Thèses et mémoires déposés en [année]</p>
+        </div>
         {/* Row 3 */}
         <div style={{
         border: "0.5px solid #ccc collapse",
-        padding: '0px',
         margin: 0,
         lineHeight: 1,
         textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}><Button primary href="science-ouverte"><p style={{}}>Accompagnement à la publication par voie verte avec un processus simplifié</p></Button></div>
+        padding: '0 0 0 1rem'
+        }}>
+          <p style={{}}>Accompagnement à la publication par voie verte avec un processus simplifié</p>
+        </div>
         <div style={{
         border: "0.5px solid #ccc collapse",
         margin: 0,
         lineHeight: 1,
         textAlign: 'center',
-        padding: '1rem 0 0 1rem'
-        }}> <span style={{fontSize: '25px', fontWeight: 'bold' }}>224</span><br/><Button primary href="science-ouverte" style={{fontSize: '15px'}}>articles déposés en libres accès en 2025</Button></div>
-        {/* Row 4 */}
+        padding: '0 0 0 1rem'
+        }}> 
+          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>224</b><br/>articles déposés en libres accès en 2025</p>
+        </div>
+        {/* Row 4  collapse*/}
         <div style={{
-        border: "0.5px solid #ccc collapse ",
-        padding: '0px',
+        border: "0.5px solid #ccc collapse",
         margin: 0,
         lineHeight: 1,
         textAlign: 'left',
-        padding: '1rem 0 0 1rem'
+        padding: '0 0 0 1rem'
         }}> <p style={{}}>Soutien à la transition vers le modèle diamant et au processus éditorial pour les revues savantes</p></div>
-        <div
-        style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr",
-        }}
-        >
         <div style={{
         border: "0.5px solid #ccc collapse ",
-        padding: 0,
         margin: 0,
         lineHeight: 1,
         display:'center',
         textAlign: 'center',
-        padding: '1rem 0 0 1rem'
-        }}><span style={{fontSize: '25px', fontWeight: 'bold' }}>13</span><br/><p style={{fontSize: '15px'}}>revues savantes hébergées sur</p></div>
-        <div style={{
-        border: "0.5px solid #ccc collapse ",
-        padding: 0,
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}> [add icone]</div>
-        <div style={{
-        border: "0.5px solid #ccc collapse ",
-        padding: 0,
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}><i style={{fontSize: '15px'}}>Horizons: 2 nouvelles revues hébergées prochainement</i></div>
+        padding: '0 0 0 1rem'
+        }}>
+            <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>13</b><br/>revues savantes hébergées sur OJS</p>
         </div>
         {/* Row 5 */}
         <div style={{
         border: "0.5px solid #ccc collapse",
-        padding: '0px',
         margin: 0,
         lineHeight: 1,
         textAlign: 'left',
-        padding: '1rem 0 0 1rem'
+        padding: '0 0 0 1rem'
         }}> <p style={{}}>Soutien à la publication sous le modèle diamant de monographies de chercheurs de l'UdeM</p></div>
         <div
         style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
         }}
         >
         <div style={{
         border: "0.5px solid #ccc collapse",
-        padding: 0,
         margin: 0,
         lineHeight: 1,
-        textAlign: 'left',
-        padding: '1rem 0 0 1rem'
+        textAlign: 'center',
+        padding: '0 0 0 1rem'
         }}> </div>
         <div style={{
         border: "0px solid #ccc collapse",
-        padding: 0,
         margin: 0,
         lineHeight: 0.9,
         textAlign: 'center',
-        padding: '1rem 0 0 1rem'
-        }}><span style={{fontSize: '25px', fontWeight: 'bold' }}>[Nombre]</span><br/> <p style={{fontSize: '15px'}}>monographies financées depuis<br/> [date lancement service]</p> </div>
+        padding: '0 0 0 1rem'
+        }}> 
+          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>[Nombre]</b><br/>monographies financées depuis<br/> [date lancement service]</p>
+        </div>
         </div>
 
         {/* Row 6 */}
         <div style={{
         border: "0.5px solid #ccc collapse",
-        padding: '0px',
         margin: 0,
         lineHeight: 1,
         textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}><Button primary href="science-ouverte"><p style={{}}>Diffusion de la production scientifique de l'UdeM et Contribution au rayonnement de la recherche de l'UdeM grâce à l'adoption d'identifiants pérennes et à l'interopérabilité de Papyrus</p></Button></div>
+        padding: '0 0 0 1rem'
+        }}>
+          <p style={{textAlign: 'left'}}>
+          Diffusion de la production scientifique de l'UdeM et Contribution au rayonnement de la recherche de l'UdeM grâce à l'adoption d'identifiants pérennes et à l'interopérabilité de Papyrus
+          </p>
+        </div>
         <div
         style={{
         display: "grid",
@@ -354,74 +356,87 @@ import DisplayTimeline from '@/components/DisplayTimeline';
         >
         <div style={{
         border: "0.5px solid #ccc collapse",
-        padding: 0,
         margin: 0,
         lineHeight: 1,
         textAlign: 'center',
-        padding: '1rem 0 0 1rem',
+        padding: '0 0 0 1rem',
         display:'center',
-        }}><span style={{fontSize: '25px', fontWeight: 'bold' }}>32259</span><br/><Button primary href="science-ouverte"><p style={{fontSize:"15px"}}>DOI actifs dans Papyrus</p></Button></div>
+        }}>
+          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>32259</b><br/>DOI actifs dans Papyrus</p>
+        </div>
         <div style={{
         border: "0.5px solid #ccc collapse",
-        padding: 0,
         margin: 0,
         lineHeight: 1,
         textAlign: 'center',
-        padding: '1rem 0 0 1rem'
-        }}><span style={{fontSize: '25px', fontWeight: 'bold' }}>6197193</span><br/><Button primary href="science-ouverte"><p style={{fontSize:"15px"}}>téléchargements de fichiers sur Papyrus entre 2024 et 2024</p></Button></div>
+        padding: '0 0 0 1rem'
+        }}>
+            <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>6197193</b><br/>téléchargements de fichiers sur Papyrus entre 2024 et 2024</p>
+        </div>
         </div>
         </div>
         </AccordionDetails>
       </Accordion>
       {/* Données de recherche ouvertes */}
-      <Accordion>
+      <Accordion style={{ padding: '0 2rem 0 2rem' }}>
         <AccordionSummary>Données de recherche ouvertes</AccordionSummary>
-        <AccordionDetails style={{ padding: 0, backgroundColor: '#52b782' }}>
-        <div
-        style={{
-        display: "grid",
-        gridTemplateColumns: "2fr 1fr",
-        border: "0.5px solid #ccc",
-        }}
-        >
+          <AccordionDetails style={{ padding: '1rem 1rem 1rem 1rem', backgroundColor: 'rgb(213, 250, 231)' }}>
+              <div
+                style={{
+                display: "grid",
+                gridTemplateColumns: "2fr 1fr",
+                border: "0.5px solid #ccc collapse",
+                }}
+              >
         {/* Row 1 */}
         <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}><Button primary href="science-ouverte"><p style={{}}>Soutien et accompagnement pour le partage des données de recherche dans un entrepôt partagé pérenne</p></Button></div>
+            border: "0.5px solid #ccc collapse",
+            margin: 0,
+            lineHeight: 1,
+            textAlign: 'left',
+            padding: '0 0 0 1rem'
+            }}
+        >
+            <p style={{textAlign: 'left'}}>Soutien et accompagnement pour le partage des données de recherche dans un entrepôt partagé pérenne</p>
+        </div>
         <div style={{
         border: "0.1px solid #ccc collapse",
         margin: 0,
         lineHeight: 1,
         textAlign: 'center',
-        padding: '1rem 0 0 1rem'
-        }}><span style={{fontSize: '25px', fontWeight: 'bold' }}>369</span><br/><Button primary href="science-ouverte"><p style={{fontSize: '15px'}}>ensembles de données déposées et affiliées à l’UdeM sur Boréalis</p></Button></div>
+        padding: '0 0 0 1rem'
+        }}>
+          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>369</b><br/>ensembles de données déposées et affiliées à l’UdeM sur Boréalis</p>
+        </div>
         {/* Row 2 */}
         <div style={{
         border: "0.5px solid #ccc collapse",
         margin: 0,
         lineHeight: 1,
         textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}><Button primary href="science-ouverte"><p style={{}}>Accompagnement, recommandations et rehaussements de données sur Boréalis dans le respect des principes FAIR</p></Button></div>
+        padding: '0 0 0 1rem'
+        }}>
+          <p style={{}}>Accompagnement, recommandations et rehaussements de données sur Boréalis dans le respect des principes FAIR</p>
+        </div>
         <div style={{
         border: "0.5px solid #ccc collapse",
         margin: 0,
         lineHeight: 1,
-        textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}><Button primary href="science-ouverte"><p style={{}}>Service de <br/> FAIRification</p></Button></div>
+        textAlign: 'center',
+        padding: '0 0 0 1rem'
+        }}>
+          <p style={{}}>Service de <br/> FAIRification</p>
+        </div>
         {/* Row 3 */}
         <div style={{
         border: "0.5px solid #ccc collapse",
         margin: 0,
         lineHeight: 1,
         textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}><Button primary href="science-ouverte"><p style={{}}>Accompagnement et prise en charge de l'adoption d'identifiants pérennes pour lier les publications scientifiques aux ensembles de données et garantir leur découvrabilité</p></Button></div>
+        padding: '0 0 0 1rem'
+        }}>
+            <p style={{}}>Accompagnement et prise en charge de l'adoption d'identifiants pérennes pour lier les publications scientifiques aux ensembles de données et garantir leur découvrabilité</p>
+        </div>
         <div
         style={{
         display: "grid",
@@ -433,75 +448,85 @@ import DisplayTimeline from '@/components/DisplayTimeline';
         margin: 0,
         lineHeight: 1,
         textAlign: 'center',
-        padding: '1rem 0 0 1rem'
-        }}><span style={{fontSize: '25px', fontWeight: 'bold' }}> 32359</span> <br/><Button primary href="science-ouverte"><p style={{fontSize: '15px'}}>DOI attribués dans Papyrus</p></Button></div>
+        padding: '0 0 0 1rem'
+        }}>
+          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>32359</b><br/>DOI attribués dans Papyrus</p>
+        </div>
         <div style={{
         border: "0.5px solid #ccc collapse",
-        padding: 0,
         margin: 0,
         lineHeight: 1,
         textAlign: 'center',
-        padding: '1rem 0 0 1rem'
-        }}> <span style={{fontSize: '20px', fontWeight: 'bold' }}>[Nombre]</span><br/><Button primary href="science-ouverte"><p style={{fontSize: '15px'}}>DOI attribués dans Boréalis</p></Button></div>
+        padding: '0 0 0 1rem'
+        }}> 
+          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>[Nombre]</b><br/>DOI attribués dans Boréalis</p>
+        </div>
         </div>
         </div>
         </AccordionDetails>
       </Accordion>
       {/* Ressources éducatives libres */}
-      <Accordion>
+      <Accordion style={{ padding: '0 2rem 0 2rem' }}>
         <AccordionSummary>Ressources éducatives libres</AccordionSummary>
-        <AccordionDetails style={{ padding: 0, backgroundColor: '#52b782' }}>
+        <AccordionDetails style={{ padding: '1rem 1rem 1rem 1rem', backgroundColor: 'rgb(213, 250, 231)' }}>
         <div
         style={{
         display: "grid",
         gridTemplateColumns: "2fr 1fr",
-        border: "0.5px solid #ccc",
+        border: "0.5px solid #ccc collapse",
         }}
         >
         {/* Row 1 */}
         <div style={{
         border: "0.5px solid #ccc collapse",
-        padding: '0px',
         margin: 0,
         lineHeight: 1,
         textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}><Button primary href="science-ouverte"><p>Aide à la création de REL pour enrichir l’apprentissage dans un contexte de collaboration québécoise</p></Button></div>
+        padding: '0 0 0 1rem'
+        }}>
+            <p>Aide à la création de REL pour enrichir l’apprentissage dans un contexte de collaboration québécoise</p>
+        </div>
         <div style={{
         border: "0.1px solid #ccc collapse",
         margin: 0,
         lineHeight: 1,
         textAlign: 'center',
-        padding: '1rem 0 0 1rem'
-        }}><span style={{fontSize: '25px', fontWeight: 'bold' }}>3</span><br/><Button primary href="science-ouverte"><p style={{fontSize: '15px'}}>création REL accompagnées avec la Fabrique REL</p></Button></div>
+        padding: '0 0 0 1rem'
+        }}>
+          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>3</b><br/>création REL accompagnées avec la Fabrique REL</p>
+        
+        </div>
         {/* Row 2 */}
         <div style={{
         border: "0.5px solid #ccc collapse",
         margin: 0,
         lineHeight: 1,
         textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}><Button primary href="science-ouverte"><p>Accompagnement à la création, l'édition, à la publication et à la diffusion de REL sur une plateforme gérée par les bibliothèques</p></Button></div>
+        padding: '0 0 0 1rem'
+        }}>
+            <p>Accompagnement à la création, l'édition, à la publication et à la diffusion de REL sur une plateforme gérée par les bibliothèques</p>
+        </div>
         <div style={{
-        border: "0.5px solid #ccc collapse",
-        padding: 0,
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'center',
-        padding: '1rem 0 0 1rem'
-        }}><span style={{fontSize: '25px', fontWeight: 'bold' }}>5</span><br/><Button primary href="science-ouverte"><p style={{fontSize: '15px'}}>REL accessibles sur</p></Button><br/> [add icone]</div>
+          border: "0.5px solid #ccc collapse",
+          margin: 0,
+          lineHeight: 1,
+          textAlign: 'center',
+          padding: '0 0 0 1rem'
+          }}>
+          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>5</b><br/>REL accessibles sur PressBooks</p>
+        </div>
         </div>
         </AccordionDetails>
       </Accordion>
       {/* Logiciels libres */}
-      <Accordion>
+      <Accordion style={{ padding: '0 2rem 0 2rem' }}>
         <AccordionSummary>Logiciels libres</AccordionSummary>
-        <AccordionDetails style={{ padding: 0, backgroundColor: '#52b782' }}>
+        <AccordionDetails style={{ padding: '1rem 1rem 1rem 1rem', backgroundColor: 'rgb(213, 250, 231)' }}>
         <div
         style={{
         display: "grid",
         gridTemplateColumns: "2fr 1fr",
-        border: "1px solid #ccc",
+        border: "1px solid #ccc collapse",
         }}
         >
         {/* LEFT */}
@@ -511,18 +536,19 @@ import DisplayTimeline from '@/components/DisplayTimeline';
         margin: 0,
         lineHeight: 1,
         textAlign: 'left',
-        padding: '1rem 0 0 1rem'
+        padding: '0 0 0 1rem'
         }}>
         <p>Utilisation de logiciels libres dans nos plateformes et dans nos services pour promouvoir des alternatives ouvertes aux logiciels propriétaires</p>
         </div>
         <div style={{
         border: "1px solid #ccc collapse",
-        padding: 0,
         margin: 0,
         lineHeight: 1,
         textAlign: 'left',
-        padding: '1rem 0 0 1rem'
-        }}><Button primary href="science-ouverte"><p>Diffusion en licence libre sur GitHub de nos développements et intégrations informatiques</p></Button></div>
+        padding: '0 0 0 1rem'
+        }}>
+            <p>Diffusion en licence libre sur GitHub de nos développements et intégrations informatiques</p>
+        </div>
         </div>
         {/* RIGHT */}
         <div style={{ display: "grid", gridTemplateRows: "auto auto auto" }}>
@@ -534,7 +560,7 @@ import DisplayTimeline from '@/components/DisplayTimeline';
               margin: 0,
               lineHeight: 1,
               textAlign: 'left',
-              padding: '1rem 0 0 1rem'
+              padding: '0 0 0 1rem'
               }}>
               [add icone]
               </div>
@@ -543,7 +569,7 @@ import DisplayTimeline from '@/components/DisplayTimeline';
               margin: 0,
               lineHeight: 1,
               textAlign: 'left',
-              padding: '1rem 0 0 1rem'
+              padding: '0 0 0 1rem'
               }}>
               [add icone]
               </div>
@@ -553,7 +579,7 @@ import DisplayTimeline from '@/components/DisplayTimeline';
         margin: 0,
         lineHeight: 1,
         textAlign: 'left',
-        padding: '0rem 0 0 1rem'
+        padding: '0 0 0 1rem'
         }}>
         [add icone]
         </div>
@@ -562,21 +588,19 @@ import DisplayTimeline from '@/components/DisplayTimeline';
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
         <div style={{
         border: "1px solid #ccc collapse",
-        padding: 0,
         margin: 0,
         lineHeight: 1,
         textAlign: 'left',
-        padding: '1rem 0 0 1rem'
+        padding: '0 0 0 1rem'
         }}>
         [add icone]
         </div>
         <div style={{
         border: "1px solid #ccc collapse",
-        padding: 0,
         margin: 0,
         lineHeight: 1,
         textAlign: 'left',
-        padding: '1rem 0 0 1rem'
+        padding: '0 0 0 1rem'
         }}>
         [add icone]
         </div>
@@ -586,293 +610,290 @@ import DisplayTimeline from '@/components/DisplayTimeline';
         </AccordionDetails>
       </Accordion>
       {/* Matériel libre */}
-      <Accordion>
+      <Accordion style={{ padding: '0 2rem 0 2rem' }}>
         <AccordionSummary>Matériel libre</AccordionSummary>
-        <AccordionDetails style={{ padding: 0, backgroundColor: '#52b782' }}>
-        <div
-        style={{
-        display: "grid",
-        gridTemplateColumns: "2fr 3fr", // LEFT | RIGHT
-        gap: 0,
-        }}
-        >
-        {/* LEFT COLUMN (VERTICAL SPLIT) */}
-        <div
-        style={{
-        display: "grid",
-        gridTemplateRows: "auto auto",
-        gap: 0,
-        }}
-        >
-        <div style={{
-        border: "0px solid #ccc collapse",
-        lineHeight: 1,
-        textAlign: 'center',
-        padding: '1rem 0 0 1rem'
-        }}>
-        <p>Mise en valeur de la production de matériel ouvert et favorisation d'un cadre de recherche encourageant le partage et l'échange</p>
-        </div>
-        </div>
-        {/* RIGHT COLUMN (VERTICAL SPLIT) */}
-        <div
-        style={{
-        display: "grid",
-        gridTemplateRows: "1fr 1fr",
-        }}
-        >
-        <div style={{
-        border: "0px solid #ccc collapse",
-        margin: 0,                 // minimal padding
-        textAlign: 'center',
-        padding: '1rem 0 0 1rem',
-        lineHeight: 1,              // ensures vertical centering works
-        }}><span style={{fontSize: '20px', fontWeight: 'bold' }}>49</span>
-        <Button primary href="science-ouverte"><p style={{fontSize: '15px'}}>projets ouverts valorisés par les bibliothèques et développés grâce aux ressources informatiques et aux technologies créatives</p></Button></div>
-        </div>
-        </div>
-        </AccordionDetails>
-      </Accordion>
+            <AccordionDetails style={{ padding: '1rem 1rem 1rem 1rem', backgroundColor: 'rgb(213, 250, 231)' }}>
+                <div
+                  style={{
+                  display: "grid",
+                  gridTemplateColumns: "2fr 3fr", // LEFT | RIGHT
+                  gap: 0,
+                  }}>
+                      {/* LEFT COLUMN (VERTICAL SPLIT) */}
+                      <div
+                          style={{
+                              display: "grid",
+                              gridTemplateRows: "auto",
+                              gap: 0,
+                          }}>
+                                <div style={{
+                                border: "0px solid #ccc collapse",
+                                lineHeight: 1,
+                                textAlign: 'center',
+                                padding: '0 0 0 1rem'
+                                }}>
+                                    <p>Mise en valeur de la production de matériel ouvert et favorisation d'un cadre de recherche encourageant le partage et l'échange</p>
+                                </div>
+                      </div>
+                      {/* RIGHT COLUMN (VERTICAL SPLIT) */}
+                      <div
+                          style={{
+                          display: "grid",
+                          gridTemplateRows: "1fr",
+                          }}
+                          >
+                            <div style={{
+                              border: "0px solid #ccc collapse",
+                              margin: 0,                 // minimal padding
+                              textAlign: 'center',
+                              padding: '0 0 0 1rem',
+                              lineHeight: 1,              // ensures vertical centering works
+                              }}>
+                              <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>49</b><br/>projets ouverts valorisés par<br/> les bibliothèques et développés grâce<br/> aux ressources informatiques et aux<br/> technologies créatives</p>
+                            </div>
+                        </div>
+                      </div>
+              </AccordionDetails>
+        </Accordion>
     </AccordionGroupScienceOuverte>
   </GridOffset>
 </Section>
 
-<Section bg='violetFonce' marginTop='3rem'>
-<Carousel1
-    title={<Typography component="h2" variant="h2"> Infrastructures de la science ouverte</Typography>}
-    description={
-      <>
-        <Typography sx={{pb: 1.5}}>Selon l’UNESCO : « Les infrastructures de la science ouverte  désignent les infrastructures de recherche partagées […] qui  sont  nécessaires  pour  soutenir  la  science  ouverte  et  répondre  aux  besoins  des  différentes  communautés »</Typography>
-      </>
-    }
-  >
+<Section bg='violetFonce'>
+  <Carousel1
+      title={<Typography component="h2" variant="h2"> Infrastructures de la science ouverte</Typography>}
+      description={
+        <>
+          <Typography sx={{pb: 1.5}}>Selon l’UNESCO : « Les infrastructures de la science ouverte  désignent les infrastructures de recherche partagées […] qui  sont  nécessaires  pour  soutenir  la  science  ouverte  et  répondre  aux  besoins  des  différentes  communautés »</Typography>
+        </>
+      }
+    >
   </Carousel1>
 
   <Tabs1
-    tabs={['Infrastructures de recherche virtuelles', 'Infrastructures de recherche physiques', 'Ressources cognitives','Impact de la recherche', 'Droits dauteur pour le soutien des systemes de recherche ouvert']}
+    tabs={['Infrastructures de recherche virtuelles', 'Infrastructures de recherche physiques', 'Ressources cognitives','Impact de la recherche', 'Droits d’auteur pour le soutien des systemes de recherche ouvert']}
   >
 
-  <Grid container spacing=".40rem" sx={theme => ({
-        backgroundColor: '#766EC8',
-        padding: '0 0 0 0'
-      })}>
-            <Grid size={{ xs: 12, md: 6, }} sx={theme => ({
-                padding: '0 0.1rem 0 0'
-              })}>
-                <Box
-                sx={{
-                    p: 0,
-                    backgroundColor: '#ACACE6',
-                    height: '100%',
-                    fontWeight: 600,
-                    border: "1px solid #ACACE6 ",
-                    flexDirection: 'column',
-                    padding: '0 0 0 1rem'
-                }}
-                >
-                 <p style={{textAlign: 'left'}}> Mise à disposition d&apos;un entrepôt partagé de données ouvertes</p>
-                  <Box sx={{ flex: 1, border: "0px dashed gray" }}>
-                   [add icone]
+      <Grid container spacing=".40rem" sx={theme => ({
+          backgroundColor: '#766EC8',
+          padding: '0 0 0 0'
+        })}>
+                <Grid size={{ xs: 12, md: 6 }} sx={theme => ({
+                    padding: '0 0.1rem 0 0'
+                  })}>
+                    <Box
+                    sx={{
+                        backgroundColor: '#c1c1fd',
+                        height: '100%',
+                        border: "1px solid #c1c1fd",
+                        flexDirection: 'column',
+                        padding: '0 0 0 1rem'
+                    }}
+                    >
+                    <p style={{textAlign: 'left'}}> Mise à disposition d&apos;un entrepôt partagé de données ouvertes</p>
+                      <Box sx={{ flex: 1, border: "0px dashed gray" }}>
+                      [add icone]
+                      </Box>
+                    </Box>
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }} sx={theme => ({
+                    padding: '0 0.1rem 0 0'
+                  })}>
+                    <Box
+                    sx={{
+                        backgroundColor: '#c1c1fd',
+                        height: '100%',
+                        border: "1px solid #c1c1fd",
+                        flexDirection: 'column',
+                        padding: '0 0 0 1rem'   
+                    }}
+                    >
+                    <p style={{textAlign: 'left'}}>Gestion et mise à disposition d'un dépôt institutionnel et contribution à la plateforme Scholaris</p>
+                    <Box sx={{ flex: 1, border: "0px dashed gray" }}>
+                          [add icone]
+                    </Box>
+                    
+                    </Box>
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }} sx={theme => ({
+                    padding: '0 0.1rem 0 0'
+                  })}>
+                    <Box
+                    sx={{
+                        backgroundColor: '#c1c1fd',
+                        height: '100%',
+                        border: "1px solid #c1c1fd",
+                        flexDirection: 'column',
+                        padding: '0 0 0 1rem'   
+                    }}
+                    >
+                    <p style={{textAlign: 'left'}}>Gestion et mise à disposition d'une plateforme d'édition et de publication de REL</p>
+                    <Box sx={{ flex: 1, border: "0px dashed gray" }}>
+                          [add icone]
+                    </Box>
+                    </Box>
+                </Grid>
+
+                <Grid size={{ xs: 12, md: 6 }} sx={theme => ({
+                    padding: '0 0.1rem 0 0'
+                  })}>
+                    <Box
+                    sx={{
+                        backgroundColor: '#c1c1fd',
+                        height: '100%',
+                        border: "1px solid #c1c1fd",
+                        flexDirection: 'column',
+                        padding: '0 0 0 1rem'   
+                    }}
+                    >
+                    <p style={{textAlign: 'left'}}>Financement d'Orcid infrastructure virtuelle d'organisation de l'information scientifique</p>
+                    <Box sx={{ flex: 1, border: "0px dashed gray" }}>
+                          [add icone]
+                    </Box>
+                    
+                    </Box>
+                </Grid>
+                <Grid size={{ xs: 6, md: 14 }}>
+                    <Box
+                    sx={{
+                        backgroundColor: '#c1c1fd',
+                        height: '100%',
+                        border: "1px solid #c1c1fd",
+                        flexDirection: 'column',
+                        padding: '0 0 0 1rem'   
+                    }}
+                    >
+                    <p style={{textAlign: 'left'}}> Développement et mise à disposition d'une plateforme ouverte pour les collections numériques des bibliothèques de l'UdeM: <i>Collections spéciales</i>, sur <Box sx={{ border: "0px dashed gray" }}> [add icone]</Box></p>
+                    
+                    </Box>
+                </Grid>
+      </Grid>
+
+      <Grid container spacing=".40rem" 
+          sx={theme => ({ backgroundColor: '#766EC8',
+              padding: '0 0 0 0',
+              margin:'0 0 4rem',
+        })}>
+          
+            <Grid  style={{
+                display: "grid",
+                gridTemplateAreas: `
+                  "top top top"
+                  "left center right"
+                  "bottom bottom bottom"
+                `,
+                gridTemplateColumns: "1fr 2fr 0.9fr",
+                gap: "2px",              // reduced gap
+                width: "100%",
+                padding: "4px",          // compact outer spacing
+                boxSizing: "border-box",
+              }}>
+                  {/* TOP */}
+                  <Box
+                    style={{
+                      gridArea: "top",
+                      border: "1px solid #c1c1fd",
+                      backgroundColor: '#c1c1fd',
+                      minHeight: "40px",
+                      padding: "6px 10px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}>
+                    
+                      <p style={{textAlign: 'center', margin: 0 }}>Mise à disposition de la communauté universitaire d'équipements scientifiques ouverts dans une démarche de partage des ressources pour la création numérique et pour la recherche-création</p>
                   </Box>
-                </Box>
-            </Grid>
-            <Grid size={{ xs: 12, md: 6 }} sx={theme => ({
-                padding: '0 0.1rem 0 0'
-              })}>
-                <Box
-                sx={{
-                    backgroundColor: '#ACACE6',
-                    height: '100%',
-                    fontWeight: 600,
-                    border: "1px solid #ACACE6 ",
-                    flexDirection: 'column',
-                    padding: '0 0 0 1rem'   
-                }}
-                >
-                 <p style={{textAlign: 'left'}}>Gestion et mise à disposition d'un dépôt institutionnel et contribution à la plateforme Scholaris</p>
-                <Box sx={{ flex: 1, border: "0px dashed gray" }}>
-                      [add icone]
-                </Box>
-                
-                </Box>
-            </Grid>
-            <Grid size={{ xs: 12, md: 6 }} sx={theme => ({
-                padding: '0 0.1rem 0 0'
-              })}>
-                <Box
-                sx={{
-                    backgroundColor: '#ACACE6',
-                    height: '100%',
-                    fontWeight: 600,
-                    border: "1px solid #ACACE6 ",
-                    flexDirection: 'column',
-                    padding: '0 0 0 1rem'   
-                }}
-                >
-                <p style={{textAlign: 'left'}}>Gestion et mise à disposition d'une plateforme d'édition et de publication de REL</p>
-                <Box sx={{ flex: 1, border: "0px dashed gray" }}>
-                      [add icone]
-                </Box>
-                </Box>
-            </Grid>
 
-            <Grid size={{ xs: 12, md: 6 }} sx={theme => ({
-                padding: '0 0.1rem 0 0'
-              })}>
-                <Box
-                sx={{
-                    backgroundColor: '#ACACE6',
-                    height: '100%',
-                    fontWeight: 600,
-                    border: "1px solid #ACACE6 ",
-                    flexDirection: 'column',
-                    padding: '0 0 0 1rem'   
-                }}
-                >
-                 <p style={{textAlign: 'left'}}>Financement d'Orcid infrastructure virtuelle d'organisation de l'information scientifique</p>
-                <Box sx={{ flex: 1, border: "0px dashed gray" }}>
-                      [add icone]
-                </Box>
-                
-                </Box>
-            </Grid>
-            <Grid size={{ xs: 6, md: 14 }}>
-                <Box
-                sx={{
-                     backgroundColor: '#ACACE6',
-                    height: '100%',
-                    fontWeight: 600,
-                    border: "1px solid #ACACE6 ",
-                    flexDirection: 'column',
-                    padding: '0 0 0 1rem'   
-                }}
-                >
-                <p style={{textAlign: 'left'}}> Développement et mise à disposition d'une plateforme ouverte pour les collections numériques des bibliothèques de l'UdeM: <i>Collections spéciales</i>, sur <Box sx={{ border: "0px dashed gray" }}> [add icone]</Box></p>
-                
-                </Box>
-            </Grid>
-</Grid>
+                  {/* LEFT */}
+                  <Box
+                      style={{
+                        gridArea: "left",
+                        minHeight: "180px",
+                        border: "1px solid #c1c1fd",
+                        backgroundColor: '#c1c1fd',
+                        padding: "6px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}>
+                          <p style={{textAlign: 'center', fontSize: '15px', margin: 0 }}><b style={{fontSize: '25px'}}>5</b><br/>studios vidéo et audio</p>
+                  </Box>
 
-<Grid container spacing=".62rem" 
-    sx={theme => ({ backgroundColor: '#766EC8',
-        padding: '0 0 0 0',
-        margin:'0 0 4rem'
-    })}>
-<Grid size={{ xs: 12, md: 4 }}
-  style={{
-    display: "grid",
-    backgroundColor: '#ACACE6',
-    gridTemplateAreas: `
-      "top top"
-      "row1  row2"
-      "row3  row4"
-      "bottom bottom"
-    `,
-    gridTemplateColumns: "2fr 2fr 1fr",
-    gap: "9px",
-    width: "100%",
-    padding: "1rem 0 1rem 2rem",
-  }}
->
-  {/* TOP */}
-  <Box
-    style={{
-      gridArea: "top",
-      border: "2px solid #ACACE6",
-      borderRadius: "8px",
-      padding: "20px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    <p style={{textAlign: 'center'}}>Mise à disposition de la communauté universitaire d'équipements scientifiques ouverts dans une démarche de partage des ressources pour la création numérique et pour la recherche-création</p>
-  </Box>
+                  {/* CENTER */}
+                  <Box
+                      style={{
+                        gridArea: "center",
+                        minHeight: "180px",
+                        border: "1px solid #c1c1fd",
+                        backgroundColor: '#c1c1fd',
+                        padding: "8px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}>
+                          <p style={{textAlign: 'center', fontSize: '15px', margin: 0 }}><b style={{fontSize: '25px'}}>1</b><br/>laboratoire de visualisation</p>
+                  </Box>
 
-  {/* ROW1 */}
-  <Box
-    style={{
-      gridArea: "row1",
-      minHeight: "120px",
-      border: "2px solid #ACACE6",
-      borderRadius: "0",
-      padding: "20px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    <Button primary href="science-ouverte"><p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>5</b><br/>studios vidéo et audio</p></Button>
-  </Box>
+                  {/* RIGHT COLUMN */}
+                  <Grid
+                      style={{
+                        gridArea: "right",
+                        display: "grid",
+                        gridTemplateRows: "1fr 1fr",
+                        gap: "2px",           // tighter spacing
+                        minWidth: 0,
+                      }}>
+                          {/* RIGHT1 */}
+                          <Box
+                            style={{
+                              border: "1px solid #c1c1fd",
+                              backgroundColor: '#c1c1fd',
+                              minHeight: "88px",
+                              padding: "6px",
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}>
+                                <p style={{textAlign: 'center', fontSize: '15px', margin: 0 }}><b style={{fontSize: '25px'}}>3</b><br/>ateliers de fabrication</p>
+                          </Box>
 
-  {/* ROW2 */}
-  <Box
-    style={{
-      gridArea: "row2",
-      minHeight: "120px",
-      border: "2px solid #ACACE6",
-      borderRadius: "0",
-      padding: "20px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    <Button primary href="science-ouverte"><p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>1</b><br/>laboratoire de visualisation</p></Button>
-  </Box>
+                          {/* RIGHT2 */}
+                          <Box
+                            style={{
+                              border: "1px solid #c1c1fd",
+                              backgroundColor: '#c1c1fd',
+                              minHeight: "88px",
+                              padding: "6px",
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}
+                          >
+                            <p style={{textAlign: 'center', fontSize: '15px', margin: 0 }}><b style={{fontSize: '25px'}}>& 5</b><br/>imprimantes 3D</p>
+                          </Box>
+                    </Grid>
 
-  {/* ROW3 */}
-  <Box
-    style={{
-      gridArea: "row3",
-      minHeight: "160px",
-      border: "2px solid #ACACE6",
-      borderRadius: "0",
-      padding: "20px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    <Button primary href="science-ouverte"><p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>3</b><br/>ateliers de fabrication</p></Button>
-  </Box>
-
-  {/* ROW4 */}
-  <Box
-    style={{
-      gridArea: "row4",
-      minHeight: "160px",
-      border: "2px solid #ACACE6",
-      borderRadius: "0",
-      padding: "20px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    <Button primary href="science-ouverte"><p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>& 5</b><br/>imprimantes 3D</p></Button>
-  </Box>
-
-  {/* BOTTOM */}
-  <Box
-    style={{
-      gridArea: "bottom",
-      border: "2px solid #ACACE6",
-      borderRadius: "8px",
-      padding: "20px",
-      display: "flex",
-      justifyContent: "rigth",
-      alignItems: "rigth",
-    }}
-  >
-    <Button secondary href="science-ouverte"><p style={{textAlign: 'right'}}>Et plus encore à découvrir sur [add icone]</p></Button>
-  </Box>
-</Grid>
-  
-</Grid>
+                    {/* BOTTOM */}
+                    <Box
+                      style={{
+                        gridArea: "bottom",
+                        minHeight: "100px",
+                        border: "1px solid #c1c1fd",
+                        backgroundColor: '#c1c1fd',
+                        padding: "8px",
+                        display: "flex",
+                        justifyContent: "right",
+                        alignItems: "right",
+                      }}
+                    >
+                      <Button secondary href="science-ouverte"><p style={{textAlign: 'right'}}>Et plus encore à découvrir sur [add icone]</p></Button>
+                    </Box>
+              </Grid>
+        </Grid>
   
   <Grid container spacing=".62rem" sx={theme => ({ backgroundColor: '#766EC8',
         padding: '0 0 0 0',
-        margin:'0 0 4rem'
+        margin:'0 0 2rem'
       })}>
     
     <Grid size={{ xs: 12, md: 13 }}
@@ -881,14 +902,13 @@ import DisplayTimeline from '@/components/DisplayTimeline';
         gridTemplateColumns: "1fr 1fr",
         border: "1px solid #766EC8",
         background: "#766EC8",
-        padding: '1rem 1rem 1rem 1rem'
+        padding: '0.5rem 0.5rem 0.5rem 0.5rem'
       }}>
       <Box
         sx={{
-            backgroundColor: '#ACACE6',
+            backgroundColor: '#c1c1fd',
             height: '100%',
-            fontWeight: 600,
-            border: "1px solid #ACACE6 collapse ",
+            border: "1px solid #c1c1fd collapse ",
             flexDirection: 'column',
             padding: '0 0 0 1rem'
         }}
@@ -899,15 +919,14 @@ import DisplayTimeline from '@/components/DisplayTimeline';
 
       <Box
         sx={{
-            backgroundColor: '#ACACE6',
+            backgroundColor: '#c1c1fd',
             height: '100%',
-            fontWeight: 600,
-            border: "1px solid #ACACE6 collapse ",
+            border: "1px solid #c1c1fd collapse ",
             flexDirection: 'column',
             padding: '0 0 0 1rem'
             }}
       >
-       <Button primary href="science-ouverte"><p style={{textAlign: 'center'}}><b>6 400 000</b><br/>resources en libre accès renseignées dans le catalogue en novembre 2025</p></Button>
+          <p style={{textAlign: 'center', fontSize: '15px'}}><b>6 400 000</b><br/>resources en libre accès renseignées dans le catalogue en novembre 2025</p>
       </Box>
     </Grid>
 
@@ -917,14 +936,13 @@ import DisplayTimeline from '@/components/DisplayTimeline';
           gridTemplateColumns: "1fr 1fr",
           border: "1px solid #766EC8",
           background: "#766EC8",
-          padding: '1rem 1rem 1rem 1rem'
+          padding: '0.5rem 0.5rem 0.5rem 0.5rem'
         }}>
       <Box
         sx={{
-            backgroundColor: '#ACACE6',
+            backgroundColor: '#c1c1fd',
             height: '100%',
-            fontWeight: 600,
-            border: "1px solid #ACACE6 collapse ",
+            border: "1px solid #c1c1fd collapse ",
             flexDirection: 'column',
             padding: '0 0 0 1rem'
             }}
@@ -935,15 +953,14 @@ import DisplayTimeline from '@/components/DisplayTimeline';
 
       <Box
         sx={{
-            backgroundColor: '#ACACE6',
+            backgroundColor: '#c1c1fd',
             height: '100%',
-            fontWeight: 600,
-            border: "1px solid #ACACE6 collapse ",
+            border: "1px solid #c1c1fd collapse ",
             flexDirection: 'column',
             padding: '0 0 0 1rem'
             }}
       >
-        <Button primary href="science-ouverte"><p style={{textAlign: 'center'}}><b>32 356</b><br/>thèse et mémoires disponibles sur Papyrus en novembre 2025</p></Button>
+        <p style={{textAlign: 'center', fontSize: '15px'}}><b>32 356</b><br/>thèse et mémoires disponibles sur Papyrus en novembre 2025</p>
       </Box>
     </Grid>
 
@@ -953,14 +970,13 @@ import DisplayTimeline from '@/components/DisplayTimeline';
           gridTemplateColumns: "1fr 1fr",
           border: "1px solid #766EC8",
           background: "#766EC8",
-          padding: '1rem 1rem 1rem 1rem'
+          padding: '0.5rem 0.5rem 0.5rem 0.5rem'
         }}>
       <Box
         sx={{
-            backgroundColor: '#ACACE6',
+            backgroundColor: '#c1c1fd',
             height: '100%',
-            fontWeight: 600,
-            border: "1px solid #ACACE6 collapse ",
+            border: "1px solid #c1c1fd collapse ",
             flexDirection: 'column',
             padding: '0 0 0 1rem'
             }}
@@ -971,27 +987,25 @@ import DisplayTimeline from '@/components/DisplayTimeline';
 
       <Box
         sx={{
-            backgroundColor: '#ACACE6',
+            backgroundColor: '#c1c1fd',
             height: '100%',
-            fontWeight: 600,
-            border: "1px solid #ACACE6 collapse ",
+            border: "1px solid #c1c1fd collapse ",
             flexDirection: 'column',
             padding: '0 0 0 1rem'
         }}
       >
         
        <p style={{textAlign: 'center'}}> [icon calypso]</p>
-       <Box sx={{
-            background: "#766EC8",
+       {/*<Box sx={{
+            background: "#c1c1fd",
             height: '45%',
             width: '95%',
-            fontWeight: 600,
-            border: "1px solid #766EC8 ",
+            border: "1px solid #c1c1fd ",
             borderRadius: "20px",
             padding: '0.4rem 1rem 1rem 1rem'
         }}>
        <p style={{textAlign: 'left', fontSize:'14px'}}><i>Horizons: la plateforme Collections spéciales</i></p>
-       </Box>
+       </Box>*/}
       </Box>
     </Grid>
 
@@ -1008,34 +1022,32 @@ import DisplayTimeline from '@/components/DisplayTimeline';
           gridTemplateColumns: "2fr 1fr",
           border: "1px solid #766EC8",
           background: "#766EC8",
-          padding: '1rem 1rem 1rem 1rem'
+          padding: '0.5rem 0.5rem 0.5rem 0.5rem'
     }}
     >
       <Box
         sx={{
-            backgroundColor: '#ACACE6',
+            backgroundColor: '#c1c1fd',
             height: '100%',
-            fontWeight: 600,
-            border: "1px solid #ACACE6 collapse ",
+            border: "1px solid #c1c1fd collapse ",
             flexDirection: 'column',
             padding: '0 0 1rem 1rem'
         }}
       >
       
-      <Button primary href="science-ouverte"><p style={{textAlign: 'left', fontSize: '15px'}}>  Promotion des identifiants uniques tels qu'Orcid pour les chercheurs pour la découvrabilité de la recherche</p></Button>
+        <p style={{textAlign: 'left'}}>  Promotion des identifiants uniques tels qu'Orcid pour les chercheurs pour la découvrabilité de la recherche</p>
       </Box>
 
       <Box
         sx={{
-            backgroundColor: '#ACACE6',
+            backgroundColor: '#c1c1fd',
             height: '100%',
-            fontWeight: 600,
-            border: "1px solid #ACACE6 collapse ",
+            border: "1px solid #c1c1fd collapse ",
             flexDirection: 'column',
             padding: '0 0 0 1rem'
           }}
         >
-        <Button primary href="science-ouverte"><p style={{textAlign: 'center'}}>[icone ORCID]</p></Button>
+        {/*<Button primary href="science-ouverte"><p style={{textAlign: 'center'}}>[icone ORCID]</p></Button>*/}
       </Box>
     </Grid>
 
@@ -1045,31 +1057,29 @@ import DisplayTimeline from '@/components/DisplayTimeline';
           gridTemplateColumns: "2fr 2fr",
           border: "1px solid #766EC8",
           background: "#766EC8",
-          padding: '1rem 1rem 1rem 1rem'
+          padding: '0.5rem 0.5rem 0.5rem 0.5rem'
     }}>
       <Box
         sx={{
-          backgroundColor: '#ACACE6',
+          backgroundColor: '#c1c1fd',
             height: '100%',
-            fontWeight: 600,
-            border: "1px solid #ACACE6 collapse ",
+            border: "1px solid #c1c1fd collapse",
             flexDirection: 'column',
             padding: '0 0 0 1rem'
          }}
       >
-      <Button primary href="science-ouverte"><p style={{textAlign: 'left', fontSize: '15px'}}>  Accompagnement en impact de la recherche responsable respectueux des principes DORA</p></Button>
+        <p style={{textAlign: 'left'}}>  Accompagnement en impact de la recherche responsable respectueux des principes DORA</p>
       </Box>
 
       <Box sx={{
-          backgroundColor: '#ACACE6',
+          backgroundColor: '#c1c1fd',
             height: '100%',
-            fontWeight: 600,
-            border: "1px solid #ACACE6 collapse ",
+            border: "1px solid #c1c1fd collapse ",
             flexDirection: 'column',
             padding: '0 0 0 1rem'
          }}
       >
-      <p style={{textAlign: 'center'}}>24<br/>accompagnements individuels pour l'impact de la recherche entre 2024 et 2025</p>
+      <p style={{textAlign: 'center', fontSize: '15px'}}>24<br/>accompagnements individuels pour l'impact de la recherche entre 2024 et 2025</p>
       </Box>
      </Grid>
 
@@ -1085,49 +1095,33 @@ import DisplayTimeline from '@/components/DisplayTimeline';
             gridTemplateColumns: "2fr 1fr",
             border: "1px solid #766EC8",
             background: "#766EC8",
-            padding: '1rem 1rem 1rem 1rem'
+            padding: '0.5rem 0.5rem 0.5rem 0.5rem'
       }}>
       <Box
         sx={{
-            backgroundColor: '#ACACE6',
+            backgroundColor: '#c1c1fd',
             height: '100%',
-            fontWeight: 600,
-            border: "1px solid #ACACE6 collapse ",
+            border: "1px solid #c1c1fd collapse ",
             flexDirection: 'column',
             padding: '0 0 0 1rem'
             }}
       >
-      
-        <Button primary href="science-ouverte"><p style={{textAlign: 'left', fontSize: '15px'}}> Sensibilisation en droit d'auteur pour transmettre les bonnes pratiques qui favorisent l'ouverture de la recherche à plusieurs étapes du processus scientifique</p></Button>
+        <p style={{textAlign: 'left'}}> Sensibilisation en droit d'auteur pour transmettre les bonnes pratiques qui favorisent l'ouverture de la recherche à plusieurs étapes du processus scientifique</p>
       </Box>
 
       <Box sx={{
-            backgroundColor: '#ACACE6',
+            backgroundColor: '#c1c1fd',
             height: '100%',
-            fontWeight: 600,
-            border: "1px solid #ACACE6 collapse ",
+            border: "1px solid #c1c1fd collapse ",
             flexDirection: 'column',
             padding: '0 0 0 1rem',
             display:'flex'
             }}
       >
-          
-            <Button primary href="science-ouverte"><p style={{textAlign: 'center', fontSize: '15px'}}> [Nombre]<br/>
-            formations par an<br/></p></Button>
-          
-            <Box sx={{
-            backgroundColor: '#ACACE6',
-            height: '30%',
-            fontWeight: 600,
-            border: "1px solid #ACACE6 collapse ",
-            flexDirection: 'column',
-            padding: '0 0 0 1rem',
-            display:'flex'
-            }}>
-          
-            <p style={{textAlign: 'center', fontSize: '15px'}}>[Nombre]<br/>
+          <p style={{textAlign: 'center', fontSize: '15px'}}> [Nombre]<br/>
+            formations par an<br/>
+            [Nombre]<br/>
             accompagnements individuels</p>
-      </Box>
       </Box>
     </Grid>
 
@@ -1137,32 +1131,32 @@ import DisplayTimeline from '@/components/DisplayTimeline';
             gridTemplateColumns: "2fr 2fr",
             border: "1px solid #766EC8",
             background: "#766EC8",
-            padding: '1rem 1rem 1rem 1rem'
+            padding: '0.5rem 0.5rem 0.5rem 0.5rem'
       }}>
       <Box sx={{
-            backgroundColor: '#ACACE6',
+            backgroundColor: '#c1c1fd',
             height: '100%',
-            fontWeight: 600,
-            border: "1px solid #ACACE6 collapse ",
+            border: "1px solid #c1c1fd collapse ",
             flexDirection: 'column',
             padding: '0 0 1.5rem 1rem'
           }}
       >
-       <Button primary href="science-ouverte"><p style={{textAlign: 'center', fontSize: '15px'}}>Conseils et accompagnement pour la protection du travail de rechercher et pour la publication ouverte</p></Button>
-
+        <p style={{textAlign: 'left'}}>
+          Conseils et accompagnement pour la protection du travail 
+          de rechercher et pour la publication ouverte
+        </p>
       </Box>
 
       <Box
         sx={{
-           backgroundColor: '#ACACE6',
+           backgroundColor: '#c1c1fd',
             height: '100%',
-            fontWeight: 600,
-            border: "1px solid #ACACE6 collapse ",
+            border: "1px solid #c1c1fd collapse ",
             flexDirection: 'column',
             padding: '0 0 0 1rem'
             }}
       >
-        <Button primary href="science-ouverte"><p style={{textAlign: 'center', fontSize: '15px'}}>[icone: creative commons]</p></Button>
+          <p style={{textAlign: 'center', fontSize: '15px'}}>[add icone: creative commons]</p>
       </Box>
     </Grid>
 
@@ -1172,53 +1166,57 @@ import DisplayTimeline from '@/components/DisplayTimeline';
 
 </Section>
 
-<Section bg='rougeOrange' marginTop='3rem'>
-  <Grid container spacing=".40rem" sx={theme => ({
-        backgroundColor: '#FF8833',
-        padding: '0 0 0 0'
-      })}>
-    <Grid size={{ xs: 14, md: 6, }} sx={theme => ({
-                padding: '0 0.1rem 0 0'
-              })}>
-                <Box
-                sx={{
-                    backgroundColor: '#FBE870',
-                    height: '100%',
-                    fontWeight: 600,
-                    border: "1px solid #FBE870",
-                    flexDirection: 'column',
-                    padding: '0 0.1rem 0 0'
-                }}
-                >
-                 <p style={{textAlign: 'left'}}>[add image]</p>
-                </Box>
-      </Grid>
-
-      <Grid size={{ xs: 12, md: 6 }} 
-          sx={{
-          display: "grid",
-          gridTemplateAreas: `
+<Section bg='jaunePale'>
+  <Grid style={{
+      display: "grid",
+      gridTemplateColumns: "35fr 65fr",
+      gap: "12px",
+      width: "100%",
+      padding: "10px",
+      boxSizing: "border-box",
+    }}
+  >
+    {/* LEFT GRID */}
+    <Box
+      style={{
+        minWidth: 0, // IMPORTANT
+        backgroundColor: '#FBE870',
+        border: "2px solid #FBE870",
+        padding: "10px",
+        overflow: "hidden",
+        wordBreak: "break-word",
+      }}
+    >
+      <p style={{textAlign: 'left'}}>[add image]</p>
+    </Box>
+    
+    {/* RIGHT GRID */}
+    <Grid
+      style={{
+        minWidth: 0, // IMPORTANT
+        display: "grid",
+        gridTemplateAreas: `
             "top top"
             "subtop subtop"
             "left right"
           `,
-          gridTemplateColumns: "2fr 2fr",
-          padding: "20px",
-          gap:"5px"
-        }}
-      >
-        {/* TOP */}
+        gridTemplateColumns: "2fr 2fr",
+        gap: "12px",
+      }}
+    >
+      {/* TOP */}
         <Box
           style={{
             gridArea: "top",
             border: "1px solid black collapse",
             borderRadius: "8px",
-            padding: "20px",
+            padding: "10px",
             background: "#FF8833",
             display: "flex"
           }}
         >
-          <p style={{fontSize: "25px", textAlign:'left'}}><b>Participation ouverte des acteurs de la société</b></p>
+          <Typography component="h2" variant="h2"> Participation ouverte des acteurs de la société</Typography>
+          
         </Box>
 
         {/* SUBTOP */}
@@ -1227,7 +1225,7 @@ import DisplayTimeline from '@/components/DisplayTimeline';
             gridArea: "subtop",
             border: "2px solid black collapse",
             borderRadius: "5px",
-            padding: "20px",
+            padding: "10px",
             background: "#FFDB00",
             display: "flex",
           }}
@@ -1242,7 +1240,7 @@ import DisplayTimeline from '@/components/DisplayTimeline';
             minHeight: "250px",
             border: "2px solid black collapse",
             borderRadius: "5px",
-            padding: "20px",
+            padding: "10px",
             background: "	#FFCBA4",
           }}
         >
@@ -1253,7 +1251,7 @@ import DisplayTimeline from '@/components/DisplayTimeline';
                 minHeight: "200px",
                 border: "2px solid black collapse",
                 borderRadius: "5px",
-                padding: "20px",
+                padding: "10px",
                 background: "	#FFCBA4",
                 
               }}>
@@ -1268,7 +1266,7 @@ import DisplayTimeline from '@/components/DisplayTimeline';
             minHeight: "250px",
             border: "2px solid black collapse",
             borderRadius: "5px",
-            padding: "20px",
+            padding: "10px",
             background: "	#FFCBA4",
 
           }}
@@ -1280,282 +1278,569 @@ import DisplayTimeline from '@/components/DisplayTimeline';
                 minHeight: "200px",
                 border: "2px solid black collapse",
                 borderRadius: "5px",
-                padding: "20px",
+                padding: "1.5rem0px",
                 background: "	#FFCBA4",
               }}>
                [add icone]
               </Box>
         </Box>
-  </Grid>
-   
+    </Grid>
+    
   </Grid>
 
 </Section>
 
-<Section bg='bleu600' marginTop='3rem'>
-  <Typography component="h2" variant="h2"> Dialogue ouvert avec les autres systèmes de connaissances</Typography>
-  <Typography sx={{pb: 1.5}}>Selon l’UNESCO : « Le dialogue ouvert avec les autres systèmes de connaissance [a pour but] de promouvoir l’inclusion des  connaissances et des chercheurs traditionnellement marginalisés et d’améliorer les relations et les complémentarités entre les différents [systèmes de connaissance] »</Typography>
-  
-<HorizontalCardList items={[
-  {
-    cardProps:{
-       title:"Premiers Peuple",
-       Image: "salleIndividuelle"
-    },
-    
-    leftColl:
-      <>
-        <Grid container spacing={2} style={{
-            backgroundColor: '#00407f'
-            }}>
-            <Grid size={{ xs: 12, md: 9 }}>
-                <Box sx={{
-                    p: 1,
-                    height: '100%',
-                    fontWeight: 600,
-                    border: 'solid',
-                    borderColor:'#93CCEA',
-                    backgroundColor:'#93CCEA',
-                }}
-                >
-                  {/* TOP */}
-                  <Box sx={{ flex: "0 0 auto", mb: 1 }}>
-                    <p>Création de la Direction de l'Engagement et de l'Innovation Sociale (DEIS)</p>
-                  </Box>
-                </Box>
-            </Grid>
-            <Grid size={{ xs: 12, md: 6 }}>
-                <Box sx={{
-                    p: 1,
-                    height: '100%',
-                    fontWeight: 600,
-                    border: 'solid',
-                    borderColor:'#93CCEA',
-                    backgroundColor:'#93CCEA',
-                }}
-                >
+<Section bg='bleu600'>
+  <Grid style={{
+        display: "grid",
+        gridTemplateColumns: "80% 20%",
+        gap: "2px",
+        width: "100%",
+        padding: "5px",
+      }}
+    >
+      {/* LEFT GRID - 80% */}
+      <Grid style={{
+        minWidth: 0, // IMPORTANT
+            display: "grid",
+            gridTemplateAreas: `
+              "top"
+            `,
+            gridTemplateRows: "auto",
+            gap: "5px",
+          }}
+      >
+          {/* TOP */}
+          <Box
+            style={{
+              gridArea: "top",
+              border: "2px solid black collapse",
+              borderRadius: "8px",
+              minHeight: "80px",
+              padding: "20px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+              <p> 
+                <Typography component="h2" variant="h2"> Dialogue ouvert avec les autres systèmes de connaissances</Typography>
 
-                  {/* TOP */}
-                  <Box sx={{ flex: "0 0 auto", mb: 1 }}>
-                    <p>
-                      Soutien et contribution au répertoire vedettes matières de l'Université Laval pour la décolonisation des collections
-                    </p>
-                  </Box>
-                </Box>
-            </Grid>
-          </Grid>
-      </>
-        ,
-    leftFooter: <></>
-        ,
-      rightColl:
-        <>
-          <Grid container spacing={2}>
-            <Grid size={{ xs: 12, md: 12 }}>
-                <Box sx={{
-                    p: 2,
-                    height: '100%',
-                    fontWeight: 600,
-                    border: 'solid',
-                    borderColor:'#93CCEA',
-                    backgroundColor:'#93CCEA',
-                }}
-                >
-                
-                  {/* TOP */}
-                  <Box sx={{ flex: "0 0 auto", mb: 1 }}>
-                    <p>Reconnaissance et promotion des systèmes de savoirs autochtones, en
-                    cohésion avec la communauté de l'UdeM,</p>
-                  </Box>
+                <Typography component="subtitle1" variant="subtitle1"> Notre engagement : inclure les principes d’équité, de diversité, d’inclusion, d’accessibilité (EDIA) et d’écoresponsabilité au cœur de nos actions.</Typography>
+              </p>
+          </Box>
+    </Grid>
 
-                  {/* CENTER (left + right) */}
-                  <Box sx={{ display: "flex", flex: 1, gap: 1 }}>
-                    
-                    {/* LEFT */}
-                    <Box sx={{ flex: 1, border: "0px dashed gray" }}>
-                      <HeadCircuitIcon color='#f04e24' size={50} />
-                      <p>Valorisation des études autochtones</p>
+    {/* RIGHT GRID - 20% */}
+    <Box style={{
+      minWidth: 0, // IMPORTANT
+        border: "2px solid black collapse",
+        borderRadius: "8px",
+        minHeight: "450px",
+        padding: "20px",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+        <p style={{textAlign: 'left'}}>[add image]</p>
+    </Box>
+  </Grid>
+
+  <DialogueOuverteHorizontalTabs 
+    tabs={[
+      { 
+        label: 'Premiers Peuple', 
+        content: (
+          <Grid container spacing={1}>
+            <Grid style={{
+                display: "grid",
+                gridTemplateAreas: `
+                  "left1 center right"
+                  "left2 center right"
+                `,
+                gridTemplateColumns: "1fr 2fr 1fr",
+                gap: "12px",
+                width: "100%",
+                padding: "10px",
+              }}
+            >
+              {/* LEFT 1 */}
+                <Box
+                  sx={{
+                    gridArea: "left1",
+                    backgroundColor:'#e5f0f8',
+                    border: "2px solid #e5f0f8 collapse",
+                    borderRadius: "0px",
+                    minHeight: "15px",
+                    padding: "10px",
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
+                >
+                    <Box sx={{ flex: "0 0 auto", mb: 1}}>
+                      <p style={{textAlign: 'center'}}>Création de la Direction de l'Engagement et de l'Innovation Sociale (DEIS)</p>
+                    </Box>
+                </Box>
+
+                {/* LEFT 2 */}
+                <Box
+                  style={{
+                    gridArea: "left2",
+                    backgroundColor:'#e5f0f8',
+                    border: "2px solid #e5f0f8 collapse",
+                    minHeight: "15px",
+                    padding: "10px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <p style={{textAlign: 'center'}}>Soutien et contribution au répertoire vedettes matières de l’Université Laval pour la décolonisation des collections</p>
+                </Box>
+
+                {/* CENTER */}
+                <Box
+                  sx={{
+                    gridArea: "center",
+                    backgroundColor:'#e5f0f8',
+                    border: "2px solid #e5f0f8 collapse",
+                    minHeight: "250px",
+                    padding: "10px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "16px",
+                  }}
+                >
+                    {/* TOP */}
+                    <Box
+                      sx={{
+                        backgroundColor:'#e5f0f8',
+                        border: "2px solid #e5f0f8 collapse",
+                        p: 2,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        minHeight: 60,
+                      }}
+                    >
+                      <p style={{textAlign: 'center'}}>Reconnaissance et promotion des systèmes de savoirs autochtones, en cohésion avec la communauté de l’UdeM</p>
                     </Box>
 
-                    {/* RIGHT */}
-                    <Box sx={{ flex: 1, border: "0px dashed gray" }}>
-                      <HeadCircuitIcon color='#f04e24' size={50} />
-                      <p>Participation au rassemblement Mitig</p>
+                    {/* CENTER AREA */}
+                    <Box
+                      sx={{
+                        flex: 1,
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        gap: 2,
+                      }}
+                    >
+                        {/* CENTER LEFT */}
+                        <Box
+                          sx={{
+                            backgroundColor:'#e5f0f8',
+                            border: "2px solid #e5f0f8 collapse",
+                            p: 2,
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            minHeight: 140,
+                          }}
+                        >
+                          <p style={{ margin: 0, textAlign: 'center' }}>[add icone]
+                          Valorisation des études autochtones</p>
+                        </Box>
+
+                        {/* CENTER RIGHT */}
+                        <Box
+                          sx={{
+                            backgroundColor:'#e5f0f8',
+                            border: "2px solid #e5f0f8 collapse",
+                            p: 2,
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            minHeight: 140,
+                          }}
+                        >
+                            <p style={{ margin: 0, textAlign: 'center' }}>[add icone]
+                            Participation au rassemblement Mitig</p>
+                        </Box>
+                </Box>
+
+                  {/* BOTTOM */}
+                  <Box
+                    sx={{
+                      backgroundColor:'#e5f0f8',
+                      border: "2px solid #e5f0f8 collapse",
+                      p: 2,
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      minHeight: 60,
+                    }}
+                  >
+                    <p style={{ margin: 0, textAlign: 'center' }}>Contribution au projet d’inclusion des sciences autochtones dans les cursus universitaires de la faculté des arts et des sciences</p>
+                  </Box>
+                </Box>
+
+              {/* RIGHT */}
+              <Box
+                style={{
+                    gridArea: "right",
+                    backgroundColor:'#e5f0f8',
+                    border: "2px solid #e5f0f8 collapse",
+                    minHeight: "280px",
+                    padding: "10px",
+                    display: "grid",
+                    gridTemplateRows: "1fr 1fr",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+              >
+                    <Box
+                      sx={{
+                        backgroundColor:'#e5f0f8',
+                        border: "2px solid #e5f0f8 collapse",
+                        p: 2,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        minHeight: 140,
+                      }}
+                    >
+                        <p style={{ margin: 0, textAlign: 'center' }}>Participation active au groupe de travail « Collections et Premiers Peuples » pour initier des projets de cohésion autour des savoirs autochtones</p>
                     </Box>
-                  </Box>
 
-                  {/* BOTTOM */}
-                  <Box sx={{ flex: "0 0 auto", mt: 1 }}>
-                    <p> 
-                    Contribution au projet d'inclusion des sciences autochtones dans les cursus
-                    universitaires de la faculté des arts et des sciences
-                    </p>
+                    <Box
+                      sx={{
+                        backgroundColor:'#e5f0f8',
+                        border: "2px solid #e5f0f8 collapse",
+                        p: 2,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        minHeight: 140,
+                      }}
+                    >
+                      <p style={{ margin: 0, textAlign: 'center' }}>Mise en place de projets transdisciplinaires pour valoriser les savoirs autochtones en lien avec les collections des bibliothèques</p>
                   </Box>
-
-                </Box>
-            </Grid>
-            <Grid size={{ xs: 12, md: 10 }}>
-                <Box sx={{
-                    p: 2,
-                    height: '100%',
-                    fontWeight: 600,
-                    border: 'solid',
-                    borderColor:'#93CCEA',
-                    backgroundColor:'#93CCEA',
-                }}
-                >
-                
-                  {/* TOP */}
-                  <Box sx={{ flex: "0 0 auto", mb: 1 }}>
-                    <p>
-                      Participation active au groupe de travail
-                      ''Collections et Premiers Peuples'' pour initier des
-                      projets de cohésion autour des savoirs autochtones
-                    </p>
-                  </Box>
-
-                  {/* BOTTOM */}
-                  <Box sx={{ flex: "0 0 auto", mt: 1 }}>
-                    <p> 
-                    Mise en place de projets transdisciplinaires pour 
-                    valoriser les savoirs autochtones en lien avec les collections des bibliothèques 
-                    </p>
-                  </Box>
-
-                </Box>
-            </Grid>
-            
+              </Box>
+            </Grid>    
           </Grid>
-        </>
-  },
-  {
-   cardProps:{
-        title:"Accessibilité  du processus scientifique pour les cherchers marginalisés",
-       Image: "salleIndividuelle"
-    },
-    
-    leftColl:
-        <>
-            <Grid container spacing={1}>
-            <Grid size={{ xs: 12, md: 9 }}>
-                <Box sx={{
-                    p: 2,
-                    height: '100%',
-                    fontWeight: 600,
-                    borderColor:'#93CCEA',
-                    backgroundColor:'#93CCEA',
-                }}
-                >
+        )
+      },
+      { 
+        label: 'Accessibilité  du processus scientifique pour les cherchers marginalisés', 
+        content: (
+          <Grid container spacing={1}>
+              <Grid style={{
+                  display: "grid",
+                  gridTemplateAreas: `
+                  "left right" `,
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "5px",
+                  width: "100%",
+                  padding: "5px",
+                  minHeight:"800px"
+                  }}
+              >
+                    {/* LEFT 1 */}
+                    <Box
+                        style={{
+                            gridArea: "left",
+                            backgroundColor:'#e5f0f8',
+                            border: "1px solid #e5f0f8",
+                            borderRadius: "0px",
+                            minHeight: "120px",
+                            padding: "5px",
+                            gridTemplateRows: "1fr 1fr",
+                            justifyContent: "center",
+                            alignItems: "center"
+                          }}>
+                              <Box sx={{
+                                    border: "1px solid gray collapse",
+                                    borderRadius: "0px",
+                                    p: 2,
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    minHeight: "100px",
+                                  }}>
+                                      <p style={{textAlign: 'center'}}>Service d’adaptation des documents pour rendre les ressources accessibles aux chercheurs ayant des besoins particuliers</p>
+                                </Box>
+
+                                {/* TOP */}
+                                <Box sx={{
+                                    border: "1px solid gray collapse",
+                                    borderRadius: "0px",
+                                    p: 2,
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    minHeight: '50px',
+                                  }}>
+                                    <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>10 000  à 15 0000</b><br/>pages adaptées par semestre</p>
+                                </Box>
+                      </Box>
+
+                      {/* RIGHT */}
+                      <Box
+                          style={{
+                            gridArea: "right",
+                            backgroundColor:'#e5f0f8',
+                            border: "1px solid #e5f0f8",
+                            borderRadius: "0px",
+                            minHeight: "120px",
+                            padding: "5px",
+                            gridTemplateRows: "1fr 1fr",
+                            justifyContent: "center",
+                            alignItems: "center"
+                            }}
+                        >
+                            <Box
+                              sx={{
+                                  border: "1px solid gray collapse",
+                                  borderRadius: "0px",
+                                  p: 2,
+                                  display: "flex",
+                                  justifyContent: "center",
+                                  alignItems: "center",
+                                  minHeight: "100px",
+                                }}>
+                                    <p style={{textAlign: 'center'}}>
+                                      Mise à disposition d'espaces et d'outils
+                                      physiques et virtuels adaptés pour rendre accessibles
+                                      les processus scientifiques 
+                                  </p>
+                            </Box>
+
+                            <Box
+                              sx={{
+                                border: "1px solid gray collapse",
+                                borderRadius: "0px",
+                                p: 2,
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                minHeight: '50px'
+                              }}
+                            >
+                              <Box sx={{ flex: "0 0 auto", mb: 1 }}>
+                                  <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>plus de 3000</b><br/>usagers réguliers
+                                  </p>
+                              </Box>
+                            </Box>
+                        </Box>
+              </Grid>    
+
+          </Grid>
+        )
+      },
+      { 
+        label: 'Communautés locales', 
+        content: (
+          <Grid container spacing={1}>
+            <Grid sx={{
+                minHeight:"800px"
+              }}>
+              <Box sx={{
+                p: 2,
+                height: '100%',
+                fontWeight: 600,
+                border: "2px solid black",
+                backgroundColor:'#e5f0f8',
+                justifyContent: "center",
+                alignItems: "center",
+              }}>
                   {/* TOP */}
-                  <Box sx={{ flex: "0 0 auto", mb: 1 }}>
-                    <p>Service d'adaptation des documents pour rendre les ressources
-                      accessibles aux chercheurs ayant des besoins particuliers
-                    </p>
+                  <Box sx={{
+
+                      backgroundColor:'#e5f0f8',
+                      border: "2px solid #e5f0f8 collapse",
+                      p: 2,
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      minHeight: 60
+                  }}>
+                      <p sx={{textAlign:"center"}}>
+                        Valorisation de la production scientifique francophone 
+                        québécoise dans une demarche de visibilité de la 
+                        recherche nationale à l'échelle locale et internationale
+                      </p>
                   </Box>
 
                   {/* TOP */}
-                  <Box sx={{ flex: "0 0 auto", mb: 1 }}>
-                    10 000  à 15 0000 <br/>
-                    pages adaptées par semestre
+                  <Box sx={{
+                    border: "1px solid gray collapse",
+                    borderRadius: "6px",
+                    p: 2,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    minHeight: 140,
+                  }}>
+                    <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>13</b><br/>revues nationales hébergées localement OJS</p>
                   </Box>
                 </Box>
             </Grid>
           </Grid>
-        </>
-        ,
-      leftFooter: <></>
-        ,
-      rightColl:
-        <>
-            <Grid container spacing={1}>
-            <Grid size={{ xs: 12, md: 9 }}>
-                <Box sx={{
-                    p: 2,
-                    height: '100%',
-                    fontWeight: 600,
-                    borderColor:'#93CCEA',
-                    backgroundColor:'#93CCEA',
-                }}
-                >
-                  {/* TOP */}
-                  <Box sx={{ flex: "0 0 auto", mb: 1 }}>
-                    <p>
-                      Mise à disposition d'espaces et d'outils
-                      physiques et virtuels adaptés pour rendre accessibles
-                      les processus scientifiques 
-                    </p>
-                  </Box>
+        )
+      }
+    ]}
+    verticalSpacing="1rem"
+    showDividers={true}
+    maxHeight="800px"
+  />
 
-                  {/* TOP */}
-                  <Box sx={{ flex: "0 0 auto", mb: 1 }}>
-                    plus de 3000 <br/>
-                      usagers réguliers
-                  </Box>
-                </Box>
-            </Grid>
-          </Grid>
-        </>
-  },
-  {
-    cardProps: {
-      title:"communauté locales",
-      Image: "salleIndividuelle"
-    },
-
-    leftColl:
-        <>
-            <Grid container spacing={1}>
-            <Grid size={{ xs: 12, md: 9 }}>
-                <Box sx={{
-                    p: 2,
-                    height: '100%',
-                    fontWeight: 600,
-                    border: 'solid',
-                    borderColor:'#93CCEA',
-                    backgroundColor:'#93CCEA',
-                }}
-                >
-                  {/* TOP */}
-                  <Box sx={{ flex: "0 0 auto", mb: 1 }}>
-                    <p>
-                      Valorisation de la production scientifique
-                      francophone québécoises dans une demarche
-                      de visibilité de la recherche nationale à l'échelle locale
-                      et internationale
-                    </p>
-                  </Box>
-
-                  {/* TOP */}
-                  <Box sx={{ flex: "0 0 auto", mb: 1 }}>
-                    13 <br/>
-                    revues nationales hébergées
-                    localement OJS
-                  </Box>
-                </Box>
-            </Grid>
-          </Grid>
-        </>
-        ,
-      leftFooter:<></>
-        ,
-      rightColl:<></>
-  },
-]} />
 </Section>
 
-<Section bg='rose500' marginTop='3rem'>
-<Typography component="h2" variant="h2"> Histoire de l’engagement des bibliothèques pour la science ouverte</Typography>
-  
+<Section bg='rose500'>
+######version 1
+<Typography component="h2" variant="h2">L’histoire de l’engagement des bibliothèques pour la science ouverte</Typography>
+        
+<Typography component="subtitle1" variant="subtitle1">Voici les temps forts de l'engagement des bibliothèques</Typography>
+
+<TimelineDefault
+   data={[
+  {
+    date: "1990",
+    title: "Lancement du SDAESH",
+    subtitle: "🏢 SDAESH",
+    description: "Lancement du SDAESH, actuel Service Accessibilité",
+    tags: [],
+    side: "left",
+    color: "#2c7da0",
+    gradient: "linear-gradient(135deg, #2c7da0, #1e5a77)"
+  },
+  {
+    date: "2005",
+    title: "Lancement de Papyprus",
+    subtitle: "🚀 Papyprus",
+    description: "Lancement de Papyprus",
+    tags: [],
+    side: "right",
+    color: "#e76f51",
+    gradient: "linear-gradient(135deg, #e76f51, #c95a3a)"
+  },
+  {
+    date: "2011",
+    title: "Premiers guides sur le libre accès",
+    subtitle: "🚀 Libre accès",
+    description: "Premiers guides sur le libre accès",
+    tags: [],
+    side: "left",
+    color: "#2c7da0",
+    gradient: "linear-gradient(135deg, #2c7da0, #1e5a77)"
+  },
+  {
+    date: "2012",
+    title: "Lancement du Dataverse Scholars Portal actuel Boréalis",
+    subtitle: "📈 Lancement de Boréalis",
+    description: "Lancement du Dataverse Scholars Portal actuel Boréalis.",
+    tags: [],
+    side: "right",
+    color: "#5e548e",
+    gradient: "linear-gradient(135deg, #5e548e, #3d2b6b)"
+  },
+   {
+    date: "2015",
+    title: "Politique des trois organismes sur le libre accès aux publications",
+    subtitle: "🤝 Politique des trois organismes",
+    description: "Premier rassemblement Mitig à l'UdeM",
+    tags: [],
+    side: "left",
+    color: "#e76f51",
+    gradient: "linear-gradient(135deg, #e76f51, #c95a3a)"
+  },
+  {
+    date: "2019",
+    title: "Première politique de diffusion en libre accès du FRQ",
+    subtitle: "🌱 Première politique de diffusion en libre accès du FRQ",
+    description: "Première politique de l'UdeM sur le libre accès aux publications savantes.Les bibliothèques de l'UdeM rejoignent Boréalis. Lancement sur service OJS pour le soutien aux revues savantes",
+    tags: [],
+    side: "right",
+    color: "#2a9d8f",
+    gradient: "linear-gradient(135deg, #2a9d8f, #1e7a6e)"
+  },
+  {
+    date: "2020",
+    title: "Feuille de route fédérale pour la science ouverte ",
+    subtitle: "🏅 Feuille de route fédérale pour la science ouverte",
+    description: "Feuille de route fédérale pour la science ouverte.",
+    tags: [],
+    side: "left",
+    color: "#e9c46a",
+    gradient: "linear-gradient(135deg, #e9c46a, #d4b03a)"
+  },
+  {
+    date: "2021",
+    title: "Recommandation de l’UNESCO pour une science ouverte",
+    subtitle: "🧪 Recommandation de l’UNESCO pour une science ouverte",
+    description: "Recommandation de l’UNESCO pour une science ouverte.",
+    tags: [],
+    side: "right",
+    color: "#9c89b8",
+    gradient: "linear-gradient(135deg, #9c89b8, #7c6a9a)"
+  },
+  {
+    date: "2022",
+    title: "Plan d'action 2022-2027 pour la recherche à l'UdeM, affirmant l'adhésion aux principes de la science ouverte",
+    subtitle: "📱 Plan d'action 2022-2027 pour la recherche à l'UdeM",
+    description: "Plan d'action 2022-2027 pour la recherche à l'UdeM, affirmant l'adhésion aux principes de la science ouverte.",
+    tags: [],
+    side: "left",
+    color: "#ef476f",
+    gradient: "linear-gradient(135deg, #ef476f, #c62a50)"
+  },
+  {
+    date: "2023",
+    title: "Le financement d'initiatives sur le libre accès inscrit dans le budget des bibliothèques",
+    subtitle: "🚀 Le financement d'initiatives",
+    description: "Le financement d'initiatives sur le libre accès inscrit dans le budget des bibliothèques.",
+    tags: [],
+    side: "right",
+    color: "#06d6a0",
+    gradient: "linear-gradient(135deg, #06d6a0, #05b38a)"
+  },
+  {
+    date: "2024",
+    title: "Création de la direction de l'Engagement et de l'innovation sociale",
+    subtitle: "🚀 La direction de l'Engagement et de l'innovation sociale",
+    description: "Création de la direction de l'Engagement et de l'innovation sociale.",
+    tags: [],
+    side: "right",
+    color: "#d606ba",
+    gradient: "linear-gradient(135deg, #d606ba, #d606ba)"
+  },
+  {
+    date: "2025",
+    title: "Lancement de Pressbooks",
+    subtitle: "🚀 La direction de l'Engagement et de l'innovation sociale",
+    description: "Création du groupe de travail.'Collections et Premiers Peuples'. Engagement des bibliothèques pour la science ouverte",
+    tags: [],
+    side: "left",
+    color: "#4406d6",
+    gradient: "linear-gradient(135deg, #4406d6, #4406d6)"
+  }
+]}
+   title={"Historique de l'engagement des bibliothèques pour la science ouverte"}
+   subtitle={"Chronologie"}
+  showFooter={false}
+/>
+
+########version2
+
 <DisplayTimeline 
   leftColl={<IconInSquare color='vertPale' icon={<UserFocusIcon color="vertFonce" />} />}
   rightColl={
    <>
         <Typography component="h2" variant="h2">L’histoire de l’engagement des bibliothèques pour la science ouverte</Typography>
         
-        <Button primary sx={{marginLeft: '1em'}}>Afficher les temps forts de l'engagement des Bibliothèques</Button>
+        <Button primary sx={{marginLeft: '1em'}}>Voici les temps forts de l'engagement des bibliothèques</Button>
       </>
   }
-  buttonText="Afficher les temps forts de l'engagement des Bibliothèques"
+  buttonText="Voici les temps forts de l'engagement des bibliothèques"
   timelineData={[
   {
     date: "1990",

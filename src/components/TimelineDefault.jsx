@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 
 // Arrow SVG Components
 const ArrowLeft = ({ color }) => (
-    <svg width="36" height="20" viewBox="0 0 36 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
-        <path d="M36 10H3M3 10L9 3M3 10L9 17" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+  <svg width="36" height="20" viewBox="0 0 36 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
+    <path d="M36 10H3M3 10L9 3M3 10L9 17" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
 );
 
 const ArrowRight = ({ color }) => (
-    <svg width="36" height="20" viewBox="0 0 36 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
-        <path d="M0 10H33M33 10L27 3M33 10L27 17" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+  <svg width="36" height="20" viewBox="0 0 36 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
+    <path d="M0 10H33M33 10L27 3M33 10L27 17" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
 );
 
 ArrowLeft.propTypes = { color: PropTypes.string.isRequired };
@@ -20,199 +20,115 @@ ArrowRight.propTypes = { color: PropTypes.string.isRequired };
 
 // Timeline Card Component
 const TimelineCard = ({ item, index }) => {
-    const isLeft = item.side === 'left';
+  const isLeft = item.side === 'left';
 
-    return (
-        <div className={`timeline-row ${isLeft ? 'row-left' : 'row-right'}`} data-index={index}>
-            {/* Left side container */}
-            <div className="timeline-side timeline-side-left">
-                {isLeft ? (
-                    <div className="timeline-card-wrapper">
-                        <div
-                            className="timeline-card"
-                            style={{
-                                '--card-color': item.color,
-                                '--card-gradient': item.gradient
-                            }}
-                        >
-                            <div className="card-header">
-                                <span className="card-icon">{item.subtitle.charAt(0)}</span>
-                                <div>
-                                    <div className="card-subtitle">{item.subtitle}</div>
-                                    <h3 className="card-title">{item.title}</h3>
-                                </div>
-                            </div>
-                            <p className="card-description">{item.description}</p>
-                            <div className="card-tags">
-                                {item.tags.map((tag, idx) => (
-                                    <span key={idx} className="tag">{tag}</span>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="arrow-connector arrow-left">
-                            <ArrowLeft color={item.color} />
-                        </div>
-                    </div>
-                ) : (
-                    <div className="timeline-placeholder"></div>
-                )}
-            </div>
-
-            {/* Center date badge */}
-            <div className="timeline-center">
-                <div className="date-badge" style={{ '--badge-color': item.color }}>
-                    <span className="date-text">{item.date}</span>
-                    <div className="date-dot"></div>
+  return (
+    <div className={`timeline-row ${isLeft ? 'row-left' : 'row-right'}`} data-index={index}>
+      {/* Left side container */}
+      <div className="timeline-side timeline-side-left">
+        {isLeft ? (
+          <div className="timeline-card-wrapper">
+            <div
+              className="timeline-card"
+              style={{
+                '--card-color': item.color,
+                '--card-gradient': item.gradient
+              }}
+            >
+              <div className="card-header">
+                <span className="card-icon">{item.subtitle.charAt(0)}</span>
+                <div>
+                  <div className="card-subtitle">{item.subtitle}</div>
+                  <h3 className="card-title">{item.title}</h3>
                 </div>
+              </div>
+              <p className="card-description">{item.description}</p>
+              <div className="card-tags">
+                {item.tags.map((tag, idx) => (
+                  <span key={idx} className="tag">{tag}</span>
+                ))}
+              </div>
             </div>
+            <div className="arrow-connector arrow-left">
+              <ArrowLeft color={item.color} />
+            </div>
+          </div>
+        ) : (
+          <div className="timeline-placeholder"></div>
+        )}
+      </div>
 
-            {/* Right side container */}
-            <div className="timeline-side timeline-side-right">
-                {!isLeft ? (
-                    <div className="timeline-card-wrapper">
-                        <div className="arrow-connector arrow-right">
-                            <ArrowRight color={item.color} />
-                        </div>
-                        <div
-                            className="timeline-card"
-                            style={{
-                                '--card-color': item.color,
-                                '--card-gradient': item.gradient
-                            }}
-                        >
-                            <div className="card-header">
-                                <span className="card-icon">{item.subtitle.charAt(0)}</span>
-                                <div>
-                                    <div className="card-subtitle">{item.subtitle}</div>
-                                    <h3 className="card-title">{item.title}</h3>
-                                </div>
-                            </div>
-                            <p className="card-description">{item.description}</p>
-                            <div className="card-tags">
-                                {item.tags.map((tag, idx) => (
-                                    <span key={idx} className="tag">{tag}</span>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                ) : (
-                    <div className="timeline-placeholder"></div>
-                )}
-            </div>
+      {/* Center date badge */}
+      <div className="timeline-center">
+        <div className="date-badge" style={{ '--badge-color': item.color }}>
+          <span className="date-text">{item.date}</span>
+          <div className="date-dot"></div>
         </div>
-    );
+      </div>
+
+      {/* Right side container */}
+      <div className="timeline-side timeline-side-right">
+        {!isLeft ? (
+          <div className="timeline-card-wrapper">
+            <div className="arrow-connector arrow-right">
+              <ArrowRight color={item.color} />
+            </div>
+            <div
+              className="timeline-card"
+              style={{
+                '--card-color': item.color,
+                '--card-gradient': item.gradient
+              }}
+            >
+              <div className="card-header">
+                <span className="card-icon">{item.subtitle.charAt(0)}</span>
+                <div>
+                  <div className="card-subtitle">{item.subtitle}</div>
+                  <h3 className="card-title">{item.title}</h3>
+                </div>
+              </div>
+              <p className="card-description">{item.description}</p>
+              <div className="card-tags">
+                {item.tags.map((tag, idx) => (
+                  <span key={idx} className="tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="timeline-placeholder"></div>
+        )}
+      </div>
+    </div>
+  );
 };
 
 TimelineCard.propTypes = {
-    item: PropTypes.shape({
-        date: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        subtitle: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-        side: PropTypes.oneOf(['left', 'right']).isRequired,
-        color: PropTypes.string.isRequired,
-        gradient: PropTypes.string.isRequired
-    }).isRequired,
-    index: PropTypes.number.isRequired
+  item: PropTypes.shape({
+    date: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+    side: PropTypes.oneOf(['left', 'right']).isRequired,
+    color: PropTypes.string.isRequired,
+    gradient: PropTypes.string.isRequired
+  }).isRequired,
+  index: PropTypes.number.isRequired
 };
-
-// Default compact timeline data
-const defaultTimelineData = [
-    {
-        date: "MAY 2022",
-        title: "OmniCloud Platform",
-        subtitle: "🚀 Product Launch",
-        description: "First major release of our enterprise cloud suite with AI-driven analytics.",
-        tags: ["💡 12 team members", "🏆 Innovation award"],
-        side: "left",
-        color: "#2c7da0",
-        gradient: "linear-gradient(135deg, #2c7da0, #1e5a77)"
-    },
-    {
-        date: "OCT 2022",
-        title: "$32M Series B",
-        subtitle: "📈 Funding Round",
-        description: "Led by Crestview Ventures, valuation reached $210M.",
-        tags: ["💰 Strategic partners", "🌍 EMEA expansion"],
-        side: "right",
-        color: "#5e548e",
-        gradient: "linear-gradient(135deg, #5e548e, #3d2b6b)"
-    },
-    {
-        date: "MAR 2023",
-        title: "Nexify Analytics",
-        subtitle: "🤝 Acquisition",
-        description: "Acquired leading BI startup, adding +45 enterprise clients.",
-        tags: ["🧠 IP integration", "📊 +11% market share"],
-        side: "left",
-        color: "#e76f51",
-        gradient: "linear-gradient(135deg, #e76f51, #c95a3a)"
-    },
-    {
-        date: "SEP 2023",
-        title: "Carbon Neutral",
-        subtitle: "🌱 Sustainability",
-        description: "Achieved net-zero scope 1 & 2 emissions.",
-        tags: ["♻️ ISO 14001", "🌿 ESG top tier"],
-        side: "right",
-        color: "#2a9d8f",
-        gradient: "linear-gradient(135deg, #2a9d8f, #1e7a6e)"
-    },
-    {
-        date: "JAN 2024",
-        title: "Best SaaS 2024",
-        subtitle: "🏅 Industry Award",
-        description: "Named 'Enterprise Product of the Year' by Cloud Insights.",
-        tags: ["🏆 9.4/10 rating", "⭐ Gartner"],
-        side: "left",
-        color: "#e9c46a",
-        gradient: "linear-gradient(135deg, #e9c46a, #d4b03a)"
-    },
-    {
-        date: "JUN 2024",
-        title: "Singapore R&D Hub",
-        subtitle: "🧪 Global Expansion",
-        description: "New research facility for generative AI and edge computing.",
-        tags: ["🌏 APAC HQ", "🔬 3 partnerships"],
-        side: "right",
-        color: "#9c89b8",
-        gradient: "linear-gradient(135deg, #9c89b8, #7c6a9a)"
-    },
-    {
-        date: "NOV 2024",
-        title: "Mobile Suite 3.0",
-        subtitle: "📱 Mobile First",
-        description: "Redesigned experience with offline-first sync and AI assistant.",
-        tags: ["📲 4.8⭐", "⚡ 40% faster"],
-        side: "left",
-        color: "#ef476f",
-        gradient: "linear-gradient(135deg, #ef476f, #c62a50)"
-    },
-    {
-        date: "FEB 2025",
-        title: "1,000 Clients",
-        subtitle: "🚀 Milestone",
-        description: "Crossed 1,000 enterprise customers with 98% retention.",
-        tags: ["📊 ARR $187M", "🎯 46% YoY"],
-        side: "right",
-        color: "#06d6a0",
-        gradient: "linear-gradient(135deg, #06d6a0, #05b38a)"
-    }
-];
 
 // Main Timeline Component - Compact Version
 const TimelineDefault = ({
-    data = defaultTimelineData,
-    title = "Professional Timeline",
-    subtitle = "Centered vertical axis · alternating left/right · colored cards",
-    showFooter = true,
-    compact = true,
-    customStyles = {}
+  data = {},
+  title = "",
+  subtitle = "",
+  showFooter = true,
+  compact = true,
+  customStyles = {}
 }) => {
-    return (
-        <div className="timeline-container-compact" style={customStyles.container}>
-            <style>{`
+  return (
+    <div className="timeline-container-compact" style={customStyles.container}>
+      <style>{`
         /* Compact Timeline Styles */
         .timeline-container-compact {
           max-width: 1200px;
@@ -581,46 +497,46 @@ const TimelineDefault = ({
         }
       `}</style>
 
-            <div className="timeline-heading-compact">
-                <h1>{title}</h1>
-                <p>{subtitle}</p>
-            </div>
+      <div className="timeline-heading-compact">
+        <h1>{title}</h1>
+        <p>{subtitle}</p>
+      </div>
 
-            <div className="timeline-compact">
-                {data.map((item, index) => (
-                    <TimelineCard key={index} item={item} index={index} />
-                ))}
-            </div>
+      <div className="timeline-compact">
+        {data.map((item, index) => (
+          <TimelineCard key={index} item={item} index={index} />
+        ))}
+      </div>
 
-            {showFooter && (
-                <div className="footer-note-compact">
-                    ✦ Compact Timeline | Center axis | Animated arrows | Colored cards ✦
-                </div>
-            )}
+      {showFooter && (
+        <div className="footer-note-compact">
+          ✦ Compact Timeline | Center axis | Animated arrows | Colored cards ✦
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 TimelineDefault.propTypes = {
-    data: PropTypes.arrayOf(
-        PropTypes.shape({
-            date: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired,
-            subtitle: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
-            tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-            side: PropTypes.oneOf(['left', 'right']).isRequired,
-            color: PropTypes.string,
-            gradient: PropTypes.string
-        })
-    ),
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-    showFooter: PropTypes.bool,
-    compact: PropTypes.bool,
-    customStyles: PropTypes.shape({
-        container: PropTypes.object
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      subtitle: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+      side: PropTypes.oneOf(['left', 'right']).isRequired,
+      color: PropTypes.string,
+      gradient: PropTypes.string
     })
+  ),
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  showFooter: PropTypes.bool,
+  compact: PropTypes.bool,
+  customStyles: PropTypes.shape({
+    container: PropTypes.object
+  })
 };
 
 export default TimelineDefault;
