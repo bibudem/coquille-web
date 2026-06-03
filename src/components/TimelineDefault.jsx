@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react';
 import PropTypes from 'prop-types';
 
 
@@ -510,7 +510,7 @@ const TimelineDefault = ({
 
       {showFooter && (
         <div className="footer-note-compact">
-          ✦ Compact Timeline | Center axis | Animated arrows | Colored cards ✦
+          ✦ Compact Timeline | Center axis | Colored cards ✦
         </div>
       )}
     </div>

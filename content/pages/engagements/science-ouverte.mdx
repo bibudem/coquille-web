@@ -41,7 +41,7 @@ import TimelineDefault from '@/components/TimelineDefault';
             style={{
                 gridArea: "top",
                 border: "1px thin black",
-                borderRadius: "2px",
+                borderRadius: "0",
                 minHeight: "80px",
                 padding: "5px",
                 display: "flex",
@@ -61,7 +61,7 @@ import TimelineDefault from '@/components/TimelineDefault';
     <Box style={{
         minWidth: 0, // IMPORTANT
         border: "1px solid thin black",
-        borderRadius: "8px",
+        borderRadius: "0",
         minHeight: "450px",
         padding: "20px",
         justifyContent: "center",
@@ -78,535 +78,531 @@ import TimelineDefault from '@/components/TimelineDefault';
   <Typography sx={{pb: 1.5}}>Selon l’UNESCO : « Les connaissances scientifiques ouvertes désignent le libre accès aux publications scientifiques, aux données de recherche, aux ressources éducatives libres, aux logiciels, et aux codes sources et au matériel ».</Typography>
   <GridOffset offset="1">
     <AccordionGroupScienceOuverte color="vertPale">
+      {/* Promotion du libre accès */}
       <Accordion style={{ padding: '0 2rem 0 2rem' }}>
-        {/* Promotion du libre accès */}
         <AccordionSummary>Promotion du libre accès</AccordionSummary>
           <AccordionDetails style={{ padding: '1rem 1rem 1rem 1rem', backgroundColor: 'rgb(213, 250, 231)' }}>
             <div
-              style={{
-              display: "grid",
-              gridTemplateColumns: "2fr 1fr",
-              border: "1px solid #cccccc collapse"
-              }}
-            >
-                {/* Row 1 collapse */}
-                <div style={{
-                  border: "1px solid #cccccc collapse",
-                  margin: 0,
-                  lineHeight: 1,
-                  display: "flex",
-                  textAlign: 'left',
-                  padding: '0 0 0 1rem'
-                  }}
-                >
-                    <p style={{textAlign: 'left'}}>Sensibilisation à la science ouverte et promotion de bonnes pratiques et alternatives responsables pour la recherche</p>
-                </div>
-                <div style={{
+                style={{
+                display: "grid",
+                gridTemplateColumns: "2fr 1fr",
+                border: "1px solid #cccccc collapse"
+                }}
+              >
+                  {/* Row 1 collapse */}
+                  <div style={{
+                      border: "1px solid #cccccc collapse",
+                      margin: 0,
+                      lineHeight: 1,
+                      display: "flex",
+                      textAlign: 'left',
+                      padding: '0 0 0 1rem'
+                      }}
+                    >
+                        <p style={{textAlign: 'left'}}>Sensibilisation à la science ouverte et promotion de bonnes pratiques et alternatives responsables pour la recherche</p>
+                  </div>
+                  <div style={{
+                      border: "1px solid #ccc collapse",
+                      margin: 0,
+                      lineHeight: 1,
+                      display: "center",
+                      padding: '0 0 0 1rem',
+                      textAlign:'center' 
+                     }}
+                    >
+                      <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>[Nombre]</b><br/>formations <br/> liées à<br/> la science ouverte</p>
+                  </div>
+                  {/* Row 2 collapse */}
+                  <div style={{
+                      border: "1px solid #ccc collapse", 
+                      margin: 0,
+                      lineHeight: 1,
+                      display: "flex",
+                      textAlign: 'left',
+                      padding: '0 0 0 1rem'
+                  }}>
+                      <p><Button secondary href="#science-ouverte">Engagement des bibliothèques pour la science ouverte</Button>
+                      <Button secondary href="#science-ouverte">Guides sur le libre accès</Button></p>
+                  </div>
+                  <div style={{
                     border: "1px solid #ccc collapse",
-                    margin: 0,
-                    lineHeight: 1,
-                    display: "center",
-                    padding: '0 0 0 1rem',
-                    textAlign:'center' 
-                  }}
-                >
-                    <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>[Nombre]</b><br/>formations <br/> liées à<br/> la science ouverte</p>
-                </div>
-                {/* Row 2 collapse */}
-                <div style={{
-                    border: "1px solid #ccc collapse", 
                     margin: 0,
                     lineHeight: 1,
                     display: "flex",
                     textAlign: 'left',
                     padding: '0 0 0 1rem'
-                }}>
-                    <p><Button secondary href="#science-ouverte">Engagement des bibliothèques pour la science ouverte</Button>
-                    <Button secondary href="#science-ouverte">Guides sur le libre accès</Button></p>
-                </div>
-                <div style={{
-                  border: "1px solid #ccc collapse",
-                  margin: 0,
-                  lineHeight: 1,
-                  display: "flex",
-                  textAlign: 'left',
-                  padding: '0 0 0 1rem'
-                }}>
-                </div>
-                {/* Row 3 */}
-                <div style={{
-                  border: "1px solid #ccc collapse",
-                  margin: 0,
-                  lineHeight: 1,
-                  display: "flex",
-                  textAlign: 'left',
-                  padding: '0 0 0 1rem'
-                  }}
-                >
-                    <p style={{display: 'left'}}>Financement d'initiatives de libre accès et promotion du modèle diamant pour l'édition savante</p>
-                </div>
-                <div style={{
-                  border: "1px solid #ccc collapse ",
-                  margin: 0,
-                  lineHeight: 1,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  }}> 
-                </div>
-                {/* Row 5 */}
-                <div
-                    style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    }}
-                >
-                    <div style={{
-                        border: "1px solid #ccc collapse",
-                        margin: 0,
-                        lineHeight: 1,
-                        display: "flex",
-                        textAlign: 'left',
-                        padding: '0 0 0 1rem'
-                        }}> [add icone]</div>
-                    <div style={{
-                        border: "1px solid #ccc collapse ",
-                        margin: 0,
-                        lineHeight: 1,
-                        display: "flex",
-                        textAlign: 'left',
-                        padding: '0 0 0 1rem'
-                        }}> [add icone] <br/><br/><Button secondary href="#science-ouverte">Et plus encore à découvrir ici</Button></div>
-                </div>
-                <div
-                  style={{
-                  display: "grid",
-                  }}
-                >
+                  }}>
+                  </div>
+                  {/* Row 3 */}
+                  <div style={{
+                      border: "1px solid #ccc collapse",
+                      margin: 0,
+                      lineHeight: 1,
+                      display: "flex",
+                      textAlign: 'left',
+                      padding: '0 0 0 1rem'
+                      }}
+                    >
+                      <p style={{display: 'left'}}>Financement d'initiatives de libre accès et promotion du modèle diamant pour l'édition savante</p>
+                  </div>
+                  <div style={{
+                    border: "1px solid #ccc collapse ",
+                    margin: 0,
+                    lineHeight: 1,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    }}> 
+                  </div>
+                  {/* Row 5 */}
+                  <div
+                      style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      }}
+                  >
                       <div style={{
                           border: "1px solid #ccc collapse",
                           margin: 0,
                           lineHeight: 1,
-                          display: "bottom",
-                          textAlign: 'center',
+                          display: "flex",
+                          textAlign: 'left',
                           padding: '0 0 0 1rem'
-                          }}>
-                               <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>2.5 %</b><br/>du budget dédié au financement d'initiatives<br/>sur le libre accès</p>
-                      </div>
+                          }}> [add icone]</div>
+                      <div style={{
+                          border: "1px solid #ccc collapse ",
+                          margin: 0,
+                          lineHeight: 1,
+                          display: "flex",
+                          textAlign: 'left',
+                          padding: '0 0 0 1rem'
+                          }}> [add icone] <br/><br/><Button secondary href="#science-ouverte">Et plus encore à découvrir ici</Button></div>
                     </div>
+                    <div
+                      style={{
+                      display: "grid",
+                      }}
+                    >
+                          <div style={{
+                              border: "1px solid #ccc collapse",
+                              margin: 0,
+                              lineHeight: 1,
+                              display: "bottom",
+                              textAlign: 'center',
+                              padding: '0 0 0 1rem'
+                              }}>
+                                  <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>2.5 %</b><br/>du budget dédié au financement d'initiatives<br/>sur le libre accès</p>
+                          </div>
+                        </div>
 
-                {/* Row 6 collapse */}
-                <div style={{
-                    border: "1px solid #cccccc collapse",
-                    margin: 0,
-                    lineHeight: 1,
-                    display: "flex",
-                    textAlign: 'left',
-                    padding: '0 0 0 1rem'
-                }}>
-                      <p style={{display: 'left'}}>Négotiation d'accord avec les éditeurs pour permettre à la communauté de recherche de l'UdeM d'avoir un rabais pour publier en libre accès </p>
+                  {/* Row 6 collapse */}
+                  <div style={{
+                      border: "1px solid #cccccc collapse",
+                      margin: 0,
+                      lineHeight: 1,
+                      display: "flex",
+                      textAlign: 'left',
+                      padding: '0 0 0 1rem'
+                  }}>
+                        <p style={{display: 'left'}}>Négotiation d'accord avec les éditeurs pour permettre à la communauté de recherche de l'UdeM d'avoir un rabais pour publier en libre accès </p>
+                  </div>
+                  <div style={{
+                      border: "1px solid #ccc collapse",
+                      margin: 0,
+                      lineHeight: 1,
+                      display: "center",
+                      textAlign: 'center',
+                      padding: '0 0 0 1rem'
+                  }}>
+                      <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>[Montant]</b><br/>CAD financé par les bibliothèques pour les accords avec les éditeurs</p>
+                  </div>
                 </div>
-                <div style={{
-                    border: "1px solid #ccc collapse",
-                    margin: 0,
-                    lineHeight: 1,
-                    display: "center",
-                    textAlign: 'center',
-                    padding: '0 0 0 1rem'
-                }}>
-                    <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>[Montant]</b><br/>CAD financé par les bibliothèques pour les accords avec les éditeurs</p>
-                </div>
-                </div>
-        </AccordionDetails>
+          </AccordionDetails>
       </Accordion>
       {/* Publications scientifiques ouvertes */}
       <Accordion style={{ padding: '0 2rem 0 2rem' }}>
         <AccordionSummary>Publications scientifiques ouvertes</AccordionSummary>
-        <AccordionDetails style={{ padding: '1rem 1rem 1rem 1rem', backgroundColor: 'rgb(213, 250, 231)' }}>
-        <div
-        style={{
-        display: "grid",
-        gridTemplateColumns: "2fr 1fr",
-        border: "0.5px solid #ccc collapse",
-        }}
-        >
-        {/* Row 1 */}
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '0 0 0 1rem'
-        }}>
-          <p style={{}}>Mise à disposition d'un dépôt institutionnel</p>
-        </div>
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        display:'center',
-        textAlign: 'center',
-        padding: '0 0 0 1rem'
-        }}>
-          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>41607</b><br/>documents sur Papyrus</p>
-        </div>
-        {/* Row 2 */}
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '0 0 0 1rem'
-        }}>
-          <p style={{}}>Aide au dépôt des thèses et mémoires en libre accès sur le dépot institutionnel Papyrus pour la diplomation</p>
-        </div>
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'center',
-        padding: '0 0 0 1rem'
-        }}>
-          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>[Nombre]</b><br/>Thèses et mémoires déposés en [année]</p>
-        </div>
-        {/* Row 3 */}
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '0 0 0 1rem'
-        }}>
-          <p style={{}}>Accompagnement à la publication par voie verte avec un processus simplifié</p>
-        </div>
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'center',
-        padding: '0 0 0 1rem'
-        }}> 
-          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>224</b><br/>articles déposés en libres accès en 2025</p>
-        </div>
-        {/* Row 4  collapse*/}
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '0 0 0 1rem'
-        }}> <p style={{}}>Soutien à la transition vers le modèle diamant et au processus éditorial pour les revues savantes</p></div>
-        <div style={{
-        border: "0.5px solid #ccc collapse ",
-        margin: 0,
-        lineHeight: 1,
-        display:'center',
-        textAlign: 'center',
-        padding: '0 0 0 1rem'
-        }}>
-            <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>13</b><br/>revues savantes hébergées sur OJS</p>
-        </div>
-        {/* Row 5 */}
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '0 0 0 1rem'
-        }}> <p style={{}}>Soutien à la publication sous le modèle diamant de monographies de chercheurs de l'UdeM</p></div>
-        <div
-        style={{
-        }}
-        >
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'center',
-        padding: '0 0 0 1rem'
-        }}> </div>
-        <div style={{
-        border: "0px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 0.9,
-        textAlign: 'center',
-        padding: '0 0 0 1rem'
-        }}> 
-          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>[Nombre]</b><br/>monographies financées depuis<br/> [date lancement service]</p>
-        </div>
-        </div>
-
-        {/* Row 6 */}
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '0 0 0 1rem'
-        }}>
-          <p style={{textAlign: 'left'}}>
-          Diffusion de la production scientifique de l'UdeM et Contribution au rayonnement de la recherche de l'UdeM grâce à l'adoption d'identifiants pérennes et à l'interopérabilité de Papyrus
-          </p>
-        </div>
-        <div
-        style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        }}
-        >
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'center',
-        padding: '0 0 0 1rem',
-        display:'center',
-        }}>
-          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>32259</b><br/>DOI actifs dans Papyrus</p>
-        </div>
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'center',
-        padding: '0 0 0 1rem'
-        }}>
-            <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>6197193</b><br/>téléchargements de fichiers sur Papyrus entre 2024 et 2024</p>
-        </div>
-        </div>
-        </div>
-        </AccordionDetails>
-      </Accordion>
-      {/* Données de recherche ouvertes */}
-      <Accordion style={{ padding: '0 2rem 0 2rem' }}>
-        <AccordionSummary>Données de recherche ouvertes</AccordionSummary>
           <AccordionDetails style={{ padding: '1rem 1rem 1rem 1rem', backgroundColor: 'rgb(213, 250, 231)' }}>
-              <div
+            <div
                 style={{
                 display: "grid",
                 gridTemplateColumns: "2fr 1fr",
                 border: "0.5px solid #ccc collapse",
                 }}
               >
-        {/* Row 1 */}
-        <div style={{
-            border: "0.5px solid #ccc collapse",
-            margin: 0,
-            lineHeight: 1,
-            textAlign: 'left',
-            padding: '0 0 0 1rem'
-            }}
-        >
-            <p style={{textAlign: 'left'}}>Soutien et accompagnement pour le partage des données de recherche dans un entrepôt partagé pérenne</p>
-        </div>
-        <div style={{
-        border: "0.1px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'center',
-        padding: '0 0 0 1rem'
-        }}>
-          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>369</b><br/>ensembles de données déposées et affiliées à l’UdeM sur Boréalis</p>
-        </div>
-        {/* Row 2 */}
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '0 0 0 1rem'
-        }}>
-          <p style={{}}>Accompagnement, recommandations et rehaussements de données sur Boréalis dans le respect des principes FAIR</p>
-        </div>
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'center',
-        padding: '0 0 0 1rem'
-        }}>
-          <p style={{}}>Service de <br/> FAIRification</p>
-        </div>
-        {/* Row 3 */}
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '0 0 0 1rem'
-        }}>
-            <p style={{}}>Accompagnement et prise en charge de l'adoption d'identifiants pérennes pour lier les publications scientifiques aux ensembles de données et garantir leur découvrabilité</p>
-        </div>
-        <div
-        style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        }}
-        >
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'center',
-        padding: '0 0 0 1rem'
-        }}>
-          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>32359</b><br/>DOI attribués dans Papyrus</p>
-        </div>
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'center',
-        padding: '0 0 0 1rem'
-        }}> 
-          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>[Nombre]</b><br/>DOI attribués dans Boréalis</p>
-        </div>
-        </div>
-        </div>
+                {/* Row 1 */}
+                <div style={{
+                  border: "0.5px solid #ccc collapse",
+                  margin: 0,
+                  lineHeight: 1,
+                  textAlign: 'left',
+                  padding: '0 0 0 1rem'
+                }}>
+                  <p style={{}}>Mise à disposition d'un dépôt institutionnel</p>
+                </div>
+                <div style={{
+                    border: "0.5px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    display:'center',
+                    textAlign: 'center',
+                    padding: '0 0 0 1rem'
+                    }}>
+                    <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>41607</b><br/>documents sur Papyrus</p>
+                </div>
+                {/* Row 2 */}
+                <div style={{
+                    border: "0.5px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    textAlign: 'left',
+                    padding: '0 0 0 1rem'
+                    }}>
+                      <p style={{}}>Aide au dépôt des thèses et mémoires en libre accès sur le dépot institutionnel Papyrus pour la diplomation</p>
+                </div>
+                <div style={{
+                    border: "0.5px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    textAlign: 'center',
+                    padding: '0 0 0 1rem'
+                    }}>
+                    <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>[Nombre]</b><br/>Thèses et mémoires déposés en [année]</p>
+                </div>
+                {/* Row 3 */}
+                <div style={{
+                    border: "0.5px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    textAlign: 'left',
+                    padding: '0 0 0 1rem'
+                    }}>
+                    <p style={{}}>Accompagnement à la publication par voie verte avec un processus simplifié</p>
+                </div>
+                <div style={{
+                    border: "0.5px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    textAlign: 'center',
+                    padding: '0 0 0 1rem'
+                }}> 
+                    <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>224</b><br/>articles déposés en libres accès en 2025</p>
+                </div>
+                {/* Row 4  collapse*/}
+                <div style={{
+                  border: "0.5px solid #ccc collapse",
+                  margin: 0,
+                  lineHeight: 1,
+                  textAlign: 'left',
+                  padding: '0 0 0 1rem'
+                  }}> 
+                    <p style={{}}>Soutien à la transition vers le modèle diamant et au processus éditorial pour les revues savantes</p>
+                </div>
+                <div style={{
+                  border: "0.5px solid #ccc collapse ",
+                  margin: 0,
+                  lineHeight: 1,
+                  display:'center',
+                  textAlign: 'center',
+                  padding: '0 0 0 1rem'
+                  }}>
+                    <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>13</b><br/>revues savantes hébergées sur OJS</p>
+                </div>
+                {/* Row 5 */}
+                <div style={{
+                  border: "0.5px solid #ccc collapse",
+                  margin: 0,
+                  lineHeight: 1,
+                  textAlign: 'left',
+                  padding: '0 0 0 1rem'
+                  }}> 
+                    <p style={{}}>Soutien à la publication sous le modèle diamant de monographies de chercheurs de l'UdeM</p>
+                </div>
+                <div style={{}}>
+                    <div style={{
+                      border: "0.5px solid #ccc collapse",
+                      margin: 0,
+                      lineHeight: 1,
+                      textAlign: 'center',
+                      padding: '0 0 0 1rem'
+                    }}> </div>
+                    <div style={{
+                      border: "0px solid #ccc collapse",
+                      margin: 0,
+                      lineHeight: 0.9,
+                      textAlign: 'center',
+                      padding: '0 0 0 1rem'
+                      }}> 
+                      <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>[Nombre]</b><br/>monographies financées depuis<br/> [date lancement service]</p>
+                    </div>
+                </div>
+
+                {/* Row 6 */}
+                <div style={{
+                    border: "0.5px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    textAlign: 'left',
+                    padding: '0 0 0 1rem'
+                    }}>
+                    <p style={{textAlign: 'left'}}>
+                    Diffusion de la production scientifique de l'UdeM et Contribution au rayonnement de la recherche de l'UdeM grâce à l'adoption d'identifiants pérennes et à l'interopérabilité de Papyrus
+                    </p>
+                </div>
+                <div style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  }}
+                  >
+                      <div style={{
+                        border: "0.5px solid #ccc collapse",
+                        margin: 0,
+                        lineHeight: 1,
+                        textAlign: 'center',
+                        padding: '0 0 0 1rem',
+                        display:'center',
+                      }}>
+                        <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>32259</b><br/>DOI actifs dans Papyrus</p>
+                      </div>
+                      <div style={{
+                          border: "0.5px solid #ccc collapse",
+                          margin: 0,
+                          lineHeight: 1,
+                          textAlign: 'center',
+                          padding: '0 0 0 1rem'
+                      }}>
+                          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>6197193</b><br/>téléchargements de fichiers sur Papyrus entre 2024 et 2024</p>
+                      </div>
+                    </div>
+                </div>
+        </AccordionDetails>
+      </Accordion>
+      {/* Données de recherche ouvertes */}
+      <Accordion style={{ padding: '0 2rem 0 2rem' }}>
+        <AccordionSummary>Données de recherche ouvertes</AccordionSummary>
+          <AccordionDetails style={{ padding: '1rem 1rem 1rem 1rem', backgroundColor: 'rgb(213, 250, 231)' }}>
+              <div style={{
+                  display: "grid",
+                  gridTemplateColumns: "2fr 1fr",
+                  border: "0.5px solid #ccc collapse",
+                  }}
+              >
+                  {/* Row 1 */}
+                  <div style={{
+                      border: "0.5px solid #ccc collapse",
+                      margin: 0,
+                      lineHeight: 1,
+                      textAlign: 'left',
+                      padding: '0 0 0 1rem'
+                      }}
+                  >
+                      <p style={{textAlign: 'left'}}>Soutien et accompagnement pour le partage des données de recherche dans un entrepôt partagé pérenne</p>
+                  </div>
+                  <div style={{
+                      border: "0.1px solid #ccc collapse",
+                      margin: 0,
+                      lineHeight: 1,
+                      textAlign: 'center',
+                      padding: '0 0 0 1rem'
+                      }}>
+                      <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>369</b><br/>ensembles de données déposées et affiliées à l’UdeM sur Boréalis</p>
+                  </div>
+                  {/* Row 2 */}
+                  <div style={{
+                      border: "0.5px solid #ccc collapse",
+                      margin: 0,
+                      lineHeight: 1,
+                      textAlign: 'left',
+                      padding: '0 0 0 1rem'
+                      }}>
+                    <p style={{}}>Accompagnement, recommandations et rehaussements de données sur Boréalis dans le respect des principes FAIR</p>
+                  </div>
+                  <div style={{
+                    border: "0.5px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    textAlign: 'center',
+                    padding: '0 0 0 1rem'
+                  }}>
+                    <p style={{}}>Service de <br/> FAIRification</p>
+                  </div>
+                  {/* Row 3 */}
+                  <div style={{
+                      border: "0.5px solid #ccc collapse",
+                      margin: 0,
+                      lineHeight: 1,
+                      textAlign: 'left',
+                      padding: '0 0 0 1rem'
+                  }}>
+                      <p style={{}}>Accompagnement et prise en charge de l'adoption d'identifiants pérennes pour lier les publications scientifiques aux ensembles de données et garantir leur découvrabilité</p>
+                  </div>
+                  <div style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    }}>
+                        <div style={{
+                            border: "0.5px solid #ccc collapse",
+                            margin: 0,
+                            lineHeight: 1,
+                            textAlign: 'center',
+                            padding: '0 0 0 1rem'
+                        }}>
+                          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>32359</b><br/>DOI attribués dans Papyrus</p>
+                        </div>
+                        <div style={{
+                            border: "0.5px solid #ccc collapse",
+                            margin: 0,
+                            lineHeight: 1,
+                            textAlign: 'center',
+                            padding: '0 0 0 1rem'
+                        }}> 
+                          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>[Nombre]</b><br/>DOI attribués dans Boréalis</p>
+                        </div>
+                    </div>
+              </div>
         </AccordionDetails>
       </Accordion>
       {/* Ressources éducatives libres */}
       <Accordion style={{ padding: '0 2rem 0 2rem' }}>
         <AccordionSummary>Ressources éducatives libres</AccordionSummary>
-        <AccordionDetails style={{ padding: '1rem 1rem 1rem 1rem', backgroundColor: 'rgb(213, 250, 231)' }}>
-        <div
-        style={{
-        display: "grid",
-        gridTemplateColumns: "2fr 1fr",
-        border: "0.5px solid #ccc collapse",
-        }}
-        >
-        {/* Row 1 */}
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '0 0 0 1rem'
-        }}>
-            <p>Aide à la création de REL pour enrichir l’apprentissage dans un contexte de collaboration québécoise</p>
-        </div>
-        <div style={{
-        border: "0.1px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'center',
-        padding: '0 0 0 1rem'
-        }}>
-          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>3</b><br/>création REL accompagnées avec la Fabrique REL</p>
-        
-        </div>
-        {/* Row 2 */}
-        <div style={{
-        border: "0.5px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '0 0 0 1rem'
-        }}>
-            <p>Accompagnement à la création, l'édition, à la publication et à la diffusion de REL sur une plateforme gérée par les bibliothèques</p>
-        </div>
-        <div style={{
-          border: "0.5px solid #ccc collapse",
-          margin: 0,
-          lineHeight: 1,
-          textAlign: 'center',
-          padding: '0 0 0 1rem'
-          }}>
-          <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>5</b><br/>REL accessibles sur PressBooks</p>
-        </div>
-        </div>
+          <AccordionDetails style={{ padding: '1rem 1rem 1rem 1rem', backgroundColor: 'rgb(213, 250, 231)' }}>
+            <div
+              style={{
+              display: "grid",
+              gridTemplateColumns: "2fr 1fr",
+              border: "0.5px solid #ccc collapse",
+              }}
+            >
+                {/* Row 1 */}
+                <div style={{
+                    border: "0.5px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    textAlign: 'left',
+                    padding: '0 0 0 1rem'
+                }}>
+                    <p>Aide à la création de REL pour enrichir l’apprentissage dans un contexte de collaboration québécoise</p>
+                </div>
+                <div style={{
+                    border: "0.1px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    textAlign: 'center',
+                    padding: '0 0 0 1rem'
+                }}>
+                  <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>3</b><br/>création REL accompagnées avec la Fabrique REL</p>
+                </div>
+                {/* Row 2 */}
+                <div style={{
+                    border: "0.5px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    textAlign: 'left',
+                    padding: '0 0 0 1rem'
+                }}>
+                    <p>Accompagnement à la création, l'édition, à la publication et à la diffusion de REL sur une plateforme gérée par les bibliothèques</p>
+                </div>
+                <div style={{
+                    border: "0.5px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    textAlign: 'center',
+                    padding: '0 0 0 1rem'
+                  }}>
+                  <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>5</b><br/>REL accessibles sur PressBooks</p>
+                </div>
+            </div>
         </AccordionDetails>
       </Accordion>
       {/* Logiciels libres */}
       <Accordion style={{ padding: '0 2rem 0 2rem' }}>
         <AccordionSummary>Logiciels libres</AccordionSummary>
-        <AccordionDetails style={{ padding: '1rem 1rem 1rem 1rem', backgroundColor: 'rgb(213, 250, 231)' }}>
-        <div
-        style={{
-        display: "grid",
-        gridTemplateColumns: "2fr 1fr",
-        border: "1px solid #ccc collapse",
-        }}
-        >
-        {/* LEFT */}
-        <div style={{ display: "grid", gridTemplateRows: "auto auto" }}>
-        <div style={{
-        border: "1px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '0 0 0 1rem'
-        }}>
-        <p>Utilisation de logiciels libres dans nos plateformes et dans nos services pour promouvoir des alternatives ouvertes aux logiciels propriétaires</p>
-        </div>
-        <div style={{
-        border: "1px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '0 0 0 1rem'
-        }}>
-            <p>Diffusion en licence libre sur GitHub de nos développements et intégrations informatiques</p>
-        </div>
-        </div>
-        {/* RIGHT */}
-        <div style={{ display: "grid", gridTemplateRows: "auto auto auto" }}>
-        {/* TOP RIGHT */}
-        <div style={{ display: "grid", gridTemplateRows: "auto auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-              <div style={{ 
-              border: "1px solid #ccc collapse",
-              margin: 0,
-              lineHeight: 1,
-              textAlign: 'left',
-              padding: '0 0 0 1rem'
-              }}>
-              [add icone]
+          <AccordionDetails style={{ padding: '1rem 1rem 1rem 1rem', backgroundColor: 'rgb(213, 250, 231)' }}>
+              <div
+                  style={{
+                  display: "grid",
+                  gridTemplateColumns: "2fr 1fr",
+                  border: "1px solid #ccc collapse",
+                  }}
+              >
+                    {/* LEFT */}
+                    <div style={{ display: "grid", gridTemplateRows: "auto auto" }}>
+                        <div style={{
+                            border: "1px solid #ccc collapse",
+                            margin: 0,
+                            lineHeight: 1,
+                            textAlign: 'left',
+                            padding: '0 0 0 1rem'
+                          }}>
+                            <p>Utilisation de logiciels libres dans nos plateformes et dans nos services pour promouvoir des alternatives ouvertes aux logiciels propriétaires</p>
+                        </div>
+                        <div style={{
+                            border: "1px solid #ccc collapse",
+                            margin: 0,
+                            lineHeight: 1,
+                            textAlign: 'left',
+                            padding: '0 0 0 1rem'
+                        }}>
+                            <p>Diffusion en licence libre sur GitHub de nos développements et intégrations informatiques</p>
+                        </div>
+                    </div>
+                    {/* RIGHT */}
+                    <div style={{ display: "grid", gridTemplateRows: "auto auto auto" }}>
+                        {/* TOP RIGHT */}
+                        <div style={{ display: "grid", gridTemplateRows: "auto auto" }}>
+                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+                                  <div style={{ 
+                                      border: "1px solid #ccc collapse",
+                                      margin: 0,
+                                      lineHeight: 1,
+                                      textAlign: 'left',
+                                      padding: '0 0 0 1rem'
+                                  }}>
+                                    [add icone]
+                                  </div>
+                                  <div style={{ 
+                                      border: "1px solid #ccc collapse",
+                                      margin: 0,
+                                      lineHeight: 1,
+                                      textAlign: 'left',
+                                      padding: '0 0 0 1rem'
+                                  }}>
+                                    [add icone]
+                                  </div>
+                              </div>
+                              <div style={{
+                                  border: "1px solid #ccc collapse",
+                                  margin: 0,
+                                  lineHeight: 1,
+                                  textAlign: 'left',
+                                  padding: '0 0 0 1rem'
+                              }}>
+                                  [add icone]
+                              </div>
+                            </div>
+                        {/* BOTTOM RIGHT */}
+                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+                            <div style={{
+                                border: "1px solid #ccc collapse",
+                                margin: 0,
+                                lineHeight: 1,
+                                textAlign: 'left',
+                                padding: '0 0 0 1rem'
+                            }}>
+                              [add icone]
+                            </div>
+                            <div style={{
+                                border: "1px solid #ccc collapse",
+                                margin: 0,
+                                lineHeight: 1,
+                                textAlign: 'left',
+                                padding: '0 0 0 1rem'
+                            }}>
+                                [add icone]
+                            </div>
+                        </div>
+                  </div>
               </div>
-              <div style={{ 
-              border: "1px solid #ccc collapse",
-              margin: 0,
-              lineHeight: 1,
-              textAlign: 'left',
-              padding: '0 0 0 1rem'
-              }}>
-              [add icone]
-              </div>
-          </div>
-        <div style={{
-        border: "1px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '0 0 0 1rem'
-        }}>
-        [add icone]
-        </div>
-        </div>
-        {/* BOTTOM RIGHT */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-        <div style={{
-        border: "1px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '0 0 0 1rem'
-        }}>
-        [add icone]
-        </div>
-        <div style={{
-        border: "1px solid #ccc collapse",
-        margin: 0,
-        lineHeight: 1,
-        textAlign: 'left',
-        padding: '0 0 0 1rem'
-        }}>
-        [add icone]
-        </div>
-        </div>
-        </div>
-        </div>
         </AccordionDetails>
       </Accordion>
       {/* Matériel libre */}
@@ -614,23 +610,23 @@ import TimelineDefault from '@/components/TimelineDefault';
         <AccordionSummary>Matériel libre</AccordionSummary>
             <AccordionDetails style={{ padding: '1rem 1rem 1rem 1rem', backgroundColor: 'rgb(213, 250, 231)' }}>
                 <div
-                  style={{
-                  display: "grid",
-                  gridTemplateColumns: "2fr 3fr", // LEFT | RIGHT
-                  gap: 0,
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "2fr 3fr", // LEFT | RIGHT
+                      gap: 0,
                   }}>
                       {/* LEFT COLUMN (VERTICAL SPLIT) */}
                       <div
                           style={{
-                              display: "grid",
-                              gridTemplateRows: "auto",
-                              gap: 0,
+                                display: "grid",
+                                gridTemplateRows: "auto",
+                                gap: 0,
                           }}>
                                 <div style={{
-                                border: "0px solid #ccc collapse",
-                                lineHeight: 1,
-                                textAlign: 'center',
-                                padding: '0 0 0 1rem'
+                                    border: "0px solid #ccc collapse",
+                                    lineHeight: 1,
+                                    textAlign: 'center',
+                                    padding: '0 0 0 1rem'
                                 }}>
                                     <p>Mise en valeur de la production de matériel ouvert et favorisation d'un cadre de recherche encourageant le partage et l'échange</p>
                                 </div>
@@ -638,18 +634,18 @@ import TimelineDefault from '@/components/TimelineDefault';
                       {/* RIGHT COLUMN (VERTICAL SPLIT) */}
                       <div
                           style={{
-                          display: "grid",
-                          gridTemplateRows: "1fr",
+                            display: "grid",
+                            gridTemplateRows: "1fr",
                           }}
                           >
                             <div style={{
-                              border: "0px solid #ccc collapse",
-                              margin: 0,                 // minimal padding
-                              textAlign: 'center',
-                              padding: '0 0 0 1rem',
-                              lineHeight: 1,              // ensures vertical centering works
+                                border: "0px solid #ccc collapse",
+                                margin: 0,                 // minimal padding
+                                textAlign: 'center',
+                                padding: '0 0 0 1rem',
+                                lineHeight: 1,              // ensures vertical centering works
                               }}>
-                              <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>49</b><br/>projets ouverts valorisés par<br/> les bibliothèques et développés grâce<br/> aux ressources informatiques et aux<br/> technologies créatives</p>
+                                <p style={{textAlign: 'center', fontSize: '15px'}}><b style={{fontSize: '25px'}}>49</b><br/>projets ouverts valorisés par<br/> les bibliothèques et développés grâce<br/> aux ressources informatiques et aux<br/> technologies créatives</p>
                             </div>
                         </div>
                       </div>
@@ -682,17 +678,17 @@ import TimelineDefault from '@/components/TimelineDefault';
                     padding: '0 0.1rem 0 0'
                   })}>
                     <Box
-                    sx={{
-                        backgroundColor: '#c1c1fd',
-                        height: '100%',
-                        border: "1px solid #c1c1fd",
-                        flexDirection: 'column',
-                        padding: '0 0 0 1rem'
-                    }}
+                      sx={{
+                          backgroundColor: '#c1c1fd',
+                          height: '100%',
+                          border: "1px solid #c1c1fd",
+                          flexDirection: 'column',
+                          padding: '0 0 0 1rem'
+                      }}
                     >
-                    <p style={{textAlign: 'left'}}> Mise à disposition d&apos;un entrepôt partagé de données ouvertes</p>
+                      <p style={{textAlign: 'left'}}> Mise à disposition d&apos;un entrepôt partagé de données ouvertes</p>
                       <Box sx={{ flex: 1, border: "0px dashed gray" }}>
-                      [add icone]
+                        [add icone]
                       </Box>
                     </Box>
                 </Grid>
@@ -700,71 +696,68 @@ import TimelineDefault from '@/components/TimelineDefault';
                     padding: '0 0.1rem 0 0'
                   })}>
                     <Box
-                    sx={{
-                        backgroundColor: '#c1c1fd',
-                        height: '100%',
-                        border: "1px solid #c1c1fd",
-                        flexDirection: 'column',
-                        padding: '0 0 0 1rem'   
-                    }}
+                      sx={{
+                          backgroundColor: '#c1c1fd',
+                          height: '100%',
+                          border: "1px solid #c1c1fd",
+                          flexDirection: 'column',
+                          padding: '0 0 0 1rem'   
+                      }}
                     >
-                    <p style={{textAlign: 'left'}}>Gestion et mise à disposition d'un dépôt institutionnel et contribution à la plateforme Scholaris</p>
-                    <Box sx={{ flex: 1, border: "0px dashed gray" }}>
-                          [add icone]
-                    </Box>
-                    
+                        <p style={{textAlign: 'left'}}>Gestion et mise à disposition d'un dépôt institutionnel et contribution à la plateforme Scholaris</p>
+                        <Box sx={{ flex: 1, border: "0px dashed gray" }}>
+                              [add icone]
+                        </Box>
                     </Box>
                 </Grid>
                 <Grid size={{ xs: 12, md: 6 }} sx={theme => ({
                     padding: '0 0.1rem 0 0'
                   })}>
                     <Box
-                    sx={{
-                        backgroundColor: '#c1c1fd',
-                        height: '100%',
-                        border: "1px solid #c1c1fd",
-                        flexDirection: 'column',
-                        padding: '0 0 0 1rem'   
-                    }}
+                      sx={{
+                          backgroundColor: '#c1c1fd',
+                          height: '100%',
+                          border: "1px solid #c1c1fd",
+                          flexDirection: 'column',
+                          padding: '0 0 0 1rem'   
+                      }}
                     >
-                    <p style={{textAlign: 'left'}}>Gestion et mise à disposition d'une plateforme d'édition et de publication de REL</p>
-                    <Box sx={{ flex: 1, border: "0px dashed gray" }}>
-                          [add icone]
-                    </Box>
+                      <p style={{textAlign: 'left'}}>Gestion et mise à disposition d'une plateforme d'édition et de publication de REL</p>
+                      <Box sx={{ flex: 1, border: "0px dashed gray" }}>
+                            [add icone]
+                      </Box>
                     </Box>
                 </Grid>
 
                 <Grid size={{ xs: 12, md: 6 }} sx={theme => ({
                     padding: '0 0.1rem 0 0'
                   })}>
-                    <Box
-                    sx={{
-                        backgroundColor: '#c1c1fd',
-                        height: '100%',
-                        border: "1px solid #c1c1fd",
-                        flexDirection: 'column',
-                        padding: '0 0 0 1rem'   
-                    }}
-                    >
-                    <p style={{textAlign: 'left'}}>Financement d'Orcid infrastructure virtuelle d'organisation de l'information scientifique</p>
-                    <Box sx={{ flex: 1, border: "0px dashed gray" }}>
-                          [add icone]
-                    </Box>
-                    
-                    </Box>
+                      <Box
+                        sx={{
+                            backgroundColor: '#c1c1fd',
+                            height: '100%',
+                            border: "1px solid #c1c1fd",
+                            flexDirection: 'column',
+                            padding: '0 0 0 1rem'   
+                        }}
+                      >
+                        <p style={{textAlign: 'left'}}>Financement d'Orcid infrastructure virtuelle d'organisation de l'information scientifique</p>
+                        <Box sx={{ flex: 1, border: "0px dashed gray" }}>
+                              [add icone]
+                        </Box>
+                      </Box>
                 </Grid>
                 <Grid size={{ xs: 6, md: 14 }}>
                     <Box
-                    sx={{
-                        backgroundColor: '#c1c1fd',
-                        height: '100%',
-                        border: "1px solid #c1c1fd",
-                        flexDirection: 'column',
-                        padding: '0 0 0 1rem'   
-                    }}
+                      sx={{
+                          backgroundColor: '#c1c1fd',
+                          height: '100%',
+                          border: "1px solid #c1c1fd",
+                          flexDirection: 'column',
+                          padding: '0 0 0 1rem'   
+                      }}
                     >
-                    <p style={{textAlign: 'left'}}> Développement et mise à disposition d'une plateforme ouverte pour les collections numériques des bibliothèques de l'UdeM: <i>Collections spéciales</i>, sur <Box sx={{ border: "0px dashed gray" }}> [add icone]</Box></p>
-                    
+                      <p style={{textAlign: 'left'}}> Développement et mise à disposition d'une plateforme ouverte pour les collections numériques des bibliothèques de l'UdeM: <i>Collections spéciales</i>, sur <Box sx={{ border: "0px dashed gray" }}> [add icone]</Box></p>
                     </Box>
                 </Grid>
       </Grid>
@@ -913,7 +906,7 @@ import TimelineDefault from '@/components/TimelineDefault';
             padding: '0 0 0 1rem'
         }}
       >
-      <p style={{textAlign: 'left'}}>Signalement de ressources électroniques en libre
+        <p style={{textAlign: 'left'}}>Signalement de ressources électroniques en libre
         accès pour les faire connaitre et favoriser les pratiques de recherche ouvertes</p>
       </Box>
 
@@ -981,7 +974,7 @@ import TimelineDefault from '@/components/TimelineDefault';
             padding: '0 0 0 1rem'
             }}
       >
-      <p style={{textAlign: 'left'}}> Ouverture des collections numérisees 
+        <p style={{textAlign: 'left'}}> Ouverture des collections numérisees 
         des bibliothèques de l'UdeM, gratuitement et pour tous</p>
       </Box>
 

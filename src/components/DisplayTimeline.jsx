@@ -4,7 +4,7 @@ import TimelineDefault from './TimelineDefault';
 import HeroWithText from './HeroWithText';
 
 const DisplayTimeline = ({
-  // Tata99 props
+  // props
   leftColl = {},
   rightColl = null,
 
