@@ -35,7 +35,7 @@ export const DialogueOuverteHorizontalTabs = ({
           border-radius: 12px;
           overflow: hidden;
           background: #00407;
-          color: #02090f
+          color: #02090f;
         }
 
         .tab-headers {
@@ -74,9 +74,9 @@ export const DialogueOuverteHorizontalTabs = ({
         }
 
         .vertical-content-area {
-          padding: 24px;
+          padding: 0.5px 0.5px 0.5px 0.5px;
           max-height: ${maxHeight};
-          /*overflow-y: auto;*/
+          /*overflow-y: auto; padding: 24px;*/
         }
 
         /* Vertical content styling */

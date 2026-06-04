@@ -1,7 +1,7 @@
 // components/DisplayTimeline.jsx
-import { useState, useRef, useEffect } from 'react';
-import TimelineDefault from './TimelineDefault';
-import HeroWithText from './HeroWithText';
+import { useState, useRef, useEffect } from "react";
+import TimelineDefault from "./TimelineDefault";
+import HeroWithText from "./HeroWithText";
 
 const DisplayTimeline = ({
   // props
@@ -27,14 +27,14 @@ const DisplayTimeline = ({
   initialVisible = false,
 
   // Additional children
-  children
+  children,
 }) => {
   const [showTimeline, setShowTimeline] = useState(initialVisible);
   const timelineRef = useRef(null);
   const hasDisplayed = useRef(false);
 
   const handleDisplayClick = () => {
-    console.log('Display button clicked - showing timeline');
+    console.log("Display button clicked - showing timeline");
     const newState = toggleMode ? !showTimeline : true;
     setShowTimeline(newState);
 
@@ -45,8 +45,8 @@ const DisplayTimeline = ({
       if (autoScroll && !hasDisplayed.current) {
         setTimeout(() => {
           timelineRef.current?.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+            behavior: "smooth",
+            block: "start",
           });
           hasDisplayed.current = true;
         }, 100);
@@ -73,17 +73,22 @@ const DisplayTimeline = ({
     if (!element) return element;
 
     // If it's a button element or custom Button component
-    if (element.type && (element.type === 'button' || element.type?.name === 'Button' || element.props?.onClick)) {
+    if (
+      element.type &&
+      (element.type === "button" ||
+        element.type?.name === "Button" ||
+        element.props?.onClick)
+    ) {
       const originalOnClick = element.props.onClick;
       return React.cloneElement(element, {
-        onClick: (e) => handleAnyButtonClick(originalOnClick, e)
+        onClick: (e) => handleAnyButtonClick(originalOnClick, e),
       });
     }
 
     // If it has children, recursively process them
     if (element.props && element.props.children) {
-      const children = React.Children.map(element.props.children, child =>
-        wrapButtonsWithHandler(child)
+      const children = React.Children.map(element.props.children, (child) =>
+        wrapButtonsWithHandler(child),
       );
       return React.cloneElement(element, { ...element.props, children });
     }
@@ -107,23 +112,16 @@ const DisplayTimeline = ({
         className={`display-timeline-btn ${buttonClassName}`}
         style={buttonStyle}
       >
-        {toggleMode && showTimeline ? 'Hide' : buttonText}
+        {toggleMode && showTimeline ? "Hide" : buttonText}
       </button>
     );
   };
 
   return (
     <div className="display-timeline">
-      <HeroWithText
-        leftColl={leftColl}
-        rightColl={renderRightColl()}
-      />
+      <HeroWithText leftColl={leftColl} rightColl={renderRightColl()} />
 
-      {children && (
-        <div className="controller-children">
-          {children}
-        </div>
-      )}
+      {children && <div className="controller-children">{children}</div>}
 
       {showTimeline && (
         <div className="timeline-bottom" ref={timelineRef}>
