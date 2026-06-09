@@ -1,7 +1,6 @@
-// components/DisplayTimeline.jsx
-import { useState, useRef, useEffect } from "react";
-import TimelineDefault from "./TimelineDefault";
-import HeroWithText from "./HeroWithText";
+import { useState, useRef, useEffect } from 'react'
+import TimelineDefault from './TimelineDefault'
+import HeroWithText from '../HeroWithText'
 
 const DisplayTimeline = ({
   // props
@@ -9,14 +8,14 @@ const DisplayTimeline = ({
   rightColl = null,
 
   // Button props
-  buttonText = "",
-  buttonClassName = "",
+  buttonText = '',
+  buttonClassName = '',
   buttonStyle = {},
 
   // Timeline props
   timelineData,
-  timelineTitle = "",
-  timelineSubtitle = "",
+  timelineTitle = '',
+  timelineSubtitle = '',
   showFooter = true,
 
   // Behavior props
@@ -29,93 +28,82 @@ const DisplayTimeline = ({
   // Additional children
   children,
 }) => {
-  const [showTimeline, setShowTimeline] = useState(initialVisible);
-  const timelineRef = useRef(null);
-  const hasDisplayed = useRef(false);
+  const [showTimeline, setShowTimeline] = useState(initialVisible)
+  const timelineRef = useRef(null)
+  const hasDisplayed = useRef(false)
 
   const handleDisplayClick = () => {
-    console.log("Display button clicked - showing timeline");
-    const newState = toggleMode ? !showTimeline : true;
-    setShowTimeline(newState);
+    console.log('Display button clicked - showing timeline')
+    const newState = toggleMode ? !showTimeline : true
+    setShowTimeline(newState)
 
     if (newState) {
       // Timeline is being displayed
-      if (onDisplay) onDisplay();
+      if (onDisplay) onDisplay()
 
       if (autoScroll && !hasDisplayed.current) {
         setTimeout(() => {
           timelineRef.current?.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-          hasDisplayed.current = true;
-        }, 100);
+            behavior: 'smooth',
+            block: 'start',
+          })
+          hasDisplayed.current = true
+        }, 100)
       }
     } else {
       // Timeline is being hidden (toggle mode)
-      if (onHide) onHide();
-      hasDisplayed.current = false;
+      if (onHide) onHide()
+      hasDisplayed.current = false
     }
-  };
+  }
 
   // Wrap the button click handler to work with any button inside rightColl
   const handleAnyButtonClick = (originalOnClick, e) => {
     // Call the original onClick if it exists
     if (originalOnClick) {
-      originalOnClick(e);
+      originalOnClick(e)
     }
     // Always trigger the timeline display
-    handleDisplayClick();
-  };
+    handleDisplayClick()
+  }
 
   // Recursively find and wrap buttons with onClick handler
   const wrapButtonsWithHandler = (element) => {
-    if (!element) return element;
+    if (!element) return element
 
     // If it's a button element or custom Button component
-    if (
-      element.type &&
-      (element.type === "button" ||
-        element.type?.name === "Button" ||
-        element.props?.onClick)
-    ) {
-      const originalOnClick = element.props.onClick;
+    if (element.type && (element.type === 'button' || element.type?.name === 'Button' || element.props?.onClick)) {
+      const originalOnClick = element.props.onClick
       return React.cloneElement(element, {
         onClick: (e) => handleAnyButtonClick(originalOnClick, e),
-      });
+      })
     }
 
     // If it has children, recursively process them
     if (element.props && element.props.children) {
-      const children = React.Children.map(element.props.children, (child) =>
-        wrapButtonsWithHandler(child),
-      );
-      return React.cloneElement(element, { ...element.props, children });
+      const children = React.Children.map(element.props.children, (child) => wrapButtonsWithHandler(child))
+      return React.cloneElement(element, { ...element.props, children })
     }
 
-    return element;
-  };
+    return element
+  }
 
   // Build rightColl content with button handlers
   const renderRightColl = () => {
     // If custom rightColl is provided, wrap its buttons with the handler
     if (rightColl) {
       // Process the rightColl to add onClick handlers to all buttons
-      const processedRightColl = wrapButtonsWithHandler(rightColl);
-      return processedRightColl;
+      const processedRightColl = wrapButtonsWithHandler(rightColl)
+      return processedRightColl
     }
 
     // Default button
     return (
-      <button
-        onClick={handleDisplayClick}
-        className={`display-timeline-btn ${buttonClassName}`}
-        style={buttonStyle}
-      >
-        {toggleMode && showTimeline ? "Hide" : buttonText}
+      <button onClick={handleDisplayClick} className={`display-timeline-btn ${buttonClassName}`} style={buttonStyle}>
+        {toggleMode && showTimeline ? 'Hide' : buttonText}
       </button>
-    );
-  };
+    )
+  }
 
   return (
     <div className="display-timeline">
@@ -125,12 +113,7 @@ const DisplayTimeline = ({
 
       {showTimeline && (
         <div className="timeline-bottom" ref={timelineRef}>
-          <TimelineDefault
-            data={timelineData}
-            title={timelineTitle}
-            subtitle={timelineSubtitle}
-            showFooter={showFooter}
-          />
+          <TimelineDefault data={timelineData} title={timelineTitle} subtitle={timelineSubtitle} showFooter={showFooter} />
         </div>
       )}
 
@@ -199,7 +182,7 @@ const DisplayTimeline = ({
         }
       `}</style>
     </div>
-  );
-};
+  )
+}
 
-export default DisplayTimeline;
+export default DisplayTimeline
