@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 
-export default function Nombre({ number, label }) {
+export default function Nombre({ number, label, sx }) {
   return (
     <Box
       sx={{
@@ -9,6 +9,7 @@ export default function Nombre({ number, label }) {
         alignItems: 'center',
         justifyContent: 'center',
         gap: '0.5rem',
+        ...sx,
       }}
     >
       <Box sx={{ textAlign: 'center', fontSize: '25px', fontWeight: 'bold' }}>{number}</Box>

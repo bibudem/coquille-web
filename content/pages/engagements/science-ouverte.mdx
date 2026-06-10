@@ -17,6 +17,11 @@ import Nombre from "@/components/ScienceOuverte/Nombre";
 import ScienceOuverte from "./images/science-ouverte.png";
 import OpenLibraryOfHumanitiesJournal from "./images/open-library-of-humanities-journal.png";
 import ProgrammingHistorian from "./images/programming-historian.png";
+import DSpace from "./images/dspace.png";
+import GitHub from "./images/github.png";
+import PressBooks from "./images/pressbooks.png";
+import OJS from "./images/ojs.png";
+import Zotero from "./images/zotero.png";
 
 <Section
   bg="bleu100"
@@ -143,13 +148,11 @@ import ProgrammingHistorian from "./images/programming-historian.png";
             sx={{
               display: "grid",
               gridTemplateColumns: "2fr 1fr",
-              border: "1px solid #cccccc collapse",
             }}
           >
             {/* Row 1 collapse */}
             <Box
               sx={{
-                border: "1px solid #cccccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 display: "flex",
@@ -186,10 +189,10 @@ import ProgrammingHistorian from "./images/programming-historian.png";
               }}
             >
               <Box>
-                <Button secondary href="#science-ouverte">
+                <Button secondary href="#">
                   Engagement des bibliothèques pour la science ouverte
                 </Button>
-                <Button secondary href="#science-ouverte">
+                <Button secondary href="https://boite-outils.bib.umontreal.ca/recherche/libre-acces">
                   Guides sur le libre accès
                 </Button>
               </Box>
@@ -225,18 +228,22 @@ import ProgrammingHistorian from "./images/programming-historian.png";
                   padding: "0 0 0 1rem",
                 }}
               >
-                <img
-                  src={OpenLibraryOfHumanitiesJournal}
-                  alt="Open Library of Humanities Journal"
-                  style={{ width: "50%", height: "auto" }}
-                />
-                <img
-                  src={ProgrammingHistorian}
-                  alt="Programming Historian"
-                  style={{ width: "50%", height: "auto" }}
-                />
+                <a href="https://olh.openlibhums.org/" style={{display: "flex", textAlign: "center", width: "50%"}}>
+                  <img
+                    src={OpenLibraryOfHumanitiesJournal}
+                    alt="Open Library of Humanities Journal"
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                </a>
+                <a href="https://programminghistorian.org/" style={{display: "flex", textAlign: "center", width: "50%"}}>
+                    <img
+                      src={ProgrammingHistorian}
+                      alt="Programming Historian"
+                      style={{ width: "100%", height: "auto" }}
+                    />
+                </a>
               </Box>
-              <Button secondary href="#science-ouverte">
+              <Button secondary href="#">
                 Et plus encore à découvrir ici
               </Button>
             </Box>
@@ -309,13 +316,12 @@ import ProgrammingHistorian from "./images/programming-historian.png";
             sx={{
               display: "grid",
               gridTemplateColumns: "2fr 1fr",
-              border: "0.5px solid #ccc collapse",
+              gap: "1rem"
             }}
           >
             {/* Row 1 */}
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
@@ -326,130 +332,116 @@ import ProgrammingHistorian from "./images/programming-historian.png";
             </Box>
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
-                display: "center",
                 textAlign: "center",
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{ textAlign: "center", fontSize: "15px" }}>
-                <b style={{ fontSize: "25px" }}>41607</b>
-                <br />
-                documents sur Papyrus
-              </p>
+              <Nombre
+                number="41 607"
+                label="documents sur Papyrus"
+              />
             </Box>
             {/* Row 2 */}
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{}}>
+              <p>
                 Aide au dépôt des thèses et mémoires en libre accès sur le
                 dépot institutionnel Papyrus pour la diplomation
               </p>
             </Box>
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "center",
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{ textAlign: "center", fontSize: "15px" }}>
-                <b style={{ fontSize: "25px" }}>[Nombre]</b>
-                <br />
-                Thèses et mémoires déposés en [année]
-              </p>
+              <Nombre
+                number="[Nombre]"
+                label="Thèses et mémoires déposés en [année]"
+              />
             </Box>
             {/* Row 3 */}
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{}}>
+              <p>
                 Accompagnement à la publication par voie verte avec un
                 processus simplifié
               </p>
             </Box>
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "center",
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{ textAlign: "center", fontSize: "15px" }}>
-                <b style={{ fontSize: "25px" }}>224</b>
-                <br />
-                articles déposés en libres accès en 2025
-              </p>
+              <Nombre
+                number="224"
+                label="articles déposés en libres accès en 2025"
+              />
             </Box>
             {/* Row 4  collapse*/}
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{}}>
+              <p>
                 Soutien à la transition vers le modèle diamant et au processus
                 éditorial pour les revues savantes
               </p>
             </Box>
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse ",
                 margin: 0,
                 lineHeight: 1,
-                display: "center",
                 textAlign: "center",
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{ textAlign: "center", fontSize: "15px" }}>
-                <b style={{ fontSize: "25px" }}>13</b>
-                <br />
-                revues savantes hébergées sur OJS
-              </p>
+              <Nombre
+                number="13"
+                label="revues savantes hébergées sur OJS"
+              />
             </Box>
             {/* Row 5 */}
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{}}>
+              <p>
                 Soutien à la publication sous le modèle diamant de
                 monographies de chercheurs de l'UdeM
               </p>
             </Box>
-            <Box sx={{}}>
+            <Box>
               <Box
                 sx={{
-                  border: "0.5px solid #ccc collapse",
+                  
                   margin: 0,
                   lineHeight: 1,
                   textAlign: "center",
@@ -460,26 +452,23 @@ import ProgrammingHistorian from "./images/programming-historian.png";
               </Box>
               <Box
                 sx={{
-                  border: "0px solid #ccc collapse",
+                  
                   margin: 0,
                   lineHeight: 0.9,
                   textAlign: "center",
                   padding: "0 0 0 1rem",
                 }}
               >
-                <p style={{ textAlign: "center", fontSize: "15px" }}>
-                  <b style={{ fontSize: "25px" }}>[Nombre]</b>
-                  <br />
-                  monographies financées depuis
-                  <br /> [date lancement service]
-                </p>
+              <Nombre
+                number="[Nombre]"
+                label="monographies financées depuis [date lancement service]"
+              />
               </Box>
             </Box>
 
             {/* Row 6 */}
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
@@ -497,11 +486,11 @@ import ProgrammingHistorian from "./images/programming-historian.png";
               sx={{
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
+                alignContent: "start",
               }}
             >
               <Box
                 sx={{
-                  border: "0.5px solid #ccc collapse",
                   margin: 0,
                   lineHeight: 1,
                   textAlign: "center",
@@ -509,26 +498,23 @@ import ProgrammingHistorian from "./images/programming-historian.png";
                   display: "center",
                 }}
               >
-                <p style={{ textAlign: "center", fontSize: "15px" }}>
-                  <b style={{ fontSize: "25px" }}>32259</b>
-                  <br />
-                  DOI actifs dans Papyrus
-                </p>
+              <Nombre
+                number="32 259"
+                label="DOI actifs dans Papyrus"
+              />
               </Box>
               <Box
                 sx={{
-                  border: "0.5px solid #ccc collapse",
                   margin: 0,
                   lineHeight: 1,
                   textAlign: "center",
                   padding: "0 0 0 1rem",
                 }}
               >
-                <p style={{ textAlign: "center", fontSize: "15px" }}>
-                  <b style={{ fontSize: "25px" }}>6197193</b>
-                  <br />
-                  téléchargements de fichiers sur Papyrus entre 2024 et 2024
-                </p>
+              <Nombre
+                number="6 197 193"
+                label="téléchargements de fichiers sur Papyrus entre 2024 et 2024"
+              />
               </Box>
             </Box>
           </Box>
@@ -547,79 +533,73 @@ import ProgrammingHistorian from "./images/programming-historian.png";
             sx={{
               display: "grid",
               gridTemplateColumns: "2fr 1fr",
-              border: "0.5px solid #ccc collapse",
+              
             }}
           >
             {/* Row 1 */}
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{ textAlign: "left" }}>
+              <p>
                 Soutien et accompagnement pour le partage des données de
                 recherche dans un entrepôt partagé pérenne
               </p>
             </Box>
             <Box
               sx={{
-                border: "0.1px solid #ccc collapse",
+                
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "center",
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{ textAlign: "center", fontSize: "15px" }}>
-                <b style={{ fontSize: "25px" }}>369</b>
-                <br />
-                ensembles de données déposées et affiliées à l’UdeM sur
-                Boréalis
-              </p>
+              <Nombre
+                number="369"
+                label="ensembles de données déposées et affiliées à l’UdeM sur Boréalis"
+              />
             </Box>
             {/* Row 2 */}
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{}}>
+              <p>
                 Accompagnement, recommandations et rehaussements de données
                 sur Boréalis dans le respect des principes FAIR
               </p>
             </Box>
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "center",
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{}}>
+              <p>
                 Service de <br /> FAIRification
               </p>
             </Box>
             {/* Row 3 */}
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{}}>
+              <p>
                 Accompagnement et prise en charge de l'adoption d'identifiants
                 pérennes pour lier les publications scientifiques aux
                 ensembles de données et garantir leur découvrabilité
@@ -633,33 +613,31 @@ import ProgrammingHistorian from "./images/programming-historian.png";
             >
               <Box
                 sx={{
-                  border: "0.5px solid #ccc collapse",
+                  
                   margin: 0,
                   lineHeight: 1,
                   textAlign: "center",
                   padding: "0 0 0 1rem",
                 }}
               >
-                <p style={{ textAlign: "center", fontSize: "15px" }}>
-                  <b style={{ fontSize: "25px" }}>32359</b>
-                  <br />
-                  DOI attribués dans Papyrus
-                </p>
+              <Nombre
+                number="32 359"
+                label="DOI attribués dans Papyrus"
+              />
               </Box>
               <Box
                 sx={{
-                  border: "0.5px solid #ccc collapse",
+                  
                   margin: 0,
                   lineHeight: 1,
                   textAlign: "center",
                   padding: "0 0 0 1rem",
                 }}
               >
-                <p style={{ textAlign: "center", fontSize: "15px" }}>
-                  <b style={{ fontSize: "25px" }}>[Nombre]</b>
-                  <br />
-                  DOI attribués dans Boréalis
-                </p>
+              <Nombre
+                number="[Nombre]"
+                label="DOI attribués dans Boréalis"
+              />
               </Box>
             </Box>
           </Box>
@@ -678,13 +656,12 @@ import ProgrammingHistorian from "./images/programming-historian.png";
             sx={{
               display: "grid",
               gridTemplateColumns: "2fr 1fr",
-              border: "0.5px solid #ccc collapse",
+              
             }}
           >
             {/* Row 1 */}
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
@@ -698,23 +675,21 @@ import ProgrammingHistorian from "./images/programming-historian.png";
             </Box>
             <Box
               sx={{
-                border: "0.1px solid #ccc collapse",
+                
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "center",
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{ textAlign: "center", fontSize: "15px" }}>
-                <b style={{ fontSize: "25px" }}>3</b>
-                <br />
-                création REL accompagnées avec la Fabrique REL
-              </p>
+              <Nombre
+                number="3"
+                label="création REL accompagnées avec la Fabrique REL"
+              />
             </Box>
             {/* Row 2 */}
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
@@ -729,18 +704,16 @@ import ProgrammingHistorian from "./images/programming-historian.png";
             </Box>
             <Box
               sx={{
-                border: "0.5px solid #ccc collapse",
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "center",
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{ textAlign: "center", fontSize: "15px" }}>
-                <b style={{ fontSize: "25px" }}>5</b>
-                <br />
-                REL accessibles sur PressBooks
-              </p>
+              <Nombre
+                number="5"
+                label="REL accessibles sur PressBooks"
+              />
             </Box>
           </Box>
         </AccordionDetails>
@@ -812,7 +785,11 @@ import ProgrammingHistorian from "./images/programming-historian.png";
                       padding: "0 0 0 1rem",
                     }}
                   >
-                    [add icone]
+                    <img
+                      src={OJS}
+                      alt="OJS"
+                      style={{ width: "100%", height: "auto" }}
+                      />
                   </Box>
                   <Box
                     sx={{
@@ -823,7 +800,11 @@ import ProgrammingHistorian from "./images/programming-historian.png";
                       padding: "0 0 0 1rem",
                     }}
                   >
-                    [add icone]
+                    <img
+                      src={DSpace}
+                      alt="DSpace"
+                      style={{ width: "100%", height: "auto" }}
+                      />
                   </Box>
                 </Box>
                 <Box
@@ -831,11 +812,15 @@ import ProgrammingHistorian from "./images/programming-historian.png";
                     border: "1px solid #ccc collapse",
                     margin: 0,
                     lineHeight: 1,
-                    textAlign: "left",
+                    textAlign: "center",
                     padding: "0 0 0 1rem",
                   }}
                 >
-                  [add icone]
+                  <img
+                    src={PressBooks}
+                    alt="PressBooks"
+                    style={{ width: "75%", height: "auto" }}
+                    />
                 </Box>
               </Box>
               {/* BOTTOM RIGHT */}
@@ -849,7 +834,11 @@ import ProgrammingHistorian from "./images/programming-historian.png";
                     padding: "0 0 0 1rem",
                   }}
                 >
-                  [add icone]
+                  <img
+                    src={GitHub}
+                    alt="GitHub"
+                    style={{ width: "100%", height: "auto" }}
+                    />
                 </Box>
                 <Box
                   sx={{
@@ -860,7 +849,11 @@ import ProgrammingHistorian from "./images/programming-historian.png";
                     padding: "0 0 0 1rem",
                   }}
                 >
-                  [add icone]
+                  <img
+                    src={Zotero}
+                    alt="Zotero"
+                    style={{ width: "100%", height: "auto" }}
+                    />
                 </Box>
               </Box>
             </Box>
@@ -893,7 +886,7 @@ import ProgrammingHistorian from "./images/programming-historian.png";
             >
               <Box
                 sx={{
-                  border: "0px solid #ccc collapse",
+                  
                   lineHeight: 1,
                   textAlign: "center",
                   padding: "0 0 0 1rem",
@@ -915,21 +908,17 @@ import ProgrammingHistorian from "./images/programming-historian.png";
             >
               <Box
                 sx={{
-                  border: "0px solid #ccc collapse",
+                  
                   margin: 0, // minimal padding
                   textAlign: "center",
                   padding: "0 0 0 1rem",
                   lineHeight: 1, // ensures vertical centering works
                 }}
               >
-                <p style={{ textAlign: "center", fontSize: "15px" }}>
-                  <b style={{ fontSize: "25px" }}>49</b>
-                  <br />
-                  projets ouverts valorisés par
-                  <br /> les bibliothèques et développés grâce
-                  <br /> aux ressources informatiques et aux
-                  <br /> technologies créatives
-                </p>
+              <Nombre
+                number="49"
+                label="projets ouverts valorisés par les bibliothèques et développés grâce aux ressources informatiques et aux technologies créatives"
+              />
               </Box>
             </Box>
           </Box>
