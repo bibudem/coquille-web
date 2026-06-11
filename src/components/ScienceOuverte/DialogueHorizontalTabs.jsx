@@ -1,47 +1,39 @@
-import { useState, Children, isValidElement } from 'react';
-
+import { useState, Children, isValidElement } from 'react'
 
 export const DialogueOuverteHorizontalTabs = ({
   tabs = [],
   verticalSpacing = '1.5rem',
   showDividers = true,
-  maxHeight = '800px' //'600px'
+  maxHeight = '8000px', //'600px'
 }) => {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(0)
 
   return (
     <div className="vertical-content-tabs">
       {/* Horizontal Tab Headers */}
       <div className="tab-headers">
         {tabs.map((tab, index) => (
-          <button
-            key={index}
-            className={`tab-header ${activeTab === index ? 'active' : ''}`}
-            onClick={() => setActiveTab(index)}
-          >
+          <button key={index} className={`tab-header ${activeTab === index ? 'active' : ''}`} onClick={() => setActiveTab(index)}>
             {tab.label}
           </button>
         ))}
       </div>
 
       {/* Vertical Content */}
-      <div className="vertical-content-area">
-        {tabs[activeTab].content}
-      </div>
+      <div className="vertical-content-area">{tabs[activeTab].content}</div>
 
       <style>{`
         .vertical-content-tabs {
-          border: 1px solid #00407;
           border-radius: 12px;
           overflow: hidden;
-          background: #00407;
+          background: #00407f;
           color: #02090f;
         }
 
         .tab-headers {
           display: flex;
           background: #cce2f3;
-          border-bottom: 2px solid #cce2f3;
+          border-bottom: 0;
         }
 
         .tab-header {
@@ -49,6 +41,7 @@ export const DialogueOuverteHorizontalTabs = ({
           padding: 16px 24px;
           background: none;
           border: none;
+          border-bottom: 2px solid #00407f;
           cursor: pointer;
           font-size: 16px;
           font-weight: 600;
@@ -88,12 +81,15 @@ export const DialogueOuverteHorizontalTabs = ({
           margin-bottom: 0;
         }
 
-        ${showDividers && `
+        ${
+          showDividers &&
+          `
           .vertical-content-area > *:not(:last-child) {
             border-bottom: 1px solid #00407f;
             padding-bottom: ${verticalSpacing};
           }
-        `}
+        `
+        }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -122,8 +118,7 @@ export const DialogueOuverteHorizontalTabs = ({
         }
       `}</style>
     </div>
-  );
-};
+  )
+}
 
-
-export default DialogueOuverteHorizontalTabs;
+export default DialogueOuverteHorizontalTabs

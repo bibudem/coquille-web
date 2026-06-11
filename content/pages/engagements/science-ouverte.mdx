@@ -30,6 +30,7 @@ import Calypso from "./images/calypso.png";
 import CreativeCommons from "./images/creative-commons.png";
 import BoiteOutils from "./images/boite-outils.png";
 import PremiersPeuples from "./images/premiers-peuples.png";
+import Mitig from "./images/mitig.png";
 
 <Section
   bg="bleu100"
@@ -76,10 +77,7 @@ import PremiersPeuples from "./images/premiers-peuples.png";
         }}
       >
         <Box>
-          <Typography component="h2" variant="h2" sx={{ marginTop: 0 }}>
-            Le tableau de bord de la science ouverte des bibliothèques de
-            l'UdeM.
-          </Typography>
+          <Typography component="h2" variant="h2" sx={{ marginTop: 0 }}>Le tableau de bord de la science ouverte des bibliothèques de l'UdeM.</Typography>
 
           <Typography component="p" variant="subtitle1">
             {" "}
@@ -132,16 +130,13 @@ import PremiersPeuples from "./images/premiers-peuples.png";
     variant="h2"
     sx={{ marginTop: "0" }}
     id="connaissances-scientifiques-ouvertes"
-  >
-    Les connaissances scientifiques ouvertes{" "}
-  </Typography>
+  >Les connaissances scientifiques ouvertes</Typography>
   <Typography sx={{ pb: 1.5 }}>
     Selon l’UNESCO : « Les connaissances scientifiques ouvertes désignent le
     libre accès aux publications scientifiques, aux données de recherche, aux
     ressources éducatives libres, aux logiciels, et aux codes sources et au
     matériel ».
   </Typography>
-  <GridOffset offset="1">
     <AccordionGroupScienceOuverte color="vertPale">
       {/* Promotion du libre accès */}
       <Accordion sx={{ padding: "0 2rem 0 2rem" }}>
@@ -167,10 +162,7 @@ import PremiersPeuples from "./images/premiers-peuples.png";
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{ textAlign: "left" }}>
-                Sensibilisation à la science ouverte et promotion de bonnes
-                pratiques et alternatives responsables pour la recherche
-              </p>
+              <p>Sensibilisation à la science ouverte et promotion de bonnes pratiques et alternatives responsables pour la recherche</p>
             </Box>
             <Box
               sx={{
@@ -218,10 +210,7 @@ import PremiersPeuples from "./images/premiers-peuples.png";
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{ display: "left" }}>
-                Financement d'initiatives de libre accès et promotion du
-                modèle diamant pour l'édition savante
-              </p>
+              <p>Financement d'initiatives de libre accès et promotion du modèle diamant pour l'édition savante</p>
             </Box>
             <Box
             ></Box>
@@ -286,11 +275,7 @@ import PremiersPeuples from "./images/premiers-peuples.png";
                 padding: "0 0 0 1rem",
               }}
             >
-              <p style={{ display: "left" }}>
-                Négotiation d'accord avec les éditeurs pour permettre à la
-                communauté de recherche de l'UdeM d'avoir un rabais pour
-                publier en libre accès{" "}
-              </p>
+              <p>Négotiation d'accord avec les éditeurs pour permettre à la communauté de recherche de l'UdeM d'avoir un rabais pour publier en libre accès</p>
             </Box>
             <Box
               sx={{
@@ -933,7 +918,6 @@ import PremiersPeuples from "./images/premiers-peuples.png";
         </AccordionDetails>
       </Accordion>
     </AccordionGroupScienceOuverte>
-  </GridOffset>
 </Section>
 
 <Section
@@ -951,10 +935,7 @@ import PremiersPeuples from "./images/premiers-peuples.png";
 >
   <Carousel1
     title={
-      <Typography component="h2" variant="h2">
-        {" "}
-        Infrastructures de la science ouverte
-      </Typography>
+      <Typography component="h2" variant="h2" sx={{ marginTop: 0 }}>Infrastructures de la science ouverte</Typography>
     }
     description={
       <>
@@ -1664,9 +1645,7 @@ import PremiersPeuples from "./images/premiers-peuples.png";
           display: "flex",
         }}
       >
-        <Typography component="h2" variant="h2">
-          Participation ouverte des acteurs de la société
-        </Typography>
+        <Typography component="h2" variant="h2" sx={{marginTop: 0}}>Participation ouverte des acteurs de la société</Typography>
       </Box>
 
       {/* SUBTOP */}
@@ -1830,7 +1809,7 @@ import PremiersPeuples from "./images/premiers-peuples.png";
                 gridTemplateColumns: "1fr 2fr 1fr",
                 gap: "5px",
                 width: "100%",
-                padding: "0.5px 0.5px 0.5px 0.5px",
+                padding: "0",
               }}
             >
               {/* LEFT 1 */}
@@ -1838,20 +1817,13 @@ import PremiersPeuples from "./images/premiers-peuples.png";
                 sx={{
                   gridArea: "left1",
                   backgroundColor: "#e5f0f8",
-                  border: "2px solid #e5f0f8 collapse",
                   borderRadius: "0px",
-                  minHeight: "15px",
                   padding: "10px",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <Box sx={{ flex: "0 0 auto", mb: 1 }}>
-                  <p style={{ textAlign: "center" }}>
-                    Création de la Direction de l'Engagement et de
-                    l'Innovation Sociale (DEIS)
-                  </p>
-                </Box>
+                  <p style={{ textAlign: "center" }}>Création de la Direction de l'Engagement et de l'Innovation Sociale (DEIS)</p>
               </Box>
 
               {/* LEFT 2 */}
@@ -1859,17 +1831,12 @@ import PremiersPeuples from "./images/premiers-peuples.png";
                 style={{
                   gridArea: "left2",
                   backgroundColor: "#e5f0f8",
-                  border: "2px solid #e5f0f8 collapse",
-                  minHeight: "15px",
                   padding: "10px",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <p style={{ textAlign: "center" }}>
-                  Soutien et contribution au répertoire vedettes matières de
-                  l’Université Laval pour la décolonisation des collections
-                </p>
+                <p style={{ textAlign: "center" }}>Soutien et contribution au répertoire vedettes matières de l’Université Laval pour la décolonisation des collections</p>
               </Box>
 
               {/* CENTER */}
@@ -1877,7 +1844,6 @@ import PremiersPeuples from "./images/premiers-peuples.png";
                 sx={{
                   gridArea: "center",
                   backgroundColor: "#e5f0f8",
-                  border: "2px solid #e5f0f8 collapse",
                   minHeight: "250px",
                   padding: "10px",
                   display: "flex",
@@ -1890,17 +1856,12 @@ import PremiersPeuples from "./images/premiers-peuples.png";
                   sx={{
                     backgroundColor: "#e5f0f8",
                     border: "2px solid #e5f0f8 collapse",
-                    p: 2,
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    minHeight: 60,
                   }}
                 >
-                  <p style={{ textAlign: "center" }}>
-                    Reconnaissance et promotion des systèmes de savoirs
-                    autochtones, en cohésion avec la communauté de l’UdeM
-                  </p>
+                  <p style={{ textAlign: "center" }}>Reconnaissance et promotion des systèmes de savoirs autochtones, en cohésion avec la communauté de l’UdeM</p>
                 </Box>
 
                 {/* CENTER AREA */}
@@ -1916,34 +1877,28 @@ import PremiersPeuples from "./images/premiers-peuples.png";
                   <Box
                     sx={{
                       backgroundColor: "#e5f0f8",
-                      border: "2px solid #e5f0f8 collapse",
-                      p: 2,
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
-                      minHeight: 140,
                     }}
                   >
                     <p style={{ margin: 0, textAlign: "center" }}>
-                      [add icone] Valorisation des études autochtones
-                    </p>
+                      <a href="https://boite-outils.bib.umontreal.ca/anthropologie-demographie-sociologie/etudes-autochtones">
+                        <img src={BoiteOutils} alt="Etudes Autochtones" style={{ width: "100%", height: "auto" }} />
+                      </a> Valorisation des études autochtones</p>
                   </Box>
 
                   {/* CENTER RIGHT */}
                   <Box
                     sx={{
                       backgroundColor: "#e5f0f8",
-                      border: "2px solid #e5f0f8 collapse",
                       p: 2,
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
-                      minHeight: 140,
                     }}
                   >
-                    <p style={{ margin: 0, textAlign: "center" }}>
-                      [add icone] Participation au rassemblement Mitig
-                    </p>
+                    <p style={{ margin: 0, textAlign: "center" }}><a href="https://calendrier.umontreal.ca/mitig"><img src={Mitig} alt="Mitig" style={{ width: "130px", height: "auto" }} /></a> Participation au rassemblement Mitig</p>
                   </Box>
                 </Box>
 
@@ -1951,7 +1906,6 @@ import PremiersPeuples from "./images/premiers-peuples.png";
                 <Box
                   sx={{
                     backgroundColor: "#e5f0f8",
-                    border: "2px solid #e5f0f8 collapse",
                     p: 2,
                     display: "flex",
                     justifyContent: "center",
@@ -1972,7 +1926,6 @@ import PremiersPeuples from "./images/premiers-peuples.png";
                 style={{
                   gridArea: "right",
                   backgroundColor: "#e5f0f8",
-                  border: "2px solid #e5f0f8 collapse",
                   minHeight: "280px",
                   padding: "10px",
                   display: "grid",
@@ -2035,7 +1988,6 @@ import PremiersPeuples from "./images/premiers-peuples.png";
                 gap: "5px",
                 width: "100%",
                 padding: "0.5px 0.5px 0.5px 0.5px",
-                minHeight: "800px",
               }}
             >
               {/* LEFT 1 */}
@@ -2045,7 +1997,6 @@ import PremiersPeuples from "./images/premiers-peuples.png";
                   backgroundColor: "#e5f0f8",
                   border: "1px solid #e5f0f8",
                   borderRadius: "0px",
-                  minHeight: "120px",
                   padding: "5px",
                   gridTemplateRows: "1fr 1fr",
                   justifyContent: "center",
@@ -2054,50 +2005,40 @@ import PremiersPeuples from "./images/premiers-peuples.png";
               >
                 <Box
                   sx={{
-                    border: "1px solid gray collapse",
                     borderRadius: "0px",
                     p: 2,
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    minHeight: "100px",
                   }}
                 >
-                  <p style={{ textAlign: "center" }}>
-                    Service d’adaptation des documents pour rendre les
-                    ressources accessibles aux chercheurs ayant des besoins
-                    particuliers
-                  </p>
+                  <p style={{ textAlign: "center", margin: "0" }}>Service d’adaptation des documents pour rendre les ressources accessibles aux chercheurs ayant des besoins particuliers</p>
                 </Box>
 
                 {/* TOP */}
                 <Box
                   sx={{
-                    border: "1px solid gray collapse",
                     borderRadius: "0px",
                     p: 2,
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    minHeight: "50px",
                   }}
                 >
-                  <p style={{ textAlign: "center", fontSize: "15px" }}>
-                    <b style={{ fontSize: "25px" }}>10 000 à 15 0000</b>
-                    <br />
-                    pages adaptées par semestre
-                  </p>
+                  <Nombre
+                    number="10 000 à 15 000"
+                    label="pages adaptées par semestre"
+                  />
                 </Box>
               </Box>
 
               {/* RIGHT */}
               <Box
-                style={{
+                sx={{
                   gridArea: "right",
                   backgroundColor: "#e5f0f8",
                   border: "1px solid #e5f0f8",
                   borderRadius: "0px",
-                  minHeight: "120px",
                   padding: "5px",
                   gridTemplateRows: "1fr 1fr",
                   justifyContent: "center",
@@ -2106,39 +2047,30 @@ import PremiersPeuples from "./images/premiers-peuples.png";
               >
                 <Box
                   sx={{
-                    border: "1px solid gray collapse",
                     borderRadius: "0px",
                     p: 2,
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    minHeight: "100px",
                   }}
                 >
-                  <p style={{ textAlign: "center" }}>
-                    Mise à disposition d'espaces et d'outils physiques et
-                    virtuels adaptés pour rendre accessibles les processus
-                    scientifiques
-                  </p>
+                  <p style={{ textAlign: "center", margin: "0" }}>Mise à disposition d'espaces et d'outils physiques et virtuels adaptés pour rendre accessibles les processus scientifiques</p>
                 </Box>
 
                 <Box
                   sx={{
-                    border: "1px solid gray collapse",
                     borderRadius: "0px",
                     p: 2,
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    minHeight: "50px",
                   }}
                 >
                   <Box sx={{ flex: "0 0 auto", mb: 1 }}>
-                    <p style={{ textAlign: "center", fontSize: "15px" }}>
-                      <b style={{ fontSize: "25px" }}>plus de 3000</b>
-                      <br />
-                      usagers réguliers
-                    </p>
+                    <Nombre
+                      number="plus de 3 0000"
+                      label="usagers réguliers"
+                    />
                   </Box>
                 </Box>
               </Box>
@@ -2152,7 +2084,6 @@ import PremiersPeuples from "./images/premiers-peuples.png";
           <Grid container spacing={1}>
             <Grid
               sx={{
-                minHeight: "800px",
                 padding: "0.5px 0.5px 0.5px 0.5px",
               }}
             >
@@ -2172,37 +2103,27 @@ import PremiersPeuples from "./images/premiers-peuples.png";
                   sx={{
                     backgroundColor: "#e5f0f8",
                     border: "2px solid #e5f0f8 collapse",
-                    p: 2,
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    minHeight: 60,
                   }}
                 >
-                  <p sx={{ textAlign: "center" }}>
-                    Valorisation de la production scientifique francophone
-                    québécoise dans une demarche de visibilité de la recherche
-                    nationale à l'échelle locale et internationale
-                  </p>
+                  <p sx={{ textAlign: "center" }}>Valorisation de la production scientifique francophone québécoise dans une demarche de visibilité de la recherche nationale à l'échelle locale et internationale</p>
                 </Box>
 
                 {/* TOP */}
                 <Box
                   sx={{
-                    border: "1px solid gray collapse",
                     borderRadius: "6px",
-                    p: 2,
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    minHeight: 140,
                   }}
                 >
-                  <p style={{ textAlign: "center", fontSize: "15px" }}>
-                    <b style={{ fontSize: "25px" }}>13</b>
-                    <br />
-                    revues nationales hébergées localement OJS
-                  </p>
+                  <Nombre
+                    number="13"
+                    label="revues nationales hébergées localement OJS"
+                  />
                 </Box>
               </Box>
             </Grid>
@@ -2210,9 +2131,6 @@ import PremiersPeuples from "./images/premiers-peuples.png";
         ),
       },
     ]}
-    verticalSpacing="1rem"
-    showDividers={true}
-    maxHeight="800px"
   />
 </Section>
 
@@ -2235,9 +2153,7 @@ import PremiersPeuples from "./images/premiers-peuples.png";
     sx={{
       marginTop: "0",
     }}
-  >
-    L’histoire de l’engagement des bibliothèques pour la science ouverte
-  </Typography>
+  >L’histoire de l’engagement des bibliothèques pour la science ouverte</Typography>
 
   <Typography
     component="p"
