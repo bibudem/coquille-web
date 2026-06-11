@@ -22,6 +22,14 @@ import GitHub from "./images/github.png";
 import PressBooks from "./images/pressbooks.png";
 import OJS from "./images/ojs.png";
 import Zotero from "./images/zotero.png";
+import Borealis from "./images/borealis.png";
+import Scholaris from "./images/scholaris.png";
+import Papyrus from "./images/papyrus.png";
+import Orcid from "./images/orcid.png";
+import Calypso from "./images/calypso.png";
+import CreativeCommons from "./images/creative-commons.png";
+import BoiteOutils from "./images/boite-outils.png";
+import PremiersPeuples from "./images/premiers-peuples.png";
 
 <Section
   bg="bleu100"
@@ -998,7 +1006,9 @@ import Zotero from "./images/zotero.png";
             {" "}
             Mise à disposition d&apos;un entrepôt partagé de données ouvertes
           </p>
-          <Box sx={{ flex: 1, border: "0px dashed gray" }}>[add icone]</Box>
+          <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", paddingBottom: "1rem" }}>
+            <a href="#"><img src={Borealis} alt="Borealis" style={{ width: "120px", height: "auto" }} /></a>
+          </Box>
         </Box>
       </Grid>
       <Grid
@@ -1021,7 +1031,10 @@ import Zotero from "./images/zotero.png";
             Gestion et mise à disposition d'un dépôt institutionnel et
             contribution à la plateforme Scholaris
           </p>
-          <Box sx={{ flex: 1, border: "0px dashed gray" }}>[add icone]</Box>
+          <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", gap: "1rem"}}>
+            <a href="#"><img src={Scholaris} alt="Scholaris" style={{ width: "120px", height: "auto" }} /></a>
+            <a href="#"><img src={Papyrus} alt="Papyrus" style={{ width: "120px", height: "auto" }} /></a>
+          </Box>
         </Box>
       </Grid>
       <Grid
@@ -1044,7 +1057,9 @@ import Zotero from "./images/zotero.png";
             Gestion et mise à disposition d'une plateforme d'édition et de
             publication de REL
           </p>
-          <Box sx={{ flex: 1, border: "0px dashed gray" }}>[add icone]</Box>
+          <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "1rem", marginBottom: "1rem" }}>
+            <a href="https://pressbooks.com/"><img src={PressBooks} alt="PressBooks" style={{ width: "120px", height: "auto" }} /></a>
+          </Box>
         </Box>
       </Grid>
 
@@ -1068,7 +1083,9 @@ import Zotero from "./images/zotero.png";
             Financement d'Orcid infrastructure virtuelle d'organisation de
             l'information scientifique
           </p>
-          <Box sx={{ flex: 1, border: "0px dashed gray" }}>[add icone]</Box>
+          <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", paddingBottom: "1rem" }}>
+            <a href="https://orcid.org/"><img src={Orcid} alt="Orcid" style={{ width: "120px", height: "auto" }} /></a>
+          </Box>
         </Box>
       </Grid>
       <Grid size={{ xs: 6, md: 14 }}>
@@ -1082,12 +1099,13 @@ import Zotero from "./images/zotero.png";
             padding: "0 0 0 1rem",
           }}
         >
-          <p style={{ textAlign: "left" }}>
-            {" "}
+          <p>
             Développement et mise à disposition d'une plateforme ouverte pour
             les collections numériques des bibliothèques de l'UdeM:{" "}
             <i>Collections spéciales</i>, sur{" "}
-            <Box sx={{ border: "0px dashed gray" }}> [add icone]</Box>
+            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", paddingBottom: "1rem" }}>
+              <a href="https://collections-speciales.bib.umontreal.ca/"><img src={DSpace} alt="DSpace" style={{ width: "120px", height: "auto" }} /></a>
+            </Box>
           </p>
         </Box>
       </Grid>
@@ -1104,7 +1122,7 @@ import Zotero from "./images/zotero.png";
       })}
     >
       <Grid
-        style={{
+        sx={{
           display: "grid",
           gridTemplateAreas: `
                 "top top top"
@@ -1115,12 +1133,11 @@ import Zotero from "./images/zotero.png";
           gap: "2px", // reduced gap
           width: "100%",
           padding: "4px", // compact outer spacing
-          boxSizing: "border-box",
         }}
       >
         {/* TOP */}
         <Box
-          style={{
+          sx={{
             gridArea: "top",
             border: "1px solid #c1c1fd",
             borderRadius: "8px",
@@ -1153,11 +1170,10 @@ import Zotero from "./images/zotero.png";
             alignItems: "center",
           }}
         >
-          <p style={{ textAlign: "center", fontSize: "15px", margin: 0 }}>
-            <b style={{ fontSize: "25px" }}>5</b>
-            <br />
-            studios vidéo et audio
-          </p>
+        <Nombre
+          number="5"
+          label="studios vidéo et audio"
+        />
         </Box>
 
         {/* CENTER */}
@@ -1174,11 +1190,10 @@ import Zotero from "./images/zotero.png";
             alignItems: "center",
           }}
         >
-          <p style={{ textAlign: "center", fontSize: "15px", margin: 0 }}>
-            <b style={{ fontSize: "25px" }}>1</b>
-            <br />
-            laboratoire de visualisation
-          </p>
+        <Nombre
+          number="1"
+          label="laboratoire de visualisation"
+        />
         </Box>
 
         {/* RIGHT COLUMN */}
@@ -1204,11 +1219,10 @@ import Zotero from "./images/zotero.png";
               alignItems: "center",
             }}
           >
-            <p style={{ textAlign: "center", fontSize: "15px", margin: 0 }}>
-              <b style={{ fontSize: "25px" }}>3</b>
-              <br />
-              ateliers de fabrication
-            </p>
+            <Nombre
+              number="3"
+              label="ateliers de fabrication"
+            />
           </Box>
 
           {/* RIGHT2 */}
@@ -1224,11 +1238,10 @@ import Zotero from "./images/zotero.png";
               alignItems: "center",
             }}
           >
-            <p style={{ textAlign: "center", fontSize: "15px", margin: 0 }}>
-              <b style={{ fontSize: "25px" }}>& 5</b>
-              <br />
-              imprimantes 3D
-            </p>
+            <Nombre
+              number="5"
+              label="imprimantes 3D"
+            />
           </Box>
         </Grid>
 
@@ -1246,9 +1259,9 @@ import Zotero from "./images/zotero.png";
             alignItems: "right",
           }}
         >
-          <Button secondary href="science-ouverte">
+          <Button secondary href="https://studio.bib.umontreal.ca/">
             <p style={{ textAlign: "right" }}>
-              Et plus encore à découvrir sur [add icone]
+              Et plus encore à découvrir sur studio.bib
             </p>
           </Button>
         </Box>
@@ -1266,10 +1279,11 @@ import Zotero from "./images/zotero.png";
       })}
     >
       <Grid
-        size={{ xs: 12, md: 13 }}
+        size={{ xs: 12 }}
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
+          gap: "1rem",
           border: "1px solid #766EC8",
           borderRadius: "8px",
           background: "#766EC8",
@@ -1280,7 +1294,6 @@ import Zotero from "./images/zotero.png";
           sx={{
             backgroundColor: "#c1c1fd",
             height: "100%",
-            border: "1px solid #c1c1fd collapse ",
             borderRadius: "8px",
             flexDirection: "column",
             padding: "0 0 0 1rem",
@@ -1296,26 +1309,24 @@ import Zotero from "./images/zotero.png";
           sx={{
             backgroundColor: "#c1c1fd",
             height: "100%",
-            border: "1px solid #c1c1fd collapse ",
             borderRadius: "8px",
             flexDirection: "column",
             padding: "0 0 0 1rem",
           }}
         >
-          <p style={{ textAlign: "center", fontSize: "15px" }}>
-            <b>6 400 000</b>
-            <br />
-            resources en libre accès renseignées dans le catalogue en novembre
-            2025
-          </p>
+          <Nombre
+            number="6 400 000"
+            label="ressources en libre accès renseignées dans le catalogue en novembre 2025"
+          />
         </Box>
       </Grid>
 
       <Grid
-        size={{ xs: 12, md: 12 }}
+        size={{ xs: 12 }}
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
+          gap: "1rem",
           border: "1px solid #766EC8",
           borderRadius: "8px",
           background: "#766EC8",
@@ -1326,7 +1337,6 @@ import Zotero from "./images/zotero.png";
           sx={{
             backgroundColor: "#c1c1fd",
             height: "100%",
-            border: "1px solid #c1c1fd collapse ",
             borderRadius: "8px",
             flexDirection: "column",
             padding: "0 0 0 1rem",
@@ -1343,17 +1353,15 @@ import Zotero from "./images/zotero.png";
           sx={{
             backgroundColor: "#c1c1fd",
             height: "100%",
-            border: "1px solid #c1c1fd collapse ",
             borderRadius: "8px",
             flexDirection: "column",
             padding: "0 0 0 1rem",
           }}
         >
-          <p style={{ textAlign: "center", fontSize: "15px" }}>
-            <b>32 356</b>
-            <br />
-            thèse et mémoires disponibles sur Papyrus en novembre 2025
-          </p>
+          <Nombre
+            number="32 356"
+            label="thèse et mémoires disponibles sur Papyrus en novembre 2025"
+          />
         </Box>
       </Grid>
 
@@ -1362,6 +1370,7 @@ import Zotero from "./images/zotero.png";
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
+          gap: "1rem",
           border: "1px solid #766EC8",
           borderRadius: "8px",
           background: "#766EC8",
@@ -1372,14 +1381,12 @@ import Zotero from "./images/zotero.png";
           sx={{
             backgroundColor: "#c1c1fd",
             height: "100%",
-            border: "1px solid #c1c1fd collapse ",
             borderRadius: "8px",
             flexDirection: "column",
             padding: "0 0 0 1rem",
           }}
         >
-          <p style={{ textAlign: "left" }}>
-            {" "}
+          <p>
             Ouverture des collections numérisees des bibliothèques de l'UdeM,
             gratuitement et pour tous
           </p>
@@ -1389,13 +1396,12 @@ import Zotero from "./images/zotero.png";
           sx={{
             backgroundColor: "#c1c1fd",
             height: "100%",
-            border: "1px solid #c1c1fd collapse ",
             borderRadius: "8px",
             flexDirection: "column",
             padding: "0 0 0 1rem",
           }}
         >
-          <p style={{ textAlign: "center" }}> [icon calypso]</p>
+          <p style={{ textAlign: "center" }}><a href="https://calypso.bib.umontreal.ca/"><img src={Calypso} alt="Calypso" style={{ width: "60%", height: "auto" }} /></a></p>
           {/*<Box sx={{
           background: "#c1c1fd",
           height: '45%',
@@ -1424,7 +1430,7 @@ import Zotero from "./images/zotero.png";
         size={{ xs: 12, md: 12, border: "1px solid #ccc" }}
         sx={{
           display: "grid",
-          gridTemplateColumns: "2fr 1fr",
+          gridTemplateColumns: "1fr",
           border: "1px solid #766EC8",
           borderRadius: "8px",
           background: "#766EC8",
@@ -1435,38 +1441,24 @@ import Zotero from "./images/zotero.png";
           sx={{
             backgroundColor: "#c1c1fd",
             height: "100%",
-            border: "1px solid #c1c1fd collapse ",
             borderRadius: "8px",
             flexDirection: "column",
             padding: "0 0 1rem 1rem",
           }}
         >
-          <p style={{ textAlign: "left" }}>
-            {" "}
+          <p>
             Promotion des identifiants uniques tels qu'Orcid pour les
             chercheurs pour la découvrabilité de la recherche
           </p>
         </Box>
-
-        <Box
-          sx={{
-            backgroundColor: "#c1c1fd",
-            height: "100%",
-            border: "1px solid #c1c1fd collapse",
-            borderRadius: "8px",
-            flexDirection: "column",
-            padding: "0 0 0 1rem",
-          }}
-        >
-          {/*<Button primary href="science-ouverte"><p style={{textAlign: 'center'}}>[icone ORCID]</p></Button>*/}
-        </Box>
       </Grid>
 
       <Grid
-        size={{ xs: 12, md: 12 }}
+        size={{ xs: 12 }}
         sx={{
           display: "grid",
           gridTemplateColumns: "2fr 2fr",
+          gap: "1rem",
           border: "1px solid #766EC8",
           borderRadius: "8px",
           background: "#766EC8",
@@ -1477,14 +1469,12 @@ import Zotero from "./images/zotero.png";
           sx={{
             backgroundColor: "#c1c1fd",
             height: "100%",
-            border: "1px solid #c1c1fd collapse",
             borderRadius: "8px",
             flexDirection: "column",
             padding: "0 0 0 1rem",
           }}
         >
           <p style={{ textAlign: "left" }}>
-            {" "}
             Accompagnement en impact de la recherche responsable respectueux
             des principes DORA
           </p>
@@ -1494,18 +1484,15 @@ import Zotero from "./images/zotero.png";
           sx={{
             backgroundColor: "#c1c1fd",
             height: "100%",
-            border: "1px solid #c1c1fd collapse ",
             borderRadius: "8px",
             flexDirection: "column",
             padding: "0 0 0 1rem",
           }}
         >
-          <p style={{ textAlign: "center", fontSize: "15px" }}>
-            24
-            <br />
-            accompagnements individuels pour l'impact de la recherche entre
-            2024 et 2025
-          </p>
+          <Nombre
+            number="24"
+            label="accompagnements individuels pour l'impact de la recherche entre 2024 et 2025"
+            />
         </Box>
       </Grid>
     </Grid>
@@ -1525,6 +1512,7 @@ import Zotero from "./images/zotero.png";
         sx={{
           display: "grid",
           gridTemplateColumns: "2fr 1fr",
+          gap: "1rem",
           border: "1px solid #766EC8",
           borderRadius: "8px",
           background: "#766EC8",
@@ -1535,14 +1523,12 @@ import Zotero from "./images/zotero.png";
           sx={{
             backgroundColor: "#c1c1fd",
             height: "100%",
-            border: "1px solid #c1c1fd collapse ",
             borderRadius: "8px",
             flexDirection: "column",
             padding: "0 0 0 1rem",
           }}
         >
-          <p style={{ textAlign: "left" }}>
-            {" "}
+          <p>
             Sensibilisation en droit d'auteur pour transmettre les bonnes
             pratiques qui favorisent l'ouverture de la recherche à plusieurs
             étapes du processus scientifique
@@ -1553,23 +1539,20 @@ import Zotero from "./images/zotero.png";
           sx={{
             backgroundColor: "#c1c1fd",
             height: "100%",
-            border: "1px solid #c1c1fd collapse ",
             borderRadius: "8px",
             flexDirection: "column",
             padding: "0 0 0 1rem",
             display: "flex",
           }}
         >
-          <p style={{ textAlign: "center", fontSize: "15px" }}>
-            {" "}
-            [Nombre]
-            <br />
-            formations par an
-            <br />
-            [Nombre]
-            <br />
-            accompagnements individuels
-          </p>
+          <Nombre
+            number="[Nombre]"
+            label="formations par an"
+          />
+          <Nombre
+            number="[Nombre]"
+            label="accompagnements individuels"
+          />
         </Box>
       </Grid>
 
@@ -1578,6 +1561,7 @@ import Zotero from "./images/zotero.png";
         sx={{
           display: "grid",
           gridTemplateColumns: "2fr 2fr",
+          gap: "1rem",
           border: "1px solid #766EC8",
           borderRadius: "8px",
           background: "#766EC8",
@@ -1588,7 +1572,6 @@ import Zotero from "./images/zotero.png";
           sx={{
             backgroundColor: "#c1c1fd",
             height: "100%",
-            border: "1px solid #c1c1fd collapse ",
             borderRadius: "8px",
             flexDirection: "column",
             padding: "0 0 1.5rem 1rem",
@@ -1604,14 +1587,13 @@ import Zotero from "./images/zotero.png";
           sx={{
             backgroundColor: "#c1c1fd",
             height: "100%",
-            border: "1px solid #c1c1fd collapse ",
             borderRadius: "8px",
             flexDirection: "column",
             padding: "0 0 0 1rem",
           }}
         >
-          <p style={{ textAlign: "center", fontSize: "15px" }}>
-            [add icone: creative commons]
+          <p style={{ textAlign: "center" }}>
+            <a href="https://creativecommons.org/"><img src={CreativeCommons} alt="Creative Commons" style={{ width: "120px", height: "auto" }} /></a>
           </p>
         </Box>
       </Grid>
@@ -1676,7 +1658,6 @@ import Zotero from "./images/zotero.png";
       <Box
         style={{
           gridArea: "top",
-          border: "1px solid black collapse",
           borderRadius: "8px",
           padding: "10px",
           background: "#FF8833",
@@ -1684,7 +1665,6 @@ import Zotero from "./images/zotero.png";
         }}
       >
         <Typography component="h2" variant="h2">
-          {" "}
           Participation ouverte des acteurs de la société
         </Typography>
       </Box>
@@ -1693,7 +1673,6 @@ import Zotero from "./images/zotero.png";
       <Box
         style={{
           gridArea: "subtop",
-          border: "2px solid black collapse",
           borderRadius: "8px",
           padding: "10px",
           background: "#FFDB00",
@@ -1713,7 +1692,6 @@ import Zotero from "./images/zotero.png";
         style={{
           gridArea: "left",
           minHeight: "250px",
-          border: "2px solid black collapse",
           borderRadius: "8px",
           padding: "10px",
           background: "	#FFCBA4",
@@ -1729,18 +1707,15 @@ import Zotero from "./images/zotero.png";
           sx={{
             gridArea: "bottom",
             minHeight: "200px",
-            border: "2px solid black collapse",
             borderRadius: "8px",
             padding: "10px",
             background: "	#FFCBA4",
           }}
         >
-          <p style={{ textAlign: "center" }}>
-            {" "}
-            <b>[Nombre]</b> <br />
-            comptes passants créés pour les lecteurs extérieurs à la
-            communauté universitaire
-          </p>
+          <Nombre
+            number="[Nombre]"
+            label="comptes passants créés pour les lecteurs extérieurs à la communauté universitaire"
+            />
         </Box>
       </Box>
 
@@ -1749,14 +1724,12 @@ import Zotero from "./images/zotero.png";
         style={{
           gridArea: "right",
           minHeight: "250px",
-          border: "2px solid black collapse",
           borderRadius: "8px",
           padding: "10px",
           background: "	#FFCBA4",
         }}
       >
         <p style={{ textAlign: "left" }}>
-          {" "}
           Offre gratuite et en libre accès de documentation et de guides pour
           permettre à tous de participer à la science
         </p>
@@ -1764,14 +1737,14 @@ import Zotero from "./images/zotero.png";
         <Box
           sx={{
             gridArea: "bottom",
-            minHeight: "200px",
-            border: "2px solid black collapse",
             borderRadius: "8px",
             padding: "1.5rem0px",
             background: "	#FFCBA4",
           }}
         >
-          [add icone]
+          <a href="https://boite-outils.bib.umontreal.ca/">
+          <img src={BoiteOutils} alt="Boîte à outils" style={{ width: "100%", height: "auto" }} />
+          </a>
         </Box>
       </Box>
     </Grid>
@@ -1794,13 +1767,13 @@ import Zotero from "./images/zotero.png";
   <Grid
     sx={{
       display: "grid",
-      gridTemplateColumns: "80% 20%",
+      gridTemplateColumns: "70% 30%",
       gap: "2px",
       width: "100%",
       padding: "5px",
     }}
   >
-    {/* LEFT GRID - 80% */}
+    {/* LEFT GRID - 70% */}
     <Grid
       style={{
         minWidth: 0, // IMPORTANT
@@ -1813,47 +1786,31 @@ import Zotero from "./images/zotero.png";
       }}
     >
       {/* TOP */}
-      <Box
-        style={{
-          gridArea: "top",
-          border: "2px solid black collapse",
-          borderRadius: "8px",
-          minHeight: "80px",
-          padding: "20px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <p>
-          <Typography component="h2" variant="h2">
-            {" "}
-            Dialogue ouvert avec les autres systèmes de connaissances
-          </Typography>
+      <Box>
+        <Box>
+          <Typography component="h2" variant="h2" sx={{marginTop: 0}}>Dialogue ouvert avec les autres systèmes de connaissances</Typography>
 
-          <Typography component="subtitle1" variant="subtitle1">
-            {" "}
+          <Typography component="p" variant="subtitle1">
             Notre engagement : inclure les principes d’équité, de diversité,
             d’inclusion, d’accessibilité (EDIA) et d’écoresponsabilité au cœur
             de nos actions.
           </Typography>
-        </p>
+        </Box>
       </Box>
     </Grid>
 
-    {/* RIGHT GRID - 20% */}
+    {/* RIGHT GRID - 30% */}
     <Box
       sx={{
         minWidth: 0, // IMPORTANT
         border: "2px solid black collapse",
         borderRadius: "8px",
-        minHeight: "450px",
         padding: "20px",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
-      <p style={{ textAlign: "left" }}>[add image]</p>
+      <p style={{ textAlign: "left" }}><img src={PremiersPeuples} alt="Premiers Peuples" style={{ width: "100%", height: "auto", borderRadius: "8px" }} /></p>
     </Box>
   </Grid>
 
