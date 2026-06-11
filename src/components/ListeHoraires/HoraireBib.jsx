@@ -73,7 +73,7 @@ function Title({ title, sticky = false }) {
   )
 }
 
-export default function HoraireBib({ codeBib, children }) {
+export default function HoraireBib({ codeBib, showTitle = true, children }) {
   const isLG = useSmall('lg')
   const isSM = useSmall('md')
 
@@ -82,7 +82,7 @@ export default function HoraireBib({ codeBib, children }) {
   return isSM ? (
     <Box>
       <Box>
-        <Title title={codeBibs[codeBib].court} />
+        {showTitle && <Title title={codeBibs[codeBib].court} />}
         <Box
           sx={{
             marginBottom: '.5em',
@@ -114,7 +114,7 @@ export default function HoraireBib({ codeBib, children }) {
           flexDirection: 'column',
         }}
       >
-        <Title title={codeBibs[codeBib].court} />
+        {showTitle && <Title title={codeBibs[codeBib].court} />}
         {!isLG && miscContent}
       </Box>
       <BlocHoraire codeBib={codeBib} />

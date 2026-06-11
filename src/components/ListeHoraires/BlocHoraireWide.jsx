@@ -131,7 +131,7 @@ export default function BlocHoraireWide({ codeBib }) {
             rows.push(
               <TableCell key={key(codeBib, serviceKey, i)} isActive={todayIndex === currentHeaderIndex}>
                 {sommaire}
-              </TableCell>
+              </TableCell>,
             )
           }
         }
@@ -155,6 +155,7 @@ export default function BlocHoraireWide({ codeBib }) {
         gridTemplateColumns: '1fr repeat(7, minmax(0, 1fr))',
         gridAutoRows: 'min-content',
         fontSize: '0.8889rem', // 16px
+        backgroundColor: '#fff',
       }}
     >
       <TableHeader headers={headers} />
