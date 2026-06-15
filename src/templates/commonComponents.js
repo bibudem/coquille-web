@@ -34,6 +34,7 @@ import SuperHero2 from '@/components/SuperHero2'
 import Tabs1 from '@/components/Tabs1'
 // Dummy components
 import { Hero, Bloc } from '@/components/dummy-components'
+import AccordionGroupScienceOuverte from '@/components/AccordionGroupScienceOuverte'
 
 export default {
   Accordion,
@@ -71,5 +72,6 @@ export default {
   SuperHero2,
   /* Dummies: */
   Hero,
-  Bloc
+  Bloc,
+  AccordionGroupScienceOuverte
 } // Provide 

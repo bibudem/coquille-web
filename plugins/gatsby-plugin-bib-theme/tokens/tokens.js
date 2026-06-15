@@ -24,6 +24,7 @@ const rose100 = '#fcf3f1'
 const rougeOrange = '#f04e24'
 const vertPale = '#52b782'
 const vertFonce = '#024244'
+const violetFonce = '#9374f6'  //'#5539cc'
 
 const LIGHTEN_FACTOR = .4
 const DARKEN_FACTOR = .3
@@ -69,6 +70,7 @@ export const secondaryColors = {
 	rougeOrange: getColorPalette(rougeOrange),
 	vertFonce: getColorPalette(vertFonce),
 	vertPale: getColorPalette(vertPale),
+	violetFonce: getColorPalette(violetFonce),
 }
 
 const tokens = {
@@ -231,48 +233,48 @@ const tokens = {
 						},
 						// Nouvelle variante bleu
 						{
-						props: { variant: 'contained', color: 'blue' },
-						style: {
-							backgroundColor: '#0057AC',
-							'&:hover': {
-							backgroundColor: '#033669ff',
+							props: { variant: 'contained', color: 'blue' },
+							style: {
+								backgroundColor: '#0057AC',
+								'&:hover': {
+									backgroundColor: '#033669ff',
+								},
 							},
-						},
 						},
 						// Variante blueOutline (sans icône)
 						{
-						props: { className: 'blueOutlineNoIcon' },
+							props: { className: 'blueOutlineNoIcon' },
 							style: {
 								color: '#0057AC',
 								fontWeight: 400,
 								border: '1px solid #0057AC',
 								backgroundColor: 'transparent',
 								'&:hover': {
-								backgroundColor: '#0057AC',
-								color: 'white',
+									backgroundColor: '#0057AC',
+									color: 'white',
 								},
-								
+
 								// Cache l'icône si présente
 								'& .MuiButton-startIcon, & .MuiButton-endIcon': {
-								display: 'none',
+									display: 'none',
 								}
 							},
 						},
 						{
-						props: { className: 'whiteOutlineNoIcon' },
+							props: { className: 'whiteOutlineNoIcon' },
 							style: {
 								color: '#fff',
 								fontWeight: 400,
 								border: '1px solid #fff',
 								backgroundColor: 'transparent',
 								'&:hover': {
-								backgroundColor: '#fff',
-								color: '#0B113A',
+									backgroundColor: '#fff',
+									color: '#0B113A',
 								},
-								
+
 								// Cache l'icône si présente
 								'& .MuiButton-startIcon, & .MuiButton-endIcon': {
-								display: 'none',
+									display: 'none',
 								}
 							},
 						},
@@ -285,14 +287,14 @@ const tokens = {
 					},
 					'&.right': {
 						marginLeft: 'auto !important',
-                        display: 'flex',
-                        width: 'fit-content', 
+						display: 'flex',
+						width: 'fit-content',
 					},
 					'&.center': {
 						marginLeft: 'auto',
 						marginRight: 'auto',
 						display: 'flex',
-						width: 'fit-content', 
+						width: 'fit-content',
 					},
 					'&.left': {
 						marginRight: 'auto',
@@ -334,18 +336,18 @@ const tokens = {
 					[theme.breakpoints.up('md')]: {
 						scrollPaddingTop: '90px',
 					},
-					},
-					// Règles pour les éléments cibles
-					'[id]': {
+				},
+				// Règles pour les éléments cibles
+				'[id]': {
 					// Valeur mobile par défaut
 					scrollMarginTop: '100px',
 					// Adaptation pour desktop
 					[theme.breakpoints.up('md')]: {
 						scrollMarginTop: '90px',
 					},
-					},
-					// Solution de repli pour anciens navigateurs
-					'@supports not (scroll-padding-top: 0)': {
+				},
+				// Solution de repli pour anciens navigateurs
+				'@supports not (scroll-padding-top: 0)': {
 					'[id]::before': {
 						display: 'block',
 						content: '""',
@@ -355,11 +357,11 @@ const tokens = {
 						visibility: 'hidden',
 						// Adaptation desktop
 						[theme.breakpoints.up('md')]: {
-						marginTop: '-90px',
-						height: '90px',
+							marginTop: '-90px',
+							height: '90px',
 						},
 					}
-					},
+				},
 				h1: { ...theme.typography.h1 },
 				h2: { ...theme.typography.h2 },
 				h3: { ...theme.typography.h3 },
