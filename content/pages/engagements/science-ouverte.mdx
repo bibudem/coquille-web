@@ -1,0 +1,2310 @@
+---
+title: Science ouverte
+slug: science-ouverte
+secondaryNav:
+  order: 3
+superHero:
+  imageName: engagements
+  title: Science ouverte
+---
+
+import GridOffset from "@/components/utils/GridOffset";
+import { HeadCircuitIcon, UserFocusIcon } from "@phosphor-icons/react";
+import DisplayTimeline from "@/components/ScienceOuverte/DisplayTimeline";
+import DialogueHorizontalTabs from "@/components/ScienceOuverte/DialogueHorizontalTabs";
+import TimelineDefault from "@/components/ScienceOuverte/TimelineDefault";
+import Nombre from "@/components/ScienceOuverte/Nombre";
+import ScienceOuverte from "./images/science-ouverte.png";
+import OpenLibraryOfHumanitiesJournal from "./images/open-library-of-humanities-journal.png";
+import ProgrammingHistorian from "./images/programming-historian.png";
+import DSpace from "./images/dspace.png";
+import GitHub from "./images/github.png";
+import PressBooks from "./images/pressbooks.png";
+import OJS from "./images/ojs.png";
+import Zotero from "./images/zotero.png";
+import Borealis from "./images/borealis.png";
+import Scholaris from "./images/scholaris.png";
+import Papyrus from "./images/papyrus.png";
+import Orcid from "./images/orcid.png";
+import Calypso from "./images/calypso.png";
+import CreativeCommons from "./images/creative-commons.png";
+import BoiteOutils from "./images/boite-outils.png";
+import PremiersPeuples from "./images/premiers-peuples.png";
+import Mitig from "./images/mitig.png";
+
+<Section
+  bg="bleu100"
+  sx={{
+    "@media (min-width: 1200px)": {
+      paddingTop: "64px",
+    },
+    "@media (min-width: 900px)": {
+      paddingTop: "64px",
+    },
+    borderRadius: "8px",
+  }}
+>
+  <Grid
+    sx={{
+      display: "grid",
+      gridTemplateColumns: "60% 40%",
+      gap: "5px",
+      width: "100%",
+      paddingTop: "64px",
+    }}
+  >
+    {/* LEFT GRID - 75% */}
+    <Grid
+      style={{
+        minWidth: 0, // IMPORTANT
+        display: "grid",
+        gridTemplateAreas: `
+        "top"
+        `,
+        gridTemplateRows: "auto",
+        gap: "5px",
+      }}
+    >
+      {/* TOP */}
+      <Box
+        sx={{
+          gridArea: "top",
+          borderRadius: "0",
+          minHeight: "80px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Box>
+          <Typography component="h2" variant="h2" sx={{ marginTop: 0 }}>Le tableau de bord de la science ouverte des bibliothèques de l'UdeM.</Typography>
+
+          <Typography component="p" variant="subtitle1">
+            {" "}
+            La science ouverte vise à rendre la recherche scientifique de tous
+            les domaines accessibles à tous les publics, au bénéfice des
+            scientifiques et de la société dans son ensemble.
+          </Typography>
+        </Box>
+      </Box>
+    </Grid>
+
+    {/* RIGHT GRID - 25% */}
+    <Box
+      sx={{
+        minWidth: 0, // IMPORTANT
+        border: "1px solid thin black",
+        borderRadius: "0",
+        minHeight: "450px",
+        paddingLeft: "20px",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <p style={{ textAlign: "left" }}>
+        <img
+          src={ScienceOuverte}
+          alt="Science ouverte"
+          style={{ width: "100%", height: "auto" }}
+        />
+      </p>
+    </Box>
+  </Grid>
+</Section>
+
+<Section
+  bg="vertFonce"
+  sx={{
+    marginTop: "1rem",
+    "@media (min-width: 1200px)": {
+      paddingTop: "64px",
+    },
+    "@media (min-width: 900px)": {
+      paddingTop: "64px",
+    },
+    borderRadius: "8px",
+  }}
+>
+  <Typography
+    component="h2"
+    variant="h2"
+    sx={{ marginTop: "0" }}
+    id="connaissances-scientifiques-ouvertes"
+  >Les connaissances scientifiques ouvertes</Typography>
+  <Typography sx={{ pb: 1.5 }}>
+    Selon l’UNESCO : « Les connaissances scientifiques ouvertes désignent le
+    libre accès aux publications scientifiques, aux données de recherche, aux
+    ressources éducatives libres, aux logiciels, et aux codes sources et au
+    matériel ».
+  </Typography>
+    <AccordionGroupScienceOuverte color="vertPale">
+      {/* Promotion du libre accès */}
+      <Accordion sx={{ padding: "0 2rem 0 2rem" }}>
+        <AccordionSummary>Promotion du libre accès</AccordionSummary>
+        <AccordionDetails
+          sx={{
+            padding: "1rem 1rem 1rem 1rem",
+            backgroundColor: "rgb(213, 250, 231)",
+          }}
+        >
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "2fr 1fr",
+            }}
+          >
+            {/* Row 1 collapse */}
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                display: "flex",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <p>Sensibilisation à la science ouverte et promotion de bonnes pratiques et alternatives responsables pour la recherche</p>
+            </Box>
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                display: "center",
+                padding: "0 0 0 1rem",
+                textAlign: "center",
+              }}
+            >
+              <Nombre
+                number="[Nombre]"
+                label="formations liées à la science ouverte"
+              />
+            </Box>
+            {/* Row 2 collapse */}
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                display: "flex",
+                textAlign: "left",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <Box>
+                <Button secondary href="#">
+                  Engagement des bibliothèques pour la science ouverte
+                </Button>
+                <Button secondary href="https://boite-outils.bib.umontreal.ca/recherche/libre-acces">
+                  Guides sur le libre accès
+                </Button>
+              </Box>
+            </Box>
+            <Box
+            ></Box>
+            {/* Row 3 */}
+            <Box
+              sx={{
+                border: "1px solid #ccc collapse",
+                margin: 0,
+                lineHeight: 1,
+                display: "flex",
+                textAlign: "left",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <p>Financement d'initiatives de libre accès et promotion du modèle diamant pour l'édition savante</p>
+            </Box>
+            <Box
+            ></Box>
+            {/* Row 5 */}
+            <Box>
+              <Box
+                sx={{
+                  margin: 0,
+                  lineHeight: 1,
+                  display: "flex",
+                  textAlign: "left",
+                  padding: "0 0 0 1rem",
+                }}
+              >
+                <a href="https://olh.openlibhums.org/" style={{display: "flex", textAlign: "center", width: "50%"}}>
+                  <img
+                    src={OpenLibraryOfHumanitiesJournal}
+                    alt="Open Library of Humanities Journal"
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                </a>
+                <a href="https://programminghistorian.org/" style={{display: "flex", textAlign: "center", width: "50%"}}>
+                    <img
+                      src={ProgrammingHistorian}
+                      alt="Programming Historian"
+                      style={{ width: "100%", height: "auto" }}
+                    />
+                </a>
+              </Box>
+              <Button secondary href="#">
+                Et plus encore à découvrir ici
+              </Button>
+            </Box>
+            <Box
+              sx={{
+                display: "grid",
+              }}
+            >
+              <Box
+                sx={{
+                  margin: 0,
+                  lineHeight: 1,
+                  display: "bottom",
+                  textAlign: "center",
+                  padding: "0 0 0 1rem",
+                }}
+              >
+              <Nombre
+                number="2.5%"
+                label="du budget dédié au financement d'initiatives sur le libre accès"
+              />
+              </Box>
+            </Box>
+
+            {/* Row 6 collapse */}
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                display: "flex",
+                textAlign: "left",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <p>Négotiation d'accord avec les éditeurs pour permettre à la communauté de recherche de l'UdeM d'avoir un rabais pour publier en libre accès</p>
+            </Box>
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                display: "center",
+                textAlign: "center",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <Nombre
+                number="[Montant]"
+                label="CAD financé par les bibliothèques pour les accords avec les éditeurs"
+              />
+            </Box>
+          </Box>
+        </AccordionDetails>
+      </Accordion>
+      {/* Publications scientifiques ouvertes */}
+      <Accordion style={{ padding: "0 2rem 0 2rem" }}>
+        <AccordionSummary>
+          Publications scientifiques ouvertes
+        </AccordionSummary>
+        <AccordionDetails
+          style={{
+            padding: "1rem 1rem 1rem 1rem",
+            backgroundColor: "rgb(213, 250, 231)",
+          }}
+        >
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "2fr 1fr",
+              gap: "1rem"
+            }}
+          >
+            {/* Row 1 */}
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "left",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <p>Mise à disposition d'un dépôt institutionnel</p>
+            </Box>
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "center",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <Nombre
+                number="41 607"
+                label="documents sur Papyrus"
+              />
+            </Box>
+            {/* Row 2 */}
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "left",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <p>
+                Aide au dépôt des thèses et mémoires en libre accès sur le
+                dépot institutionnel Papyrus pour la diplomation
+              </p>
+            </Box>
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "center",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <Nombre
+                number="[Nombre]"
+                label="Thèses et mémoires déposés en [année]"
+              />
+            </Box>
+            {/* Row 3 */}
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "left",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <p>
+                Accompagnement à la publication par voie verte avec un
+                processus simplifié
+              </p>
+            </Box>
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "center",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <Nombre
+                number="224"
+                label="articles déposés en libres accès en 2025"
+              />
+            </Box>
+            {/* Row 4  collapse*/}
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "left",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <p>
+                Soutien à la transition vers le modèle diamant et au processus
+                éditorial pour les revues savantes
+              </p>
+            </Box>
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "center",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <Nombre
+                number="13"
+                label="revues savantes hébergées sur OJS"
+              />
+            </Box>
+            {/* Row 5 */}
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "left",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <p>
+                Soutien à la publication sous le modèle diamant de
+                monographies de chercheurs de l'UdeM
+              </p>
+            </Box>
+            <Box>
+              <Box
+                sx={{
+                  
+                  margin: 0,
+                  lineHeight: 1,
+                  textAlign: "center",
+                  padding: "0 0 0 1rem",
+                }}
+              >
+                {" "}
+              </Box>
+              <Box
+                sx={{
+                  
+                  margin: 0,
+                  lineHeight: 0.9,
+                  textAlign: "center",
+                  padding: "0 0 0 1rem",
+                }}
+              >
+              <Nombre
+                number="[Nombre]"
+                label="monographies financées depuis [date lancement service]"
+              />
+              </Box>
+            </Box>
+
+            {/* Row 6 */}
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "left",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <p style={{ textAlign: "left" }}>
+                Diffusion de la production scientifique de l'UdeM et
+                Contribution au rayonnement de la recherche de l'UdeM grâce à
+                l'adoption d'identifiants pérennes et à l'interopérabilité de
+                Papyrus
+              </p>
+            </Box>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                alignContent: "start",
+              }}
+            >
+              <Box
+                sx={{
+                  margin: 0,
+                  lineHeight: 1,
+                  textAlign: "center",
+                  padding: "0 0 0 1rem",
+                  display: "center",
+                }}
+              >
+              <Nombre
+                number="32 259"
+                label="DOI actifs dans Papyrus"
+              />
+              </Box>
+              <Box
+                sx={{
+                  margin: 0,
+                  lineHeight: 1,
+                  textAlign: "center",
+                  padding: "0 0 0 1rem",
+                }}
+              >
+              <Nombre
+                number="6 197 193"
+                label="téléchargements de fichiers sur Papyrus entre 2024 et 2024"
+              />
+              </Box>
+            </Box>
+          </Box>
+        </AccordionDetails>
+      </Accordion>
+      {/* Données de recherche ouvertes */}
+      <Accordion style={{ padding: "0 2rem 0 2rem" }}>
+        <AccordionSummary>Données de recherche ouvertes</AccordionSummary>
+        <AccordionDetails
+          style={{
+            padding: "1rem 1rem 1rem 1rem",
+            backgroundColor: "rgb(213, 250, 231)",
+          }}
+        >
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "2fr 1fr",
+              
+            }}
+          >
+            {/* Row 1 */}
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "left",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <p>
+                Soutien et accompagnement pour le partage des données de
+                recherche dans un entrepôt partagé pérenne
+              </p>
+            </Box>
+            <Box
+              sx={{
+                
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "center",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <Nombre
+                number="369"
+                label="ensembles de données déposées et affiliées à l’UdeM sur Boréalis"
+              />
+            </Box>
+            {/* Row 2 */}
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "left",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <p>
+                Accompagnement, recommandations et rehaussements de données
+                sur Boréalis dans le respect des principes FAIR
+              </p>
+            </Box>
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "center",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <p>
+                Service de <br /> FAIRification
+              </p>
+            </Box>
+            {/* Row 3 */}
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "left",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <p>
+                Accompagnement et prise en charge de l'adoption d'identifiants
+                pérennes pour lier les publications scientifiques aux
+                ensembles de données et garantir leur découvrabilité
+              </p>
+            </Box>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+              }}
+            >
+              <Box
+                sx={{
+                  
+                  margin: 0,
+                  lineHeight: 1,
+                  textAlign: "center",
+                  padding: "0 0 0 1rem",
+                }}
+              >
+              <Nombre
+                number="32 359"
+                label="DOI attribués dans Papyrus"
+              />
+              </Box>
+              <Box
+                sx={{
+                  
+                  margin: 0,
+                  lineHeight: 1,
+                  textAlign: "center",
+                  padding: "0 0 0 1rem",
+                }}
+              >
+              <Nombre
+                number="[Nombre]"
+                label="DOI attribués dans Boréalis"
+              />
+              </Box>
+            </Box>
+          </Box>
+        </AccordionDetails>
+      </Accordion>
+      {/* Ressources éducatives libres */}
+      <Accordion style={{ padding: "0 2rem 0 2rem" }}>
+        <AccordionSummary>Ressources éducatives libres</AccordionSummary>
+        <AccordionDetails
+          style={{
+            padding: "1rem 1rem 1rem 1rem",
+            backgroundColor: "rgb(213, 250, 231)",
+          }}
+        >
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "2fr 1fr",
+              
+            }}
+          >
+            {/* Row 1 */}
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "left",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <p>
+                Aide à la création de REL pour enrichir l’apprentissage dans
+                un contexte de collaboration québécoise
+              </p>
+            </Box>
+            <Box
+              sx={{
+                
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "center",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <Nombre
+                number="3"
+                label="création REL accompagnées avec la Fabrique REL"
+              />
+            </Box>
+            {/* Row 2 */}
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "left",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <p>
+                Accompagnement à la création, l'édition, à la publication et à
+                la diffusion de REL sur une plateforme gérée par les
+                bibliothèques
+              </p>
+            </Box>
+            <Box
+              sx={{
+                margin: 0,
+                lineHeight: 1,
+                textAlign: "center",
+                padding: "0 0 0 1rem",
+              }}
+            >
+              <Nombre
+                number="5"
+                label="REL accessibles sur PressBooks"
+              />
+            </Box>
+          </Box>
+        </AccordionDetails>
+      </Accordion>
+      {/* Logiciels libres */}
+      <Accordion style={{ padding: "0 2rem 0 2rem" }}>
+        <AccordionSummary>Logiciels libres</AccordionSummary>
+        <AccordionDetails
+          style={{
+            padding: "1rem 1rem 1rem 1rem",
+            backgroundColor: "rgb(213, 250, 231)",
+          }}
+        >
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "2fr 1fr",
+              border: "1px solid #ccc collapse",
+            }}
+          >
+            {/* LEFT */}
+            <Box sx={{ display: "grid", gridTemplateRows: "auto auto" }}>
+              <Box
+                sx={{
+                  border: "1px solid #ccc collapse",
+                  margin: 0,
+                  lineHeight: 1,
+                  textAlign: "left",
+                  padding: "0 0 0 1rem",
+                }}
+              >
+                <p>
+                  Utilisation de logiciels libres dans nos plateformes et dans
+                  nos services pour promouvoir des alternatives ouvertes aux
+                  logiciels propriétaires
+                </p>
+              </Box>
+              <Box
+                sx={{
+                  border: "1px solid #ccc collapse",
+                  margin: 0,
+                  lineHeight: 1,
+                  textAlign: "left",
+                  padding: "0 0 0 1rem",
+                }}
+              >
+                <p>
+                  Diffusion en licence libre sur GitHub de nos développements
+                  et intégrations informatiques
+                </p>
+              </Box>
+            </Box>
+            {/* RIGHT */}
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateRows: "auto auto auto",
+              }}
+            >
+              {/* TOP RIGHT */}
+              <Box sx={{ display: "grid", gridTemplateRows: "auto auto" }}>
+                <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+                  <Box
+                    sx={{
+                      border: "1px solid #ccc collapse",
+                      margin: 0,
+                      lineHeight: 1,
+                      textAlign: "left",
+                      padding: "0 0 0 1rem",
+                    }}
+                  >
+                    <img
+                      src={OJS}
+                      alt="OJS"
+                      style={{ width: "100%", height: "auto" }}
+                      />
+                  </Box>
+                  <Box
+                    sx={{
+                      border: "1px solid #ccc collapse",
+                      margin: 0,
+                      lineHeight: 1,
+                      textAlign: "left",
+                      padding: "0 0 0 1rem",
+                    }}
+                  >
+                    <img
+                      src={DSpace}
+                      alt="DSpace"
+                      style={{ width: "100%", height: "auto" }}
+                      />
+                  </Box>
+                </Box>
+                <Box
+                  sx={{
+                    border: "1px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    textAlign: "center",
+                    padding: "0 0 0 1rem",
+                  }}
+                >
+                  <img
+                    src={PressBooks}
+                    alt="PressBooks"
+                    style={{ width: "75%", height: "auto" }}
+                    />
+                </Box>
+              </Box>
+              {/* BOTTOM RIGHT */}
+              <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+                <Box
+                  sx={{
+                    border: "1px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    textAlign: "left",
+                    padding: "0 0 0 1rem",
+                  }}
+                >
+                  <img
+                    src={GitHub}
+                    alt="GitHub"
+                    style={{ width: "100%", height: "auto" }}
+                    />
+                </Box>
+                <Box
+                  sx={{
+                    border: "1px solid #ccc collapse",
+                    margin: 0,
+                    lineHeight: 1,
+                    textAlign: "left",
+                    padding: "0 0 0 1rem",
+                  }}
+                >
+                  <img
+                    src={Zotero}
+                    alt="Zotero"
+                    style={{ width: "100%", height: "auto" }}
+                    />
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        </AccordionDetails>
+      </Accordion>
+      {/* Matériel libre */}
+      <Accordion style={{ padding: "0 2rem 0 2rem" }}>
+        <AccordionSummary>Matériel libre</AccordionSummary>
+        <AccordionDetails
+          style={{
+            padding: "1rem 1rem 1rem 1rem",
+            backgroundColor: "rgb(213, 250, 231)",
+          }}
+        >
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "2fr 3fr", // LEFT | RIGHT
+              gap: 0,
+            }}
+          >
+            {/* LEFT COLUMN (VERTICAL SPLIT) */}
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateRows: "auto",
+                gap: 0,
+              }}
+            >
+              <Box
+                sx={{
+                  
+                  lineHeight: 1,
+                  textAlign: "center",
+                  padding: "0 0 0 1rem",
+                }}
+              >
+                <p>
+                  Mise en valeur de la production de matériel ouvert et
+                  favorisation d'un cadre de recherche encourageant le partage
+                  et l'échange
+                </p>
+              </Box>
+            </Box>
+            {/* RIGHT COLUMN (VERTICAL SPLIT) */}
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateRows: "1fr",
+              }}
+            >
+              <Box
+                sx={{
+                  
+                  margin: 0, // minimal padding
+                  textAlign: "center",
+                  padding: "0 0 0 1rem",
+                  lineHeight: 1, // ensures vertical centering works
+                }}
+              >
+              <Nombre
+                number="49"
+                label="projets ouverts valorisés par les bibliothèques et développés grâce aux ressources informatiques et aux technologies créatives"
+              />
+              </Box>
+            </Box>
+          </Box>
+        </AccordionDetails>
+      </Accordion>
+    </AccordionGroupScienceOuverte>
+</Section>
+
+<Section
+  bg="violetFonce"
+  sx={{
+    marginTop: "1rem",
+    "@media (min-width: 1200px)": {
+      paddingTop: "64px",
+    },
+    "@media (min-width: 900px)": {
+      paddingTop: "64px",
+    },
+    borderRadius: "8px",
+  }}
+>
+  <Carousel1
+    title={
+      <Typography component="h2" variant="h2" sx={{ marginTop: 0 }}>Infrastructures de la science ouverte</Typography>
+    }
+    description={
+      <>
+        <Typography sx={{ pb: 1.5 }}>
+          Selon l’UNESCO : « Les infrastructures de la science ouverte
+          désignent les infrastructures de recherche partagées […] qui sont
+          nécessaires pour soutenir la science ouverte et répondre aux besoins
+          des différentes communautés »
+        </Typography>
+      </>
+    }
+  ></Carousel1>
+
+  <Tabs1
+    tabs={[
+      "Infrastructures de recherche virtuelles",
+      "Infrastructures de recherche physiques",
+      "Ressources cognitives",
+      "Impact de la recherche",
+      "Droits d’auteur pour le soutien des systemes de recherche ouvert",
+    ]}
+  >
+    <Grid
+      container
+      spacing=".40rem"
+      sx={(theme) => ({
+        backgroundColor: "#766EC8",
+        padding: "0 0 0 0",
+        borderRadius: "8px",
+      })}
+    >
+      <Grid
+        size={{ xs: 12, md: 6 }}
+        sx={(theme) => ({
+          padding: "0 0.1rem 0 0",
+        })}
+      >
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            border: "1px solid #c1c1fd",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+          }}
+        >
+          <p style={{ textAlign: "left" }}>
+            {" "}
+            Mise à disposition d&apos;un entrepôt partagé de données ouvertes
+          </p>
+          <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", paddingBottom: "1rem" }}>
+            <a href="#"><img src={Borealis} alt="Borealis" style={{ width: "120px", height: "auto" }} /></a>
+          </Box>
+        </Box>
+      </Grid>
+      <Grid
+        size={{ xs: 12, md: 6 }}
+        sx={(theme) => ({
+          padding: "0 0.1rem 0 0",
+        })}
+      >
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            border: "1px solid #c1c1fd",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+          }}
+        >
+          <p style={{ textAlign: "left" }}>
+            Gestion et mise à disposition d'un dépôt institutionnel et
+            contribution à la plateforme Scholaris
+          </p>
+          <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", gap: "1rem"}}>
+            <a href="#"><img src={Scholaris} alt="Scholaris" style={{ width: "120px", height: "auto" }} /></a>
+            <a href="#"><img src={Papyrus} alt="Papyrus" style={{ width: "120px", height: "auto" }} /></a>
+          </Box>
+        </Box>
+      </Grid>
+      <Grid
+        size={{ xs: 12, md: 6 }}
+        sx={(theme) => ({
+          padding: "0 0.1rem 0 0",
+        })}
+      >
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            border: "1px solid #c1c1fd",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+          }}
+        >
+          <p style={{ textAlign: "left" }}>
+            Gestion et mise à disposition d'une plateforme d'édition et de
+            publication de REL
+          </p>
+          <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "1rem", marginBottom: "1rem" }}>
+            <a href="https://pressbooks.com/"><img src={PressBooks} alt="PressBooks" style={{ width: "120px", height: "auto" }} /></a>
+          </Box>
+        </Box>
+      </Grid>
+
+      <Grid
+        size={{ xs: 12, md: 6 }}
+        sx={(theme) => ({
+          padding: "0 0.1rem 0 0",
+        })}
+      >
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            border: "1px solid #c1c1fd",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+          }}
+        >
+          <p style={{ textAlign: "left" }}>
+            Financement d'Orcid infrastructure virtuelle d'organisation de
+            l'information scientifique
+          </p>
+          <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", paddingBottom: "1rem" }}>
+            <a href="https://orcid.org/"><img src={Orcid} alt="Orcid" style={{ width: "120px", height: "auto" }} /></a>
+          </Box>
+        </Box>
+      </Grid>
+      <Grid size={{ xs: 6, md: 14 }}>
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            border: "1px solid #c1c1fd",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+          }}
+        >
+          <p>
+            Développement et mise à disposition d'une plateforme ouverte pour
+            les collections numériques des bibliothèques de l'UdeM:{" "}
+            <i>Collections spéciales</i>, sur{" "}
+            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", paddingBottom: "1rem" }}>
+              <a href="https://collections-speciales.bib.umontreal.ca/"><img src={DSpace} alt="DSpace" style={{ width: "120px", height: "auto" }} /></a>
+            </Box>
+          </p>
+        </Box>
+      </Grid>
+    </Grid>
+
+    <Grid
+      container
+      spacing=".40rem"
+      sx={(theme) => ({
+        backgroundColor: "#766EC8",
+        padding: "0 0 0 0",
+        margin: "0 0 4rem",
+        borderRadius: "8px",
+      })}
+    >
+      <Grid
+        sx={{
+          display: "grid",
+          gridTemplateAreas: `
+                "top top top"
+                "left center right"
+                "bottom bottom bottom"
+              `,
+          gridTemplateColumns: "1fr 2fr 0.9fr",
+          gap: "2px", // reduced gap
+          width: "100%",
+          padding: "4px", // compact outer spacing
+        }}
+      >
+        {/* TOP */}
+        <Box
+          sx={{
+            gridArea: "top",
+            border: "1px solid #c1c1fd",
+            borderRadius: "8px",
+            backgroundColor: "#c1c1fd",
+            minHeight: "40px",
+            padding: "6px 10px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <p style={{ textAlign: "center", margin: 0 }}>
+            Mise à disposition de la communauté universitaire d'équipements
+            scientifiques ouverts dans une démarche de partage des ressources
+            pour la création numérique et pour la recherche-création
+          </p>
+        </Box>
+
+        {/* LEFT */}
+        <Box
+          style={{
+            gridArea: "left",
+            minHeight: "180px",
+            border: "1px solid #c1c1fd",
+            borderRadius: "8px",
+            backgroundColor: "#c1c1fd",
+            padding: "6px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+        <Nombre
+          number="5"
+          label="studios vidéo et audio"
+        />
+        </Box>
+
+        {/* CENTER */}
+        <Box
+          style={{
+            gridArea: "center",
+            minHeight: "180px",
+            border: "1px solid #c1c1fd",
+            borderRadius: "8px",
+            backgroundColor: "#c1c1fd",
+            padding: "8px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+        <Nombre
+          number="1"
+          label="laboratoire de visualisation"
+        />
+        </Box>
+
+        {/* RIGHT COLUMN */}
+        <Grid
+          style={{
+            gridArea: "right",
+            display: "grid",
+            gridTemplateRows: "1fr 1fr",
+            gap: "2px", // tighter spacing
+            minWidth: 0,
+          }}
+        >
+          {/* RIGHT1 */}
+          <Box
+            style={{
+              border: "1px solid #c1c1fd",
+              borderRadius: "8px",
+              backgroundColor: "#c1c1fd",
+              minHeight: "88px",
+              padding: "6px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Nombre
+              number="3"
+              label="ateliers de fabrication"
+            />
+          </Box>
+
+          {/* RIGHT2 */}
+          <Box
+            style={{
+              border: "1px solid #c1c1fd",
+              borderRadius: "8px",
+              backgroundColor: "#c1c1fd",
+              minHeight: "88px",
+              padding: "6px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Nombre
+              number="5"
+              label="imprimantes 3D"
+            />
+          </Box>
+        </Grid>
+
+        {/* BOTTOM */}
+        <Box
+          style={{
+            gridArea: "bottom",
+            minHeight: "100px",
+            border: "1px solid #c1c1fd",
+            borderRadius: "8px",
+            backgroundColor: "#c1c1fd",
+            padding: "8px",
+            display: "flex",
+            justifyContent: "right",
+            alignItems: "right",
+          }}
+        >
+          <Button secondary href="https://studio.bib.umontreal.ca/">
+            <p style={{ textAlign: "right" }}>
+              Et plus encore à découvrir sur studio.bib
+            </p>
+          </Button>
+        </Box>
+      </Grid>
+    </Grid>
+
+    <Grid
+      container
+      spacing=".62rem"
+      sx={(theme) => ({
+        backgroundColor: "#766EC8",
+        padding: "0 0 0 0",
+        margin: "0 0 2rem",
+        borderRadius: "8px",
+      })}
+    >
+      <Grid
+        size={{ xs: 12 }}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "1rem",
+          border: "1px solid #766EC8",
+          borderRadius: "8px",
+          background: "#766EC8",
+          padding: "0.5rem 0.5rem 0.5rem 0.5rem",
+        }}
+      >
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+          }}
+        >
+          <p style={{ textAlign: "left" }}>
+            Signalement de ressources électroniques en libre accès pour les
+            faire connaitre et favoriser les pratiques de recherche ouvertes
+          </p>
+        </Box>
+
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+          }}
+        >
+          <Nombre
+            number="6 400 000"
+            label="ressources en libre accès renseignées dans le catalogue en novembre 2025"
+          />
+        </Box>
+      </Grid>
+
+      <Grid
+        size={{ xs: 12 }}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "1rem",
+          border: "1px solid #766EC8",
+          borderRadius: "8px",
+          background: "#766EC8",
+          padding: "0.5rem 0.5rem 0.5rem 0.5rem",
+        }}
+      >
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+          }}
+        >
+          <p style={{ textAlign: "left" }}>
+            Numérisation retrospective des thèses et mémoires pour ouvrir
+            largement
+            <br /> les collections de la bibliothèque
+          </p>
+        </Box>
+
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+          }}
+        >
+          <Nombre
+            number="32 356"
+            label="thèse et mémoires disponibles sur Papyrus en novembre 2025"
+          />
+        </Box>
+      </Grid>
+
+      <Grid
+        size={{ xs: 12, md: 12 }}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "1rem",
+          border: "1px solid #766EC8",
+          borderRadius: "8px",
+          background: "#766EC8",
+          padding: "0.5rem 0.5rem 0.5rem 0.5rem",
+        }}
+      >
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+          }}
+        >
+          <p>
+            Ouverture des collections numérisees des bibliothèques de l'UdeM,
+            gratuitement et pour tous
+          </p>
+        </Box>
+
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+          }}
+        >
+          <p style={{ textAlign: "center" }}><a href="https://calypso.bib.umontreal.ca/"><img src={Calypso} alt="Calypso" style={{ width: "60%", height: "auto" }} /></a></p>
+          {/*<Box sx={{
+          background: "#c1c1fd",
+          height: '45%',
+          width: '95%',
+          border: "1px solid #c1c1fd ",
+          borderRadius: "20px",
+          padding: '0.4rem 1rem 1rem 1rem'
+      }}>
+      <p style={{textAlign: 'left', fontSize:'14px'}}><i>Horizons: la plateforme Collections spéciales</i></p>
+      </Box>*/}
+        </Box>
+      </Grid>
+    </Grid>
+
+    <Grid
+      container
+      spacing=".62rem"
+      sx={{
+        backgroundColor: "#766EC8",
+        padding: "0 0 0 0",
+        margin: "0 0 4rem",
+        borderRadius: "8px",
+      }}
+    >
+      <Grid
+        size={{ xs: 12, md: 12, border: "1px solid #ccc" }}
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "1fr",
+          border: "1px solid #766EC8",
+          borderRadius: "8px",
+          background: "#766EC8",
+          padding: "0.5rem 0.5rem 0.5rem 0.5rem",
+        }}
+      >
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 1rem 1rem",
+          }}
+        >
+          <p>
+            Promotion des identifiants uniques tels qu'Orcid pour les
+            chercheurs pour la découvrabilité de la recherche
+          </p>
+        </Box>
+      </Grid>
+
+      <Grid
+        size={{ xs: 12 }}
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "2fr 2fr",
+          gap: "1rem",
+          border: "1px solid #766EC8",
+          borderRadius: "8px",
+          background: "#766EC8",
+          padding: "0.5rem 0.5rem 0.5rem 0.5rem",
+        }}
+      >
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+          }}
+        >
+          <p style={{ textAlign: "left" }}>
+            Accompagnement en impact de la recherche responsable respectueux
+            des principes DORA
+          </p>
+        </Box>
+
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+          }}
+        >
+          <Nombre
+            number="24"
+            label="accompagnements individuels pour l'impact de la recherche entre 2024 et 2025"
+            />
+        </Box>
+      </Grid>
+    </Grid>
+
+    <Grid
+      container
+      spacing=".62rem"
+      sx={{
+        backgroundColor: "#766EC8",
+        padding: "0 0 0 0",
+        margin: "0 0 4rem",
+        borderRadius: "8px",
+      }}
+    >
+      <Grid
+        size={{ xs: 12, md: 12, border: "1px solid #ccc" }}
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "2fr 1fr",
+          gap: "1rem",
+          border: "1px solid #766EC8",
+          borderRadius: "8px",
+          background: "#766EC8",
+          padding: "0.5rem 0.5rem 0.5rem 0.5rem",
+        }}
+      >
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+          }}
+        >
+          <p>
+            Sensibilisation en droit d'auteur pour transmettre les bonnes
+            pratiques qui favorisent l'ouverture de la recherche à plusieurs
+            étapes du processus scientifique
+          </p>
+        </Box>
+
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+            display: "flex",
+          }}
+        >
+          <Nombre
+            number="[Nombre]"
+            label="formations par an"
+          />
+          <Nombre
+            number="[Nombre]"
+            label="accompagnements individuels"
+          />
+        </Box>
+      </Grid>
+
+      <Grid
+        size={{ xs: 12, md: 12 }}
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "2fr 2fr",
+          gap: "1rem",
+          border: "1px solid #766EC8",
+          borderRadius: "8px",
+          background: "#766EC8",
+          padding: "0.5rem 0.5rem 0.5rem 0.5rem",
+        }}
+      >
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 1.5rem 1rem",
+          }}
+        >
+          <p style={{ textAlign: "left" }}>
+            Conseils et accompagnement pour la protection du travail de
+            rechercher et pour la publication ouverte
+          </p>
+        </Box>
+
+        <Box
+          sx={{
+            backgroundColor: "#c1c1fd",
+            height: "100%",
+            borderRadius: "8px",
+            flexDirection: "column",
+            padding: "0 0 0 1rem",
+          }}
+        >
+          <p style={{ textAlign: "center" }}>
+            <a href="https://creativecommons.org/"><img src={CreativeCommons} alt="Creative Commons" style={{ width: "120px", height: "auto" }} /></a>
+          </p>
+        </Box>
+      </Grid>
+    </Grid>
+  </Tabs1>
+</Section>
+
+<Section
+  bg="jaunePale"
+  sx={{
+    marginTop: "1rem",
+    "@media (min-width: 1200px)": {
+      paddingTop: "64px",
+    },
+    "@media (min-width: 900px)": {
+      paddingTop: "64px",
+    },
+    borderRadius: "8px",
+  }}
+>
+  <Grid
+    style={{
+      display: "grid",
+      gridTemplateColumns: "35fr 65fr",
+      gap: "5px",
+      width: "100%",
+      padding: "10px",
+      boxSizing: "border-box",
+      borderRadius: "8px",
+    }}
+  >
+    {/* LEFT GRID */}
+    <Box
+      style={{
+        minWidth: 0, // IMPORTANT
+        backgroundColor: "#FBE870",
+        border: "2px solid #FBE870",
+        borderRadius: "8px",
+        padding: "10px",
+        overflow: "hidden",
+        wordBreak: "break-word",
+      }}
+    >
+      <p style={{ textAlign: "left" }}>[add image]</p>
+    </Box>
+
+    {/* RIGHT GRID */}
+    <Grid
+      style={{
+        minWidth: 0, // IMPORTANT
+        display: "grid",
+        gridTemplateAreas: `
+          "top top"
+          "subtop subtop"
+          "left right"
+        `,
+        gridTemplateColumns: "2fr 2fr",
+        gap: "12px",
+      }}
+    >
+      {/* TOP */}
+      <Box
+        style={{
+          gridArea: "top",
+          borderRadius: "8px",
+          padding: "10px",
+          background: "#FF8833",
+          display: "flex",
+        }}
+      >
+        <Typography component="h2" variant="h2" sx={{marginTop: 0}}>Participation ouverte des acteurs de la société</Typography>
+      </Box>
+
+      {/* SUBTOP */}
+      <Box
+        style={{
+          gridArea: "subtop",
+          borderRadius: "8px",
+          padding: "10px",
+          background: "#FFDB00",
+          display: "flex",
+        }}
+      >
+        <p style={{ textAlign: "left" }}>
+          <b>
+            Faciliter et encourager la participation ouverte des acteurs de la
+            société dans la science
+          </b>
+        </p>
+      </Box>
+
+      {/* LEFT */}
+      <Box
+        style={{
+          gridArea: "left",
+          minHeight: "250px",
+          borderRadius: "8px",
+          padding: "10px",
+          background: "	#FFCBA4",
+        }}
+      >
+        <p style={{ textAlign: "left" }}>
+          Ouverture des bibliothèques au grand public, garantissant l'accès à
+          la documentation imprimée et électronique aux acteurs de la sociéte
+          au-déla de la communauté universitaire
+        </p>
+
+        <Box
+          sx={{
+            gridArea: "bottom",
+            minHeight: "200px",
+            borderRadius: "8px",
+            padding: "10px",
+            background: "	#FFCBA4",
+          }}
+        >
+          <Nombre
+            number="[Nombre]"
+            label="comptes passants créés pour les lecteurs extérieurs à la communauté universitaire"
+            />
+        </Box>
+      </Box>
+
+      {/* RIGHT */}
+      <Box
+        style={{
+          gridArea: "right",
+          minHeight: "250px",
+          borderRadius: "8px",
+          padding: "10px",
+          background: "	#FFCBA4",
+        }}
+      >
+        <p style={{ textAlign: "left" }}>
+          Offre gratuite et en libre accès de documentation et de guides pour
+          permettre à tous de participer à la science
+        </p>
+
+        <Box
+          sx={{
+            gridArea: "bottom",
+            borderRadius: "8px",
+            padding: "1.5rem0px",
+            background: "	#FFCBA4",
+          }}
+        >
+          <a href="https://boite-outils.bib.umontreal.ca/">
+          <img src={BoiteOutils} alt="Boîte à outils" style={{ width: "100%", height: "auto" }} />
+          </a>
+        </Box>
+      </Box>
+    </Grid>
+  </Grid>
+</Section>
+
+<Section
+  bg="bleu600"
+  sx={{
+    marginTop: "1rem",
+    "@media (min-width: 1200px)": {
+      paddingTop: "64px",
+    },
+    "@media (min-width: 900px)": {
+      paddingTop: "64px",
+    },
+    borderRadius: "8px",
+  }}
+>
+  <Grid
+    sx={{
+      display: "grid",
+      gridTemplateColumns: "70% 30%",
+      gap: "2px",
+      width: "100%",
+      padding: "5px",
+    }}
+  >
+    {/* LEFT GRID - 70% */}
+    <Grid
+      style={{
+        minWidth: 0, // IMPORTANT
+        display: "grid",
+        gridTemplateAreas: `
+            "top"
+          `,
+        gridTemplateRows: "auto",
+        gap: "5px",
+      }}
+    >
+      {/* TOP */}
+      <Box>
+        <Box>
+          <Typography component="h2" variant="h2" sx={{marginTop: 0}}>Dialogue ouvert avec les autres systèmes de connaissances</Typography>
+
+          <Typography component="p" variant="subtitle1">
+            Notre engagement : inclure les principes d’équité, de diversité,
+            d’inclusion, d’accessibilité (EDIA) et d’écoresponsabilité au cœur
+            de nos actions.
+          </Typography>
+        </Box>
+      </Box>
+    </Grid>
+
+    {/* RIGHT GRID - 30% */}
+    <Box
+      sx={{
+        minWidth: 0, // IMPORTANT
+        border: "2px solid black collapse",
+        borderRadius: "8px",
+        padding: "20px",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <p style={{ textAlign: "left" }}><img src={PremiersPeuples} alt="Premiers Peuples" style={{ width: "100%", height: "auto", borderRadius: "8px" }} /></p>
+    </Box>
+  </Grid>
+
+  <DialogueHorizontalTabs
+    tabs={[
+      {
+        label: "Premiers Peuple",
+        content: (
+          <Grid container spacing={1}>
+            <Grid
+              style={{
+                display: "grid",
+                gridTemplateAreas: `
+                "left1 center right"
+                "left2 center right"
+              `,
+                gridTemplateColumns: "1fr 2fr 1fr",
+                gap: "5px",
+                width: "100%",
+                padding: "0",
+              }}
+            >
+              {/* LEFT 1 */}
+              <Box
+                sx={{
+                  gridArea: "left1",
+                  backgroundColor: "#e5f0f8",
+                  borderRadius: "0px",
+                  padding: "10px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                  <p style={{ textAlign: "center" }}>Création de la Direction de l'Engagement et de l'Innovation Sociale (DEIS)</p>
+              </Box>
+
+              {/* LEFT 2 */}
+              <Box
+                style={{
+                  gridArea: "left2",
+                  backgroundColor: "#e5f0f8",
+                  padding: "10px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <p style={{ textAlign: "center" }}>Soutien et contribution au répertoire vedettes matières de l’Université Laval pour la décolonisation des collections</p>
+              </Box>
+
+              {/* CENTER */}
+              <Box
+                sx={{
+                  gridArea: "center",
+                  backgroundColor: "#e5f0f8",
+                  minHeight: "250px",
+                  padding: "10px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "16px",
+                }}
+              >
+                {/* TOP */}
+                <Box
+                  sx={{
+                    backgroundColor: "#e5f0f8",
+                    border: "2px solid #e5f0f8 collapse",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <p style={{ textAlign: "center" }}>Reconnaissance et promotion des systèmes de savoirs autochtones, en cohésion avec la communauté de l’UdeM</p>
+                </Box>
+
+                {/* CENTER AREA */}
+                <Box
+                  sx={{
+                    flex: 1,
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: 2,
+                  }}
+                >
+                  {/* CENTER LEFT */}
+                  <Box
+                    sx={{
+                      backgroundColor: "#e5f0f8",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <p style={{ margin: 0, textAlign: "center" }}>
+                      <a href="https://boite-outils.bib.umontreal.ca/anthropologie-demographie-sociologie/etudes-autochtones">
+                        <img src={BoiteOutils} alt="Etudes Autochtones" style={{ width: "100%", height: "auto" }} />
+                      </a> Valorisation des études autochtones</p>
+                  </Box>
+
+                  {/* CENTER RIGHT */}
+                  <Box
+                    sx={{
+                      backgroundColor: "#e5f0f8",
+                      p: 2,
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <p style={{ margin: 0, textAlign: "center" }}><a href="https://calendrier.umontreal.ca/mitig"><img src={Mitig} alt="Mitig" style={{ width: "130px", height: "auto" }} /></a> Participation au rassemblement Mitig</p>
+                  </Box>
+                </Box>
+
+                {/* BOTTOM */}
+                <Box
+                  sx={{
+                    backgroundColor: "#e5f0f8",
+                    p: 2,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    minHeight: 60,
+                  }}
+                >
+                  <p style={{ margin: 0, textAlign: "center" }}>
+                    Contribution au projet d’inclusion des sciences
+                    autochtones dans les cursus universitaires de la faculté
+                    des arts et des sciences
+                  </p>
+                </Box>
+              </Box>
+
+              {/* RIGHT */}
+              <Box
+                style={{
+                  gridArea: "right",
+                  backgroundColor: "#e5f0f8",
+                  minHeight: "280px",
+                  padding: "10px",
+                  display: "grid",
+                  gridTemplateRows: "1fr 1fr",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    backgroundColor: "#e5f0f8",
+                    border: "2px solid #e5f0f8 collapse",
+                    p: 2,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    minHeight: 140,
+                  }}
+                >
+                  <p style={{ margin: 0, textAlign: "center" }}>
+                    Participation active au groupe de travail « Collections et
+                    Premiers Peuples » pour initier des projets de cohésion
+                    autour des savoirs autochtones
+                  </p>
+                </Box>
+
+                <Box
+                  sx={{
+                    backgroundColor: "#e5f0f8",
+                    border: "2px solid #e5f0f8 collapse",
+                    p: 2,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    minHeight: 140,
+                  }}
+                >
+                  <p style={{ margin: 0, textAlign: "center" }}>
+                    Mise en place de projets transdisciplinaires pour
+                    valoriser les savoirs autochtones en lien avec les
+                    collections des bibliothèques
+                  </p>
+                </Box>
+              </Box>
+            </Grid>
+          </Grid>
+        ),
+      },
+      {
+        label:
+          "Accessibilité  du processus scientifique pour les cherchers marginalisés",
+        content: (
+          <Grid container spacing={1}>
+            <Grid
+              style={{
+                display: "grid",
+                gridTemplateAreas: `
+                "left right" `,
+                gridTemplateColumns: "1fr 1fr",
+                gap: "5px",
+                width: "100%",
+                padding: "0.5px 0.5px 0.5px 0.5px",
+              }}
+            >
+              {/* LEFT 1 */}
+              <Box
+                style={{
+                  gridArea: "left",
+                  backgroundColor: "#e5f0f8",
+                  border: "1px solid #e5f0f8",
+                  borderRadius: "0px",
+                  padding: "5px",
+                  gridTemplateRows: "1fr 1fr",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    borderRadius: "0px",
+                    p: 2,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <p style={{ textAlign: "center", margin: "0" }}>Service d’adaptation des documents pour rendre les ressources accessibles aux chercheurs ayant des besoins particuliers</p>
+                </Box>
+
+                {/* TOP */}
+                <Box
+                  sx={{
+                    borderRadius: "0px",
+                    p: 2,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Nombre
+                    number="10 000 à 15 000"
+                    label="pages adaptées par semestre"
+                  />
+                </Box>
+              </Box>
+
+              {/* RIGHT */}
+              <Box
+                sx={{
+                  gridArea: "right",
+                  backgroundColor: "#e5f0f8",
+                  border: "1px solid #e5f0f8",
+                  borderRadius: "0px",
+                  padding: "5px",
+                  gridTemplateRows: "1fr 1fr",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    borderRadius: "0px",
+                    p: 2,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <p style={{ textAlign: "center", margin: "0" }}>Mise à disposition d'espaces et d'outils physiques et virtuels adaptés pour rendre accessibles les processus scientifiques</p>
+                </Box>
+
+                <Box
+                  sx={{
+                    borderRadius: "0px",
+                    p: 2,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Box sx={{ flex: "0 0 auto", mb: 1 }}>
+                    <Nombre
+                      number="plus de 3 0000"
+                      label="usagers réguliers"
+                    />
+                  </Box>
+                </Box>
+              </Box>
+            </Grid>
+          </Grid>
+        ),
+      },
+      {
+        label: "Communautés locales",
+        content: (
+          <Grid container spacing={1}>
+            <Grid
+              sx={{
+                padding: "0.5px 0.5px 0.5px 0.5px",
+              }}
+            >
+              <Box
+                sx={{
+                  p: 2,
+                  height: "100%",
+                  fontWeight: 600,
+                  border: "2px solid black",
+                  backgroundColor: "#e5f0f8",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {/* TOP */}
+                <Box
+                  sx={{
+                    backgroundColor: "#e5f0f8",
+                    border: "2px solid #e5f0f8 collapse",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <p sx={{ textAlign: "center" }}>Valorisation de la production scientifique francophone québécoise dans une demarche de visibilité de la recherche nationale à l'échelle locale et internationale</p>
+                </Box>
+
+                {/* TOP */}
+                <Box
+                  sx={{
+                    borderRadius: "6px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Nombre
+                    number="13"
+                    label="revues nationales hébergées localement OJS"
+                  />
+                </Box>
+              </Box>
+            </Grid>
+          </Grid>
+        ),
+      },
+    ]}
+  />
+</Section>
+
+<Section
+  bg="rose500"
+  sx={{
+    marginTop: "1rem",
+    "@media (min-width: 1200px)": {
+      paddingTop: "64px",
+    },
+    "@media (min-width: 900px)": {
+      paddingTop: "64px",
+    },
+    borderRadius: "8px",
+  }}
+>
+  <Typography
+    component="h2"
+    variant="h2"
+    sx={{
+      marginTop: "0",
+    }}
+  >L’histoire de l’engagement des bibliothèques pour la science ouverte</Typography>
+
+  <Typography
+    component="p"
+    variant="subtitle1"
+    sx={{
+      marginBottom: "1rem",
+    }}
+  >
+    Voici les temps forts de l'engagement des bibliothèques:
+  </Typography>
+
+  <TimelineDefault
+    data={[
+      {
+        date: "1990",
+        title: "Lancement du SDAESH",
+        subtitle: "🏢 SDAESH",
+        description: "Lancement du SDAESH, actuel Service Accessibilité",
+        tags: [],
+        side: "left",
+        color: "#2c7da0",
+        gradient: "linear-gradient(135deg, #2c7da0, #1e5a77)",
+      },
+      {
+        date: "2005",
+        title: "Lancement de Papyprus",
+        subtitle: "🚀 Papyprus",
+        description: "Lancement de Papyprus",
+        tags: [],
+        side: "right",
+        color: "#e76f51",
+        gradient: "linear-gradient(135deg, #e76f51, #c95a3a)",
+      },
+      {
+        date: "2011",
+        title: "Premiers guides sur le libre accès",
+        subtitle: "🚀 Libre accès",
+        description: "Premiers guides sur le libre accès",
+        tags: [],
+        side: "left",
+        color: "#2c7da0",
+        gradient: "linear-gradient(135deg, #2c7da0, #1e5a77)",
+      },
+      {
+        date: "2012",
+        title: "Lancement du Dataverse Scholars Portal actuel Boréalis",
+        subtitle: "📈 Lancement de Boréalis",
+        description:
+          "Lancement du Dataverse Scholars Portal actuel Boréalis.",
+        tags: [],
+        side: "right",
+        color: "#5e548e",
+        gradient: "linear-gradient(135deg, #5e548e, #3d2b6b)",
+      },
+      {
+        date: "2015",
+        title:
+          "Politique des trois organismes sur le libre accès aux publications",
+        subtitle: "🤝 Politique des trois organismes",
+        description: "Premier rassemblement Mitig à l'UdeM",
+        tags: [],
+        side: "left",
+        color: "#e76f51",
+        gradient: "linear-gradient(135deg, #e76f51, #c95a3a)",
+      },
+      {
+        date: "2019",
+        title: "Première politique de diffusion en libre accès du FRQ",
+        subtitle: "🌱 Première politique de diffusion en libre accès du FRQ",
+        description:
+          "Première politique de l'UdeM sur le libre accès aux publications savantes.Les bibliothèques de l'UdeM rejoignent Boréalis. Lancement sur service OJS pour le soutien aux revues savantes",
+        tags: [],
+        side: "right",
+        color: "#2a9d8f",
+        gradient: "linear-gradient(135deg, #2a9d8f, #1e7a6e)",
+      },
+      {
+        date: "2020",
+        title: "Feuille de route fédérale pour la science ouverte ",
+        subtitle: "🏅 Feuille de route fédérale pour la science ouverte",
+        description: "Feuille de route fédérale pour la science ouverte.",
+        tags: [],
+        side: "left",
+        color: "#e9c46a",
+        gradient: "linear-gradient(135deg, #e9c46a, #d4b03a)",
+      },
+      {
+        date: "2021",
+        title: "Recommandation de l’UNESCO pour une science ouverte",
+        subtitle: "🧪 Recommandation de l’UNESCO pour une science ouverte",
+        description: "Recommandation de l’UNESCO pour une science ouverte.",
+        tags: [],
+        side: "right",
+        color: "#9c89b8",
+        gradient: "linear-gradient(135deg, #9c89b8, #7c6a9a)",
+      },
+      {
+        date: "2022",
+        title:
+          "Plan d'action 2022-2027 pour la recherche à l'UdeM, affirmant l'adhésion aux principes de la science ouverte",
+        subtitle: "📱 Plan d'action 2022-2027 pour la recherche à l'UdeM",
+        description:
+          "Plan d'action 2022-2027 pour la recherche à l'UdeM, affirmant l'adhésion aux principes de la science ouverte.",
+        tags: [],
+        side: "left",
+        color: "#ef476f",
+        gradient: "linear-gradient(135deg, #ef476f, #c62a50)",
+      },
+      {
+        date: "2023",
+        title:
+          "Le financement d'initiatives sur le libre accès inscrit dans le budget des bibliothèques",
+        subtitle: "🚀 Le financement d'initiatives",
+        description:
+          "Le financement d'initiatives sur le libre accès inscrit dans le budget des bibliothèques.",
+        tags: [],
+        side: "right",
+        color: "#06d6a0",
+        gradient: "linear-gradient(135deg, #06d6a0, #05b38a)",
+      },
+      {
+        date: "2024",
+        title:
+          "Création de la direction de l'Engagement et de l'innovation sociale",
+        subtitle:
+          "🚀 La direction de l'Engagement et de l'innovation sociale",
+        description:
+          "Création de la direction de l'Engagement et de l'innovation sociale.",
+        tags: [],
+        side: "right",
+        color: "#d606ba",
+        gradient: "linear-gradient(135deg, #d606ba, #d606ba)",
+      },
+      {
+        date: "2025",
+        title: "Lancement de Pressbooks",
+        subtitle:
+          "🚀 La direction de l'Engagement et de l'innovation sociale",
+        description:
+          "Création du groupe de travail.'Collections et Premiers Peuples'. Engagement des bibliothèques pour la science ouverte",
+        tags: [],
+        side: "left",
+        color: "#4406d6",
+        gradient: "linear-gradient(135deg, #4406d6, #4406d6)",
+      },
+    ]}
+    title={
+      "Historique de l'engagement des bibliothèques pour la science ouverte"
+    }
+    subtitle={"Chronologie"}
+    showFooter={false}
+  />
+</Section>
+
