@@ -12,8 +12,8 @@ export default function Nombre({ number, label, sx }) {
         ...sx,
       }}
     >
-      <Box sx={{ textAlign: 'center', fontSize: '25px', fontWeight: 'bold' }}>{number}</Box>
-      <Box sx={{ fontSize: 'smaller' }}>{label}</Box>
+      <Box sx={{ textAlign: 'center', fontSize: '1.5rem', fontWeight: 'bold' }}>{number}</Box>
+      <Box sx={{ textAlign: 'center', fontSize: 'smaller' }}>{label}</Box>
     </Box>
   )
 }

@@ -37,6 +37,10 @@ import Mitig from "./images/mitig.png";
 <Section
   bg="bleu100"
   sx={{
+    "@media (min-width: 0px)": {
+      paddingTop: "16px",
+      paddingBottom: "16px",
+    },
     "@media (min-width: 1200px)": {
       paddingTop: "64px",
     },
@@ -52,7 +56,14 @@ import Mitig from "./images/mitig.png";
       gridTemplateColumns: "60% 40%",
       gap: "5px",
       width: "100%",
+    "@media (min-width: 0px)": {
+      paddingTop: "16px",
+      paddingBottom: "16px",
+    },
+    "@media (min-width: 900px)": {
       paddingTop: "64px",
+      paddingBottom: "64px",
+    },
     }}
   >
     {/* LEFT GRID - 75% */}
@@ -72,7 +83,6 @@ import Mitig from "./images/mitig.png";
         sx={{
           gridArea: "top",
           borderRadius: "0",
-          minHeight: "80px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -95,9 +105,7 @@ import Mitig from "./images/mitig.png";
     <Box
       sx={{
         minWidth: 0, // IMPORTANT
-        border: "1px solid thin black",
         borderRadius: "0",
-        minHeight: "450px",
         paddingLeft: "20px",
         justifyContent: "center",
         alignItems: "center",
@@ -118,6 +126,10 @@ import Mitig from "./images/mitig.png";
   bg="vertFonce"
   sx={{
     marginTop: "1rem",
+    "@media (min-width: 0px)": {
+      paddingTop: "16px",
+      paddingBottom: "16px",
+    },
     "@media (min-width: 1200px)": {
       paddingTop: "64px",
     },
@@ -141,7 +153,12 @@ import Mitig from "./images/mitig.png";
   </Typography>
     <AccordionGroupScienceOuverte color="vertPale">
       {/* Promotion du libre accès */}
-      <Accordion sx={{ padding: "0 2rem 0 2rem" }}>
+      <Accordion sx={{
+          padding: "0 1rem",
+          "@media (min-width: 900px)": {
+            padding: "0 2rem",
+          },
+        }}>
         <AccordionSummary>Promotion du libre accès</AccordionSummary>
         <AccordionDetails
           sx={{
@@ -153,6 +170,10 @@ import Mitig from "./images/mitig.png";
             sx={{
               display: "grid",
               gridTemplateColumns: "2fr 1fr",
+              gap: "0.5rem",
+              "@media (min-width: 900px)": {
+                gap: "1rem",
+              },
             }}
           >
             {/* Row 1 collapse */}
@@ -161,17 +182,17 @@ import Mitig from "./images/mitig.png";
                 margin: 0,
                 lineHeight: 1,
                 display: "flex",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
-              <p>Sensibilisation à la science ouverte et promotion de bonnes pratiques et alternatives responsables pour la recherche</p>
+              <p style={{ margin: "0" }}>Sensibilisation à la science ouverte et promotion de bonnes pratiques et alternatives responsables pour la recherche</p>
             </Box>
             <Box
               sx={{
                 margin: 0,
                 lineHeight: 1,
                 display: "center",
-                padding: "0 0 0 1rem",
+                padding: "0",
                 textAlign: "center",
               }}
             >
@@ -187,7 +208,7 @@ import Mitig from "./images/mitig.png";
                 lineHeight: 1,
                 display: "flex",
                 textAlign: "left",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
               <Box>
@@ -199,8 +220,7 @@ import Mitig from "./images/mitig.png";
                 </Button>
               </Box>
             </Box>
-            <Box
-            ></Box>
+            <Box></Box>
             {/* Row 3 */}
             <Box
               sx={{
@@ -209,13 +229,12 @@ import Mitig from "./images/mitig.png";
                 lineHeight: 1,
                 display: "flex",
                 textAlign: "left",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
-              <p>Financement d'initiatives de libre accès et promotion du modèle diamant pour l'édition savante</p>
+              <p style={{ margin: "0" }}>Financement d'initiatives de libre accès et promotion du modèle diamant pour l'édition savante</p>
             </Box>
-            <Box
-            ></Box>
+            <Box></Box>
             {/* Row 5 */}
             <Box>
               <Box
@@ -224,7 +243,7 @@ import Mitig from "./images/mitig.png";
                   lineHeight: 1,
                   display: "flex",
                   textAlign: "left",
-                  padding: "0 0 0 1rem",
+                  padding: "1rem 0",
                 }}
               >
                 <a href="https://olh.openlibhums.org/" style={{display: "flex", textAlign: "center", width: "50%"}}>
@@ -257,7 +276,7 @@ import Mitig from "./images/mitig.png";
                   lineHeight: 1,
                   display: "bottom",
                   textAlign: "center",
-                  padding: "0 0 0 1rem",
+                  padding: "0",
                 }}
               >
               <Nombre
@@ -274,10 +293,10 @@ import Mitig from "./images/mitig.png";
                 lineHeight: 1,
                 display: "flex",
                 textAlign: "left",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
-              <p>Négotiation d'accord avec les éditeurs pour permettre à la communauté de recherche de l'UdeM d'avoir un rabais pour publier en libre accès</p>
+              <p style={{ margin: "0" }}>Négotiation d'accord avec les éditeurs pour permettre à la communauté de recherche de l'UdeM d'avoir un rabais pour publier en libre accès</p>
             </Box>
             <Box
               sx={{
@@ -285,7 +304,7 @@ import Mitig from "./images/mitig.png";
                 lineHeight: 1,
                 display: "center",
                 textAlign: "center",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
               <Nombre
@@ -297,12 +316,15 @@ import Mitig from "./images/mitig.png";
         </AccordionDetails>
       </Accordion>
       {/* Publications scientifiques ouvertes */}
-      <Accordion style={{ padding: "0 2rem 0 2rem" }}>
-        <AccordionSummary>
-          Publications scientifiques ouvertes
-        </AccordionSummary>
+      <Accordion sx={{ 
+          padding: "0 1rem",
+          "@media (min-width: 900px)": {
+            padding: "0 2rem",
+          },
+        }}>
+        <AccordionSummary>Publications scientifiques ouvertes</AccordionSummary>
         <AccordionDetails
-          style={{
+          sx={{
             padding: "1rem 1rem 1rem 1rem",
             backgroundColor: "rgb(213, 250, 231)",
           }}
@@ -516,10 +538,15 @@ import Mitig from "./images/mitig.png";
         </AccordionDetails>
       </Accordion>
       {/* Données de recherche ouvertes */}
-      <Accordion style={{ padding: "0 2rem 0 2rem" }}>
+      <Accordion sx={{ 
+          padding: "0 1rem",
+          "@media (min-width: 900px)": {
+            padding: "0 2rem",
+          },
+        }}>
         <AccordionSummary>Données de recherche ouvertes</AccordionSummary>
         <AccordionDetails
-          style={{
+          sx={{
             padding: "1rem 1rem 1rem 1rem",
             backgroundColor: "rgb(213, 250, 231)",
           }}
@@ -537,21 +564,17 @@ import Mitig from "./images/mitig.png";
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
-              <p>
-                Soutien et accompagnement pour le partage des données de
-                recherche dans un entrepôt partagé pérenne
-              </p>
+              <p style={{ margin: 0 }}>Soutien et accompagnement pour le partage des données de recherche dans un entrepôt partagé pérenne</p>
             </Box>
             <Box
               sx={{
-                
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "center",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
               <Nombre
@@ -565,25 +588,20 @@ import Mitig from "./images/mitig.png";
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
-              <p>
-                Accompagnement, recommandations et rehaussements de données
-                sur Boréalis dans le respect des principes FAIR
-              </p>
+              <p style={{ margin: 0 }}>Accompagnement, recommandations et rehaussements de données sur Boréalis dans le respect des principes FAIR</p>
             </Box>
             <Box
               sx={{
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "center",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
-              <p>
-                Service de <br /> FAIRification
-              </p>
+              <p style={{ margin: 0 }}>Service de <br /> FAIRification</p>
             </Box>
             {/* Row 3 */}
             <Box
@@ -591,28 +609,27 @@ import Mitig from "./images/mitig.png";
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
-              <p>
-                Accompagnement et prise en charge de l'adoption d'identifiants
-                pérennes pour lier les publications scientifiques aux
-                ensembles de données et garantir leur découvrabilité
-              </p>
+              <p style={{ margin: 0 }}>Accompagnement et prise en charge de l'adoption d'identifiants pérennes pour lier les publications scientifiques aux ensembles de données et garantir leur découvrabilité</p>
             </Box>
             <Box
               sx={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
+                display: "flex",
+                gap: "1rem",
+                flexDirection: "column",
+                "@media (min-width: 900px)": {
+                  flexDirection: "row",
+                },
               }}
             >
               <Box
                 sx={{
-                  
                   margin: 0,
                   lineHeight: 1,
                   textAlign: "center",
-                  padding: "0 0 0 1rem",
+                  padding: "0",
                 }}
               >
               <Nombre
@@ -639,7 +656,12 @@ import Mitig from "./images/mitig.png";
         </AccordionDetails>
       </Accordion>
       {/* Ressources éducatives libres */}
-      <Accordion style={{ padding: "0 2rem 0 2rem" }}>
+      <Accordion sx={{
+          padding: "0 1rem",
+          "@media (min-width: 900px)": {
+            padding: "0 2rem",
+          },
+        }}>
         <AccordionSummary>Ressources éducatives libres</AccordionSummary>
         <AccordionDetails
           style={{
@@ -663,14 +685,10 @@ import Mitig from "./images/mitig.png";
                 padding: "0 0 0 1rem",
               }}
             >
-              <p>
-                Aide à la création de REL pour enrichir l’apprentissage dans
-                un contexte de collaboration québécoise
-              </p>
+              <p>Aide à la création de REL pour enrichir l’apprentissage dans un contexte de collaboration québécoise </p>
             </Box>
             <Box
               sx={{
-                
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "center",
@@ -714,17 +732,24 @@ import Mitig from "./images/mitig.png";
         </AccordionDetails>
       </Accordion>
       {/* Logiciels libres */}
-      <Accordion style={{ padding: "0 2rem 0 2rem" }}>
+      <Accordion sx={{ 
+          padding: "0 1rem",
+          "@media (min-width: 900px)": {
+            padding: "0 2rem",
+          },
+        }}>
         <AccordionSummary>Logiciels libres</AccordionSummary>
         <AccordionDetails
-          style={{
+          sx={{
             padding: "1rem 1rem 1rem 1rem",
             backgroundColor: "rgb(213, 250, 231)",
           }}
         >
           <Box
-            sx={{
+              sx={{
+              "@media (min-width: 900px)": {
               display: "grid",
+              },
               gridTemplateColumns: "2fr 1fr",
               border: "1px solid #ccc collapse",
             }}
@@ -737,14 +762,10 @@ import Mitig from "./images/mitig.png";
                   margin: 0,
                   lineHeight: 1,
                   textAlign: "left",
-                  padding: "0 0 0 1rem",
+                  padding: "0",
                 }}
               >
-                <p>
-                  Utilisation de logiciels libres dans nos plateformes et dans
-                  nos services pour promouvoir des alternatives ouvertes aux
-                  logiciels propriétaires
-                </p>
+                <p style={{marginTop: 0}}>Utilisation de logiciels libres dans nos plateformes et dans nos services pour promouvoir des alternatives ouvertes aux logiciels propriétaires</p>
               </Box>
               <Box
                 sx={{
@@ -752,13 +773,10 @@ import Mitig from "./images/mitig.png";
                   margin: 0,
                   lineHeight: 1,
                   textAlign: "left",
-                  padding: "0 0 0 1rem",
+                  padding: "0",
                 }}
               >
-                <p>
-                  Diffusion en licence libre sur GitHub de nos développements
-                  et intégrations informatiques
-                </p>
+                <p>Diffusion en licence libre sur GitHub de nos développements et intégrations informatiques</p>
               </Box>
             </Box>
             {/* RIGHT */}
@@ -766,18 +784,19 @@ import Mitig from "./images/mitig.png";
               sx={{
                 display: "grid",
                 gridTemplateRows: "auto auto auto",
+                gap: "1rem"
               }}
             >
               {/* TOP RIGHT */}
-              <Box sx={{ display: "grid", gridTemplateRows: "auto auto" }}>
-                <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+              <Box sx={{ display: "grid", gridTemplateRows: "auto auto", gap: "1rem" }}>
+                <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
                   <Box
                     sx={{
                       border: "1px solid #ccc collapse",
                       margin: 0,
                       lineHeight: 1,
                       textAlign: "left",
-                      padding: "0 0 0 1rem",
+                      padding: "0",
                     }}
                   >
                     <img
@@ -792,7 +811,7 @@ import Mitig from "./images/mitig.png";
                       margin: 0,
                       lineHeight: 1,
                       textAlign: "left",
-                      padding: "0 0 0 1rem",
+                      padding: "0",
                     }}
                   >
                     <img
@@ -808,7 +827,7 @@ import Mitig from "./images/mitig.png";
                     margin: 0,
                     lineHeight: 1,
                     textAlign: "center",
-                    padding: "0 0 0 1rem",
+                    padding: "0",
                   }}
                 >
                   <img
@@ -819,14 +838,14 @@ import Mitig from "./images/mitig.png";
                 </Box>
               </Box>
               {/* BOTTOM RIGHT */}
-              <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+              <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
                 <Box
                   sx={{
                     border: "1px solid #ccc collapse",
                     margin: 0,
                     lineHeight: 1,
                     textAlign: "left",
-                    padding: "0 0 0 1rem",
+                    padding: "0",
                   }}
                 >
                   <img
@@ -841,7 +860,7 @@ import Mitig from "./images/mitig.png";
                     margin: 0,
                     lineHeight: 1,
                     textAlign: "left",
-                    padding: "0 0 0 1rem",
+                    padding: "0",
                   }}
                 >
                   <img
@@ -856,10 +875,15 @@ import Mitig from "./images/mitig.png";
         </AccordionDetails>
       </Accordion>
       {/* Matériel libre */}
-      <Accordion style={{ padding: "0 2rem 0 2rem" }}>
+      <Accordion sx={{ 
+          padding: "0 1rem",
+          "@media (min-width: 900px)": {
+            padding: "0 2rem",
+          },
+        }}>
         <AccordionSummary>Matériel libre</AccordionSummary>
         <AccordionDetails
-          style={{
+          sx={{
             padding: "1rem 1rem 1rem 1rem",
             backgroundColor: "rgb(213, 250, 231)",
           }}
@@ -926,6 +950,10 @@ import Mitig from "./images/mitig.png";
   bg="violetFonce"
   sx={{
     marginTop: "1rem",
+    "@media (min-width: 0px)": {
+      paddingTop: "16px",
+      paddingBottom: "16px",
+    },
     "@media (min-width: 1200px)": {
       paddingTop: "64px",
     },
@@ -963,17 +991,17 @@ import Mitig from "./images/mitig.png";
     <Grid
       container
       spacing=".40rem"
-      sx={(theme) => ({
+      sx={{
         backgroundColor: "#766EC8",
-        padding: "0 0 0 0",
+        padding: "0.4rem",
         borderRadius: "8px",
-      })}
+      }}
     >
       <Grid
         size={{ xs: 12, md: 6 }}
-        sx={(theme) => ({
-          padding: "0 0.1rem 0 0",
-        })}
+        sx={{
+          padding: "0",
+        }}
       >
         <Box
           sx={{
@@ -990,15 +1018,15 @@ import Mitig from "./images/mitig.png";
             Mise à disposition d&apos;un entrepôt partagé de données ouvertes
           </p>
           <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", paddingBottom: "1rem" }}>
-            <a href="#"><img src={Borealis} alt="Borealis" style={{ width: "120px", height: "auto" }} /></a>
+            <a href="https://borealisdata.ca/"><img src={Borealis} alt="Borealis" style={{ width: "120px", height: "auto" }} /></a>
           </Box>
         </Box>
       </Grid>
       <Grid
         size={{ xs: 12, md: 6 }}
-        sx={(theme) => ({
-          padding: "0 0.1rem 0 0",
-        })}
+        sx={{
+          padding: "0",
+        }}
       >
         <Box
           sx={{
@@ -1010,13 +1038,19 @@ import Mitig from "./images/mitig.png";
             padding: "0 0 0 1rem",
           }}
         >
-          <p style={{ textAlign: "left" }}>
+          <p>
             Gestion et mise à disposition d'un dépôt institutionnel et
             contribution à la plateforme Scholaris
           </p>
-          <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", gap: "1rem"}}>
-            <a href="#"><img src={Scholaris} alt="Scholaris" style={{ width: "120px", height: "auto" }} /></a>
-            <a href="#"><img src={Papyrus} alt="Papyrus" style={{ width: "120px", height: "auto" }} /></a>
+          <Box sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "0.5rem"
+              }}>
+            <a href="https://umontreal.scholaris.ca/home"><img src={Scholaris} alt="Scholaris" style={{ width: "120px", height: "auto" }} /></a>
+            <a href="https://umontreal.scholaris.ca/home"><img src={Papyrus} alt="Papyrus" style={{ width: "120px", height: "auto" }} /></a>
           </Box>
         </Box>
       </Grid>
@@ -1125,7 +1159,6 @@ import Mitig from "./images/mitig.png";
             border: "1px solid #c1c1fd",
             borderRadius: "8px",
             backgroundColor: "#c1c1fd",
-            minHeight: "40px",
             padding: "6px 10px",
             display: "flex",
             justifyContent: "center",
@@ -1143,7 +1176,6 @@ import Mitig from "./images/mitig.png";
         <Box
           style={{
             gridArea: "left",
-            minHeight: "180px",
             border: "1px solid #c1c1fd",
             borderRadius: "8px",
             backgroundColor: "#c1c1fd",
@@ -1163,7 +1195,6 @@ import Mitig from "./images/mitig.png";
         <Box
           style={{
             gridArea: "center",
-            minHeight: "180px",
             border: "1px solid #c1c1fd",
             borderRadius: "8px",
             backgroundColor: "#c1c1fd",
@@ -1191,11 +1222,10 @@ import Mitig from "./images/mitig.png";
         >
           {/* RIGHT1 */}
           <Box
-            style={{
+            sx={{
               border: "1px solid #c1c1fd",
               borderRadius: "8px",
               backgroundColor: "#c1c1fd",
-              minHeight: "88px",
               padding: "6px",
               display: "flex",
               justifyContent: "center",
@@ -1214,7 +1244,6 @@ import Mitig from "./images/mitig.png";
               border: "1px solid #c1c1fd",
               borderRadius: "8px",
               backgroundColor: "#c1c1fd",
-              minHeight: "88px",
               padding: "6px",
               display: "flex",
               justifyContent: "center",
@@ -1232,7 +1261,6 @@ import Mitig from "./images/mitig.png";
         <Box
           style={{
             gridArea: "bottom",
-            minHeight: "100px",
             border: "1px solid #c1c1fd",
             borderRadius: "8px",
             backgroundColor: "#c1c1fd",
@@ -1279,13 +1307,10 @@ import Mitig from "./images/mitig.png";
             height: "100%",
             borderRadius: "8px",
             flexDirection: "column",
-            padding: "0 0 0 1rem",
+            padding: "0.5rem",
           }}
         >
-          <p style={{ textAlign: "left" }}>
-            Signalement de ressources électroniques en libre accès pour les
-            faire connaitre et favoriser les pratiques de recherche ouvertes
-          </p>
+          <p style={{margin: 0}}>Signalement de ressources électroniques en libre accès pour les faire connaitre et favoriser les pratiques de recherche ouvertes </p>
         </Box>
 
         <Box
@@ -1294,7 +1319,7 @@ import Mitig from "./images/mitig.png";
             height: "100%",
             borderRadius: "8px",
             flexDirection: "column",
-            padding: "0 0 0 1rem",
+            padding: "0.5rem",
           }}
         >
           <Nombre
@@ -1306,7 +1331,7 @@ import Mitig from "./images/mitig.png";
 
       <Grid
         size={{ xs: 12 }}
-        style={{
+        sx={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: "1rem",
@@ -1322,14 +1347,10 @@ import Mitig from "./images/mitig.png";
             height: "100%",
             borderRadius: "8px",
             flexDirection: "column",
-            padding: "0 0 0 1rem",
+            padding: "0.5rem",
           }}
         >
-          <p style={{ textAlign: "left" }}>
-            Numérisation retrospective des thèses et mémoires pour ouvrir
-            largement
-            <br /> les collections de la bibliothèque
-          </p>
+          <p style={{ margin: "0" }}>Numérisation retrospective des thèses et mémoires pour ouvrir largement les collections de la bibliothèque</p>
         </Box>
 
         <Box
@@ -1338,7 +1359,7 @@ import Mitig from "./images/mitig.png";
             height: "100%",
             borderRadius: "8px",
             flexDirection: "column",
-            padding: "0 0 0 1rem",
+            padding: "0.5rem",
           }}
         >
           <Nombre
@@ -1350,14 +1371,14 @@ import Mitig from "./images/mitig.png";
 
       <Grid
         size={{ xs: 12, md: 12 }}
-        style={{
+        sx={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: "1rem",
           border: "1px solid #766EC8",
           borderRadius: "8px",
           background: "#766EC8",
-          padding: "0.5rem 0.5rem 0.5rem 0.5rem",
+          padding: "0.5rem",
         }}
       >
         <Box
@@ -1366,13 +1387,10 @@ import Mitig from "./images/mitig.png";
             height: "100%",
             borderRadius: "8px",
             flexDirection: "column",
-            padding: "0 0 0 1rem",
+            padding: "0.5rem",
           }}
         >
-          <p>
-            Ouverture des collections numérisees des bibliothèques de l'UdeM,
-            gratuitement et pour tous
-          </p>
+          <p style={{ margin: "0" }}>Ouverture des collections numérisees des bibliothèques de l'UdeM, gratuitement et pour tous</p>
         </Box>
 
         <Box
@@ -1381,20 +1399,10 @@ import Mitig from "./images/mitig.png";
             height: "100%",
             borderRadius: "8px",
             flexDirection: "column",
-            padding: "0 0 0 1rem",
+            padding: "0.5rem",
           }}
         >
-          <p style={{ textAlign: "center" }}><a href="https://calypso.bib.umontreal.ca/"><img src={Calypso} alt="Calypso" style={{ width: "60%", height: "auto" }} /></a></p>
-          {/*<Box sx={{
-          background: "#c1c1fd",
-          height: '45%',
-          width: '95%',
-          border: "1px solid #c1c1fd ",
-          borderRadius: "20px",
-          padding: '0.4rem 1rem 1rem 1rem'
-      }}>
-      <p style={{textAlign: 'left', fontSize:'14px'}}><i>Horizons: la plateforme Collections spéciales</i></p>
-      </Box>*/}
+          <p style={{ textAlign: "center", margin: "0" }}><a href="https://calypso.bib.umontreal.ca/"><img src={Calypso} alt="Calypso" style={{ width: "60%", height: "auto" }} /></a></p>
         </Box>
       </Grid>
     </Grid>
@@ -1454,10 +1462,10 @@ import Mitig from "./images/mitig.png";
             height: "100%",
             borderRadius: "8px",
             flexDirection: "column",
-            padding: "0 0 0 1rem",
+            padding: "0 0 0 0.5rem",
           }}
         >
-          <p style={{ textAlign: "left" }}>
+          <p style={{ margin: "0" }}>
             Accompagnement en impact de la recherche responsable respectueux
             des principes DORA
           </p>
@@ -1466,10 +1474,9 @@ import Mitig from "./images/mitig.png";
         <Box
           sx={{
             backgroundColor: "#c1c1fd",
-            height: "100%",
             borderRadius: "8px",
             flexDirection: "column",
-            padding: "0 0 0 1rem",
+            padding: "0",
           }}
         >
           <Nombre
@@ -1508,14 +1515,10 @@ import Mitig from "./images/mitig.png";
             height: "100%",
             borderRadius: "8px",
             flexDirection: "column",
-            padding: "0 0 0 1rem",
+            padding: "0.5rem",
           }}
         >
-          <p>
-            Sensibilisation en droit d'auteur pour transmettre les bonnes
-            pratiques qui favorisent l'ouverture de la recherche à plusieurs
-            étapes du processus scientifique
-          </p>
+          <p style={{ margin: 0 }}>Sensibilisation en droit d'auteur pour transmettre les bonnes pratiques qui favorisent l'ouverture de la recherche à plusieurs étapes du processus scientifique</p>
         </Box>
 
         <Box
@@ -1524,7 +1527,7 @@ import Mitig from "./images/mitig.png";
             height: "100%",
             borderRadius: "8px",
             flexDirection: "column",
-            padding: "0 0 0 1rem",
+            padding: "0.5rem",
             display: "flex",
           }}
         >
@@ -1588,6 +1591,10 @@ import Mitig from "./images/mitig.png";
   bg="jaunePale"
   sx={{
     marginTop: "1rem",
+    "@media (min-width: 0px)": {
+      paddingTop: "16px",
+      paddingBottom: "16px",
+    },
     "@media (min-width: 1200px)": {
       paddingTop: "64px",
     },
@@ -1598,19 +1605,20 @@ import Mitig from "./images/mitig.png";
   }}
 >
   <Grid
-    style={{
-      display: "grid",
-      gridTemplateColumns: "35fr 65fr",
-      gap: "5px",
-      width: "100%",
-      padding: "10px",
-      boxSizing: "border-box",
-      borderRadius: "8px",
+    sx={{
+      "@media (min-width: 900px)": {
+        display: "grid",
+        gridTemplateColumns: "35fr 65fr",
+        gap: "5px",
+        width: "100%",
+        padding: "10px",
+        borderRadius: "8px",
+      }
     }}
   >
     {/* LEFT GRID */}
     <Box
-      style={{
+      sx={{
         minWidth: 0, // IMPORTANT
         backgroundColor: "#FBE870",
         border: "2px solid #FBE870",
@@ -1620,12 +1628,12 @@ import Mitig from "./images/mitig.png";
         wordBreak: "break-word",
       }}
     >
-      <p style={{ textAlign: "left" }}>[add image]</p>
+      <p>[add image]</p>
     </Box>
 
     {/* RIGHT GRID */}
     <Grid
-      style={{
+      sx={{
         minWidth: 0, // IMPORTANT
         display: "grid",
         gridTemplateAreas: `
@@ -1639,7 +1647,7 @@ import Mitig from "./images/mitig.png";
     >
       {/* TOP */}
       <Box
-        style={{
+        sx={{
           gridArea: "top",
           borderRadius: "8px",
           padding: "10px",
@@ -1647,12 +1655,12 @@ import Mitig from "./images/mitig.png";
           display: "flex",
         }}
       >
-        <Typography component="h2" variant="h2" sx={{marginTop: 0}}>Participation ouverte des acteurs de la société</Typography>
+        <Typography component="h2" variant="h2" sx={{margin: 0}}>Participation ouverte des acteurs de la société</Typography>
       </Box>
 
       {/* SUBTOP */}
       <Box
-        style={{
+        sx={{
           gridArea: "subtop",
           borderRadius: "8px",
           padding: "10px",
@@ -1660,7 +1668,7 @@ import Mitig from "./images/mitig.png";
           display: "flex",
         }}
       >
-        <p style={{ textAlign: "left" }}>
+        <p style={{ margin: 0 }}>
           <b>
             Faciliter et encourager la participation ouverte des acteurs de la
             société dans la science
@@ -1670,24 +1678,17 @@ import Mitig from "./images/mitig.png";
 
       {/* LEFT */}
       <Box
-        style={{
+        sx={{
           gridArea: "left",
-          minHeight: "250px",
           borderRadius: "8px",
           padding: "10px",
           background: "	#FFCBA4",
         }}
       >
-        <p style={{ textAlign: "left" }}>
-          Ouverture des bibliothèques au grand public, garantissant l'accès à
-          la documentation imprimée et électronique aux acteurs de la sociéte
-          au-déla de la communauté universitaire
-        </p>
-
+        <p style={{ margin: 0 }}>Ouverture des bibliothèques au grand public, garantissant l'accès à la documentation imprimée et électronique aux acteurs de la sociéte au-déla de la communauté universitaire</p>
         <Box
           sx={{
             gridArea: "bottom",
-            minHeight: "200px",
             borderRadius: "8px",
             padding: "10px",
             background: "	#FFCBA4",
@@ -1702,18 +1703,14 @@ import Mitig from "./images/mitig.png";
 
       {/* RIGHT */}
       <Box
-        style={{
+        sx={{
           gridArea: "right",
-          minHeight: "250px",
           borderRadius: "8px",
           padding: "10px",
           background: "	#FFCBA4",
         }}
       >
-        <p style={{ textAlign: "left" }}>
-          Offre gratuite et en libre accès de documentation et de guides pour
-          permettre à tous de participer à la science
-        </p>
+        <p style={{ margin: 0 }}>Offre gratuite et en libre accès de documentation et de guides pour permettre à tous de participer à la science</p>
 
         <Box
           sx={{
@@ -1721,10 +1718,11 @@ import Mitig from "./images/mitig.png";
             borderRadius: "8px",
             padding: "1.5rem0px",
             background: "	#FFCBA4",
+            marginTop: "1rem",
           }}
         >
           <a href="https://boite-outils.bib.umontreal.ca/">
-          <img src={BoiteOutils} alt="Boîte à outils" style={{ width: "100%", height: "auto" }} />
+            <img src={BoiteOutils} alt="Boîte à outils" style={{ width: "100%", height: "auto" }} />
           </a>
         </Box>
       </Box>
@@ -1736,6 +1734,10 @@ import Mitig from "./images/mitig.png";
   bg="bleu600"
   sx={{
     marginTop: "1rem",
+    "@media (min-width: 0px)": {
+      paddingTop: "16px",
+      paddingBottom: "16px",
+    },
     "@media (min-width: 1200px)": {
       paddingTop: "64px",
     },
@@ -1803,15 +1805,17 @@ import Mitig from "./images/mitig.png";
           <Grid container spacing={1}>
             <Grid
               style={{
+                "@media (min-width: 900px)": {
                 display: "grid",
                 gridTemplateAreas: `
                 "left1 center right"
                 "left2 center right"
-              `,
+                `,
                 gridTemplateColumns: "1fr 2fr 1fr",
                 gap: "5px",
                 width: "100%",
                 padding: "0",
+              },
               }}
             >
               {/* LEFT 1 */}
@@ -1825,7 +1829,7 @@ import Mitig from "./images/mitig.png";
                   alignItems: "center",
                 }}
               >
-                  <p style={{ textAlign: "center" }}>Création de la Direction de l'Engagement et de l'Innovation Sociale (DEIS)</p>
+                  <p style={{ textAlign: "center", margin: "0" }}>Création de la Direction de l'Engagement et de l'Innovation Sociale (DEIS)</p>
               </Box>
 
               {/* LEFT 2 */}
@@ -1838,7 +1842,7 @@ import Mitig from "./images/mitig.png";
                   alignItems: "center",
                 }}
               >
-                <p style={{ textAlign: "center" }}>Soutien et contribution au répertoire vedettes matières de l’Université Laval pour la décolonisation des collections</p>
+                <p style={{ textAlign: "center", margin: "0" }}>Soutien et contribution au répertoire vedettes matières de l’Université Laval pour la décolonisation des collections</p>
               </Box>
 
               {/* CENTER */}
@@ -1846,7 +1850,6 @@ import Mitig from "./images/mitig.png";
                 sx={{
                   gridArea: "center",
                   backgroundColor: "#e5f0f8",
-                  minHeight: "250px",
                   padding: "10px",
                   display: "flex",
                   flexDirection: "column",
@@ -1863,7 +1866,7 @@ import Mitig from "./images/mitig.png";
                     alignItems: "center",
                   }}
                 >
-                  <p style={{ textAlign: "center" }}>Reconnaissance et promotion des systèmes de savoirs autochtones, en cohésion avec la communauté de l’UdeM</p>
+                  <p style={{ textAlign: "center", margin: "0" }}>Reconnaissance et promotion des systèmes de savoirs autochtones, en cohésion avec la communauté de l’UdeM</p>
                 </Box>
 
                 {/* CENTER AREA */}
@@ -1912,14 +1915,9 @@ import Mitig from "./images/mitig.png";
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    minHeight: 60,
                   }}
                 >
-                  <p style={{ margin: 0, textAlign: "center" }}>
-                    Contribution au projet d’inclusion des sciences
-                    autochtones dans les cursus universitaires de la faculté
-                    des arts et des sciences
-                  </p>
+                  <p style={{ margin: 0, textAlign: "center" }}>Contribution au projet d’inclusion des sciences autochtones dans les cursus universitaires de la faculté des arts et des sciences</p>
                 </Box>
               </Box>
 
@@ -1928,8 +1926,7 @@ import Mitig from "./images/mitig.png";
                 style={{
                   gridArea: "right",
                   backgroundColor: "#e5f0f8",
-                  minHeight: "280px",
-                  padding: "10px",
+                  padding: "0",
                   display: "grid",
                   gridTemplateRows: "1fr 1fr",
                   justifyContent: "center",
@@ -1939,37 +1936,25 @@ import Mitig from "./images/mitig.png";
                 <Box
                   sx={{
                     backgroundColor: "#e5f0f8",
-                    border: "2px solid #e5f0f8 collapse",
                     p: 2,
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    minHeight: 140,
                   }}
                 >
-                  <p style={{ margin: 0, textAlign: "center" }}>
-                    Participation active au groupe de travail « Collections et
-                    Premiers Peuples » pour initier des projets de cohésion
-                    autour des savoirs autochtones
-                  </p>
+                  <p style={{ margin: 0, textAlign: "center" }}>Participation active au groupe de travail « Collections et Premiers Peuples » pour initier des projets de cohésion autour des savoirs autochtones</p>
                 </Box>
 
                 <Box
                   sx={{
                     backgroundColor: "#e5f0f8",
-                    border: "2px solid #e5f0f8 collapse",
                     p: 2,
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    minHeight: 140,
                   }}
                 >
-                  <p style={{ margin: 0, textAlign: "center" }}>
-                    Mise en place de projets transdisciplinaires pour
-                    valoriser les savoirs autochtones en lien avec les
-                    collections des bibliothèques
-                  </p>
+                  <p style={{ margin: 0, textAlign: "center" }}>Mise en place de projets transdisciplinaires pour valoriser les savoirs autochtones en lien avec les collections des bibliothèques</p>
                 </Box>
               </Box>
             </Grid>
@@ -2070,7 +2055,7 @@ import Mitig from "./images/mitig.png";
                 >
                   <Box sx={{ flex: "0 0 auto", mb: 1 }}>
                     <Nombre
-                      number="plus de 3 0000"
+                      number="plus de 3 000"
                       label="usagers réguliers"
                     />
                   </Box>
@@ -2140,6 +2125,10 @@ import Mitig from "./images/mitig.png";
   bg="rose500"
   sx={{
     marginTop: "1rem",
+    "@media (min-width: 0px)": {
+      paddingTop: "16px",
+      paddingBottom: "16px",
+    },
     "@media (min-width: 1200px)": {
       paddingTop: "64px",
     },
