@@ -554,21 +554,17 @@ import Mitig from "./images/mitig.png";
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
-              <p>
-                Soutien et accompagnement pour le partage des données de
-                recherche dans un entrepôt partagé pérenne
-              </p>
+              <p style={{ margin: 0 }}>Soutien et accompagnement pour le partage des données de recherche dans un entrepôt partagé pérenne</p>
             </Box>
             <Box
               sx={{
-                
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "center",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
               <Nombre
@@ -582,25 +578,20 @@ import Mitig from "./images/mitig.png";
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
-              <p>
-                Accompagnement, recommandations et rehaussements de données
-                sur Boréalis dans le respect des principes FAIR
-              </p>
+              <p style={{ margin: 0 }}>Accompagnement, recommandations et rehaussements de données sur Boréalis dans le respect des principes FAIR</p>
             </Box>
             <Box
               sx={{
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "center",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
-              <p>
-                Service de <br /> FAIRification
-              </p>
+              <p style={{ margin: 0 }}>Service de <br /> FAIRification</p>
             </Box>
             {/* Row 3 */}
             <Box
@@ -608,28 +599,27 @@ import Mitig from "./images/mitig.png";
                 margin: 0,
                 lineHeight: 1,
                 textAlign: "left",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
-              <p>
-                Accompagnement et prise en charge de l'adoption d'identifiants
-                pérennes pour lier les publications scientifiques aux
-                ensembles de données et garantir leur découvrabilité
-              </p>
+              <p style={{ margin: 0 }}>Accompagnement et prise en charge de l'adoption d'identifiants pérennes pour lier les publications scientifiques aux ensembles de données et garantir leur découvrabilité</p>
             </Box>
             <Box
               sx={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
+                display: "flex",
+                gap: "1rem",
+                flexDirection: "column",
+                "@media (min-width: 900px)": {
+                  flexDirection: "row",
+                },
               }}
             >
               <Box
                 sx={{
-                  
                   margin: 0,
                   lineHeight: 1,
                   textAlign: "center",
-                  padding: "0 0 0 1rem",
+                  padding: "0",
                 }}
               >
               <Nombre
@@ -1445,10 +1435,10 @@ import Mitig from "./images/mitig.png";
             height: "100%",
             borderRadius: "8px",
             flexDirection: "column",
-            padding: "0 0 0 1rem",
+            padding: "0 0 0 0.5rem",
           }}
         >
-          <p style={{ textAlign: "left" }}>
+          <p style={{ margin: "0" }}>
             Accompagnement en impact de la recherche responsable respectueux
             des principes DORA
           </p>
@@ -1457,10 +1447,9 @@ import Mitig from "./images/mitig.png";
         <Box
           sx={{
             backgroundColor: "#c1c1fd",
-            height: "100%",
             borderRadius: "8px",
             flexDirection: "column",
-            padding: "0 0 0 1rem",
+            padding: "0",
           }}
         >
           <Nombre
