@@ -153,7 +153,12 @@ import Mitig from "./images/mitig.png";
   </Typography>
     <AccordionGroupScienceOuverte color="vertPale">
       {/* Promotion du libre accès */}
-      <Accordion sx={{ padding: "0 2rem 0 2rem" }}>
+      <Accordion sx={{
+          padding: "0 1rem 0 1rem",
+          "@media (min-width: 900px)": {
+            padding: "0 2rem 0 2rem",
+          },
+        }}>
         <AccordionSummary>Promotion du libre accès</AccordionSummary>
         <AccordionDetails
           sx={{
@@ -165,6 +170,10 @@ import Mitig from "./images/mitig.png";
             sx={{
               display: "grid",
               gridTemplateColumns: "2fr 1fr",
+              gap: "0.5rem",
+              "@media (min-width: 900px)": {
+                gap: "1rem",
+              },
             }}
           >
             {/* Row 1 collapse */}
@@ -173,17 +182,17 @@ import Mitig from "./images/mitig.png";
                 margin: 0,
                 lineHeight: 1,
                 display: "flex",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
-              <p>Sensibilisation à la science ouverte et promotion de bonnes pratiques et alternatives responsables pour la recherche</p>
+              <p style={{ margin: "0" }}>Sensibilisation à la science ouverte et promotion de bonnes pratiques et alternatives responsables pour la recherche</p>
             </Box>
             <Box
               sx={{
                 margin: 0,
                 lineHeight: 1,
                 display: "center",
-                padding: "0 0 0 1rem",
+                padding: "0",
                 textAlign: "center",
               }}
             >
@@ -199,7 +208,7 @@ import Mitig from "./images/mitig.png";
                 lineHeight: 1,
                 display: "flex",
                 textAlign: "left",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
               <Box>
@@ -211,8 +220,7 @@ import Mitig from "./images/mitig.png";
                 </Button>
               </Box>
             </Box>
-            <Box
-            ></Box>
+            <Box></Box>
             {/* Row 3 */}
             <Box
               sx={{
@@ -221,13 +229,12 @@ import Mitig from "./images/mitig.png";
                 lineHeight: 1,
                 display: "flex",
                 textAlign: "left",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
-              <p>Financement d'initiatives de libre accès et promotion du modèle diamant pour l'édition savante</p>
+              <p style={{ margin: "0" }}>Financement d'initiatives de libre accès et promotion du modèle diamant pour l'édition savante</p>
             </Box>
-            <Box
-            ></Box>
+            <Box></Box>
             {/* Row 5 */}
             <Box>
               <Box
@@ -236,7 +243,7 @@ import Mitig from "./images/mitig.png";
                   lineHeight: 1,
                   display: "flex",
                   textAlign: "left",
-                  padding: "0 0 0 1rem",
+                  padding: "1rem 0",
                 }}
               >
                 <a href="https://olh.openlibhums.org/" style={{display: "flex", textAlign: "center", width: "50%"}}>
@@ -269,7 +276,7 @@ import Mitig from "./images/mitig.png";
                   lineHeight: 1,
                   display: "bottom",
                   textAlign: "center",
-                  padding: "0 0 0 1rem",
+                  padding: "0",
                 }}
               >
               <Nombre
@@ -286,10 +293,10 @@ import Mitig from "./images/mitig.png";
                 lineHeight: 1,
                 display: "flex",
                 textAlign: "left",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
-              <p>Négotiation d'accord avec les éditeurs pour permettre à la communauté de recherche de l'UdeM d'avoir un rabais pour publier en libre accès</p>
+              <p style={{ margin: "0" }}>Négotiation d'accord avec les éditeurs pour permettre à la communauté de recherche de l'UdeM d'avoir un rabais pour publier en libre accès</p>
             </Box>
             <Box
               sx={{
@@ -297,7 +304,7 @@ import Mitig from "./images/mitig.png";
                 lineHeight: 1,
                 display: "center",
                 textAlign: "center",
-                padding: "0 0 0 1rem",
+                padding: "0",
               }}
             >
               <Nombre
@@ -309,10 +316,8 @@ import Mitig from "./images/mitig.png";
         </AccordionDetails>
       </Accordion>
       {/* Publications scientifiques ouvertes */}
-      <Accordion style={{ padding: "0 2rem 0 2rem" }}>
-        <AccordionSummary>
-          Publications scientifiques ouvertes
-        </AccordionSummary>
+      <Accordion style={{ padding: "0 1rem" }}>
+        <AccordionSummary>Publications scientifiques ouvertes</AccordionSummary>
         <AccordionDetails
           style={{
             padding: "1rem 1rem 1rem 1rem",
@@ -528,10 +533,10 @@ import Mitig from "./images/mitig.png";
         </AccordionDetails>
       </Accordion>
       {/* Données de recherche ouvertes */}
-      <Accordion style={{ padding: "0 2rem 0 2rem" }}>
+      <Accordion sx={{ padding: "0 1rem" }}>
         <AccordionSummary>Données de recherche ouvertes</AccordionSummary>
         <AccordionDetails
-          style={{
+          sx={{
             padding: "1rem 1rem 1rem 1rem",
             backgroundColor: "rgb(213, 250, 231)",
           }}
@@ -651,7 +656,7 @@ import Mitig from "./images/mitig.png";
         </AccordionDetails>
       </Accordion>
       {/* Ressources éducatives libres */}
-      <Accordion style={{ padding: "0 2rem 0 2rem" }}>
+      <Accordion style={{ padding: "0 1rem" }}>
         <AccordionSummary>Ressources éducatives libres</AccordionSummary>
         <AccordionDetails
           style={{
@@ -726,17 +731,19 @@ import Mitig from "./images/mitig.png";
         </AccordionDetails>
       </Accordion>
       {/* Logiciels libres */}
-      <Accordion style={{ padding: "0 2rem 0 2rem" }}>
+      <Accordion sx={{ padding: "0 1rem" }}>
         <AccordionSummary>Logiciels libres</AccordionSummary>
         <AccordionDetails
-          style={{
+          sx={{
             padding: "1rem 1rem 1rem 1rem",
             backgroundColor: "rgb(213, 250, 231)",
           }}
         >
           <Box
-            sx={{
+              sx={{
+              "@media (min-width: 900px)": {
               display: "grid",
+              },
               gridTemplateColumns: "2fr 1fr",
               border: "1px solid #ccc collapse",
             }}
@@ -749,14 +756,10 @@ import Mitig from "./images/mitig.png";
                   margin: 0,
                   lineHeight: 1,
                   textAlign: "left",
-                  padding: "0 0 0 1rem",
+                  padding: "0",
                 }}
               >
-                <p>
-                  Utilisation de logiciels libres dans nos plateformes et dans
-                  nos services pour promouvoir des alternatives ouvertes aux
-                  logiciels propriétaires
-                </p>
+                <p style={{marginTop: 0}}>Utilisation de logiciels libres dans nos plateformes et dans nos services pour promouvoir des alternatives ouvertes aux logiciels propriétaires</p>
               </Box>
               <Box
                 sx={{
@@ -764,13 +767,10 @@ import Mitig from "./images/mitig.png";
                   margin: 0,
                   lineHeight: 1,
                   textAlign: "left",
-                  padding: "0 0 0 1rem",
+                  padding: "0",
                 }}
               >
-                <p>
-                  Diffusion en licence libre sur GitHub de nos développements
-                  et intégrations informatiques
-                </p>
+                <p>Diffusion en licence libre sur GitHub de nos développements et intégrations informatiques</p>
               </Box>
             </Box>
             {/* RIGHT */}
@@ -778,18 +778,19 @@ import Mitig from "./images/mitig.png";
               sx={{
                 display: "grid",
                 gridTemplateRows: "auto auto auto",
+                gap: "1rem"
               }}
             >
               {/* TOP RIGHT */}
-              <Box sx={{ display: "grid", gridTemplateRows: "auto auto" }}>
-                <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+              <Box sx={{ display: "grid", gridTemplateRows: "auto auto", gap: "1rem" }}>
+                <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
                   <Box
                     sx={{
                       border: "1px solid #ccc collapse",
                       margin: 0,
                       lineHeight: 1,
                       textAlign: "left",
-                      padding: "0 0 0 1rem",
+                      padding: "0",
                     }}
                   >
                     <img
@@ -804,7 +805,7 @@ import Mitig from "./images/mitig.png";
                       margin: 0,
                       lineHeight: 1,
                       textAlign: "left",
-                      padding: "0 0 0 1rem",
+                      padding: "0",
                     }}
                   >
                     <img
@@ -820,7 +821,7 @@ import Mitig from "./images/mitig.png";
                     margin: 0,
                     lineHeight: 1,
                     textAlign: "center",
-                    padding: "0 0 0 1rem",
+                    padding: "0",
                   }}
                 >
                   <img
@@ -831,14 +832,14 @@ import Mitig from "./images/mitig.png";
                 </Box>
               </Box>
               {/* BOTTOM RIGHT */}
-              <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+              <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
                 <Box
                   sx={{
                     border: "1px solid #ccc collapse",
                     margin: 0,
                     lineHeight: 1,
                     textAlign: "left",
-                    padding: "0 0 0 1rem",
+                    padding: "0",
                   }}
                 >
                   <img
@@ -853,7 +854,7 @@ import Mitig from "./images/mitig.png";
                     margin: 0,
                     lineHeight: 1,
                     textAlign: "left",
-                    padding: "0 0 0 1rem",
+                    padding: "0",
                   }}
                 >
                   <img
@@ -868,10 +869,10 @@ import Mitig from "./images/mitig.png";
         </AccordionDetails>
       </Accordion>
       {/* Matériel libre */}
-      <Accordion style={{ padding: "0 2rem 0 2rem" }}>
+      <Accordion sx={{ padding: "0 1rem" }}>
         <AccordionSummary>Matériel libre</AccordionSummary>
         <AccordionDetails
-          style={{
+          sx={{
             padding: "1rem 1rem 1rem 1rem",
             backgroundColor: "rgb(213, 250, 231)",
           }}
