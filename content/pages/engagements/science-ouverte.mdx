@@ -154,9 +154,9 @@ import Mitig from "./images/mitig.png";
     <AccordionGroupScienceOuverte color="vertPale">
       {/* Promotion du libre accès */}
       <Accordion sx={{
-          padding: "0 1rem 0 1rem",
+          padding: "0 1rem",
           "@media (min-width: 900px)": {
-            padding: "0 2rem 0 2rem",
+            padding: "0 2rem",
           },
         }}>
         <AccordionSummary>Promotion du libre accès</AccordionSummary>
@@ -316,10 +316,15 @@ import Mitig from "./images/mitig.png";
         </AccordionDetails>
       </Accordion>
       {/* Publications scientifiques ouvertes */}
-      <Accordion style={{ padding: "0 1rem" }}>
+      <Accordion sx={{ 
+          padding: "0 1rem",
+          "@media (min-width: 900px)": {
+            padding: "0 2rem",
+          },
+        }}>
         <AccordionSummary>Publications scientifiques ouvertes</AccordionSummary>
         <AccordionDetails
-          style={{
+          sx={{
             padding: "1rem 1rem 1rem 1rem",
             backgroundColor: "rgb(213, 250, 231)",
           }}
@@ -533,7 +538,12 @@ import Mitig from "./images/mitig.png";
         </AccordionDetails>
       </Accordion>
       {/* Données de recherche ouvertes */}
-      <Accordion sx={{ padding: "0 1rem" }}>
+      <Accordion sx={{ 
+          padding: "0 1rem",
+          "@media (min-width: 900px)": {
+            padding: "0 2rem",
+          },
+        }}>
         <AccordionSummary>Données de recherche ouvertes</AccordionSummary>
         <AccordionDetails
           sx={{
@@ -646,7 +656,12 @@ import Mitig from "./images/mitig.png";
         </AccordionDetails>
       </Accordion>
       {/* Ressources éducatives libres */}
-      <Accordion style={{ padding: "0 1rem" }}>
+      <Accordion sx={{
+          padding: "0 1rem",
+          "@media (min-width: 900px)": {
+            padding: "0 2rem",
+          },
+        }}>
         <AccordionSummary>Ressources éducatives libres</AccordionSummary>
         <AccordionDetails
           style={{
@@ -717,7 +732,12 @@ import Mitig from "./images/mitig.png";
         </AccordionDetails>
       </Accordion>
       {/* Logiciels libres */}
-      <Accordion sx={{ padding: "0 1rem" }}>
+      <Accordion sx={{ 
+          padding: "0 1rem",
+          "@media (min-width: 900px)": {
+            padding: "0 2rem",
+          },
+        }}>
         <AccordionSummary>Logiciels libres</AccordionSummary>
         <AccordionDetails
           sx={{
@@ -855,7 +875,12 @@ import Mitig from "./images/mitig.png";
         </AccordionDetails>
       </Accordion>
       {/* Matériel libre */}
-      <Accordion sx={{ padding: "0 1rem" }}>
+      <Accordion sx={{ 
+          padding: "0 1rem",
+          "@media (min-width: 900px)": {
+            padding: "0 2rem",
+          },
+        }}>
         <AccordionSummary>Matériel libre</AccordionSummary>
         <AccordionDetails
           sx={{
@@ -966,17 +991,17 @@ import Mitig from "./images/mitig.png";
     <Grid
       container
       spacing=".40rem"
-      sx={(theme) => ({
+      sx={{
         backgroundColor: "#766EC8",
-        padding: "0 0 0 0",
+        padding: "0.4rem",
         borderRadius: "8px",
-      })}
+      }}
     >
       <Grid
         size={{ xs: 12, md: 6 }}
-        sx={(theme) => ({
-          padding: "0 0.1rem 0 0",
-        })}
+        sx={{
+          padding: "0",
+        }}
       >
         <Box
           sx={{
@@ -993,15 +1018,15 @@ import Mitig from "./images/mitig.png";
             Mise à disposition d&apos;un entrepôt partagé de données ouvertes
           </p>
           <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", paddingBottom: "1rem" }}>
-            <a href="#"><img src={Borealis} alt="Borealis" style={{ width: "120px", height: "auto" }} /></a>
+            <a href="https://borealisdata.ca/"><img src={Borealis} alt="Borealis" style={{ width: "120px", height: "auto" }} /></a>
           </Box>
         </Box>
       </Grid>
       <Grid
         size={{ xs: 12, md: 6 }}
-        sx={(theme) => ({
-          padding: "0 0.1rem 0 0",
-        })}
+        sx={{
+          padding: "0",
+        }}
       >
         <Box
           sx={{
@@ -1013,13 +1038,19 @@ import Mitig from "./images/mitig.png";
             padding: "0 0 0 1rem",
           }}
         >
-          <p style={{ textAlign: "left" }}>
+          <p>
             Gestion et mise à disposition d'un dépôt institutionnel et
             contribution à la plateforme Scholaris
           </p>
-          <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", gap: "1rem"}}>
-            <a href="#"><img src={Scholaris} alt="Scholaris" style={{ width: "120px", height: "auto" }} /></a>
-            <a href="#"><img src={Papyrus} alt="Papyrus" style={{ width: "120px", height: "auto" }} /></a>
+          <Box sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "0.5rem"
+              }}>
+            <a href="https://umontreal.scholaris.ca/home"><img src={Scholaris} alt="Scholaris" style={{ width: "120px", height: "auto" }} /></a>
+            <a href="https://umontreal.scholaris.ca/home"><img src={Papyrus} alt="Papyrus" style={{ width: "120px", height: "auto" }} /></a>
           </Box>
         </Box>
       </Grid>
@@ -1637,7 +1668,7 @@ import Mitig from "./images/mitig.png";
           display: "flex",
         }}
       >
-        <p style={{ textAlign: "left" }}>
+        <p style={{ margin: 0 }}>
           <b>
             Faciliter et encourager la participation ouverte des acteurs de la
             société dans la science
@@ -1654,7 +1685,7 @@ import Mitig from "./images/mitig.png";
           background: "	#FFCBA4",
         }}
       >
-        <p>Ouverture des bibliothèques au grand public, garantissant l'accès à la documentation imprimée et électronique aux acteurs de la sociéte au-déla de la communauté universitaire</p>
+        <p style={{ margin: 0 }}>Ouverture des bibliothèques au grand public, garantissant l'accès à la documentation imprimée et électronique aux acteurs de la sociéte au-déla de la communauté universitaire</p>
         <Box
           sx={{
             gridArea: "bottom",
@@ -1679,7 +1710,7 @@ import Mitig from "./images/mitig.png";
           background: "	#FFCBA4",
         }}
       >
-        <p style={{ textAlign: "left" }}>Offre gratuite et en libre accès de documentation et de guides pour permettre à tous de participer à la science</p>
+        <p style={{ margin: 0 }}>Offre gratuite et en libre accès de documentation et de guides pour permettre à tous de participer à la science</p>
 
         <Box
           sx={{
@@ -1687,6 +1718,7 @@ import Mitig from "./images/mitig.png";
             borderRadius: "8px",
             padding: "1.5rem0px",
             background: "	#FFCBA4",
+            marginTop: "1rem",
           }}
         >
           <a href="https://boite-outils.bib.umontreal.ca/">
