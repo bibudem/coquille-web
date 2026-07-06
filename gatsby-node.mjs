@@ -123,8 +123,10 @@ function indexBibliotheques() {
  * données viennent d'un fichier Excel (content/personnel/liste-personnel.xlsx)
  * exposé en GraphQL par gatsby-transformer-excel. Il n'existe pas de fiche/URL
  * par personne (voir RepertoirePersonnel.jsx, qui est un annuaire filtrable
- * côté client) : on pointe donc chaque entrée vers /personnel/?q=<nom> et
- * RepertoirePersonnel.jsx se charge de préremplir sa recherche avec ce `q`.
+ * côté client) : on pointe donc chaque entrée vers /nous-joindre/notre-equipe/?q=<nom>
+ * — la vraie page de l'annuaire utilisée partout ailleurs sur le site (contrairement
+ * à /personnel/, qui rend le même composant mais n'est pas la page promue) —
+ * et RepertoirePersonnel.jsx se charge de préremplir sa recherche avec ce `q`.
  */
 async function doIndexPersonnel({ graphql, reporter }) {
   const result = await graphql(`
@@ -152,7 +154,7 @@ async function doIndexPersonnel({ graphql, reporter }) {
     searchEntries.push({
       title: fullName,
       excerpt: [person.fonction, person.direction].filter(Boolean).join(' — '),
-      url: `/personnel/?q=${encodeURIComponent(fullName)}`,
+      url: `/nous-joindre/notre-equipe/?q=${encodeURIComponent(fullName)}`,
       section: 'Personnel',
     })
   })
