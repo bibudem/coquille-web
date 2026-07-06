@@ -9,7 +9,7 @@
     "node": "^20.11.1"
   },
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=\"--max-old-space-size=4096 \" npm run gatsby:develop",
+    "dev": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192 \" npm run gatsby:develop",
     "build": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" gatsby build",
     "preview": "gatsby serve",
     "clean": "gatsby clean",
@@ -59,6 +59,7 @@
     "gatsby-transformer-sharp": "^5.14.0",
     "gray-matter": "^4.0.3",
     "material-ui-popup-state": "^5.3.6",
+    "minisearch": "^7.2.0",
     "modern-normalize": "^3.0.1",
     "node-fetch": "^3.3.2",
     "postcss": "^8.5.1",

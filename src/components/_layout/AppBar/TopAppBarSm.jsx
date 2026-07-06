@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import {
   AppBar,
+  Box,
   Container,
   Toolbar,
   useMediaQuery,
@@ -11,6 +12,8 @@ import Link from '@/components/Link'
 import SideNavSm from '@/components/_layout/SideNav/SideNavSm'
 import SideNavContent from '@/components/_layout/SideNav/SideNavContent'
 import MenuBurger from './MenuBurger'
+import SearchButton from './SearchButton'
+import SearchOverlay from './SearchOverlay'
 import LogoUdeMMonochrome from '@/images/logo-udem/logo_udem-noir.svg'
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
@@ -18,6 +21,7 @@ export const appBarHeight = '5rem'
 
 export default function TopAppBarSm(props) {
   const [open, setOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false) // ouverture de la modale de recherche (SearchOverlay)
   const theme = useTheme()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'))
 
@@ -81,16 +85,23 @@ export default function TopAppBarSm(props) {
               </Link>
             )}
 
-            <IconButton
-              onClick={toggleDrawer(true)}
-              aria-label="Ouvrir le menu de navigation"
-              sx={{
-                ml: 'auto',
-                color: 'text.primary',
-              }}
-            >
-              <MenuBurger open={open} onClick={toggleDrawer(true)} />
-            </IconButton>
+            {/* Loupe + burger regroupés dans un même Box pour rester collés à droite
+                malgré le `justify-content: space-between` du Toolbar parent */}
+            <Box sx={{ display: 'flex', alignItems: 'center', ml: open ? 'auto' : 0 }}>
+              {/* Fond du header toujours blanc ici : icône sombre pour rester visible
+                  (contrairement à TopAppBar.jsx, blanche par défaut sur fond transparent) */}
+              {!open && <SearchButton dark onClick={() => setSearchOpen(true)} />}
+
+              <IconButton
+                onClick={toggleDrawer(true)}
+                aria-label="Ouvrir le menu de navigation"
+                sx={{
+                  color: 'text.primary',
+                }}
+              >
+                <MenuBurger open={open} onClick={toggleDrawer(true)} />
+              </IconButton>
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>
@@ -102,6 +113,8 @@ export default function TopAppBarSm(props) {
       >
         <SideNavContent onClose={toggleDrawer(false)} />
       </SideNavSm>
+      {/* Modale de recherche du site, montée en dehors de l'AppBar pour couvrir toute la page */}
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   )
 }

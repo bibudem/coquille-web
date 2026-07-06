@@ -5,20 +5,173 @@
  */
 
 import { resolve } from 'node:path'
+import { mkdir, writeFile } from 'node:fs/promises'
 import slugify from '@sindresorhus/slugify'
+import { bibliotheques } from './src/utils/bibliotheques.js'
 
 // Define the template for pages
 const pageTemplate = resolve('./src/templates/PageTemplate.jsx')
 const nouvelleTemplate = resolve('./src/templates/NouvelleTemplate.jsx')
 
+// ---------------------------------------------------------------------------
+// Moteur de recherche du site (voir aussi src/hooks/use-search-index.jsx et
+// src/components/_layout/AppBar/SearchOverlay.jsx pour la partie client).
+//
+// Principe : à chaque build (ou redémarrage de `gatsby develop`), on constitue
+// ici un tableau plat `searchEntries` à partir des différentes sources de
+// contenu du site (pages, nouvelles, bibliothèques, personnel), puis on
+// l'écrit tel quel dans public/search-index.json. Ce fichier statique est
+// ensuite chargé et indexé côté navigateur avec MiniSearch — il n'y a donc
+// aucun service de recherche externe à maintenir.
+// ---------------------------------------------------------------------------
+
+// Entrées accumulées pour l'index de recherche du site, écrites dans public/search-index.json
+const searchEntries = []
+
+// Pages utilitaires/démo à ne jamais exposer dans la recherche du site
+const SEARCH_EXCLUDED_DIR_PREFIXES = ['dev', 'consent']
+const SEARCH_EXCLUDED_NAMES = ['tests', 'fiche-personnel', 'widget-horaire']
+
+function isSearchExcluded(node) {
+  const dir = node.relativeDirectory ?? ''
+  if (SEARCH_EXCLUDED_DIR_PREFIXES.some(prefix => dir === prefix || dir.startsWith(`${prefix}/`))) {
+    return true
+  }
+  return SEARCH_EXCLUDED_NAMES.includes(node.name)
+}
+
+// Motifs identifiant une ligne entièrement composée de code JS/JSX (pas de texte à en tirer)
+const CODE_LINE_PATTERNS = [
+  /^(import|export)\b/,
+  /^(const|let|var|return)\b/,
+  /=>|function\s*\(|useEffect\(|useState\(|require\(/,
+  /^(document|window|script)\./,
+  /^[\w-]+=("[^"]*"|'[^']*'|\{[^{}]*\})\s*$/, // ligne = un seul attribut JSX, ex: title="Aménagement"
+  /^("[\w-]+"|'[\w-]+'|[\w-]+):\s+\S/, // ligne = une propriété d'objet JS, ex: width: '100%', ou 'aria-label': ariaLabel || label,
+  /^["'][\w-]+["'],?$/, // ligne = un seul token entre guillemets, ex: "top" (valeur de template literal CSS)
+]
+
+function isCodeLikeLine(line) {
+  const trimmed = line.trim()
+  if (!trimmed) return true
+  return CODE_LINE_PATTERNS.some(pattern => pattern.test(trimmed))
+}
+
+/**
+ * Construit un extrait texte à partir du MDX brut, sans passer par la compilation
+ * MDX (qui retraiterait les images via gatsby-remark-images/sharp pour chaque page
+ * et fait exploser la mémoire du build). Le contenu de ce site mélange du texte
+ * narratif avec beaucoup de composants JSX imbriqués sur plusieurs lignes ; on
+ * traite donc chaque ligne individuellement : on écarte les lignes 100% code,
+ * on retire les balises/expressions des lignes restantes (en gardant le texte
+ * qu'elles enveloppent, ex. `<p>Bibliothèque d'aménagement</p>`), puis on ne
+ * garde que ce qui contient encore du vrai texte une fois nettoyé.
+ */
+function makeExcerpt(rawBody, length = 200) {
+  if (!rawBody) return ''
+
+  const plainText = rawBody
+    .split('\n')
+    .filter(line => !isCodeLikeLine(line))
+    .map(line => line.replace(/<[^>]*>/g, ' ').replace(/\{[^{}]*\}/g, ' '))
+    .filter(line => !/[<>{}]/.test(line)) // reste d'une balise/prop JSX étalée sur plusieurs lignes
+    .filter(line => /\p{L}{3,}/u.test(line)) // ne garder que les lignes avec du texte réel
+    .join(' ')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/[#*_>`~-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+
+  if (plainText.length <= length) return plainText
+  return `${plainText.slice(0, length).trim()}…`
+}
+
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
-export async function createPages() {
-  await doCreatePages(...arguments)
-  await doCreateNouvelles(...arguments)
+export async function createPages(api) {
+  await doCreatePages(api) // alimente searchEntries avec la section "Pages"
+  await doCreateNouvelles(api) // alimente searchEntries avec la section "Nouvelles"
+  indexBibliotheques() // alimente searchEntries avec la section "Bibliothèques"
+  await doIndexPersonnel(api) // alimente searchEntries avec la section "Personnel"
+  await writeSearchIndex(api.reporter) // écrit le tout dans public/search-index.json
 }
 
+/**
+ * Les fiches de bibliothèques (content/bibliotheques/*.mdx) ne sont pas des
+ * pages autonomes : ce sont des composants JSX (props sur plusieurs lignes,
+ * pas de frontmatter) assemblés dans une seule page "/espaces/", chaque fiche
+ * étant une simple ancre (id="amenagement", etc.). Plutôt que de parser ce
+ * JSX, on réutilise la liste déjà propre et structurée de
+ * src/utils/bibliotheques.js (la même que celle utilisée par
+ * RepertoirePersonnel.jsx pour faire correspondre une bibliothèque à son id).
+ */
+function indexBibliotheques() {
+  bibliotheques.forEach(({ id, titre, autreTitre }) => {
+    searchEntries.push({
+      title: titre,
+      excerpt: autreTitre && autreTitre !== titre ? autreTitre : '',
+      url: `/espaces/#${id}`,
+      section: 'Bibliothèques',
+    })
+  })
+}
+
+/**
+ * Le répertoire du personnel n'est pas non plus composé de pages MDX : les
+ * données viennent d'un fichier Excel (content/personnel/liste-personnel.xlsx)
+ * exposé en GraphQL par gatsby-transformer-excel. Il n'existe pas de fiche/URL
+ * par personne (voir RepertoirePersonnel.jsx, qui est un annuaire filtrable
+ * côté client) : on pointe donc chaque entrée vers /personnel/?q=<nom> et
+ * RepertoirePersonnel.jsx se charge de préremplir sa recherche avec ce `q`.
+ */
+async function doIndexPersonnel({ graphql, reporter }) {
+  const result = await graphql(`
+    query SearchPersonnelQuery {
+      allListePersonnelXlsxSheet1 {
+        nodes {
+          nom
+          prenom
+          fonction
+          direction
+        }
+      }
+    }
+  `)
+
+  if (result.errors) {
+    reporter.panicOnBuild(`There was an error loading the personnel directory for the search index`, result.errors)
+    return
+  }
+
+  result.data.allListePersonnelXlsxSheet1.nodes.forEach(person => {
+    const fullName = `${person.prenom ?? ''} ${person.nom ?? ''}`.trim()
+    if (!fullName) return
+
+    searchEntries.push({
+      title: fullName,
+      excerpt: [person.fonction, person.direction].filter(Boolean).join(' — '),
+      url: `/personnel/?q=${encodeURIComponent(fullName)}`,
+      section: 'Personnel',
+    })
+  })
+}
+
+// Écrit directement dans public/ (et non via onPostBuild) pour que le fichier
+// soit aussi généré — et servi par le serveur de dev — en mode `gatsby develop`,
+// pas seulement lors d'un `gatsby build` de production.
+async function writeSearchIndex(reporter) {
+  await mkdir('public', { recursive: true })
+  await writeFile('public/search-index.json', JSON.stringify(searchEntries), 'utf-8')
+  reporter.info(`[search] Index de recherche généré avec ${searchEntries.length} entrées`)
+}
+
+// Note pour l'index de recherche : le champ 'body' ci-dessous (MDX brut, sans
+// frontmatter) est volontairement utilisé au lieu du champ 'excerpt' du plugin
+// MDX. Ce dernier recompile toute la page (retraitement des images compris)
+// juste pour produire l'extrait, ce qui fait exploser la mémoire du build sur
+// l'ensemble des pages. 'body' est lu tel quel puis nettoyé par makeExcerpt().
 async function doCreatePages({ graphql, actions, reporter }) {
   const { createPage } = actions
 
@@ -45,6 +198,7 @@ async function doCreatePages({ graphql, actions, reporter }) {
                 order
               }
             }
+            body
           }
         }
       }
@@ -81,6 +235,19 @@ async function doCreatePages({ graphql, actions, reporter }) {
       // our page layout component
       context: { id: node.id }
     })
+
+    // On alimente l'index de recherche ici (plutôt que dans une passe séparée)
+    // pour réutiliser exactement le `path` déjà calculé pour createPage — ainsi
+    // l'URL indexée correspond toujours à la vraie page générée.
+    const title = node.childMdx?.frontmatter?.title
+    if (title && !isSearchExcluded(node)) {
+      searchEntries.push({
+        title,
+        excerpt: makeExcerpt(node.childMdx?.body),
+        url: path,
+        section: 'Pages',
+      })
+    }
   })
 }
 
@@ -116,6 +283,7 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
               template
               type
             }
+            body
           }
         }
       }
@@ -153,6 +321,17 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
       // our page layout component
       context: { id: node.id }
     })
+
+    // Même principe que dans doCreatePages : on réutilise le `path` déjà calculé.
+    const title = node.childMdx?.frontmatter?.title
+    if (title) {
+      searchEntries.push({
+        title,
+        excerpt: makeExcerpt(node.childMdx?.body),
+        url: path,
+        section: 'Nouvelles',
+      })
+    }
   })
 }
 
