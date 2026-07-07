@@ -10,9 +10,10 @@ import { MagnifyingGlassIcon } from '@phosphor-icons/react'
  * MUI IconButton peuvent sinon prendre le dessus selon l'ordre d'injection
  * des styles, ce qui rendait l'icône plus terne que le texte du menu.
  *
- * `dark` sert pour le header mobile (TopAppBarSm), dont le fond est blanc
- * fixe et a donc besoin d'une icône sombre pour rester visible — le header
- * desktop (TopAppBar) garde le blanc par défaut, comme le reste du menu.
+ * `dark` bascule vers une icône sombre quand le fond derrière elle est clair :
+ * toujours vrai sur le header mobile (TopAppBarSm, fond blanc fixe), et sur le
+ * header desktop (TopAppBar) une fois que `trigger` (scroll) fait passer son
+ * fond au blanc — sinon l'icône blanche disparaît sur ce fond blanc.
  */
 export default function SearchButton({ onClick, dark = false }) {
   const theme = useTheme()

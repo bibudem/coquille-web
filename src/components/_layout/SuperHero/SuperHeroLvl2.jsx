@@ -6,6 +6,11 @@ import LayoutContainer from '@/components/utils/LayoutContainer'
 import { appBarHeight } from '@/components/_layout/AppBar/TopAppBar'
 import { SuperHeroContext } from '@/components/_layout/SuperHero/SuperHeroContext'
 import { useSmall } from '@/hooks/use-small'
+import { useBannersHeight } from '@/hooks/use-banners-height'
+
+// Sur ce type de page (niveau > 1), <bib-avis> est rendu APRÈS ce hero (voir
+// PageTemplate.jsx) : seul <udem-urgence> le précède et doit être pris en compte.
+const BANNER_SELECTORS = ['udem-urgence']
 
 export const inlineOffset = '0 215px'
 
@@ -35,6 +40,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
 
   const isSmall = useSmall()
   const [contextData, setContextData] = useState({})
+  const bannersHeight = useBannersHeight(BANNER_SELECTORS)
 
   const data = useStaticQuery(graphql`
     query ImageQuery {
@@ -77,7 +83,9 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', ...res
           className="bib-comp-super-hero2"
           sx={{
             position: 'absolute',
-            top: 0,
+            // Décale le hero sous les bannières d'avis quand elles sont actives
+            // (mesurées dynamiquement, leur hauteur n'est pas connue au build).
+            top: bannersHeight,
             left: 0,
             ...boxSize,
             color: '#fff',

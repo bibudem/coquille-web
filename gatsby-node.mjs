@@ -32,12 +32,22 @@ const searchEntries = []
 const SEARCH_EXCLUDED_DIR_PREFIXES = ['dev', 'consent']
 const SEARCH_EXCLUDED_NAMES = ['tests', 'fiche-personnel', 'widget-horaire']
 
+// N'indexer que le contenu réellement destiné au grand public : en plus des
+// dossiers/fichiers de démo ci-dessus, on exclut toute page marquée `noIndex`
+// (ou `noindex`, la casse est incohérente selon les fichiers de contenu) —
+// ce champ existant sert déjà à dire aux moteurs de recherche externes de ne
+// pas indexer la page (voir HtmlHead.jsx) ; la recherche interne du site doit
+// respecter le même signal plutôt que de la faire ressortir quand même.
 function isSearchExcluded(node) {
   const dir = node.relativeDirectory ?? ''
   if (SEARCH_EXCLUDED_DIR_PREFIXES.some(prefix => dir === prefix || dir.startsWith(`${prefix}/`))) {
     return true
   }
-  return SEARCH_EXCLUDED_NAMES.includes(node.name)
+  if (SEARCH_EXCLUDED_NAMES.includes(node.name)) {
+    return true
+  }
+  const frontmatter = node.childMdx?.frontmatter
+  return Boolean(frontmatter?.noIndex || frontmatter?.noindex)
 }
 
 // Motifs identifiant une ligne entièrement composée de code JS/JSX (pas de texte à en tirer)
@@ -194,6 +204,8 @@ async function doCreatePages({ graphql, actions, reporter }) {
               slug
               title
               template
+              noIndex
+              noindex
               secondaryNav {
                 hidden
                 title
@@ -284,6 +296,8 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
               title
               template
               type
+              noIndex
+              noindex
             }
             body
           }
@@ -326,7 +340,7 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
 
     // Même principe que dans doCreatePages : on réutilise le `path` déjà calculé.
     const title = node.childMdx?.frontmatter?.title
-    if (title) {
+    if (title && !isSearchExcluded(node)) {
       searchEntries.push({
         title,
         excerpt: makeExcerpt(node.childMdx?.body),
