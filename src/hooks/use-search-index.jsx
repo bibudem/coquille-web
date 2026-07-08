@@ -5,18 +5,16 @@ import MiniSearch from 'minisearch'
 const fetcher = url => fetch(url).then(res => res.json())
 
 /**
- * Charge paresseusement l'index de recherche du site (le JSON statique généré
- * au build par gatsby-node.mjs) et expose une fonction de recherche groupée
- * par section (Pages, Nouvelles, Bibliothèques, Personnel).
+ * Charge l'index de recherche du site (le JSON statique généré au build par
+ * gatsby-node.mjs) et expose une fonction de recherche groupée par section
+ * (Pages, Nouvelles, Bibliothèques, Personnel).
  *
- * @param {boolean} enabled - ne déclenche le fetch que lorsque true (ex: seulement
- *   quand l'overlay de recherche est ouvert), pour ne pas alourdir le chargement
- *   initial de chaque page du site avec un index qui ne sera peut-être jamais utilisé.
+ * Utilisé uniquement par la page dédiée /rechercher/ : le fetch ne se déclenche
+ * donc que pour les visiteurs qui l'atteignent, pas au chargement de chaque
+ * page du site.
  */
-export function useSearchIndex(enabled) {
-  // useSWR met le résultat en cache par clé : une fois chargé, rouvrir l'overlay
-  // ne refait pas de requête réseau tant que la page n'est pas rechargée.
-  const { data, isLoading } = useSWR(enabled ? '/search-index.json' : null, fetcher)
+export function useSearchIndex() {
+  const { data, isLoading } = useSWR('/search-index.json', fetcher)
 
   // Reconstruire l'index MiniSearch uniquement quand les données changent
   // (et non à chaque frappe dans le champ de recherche).
@@ -42,7 +40,7 @@ export function useSearchIndex(enabled) {
 
     const results = miniSearch.search(query)
 
-    // Regroupe les résultats par section pour l'affichage dans SearchOverlay.jsx
+    // Regroupe les résultats par section pour l'affichage dans la page /rechercher/
     const grouped = new Map()
     results.forEach(({ title, excerpt, url, section }) => {
       if (!grouped.has(section)) grouped.set(section, [])
@@ -52,5 +50,5 @@ export function useSearchIndex(enabled) {
     return Array.from(grouped, ([section, items]) => ({ section, items }))
   }
 
-  return { search, isLoading: enabled && isLoading }
+  return { search, isLoading }
 }

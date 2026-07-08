@@ -13,7 +13,6 @@ import SideNavSm from '@/components/_layout/SideNav/SideNavSm'
 import SideNavContent from '@/components/_layout/SideNav/SideNavContent'
 import MenuBurger from './MenuBurger'
 import SearchButton from './SearchButton'
-import SearchOverlay from './SearchOverlay'
 import LogoUdeMMonochrome from '@/images/logo-udem/logo_udem-noir.svg'
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
@@ -21,7 +20,6 @@ export const appBarHeight = '5rem'
 
 export default function TopAppBarSm(props) {
   const [open, setOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false) // ouverture de la modale de recherche (SearchOverlay)
   const theme = useTheme()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'))
 
@@ -90,7 +88,7 @@ export default function TopAppBarSm(props) {
             <Box sx={{ display: 'flex', alignItems: 'center', ml: open ? 'auto' : 0 }}>
               {/* Fond du header toujours blanc ici : icône sombre pour rester visible
                   (contrairement à TopAppBar.jsx, blanche par défaut sur fond transparent) */}
-              {!open && <SearchButton dark onClick={() => setSearchOpen(true)} />}
+              {!open && <SearchButton dark />}
 
               <IconButton
                 onClick={toggleDrawer(true)}
@@ -113,8 +111,6 @@ export default function TopAppBarSm(props) {
       >
         <SideNavContent onClose={toggleDrawer(false)} />
       </SideNavSm>
-      {/* Modale de recherche du site, montée en dehors de l'AppBar pour couvrir toute la page */}
-      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   )
 }

@@ -1,9 +1,10 @@
 import { IconButton } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import { Link as GatsbyLink } from 'gatsby'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react'
 
 /**
- * Icône de recherche du header, qui déclenche l'ouverture de SearchOverlay.
+ * Icône de recherche du header, qui mène à la page dédiée /rechercher/.
  * La couleur est calculée ici avec useTheme() et passée explicitement à la
  * fois à l'IconButton (sx) et à l'icône elle-même (prop `color`), plutôt que
  * de compter sur l'héritage CSS `currentColor` : les classes par défaut de
@@ -15,12 +16,12 @@ import { MagnifyingGlassIcon } from '@phosphor-icons/react'
  * header desktop (TopAppBar) une fois que `trigger` (scroll) fait passer son
  * fond au blanc — sinon l'icône blanche disparaît sur ce fond blanc.
  */
-export default function SearchButton({ onClick, dark = false }) {
+export default function SearchButton({ dark = false }) {
   const theme = useTheme()
   const color = dark ? theme.palette.text.primary : '#fff'
 
   return (
-    <IconButton onClick={onClick} aria-label="Rechercher dans le site" sx={{ color }}>
+    <IconButton component={GatsbyLink} to="/rechercher/" aria-label="Rechercher dans le site" sx={{ color }}>
       <MagnifyingGlassIcon size={24} weight="bold" color={color} />
     </IconButton>
   )
