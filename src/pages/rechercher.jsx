@@ -362,7 +362,7 @@ export default function RecherchePage({ location }) {
         <LayoutContainer>
           {!isSmallScreen && <Breadcrumbs crumbs={BREADCRUMB_CRUMBS} location={location} />}
 
-          <Box component="main" role="main" sx={{ maxWidth: 960, mx: 'auto', pb: { xs: 4, md: 8 } }}>
+          <Box component="main" role="main" sx={{ maxWidth: 960, mx: 'auto', pb: '10rem' }}>
             <ScopeSelector scope={scope} onScopeChange={setScope} />
             <ScopeDescriptionCard scope={currentScope} />
 
