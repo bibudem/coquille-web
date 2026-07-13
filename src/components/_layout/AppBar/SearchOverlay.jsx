@@ -136,9 +136,11 @@ const ScopeSwitch = styled(ToggleButtonGroup)(({ theme }) => ({
     transition: theme.transitions.create(['background-color', 'color']),
     // En dessous de `sm`, grille de 2 colonnes plutôt qu'une pile d'une
     // option par ligne : boutons plus compacts et espace vertical repris.
+    // Padding vertical volontairement gardé proche du desktop (pas juste
+    // réduit avec l'horizontal) pour rester ≥ 44px de cible tactile (WCAG 2.5.5).
     [theme.breakpoints.down('sm')]: {
       flex: '1 1 calc(50% - 3px)',
-      padding: '0.625rem 0.75rem',
+      padding: '0.75rem 0.75rem',
       fontSize: '0.8125rem',
     },
     '&.Mui-selected': {
@@ -404,8 +406,8 @@ export default function SearchOverlay({ open, onClose }) {
     <Dialog
       open={open}
       onClose={handleClose}
-      aria-label="Recherche dans le site"
-      maxWidth="md"
+      aria-labelledby="search-dialog-title"
+      maxWidth="lg"
       fullWidth
       scroll="paper"
       slotProps={{
@@ -420,18 +422,26 @@ export default function SearchOverlay({ open, onClose }) {
             borderRadius: 3,
             m: 2,
             p: 3,
-            minHeight: '60vh',
-            maxHeight: '80vh',
+            minHeight: '75vh',
+            maxHeight: '90vh',
           },
         },
       }}
     >
+      {/* Titre réel (caché visuellement) plutôt qu'un simple aria-label sur le
+          Dialog : donne à la modale un vrai h2 dont les h3 de sections de
+          résultats plus bas deviennent des enfants légitimes, au lieu de
+          sauter un niveau. */}
+      <Typography id="search-dialog-title" component="h2" sx={visuallyHidden}>
+        Recherche dans le site
+      </Typography>
+
       {/* Le bouton de fermeture a sa propre ligne (plutôt que de partager
           celle du switch) pour que le switch garde toute la largeur du popup,
           alignée avec le champ de recherche plus bas. */}
       <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <IconButton onClick={handleClose} aria-label="Fermer la recherche">
-          <XIcon size={22} />
+        <IconButton onClick={handleClose} aria-label="Fermer la recherche" size="large">
+          <XIcon size={28} />
         </IconButton>
       </Box>
 
@@ -440,9 +450,16 @@ export default function SearchOverlay({ open, onClose }) {
       <ScopeDescriptionCard scope={currentScope} />
 
       <SearchPaper component="form" onSubmit={handleSubmit}>
-        <Box sx={{ display: 'flex', alignItems: 'center', pl: 2, color: 'text.secondary' }}>
+        {/* type="submit" plutôt qu'une simple icône décorative : déclenche le
+            même onSubmit que la touche Entrée, sans dupliquer la logique. */}
+        <IconButton
+          type="submit"
+          aria-label="Rechercher"
+          size="small"
+          sx={{ ml: 0.5, color: 'text.secondary', '&:hover': { backgroundColor: 'transparent' } }}
+        >
           <MagnifyingGlassIcon size={22} />
-        </Box>
+        </IconButton>
         <InputBase
           inputRef={inputRef}
           value={query}
@@ -485,7 +502,7 @@ export default function SearchOverlay({ open, onClose }) {
       </Box>
 
       {isSiteScope && (
-        <Box sx={{ mt: 3, overflowY: 'auto' }}>
+        <Box sx={{ mt: 3 }}>
           {isLoading && (
             <Stack direction="row" spacing={2} alignItems="center" sx={{ color: 'text.secondary' }}>
               <CircularProgress size={20} />
