@@ -317,9 +317,6 @@ export default function SearchOverlay({ open, onClose }) {
       window.history.pushState({ searchOverlay: true }, '', `${window.location.pathname}?${params}`)
       pushedHistoryRef.current = true
     }
-
-    const id = setTimeout(() => inputRef.current?.focus(), 100)
-    return () => clearTimeout(id)
   }, [open])
 
   // Un retour arrière (ou un lien profond suivi d'un « suivant ») fait
@@ -411,6 +408,12 @@ export default function SearchOverlay({ open, onClose }) {
       fullWidth
       scroll="paper"
       slotProps={{
+        transition: {
+          // Focus posé une fois la transition d'ouverture réellement
+          // terminée (plutôt qu'un délai arbitraire) : fiable quel que
+          // soit le temps de rendu de la page visitée.
+          onEntered: () => inputRef.current?.focus(),
+        },
         backdrop: {
           sx: {
             backdropFilter: 'blur(6px)',
@@ -454,7 +457,7 @@ export default function SearchOverlay({ open, onClose }) {
             même onSubmit que la touche Entrée, sans dupliquer la logique. */}
         <IconButton
           type="submit"
-          aria-label="Rechercher"
+          aria-label="Lancer la recherche"
           size="small"
           sx={{ ml: 0.5, color: 'text.secondary', '&:hover': { backgroundColor: 'transparent' } }}
         >
@@ -466,9 +469,16 @@ export default function SearchOverlay({ open, onClose }) {
           onChange={e => setQuery(e.target.value)}
           placeholder={isSiteScope ? 'Rechercher dans le site des bibliothèques' : `Rechercher dans ${currentScope.label}, puis appuyez sur Entrée`}
           fullWidth
-          inputProps={{ 'aria-label': 'Rechercher' }}
+          inputProps={{ 'aria-label': 'Rechercher', 'aria-describedby': 'search-input-hint' }}
           sx={{ px: 2, py: 1 }}
         />
+        {/* Reprend le texte du placeholder pour les lecteurs d'écran : le
+            placeholder n'est pas une source fiable d'instruction (WCAG), or
+            l'invite à appuyer sur Entrée pour les portées externes est
+            essentielle pour comprendre le comportement du formulaire. */}
+        <Typography id="search-input-hint" sx={visuallyHidden}>
+          {isSiteScope ? 'Rechercher dans le site des bibliothèques' : `Rechercher dans ${currentScope.label}, puis appuyez sur Entrée`}
+        </Typography>
         {/* Toujours monté (plutôt que rendu conditionnellement) pour que
             l'apparition/disparition se fasse par fondu et sans décaler le
             reste du champ ; tabIndex -1 quand invisible pour ne pas capter
@@ -479,6 +489,7 @@ export default function SearchOverlay({ open, onClose }) {
             inputRef.current?.focus()
           }}
           aria-label="Effacer la recherche"
+          aria-hidden={!query}
           size="small"
           tabIndex={query ? 0 : -1}
           sx={{
@@ -520,9 +531,16 @@ export default function SearchOverlay({ open, onClose }) {
                 <Typography component="h3" variant="overline" sx={{ color: 'text.secondary' }}>
                   {section}
                 </Typography>
-                <Stack spacing={0.5} divider={<Box sx={{ borderBottom: '1px solid', borderColor: 'divider' }} />} sx={{ mt: 1 }}>
+                <Stack
+                  role="list"
+                  spacing={0.5}
+                  divider={<Box sx={{ borderBottom: '1px solid', borderColor: 'divider' }} />}
+                  sx={{ mt: 1 }}
+                >
                   {items.map(item => (
-                    <SearchResultItem key={item.url} item={item} />
+                    <Box key={item.url} role="listitem">
+                      <SearchResultItem item={item} />
+                    </Box>
                   ))}
                 </Stack>
               </Box>

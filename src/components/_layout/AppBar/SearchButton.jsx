@@ -15,12 +15,18 @@ import { MagnifyingGlassIcon } from '@phosphor-icons/react'
  * header desktop (TopAppBar) une fois que `trigger` (scroll) fait passer son
  * fond au blanc — sinon l'icône blanche disparaît sur ce fond blanc.
  */
-export default function SearchButton({ onClick, dark = false }) {
+export default function SearchButton({ onClick, dark = false, open = false }) {
   const theme = useTheme()
   const color = dark ? theme.palette.text.primary : '#fff'
 
   return (
-    <IconButton onClick={onClick} aria-label="Rechercher dans le site" sx={{ color }}>
+    <IconButton
+      onClick={onClick}
+      aria-label="Rechercher dans le site"
+      aria-haspopup="dialog"
+      aria-expanded={open}
+      sx={{ color }}
+    >
       <MagnifyingGlassIcon size={24} weight="bold" color={color} />
     </IconButton>
   )

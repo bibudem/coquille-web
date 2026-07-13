@@ -90,7 +90,7 @@ export default function TopAppBarSm(props) {
             <Box sx={{ display: 'flex', alignItems: 'center', ml: open ? 'auto' : 0 }}>
               {/* Fond du header toujours blanc ici : icône sombre pour rester visible
                   (contrairement à TopAppBar.jsx, blanche par défaut sur fond transparent) */}
-              {!open && <SearchButton dark onClick={() => setSearchOpen(true)} />}
+              {!open && <SearchButton dark open={searchOpen} onClick={() => setSearchOpen(true)} />}
 
               <IconButton
                 onClick={toggleDrawer(true)}
