@@ -27,9 +27,10 @@ export function SecondaryNav({ currentLocation, ...rest }) {
         .shift()}/`
       const rootNode = secondaryNavData.find(({ path }) => path === rootPath)
 
-      // rootNode est absent pour les pages hors de content/pages (ex. /rechercher/,
-      // une page src/pages) : site-navigation.json n'est généré qu'à partir des
-      // pages de contenu. Pas de section à afficher dans ce cas, plutôt qu'un plantage.
+      // rootNode est absent pour les pages hors de content/pages (ex. une page
+      // définie directement dans src/pages) : site-navigation.json n'est généré
+      // qu'à partir des pages de contenu. Pas de section à afficher dans ce cas,
+      // plutôt qu'un plantage.
       if (rootNode) {
         markActive(rootNode)
         setData(rootNode)

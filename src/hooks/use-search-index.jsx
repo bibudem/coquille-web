@@ -5,16 +5,19 @@ import MiniSearch from 'minisearch'
 const fetcher = url => fetch(url).then(res => res.json())
 
 /**
- * Charge l'index de recherche du site (le JSON statique généré au build par
- * gatsby-node.mjs) et expose une fonction de recherche groupée par section
- * (Pages, Nouvelles, Bibliothèques, Personnel).
+ * Charge paresseusement l'index de recherche du site (le JSON statique généré
+ * au build par gatsby-node.mjs) et expose une fonction de recherche groupée
+ * par section (Pages, Nouvelles, Bibliothèques, Personnel).
  *
- * Utilisé uniquement par la page dédiée /rechercher/ : le fetch ne se déclenche
- * donc que pour les visiteurs qui l'atteignent, pas au chargement de chaque
- * page du site.
+ * @param {boolean} enabled - ne déclenche le fetch que lorsque true (la
+ *   modale SearchOverlay est ouverte), pour ne pas alourdir le chargement
+ *   initial de chaque page du site avec un index qui ne sera peut-être
+ *   jamais utilisé.
  */
-export function useSearchIndex() {
-  const { data, isLoading } = useSWR('/search-index.json', fetcher)
+export function useSearchIndex(enabled) {
+  // useSWR met le résultat en cache par clé : une fois chargé, rouvrir la
+  // modale ne refait pas de requête réseau tant que la page n'est pas rechargée.
+  const { data, isLoading } = useSWR(enabled ? '/search-index.json' : null, fetcher)
 
   // Reconstruire l'index MiniSearch uniquement quand les données changent
   // (et non à chaque frappe dans le champ de recherche).
@@ -40,7 +43,7 @@ export function useSearchIndex() {
 
     const results = miniSearch.search(query)
 
-    // Regroupe les résultats par section pour l'affichage dans la page /rechercher/
+    // Regroupe les résultats par section pour l'affichage dans SearchOverlay.jsx
     const grouped = new Map()
     results.forEach(({ title, excerpt, url, section }) => {
       if (!grouped.has(section)) grouped.set(section, [])
@@ -50,5 +53,5 @@ export function useSearchIndex() {
     return Array.from(grouped, ([section, items]) => ({ section, items }))
   }
 
-  return { search, isLoading }
+  return { search, isLoading: enabled && isLoading }
 }

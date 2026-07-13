@@ -15,7 +15,7 @@ const nouvelleTemplate = resolve('./src/templates/NouvelleTemplate.jsx')
 
 // ---------------------------------------------------------------------------
 // Moteur de recherche du site (voir aussi src/hooks/use-search-index.jsx et
-// src/pages/rechercher.jsx pour la partie client).
+// src/components/_layout/AppBar/SearchOverlay.jsx pour la partie client).
 //
 // Principe : à chaque build (ou redémarrage de `gatsby develop`), on constitue
 // ici un tableau plat `searchEntries` à partir des différentes sources de
