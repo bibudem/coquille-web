@@ -156,9 +156,9 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
                 </StyledButton>
               )
             })}
-            {/* Icône de recherche du site, avant le bouton "Je donne" */}
-            <SearchButton dark={trigger} open={searchOpen} onClick={() => setSearchOpen(true)} />
             <JeDonneButton trigger={trigger} transitionProps={transitionProps} />
+            {/* Icône de recherche du site, après le bouton "Je donne" */}
+            <SearchButton dark={trigger} open={searchOpen} onClick={() => setSearchOpen(true)} />
           </Stack>
           <Box >
             <MenuBurger open={open} onClick={toggleDrawer(true)} />

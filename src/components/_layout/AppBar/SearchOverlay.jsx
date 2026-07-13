@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Box, CircularProgress, Dialog, IconButton, InputBase, Paper, Stack, SvgIcon, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material'
+import { Box, Button, CircularProgress, Dialog, IconButton, InputBase, Paper, Stack, SvgIcon, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material'
 import { alpha, styled } from '@mui/material/styles'
 import { visuallyHidden } from '@mui/utils'
 import { HouseIcon, MagnifyingGlassIcon, XIcon } from '@phosphor-icons/react'
@@ -16,6 +16,24 @@ const DEBOUNCE_MS = 200
 const PARAM_OPEN = 'search'
 const PARAM_QUERY = 'sq'
 const PARAM_SCOPE = 'sscope'
+
+// Dernière recherche tapée, conservée pour la session d'onglet (pas
+// `localStorage` : pas besoin qu'elle survive au-delà). Sert à la retrouver
+// en rouvrant la modale sur une autre page (ex. après avoir cliqué un
+// résultat, qui navigue et démonte la modale avec le reste de la page — voir
+// SearchOverlay). Le `?sq=` de l'URL, lui, ne survit pas à cette navigation
+// puisqu'elle change de chemin.
+const STORAGE_QUERY = 'searchOverlay:lastQuery'
+const STORAGE_SCOPE = 'searchOverlay:lastScope'
+
+function readLastSearch() {
+  if (typeof window === 'undefined') return { q: '', scope: 'site' }
+  const scope = window.sessionStorage.getItem(STORAGE_SCOPE)
+  return {
+    q: window.sessionStorage.getItem(STORAGE_QUERY) ?? '',
+    scope: SEARCH_SCOPES.some(s => s.key === scope) ? scope : 'site',
+  }
+}
 
 // ---------------------------------------------------------------------------
 // Données des portées de recherche : "site" cherche en direct dans l'index
@@ -170,13 +188,21 @@ function ScopeIcon({ scope, size = 16 }) {
   return null
 }
 
-// Étiquette + switch de portée.
-function ScopeSelector({ scope, onScopeChange }) {
+// Étiquette + switch de portée. Le bouton de fermeture partage la ligne de
+// l'étiquette (plutôt qu'une ligne à lui seul, qui laissait un grand vide
+// en haut du popup) : le switch juste en dessous garde quand même toute la
+// largeur du popup, alignée avec le champ de recherche plus bas.
+function ScopeSelector({ scope, onScopeChange, onClose }) {
   return (
     <Box sx={{ pb: 1 }}>
-      <Typography id="search-scope-label" variant="overline" sx={{ display: 'block', color: 'text.secondary', mb: 1 }}>
-        Rechercher dans
-      </Typography>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
+        <Typography id="search-scope-label" variant="overline" sx={{ color: 'text.secondary' }}>
+          Rechercher dans
+        </Typography>
+        <IconButton onClick={onClose} aria-label="Fermer la recherche" size="medium" sx={{ color: 'text.secondary' }}>
+          <XIcon size={26} />
+        </IconButton>
+      </Box>
 
       <ScopeSwitch
         value={scope}
@@ -200,20 +226,59 @@ function ScopeSelector({ scope, onScopeChange }) {
 // Décrit la portée sélectionnée, avec l'accent de couleur qui lui est propre
 // (bordure gauche + fond teinté). Lié au switch via aria-describedby (voir
 // ScopeSelector) pour que les lecteurs d'écran l'annoncent avec le contrôle.
+//
+// En dessous de `sm`, la description (plusieurs phrases) est tronquée à une
+// ligne avec points de suspension plutôt que de pousser le champ de
+// recherche hors de l'écran visible ; un bouton « Lire la suite » la déplie.
+// Sur desktop, la carte a la place d'afficher le texte en entier.
 function ScopeDescriptionCard({ scope }) {
+  const [expanded, setExpanded] = useState(false)
+
+  // Repliée à nouveau à chaque changement de portée : un dépli resterait
+  // sinon actif pour une description qu'on n'a pas encore lue.
+  useEffect(() => {
+    setExpanded(false)
+  }, [scope.key])
+
   return (
     <Box
       sx={theme => ({
-        p: 2.5,
-        mb: 3,
+        p: { xs: 1, sm: 2.5 },
+        mb: { xs: 1.5, sm: 3 },
         borderRadius: theme.shape.corner.small,
         backgroundColor: alpha(theme.palette[scope.color].main, 0.08),
         borderLeft: `4px solid ${theme.palette[scope.color].main}`,
       })}
     >
-      <Typography id="search-scope-description" variant="body1" sx={{ color: 'text.primary' }}>
+      <Typography
+        id="search-scope-description"
+        variant="body1"
+        sx={theme => ({
+          color: 'text.primary',
+          [theme.breakpoints.down('sm')]: expanded
+            ? {}
+            : {
+                display: '-webkit-box',
+                WebkitLineClamp: 1,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+              },
+        })}
+      >
         {scope.description}
       </Typography>
+
+      <Box sx={{ display: { xs: 'flex', sm: 'none' }, justifyContent: 'flex-end' }}>
+        <Button
+          onClick={() => setExpanded(v => !v)}
+          aria-expanded={expanded}
+          aria-controls="search-scope-description"
+          size="small"
+          sx={{ minWidth: 0, p: 0, m: 0, textTransform: 'none', fontWeight: 600, fontSize: '0.75rem', lineHeight: 1.4 }}
+        >
+          {expanded ? 'Réduire' : 'Lire la suite…'}
+        </Button>
+      </Box>
     </Box>
   )
 }
@@ -309,11 +374,18 @@ export default function SearchOverlay({ open, onClose }) {
       setScope(current.scope)
       pushedHistoryRef.current = false
     } else {
-      setQuery('')
-      setDebouncedQuery('')
-      setScope('site')
+      // Ouverture "propre" (pas de lien profond) : on repart de la dernière
+      // recherche tapée sur une page précédente plutôt que de la vider —
+      // utile en particulier après avoir cliqué un résultat, qui navigue et
+      // démonte la modale avant qu'on ait pu la rouvrir ici.
+      const last = readLastSearch()
+      setQuery(last.q)
+      setDebouncedQuery(last.q)
+      setScope(last.scope)
       const params = new URLSearchParams(window.location.search)
       params.set(PARAM_OPEN, '1')
+      if (last.q) params.set(PARAM_QUERY, last.q)
+      if (last.scope !== 'site') params.set(PARAM_SCOPE, last.scope)
       window.history.pushState({ searchOverlay: true }, '', `${window.location.pathname}?${params}`)
       pushedHistoryRef.current = true
     }
@@ -357,6 +429,11 @@ export default function SearchOverlay({ open, onClose }) {
     if (scope !== 'site') params.set(PARAM_SCOPE, scope)
     else params.delete(PARAM_SCOPE)
     window.history.replaceState(null, '', `${window.location.pathname}?${params}`)
+
+    if (debouncedQuery) window.sessionStorage.setItem(STORAGE_QUERY, debouncedQuery)
+    else window.sessionStorage.removeItem(STORAGE_QUERY)
+    if (scope !== 'site') window.sessionStorage.setItem(STORAGE_SCOPE, scope)
+    else window.sessionStorage.removeItem(STORAGE_SCOPE)
   }, [open, debouncedQuery, scope])
 
   const isSiteScope = scope === 'site'
@@ -439,16 +516,7 @@ export default function SearchOverlay({ open, onClose }) {
         Recherche dans le site
       </Typography>
 
-      {/* Le bouton de fermeture a sa propre ligne (plutôt que de partager
-          celle du switch) pour que le switch garde toute la largeur du popup,
-          alignée avec le champ de recherche plus bas. */}
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <IconButton onClick={handleClose} aria-label="Fermer la recherche" size="large">
-          <XIcon size={28} />
-        </IconButton>
-      </Box>
-
-      <ScopeSelector scope={scope} onScopeChange={setScope} />
+      <ScopeSelector scope={scope} onScopeChange={setScope} onClose={handleClose} />
 
       <ScopeDescriptionCard scope={currentScope} />
 
@@ -470,7 +538,7 @@ export default function SearchOverlay({ open, onClose }) {
           placeholder={isSiteScope ? 'Rechercher dans le site des bibliothèques' : `Rechercher dans ${currentScope.label}, puis appuyez sur Entrée`}
           fullWidth
           inputProps={{ 'aria-label': 'Rechercher', 'aria-describedby': 'search-input-hint' }}
-          sx={{ px: 2, py: 1 }}
+          sx={{ px: 2, py: 1, '& input': { textOverflow: 'ellipsis' } }}
         />
         {/* Reprend le texte du placeholder pour les lecteurs d'écran : le
             placeholder n'est pas une source fiable d'instruction (WCAG), or
