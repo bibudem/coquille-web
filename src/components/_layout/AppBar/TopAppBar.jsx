@@ -8,6 +8,8 @@ import SideNav from '@/components/_layout/SideNav/SideNav'
 import SideNavContent from '@/components/_layout/SideNav/SideNavContent'
 import MenuBurger from './MenuBurger'
 import LogoLink from './LogoLink'
+import SearchButton from './SearchButton'
+import SearchOverlay, { isSearchOverlayOpenInUrl } from './SearchOverlay'
 import pages from './menu'
 import { useLocation } from '@reach/router'
 
@@ -54,6 +56,7 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
   const gatsbyLocation = useLocation()
   const location = propLocation || gatsbyLocation
   const [open, setOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(isSearchOverlayOpenInUrl) // ouverture de la modale de recherche (SearchOverlay)
   const theme = useTheme()
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -154,6 +157,8 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
               )
             })}
             <JeDonneButton trigger={trigger} transitionProps={transitionProps} />
+            {/* Icône de recherche du site, après le bouton "Je donne" */}
+            <SearchButton dark={trigger} open={searchOpen} onClick={() => setSearchOpen(true)} />
           </Stack>
           <Box >
             <MenuBurger open={open} onClick={toggleDrawer(true)} />
@@ -167,6 +172,7 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
       >
         <SideNavContent onClose={toggleDrawer(false)} />
       </SideNav>
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   )
 }

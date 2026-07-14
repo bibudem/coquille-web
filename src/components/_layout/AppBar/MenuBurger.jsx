@@ -11,7 +11,6 @@ export default function MenuBurger({ open, onClick, sx = {} }) {
         color: 'inherit',
         fontSize: '3.5rem',
         zIndex: 1400,
-        paddingLeft: '2rem',
         ...sx,
         '&:hover': {
           backgroundColor: 'transparent',

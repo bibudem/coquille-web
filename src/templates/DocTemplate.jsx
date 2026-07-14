@@ -77,7 +77,11 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         {isSmall ? <QuickLinksSm /> : <QuickLinks />}
 
-        <bib-avis bouton-fermer></bib-avis>
+        {/* Aligné sur le gutter de LayoutContainer (20px sous `md`, 64px
+            au-delà) plus bas dans `mainContent` : sinon l'avis n'a pas la
+            même marge horizontale que le fil d'Ariane et se sent
+            visuellement détaché du reste du site. */}
+        <bib-avis bouton-fermer style={{ '--bib-avis-spacing-inline': isSmall ? '20px' : '64px' }}></bib-avis>
 
         {mainContent}
 

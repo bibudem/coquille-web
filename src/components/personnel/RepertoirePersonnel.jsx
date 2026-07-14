@@ -31,6 +31,21 @@ function normalize(str = '') {
     .replace(/\s+/g, '') // enlever espaces
 }
 
+// Comme normalize(), mais conserve les espaces entre les mots : nécessaire pour
+// le champ de recherche libre, qui doit matcher chaque mot tapé indépendamment
+// de son ordre (ex. "Jean Dupont" doit trouver le prénom "Jean" et le nom
+// "Dupont" même si les champs sources les concatènent dans l'autre sens).
+function normalizeWords(str = '') {
+  return str
+    .toString()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/['’]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
 // Fonction pour trouver une bibliothèque par ID, titre ou autreTitre
 const findBibliothequeByAnchor = (anchor) => {
   if (!anchor) return null
@@ -115,6 +130,13 @@ export default function RepertoirePersonnel() {
   const [bibliothequeFilter, setBibliothequeFilter] = useState('')
   const [page, setPage] = useState(1)
 
+  // Préremplit la recherche à partir de ?q=, utilisé par les résultats "Personnel" du moteur de recherche du site
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const query = new URLSearchParams(window.location.search).get('q')
+    if (query) setSearch(query)
+  }, [])
+
   useEffect(() => {
     if (hash && !isManualFilterChange) {
       const foundBibliotheque = findBibliothequeByAnchor(hash)
@@ -161,12 +183,15 @@ export default function RepertoirePersonnel() {
   }
 
   const filteredRows = useMemo(() => {
-    const keyword = normalize(search)
+    // Un mot par token : chaque mot tapé doit se retrouver quelque part dans les
+    // champs (peu importe l'ordre), plutôt qu'une seule chaîne collée sans espaces
+    // qui exigeait que "prénom nom" apparaisse exactement dans cet ordre précis.
+    const searchTokens = normalizeWords(search).split(' ').filter(Boolean)
 
     return rawRows.filter((person) => {
-      const fieldsToSearch = [person.nom, person.prenom, person.fonction, person.disciplines, person.bibliotheque, person.direction].join(' ')
+      const fieldsToSearch = normalizeWords([person.nom, person.prenom, person.fonction, person.disciplines, person.bibliotheque, person.direction].join(' '))
 
-      const matchSearch = normalize(fieldsToSearch).includes(keyword)
+      const matchSearch = searchTokens.every((token) => fieldsToSearch.includes(token))
       const matchDiscipline = !disciplineFilter || normalize(person.disciplines || '').includes(normalize(disciplineFilter))
 
       // Filtrage bibliothèque avec support multi-critères
