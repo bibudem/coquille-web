@@ -1,4 +1,6 @@
-export const bibliotheques = [
+// CommonJS explicite : importé en ESM par gatsby-node.mjs, une syntaxe
+// `export` ici casse le build sur certaines versions de Node.
+const bibliotheques = [
   { id: "amenagement", titre: "Aménagement", autreTitre: "Bibliothèque d'aménagement" },
   { id: "parc", titre: "Parc", autreTitre: "Bibliothèque du Parc" },
   { id: "conservation", titre: "Centre de conservation Lionel-Groulx", autreTitre: "Centre de conservation Lionel-Groulx" },
@@ -17,3 +19,5 @@ export const bibliotheques = [
   { id: "Hubert-reeves", titre: "Hubert-Reeves", autreTitre: "Bibliothèque Hubert-Reeves" },
   { id: "lsh", titre: "Lettres et sciences humaines", autreTitre: "Bibliothèque des lettres et sciences humaines" },
 ]
+
+module.exports = { bibliotheques }
