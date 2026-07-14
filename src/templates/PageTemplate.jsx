@@ -116,6 +116,11 @@ export default function PageTemplate({ pageContext, children, data, location }) 
               '--bib-avis-spacing-inline': '0',
               position: 'relative',
               zIndex: theme.zIndex.appBar + 1,
+              // Calque de composition propre, comme sur l'AppBar juste en
+              // dessous (voir TopAppBarSm) : évite un repositionnement au
+              // scroll observé sur Safari iOS entre ces deux éléments à
+              // z-index élevé.
+              transform: 'translateZ(0)',
             }}
           />
         )}

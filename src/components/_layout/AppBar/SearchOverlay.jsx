@@ -152,14 +152,16 @@ const ScopeSwitch = styled(ToggleButtonGroup)(({ theme }) => ({
     padding: '0.75rem 1.375rem',
     gap: '0.5rem',
     transition: theme.transitions.create(['background-color', 'color']),
-    // En dessous de `sm`, grille de 2 colonnes plutôt qu'une pile d'une
-    // option par ligne : boutons plus compacts et espace vertical repris.
-    // Padding vertical volontairement gardé proche du desktop (pas juste
-    // réduit avec l'horizontal) pour rester ≥ 44px de cible tactile (WCAG 2.5.5).
+    // En dessous de `sm`, grille de 2 colonnes : gap/padding/taille réduits
+    // pour que même les libellés les plus longs ("Site principal", "Boîte à
+    // outils") tiennent sur une seule ligne plutôt que de casser sur 2 et
+    // déséquilibrer la hauteur des cellules de la grille.
     [theme.breakpoints.down('sm')]: {
       flex: '1 1 calc(50% - 3px)',
-      padding: '0.75rem 0.75rem',
-      fontSize: '0.8125rem',
+      gap: '0.375rem',
+      padding: '0.625rem 0.5rem',
+      fontSize: '0.75rem',
+      whiteSpace: 'nowrap',
     },
     '&.Mui-selected': {
       backgroundColor: theme.palette.bleuFonce.main,
@@ -232,13 +234,10 @@ function ScopeSelector({ scope, onScopeChange, onClose }) {
 // recherche hors de l'écran visible ; un bouton « Lire la suite » la déplie.
 // Sur desktop, la carte a la place d'afficher le texte en entier.
 function ScopeDescriptionCard({ scope }) {
+  // Un seul état, partagé entre les portées plutôt que réinitialisé à chaque
+  // changement : une fois dépliée, la carte reste dépliée en changeant de
+  // portée, au lieu de se replier à chaque switch.
   const [expanded, setExpanded] = useState(false)
-
-  // Repliée à nouveau à chaque changement de portée : un dépli resterait
-  // sinon actif pour une description qu'on n'a pas encore lue.
-  useEffect(() => {
-    setExpanded(false)
-  }, [scope.key])
 
   return (
     <Box
