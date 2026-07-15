@@ -1,14 +1,24 @@
-import { IconButton } from '@mui/material'
+import { Box, IconButton, Typography } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
 import { X as CloseIcon } from '@phosphor-icons/react'
 import { BurgerIcon } from '@/components/CustomIcons'
 
-export default function MenuBurger({ open, onClick, sx = {} }) {
+/**
+ * `dark` bascule vers une couleur sombre quand le fond derrière l'icône est
+ * clair, même logique que SearchButton juste à côté : blanc par défaut
+ * (header transparent), sombre une fois que le header passe en fond blanc
+ * (scroll sur TopAppBar, ou toujours sur TopAppBarSm).
+ */
+export default function MenuBurger({ open, onClick, dark = false, sx = {} }) {
+  const theme = useTheme()
+  const color = dark ? theme.palette.text.primary : '#fff'
+
   return (
     <IconButton
       onClick={onClick}
       aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
       sx={{
-        color: 'inherit',
+        color,
         fontSize: '3.5rem',
         zIndex: 1400,
         ...sx,
@@ -20,11 +30,31 @@ export default function MenuBurger({ open, onClick, sx = {} }) {
         },
       }}
     >
-      {open ? (
-        <CloseIcon size={32} weight="bold" />
-      ) : (
-        <BurgerIcon size={32} weight="bold" />
-      )}
+      <Box sx={{ position: 'relative', display: 'inline-flex' }}>
+        {open ? (
+          <CloseIcon size={34} weight="bold" color={color} />
+        ) : (
+          <BurgerIcon size={34} color={color} />
+        )}
+        <Typography
+          component="span"
+          aria-hidden="true"
+          sx={{
+            display: { xs: 'none', lg: 'block' },
+            position: 'absolute',
+            bottom: '100%',
+            right: 0,
+            whiteSpace: 'nowrap',
+            fontSize: '0.7rem',
+            fontWeight: 400,
+            lineHeight: 1,
+            letterSpacing: '0.03em',
+            color: 'inherit',
+          }}
+        >
+          {open ? 'Fermer' : 'Menu'}
+        </Typography>
+      </Box>
     </IconButton>
   )
 }

@@ -161,7 +161,7 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
             <SearchButton dark={trigger} open={searchOpen} onClick={() => setSearchOpen(true)} />
           </Stack>
           <Box >
-            <MenuBurger open={open} onClick={toggleDrawer(true)} />
+            <MenuBurger open={open} onClick={toggleDrawer(true)} dark={trigger} />
           </Box>
         </Toolbar>
       </AppBar>

@@ -107,7 +107,7 @@ export default function TopAppBarSm(props) {
                   color: 'text.primary',
                 }}
               >
-                <MenuBurger open={open} onClick={toggleDrawer(true)} />
+                <MenuBurger open={open} onClick={toggleDrawer(true)} dark />
               </IconButton>
             </Box>
           </Toolbar>
