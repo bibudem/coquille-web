@@ -503,6 +503,9 @@ export default function SearchOverlay({ open, onClose }) {
             p: 3,
             minHeight: '75vh',
             maxHeight: '90vh',
+            // Le scroll par défaut de MUI porterait sur toute la modale : on
+            // le confine à la seule zone de résultats plus bas.
+            overflowY: 'hidden',
           },
         },
       }}
@@ -515,11 +518,14 @@ export default function SearchOverlay({ open, onClose }) {
         Recherche dans le site
       </Typography>
 
-      <ScopeSelector scope={scope} onScopeChange={setScope} onClose={handleClose} />
+      {/* Reste toujours visible : seule la zone de résultats défile. */}
+      <Box sx={{ flexShrink: 0 }}>
+        <ScopeSelector scope={scope} onScopeChange={setScope} onClose={handleClose} />
 
-      <ScopeDescriptionCard scope={currentScope} />
+        <ScopeDescriptionCard scope={currentScope} />
+      </Box>
 
-      <SearchPaper component="form" onSubmit={handleSubmit}>
+      <SearchPaper component="form" onSubmit={handleSubmit} sx={{ flexShrink: 0 }}>
         {/* type="submit" plutôt qu'une simple icône décorative : déclenche le
             même onSubmit que la touche Entrée, sans dupliquer la logique. */}
         <IconButton
@@ -580,7 +586,25 @@ export default function SearchOverlay({ open, onClose }) {
       </Box>
 
       {isSiteScope && (
-        <Box sx={{ mt: 3 }}>
+        <Box
+          sx={{
+            mt: 3,
+            // Seule zone défilante de la modale. `minHeight: 0` permet à cet
+            // enfant flex de se réduire pour que `overflowY: auto` déclenche
+            // bien le scroll. `WebkitOverflowScrolling: touch` est le
+            // correctif iOS/iPad déjà utilisé ailleurs dans le projet
+            // (BibTable, ClickableFlipCard) sans lequel le tactile ne
+            // scrolle pas sur iPad. `overscrollBehavior: contain` évite que
+            // le scroll ne remonte la page derrière la modale.
+            flex: '1 1 auto',
+            minHeight: 0,
+            overflowY: 'auto',
+            WebkitOverflowScrolling: 'touch',
+            overscrollBehavior: 'contain',
+            pr: 1,
+            mr: -1,
+          }}
+        >
           {isLoading && (
             <Stack direction="row" spacing={2} alignItems="center" sx={{ color: 'text.secondary' }}>
               <CircularProgress size={20} />
