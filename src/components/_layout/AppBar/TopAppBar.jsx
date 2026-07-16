@@ -157,12 +157,14 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
               )
             })}
             <JeDonneButton trigger={trigger} transitionProps={transitionProps} />
-            {/* Icône de recherche du site, après le bouton "Je donne" */}
-            <SearchButton dark={trigger} open={searchOpen} onClick={() => setSearchOpen(true)} />
+            {/* Groupe recherche + menu : un `Stack` imbriqué pour garder le même
+                espacement (8px) entre les deux icônes, avec un `ml` plus généreux
+                pour le séparer nettement du bouton "Je donne" */}
+            <Stack direction="row" spacing={1} sx={{ alignItems: 'center', ml: 1 }}>
+              <SearchButton dark={trigger} open={searchOpen} onClick={() => setSearchOpen(true)} />
+              <MenuBurger open={open} onClick={toggleDrawer(true)} dark={trigger} />
+            </Stack>
           </Stack>
-          <Box >
-            <MenuBurger open={open} onClick={toggleDrawer(true)} />
-          </Box>
         </Toolbar>
       </AppBar>
        <SideNav

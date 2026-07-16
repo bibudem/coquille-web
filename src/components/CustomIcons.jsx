@@ -27,8 +27,19 @@ export function SofiaIcon(color, sx, ...props) {
   return <SvgIcon {...props} component={SofiaSVG} inheritViewBox sx={(theme) => ({ color: color ?? theme.palette.grey['700'], ...sx })} />
 }
 
-export function BurgerIcon(color, sx, ...props) {
-  return <SvgIcon {...props} component={BurgerSVG} inheritViewBox sx={(theme) => ({ color: color ?? theme.palette.grey['700'], ...sx })} />
+export function BurgerIcon({ color, size = 24, sx, ...props }) {
+  return (
+    <SvgIcon
+      {...props}
+      component={BurgerSVG}
+      inheritViewBox
+      sx={(theme) => ({
+        color: color ?? theme.palette.grey['700'],
+        fontSize: typeof size === 'string' ? size : `${size}px`,
+        ...sx,
+      })}
+    />
+  )
 }
 
 export function ArrowLeftCircleIcon(color, sx, ...props) {
