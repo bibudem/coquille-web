@@ -1,5 +1,6 @@
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { execSync } from 'node:child_process'
 import GatsbyAdapterNetlifyModule from 'gatsby-adapter-netlify'
 import 'dotenv/config'
 
@@ -11,9 +12,25 @@ const {
   URL: NETLIFY_SITE_URL = 'https://bib.umontreal.ca',
   DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
   CONTEXT: NETLIFY_ENV = NODE_ENV,
+  // Levier de secours pour forcer l'environnement si `git` est indisponible.
+  SITE_ENV,
 } = process.env
 const isNetlifyProduction = NETLIFY_ENV === 'production'
 const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
+
+// Le serveur garde un clone git distinct par environnement (branche `main`
+// pour bib-pp, `production` pour bib) : la branche courante suffit à savoir
+// pour lequel on construit, sans variable à configurer dans le pipeline.
+function detectGitBranch() {
+  try {
+    return execSync('git rev-parse --abbrev-ref HEAD', { cwd: __dirname }).toString().trim()
+  } catch {
+    return null
+  }
+}
+
+const gitBranch = detectGitBranch()
+const robotsEnv = SITE_ENV || (gitBranch === 'production' ? 'production' : gitBranch ? 'preprod' : NETLIFY_ENV)
 // const GOOGLE_ANALYTICS_ID = 'G-V8J6YFFD4F'
 // const CLARITY_PROJECT_ID = 't10hsivmt0'
 
@@ -33,7 +50,7 @@ export default {
 
     description: `Site Web des Bibliothèques de l'Université de Montréal`,
     twitterUsername: `@bibUdeM`,
-    image: `/gatsby-icon.png`,
+    image: `/images/logo-udem-bib.png`,
     siteUrl,
   },
   trailingSlash: 'ignore',
@@ -164,7 +181,12 @@ export default {
     'gatsby-transformer-excel',
     'gatsby-plugin-react-svg',
     'gatsby-plugin-postcss',
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        excludes: ['/dev', '/dev/**', '/tests', '/tests/**'],
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -224,7 +246,7 @@ export default {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        resolveEnv: () => NETLIFY_ENV,
+        resolveEnv: () => robotsEnv,
         env: {
           production: {
             policy: [{
@@ -232,6 +254,11 @@ export default {
               allow: '/',
               disallow: ['/consent/']
             }]
+          },
+          preprod: {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null
           },
           'branch-deploy': {
             policy: [{ userAgent: '*', disallow: ['/'] }],

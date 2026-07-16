@@ -1,23 +1,26 @@
 import { useEffect, useState, useCallback } from 'react'
 import {
   AppBar,
+  Box,
   Container,
   Toolbar,
   useMediaQuery,
   IconButton
 } from '@mui/material'
-import { styled, useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 import Link from '@/components/Link'
 import SideNavSm from '@/components/_layout/SideNav/SideNavSm'
 import SideNavContent from '@/components/_layout/SideNav/SideNavContent'
 import MenuBurger from './MenuBurger'
+import SearchButton from './SearchButton'
+import SearchOverlay, { isSearchOverlayOpenInUrl } from './SearchOverlay'
 import LogoUdeMMonochrome from '@/images/logo-udem/logo_udem-noir.svg'
 
-const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
 export const appBarHeight = '5rem'
 
 export default function TopAppBarSm(props) {
   const [open, setOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(isSearchOverlayOpenInUrl) // ouverture de la modale de recherche (SearchOverlay)
   const theme = useTheme()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'))
 
@@ -33,13 +36,22 @@ export default function TopAppBarSm(props) {
 
   return (
     <>
-      <Offset />
+      {/* `sticky` (pas `fixed`) : reste dans le flux normal tant qu'on n'a
+          pas scrollé, donc s'affiche sous l'avis au chargement au lieu de le
+          chevaucher — contrairement à `fixed`, pas besoin d'un `Offset` ni de
+          calculer sa hauteur pour réserver sa place. */}
       <AppBar
-        position="fixed"
+        position="sticky"
         elevation={0}
         sx={{
           bgcolor: 'background.paper',
           borderBottom: `1px solid ${theme.palette.divider}`,
+          // Force son propre calque de composition : Safari iOS repositionne
+          // parfois mal les éléments sticky/fixed pendant le scroll
+          // (flicker/décalage temporaire), surtout à côté d'un autre élément
+          // à z-index élevé comme <bib-avis>. `translateZ(0)` contourne ce
+          // bug connu de WebKit sans effet visible ailleurs.
+          transform: 'translateZ(0)',
         }}
       >
         <Container
@@ -81,16 +93,23 @@ export default function TopAppBarSm(props) {
               </Link>
             )}
 
-            <IconButton
-              onClick={toggleDrawer(true)}
-              aria-label="Ouvrir le menu de navigation"
-              sx={{
-                ml: 'auto',
-                color: 'text.primary',
-              }}
-            >
-              <MenuBurger open={open} onClick={toggleDrawer(true)} />
-            </IconButton>
+            {/* Loupe + burger regroupés dans un même Box pour rester collés à droite
+                malgré le `justify-content: space-between` du Toolbar parent */}
+            <Box sx={{ display: 'flex', alignItems: 'center', ml: open ? 'auto' : 0 }}>
+              {/* Fond du header toujours blanc ici : icône sombre pour rester visible
+                  (contrairement à TopAppBar.jsx, blanche par défaut sur fond transparent) */}
+              {!open && <SearchButton dark open={searchOpen} onClick={() => setSearchOpen(true)} />}
+
+              <IconButton
+                onClick={toggleDrawer(true)}
+                aria-label="Ouvrir le menu de navigation"
+                sx={{
+                  color: 'text.primary',
+                }}
+              >
+                <MenuBurger open={open} onClick={toggleDrawer(true)} dark />
+              </IconButton>
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>
@@ -102,6 +121,7 @@ export default function TopAppBarSm(props) {
       >
         <SideNavContent onClose={toggleDrawer(false)} />
       </SideNavSm>
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   )
 }

@@ -8,6 +8,8 @@ import SideNav from '@/components/_layout/SideNav/SideNav'
 import SideNavContent from '@/components/_layout/SideNav/SideNavContent'
 import MenuBurger from './MenuBurger'
 import LogoLink from './LogoLink'
+import SearchButton from './SearchButton'
+import SearchOverlay, { isSearchOverlayOpenInUrl } from './SearchOverlay'
 import pages from './menu'
 import { useLocation } from '@reach/router'
 
@@ -54,6 +56,7 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
   const gatsbyLocation = useLocation()
   const location = propLocation || gatsbyLocation
   const [open, setOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(isSearchOverlayOpenInUrl) // ouverture de la modale de recherche (SearchOverlay)
   const theme = useTheme()
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -154,10 +157,14 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
               )
             })}
             <JeDonneButton trigger={trigger} transitionProps={transitionProps} />
+            {/* Groupe recherche + menu : un `Stack` imbriqué pour garder le même
+                espacement (8px) entre les deux icônes, avec un `ml` plus généreux
+                pour le séparer nettement du bouton "Je donne" */}
+            <Stack direction="row" spacing={1} sx={{ alignItems: 'center', ml: 1 }}>
+              <SearchButton dark={trigger} open={searchOpen} onClick={() => setSearchOpen(true)} />
+              <MenuBurger open={open} onClick={toggleDrawer(true)} dark={trigger} />
+            </Stack>
           </Stack>
-          <Box >
-            <MenuBurger open={open} onClick={toggleDrawer(true)} />
-          </Box>
         </Toolbar>
       </AppBar>
        <SideNav
@@ -167,6 +174,7 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
       >
         <SideNavContent onClose={toggleDrawer(false)} />
       </SideNav>
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   )
 }

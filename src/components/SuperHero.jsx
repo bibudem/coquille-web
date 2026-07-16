@@ -6,6 +6,11 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import Section from '@/components/Section'
 import { SuperHeroContext } from '@/components/_layout/SuperHero/SuperHeroContext'
 import { useSmall } from '@/hooks/use-small'
+import { useBannersHeight } from '@/hooks/use-banners-height'
+
+// Sur ce type de page (niveau 1), <bib-avis> est rendu avant le header (voir
+// PageTemplate.jsx) : il faut donc en tenir compte pour positionner le hero.
+const BANNER_SELECTORS = ['udem-urgence', 'bib-avis']
 
 export const inlineOffset = '3.75rem'
 
@@ -41,6 +46,7 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
 
   const isSmall = useSmall()
   const [contextData, setContextData] = useState({})
+  const bannersHeight = useBannersHeight(BANNER_SELECTORS)
 
   const data = useStaticQuery(graphql`
     query ImageQuery {
@@ -83,7 +89,9 @@ export default function SuperHero({ title, subTitle, imageName, alt = '', lvl, .
           className="bib-comp-super-hero"
           sx={{
             position: 'absolute',
-            top: 0,
+            // Décale le hero sous les bannières d'avis quand elles sont actives
+            // (mesurées dynamiquement, leur hauteur n'est pas connue au build).
+            top: bannersHeight,
             left: 0,
             ...(isSmall ? mobileBoxSize : boxSize),
             color: '#fff',

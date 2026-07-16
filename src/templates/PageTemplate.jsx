@@ -116,6 +116,11 @@ export default function PageTemplate({ pageContext, children, data, location }) 
               '--bib-avis-spacing-inline': '0',
               position: 'relative',
               zIndex: theme.zIndex.appBar + 1,
+              // Calque de composition propre, comme sur l'AppBar juste en
+              // dessous (voir TopAppBarSm) : évite un repositionnement au
+              // scroll observé sur Safari iOS entre ces deux éléments à
+              // z-index élevé.
+              transform: 'translateZ(0)',
             }}
           />
         )}
@@ -126,7 +131,20 @@ export default function PageTemplate({ pageContext, children, data, location }) 
 
         {lvl > 1 && superHero && <SuperHero title={superHero.title} imageName={superHero.imageName} lvl={lvl} />}
 
-        {lvl >= 2 && <bib-avis bouton-fermer />}
+        {/* `--bib-avis-spacing-inline` aligné sur le gutter de LayoutContainer
+            (20px sous `md`, 64px au-delà) : sans lui, l'avis n'a pas la même
+            marge horizontale que le fil d'Ariane et le contenu qui suivent,
+            et se sent visuellement détaché du reste du site. `marginTop`
+            (une vraie marge CSS, pas une variable interne au composant)
+            écarte l'avis du hero juste au-dessus, jusqu'à `md` inclus : sur
+            grand écran (`lg`+), l'avis collée directement sous la photo
+            reste le rendu voulu. */}
+        {lvl >= 2 && (
+          <bib-avis
+            bouton-fermer
+            style={{ '--bib-avis-spacing-inline': isSmall ? '20px' : '64px', marginTop: isMedium ? '1rem' : 0 }}
+          />
+        )}
 
         {hasSecondaryNav ? (
           isMedium ? (
