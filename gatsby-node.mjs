@@ -426,24 +426,24 @@ function formatDate(dateString) {
   })
 }
 
-export async function sourceNodes({ actions, createNodeId, createContentDigest }) {
-  const { createNode } = actions
+// export async function sourceNodes({ actions, createNodeId, createContentDigest }) {
+//   const { createNode } = actions
 
-  const udeMNews = await fetchUdeMNews()
+//   const udeMNews = await fetchUdeMNews()
 
-  udeMNews.forEach((item, index) => {
-    const nodeData = {
-      ...item,
-      type: 'udem',
-    }
+//   udeMNews.forEach((item, index) => {
+//     const nodeData = {
+//       ...item,
+//       type: 'udem',
+//     }
 
-    createNode({
-      ...nodeData,
-      id: createNodeId(`udem-news-${index}`),
-      internal: {
-        type: 'UdemNews',
-        contentDigest: createContentDigest(nodeData),
-      },
-    })
-  })
-}
+//     createNode({
+//       ...nodeData,
+//       id: createNodeId(`udem-news-${index}`),
+//       internal: {
+//         type: 'UdemNews',
+//         contentDigest: createContentDigest(nodeData),
+//       },
+//     })
+//   })
+// }
