@@ -66,17 +66,6 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
           }
         }
       }
-      allUdemNews(sort: { pubDate: DESC }) {
-        nodes {
-          id
-          title
-          link
-          description
-          pubDate # champ string ISO, formatted en JS
-          enclosure
-          type
-        }
-      }
       images: allFile(filter: { sourceInstanceName: { eq: "nouvelles" }, internal: { mediaType: { glob: "image/*" } } }) {
         nodes {
           name
@@ -162,31 +151,6 @@ export default function ListeNouvellesCombinees({ title = 'Nouvelles', id = 'nou
           }
         })
         .filter(Boolean)
-
-      // Extraction nouvelles UdeM
-      const udemNews = data.allUdemNews.nodes.map((node) => {
-        // formater date pubDate en string locale FR
-        const dateObj = node.pubDate ? new Date(`${node.pubDate}T00:00:00-04:00`) : null
-        const { id, description, enclosure: imageUrl = null, link, pubDate: date = null, title } = node
-
-        return {
-          id,
-          type: 'udem',
-          title,
-          description,
-          date,
-          formattedDate: dateObj
-            ? dateObj.toLocaleDateString('fr', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                timeZone: 'UTC',
-              })
-            : '',
-          link,
-          imageUrl,
-        }
-      })
 
       // Fusionner et trier par date décroissante
       const combinedNews = [...localNews, ...externalNews].sort((a, b) => {
