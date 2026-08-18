@@ -11,7 +11,6 @@ export function SecondaryNav({ currentLocation, navigationOrder = false, ...rest
 
   useEffect(() => {
     function markActive(node) {
-      node.isTest = true
       if (node.children) {
         const activeChild = node.children.find((node) => currentLocation.pathname.startsWith(node.path))
         if (activeChild) {
