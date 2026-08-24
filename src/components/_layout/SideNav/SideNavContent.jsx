@@ -43,7 +43,7 @@ const cards = [
     title: 'Boîte à outils',
     links: [
       { label: 'Bases de données A-Z', href: 'https://boite-outils.bib.umontreal.ca/az.php' },
-      { label: 'Guides disciplinaires', href: 'https://boite-outils.bib.umontreal.ca/disciplines' },
+      { label: 'Ressources par discipline', href: 'https://boite-outils.bib.umontreal.ca/disciplines' },
       { label: 'Comment citer', href: 'https://boite-outils.bib.umontreal.ca/citer' },
       { label: "Droit d'auteur", href: 'https://boite-outils.bib.umontreal.ca/recherche/droit-auteur' },
     ],
