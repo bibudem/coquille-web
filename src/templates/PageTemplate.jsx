@@ -47,22 +47,72 @@ export default function PageTemplate({ pageContext, children, data, location }) 
     setHasSecondaryNav(lvl > 1)
   }, [lvl])
 
-  // NOUVEAU : Gestion du scroll vers les ancres
+  // Gestion du scroll vers les ancres : on recorrige la position tant que
+  // la page bouge encore (images qui chargent, contenu injecté après une
+  // redirection, etc.), en s'arrêtant dès que la personne scrolle elle-même.
   useEffect(() => {
-    if (location.hash) {
-      // Petit délai pour s'assurer que le DOM est complètement chargé
-      const timer = setTimeout(() => {
-        const element = document.getElementById(location.hash.substring(1))
-        if (element) {
-          element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          })
-        }
-      }, 100)
+    if (!location.hash || typeof window === 'undefined') return undefined
 
-      return () => clearTimeout(timer)
+    const id = location.hash.substring(1)
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    const RESIZE_DEBOUNCE = 100
+    const IDLE_TIMEOUT = 3000
+    const MAX_DURATION = 15000 // filet de sécurité absolu
+
+    let stopped = false
+    let debounceTimer
+    let idleTimer
+
+    const scrollToTarget = () => {
+      const element = document.getElementById(id)
+      if (element) {
+        element.scrollIntoView({
+          behavior: prefersReducedMotion ? 'auto' : 'smooth',
+          block: 'start',
+        })
+      }
     }
+
+    const stop = () => {
+      if (stopped) return
+      stopped = true
+      clearTimeout(debounceTimer)
+      clearTimeout(idleTimer)
+      clearTimeout(initialTimer)
+      clearTimeout(maxTimer)
+      resizeObserver.disconnect()
+      window.removeEventListener('wheel', stop)
+      window.removeEventListener('touchstart', stop)
+      window.removeEventListener('keydown', stop)
+    }
+
+    const scheduleIdleStop = () => {
+      clearTimeout(idleTimer)
+      idleTimer = setTimeout(stop, IDLE_TIMEOUT)
+    }
+
+    const initialTimer = setTimeout(() => {
+      scrollToTarget()
+      scheduleIdleStop()
+    }, 50)
+
+    const resizeObserver = new ResizeObserver(() => {
+      if (stopped) return
+      clearTimeout(debounceTimer)
+      debounceTimer = setTimeout(scrollToTarget, RESIZE_DEBOUNCE)
+      scheduleIdleStop()
+    })
+    resizeObserver.observe(document.body)
+
+    // La personne garde la priorité : un geste de scroll manuel arrête tout.
+    window.addEventListener('wheel', stop, { passive: true })
+    window.addEventListener('touchstart', stop, { passive: true })
+    window.addEventListener('keydown', stop)
+
+    const maxTimer = setTimeout(stop, MAX_DURATION)
+
+    return stop
   }, [location.hash, location.pathname])
 
   if (typeof window !== 'undefined') {
