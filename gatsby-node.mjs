@@ -296,7 +296,6 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
               title
               template
               type
-              noIndex
               noindex
             }
             body
