@@ -129,8 +129,7 @@ function convertTZ(date) {
 export function Head(props) {
   const { pageContext, location } = props
   const { frontmatter = {} } = pageContext
-  const { date, title, newsUrl, authors, noIndex } = frontmatter
-  const { pathname } = location
+  const { date, title, authors } = frontmatter
   const d = convertTZ(date)
 
   const jsonld = {

@@ -33,7 +33,7 @@ const SEARCH_EXCLUDED_DIR_PREFIXES = ['dev', 'consent']
 const SEARCH_EXCLUDED_NAMES = ['tests', 'fiche-personnel', 'widget-horaire']
 
 // N'indexer que le contenu réellement destiné au grand public : en plus des
-// dossiers/fichiers de démo ci-dessus, on exclut toute page marquée `noIndex`
+// dossiers/fichiers de démo ci-dessus, on exclut toute page marquée `noindex`
 // (ou `noindex`, la casse est incohérente selon les fichiers de contenu) —
 // ce champ existant sert déjà à dire aux moteurs de recherche externes de ne
 // pas indexer la page (voir HtmlHead.jsx) ; la recherche interne du site doit
@@ -47,7 +47,7 @@ function isSearchExcluded(node) {
     return true
   }
   const frontmatter = node.childMdx?.frontmatter
-  return Boolean(frontmatter?.noIndex || frontmatter?.noindex)
+  return Boolean(frontmatter?.noindex)
 }
 
 // Motifs identifiant une ligne entièrement composée de code JS/JSX (pas de texte à en tirer)
@@ -204,7 +204,6 @@ async function doCreatePages({ graphql, actions, reporter }) {
               slug
               title
               template
-              noIndex
               noindex
               secondaryNav {
                 hidden
