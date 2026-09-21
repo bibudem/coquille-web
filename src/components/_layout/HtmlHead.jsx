@@ -3,7 +3,7 @@ import SEO from '@/components/_layout/SEO'
 export function Head({ pageContext, location, ...rest }) {
   const { children } = rest
   const { frontmatter = {} } = pageContext
-  const { noIndex, title } = frontmatter
+  const { noindex, title } = frontmatter
   const { pathname } = location
   return (
     <>
@@ -18,7 +18,7 @@ export function Head({ pageContext, location, ...rest }) {
       <script type="module" src="https://cdn.jsdelivr.net/gh/bibudem/ui@1/dist/bib-clarity.min.js"></script>
       <script type="module" src="https://corvee.bib.umontreal.ca/loader.js" defer></script>
 
-      {noIndex && <meta name="robots" content="noindex, nofollow" />}
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
 
       {children}
     </>
