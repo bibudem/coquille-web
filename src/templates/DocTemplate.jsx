@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { useTheme } from '@mui/material'
@@ -18,24 +17,14 @@ import LayoutContainer from '@/components/utils/LayoutContainer'
 import { useSmall } from '@/hooks/use-small'
 import commonComponents from './commonComponents'
 
-function getCurrentPageLevel(location) {
-  return location.pathname.split('/').filter((item) => item).length
-}
-
 export default function PageTemplate({ pageContext, children, data, location }) {
   const isSmall = useSmall('md')
   const isMedium = useSmall('lg')
   const theme = useTheme()
-  const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
-  const [lvl, setLvl] = useState(getCurrentPageLevel(location))
-
-  useEffect(() => {
-    setLvl(getCurrentPageLevel(location))
-  }, [location])
-
-  useEffect(() => {
-    setHasSecondaryNav(lvl > 1)
-  }, [lvl])
+  // Voir PageTemplate.jsx : `lvl` vient du build (gatsby-node.mjs), plus de
+  // calcul côté client.
+  const lvl = pageContext.lvl
+  const hasSecondaryNav = lvl > 1
 
   if (typeof window !== 'undefined') {
     window.bib = window.bib || {}

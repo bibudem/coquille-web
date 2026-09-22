@@ -9,7 +9,16 @@ const StyledLi = styled('li')({
 })
 
 export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
-  const { title, path, isActive = false, children = false } = item
+  const { title, path, children = false } = item
+  // Dérivé de l'URL courante à chaque rendu plutôt que lu depuis `item.isActive` :
+  // ce champ était auparavant écrit une fois pour toutes par `markActive()` en
+  // mutant directement les noeuds de site-navigation.json (un module importé,
+  // donc un seul objet partagé et mis en cache par le navigateur). Comme
+  // `markActive()` ne faisait que positionner `isActive = true` sans jamais le
+  // réinitialiser, une navigation en repartait avec les marquages de la
+  // précédente encore en place : l'ancienne entrée active restait surlignée en
+  // plus de la nouvelle.
+  const isActive = Boolean(currentLocation?.pathname?.startsWith(path))
   const [linkStyles, setLinkStyles] = useState({})
 
   const LINK_STYLES_BASE = {
