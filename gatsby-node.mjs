@@ -28,6 +28,19 @@ const nouvelleTemplate = resolve('./src/templates/NouvelleTemplate.jsx')
 // Entrées accumulées pour l'index de recherche du site, écrites dans public/search-index.json
 const searchEntries = []
 
+// Niveau d'une page dans l'arborescence du site, à partir de son `path` final
+// (ex: `/obtenir/` → 1, `/obtenir/numerisation/` → 2). Calculé ici, une seule
+// fois par page au moment du build, et propagé aux templates via `context.lvl`
+// (voir PageTemplate/DocTemplate/NouvelleTemplate) : ces derniers en dérivaient
+// auparavant une copie chacun à partir de `location.pathname`, côté client
+// uniquement (`useState`/`useEffect`), ce qui rendait le HTML statique généré
+// par le SSR incohérent avec le rendu obtenu après hydratation (le menu de
+// navigation secondaire, entre autres, n'apparaissait jamais dans le HTML
+// statique).
+function getPageLevel(path) {
+  return path.split('/').filter(Boolean).length
+}
+
 // Pages utilitaires/démo à ne jamais exposer dans la recherche du site
 const SEARCH_EXCLUDED_DIR_PREFIXES = ['dev', 'consent']
 const SEARCH_EXCLUDED_NAMES = ['tests', 'fiche-personnel', 'widget-horaire']
@@ -246,7 +259,7 @@ async function doCreatePages({ graphql, actions, reporter }) {
       component: `${templateFullPath}?__contentFilePath=${node.absolutePath}`,
       // You can use the values in this context in
       // our page layout component
-      context: { id: node.id }
+      context: { id: node.id, lvl: getPageLevel(path) }
     })
 
     // On alimente l'index de recherche ici (plutôt que dans une passe séparée)
@@ -333,7 +346,7 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
       component: `${templateFullPath}?__contentFilePath=${node.absolutePath}`,
       // You can use the values in this context in
       // our page layout component
-      context: { id: node.id }
+      context: { id: node.id, lvl: getPageLevel(path) }
     })
 
     // Même principe que dans doCreatePages : on réutilise le `path` déjà calculé.
