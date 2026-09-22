@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { Box } from '@mui/material'
 import NavList from './NavList'
 import NavItem from './NavItem'
@@ -6,43 +6,26 @@ import secondaryNavData from '../../../../public/site-navigation.json'
 
 export function SecondaryNav({ currentLocation, ...rest }) {
   const { sx, children, ...props } = rest
-  const [data, setData] = useState(null)
 
-  useEffect(() => {
-    function markActive(node) {
-      node.isTest = true
-      if (node.children) {
-        const activeChild = node.children.find((node) => currentLocation.pathname.startsWith(node.path))
-        if (activeChild) {
-          activeChild.isActive = true
-          markActive(activeChild)
-        }
-      }
-    }
+  // Quel élément est actif se déduit désormais à chaque rendu, dans NavItem, à
+  // partir de `currentLocation` (voir NavItem.jsx) — on se contente ici de
+  // retrouver la section racine correspondant à l'URL courante, sans plus
+  // muter les noeuds de site-navigation.json comme le faisait l'ancien
+  // `markActive()`.
+  const data = useMemo(() => {
+    if (!secondaryNavData || !currentLocation) return null
 
-    if (secondaryNavData && currentLocation) {
-      const rootPath = `/${currentLocation.pathname
-        .split('/')
-        .filter((_) => _) // Quick way to get rid of falsy items in the array
-        .shift()}/`
-      const rootNode = secondaryNavData.find(({ path }) => path === rootPath)
+    const rootPath = `/${currentLocation.pathname
+      .split('/')
+      .filter((_) => _) // Quick way to get rid of falsy items in the array
+      .shift()}/`
 
-      // rootNode est absent pour les pages hors de content/pages (ex. une page
-      // définie directement dans src/pages) : site-navigation.json n'est généré
-      // qu'à partir des pages de contenu. Pas de section à afficher dans ce cas,
-      // plutôt qu'un plantage.
-      if (rootNode) {
-        markActive(rootNode)
-        setData(rootNode)
-      }
-    }
-  }, [secondaryNavData, currentLocation])
-
-  useEffect(() => {
-    if (data) {
-      console.log('ici data:', data)
-    }
-  }, [data])
+    // rootNode est absent pour les pages hors de content/pages (ex. une page
+    // définie directement dans src/pages) : site-navigation.json n'est généré
+    // qu'à partir des pages de contenu. Pas de section à afficher dans ce cas,
+    // plutôt qu'un plantage.
+    return secondaryNavData.find(({ path }) => path === rootPath) ?? null
+  }, [currentLocation])
 
   return (
     data && (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { Box, useTheme } from '@mui/material'
@@ -23,29 +23,22 @@ import { SecondaryNav } from '@/components/_layout/SecondaryNav/SecondaryNav'
 import commonComponents from './commonComponents'
 import SuperHero from '@/components/_layout/SuperHero/SuperHeroLvl2'
 
-function getCurrentPageLevel(location) {
-  return location.pathname.split('/').filter((item) => item).length
-}
-
 export default function PageTemplate({ pageContext, children, data, location }) {
   const isSmall = useSmall('md')
   const isMedium = useSmall('lg')
   const theme = useTheme()
-  const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
-  const [lvl, setLvl] = useState(getCurrentPageLevel(location))
+  // Calculé au build à partir du `path` de la page (voir gatsby-node.mjs) et
+  // fourni via `pageContext.lvl` : un simple const dérivé ici, identique côté
+  // serveur et client dès le premier rendu, contrairement à l'ancien calcul
+  // client-only (`useState`/`useEffect` sur `location.pathname`) qui faisait
+  // que le HTML statique ne contenait jamais le menu de navigation secondaire.
+  const lvl = pageContext.lvl
+  const hasSecondaryNav = lvl > 1
 
   // Déterminer si on est sur la page d'accueil
   const isHomePage = location.pathname === '/' || location.pathname === ''
 
   const { superHero } = pageContext.frontmatter
-
-  useEffect(() => {
-    setLvl(getCurrentPageLevel(location))
-  }, [location])
-
-  useEffect(() => {
-    setHasSecondaryNav(lvl > 1)
-  }, [lvl])
 
   // Gestion du scroll vers les ancres : on recorrige la position tant que
   // la page bouge encore (images qui chargent, contenu injecté après une
