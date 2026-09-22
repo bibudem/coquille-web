@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { Box } from '@mui/material'
 import NavList from './NavList'
 import NavItem from './NavItem'
@@ -7,30 +7,22 @@ import secondaryNavData from '../../../../public/site-navigation.json'
 
 export function SecondaryNav({ currentLocation, navigationOrder = false, ...rest }) {
   const { sx, children, ...props } = rest
-  const [data, setData] = useState(null)
 
-  useEffect(() => {
-    function markActive(node) {
-      if (node.children) {
-        const activeChild = node.children.find((node) => currentLocation.pathname.startsWith(node.path))
-        if (activeChild) {
-          activeChild.isActive = true
-          markActive(activeChild)
-        }
-      }
-    }
+  // Quel élément est actif se déduit désormais à chaque rendu, dans NavItem, à
+  // partir de `currentLocation` (voir NavItem.jsx) — on se contente ici de
+  // retrouver la section racine correspondant à l'URL courante, sans plus
+  // muter les noeuds de site-navigation.json comme le faisait l'ancien
+  // `markActive()`.
+  const data = useMemo(() => {
+    if (!secondaryNavData || !currentLocation) return null
 
-    if (secondaryNavData && currentLocation) {
-      const rootPath = `/${currentLocation.pathname
-        .split('/')
-        .filter(Boolean) // Quick way to get rid of falsy items in the array
-        .shift()}/`
-      const rootNode = secondaryNavData.find(({ path }) => path === rootPath)
+    const rootPath = `/${currentLocation.pathname
+      .split('/')
+      .filter(Boolean) // Quick way to get rid of falsy items in the array
+      .shift()}/`
 
-      markActive(rootNode)
-      setData(rootNode)
-    }
-  }, [secondaryNavData, currentLocation])
+    return secondaryNavData.find(({ path }) => path === rootPath) ?? null
+  }, [currentLocation])
 
   return (
     data && (
