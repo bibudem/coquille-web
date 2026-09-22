@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { ListItemIcon, ListItemText as MuiListItemText, MenuItem, MenuList, Paper, useScrollTrigger, useTheme, IconButton, Box, useMediaQuery } from '@mui/material'
 import { CalendarBlank, Chats, ClockCountdown, Wrench } from '@phosphor-icons/react'
 import Div from '@/components/utils/Div'
@@ -21,11 +22,38 @@ function ListItemText({ children, trigger }) {
   )
 }
 
+// Délai sans défilement après lequel le menu se réduit de lui-même, même si
+// la page n'a jamais été défilée au-delà du seuil qui déclenche `trigger`.
+const AUTO_COLLAPSE_DELAY = 3000
+
 export function QuickLinks() {
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 50,
   })
+  const [autoCollapsed, setAutoCollapsed] = useState(false)
+
+  // Réduit automatiquement le menu si aucun défilement n'est détecté dans les
+  // AUTO_COLLAPSE_DELAY ms suivant le chargement de la page : au premier
+  // défilement, on annule le minuteur et on laisse `trigger` (ci-dessus)
+  // gouverner l'état réduit/déployé comme avant.
+  useEffect(() => {
+    const timer = setTimeout(() => setAutoCollapsed(true), AUTO_COLLAPSE_DELAY)
+
+    function handleScroll() {
+      clearTimeout(timer)
+      window.removeEventListener('scroll', handleScroll)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  const collapsed = trigger || autoCollapsed
 
   const theme = useTheme()
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'))
@@ -69,15 +97,15 @@ export function QuickLinks() {
           zIndex: theme.zIndex.drawer,
           pointerEvents: 'none',
           color: '#fff',
-          transform: trigger ? 'translateX(calc(100% - 65px))' : 'translateX(0)',
-          transitionTimingFunction: theme.transitions.easing.md3[trigger ? 'emphasizedDecelerate' : 'emphasizedAccelerate'],
-          transitionDuration: `${theme.transitions.duration.md3[trigger ? 'medium4' : 'short4']}ms`,
+          transform: collapsed ? 'translateX(calc(100% - 65px))' : 'translateX(0)',
+          transitionTimingFunction: theme.transitions.easing.md3[collapsed ? 'emphasizedDecelerate' : 'emphasizedAccelerate'],
+          transitionDuration: `${theme.transitions.duration.md3[collapsed ? 'medium4' : 'short4']}ms`,
           backgroundColor: theme.vars.palette.bleuPrincipal.main,
           pointerEvents: 'auto',
           borderRadius: '12px 0 0 12px',
           transitionProperty: 'transform',
           '&:hover': {
-            transform: isLargeScreen && trigger ? 'translateX(0)' : null,
+            transform: isLargeScreen && collapsed ? 'translateX(0)' : null,
             transitionTimingFunction: theme.transitions.easing.md3.emphasizedDecelerate,
             transitionDuration: `${theme.transitions.duration.md3.medium4}ms`,
           },
