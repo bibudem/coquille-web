@@ -57,7 +57,7 @@ Le frontmatter courant :
 ---
 title: Titre de la page
 crumbLabel: Libellé court      # remplace le segment d'URL dans le fil d'Ariane
-template: doc                  # doc | blank | consentServer ; absent = PageTemplate
+template: doc                  # doc | blank ; absent = PageTemplate
 secondaryNav: ...              # entrées de la navigation secondaire
 superHero: ...
 noindex: true                  # exclut la page des moteurs ET de la recherche interne
@@ -66,7 +66,8 @@ noindex: true                  # exclut la page des moteurs ET de la recherche i
 
 - `template: xyz` est résolu en `src/templates/XyzTemplate.jsx` (voir `gatsby-node.mjs`). Les fichiers sous `content/nouvelles/` utilisent toujours `NouvelleTemplate`.
 - Les composants de `commonComponents.js` sont disponibles sans import. Les autres s'importent en tête du fichier MDX.
-- Les dossiers `content/pages/dev/` et `consent/`, ainsi que `tests.mdx`, sont des pages de démonstration ou utilitaires. Elles sont exclues de la recherche interne (`gatsby-node.mjs`) et, en partie, du sitemap (`gatsby-config.mjs`).
+- Le dossier `content/pages/dev/` et `tests.mdx` sont des pages de démonstration ou utilitaires. Elles sont exclues de la recherche interne (`gatsby-node.mjs`) et, en partie, du sitemap (`gatsby-config.mjs`).
+- Le serveur de consentements (`/consent/server/`, chargé en iframe sur chaque page par `bib-consent`) est une page HTML statique : `static/consent/server/index.html`. Ne la recréez pas en MDX : une page Gatsby y ajouterait toute l'application (~1 Mo) pour chaque visiteur.
 - Le niveau de page (`context.lvl`) est calculé au build dans `gatsby-node.mjs`. Ne le recalculez pas côté client à partir de `location.pathname`, sinon le HTML du SSR ne correspond plus au rendu hydraté.
 
 ## Conventions de code
