@@ -1,11 +1,16 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { Box, Typography, styled, SvgIcon } from '@mui/material'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import SvgIcon from '@mui/material/SvgIcon'
+import { styled } from '@mui/material/styles'
 import MuiAccordion from '@mui/material/Accordion'
 import MuiAccordionSummary from '@mui/material/AccordionSummary'
 import MuiAccordionDetails from '@mui/material/AccordionDetails'
 import Grid from '@mui/material/Grid2'
-import { DoorIcon, MapTrifoldIcon, UsersIcon } from '@phosphor-icons/react'
+import { DoorIcon } from '@phosphor-icons/react/dist/csr/Door'
+import { MapTrifoldIcon } from '@phosphor-icons/react/dist/csr/MapTrifold'
+import { UsersIcon } from '@phosphor-icons/react/dist/csr/Users'
 import Bloc from '@/components/FicheBibliotheque/Bloc'
 import HoraireAujourdhui from '@/components/FicheBibliotheque/HoraireAujourdhui'
 import { useSmall } from '@/hooks/use-small'
@@ -93,7 +98,7 @@ export default function FicheBibliothequeNoTitle({ title, id, codeBib, blocHorai
           name
           relativePath
           childrenImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, height: 600, quality: 80, breakpoints: 400)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 80, breakpoints: 400)
           }
         }
       }

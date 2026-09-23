@@ -1,5 +1,9 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { Box, Card, CardActionArea, CardContent, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
+import CardActionArea from '@mui/material/CardActionArea'
+import CardContent from '@mui/material/CardContent'
+import Typography from '@mui/material/Typography'
 import Button from '@/components/Button'
 import Link from '@/components/Link'
 import { isInternalLink } from '@/utils/link'
@@ -61,7 +65,7 @@ const Header = memo(({ id, children }) => (
 const Title = memo(({ children }) => (
   <Box
     sx={(theme) => ({
-      fontFamily: 'Lora',
+      fontFamily: '"Lora", "Lora Fallback", Georgia, serif',
       fontSize: '1.75rem',
       fontWeight: 500,
       lineHeight: 1.3,

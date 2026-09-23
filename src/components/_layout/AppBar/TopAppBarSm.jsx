@@ -1,19 +1,18 @@
 import { useEffect, useState, useCallback } from 'react'
-import {
-  AppBar,
-  Box,
-  Container,
-  Toolbar,
-  useMediaQuery,
-  IconButton
-} from '@mui/material'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
+import Toolbar from '@mui/material/Toolbar'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import IconButton from '@mui/material/IconButton'
 import { useTheme } from '@mui/material/styles'
 import Link from '@/components/Link'
 import SideNavSm from '@/components/_layout/SideNav/SideNavSm'
 import SideNavContent from '@/components/_layout/SideNav/SideNavContent'
 import MenuBurger from './MenuBurger'
 import SearchButton from './SearchButton'
-import SearchOverlay, { isSearchOverlayOpenInUrl } from './SearchOverlay'
+import LazySearchOverlay from './LazySearchOverlay'
+import { isSearchOverlayOpenInUrl } from './search-overlay-url'
 import LogoUdeMMonochrome from '@/images/logo-udem/logo_udem-noir.svg'
 
 export const appBarHeight = '5rem'
@@ -121,7 +120,7 @@ export default function TopAppBarSm(props) {
       >
         <SideNavContent onClose={toggleDrawer(false)} />
       </SideNavSm>
-      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <LazySearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   )
 }

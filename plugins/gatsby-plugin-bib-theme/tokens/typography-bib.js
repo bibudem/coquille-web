@@ -1,5 +1,5 @@
-const fontStack = '"Figtree", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif'
-const loraStack = '"Lora", Georgia, serif'
+const fontStack = '"Figtree", "Figtree Fallback", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif'
+const loraStack = '"Lora", "Lora Fallback", Georgia, serif'
 
 // Propriétés communes à toutes les variantes typographiques
 const baseTypography = {

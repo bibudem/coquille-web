@@ -1,19 +1,33 @@
 import { useEffect, useRef, useState } from 'react'
-import { Box, Button, CircularProgress, Dialog, IconButton, InputBase, Paper, Stack, SvgIcon, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import CircularProgress from '@mui/material/CircularProgress'
+import Dialog from '@mui/material/Dialog'
+import IconButton from '@mui/material/IconButton'
+import InputBase from '@mui/material/InputBase'
+import Paper from '@mui/material/Paper'
+import Stack from '@mui/material/Stack'
+import SvgIcon from '@mui/material/SvgIcon'
+import ToggleButton from '@mui/material/ToggleButton'
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
+import Typography from '@mui/material/Typography'
 import { alpha, styled } from '@mui/material/styles'
 import { visuallyHidden } from '@mui/utils'
-import { HouseIcon, MagnifyingGlassIcon, XIcon } from '@phosphor-icons/react'
+import { HouseIcon } from '@phosphor-icons/react/dist/csr/House'
+import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/csr/MagnifyingGlass'
+import { XIcon } from '@phosphor-icons/react/dist/csr/X'
 
 import Link from '@/components/Link'
 import SofiaSVG from '@/icons/sofia.svg'
 import ArrowRightCircleSVG from '@/icons/arrow-right-circle.svg'
 import { useSearchIndex } from '@/hooks/use-search-index'
+import { PARAM_OPEN } from './search-overlay-url'
 
 const DEBOUNCE_MS = 200
 
 // Clés de requête dédiées à cette modale (préfixées `s`) pour ne pas entrer
 // en collision avec un `?q=` propre à la page visitée (ex. RepertoirePersonnel).
-const PARAM_OPEN = 'search'
+// PARAM_OPEN vit dans search-overlay-url.js (lu sans charger ce module).
 const PARAM_QUERY = 'sq'
 const PARAM_SCOPE = 'sscope'
 
@@ -108,13 +122,6 @@ function readSearchState() {
     q: params.get(PARAM_QUERY) ?? '',
     scope: SEARCH_SCOPES.some(s => s.key === scope) ? scope : 'site',
   }
-}
-
-// Utilisé par TopAppBar/TopAppBarSm pour initialiser `searchOpen` avant même
-// le premier rendu (lien profond partagé, ou retour arrière atterrissant
-// directement sur cet état) — évite un flash fermé→ouvert au montage.
-export function isSearchOverlayOpenInUrl() {
-  return readSearchState().open
 }
 
 // ---------------------------------------------------------------------------

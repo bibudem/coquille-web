@@ -1,4 +1,4 @@
-import { styled } from '@mui/material'
+import { styled } from '@mui/material/styles'
 
 const Figure = styled('figure')(({ theme }) => ({
   padding: '0 0 0 30px',

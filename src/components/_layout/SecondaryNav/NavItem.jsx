@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Link, styled } from '@mui/material'
-import { CaretRightIcon } from '@phosphor-icons/react'
+import Link from '@mui/material/Link'
+import { styled } from '@mui/material/styles'
+import { CaretRightIcon } from '@phosphor-icons/react/dist/csr/CaretRight'
 import NavList from './NavList'
 
 const StyledLi = styled('li')({
@@ -26,7 +27,7 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
     alignSelf: 'stretch',
     alignItems: 'center',
     color: '#222930',
-    fontFamily: 'Figtree',
+    fontFamily: '"Figtree", "Figtree Fallback", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif',
     '&.active, &:hover': {
       color: 'var(--bib-palette-bleuPrincipal-main)',
     },

@@ -1,6 +1,6 @@
 import { useLocation } from '@reach/router'
 import { useEffect } from 'react'
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
 import LayoutContainer from '@/components/utils/LayoutContainer'
 import codeBibs from 'code-bib'
 

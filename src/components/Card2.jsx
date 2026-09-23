@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import { styled, useTheme } from '@mui/material'
+import { styled, useTheme } from '@mui/material/styles'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardActionArea from '@mui/material/CardActionArea'
 import Grid from '@mui/material/Grid2'
 
-import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
+import { ArrowRight } from '@phosphor-icons/react/dist/csr/ArrowRight'
+import { ArrowUpRight } from '@phosphor-icons/react/dist/csr/ArrowUpRight'
 import { isInternalLink } from '@/utils/link'
 import { getContrastColor } from '../../plugins/gatsby-plugin-bib-theme/tokens/tokens.js'
 

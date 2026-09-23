@@ -1,5 +1,8 @@
-import { Alert as MuiAlert } from '@mui/material'
-import { CheckCircleIcon, InfoIcon, WarningIcon, WarningDiamondIcon } from '@phosphor-icons/react'
+import MuiAlert from '@mui/material/Alert'
+import { CheckCircleIcon } from '@phosphor-icons/react/dist/csr/CheckCircle'
+import { InfoIcon } from '@phosphor-icons/react/dist/csr/Info'
+import { WarningIcon } from '@phosphor-icons/react/dist/csr/Warning'
+import { WarningDiamondIcon } from '@phosphor-icons/react/dist/csr/WarningDiamond'
 
 /**
  * Renders a customized Material-UI Alert component with predefined icons for different severity levels.

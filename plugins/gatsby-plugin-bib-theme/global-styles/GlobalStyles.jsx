@@ -1,6 +1,7 @@
-import { GlobalStyles as MuiGlobalStyles } from '@mui/material'
+import MuiGlobalStyles from '@mui/material/GlobalStyles'
 import typography from '../tokens/typography-bib.js'
 import 'modern-normalize/modern-normalize.css'
+import './font-fallbacks.css'
 import './header-anchors.css'
 import './pdf-links.css'
 import './links.css'

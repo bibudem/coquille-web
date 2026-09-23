@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { styled } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import LocalFooter from '@/components/_layout/Footer/LocalFooter'
 import FooterTail from '@/components/_layout/Footer/FooterTail'
 
