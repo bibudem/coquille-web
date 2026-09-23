@@ -160,6 +160,40 @@ export function createSchemaCustomization({ actions }) {
 }
 
 /**
+ * En `gatsby develop`, Gatsby désactive les groupes de découpage par défaut de
+ * webpack (`default` et `defaultVendors`). Chaque gabarit de page MDX
+ * (`PageTemplate.jsx?__contentFilePath=…`) devient alors un chunk qui embarque
+ * sa propre copie de tout ce qu'il importe (mise en page, MUI, MiniSearch…).
+ * Webpack génère et met en cache ce code une fois par page : le cache
+ * .cache/webpack atteignait plusieurs Go après un seul démarrage à froid, et
+ * sa sérialisation occupait une bonne part du temps de démarrage.
+ *
+ * Même chose pour `develop-html` : sans DEV_SSR, Gatsby compile quand même le
+ * moteur de rendu SSR complet (tous les gabarits de page) pour produire la
+ * seule coquille .cache/develop-html/index.html servie en développement.
+ *
+ * On regroupe donc, en développement seulement, les modules partagés par au
+ * moins deux pages dans un chunk commun. Le build de production n'est pas
+ * touché.
+ * @type {import('gatsby').GatsbyNode['onCreateWebpackConfig']}
+ */
+export function onCreateWebpackConfig({ stage, getConfig, actions }) {
+  if (stage !== 'develop' && stage !== 'develop-html') return
+
+  const config = getConfig()
+  config.optimization.splitChunks.cacheGroups.devShared = {
+    chunks: 'async',
+    minChunks: 2,
+    name: 'dev-shared',
+    priority: 20, // sous `framework` et `styles` (40), qui gardent la priorité
+    reuseExistingChunk: true,
+    enforce: true,
+    test: module => module.type !== 'css/mini-extract',
+  }
+  actions.replaceWebpackConfig(config)
+}
+
+/**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
 export async function createPages(api) {
