@@ -96,7 +96,7 @@ export default function FicheBibliotheque({ title, id, codeBib, blocHoraires, bl
           name
           relativePath
           childrenImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, height: 600, quality: 80, breakpoints: 400)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 80, breakpoints: 400)
           }
         }
       }
