@@ -11,7 +11,8 @@ import SideNavSm from '@/components/_layout/SideNav/SideNavSm'
 import SideNavContent from '@/components/_layout/SideNav/SideNavContent'
 import MenuBurger from './MenuBurger'
 import SearchButton from './SearchButton'
-import SearchOverlay, { isSearchOverlayOpenInUrl } from './SearchOverlay'
+import LazySearchOverlay from './LazySearchOverlay'
+import { isSearchOverlayOpenInUrl } from './search-overlay-url'
 import LogoUdeMMonochrome from '@/images/logo-udem/logo_udem-noir.svg'
 
 export const appBarHeight = '5rem'
@@ -119,7 +120,7 @@ export default function TopAppBarSm(props) {
       >
         <SideNavContent onClose={toggleDrawer(false)} />
       </SideNavSm>
-      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <LazySearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   )
 }

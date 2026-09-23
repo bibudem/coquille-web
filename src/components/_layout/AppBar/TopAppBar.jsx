@@ -14,7 +14,8 @@ import SideNavContent from '@/components/_layout/SideNav/SideNavContent'
 import MenuBurger from './MenuBurger'
 import LogoLink from './LogoLink'
 import SearchButton from './SearchButton'
-import SearchOverlay, { isSearchOverlayOpenInUrl } from './SearchOverlay'
+import LazySearchOverlay from './LazySearchOverlay'
+import { isSearchOverlayOpenInUrl } from './search-overlay-url'
 import pages from './menu'
 import { useLocation } from '@reach/router'
 
@@ -179,7 +180,7 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
       >
         <SideNavContent onClose={toggleDrawer(false)} />
       </SideNav>
-      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <LazySearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   )
 }

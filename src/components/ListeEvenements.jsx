@@ -65,7 +65,7 @@ function Title({ children }) {
   return (
     <Box
       sx={{
-        fontFamily: 'Lora',
+        fontFamily: '"Lora", "Lora Fallback", Georgia, serif',
         fontSize: '1.75rem',
         fontWeight: 500,
         lineHeight: 1.5,

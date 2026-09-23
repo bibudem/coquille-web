@@ -303,9 +303,19 @@ export default function ListeFormations({ id, service = 'https://api.bib.umontre
             key={i}
             url={url}
             imageVedette={
-              <img
+              // width/height : les images vedettes des formations sont des
+              // carrés de 300 px. Ces attributs donnent au navigateur leurs
+              // proportions avant le téléchargement : il réserve la place et le
+              // contenu ne saute plus à leur arrivée (le rendu, lui, reste réglé
+              // par le style). Sans image, on n'affiche rien plutôt qu'un
+              // <img> vide.
+              imageVedette && <img
                 src={imageVedette}
                 alt=""
+                width="300"
+                height="300"
+                loading="lazy"
+                decoding="async"
                 style={{
                   width: '100%',
                   height: 'auto',

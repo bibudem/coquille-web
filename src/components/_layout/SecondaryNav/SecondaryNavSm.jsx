@@ -40,7 +40,7 @@ export function SecondaryNav({ currentLocation, ...rest }) {
           <header role="banner">
             <Box
               sx={{
-                fontFamily: 'Lora',
+                fontFamily: '"Lora", "Lora Fallback", Georgia, serif',
                 fontSize: 27,
                 fontWeight: 500,
                 lineHeight: 1.2,

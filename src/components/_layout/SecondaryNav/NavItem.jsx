@@ -27,7 +27,7 @@ export default function NavItem({ item, currentLocation, lvl = 0, ...props }) {
     alignSelf: 'stretch',
     alignItems: 'center',
     color: '#222930',
-    fontFamily: 'Figtree',
+    fontFamily: '"Figtree", "Figtree Fallback", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif',
     '&.active, &:hover': {
       color: 'var(--bib-palette-bleuPrincipal-main)',
     },

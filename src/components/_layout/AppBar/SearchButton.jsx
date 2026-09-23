@@ -1,6 +1,7 @@
 import IconButton from '@mui/material/IconButton'
 import { useTheme } from '@mui/material/styles'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/csr/MagnifyingGlass'
+import { preloadSearchOverlay } from './LazySearchOverlay'
 
 /**
  * Icône de recherche du header, qui déclenche l'ouverture de SearchOverlay.
@@ -14,6 +15,9 @@ import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/csr/MagnifyingGl
  * toujours vrai sur le header mobile (TopAppBarSm, fond blanc fixe), et sur le
  * header desktop (TopAppBar) une fois que `trigger` (scroll) fait passer son
  * fond au blanc — sinon l'icône blanche disparaît sur ce fond blanc.
+ *
+ * Le code de SearchOverlay est chargé à la demande : on le précharge dès le
+ * survol, le toucher ou le focus du bouton pour qu'il soit prêt au clic.
  */
 export default function SearchButton({ onClick, dark = false, open = false }) {
   const theme = useTheme()
@@ -22,6 +26,8 @@ export default function SearchButton({ onClick, dark = false, open = false }) {
   return (
     <IconButton
       onClick={onClick}
+      onPointerEnter={preloadSearchOverlay}
+      onFocus={preloadSearchOverlay}
       aria-label="Rechercher dans le site"
       aria-haspopup="dialog"
       aria-expanded={open}

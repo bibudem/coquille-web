@@ -12,8 +12,14 @@ import { InstagramLogo } from '@phosphor-icons/react/dist/csr/InstagramLogo'
 
 import BibFooterLink from './FooterLink'
 import FooterContainer from './FooterContainer'
-import LogoBibSceauBleu from '@/images/logo-bib/logo-bib-sceau-bleu.svg'
-import LogoBibUBlanc from '@/images/logo-bib/logo-bib-U-blanc.svg'
+
+// Logos du pied de page servis comme fichiers statiques (<img>) plutôt
+// qu'importés comme composants SVG : importés, ils étaient intégrés à la
+// fois au JavaScript commun et au HTML de chaque page (~50 Ko). En <img>,
+// le navigateur les télécharge une fois pour tout le site et les garde en
+// cache ; `loading="lazy"` les charge seulement à l'approche du pied de page.
+const LOGO_BIB_SCEAU_BLEU = '/images/logo-bib/logo-bib-sceau-bleu.svg'
+const LOGO_BIB_U_BLANC = '/images/logo-bib/logo-bib-U-blanc.svg'
 
 const FooterLink = styled(BibFooterLink)(({ theme }) => ({
   display: 'inline-flex',
@@ -115,7 +121,13 @@ export default function LocalFooter() {
           }}
         >
           <FooterLink to="/" aria-label="Accueil" sx={{ justifyContent: 'left' }}>
-            <LogoBibUBlanc
+            <img
+              src={LOGO_BIB_U_BLANC}
+              alt=""
+              width="255"
+              height="71"
+              loading="lazy"
+              decoding="async"
               style={{
                 width: '100%',
                 maxWidth: '250px',
@@ -241,7 +253,13 @@ export default function LocalFooter() {
               }}
             >
               <FooterLink to="/" aria-label="Accueil">
-                <LogoBibSceauBleu
+                <img
+                  src={LOGO_BIB_SCEAU_BLEU}
+                  alt=""
+                  width="302"
+                  height="302"
+                  loading="lazy"
+                  decoding="async"
                   style={{
                     width: '200px',
                     height: 'auto',

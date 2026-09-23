@@ -21,13 +21,18 @@ const StyledImage = styled('img')(({ theme }) => ({
  * @param {string} [props.align='left'] - L'alignement du contenu textuel, soit 'left' soit 'right'.
  * @param {React.ReactNode} [props.footer] - Contenu à afficher dans le pied de la section.
  * @param {React.ReactNode} props.Image - L'image à afficher.
+ * @param {number} [props.imageWidth] - Largeur réelle de l'image, en pixels.
+ * @param {number} [props.imageHeight] - Hauteur réelle de l'image, en pixels.
+ *   Avec ces deux valeurs, le navigateur réserve la place de l'image avant
+ *   son téléchargement : le contenu en dessous ne saute plus quand elle
+ *   arrive (décalage de mise en page, CLS).
  *
  * @throws {Error} Si la propriété `align` n'est pas 'left' ou 'right'.
  * @throws {Error} Si la propriété `Image` n'est pas fournie.
  *
  * @returns {JSX.Element} Le composant HeroWithImage rendu.
  */
-export default function HeroWithImage({ align = 'left', footer, Image, ...rest }) {
+export default function HeroWithImage({ align = 'left', footer, Image, imageWidth, imageHeight, ...rest }) {
   if (!['left', 'right'].includes(align)) {
     throw new Error(`Invalid align property: ${align}. Muse be one of: \`left\` (default) or \`right\``)
   }
@@ -61,7 +66,7 @@ export default function HeroWithImage({ align = 'left', footer, Image, ...rest }
           justifyContent: 'center',
         }}
       >
-        <StyledImage src={Image} alt="" aria-hidden />
+        <StyledImage src={Image} width={imageWidth} height={imageHeight} alt="" aria-hidden />
       </Grid>
     )
   }

@@ -65,7 +65,7 @@ const Header = memo(({ id, children }) => (
 const Title = memo(({ children }) => (
   <Box
     sx={(theme) => ({
-      fontFamily: 'Lora',
+      fontFamily: '"Lora", "Lora Fallback", Georgia, serif',
       fontSize: '1.75rem',
       fontWeight: 500,
       lineHeight: 1.3,

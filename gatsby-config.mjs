@@ -199,6 +199,11 @@ export default {
             },
           ],
         },
+        // woff2 seulement : avec le défaut ['woff2', 'woff'], le plugin écrit
+        // deux @font-face identiques par graisse et le navigateur téléchargeait
+        // les deux formats (le woff, plus lourd, en plus des woff2 préchargés).
+        // Tous les navigateurs visés (.browserslistrc) lisent le woff2.
+        formats: ['woff2'],
       },
     },
     {
