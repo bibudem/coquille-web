@@ -127,7 +127,7 @@ function Breadcrumb({ data, isRoot, isLeaf }) {
   const { pathname, label, siblings } = data
 
   if (isLeaf) {
-    return <span>{label}</span>
+    return <span aria-current="page">{label}</span>
   }
 
   return (
