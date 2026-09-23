@@ -19,7 +19,7 @@ Site Web des Bibliothèques de l'Université de Montréal, construit avec **Gats
 | `npm run clean`   | Vide `.cache/` et `public/` (utile après un changement de config ou de `gatsby-node`) |
 
 - Il n'y a **ni tests automatisés ni script de lint**. Pour valider un changement, lancez `npm run build`. Il échoue sur les erreurs GraphQL, les erreurs MDX et les erreurs de SSR que `develop` peut laisser passer.
-- Un démarrage à froid de `dev` prend environ 1 min 30 et le build est gourmand en mémoire (`--max-old-space-size=8192`). Ne relancez pas ces commandes sans raison.
+- Un démarrage de `dev` prend environ 1 min à froid (après `npm run clean`) et de 25 s à 1 min 20 à chaud. Le build est gourmand en mémoire (`--max-old-space-size=8192`). Ne relancez pas ces commandes sans raison.
 
 ## Organisation
 
@@ -41,8 +41,11 @@ plugins/            Plugins Gatsby locaux
   gatsby-plugin-mdx/                Copie locale (fork) du plugin officiel ; à ne pas remplacer par la version npm
 static/             Copié tel quel dans public/ (PDF, _redirects, vérifications Google)
 gatsby-config.mjs   Plugins, sources, robots.txt selon la branche git
-gatsby-node.mjs     Création des pages, index de recherche, libellés du fil d'Ariane
+gatsby-node.mjs     Création des pages, index de recherche, libellés du fil d'Ariane,
+                    chunk partagé en développement (onCreateWebpackConfig)
 ```
+
+Le groupe webpack `devShared` de `onCreateWebpackConfig` (étapes `develop` et `develop-html` seulement) regroupe les modules partagés entre pages. Sans lui, chaque page MDX embarque sa propre copie de la mise en page et des bibliothèques : le cache `.cache/webpack` dépasse alors 12 Go et le démarrage à froid prend plus de deux fois plus de temps. Ne le retirez pas.
 
 `public/` et `.cache/` sont **générés** et ignorés par git. Ne mettez jamais un fichier à suivre dans `public/`. Un fichier statique va dans `static/` (même URL publique).
 
@@ -98,5 +101,6 @@ Les images sources vont dans `content/**/images/` ou `src/images/`, avec **2400 
 - Branches : `feature/<sujet>` ou `fix/<sujet>`, fusionnées dans `main` par PR.
 - `main` et `production` sont déployées sur un serveur des Bibliothèques, qui garde un clone git par environnement : `main` pour la pré-production (**bib-pp.umontreal.ca**), `production` pour le site public. `gatsby-config.mjs` déduit l'environnement de la branche git courante (robots.txt) ; `SITE_ENV` peut le forcer. Ne poussez jamais directement sur ces branches.
 - Commits au format **Conventional Commits** en français : `type(portée): description` (ex. `feat(breadcrumbs): …`, `perf(dev): …`, `content(…): …`). Les portées usuelles sont `coquille`, `theme`, `component`, `icons`, `accessibilite`, `nouvelles`, `repertoire-personnel` et `dependencies`. Le corps explique le pourquoi et donne les mesures s'il y a lieu.
-- **Ne committez et ne poussez rien sans l'accord explicite de l'utilisateur.** Rédiger un message de commit ne veut pas dire committer.
+- **Ne committez rien sans l'accord explicite de l'utilisateur.** Rédiger un message de commit ne veut pas dire committer.
+- **Poussez immédiatement chaque commit accepté** (`git push`, ou `git push -u origin <branche>` si la branche n'a pas encore d'amont). L'accord donné pour un commit vaut pour sa poussée. Vérifiez d'abord qu'aucun commit poussé ne contient de ligne d'attribution (voir ci-dessous) : une fois poussé, l'historique est difficile à réécrire.
 - Pas de ligne `Co-Authored-By` ni de mention « Generated with … » dans les commits et les PR.
