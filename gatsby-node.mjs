@@ -175,9 +175,20 @@ export function createSchemaCustomization({ actions }) {
  * On regroupe donc, en développement seulement, les modules partagés par au
  * moins deux pages dans un chunk commun. Le build de production n'est pas
  * touché.
+ *
+ * En production (`build-javascript`), Gatsby génère des source maps complètes
+ * pour tout le JavaScript du site. Personne ne s'en sert hors débogage, et
+ * elles coûtent du temps de build et de l'espace dans public/. On les désactive
+ * ; `BUILD_SOURCEMAPS=1 npm run build` les rétablit au besoin (ex. analyser le
+ * contenu des chunks). Celles du moteur SSR (`build-html`) restent : elles
+ * donnent les numéros de ligne des erreurs de rendu au build.
  * @type {import('gatsby').GatsbyNode['onCreateWebpackConfig']}
  */
 export function onCreateWebpackConfig({ stage, getConfig, actions }) {
+  if (stage === 'build-javascript') {
+    if (!process.env.BUILD_SOURCEMAPS) actions.setWebpackConfig({ devtool: false })
+    return
+  }
   if (stage !== 'develop' && stage !== 'develop-html') return
 
   const config = getConfig()
