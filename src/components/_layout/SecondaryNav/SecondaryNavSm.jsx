@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
 import NavList from './NavList'
 import NavItem from './NavItem'
 import secondaryNavData from '../../../../public/site-navigation.json'
@@ -40,7 +40,7 @@ export function SecondaryNav({ currentLocation, ...rest }) {
           <header role="banner">
             <Box
               sx={{
-                fontFamily: 'Lora',
+                fontFamily: '"Lora", "Lora Fallback", Georgia, serif',
                 fontSize: 27,
                 fontWeight: 500,
                 lineHeight: 1.2,

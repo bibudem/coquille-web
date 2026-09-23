@@ -14,7 +14,10 @@ import ListeEvenements from '@/components/ListeEvenements'
 import ListeNouvellesAccueil from '@/components/ListeNouvellesAccueil'
 import LayoutGrid from  '@/components/utils/LayoutGrid'
 
-import { BookmarkSimpleIcon, PersonSimpleCircleIcon, UsersIcon, VideoIcon } from '@phosphor-icons/react'
+import { BookmarkSimpleIcon } from '@phosphor-icons/react/dist/csr/BookmarkSimple'
+import { PersonSimpleCircleIcon } from '@phosphor-icons/react/dist/csr/PersonSimpleCircle'
+import { UsersIcon } from '@phosphor-icons/react/dist/csr/Users'
+import { VideoIcon } from '@phosphor-icons/react/dist/csr/Video'
 import imageEspace from './images/image-arret-bibliothecaire.webp'
 import imageRecherche from './images/recherche-accueil.webp'
 import imageEnseignement from './images/enseignement-accueil.webp'
@@ -96,7 +99,7 @@ import imageEngagement from './images/engagement-accueil.webp'
 
 <Section bg='vertFonce'>
   <HeroWithImage
-    Image={imageEspace}
+    Image={imageEspace} imageWidth={613} imageHeight={646}
     align="right"
     footer={<Button primary href='/espaces/'>Découvrir nos espaces</Button>}
   >
@@ -110,7 +113,7 @@ import imageEngagement from './images/engagement-accueil.webp'
 <Section bg='bleu100'>
 
 <HeroWithImage
-  Image={imageRecherche}
+  Image={imageRecherche} imageWidth={505} imageHeight={532}
   footer={<Button primary href="/recherche/">Explorer les services pour la recherche</Button>}
 >
 
@@ -131,7 +134,7 @@ Notre équipe de spécialistes s’affaire pour vous donner les moyens de faire 
 <Section bg='bleuPrincipal'>
 
 <HeroWithImage
-  Image={imageEnseignement}
+  Image={imageEnseignement} imageWidth={800} imageHeight={843}
   align='right'
   footer={<Button primary href='/enseignement/'>Découvrir les services pour l’enseignement</Button>}
 >
@@ -147,7 +150,7 @@ Que ce soit en participant à vos cours par des formations ou par une implicatio
 <Section>
 
   <HeroWithImage
-    Image={imageCollections}
+    Image={imageCollections} imageWidth={613} imageHeight={658}
     footer={<Button primary href='/a-propos/nos-collections/nos-collections-speciales'>Explorer les collections spéciales</Button>}
   >
 

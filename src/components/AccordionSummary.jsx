@@ -1,7 +1,8 @@
 import { useContext, useEffect, useId, useState } from 'react'
 import MuiAccordionSummary from '@mui/material/AccordionSummary'
 import MuiAccordionContext from '@mui/material/Accordion/AccordionContext'
-import { Minus, Plus } from '@phosphor-icons/react'
+import { Minus } from '@phosphor-icons/react/dist/csr/Minus'
+import { Plus } from '@phosphor-icons/react/dist/csr/Plus'
 import AccordionsContext from '@/components/AccordionsContext'
 import Div from '@/components/utils/Div'
 

@@ -1,4 +1,4 @@
-import { useTheme } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
 import Grid from '@mui/material/Grid2'
 import { darken } from '@mui/material/styles'
 

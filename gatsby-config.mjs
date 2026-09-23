@@ -1,22 +1,16 @@
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { execSync } from 'node:child_process'
-import GatsbyAdapterNetlifyModule from 'gatsby-adapter-netlify'
 import 'dotenv/config'
 
-const adapter = GatsbyAdapterNetlifyModule.default
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const {
   NODE_ENV,
-  URL: NETLIFY_SITE_URL = 'https://bib.umontreal.ca',
-  DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
-  CONTEXT: NETLIFY_ENV = NODE_ENV,
   // Levier de secours pour forcer l'environnement si `git` est indisponible.
   SITE_ENV,
 } = process.env
-const isNetlifyProduction = NETLIFY_ENV === 'production'
-const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
+const siteUrl = 'https://bib.umontreal.ca'
 
 // Le serveur garde un clone git distinct par environnement (branche `main`
 // pour bib-pp, `production` pour bib) : la branche courante suffit à savoir
@@ -30,7 +24,7 @@ function detectGitBranch() {
 }
 
 const gitBranch = detectGitBranch()
-const robotsEnv = SITE_ENV || (gitBranch === 'production' ? 'production' : gitBranch ? 'preprod' : NETLIFY_ENV)
+const robotsEnv = SITE_ENV || (gitBranch === 'production' ? 'production' : gitBranch ? 'preprod' : NODE_ENV)
 // const GOOGLE_ANALYTICS_ID = 'G-V8J6YFFD4F'
 // const CLARITY_PROJECT_ID = 't10hsivmt0'
 
@@ -38,10 +32,6 @@ const robotsEnv = SITE_ENV || (gitBranch === 'production' ? 'production' : gitBr
  * @type {import('gatsby').GatsbyConfig}
  */
 export default {
-  adapter: adapter({
-    excludeDatastoreFromEngineFunction: false,
-    imageCDN: false,
-  }),
   flags: {
     // DEV_SSR: true,
   },
@@ -209,6 +199,11 @@ export default {
             },
           ],
         },
+        // woff2 seulement : avec le défaut ['woff2', 'woff'], le plugin écrit
+        // deux @font-face identiques par graisse et le navigateur téléchargeait
+        // les deux formats (le woff, plus lourd, en plus des woff2 préchargés).
+        // Tous les navigateurs visés (.browserslistrc) lisent le woff2.
+        formats: ['woff2'],
       },
     },
     {
@@ -256,16 +251,6 @@ export default {
             }]
           },
           preprod: {
-            policy: [{ userAgent: '*', disallow: ['/'] }],
-            sitemap: null,
-            host: null
-          },
-          'branch-deploy': {
-            policy: [{ userAgent: '*', disallow: ['/'] }],
-            sitemap: null,
-            host: null
-          },
-          'deploy-preview': {
             policy: [{ userAgent: '*', disallow: ['/'] }],
             sitemap: null,
             host: null

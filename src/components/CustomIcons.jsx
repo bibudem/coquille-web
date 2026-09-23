@@ -1,4 +1,4 @@
-import { SvgIcon } from '@mui/material'
+import SvgIcon from '@mui/material/SvgIcon'
 import SofiaSVG from '@/icons/sofia.svg'
 import BurgerSVG from '@/icons/burger.svg'
 import ArrowLeftCircle from '@/icons/arrow-left-circle.svg'

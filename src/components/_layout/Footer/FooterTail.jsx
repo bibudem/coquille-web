@@ -1,4 +1,6 @@
-import { Box, ButtonBase, SvgIcon } from '@mui/material'
+import Box from '@mui/material/Box'
+import ButtonBase from '@mui/material/ButtonBase'
+import SvgIcon from '@mui/material/SvgIcon'
 import Grid from '@mui/material/Grid2'
 import { useSmall } from '@/hooks/use-small'
 import ByIcon from '@/icons/by.svg'

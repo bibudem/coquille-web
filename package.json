@@ -9,7 +9,7 @@
     "node": "^20.11.1"
   },
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192 \" npm run gatsby:develop",
+    "dev": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" gatsby develop",
     "build": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" gatsby build",
     "preview": "gatsby serve",
     "clean": "gatsby clean",
@@ -21,7 +21,6 @@
     "@iframe-resizer/react": "^5.4.6",
     "@mdx-js/react": "^3.1.0",
     "@mui/icons-material": "^6.4.1",
-    "@mui/lab": "^6.0.0-beta.29",
     "@mui/material": "^6.4.1",
     "@mui/x-data-grid": "^7.24.0",
     "@phosphor-icons/react": "^2.1.7",
@@ -36,7 +35,6 @@
     "dotenv": "^16.4.7",
     "embla-carousel-react": "^8.5.2",
     "gatsby": "^5.14.3",
-    "gatsby-adapter-netlify": "^1.2.0",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-breadcrumb": "^12.3.2",
     "gatsby-plugin-catch-links": "^5.14.0",

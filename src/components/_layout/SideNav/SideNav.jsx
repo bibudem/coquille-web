@@ -1,4 +1,5 @@
-import { Drawer, useTheme } from '@mui/material'
+import Drawer from '@mui/material/Drawer'
+import { useTheme } from '@mui/material/styles'
 import { appBarHeight } from '../AppBar/TopAppBar'
 
 export default function SideNav({ children, ...props }) {

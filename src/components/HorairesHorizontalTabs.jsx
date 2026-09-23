@@ -1,7 +1,7 @@
 import React, { useState, Children, isValidElement } from 'react';
 import HoraireBibNoTitle from '@/components/HoraireBibNoTitle';
 import FicheBibliothequeNoTitle from '@/components/FicheBibliothequeNoTitle';
-import {ArrowSquareOutIcon} from '@phosphor-icons/react';
+import { ArrowSquareOutIcon } from '@phosphor-icons/react/dist/csr/ArrowSquareOut';
 
 
 export const HorairesHorizontalTabs = ({ 

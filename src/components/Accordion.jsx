@@ -1,5 +1,5 @@
 import { useContext, useEffect, useId } from 'react'
-import { styled } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import MuiAccordion from '@mui/material/Accordion'
 import AccordionsContext from '@/components/AccordionsContext'
 

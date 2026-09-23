@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { useTheme } from '@mui/material'
-import { IconContext } from '@phosphor-icons/react'
+import { useTheme } from '@mui/material/styles'
+import { IconContext } from '@phosphor-icons/react/dist/lib/context'
 
 import TopAppBar from '@/components/_layout/AppBar/TopAppBar'
 import TopAppBarSm from '@/components/_layout/AppBar/TopAppBarSm'

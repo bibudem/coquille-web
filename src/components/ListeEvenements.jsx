@@ -1,10 +1,18 @@
 import { useEffect, useState } from 'react'
 import useSWR from 'swr'
-import { format, isValid } from 'date-fns'
-import { frCA } from 'date-fns/locale'
-import { Box, Divider, List, ListItem, ListItemButton, Skeleton, styled, Typography, useTheme } from '@mui/material'
+import { format } from 'date-fns/format'
+import { isValid } from 'date-fns/isValid'
+import { frCA } from 'date-fns/locale/fr-CA'
+import Box from '@mui/material/Box'
+import Divider from '@mui/material/Divider'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
+import Skeleton from '@mui/material/Skeleton'
+import Typography from '@mui/material/Typography'
+import { styled, useTheme } from '@mui/material/styles'
 import Grid from '@mui/material/Grid2'
-import { CalendarBlankIcon } from '@phosphor-icons/react'
+import { CalendarBlankIcon } from '@phosphor-icons/react/dist/csr/CalendarBlank'
 import Button from '@/components/Button'
 import { isInternalLink } from '@/utils/link'
 import { useSmall } from '@/hooks/use-small'
@@ -57,7 +65,7 @@ function Title({ children }) {
   return (
     <Box
       sx={{
-        fontFamily: 'Lora',
+        fontFamily: '"Lora", "Lora Fallback", Georgia, serif',
         fontSize: '1.75rem',
         fontWeight: 500,
         lineHeight: 1.5,

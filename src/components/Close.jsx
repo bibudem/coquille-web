@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { IconButton } from '@mui/material'
+import IconButton from '@mui/material/IconButton'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 
 export default function Close(props) {
