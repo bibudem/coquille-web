@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState, useMemo } from 'react'
 import { styled } from '@mui/material/styles'
-import { format } from 'date-fns'
+import { format } from 'date-fns/format'
 import LayoutTable from '@/components/utils/LayoutTable'
 import Div from '@/components/utils/Div'
 import HoraireNonDisponible from './HoraireNonDisponible'
