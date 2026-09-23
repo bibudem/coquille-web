@@ -57,24 +57,14 @@ Commitez tous vos changements en attente, puis exécutez la commande suivante:
 npm version minor -m "Bump v%s" && git push
 ```
 
-### Déploiement automatique
+### Déploiement
 
-Rafraîchissez cette page pour une mise à jour du statut de déploiement.
+Le site est déployé sur un serveur des Bibliothèques, qui garde un clone git distinct par environnement :
 
-| Environnement  |                                                                             Statut de déploiement                                                                             |
-| :------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| pre-production |    [![Netlify Status](https://api.netlify.com/api/v1/badges/fdb2105f-7cc4-4336-88c6-e5c09c794d74/deploy-status)](https://app.netlify.com/sites/bib-pp/deploys?branch=main)    |
-|   production   | [![Netlify Status](https://api.netlify.com/api/v1/badges/fdb2105f-7cc4-4336-88c6-e5c09c794d74/deploy-status)](https://app.netlify.com/sites/bib-pp/deploys?branch=production) |
-
-Chaque commit sur le dépôt GitHub déclanchera une nouvelle compilation des sources de la branche `main` et un déploiement sur Netlify à l'adresse:
-
-[https://bib-pp.umontreal.ca](https://bib-pp.umontreal.ca/)
-
-Les commits dans la branche production déclanchent un déploiement sur Netlify à l'adresse:
-
-[https://bib-prod.umontreal.ca](https://bib-prod.umontreal.ca)\*
-
-\* Adresse temporaire. Elle sera remplacée le jour du lancement du site par [https://bib.umontreal.ca](https://bib.umontreal.ca).
+| Branche      | Environnement  | Adresse                                                     |
+| :----------- | :------------- | :---------------------------------------------------------- |
+| `main`       | pré-production | [https://bib-pp.umontreal.ca](https://bib-pp.umontreal.ca/) |
+| `production` | production     | [https://bib.umontreal.ca](https://bib.umontreal.ca/)       |
 
 ## Composants disponibles
 
