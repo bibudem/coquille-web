@@ -1,10 +1,19 @@
-import { Box, List, ListItem, ListItemButton, Skeleton, Typography, useTheme } from '@mui/material'
+import Box from '@mui/material/Box'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
+import Skeleton from '@mui/material/Skeleton'
+import Typography from '@mui/material/Typography'
+import { useTheme } from '@mui/material/styles'
 import Grid from '@mui/material/Grid2'
 import useSWR from 'swr'
 import Button from '@/components/Button'
 import Link from '@/components/Link'
 import { ArrowRightCircleIcon } from '@/components/CustomIcons'
-import { CalendarBlankIcon, ClockCountdownIcon, MapPinSimpleAreaIcon, ArrowUpRight } from '@phosphor-icons/react'
+import { CalendarBlankIcon } from '@phosphor-icons/react/dist/csr/CalendarBlank'
+import { ClockCountdownIcon } from '@phosphor-icons/react/dist/csr/ClockCountdown'
+import { MapPinSimpleAreaIcon } from '@phosphor-icons/react/dist/csr/MapPinSimpleArea'
+import { ArrowUpRight } from '@phosphor-icons/react/dist/csr/ArrowUpRight'
 
 const FETCH_TIMEOUT = 2000
 

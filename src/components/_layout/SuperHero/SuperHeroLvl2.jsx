@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Box, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import LayoutContainer from '@/components/utils/LayoutContainer'

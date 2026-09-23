@@ -1,12 +1,10 @@
 import { useEffect, useState, useCallback } from 'react'
-import {
-  AppBar,
-  Box,
-  Container,
-  Toolbar,
-  useMediaQuery,
-  IconButton
-} from '@mui/material'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
+import Toolbar from '@mui/material/Toolbar'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import IconButton from '@mui/material/IconButton'
 import { useTheme } from '@mui/material/styles'
 import Link from '@/components/Link'
 import SideNavSm from '@/components/_layout/SideNav/SideNavSm'

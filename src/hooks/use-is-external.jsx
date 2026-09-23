@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useTheme } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
 import { isInternalLink } from '@/utils/link'
 import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
 

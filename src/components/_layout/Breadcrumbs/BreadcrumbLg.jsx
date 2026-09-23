@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles'
 import MuiBreadcrumbs from '@mui/material/Breadcrumbs'
 import Link from '@mui/material/Link'
-import { HouseLineIcon } from '@phosphor-icons/react'
+import { HouseLineIcon } from '@phosphor-icons/react/dist/csr/HouseLine'
 
 const crumbLayoutStyles = {
   display: 'flex',

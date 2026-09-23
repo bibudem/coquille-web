@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, useMemo } from 'react'
-import { styled } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import { format } from 'date-fns'
 import LayoutTable from '@/components/utils/LayoutTable'
 import Div from '@/components/utils/Div'

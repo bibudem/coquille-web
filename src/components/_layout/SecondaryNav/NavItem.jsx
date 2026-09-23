@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Link, styled } from '@mui/material'
-import { CaretRightIcon } from '@phosphor-icons/react'
+import Link from '@mui/material/Link'
+import { styled } from '@mui/material/styles'
+import { CaretRightIcon } from '@phosphor-icons/react/dist/csr/CaretRight'
 import NavList from './NavList'
 
 const StyledLi = styled('li')({

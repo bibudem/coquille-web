@@ -1,5 +1,7 @@
 import { Children, useEffect, useState, useCallback } from 'react'
-import { IconButton, Typography, useTheme } from '@mui/material'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import { useTheme } from '@mui/material/styles'
 import Grid from '@mui/material/Grid2'
 import useEmblaCarousel from 'embla-carousel-react'
 import Button from '@/components/Button'

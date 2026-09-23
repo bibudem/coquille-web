@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Box, useMediaQuery, useTheme } from '@mui/material'
+import Box from '@mui/material/Box'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import { useTheme } from '@mui/material/styles'
 import Color from 'color'
 import ContrastColor from 'contrast-color'
 

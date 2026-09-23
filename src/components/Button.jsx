@@ -1,6 +1,7 @@
-import { Button as MuiButton } from '@mui/material'
+import MuiButton from '@mui/material/Button'
 import { Link as GatsbyLink } from 'gatsby'
-import { ArrowRightIcon, ArrowUpRightIcon } from '@phosphor-icons/react'
+import { ArrowRightIcon } from '@phosphor-icons/react/dist/csr/ArrowRight'
+import { ArrowUpRightIcon } from '@phosphor-icons/react/dist/csr/ArrowUpRight'
 import { isInternalLink } from '@/utils/link'
 import { useEffect, useState } from 'react'
 

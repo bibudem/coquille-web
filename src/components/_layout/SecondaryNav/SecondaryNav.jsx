@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
 import NavList from './NavList'
 import NavItem from './NavItem'
 // import fetchNavigation from './fetchNavigation.js'

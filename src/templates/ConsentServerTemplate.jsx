@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { Container } from '@mui/material'
+import Container from '@mui/material/Container'
 import Debug from '@/components/_layout/Debug'
 
 export default function PageTemplate({ children }) {

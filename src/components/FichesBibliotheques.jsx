@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
 import GridOffset from '@/components/utils/GridOffset'
 import { FichesBibliothequesContext } from './FicheBibliotheque/FichesBibliothequesContext'
 import { useSmall } from '@/hooks/use-small'

@@ -1,9 +1,10 @@
 import { useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { Box, useTheme } from '@mui/material'
+import Box from '@mui/material/Box'
+import { useTheme } from '@mui/material/styles'
 import Grid from '@mui/material/Grid2'
-import { IconContext } from '@phosphor-icons/react'
+import { IconContext } from '@phosphor-icons/react/dist/lib/context'
 
 import TopAppBar from '@/components/_layout/AppBar/TopAppBar'
 import TopAppBarSm from '@/components/_layout/AppBar/TopAppBarSm'

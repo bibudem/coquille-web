@@ -1,4 +1,4 @@
-import { styled } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import Grid from '@mui/material/Grid2'
 import { useSmall } from '@/hooks/use-small'
 import GridOffset from './utils/GridOffset'

@@ -1,8 +1,8 @@
 import { forwardRef } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import { Link as MuiLink } from '@mui/material'
+import MuiLink from '@mui/material/Link'
 import { styled } from '@mui/material/styles'
-import { ArrowRight } from '@phosphor-icons/react'
+import { ArrowRight } from '@phosphor-icons/react/dist/csr/ArrowRight'
 import { isInternalLink } from '../utils/link.js'
 
 const linkStyles = {

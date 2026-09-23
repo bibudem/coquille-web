@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { CssBaseline } from '@mui/material'
+import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider, extendTheme, responsiveFontSizes } from '@mui/material/styles'
 // import tokens from './tokens'
 
