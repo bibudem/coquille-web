@@ -28,6 +28,40 @@ const nouvelleTemplate = resolve('./src/templates/NouvelleTemplate.jsx')
 // Entrées accumulées pour l'index de recherche du site, écrites dans public/search-index.json
 const searchEntries = []
 
+// ---------------------------------------------------------------------------
+// Libellés de fil d'Ariane personnalisés (voir aussi src/components/_layout/
+// Breadcrumbs/Breadcrumbs.jsx).
+//
+// gatsby-plugin-breadcrumb (useAutoGen) construit un fil d'Ariane à partir des
+// segments de l'URL : sans configuration, le libellé de chaque maillon est le
+// segment d'URL lui-même (ex. « formulaire-reserve »), pas un texte lisible.
+// Une page peut définir `crumbLabel` dans son frontmatter pour remplacer ce
+// segment par un mot ou une expression arbitraire ; en son absence, le slug
+// reste utilisé tel quel (comportement actuel, inchangé).
+//
+// On accumule ici un index { chemin: libellé } à partir de TOUTES les pages
+// (content/pages et content/nouvelles), puisqu'un maillon du fil d'Ariane
+// d'une page peut correspondre à une page ANCÊTRE différente (ex. le maillon
+// « Enseignement » sur la page /enseignement/formulaire-reserve/ correspond
+// à la page /enseignement/, pas à la page courante) — cet index doit donc
+// couvrir le site au complet, pas seulement la page en cours de création.
+// Écrit dans public/crumb-labels.json (même principe que site-navigation.json
+// pour la nav secondaire) et lu tel quel côté client/SSR par Breadcrumbs.jsx.
+const crumbLabelOverrides = {}
+
+// gatsby-plugin-breadcrumb n'ajoute pas de slash final aux chemins de ses
+// maillons (option `trailingSlashes` non activée dans gatsby-config.mjs) alors
+// que nos `path` de page en ont toujours un : on normalise donc les deux côtés
+// de la même façon avant de les faire correspondre.
+function stripTrailingSlash(path) {
+  return path.replace(/\/+$/, '') || '/'
+}
+
+function recordCrumbLabel(path, crumbLabel) {
+  if (!crumbLabel) return
+  crumbLabelOverrides[stripTrailingSlash(path)] = crumbLabel
+}
+
 // Niveau d'une page dans l'arborescence du site, à partir de son `path` final
 // (ex: `/obtenir/` → 1, `/obtenir/numerisation/` → 2). Calculé ici, une seule
 // fois par page au moment du build, et propagé aux templates via `context.lvl`
@@ -111,6 +145,21 @@ function makeExcerpt(rawBody, length = 200) {
 }
 
 /**
+ * Déclare `crumbLabel` comme champ optionnel du frontmatter MDX. Sans ça, la
+ * requête GraphQL qui le lit ci-dessous échouerait tant qu'aucune page du
+ * site ne l'utilise réellement : le schéma de `MdxFrontmatter` est inféré à
+ * partir des données présentes, un champ absent partout n'existe pas.
+ * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
+ */
+export function createSchemaCustomization({ actions }) {
+  actions.createTypes(`
+    type MdxFrontmatter {
+      crumbLabel: String
+    }
+  `)
+}
+
+/**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
 export async function createPages(api) {
@@ -119,6 +168,7 @@ export async function createPages(api) {
   indexBibliotheques() // alimente searchEntries avec la section "Bibliothèques"
   await doIndexPersonnel(api) // alimente searchEntries avec la section "Personnel"
   await writeSearchIndex(api.reporter) // écrit le tout dans public/search-index.json
+  await writeCrumbLabels(api.reporter) // écrit crumbLabelOverrides dans public/crumb-labels.json
 }
 
 /**
@@ -192,6 +242,12 @@ async function writeSearchIndex(reporter) {
   reporter.info(`[search] Index de recherche généré avec ${searchEntries.length} entrées`)
 }
 
+async function writeCrumbLabels(reporter) {
+  await mkdir('public', { recursive: true })
+  await writeFile('public/crumb-labels.json', JSON.stringify(crumbLabelOverrides), 'utf-8')
+  reporter.info(`[breadcrumb] ${Object.keys(crumbLabelOverrides).length} libellé(s) de fil d'Ariane personnalisé(s)`)
+}
+
 // Note pour l'index de recherche : le champ 'body' ci-dessous (MDX brut, sans
 // frontmatter) est volontairement utilisé au lieu du champ 'excerpt' du plugin
 // MDX. Ce dernier recompile toute la page (retraitement des images compris)
@@ -218,6 +274,7 @@ async function doCreatePages({ graphql, actions, reporter }) {
               title
               template
               noindex
+              crumbLabel
               secondaryNav {
                 hidden
                 title
@@ -250,6 +307,8 @@ async function doCreatePages({ graphql, actions, reporter }) {
     //const path = `${basePath}/${(node.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')}`
     const slugPart = (node.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')
     const path = `${basePath}/${slugPart}`.replace(/\/+$/, '') + '/'
+
+    recordCrumbLabel(path, node.childMdx?.frontmatter?.crumbLabel)
 
     createPage({
       // As mentioned above you could also query something else like frontmatter.title above and use a helper function
@@ -309,6 +368,7 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
               template
               type
               noindex
+              crumbLabel
             }
             body
           }
@@ -337,6 +397,8 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
     //const path = `${basePath}/${(node.childMdx?.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')}`
     const rawSlug = (node.childMdx?.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')
     const path = `${basePath}/${rawSlug}`.replace(/\/+$/, '') + '/'
+
+    recordCrumbLabel(path, node.childMdx?.frontmatter?.crumbLabel)
 
     createPage({
       // As mentioned above you could also query something else like frontmatter.title above and use a helper function
