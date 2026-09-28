@@ -53,14 +53,21 @@ export function formatDate(dateStr, options) {
 }
 
 // Format québécois : « 9 h », « 21 h 30 ».
+const DAY = 24 * 60
+
+// Format québécois : « 9 h », « 21 h 30 », et « minuit » plutôt que
+// « 0 h » ou « 24 h ».
 export function formatTime(minutes) {
-  const h = Math.floor(minutes / 60)
-  const m = minutes % 60
+  const t = minutes % DAY
+  if (t === 0) return 'minuit'
+  const h = Math.floor(t / 60)
+  const m = t % 60
   return m ? `${h} h ${String(m).padStart(2, '0')}` : `${h} h`
 }
 
 export function formatRanges(ranges) {
   if (!ranges || ranges.length === 0) return 'Fermé'
+  if (ranges.length === 1 && ranges[0][0] === 0 && ranges[0][1] >= DAY) return 'Ouvert 24 h sur 24'
   return ranges.map(([start, end]) => `${formatTime(start)} à ${formatTime(end)}`).join(', ')
 }
 
@@ -70,18 +77,43 @@ function timeToMinutes(hhmm) {
   return h * 60 + m
 }
 
+// Une fin qui ne vient pas après le début passe minuit : l'API écrit
+// « 07:00 → 00:00 » pour une fermeture à minuit (et « 00:00 → 24:00 » pour
+// une journée complète). On la compte donc sur le jour suivant (+ 24 h).
+function range(start, end) {
+  const a = timeToMinutes(start)
+  const b = timeToMinutes(end)
+  return [a, b <= a ? b + DAY : b]
+}
+
 // Les quatre champs de l'API ne sont pas deux plages indépendantes :
 // debut1 → [pause : fin1 → debut2] → fin2. Une plage continue n'a que
 // debut1 et fin2, fin1 et debut2 restant vides.
 function rangesFromEvent(evt) {
   if (!evt.debut1) return []
-  if (evt.fin1 && evt.debut2) {
-    return [
-      [timeToMinutes(evt.debut1), timeToMinutes(evt.fin1)],
-      [timeToMinutes(evt.debut2), timeToMinutes(evt.fin2)],
-    ]
+  if (evt.fin1 && evt.debut2) return [range(evt.debut1, evt.fin1), range(evt.debut2, evt.fin2)]
+  return [range(evt.debut1, evt.fin2)]
+}
+
+// Heure de fermeture réelle d'une plage qui finit à minuit : si le jour
+// suivant commence à minuit (période d'examens ouverte 24 h sur 24), le
+// lieu ne ferme pas, on suit la plage jusqu'à sa vraie fin. Renvoie le
+// nombre de jours plus tard et l'heure ; `unknown` si l'ouverture se
+// poursuit au-delà des jours chargés.
+function realClosing(byDate, dateStr, end) {
+  let date = dateStr
+  let close = end
+  let days = 0
+  while (close >= DAY) {
+    const next = addDays(date, 1)
+    if (byDate[next] === undefined) return { unknown: true }
+    const first = byDate[next][0]
+    if (!first || first[0] !== 0) break
+    date = next
+    close = first[1]
+    days++
   }
-  return [[timeToMinutes(evt.debut1), timeToMinutes(evt.fin2)]]
+  return { date, days, minutes: close }
 }
 
 // Le filtre `bib` de l'API renvoie une erreur 422 pour tous les codes valides
@@ -115,10 +147,19 @@ export function statusFor(lieu, horaires, now, dates) {
 
   for (const [start, end] of today) {
     if (now.minutes >= start && now.minutes < end) {
-      if (end - now.minutes <= CLOSING_SOON_MIN) {
-        return { state: 'closing-soon', text: `Ferme bientôt, à ${formatTime(end)}` }
+      const closing = realClosing(byDate, now.dateStr, end)
+      if (closing.unknown) return { state: 'open', text: 'Ouvert 24 h sur 24' }
+      if (closing.days * DAY + closing.minutes - now.minutes <= CLOSING_SOON_MIN) {
+        return { state: 'closing-soon', text: `Ferme bientôt, à ${formatTime(closing.minutes)}` }
       }
-      return { state: 'open', text: `Ouvert jusqu'à ${formatTime(end)}` }
+      // Fermeture un autre jour : « jusqu'à demain à 23 h », « jusqu'à
+      // dimanche à minuit », et la date au-delà d'une semaine, où le jour
+      // seul serait ambigu (« jusqu'au lundi 9 novembre à 23 h »).
+      const time = formatTime(closing.minutes)
+      if (closing.days === 0) return { state: 'open', text: `Ouvert jusqu'à ${time}` }
+      if (closing.days === 1) return { state: 'open', text: `Ouvert jusqu'à demain à ${time}` }
+      if (closing.days <= 6) return { state: 'open', text: `Ouvert jusqu'à ${formatDate(closing.date, { weekday: 'long' })} à ${time}` }
+      return { state: 'open', text: `Ouvert jusqu'au ${formatDate(closing.date, { weekday: 'long', day: 'numeric', month: 'long' })} à ${time}` }
     }
   }
   for (const [start] of today) {
