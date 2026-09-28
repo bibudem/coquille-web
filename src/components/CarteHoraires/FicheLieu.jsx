@@ -273,7 +273,7 @@ function Vignette({ image, distance, compact }) {
 // version courte de « Les plus proches de vous » : même apparence, mais le
 // pavillon au lieu de l'adresse, « Itinéraire » et « Voir la fiche », sans
 // note ni volets.
-export default function FicheLieu({ lieu, idPrefix = '', headingLevel = 2, compact = false, status, extra, distance, horaires, dates, today, hoursError, ensureWeek, isWeekLoaded, platform, highlighted, onShowOnMap, onVoirFiche }) {
+export default function FicheLieu({ lieu, idPrefix = '', headingLevel = 2, compact = false, status, extra, distance, horaires, dates, today, hoursError, weekOffset = 0, onWeekChange, isWeekLoaded, platform, highlighted, onShowOnMap, onVoirFiche }) {
   const uid = `${idPrefix}${lieu.id}`
   const voletLevel = headingLevel + 1
   const hasLocation = lieu.lat != null && lieu.lng != null
@@ -369,7 +369,7 @@ export default function FicheLieu({ lieu, idPrefix = '', headingLevel = 2, compa
       {!compact && lieu.codeBib && (
         <Volet id={`${uid}-horaire`} lieu={lieu} headingLevel={voletLevel} icon={ClockIcon} title="Horaire de la semaine">
           {horaires ? (
-            <HoraireSemaine lieu={lieu} horaires={horaires} dates={dates} today={today} ensureWeek={ensureWeek} isWeekLoaded={isWeekLoaded} error={hoursError} />
+            <HoraireSemaine lieu={lieu} horaires={horaires} dates={dates} today={today} offset={weekOffset} onOffsetChange={onWeekChange} isWeekLoaded={isWeekLoaded} error={hoursError} />
           ) : hoursError ? (
             <Typography variant="body2">L’horaire est indisponible pour le moment. Réessayez plus tard.</Typography>
           ) : (

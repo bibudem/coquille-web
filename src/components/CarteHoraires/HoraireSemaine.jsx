@@ -1,24 +1,32 @@
-import { useEffect, useState } from 'react'
+import { useRef } from 'react'
 import Box from '@mui/material/Box'
+import ButtonBase from '@mui/material/ButtonBase'
 import IconButton from '@mui/material/IconButton'
 import Skeleton from '@mui/material/Skeleton'
 import Typography from '@mui/material/Typography'
+import { ArrowCounterClockwiseIcon } from '@phosphor-icons/react/dist/csr/ArrowCounterClockwise'
 import { CaretLeftIcon } from '@phosphor-icons/react/dist/csr/CaretLeft'
 import { CaretRightIcon } from '@phosphor-icons/react/dist/csr/CaretRight'
 import { formatDate, formatRanges } from './horaires'
 import { srOnly } from './styles'
 
-// Tableau de la semaine d'un lieu, avec navigation ← → sur huit semaines.
-// Les semaines au-delà de la première tranche sont chargées à la demande
-// (voir useHoraires.js). Un vrai <table> : un lecteur d'écran associe ainsi
-// chaque horaire à son jour et à son service.
-export default function HoraireSemaine({ lieu, horaires, dates, today, ensureWeek, isWeekLoaded, error }) {
-  const [offset, setOffset] = useState(0)
-  const loaded = isWeekLoaded(offset)
+// « Cette semaine », « Semaine prochaine », « Dans 3 semaines ».
+function relativeWeek(offset) {
+  if (offset === 0) return 'Cette semaine'
+  if (offset === 1) return 'Semaine prochaine'
+  return `Dans ${offset} semaines`
+}
 
-  useEffect(() => {
-    ensureWeek(offset)
-  }, [offset, ensureWeek])
+// Tableau de la semaine d'un lieu, avec navigation ← → sur huit semaines.
+// La semaine affichée (`offset`, 0 = semaine courante) est partagée par
+// toutes les fiches de la page (voir CarteHoraires.jsx) : changer de
+// semaine dans une fiche change toutes les autres. Les semaines au-delà de
+// la première tranche sont chargées à la demande (voir useHoraires.js). Un
+// vrai <table> : un lecteur d'écran associe ainsi chaque horaire à son jour
+// et à son service.
+export default function HoraireSemaine({ lieu, horaires, dates, today, offset, onOffsetChange, isWeekLoaded, error }) {
+  const titleRef = useRef(null)
+  const loaded = isWeekLoaded(offset)
   const maxOffset = Math.max(Math.floor(dates.length / 7) - 1, 0)
   const week = dates.slice(offset * 7, offset * 7 + 7)
 
@@ -27,27 +35,77 @@ export default function HoraireSemaine({ lieu, horaires, dates, today, ensureWee
   const serviceKeys = Object.keys(services).sort((a, b) => (a === 'regulier' ? -1 : b === 'regulier' ? 1 : 0))
   const label = (key) => horaires.serviceLabels[key] ?? key
 
-  if (serviceKeys.length === 0) {
-    return <Typography variant="body2">Aucun horaire publié pour cette période.</Typography>
-  }
+  const rangeLabel = week.length ? `du ${formatDate(week[0], { day: 'numeric', month: 'long' })} au ${formatDate(week.at(-1), { day: 'numeric', month: 'long' })}` : ''
 
-  const rangeLabel = week.length ? `${formatDate(week[0], { day: 'numeric', month: 'long' })} au ${formatDate(week.at(-1), { day: 'numeric', month: 'long' })}` : ''
+  // Le bouton disparaît une fois revenu à la semaine courante : le focus
+  // clavier passe au titre de la semaine plutôt que de se perdre.
+  function backToCurrentWeek() {
+    onOffsetChange(0)
+    titleRef.current?.focus()
+  }
 
   return (
     <div>
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 1, mb: 1 }}>
-        <IconButton onClick={() => setOffset(offset - 1)} disabled={offset === 0} aria-label="Semaine précédente" size="small" sx={{ color: 'bleuPrincipal.main' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 1, mb: 1.5 }}>
+        {/* Rien avant la semaine courante : la flèche est masquée, mais garde sa
+            place pour que le titre reste centré quand elle réapparaît.
+            visibility: hidden la retire aussi du clavier et des lecteurs d'écran. */}
+        <IconButton
+          onClick={() => onOffsetChange(offset - 1)}
+          disabled={offset === 0}
+          aria-label="Semaine précédente"
+          size="small"
+          sx={{ color: 'bleuPrincipal.main', visibility: offset === 0 ? 'hidden' : 'visible' }}
+        >
           <CaretLeftIcon aria-hidden="true" />
         </IconButton>
-        <Typography variant="body2" component="p" aria-live="polite" sx={{ fontWeight: 600, textAlign: 'center' }}>
-          Semaine du {rangeLabel}
-        </Typography>
-        <IconButton onClick={() => setOffset(offset + 1)} disabled={offset === maxOffset} aria-label="Semaine suivante" size="small" sx={{ color: 'bleuPrincipal.main' }}>
+        <Box sx={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0.25 }}>
+          <Typography
+            ref={titleRef}
+            tabIndex={-1}
+            variant="body2"
+            component="p"
+            aria-live="polite"
+            sx={{ fontWeight: 600, '&:focus': { outline: 'none' } }}
+          >
+            {relativeWeek(offset)}{' '}
+            <Box component="span" sx={{ display: 'block', fontWeight: 500, color: 'text.secondary' }}>
+              {rangeLabel}
+            </Box>
+          </Typography>
+          {offset > 0 && (
+            <ButtonBase
+              onClick={backToCurrentWeek}
+              sx={(theme) => ({
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 0.5,
+                mt: 0.25,
+                px: 1.25,
+                py: 0.25,
+                borderRadius: theme.shape.corner.full,
+                fontFamily: 'inherit',
+                fontSize: '0.8125rem',
+                fontWeight: 600,
+                color: 'bleuPrincipal.main',
+                backgroundColor: 'bleu100.main',
+                '&:hover': { backgroundColor: 'bleu200.main' },
+                '&.Mui-focusVisible': { outline: '2px solid', outlineColor: 'bleuPrincipal.main', outlineOffset: 2 },
+              })}
+            >
+              <ArrowCounterClockwiseIcon aria-hidden="true" size={14} color="currentColor" />
+              Revenir à cette semaine
+            </ButtonBase>
+          )}
+        </Box>
+        <IconButton onClick={() => onOffsetChange(offset + 1)} disabled={offset === maxOffset} aria-label="Semaine suivante" size="small" sx={{ color: 'bleuPrincipal.main' }}>
           <CaretRightIcon aria-hidden="true" />
         </IconButton>
       </Box>
 
-      {!loaded ? (
+      {loaded && serviceKeys.length === 0 ? (
+        <Typography variant="body2">Aucun horaire publié pour cette période.</Typography>
+      ) : !loaded ? (
         error ? (
           <Typography variant="body2">L’horaire de cette semaine est indisponible pour le moment. Réessayez plus tard.</Typography>
         ) : (
@@ -93,7 +151,7 @@ export default function HoraireSemaine({ lieu, horaires, dates, today, ensureWee
               }}
             >
               <Box component="caption" sx={srOnly}>
-                Horaire de la semaine du {rangeLabel}, {lieu.name}
+                Horaire de la semaine {rangeLabel}, {lieu.name}
               </Box>
               <thead>
                 <tr>

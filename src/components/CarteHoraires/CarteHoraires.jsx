@@ -101,6 +101,10 @@ export default function CarteHoraires() {
   const [locateState, setLocateState] = useState({ busy: false, message: '' })
   const [filter, setFilter] = useState('all')
   const [openOnly, setOpenOnly] = useState(false)
+  // Semaine affichée dans « Horaire de la semaine » (0 = semaine courante),
+  // commune à toutes les fiches : passer à la semaine suivante dans l'une
+  // la fait passer partout, y compris dans les fiches ouvertes plus tard.
+  const [weekOffset, setWeekOffset] = useState(0)
   const [query, setQuery] = useState('')
   const [highlighted, setHighlighted] = useState(null)
   const [mapFocus, setMapFocus] = useState(null)
@@ -123,6 +127,11 @@ export default function CarteHoraires() {
   }, [])
 
   const { horaires, dates, error: hoursError, ensureWeek, isWeekLoaded } = useHoraires(now?.dateStr)
+
+  // Charge la tranche de deux semaines qui contient la semaine affichée.
+  useEffect(() => {
+    ensureWeek(weekOffset)
+  }, [weekOffset, ensureWeek])
 
   const distances = useMemo(() => {
     if (!userPos) return {}
@@ -403,7 +412,8 @@ export default function CarteHoraires() {
                 dates={dates}
                 today={now?.dateStr}
                 hoursError={hoursError}
-                ensureWeek={ensureWeek}
+                weekOffset={weekOffset}
+                onWeekChange={setWeekOffset}
                 isWeekLoaded={isWeekLoaded}
                 platform={platform}
                 highlighted={highlighted === lieu.id}
@@ -430,7 +440,8 @@ export default function CarteHoraires() {
                   dates={dates}
                   today={now?.dateStr}
                   hoursError={hoursError}
-                  ensureWeek={ensureWeek}
+                  weekOffset={weekOffset}
+                  onWeekChange={setWeekOffset}
                   isWeekLoaded={isWeekLoaded}
                   platform={platform}
                   highlighted={highlighted === lieu.id}
