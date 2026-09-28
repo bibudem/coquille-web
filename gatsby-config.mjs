@@ -174,7 +174,7 @@ export default {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        excludes: ['/dev', '/dev/**', '/tests', '/tests/**', '/formulaire-consentement', '/formulaire-consentement/**'],
+        excludes: ['/dev', '/dev/**', '/tests', '/tests/**', '/formulaire-consentement', '/formulaire-consentement/**', '/horaires/test', '/horaires/test/**'],
       },
     },
     {
