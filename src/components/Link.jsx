@@ -27,13 +27,22 @@ const A = styled('a')({})
 const Link = forwardRef(function Link(props, ref) {
   const { children, sx, Icon, iconProps, to = '#', href, ...rest } = props
 
-  const isInternal = isInternalLink(to)
+  // Le routage de Gatsby ne sait suivre que des chemins du site (« /espaces/ »,
+  // « ../peb/ ») : une adresse absolue, même d'un sous-domaine des
+  // Bibliothèques (studio.bib.umontreal.ca), va dans un <a> ordinaire. Sinon
+  // Gatsby avertit « External link detected » et le lien ne fonctionne qu'à
+  // moitié. isInternalLink garde son sens (famille Bibliothèques) pour le
+  // choix des icônes ailleurs dans le site.
+  const isRelative = typeof to === 'string' && !/^[a-z][a-z\d+.-]*:|^\/\//i.test(to.trim())
+  const isInternal = isRelative && isInternalLink(to)
   const styles = Icon ? { ...linkStyles, ...iconStyles } : { ...linkStyles }
   const _iconProps = { size: '1.125rem', color: 'currentColor', ...iconProps }
 
-  const icon = Icon && typeof Icon === 'boolean' ? <ArrowRight {..._iconProps} /> : <Icon {..._iconProps} />
+  // Pas d'icône du tout quand Icon est absent : l'évaluer quand même donnait
+  // un avertissement React « type is invalid » pour chaque lien sans icône.
+  const icon = !Icon ? null : typeof Icon === 'boolean' ? <ArrowRight {..._iconProps} /> : <Icon {..._iconProps} />
 
-  // Use Gatsby Link for internal links, and <a> for others
+  // Gatsby Link pour les chemins du site, <a> pour le reste
   if (!isInternal) {
     return (
       <A ref={ref} href={to} sx={{ ...styles, ...sx }} {...rest}>
