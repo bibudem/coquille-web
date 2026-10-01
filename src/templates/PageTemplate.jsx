@@ -33,7 +33,12 @@ export default function PageTemplate({ pageContext, children, data, location }) 
   // serveur et client dès le premier rendu, contrairement à l'ancien calcul
   // client-only (`useState`/`useEffect` sur `location.pathname`) qui faisait
   // que le HTML statique ne contenait jamais le menu de navigation secondaire.
-  const lvl = pageContext.lvl
+  //
+  // Une page peut imposer son niveau par `lvl` dans son frontmatter (ex. une
+  // page de présentation rangée sous /horaires/test/ mais mise en page comme
+  // une page de premier niveau : pleine largeur, sans navigation secondaire
+  // ni fil d'Ariane). Lu dans le frontmatter, donc toujours identique au SSR.
+  const lvl = pageContext.frontmatter?.lvl ?? pageContext.lvl
   const hasSecondaryNav = lvl > 1
 
   // Déterminer si on est sur la page d'accueil
