@@ -105,7 +105,7 @@ export default function HoraireAujourdhui({ codeBib, ...rest }) {
         ))}
         {biblioInfo && (
           <div>
-            <ALink href={`/horaires#${biblioInfo.ancre}`}>
+            <ALink href={`/horaires/#${biblioInfo.ancre}`}>
               Tous les horaires
             </ALink>
           </div>
