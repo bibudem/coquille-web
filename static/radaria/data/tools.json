@@ -1,0 +1,830 @@
+[
+  {
+    "id": "claude",
+    "name": "Claude",
+    "category": "Génératif généraliste",
+    "tagline": "Assistant conversationnel web fluide, utile pour cadrer une question, mais non recommandé comme moteur principal de recherche documentaire universitaire.",
+    "bestFor": "Reformuler une question ou cadrer très vite un sujet avant de basculer vers un vrai outil de découverte documentaire.",
+    "caution": "Comme les autres IAg généralistes, il reste mal adapté à une recherche documentaire rigoureuse, car il est emboîté dans un système génératif.",
+    "defaultReason": "Peut aider à cadrer en langage naturel, mais pas servir de moteur principal de recherche documentaire.",
+    "url": "https://claude.ai/",
+    "accent": "#c75c44",
+    "corpus": "Pas de corpus : modèle de langue et RAG",
+    "synthesis": "Oui",
+    "studiesFound": "Variable",
+    "interaction": "Oui",
+    "ragScope": "Web",
+    "outputs": [
+      "Texte généré automatiquement"
+    ],
+    "doubtfulReviews": "Oui",
+    "recommendedUses": [
+      "Non recommandé"
+    ],
+    "institutionalLicense": false,
+    "licensedContentSafe": false,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "law",
+      "other"
+    ],
+    "capabilities": [
+      "web_synthesis"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "category": "Génératif généraliste",
+    "tagline": "Assistant conversationnel web fluide, utile pour cadrer une question, mais non recommandé comme moteur principal de recherche documentaire universitaire.",
+    "bestFor": "Cadrer rapidement une question en langage naturel si vous assumez qu'il ne remplace pas un moteur bibliographique.",
+    "caution": "Comme les autres IAg généralistes, il reste mal adapté à une recherche documentaire rigoureuse, car il est emboîté dans un système génératif.",
+    "defaultReason": "Peut accélérer le cadrage d'un sujet, mais pas conduire la recherche documentaire elle-même.",
+    "url": "https://chatgpt.com/",
+    "accent": "#2c8f78",
+    "corpus": "Pas de corpus : modèle de langue et RAG",
+    "synthesis": "Oui",
+    "studiesFound": "Variable",
+    "interaction": "Oui",
+    "ragScope": "Web",
+    "outputs": [
+      "Texte généré automatiquement"
+    ],
+    "doubtfulReviews": "Oui",
+    "recommendedUses": [
+      "Non recommandé"
+    ],
+    "institutionalLicense": false,
+    "licensedContentSafe": false,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "law",
+      "other"
+    ],
+    "capabilities": [
+      "web_synthesis"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "gemini",
+    "name": "Gemini",
+    "category": "Génératif généraliste",
+    "tagline": "Assistant conversationnel web fluide, utile pour discuter d'un sujet, mais non recommandé comme moteur principal de recherche documentaire universitaire.",
+    "bestFor": "Prendre un premier élan conversationnel sur un sujet avant une vraie recherche dans des corpus spécialisés.",
+    "caution": "Comme les autres IAg généralistes, il reste mal adapté à une recherche documentaire rigoureuse, car il est emboîté dans un système génératif.",
+    "defaultReason": "Confortable pour discuter d'un sujet, mais pas pour repérer et trier rigoureusement la littérature.",
+    "url": "https://gemini.google.com/",
+    "accent": "#4f7adf",
+    "corpus": "Pas de corpus : modèle de langue et RAG",
+    "synthesis": "Oui",
+    "studiesFound": "Variable",
+    "interaction": "Oui",
+    "ragScope": "Web",
+    "outputs": [
+      "Texte généré automatiquement"
+    ],
+    "doubtfulReviews": "Oui",
+    "recommendedUses": [
+      "Non recommandé"
+    ],
+    "institutionalLicense": false,
+    "licensedContentSafe": false,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "law",
+      "other"
+    ],
+    "capabilities": [
+      "web_synthesis"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "copilot",
+    "name": "Copilot",
+    "category": "Génératif généraliste",
+    "tagline": "Assistant conversationnel web fluide, dont l'usage est couvert par la licence institutionnelle, utile pour un premier cadrage mais non recommandé comme moteur principal de recherche documentaire universitaire.",
+    "bestFor": "Obtenir un premier cadrage conversationnel si vous comptez ensuite vérifier dans un outil de recherche documentaire dédié, y compris avec des documents sous licence des bibliothèques.",
+    "caution": "Comme les autres IAg généralistes, il reste mal adapté à une recherche documentaire rigoureuse, car il est emboîté dans un système génératif.",
+    "defaultReason": "Peut rendre l'échange fluide, mais reste mal adapté à la recherche documentaire universitaire.",
+    "url": "https://copilot.microsoft.com/",
+    "accent": "#3a86c6",
+    "corpus": "Pas de corpus : modèle de langue et RAG",
+    "synthesis": "Oui",
+    "studiesFound": "Variable",
+    "interaction": "Oui",
+    "ragScope": "Web",
+    "outputs": [
+      "Texte généré automatiquement"
+    ],
+    "doubtfulReviews": "Oui",
+    "recommendedUses": [
+      "Non recommandé"
+    ],
+    "institutionalLicense": true,
+    "licenseLabel": "IA accessible avec la licence UdeM",
+    "institutionalAccessNote": "Requiert l’accès via le proxy des bibliothèques. Certaines fonctionnalités peuvent aussi demander un compte lié à votre adresse umontreal.ca.",
+    "licensedContentSafe": true,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "law",
+      "other"
+    ],
+    "capabilities": [
+      "web_synthesis"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "perplexity",
+    "name": "Perplexity",
+    "category": "Génératif généraliste",
+    "tagline": "Answer engine web pratique pour démarrer vite, mais non recommandé comme moteur principal de recherche universitaire.",
+    "bestFor": "Faire un cadrage initial rapide à partir du web avant de passer à une recherche bibliographique plus propre.",
+    "caution": "Malgré son confort d'usage, il reste plus proche d'un assistant généraliste que d'un outil de découverte scientifique rigoureux.",
+    "defaultReason": "Peut servir à démarrer vite, mais pas comme outil principal de découverte scientifique.",
+    "url": "https://www.perplexity.ai/",
+    "accent": "#1d6fc0",
+    "corpus": "Pas de corpus : modèle de langue et RAG",
+    "synthesis": "Oui",
+    "studiesFound": "Variable",
+    "interaction": "Oui",
+    "ragScope": "Web",
+    "outputs": [
+      "Texte généré automatiquement"
+    ],
+    "doubtfulReviews": "Oui",
+    "recommendedUses": [
+      "Non recommandé"
+    ],
+    "institutionalLicense": false,
+    "licensedContentSafe": false,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "law",
+      "other"
+    ],
+    "capabilities": [
+      "web_synthesis"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "gemini_notebook",
+    "name": "Gemini Notebook",
+    "category": "Analyse de documents",
+    "tagline": "Outil Google (anciennement NotebookLM) pour analyser et synthétiser des documents téléversés, sans corpus bibliographique propre.",
+    "bestFor": "Synthétiser ou interroger un corpus de documents que vous avez déjà rassemblés et que vous téléversez dans l'outil.",
+    "caution": "Ne dispose pas de corpus bibliographique propre : il ne peut pas chercher de nouvelles références. La qualité dépend entièrement des documents fournis.",
+    "defaultReason": "Utile si vous avez déjà un corpus de documents à analyser, pas pour découvrir de nouvelles références.",
+    "url": "https://notebooklm.google.com/",
+    "accent": "#5b8dee",
+    "corpus": "Pas de corpus : documents téléversés par l'usager",
+    "synthesis": "Oui",
+    "studiesFound": "Variable",
+    "interaction": "Oui",
+    "ragScope": "Documents téléversés",
+    "outputs": [
+      "Rapport de synthèse",
+      "Texte généré automatiquement"
+    ],
+    "doubtfulReviews": "Non applicable",
+    "recommendedUses": [
+      "Analyse de corpus existant"
+    ],
+    "institutionalLicense": false,
+    "licensedContentSafe": false,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "law",
+      "other"
+    ],
+    "capabilities": [
+      "corpus_analysis"
+    ],
+    "requiresUpload": true,
+    "acceptsUpload": true,
+    "legacyIds": [
+      "notebooklm"
+    ]
+  },
+  {
+    "id": "elicit",
+    "name": "Elicit",
+    "category": "Métadonnées + synthèse",
+    "tagline": "Outil de découverte bibliographique sur métadonnées avec mini-synthèse, extraction d'information et filtres.",
+    "bestFor": "Explorer ou compléter une recherche si vous voulez extraire rapidement des informations d'études et filtrer un corpus assez large.",
+    "caution": "Inclut des revues douteuses et emploie le terme « revue systématique » pour un service non transparent et non reproductible.",
+    "privacyWarning": "Consultez la politique d’utilisation de cet outil pour vérifier la confidentialité de vos données et déterminer si l’usage est approprié. Ne partagez pas de données confidentielles.",
+    "defaultReason": "Monte quand il faut à la fois un lot de documents, une mini-synthèse et de l'extraction structurée.",
+    "url": "https://elicit.com/",
+    "accent": "#0f7f75",
+    "corpus": "Semantic Scholar (PubMed + arXiv + SSRN + IEEE + ...) + RePEc",
+    "synthesis": "Mini (4)",
+    "studiesFound": "40+",
+    "interaction": "Oui",
+    "ragScope": "Métadonnées",
+    "outputs": [
+      "Liste de documents",
+      "Rapport de synthèse"
+    ],
+    "doubtfulReviews": "Oui",
+    "recommendedUses": [
+      "Explorer",
+      "Compléter"
+    ],
+    "institutionalLicense": false,
+    "licensedContentSafe": false,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "other"
+    ],
+    "capabilities": [
+      "document_discovery",
+      "synthesis_report"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "scispace",
+    "name": "SciSpace",
+    "category": "Métadonnées + synthèse",
+    "tagline": "Moteur de découverte sur métadonnées avec mini-synthèse, extraction d'information, filtres et nombreux gadgets.",
+    "bestFor": "Explorer ou compléter un sujet si vous voulez un compromis entre synthèse rapide, filtres et fonctions additionnelles.",
+    "caution": "Inclut des revues douteuses. Les gadgets sont nombreux, mais ne remplacent pas un vrai tri critique des résultats.",
+    "privacyWarning": "Consultez la politique d’utilisation de cet outil pour vérifier la confidentialité de vos données et déterminer si l’usage est approprié. Ne partagez pas de données confidentielles.",
+    "defaultReason": "Remonte quand vous cherchez une mini-synthèse utile avec extraction d'information et filtres.",
+    "url": "https://scispace.com/",
+    "accent": "#1f8a70",
+    "corpus": "Semantic Scholar + OpenAlex + Google Scholar",
+    "synthesis": "Mini (5)",
+    "studiesFound": "40+",
+    "interaction": "Oui",
+    "ragScope": "Métadonnées",
+    "outputs": [
+      "Liste de documents",
+      "Rapport de synthèse"
+    ],
+    "doubtfulReviews": "Oui",
+    "recommendedUses": [
+      "Explorer",
+      "Compléter"
+    ],
+    "institutionalLicense": false,
+    "licensedContentSafe": false,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "other"
+    ],
+    "capabilities": [
+      "document_discovery",
+      "synthesis_report"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "consensus",
+    "name": "Consensus.app",
+    "category": "Métadonnées + synthèse",
+    "tagline": "Moteur de découverte avec mini-synthèse, filtres et tri, mais avec un indicateur de consensus potentiellement trompeur.",
+    "bestFor": "Explorer ou compléter une recherche à partir d'une question bien formulée quand une mini-synthèse suffit.",
+    "caution": "Inclut des revues douteuses et un « consensus meter » potentiellement trompeur, trop substitutif au jugement du chercheur.",
+    "defaultReason": "Bon candidat si vous voulez un compromis entre mini-synthèse et liste de documents, sans viser un processus très détaillé.",
+    "url": "https://consensus.app/",
+    "accent": "#d65c31",
+    "corpus": "Semantic Scholar + OpenAlex + autres",
+    "synthesis": "Mini (6+)",
+    "studiesFound": "20+",
+    "interaction": "Oui",
+    "ragScope": "Métadonnées",
+    "outputs": [
+      "Liste de documents",
+      "Rapport de synthèse"
+    ],
+    "doubtfulReviews": "Oui",
+    "recommendedUses": [
+      "Explorer",
+      "Compléter"
+    ],
+    "institutionalLicense": true,
+    "licenseLabel": "IA accessible avec la licence UdeM",
+    "institutionalAccessNote": "Requiert l’accès via le proxy des bibliothèques. Certaines fonctionnalités peuvent aussi demander un compte lié à votre adresse umontreal.ca.",
+    "licensedContentSafe": true,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "other"
+    ],
+    "capabilities": [
+      "document_discovery",
+      "synthesis_report"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "google_scholar_labs",
+    "name": "Google Scholar Labs",
+    "category": "Texte intégral",
+    "tagline": "Recherche dans le texte intégral avec peu d'interaction et sans vraie synthèse, mais utile pour compléter une recherche documentaire.",
+    "bestFor": "Explorer ou compléter si vous voulez chercher dans le texte intégral plutôt que rester limité aux titres et résumés.",
+    "caution": "Inclut des revues douteuses et ne fournit pas de vraie synthèse. Il reste surtout utile pour constituer une liste de documents.",
+    "defaultReason": "Remonte quand la priorité est la recherche en texte intégral plus que la production d'un rapport.",
+    "url": "https://scholar.google.com/scholar_labs/",
+    "accent": "#2d6ad9",
+    "corpus": "Google Scholar",
+    "synthesis": "Non",
+    "studiesFound": "10-30",
+    "interaction": "Peu",
+    "ragScope": "Texte intégral",
+    "outputs": [
+      "Liste de documents"
+    ],
+    "doubtfulReviews": "Oui",
+    "recommendedUses": [
+      "Explorer",
+      "Compléter"
+    ],
+    "institutionalLicense": false,
+    "licensedContentSafe": false,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "law",
+      "other"
+    ],
+    "capabilities": [
+      "document_discovery"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "undermind",
+    "name": "Undermind",
+    "category": "Métadonnées + processus détaillé",
+    "tagline": "Outil de découverte sur métadonnées qui combine rapport, processus détaillé et alertes, décliné en deux modes : Classic (recherche rapide et streamlinée) et Project (gestion de plusieurs recherches dans le temps, avec suivi et organisation par projet).",
+    "bestFor": "Explorer ou compléter une recherche si vous voulez beaucoup de résultats, un processus explicite et des alertes sur les sujets lancés ; le mode Project ajoute un suivi structuré dans la durée.",
+    "caution": "Travaille seulement sur les métadonnées, pas sur le texte intégral des articles.",
+    "defaultReason": "Candidat fort si vous privilégiez la traçabilité du processus et une meilleure hygiène des sources.",
+    "url": "https://app.undermind.ai/",
+    "accent": "#8d3f72",
+    "corpus": "Semantic Scholar + OSF",
+    "synthesis": "Oui (15)",
+    "studiesFound": "70+",
+    "interaction": "Au début",
+    "ragScope": "Métadonnées",
+    "outputs": [
+      "Liste de documents",
+      "Rapport de synthèse"
+    ],
+    "doubtfulReviews": "Peu",
+    "recommendedUses": [
+      "Explorer",
+      "Compléter"
+    ],
+    "institutionalLicense": true,
+    "licenseLabel": "IA accessible avec la licence UdeM",
+    "institutionalAccessNote": "Requiert l’accès via le proxy des bibliothèques. Certaines fonctionnalités peuvent aussi demander un compte lié à votre adresse umontreal.ca.",
+    "licensedContentSafe": true,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "other"
+    ],
+    "capabilities": [
+      "document_discovery",
+      "synthesis_report"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false,
+    "legacyIds": [
+      "undermind_classic",
+      "undermind_project"
+    ]
+  },
+  {
+    "id": "asta_paper_finder",
+    "name": "Asta Paper finder",
+    "category": "Métadonnées + découverte",
+    "tagline": "Mode découverte d'Asta : repère des études pertinentes et explicite ses limites sans générer de rapport de synthèse.",
+    "bestFor": "Repérer rapidement des études pertinentes quand vous voulez un outil qui dit clairement quand il ne trouve pas ce qu'il cherche.",
+    "caution": "Ne génère pas de rapport de synthèse dans ce mode. Inclut des revues douteuses et des articles rétractés.",
+    "privacyWarning": "Consultez la politique d’utilisation de cet outil pour vérifier la confidentialité de vos données et déterminer si l’usage est approprié. Ne partagez pas de données confidentielles.",
+    "defaultReason": "Monte quand la transparence sur les limites compte autant que le volume de résultats.",
+    "url": "https://asta.allen.ai/",
+    "accent": "#de8b2c",
+    "corpus": "Semantic Scholar",
+    "synthesis": "Non",
+    "studiesFound": "40+",
+    "interaction": "Peu",
+    "ragScope": "Métadonnées",
+    "outputs": [
+      "Liste de documents"
+    ],
+    "doubtfulReviews": "Oui",
+    "recommendedUses": [
+      "Explorer",
+      "Compléter"
+    ],
+    "institutionalLicense": false,
+    "licensedContentSafe": false,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "other"
+    ],
+    "capabilities": [
+      "document_discovery"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "asta_generate_report",
+    "name": "Asta Generate report",
+    "category": "Métadonnées + rapport",
+    "tagline": "Mode rapport d'Asta : génère une synthèse documentaire à partir des études repérées en explicitant ses limites.",
+    "bestFor": "Obtenir un rapport de synthèse avec un outil qui dit clairement quand il ne trouve pas ou ne retrace pas une information.",
+    "caution": "Inclut des revues douteuses et des articles rétractés. L'exportation BibTeX reste de faible qualité.",
+    "privacyWarning": "Consultez la politique d’utilisation de cet outil pour vérifier la confidentialité de vos données et déterminer si l’usage est approprié. Ne partagez pas de données confidentielles.",
+    "defaultReason": "Monte quand la transparence sur les limites compte autant que la production d'un rapport.",
+    "url": "https://asta.allen.ai/",
+    "accent": "#c57820",
+    "corpus": "Semantic Scholar",
+    "synthesis": "Oui (15)",
+    "studiesFound": "40+",
+    "interaction": "Peu",
+    "ragScope": "Métadonnées",
+    "outputs": [
+      "Liste de documents",
+      "Rapport de synthèse"
+    ],
+    "doubtfulReviews": "Oui",
+    "recommendedUses": [
+      "Explorer",
+      "Compléter"
+    ],
+    "institutionalLicense": false,
+    "licensedContentSafe": false,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "other"
+    ],
+    "capabilities": [
+      "document_discovery",
+      "synthesis_report"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "platform",
+    "name": "Platform (Edison Scientific)",
+    "category": "Métadonnées + processus détaillé",
+    "tagline": "Outil de découverte sur métadonnées qui mise sur un processus détaillé et un duo liste de documents plus rapport.",
+    "bestFor": "Explorer ou compléter si vous voulez surtout comprendre le processus suivi par l'outil et garder un couple liste plus rapport.",
+    "caution": "Inclut des revues douteuses et ne met pas en avant de garde-fou qualité particulier.",
+    "defaultReason": "Remonte si la lisibilité du processus compte plus qu'un très grand volume d'études.",
+    "url": "https://platform.edisonscientific.com/",
+    "accent": "#7f5aa2",
+    "corpus": "Semantic Scholar + Crossref",
+    "synthesis": "Oui (8)",
+    "studiesFound": "26",
+    "interaction": "Peu",
+    "ragScope": "Métadonnées",
+    "outputs": [
+      "Liste de documents",
+      "Rapport de synthèse"
+    ],
+    "doubtfulReviews": "Oui",
+    "recommendedUses": [
+      "Explorer",
+      "Compléter"
+    ],
+    "institutionalLicense": false,
+    "licensedContentSafe": false,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "other"
+    ],
+    "capabilities": [
+      "document_discovery",
+      "synthesis_report"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "liner",
+    "name": "Liner",
+    "category": "Métadonnées + processus détaillé",
+    "tagline": "Outil de découverte sur métadonnées avec rapport, processus détaillé et relativement peu de revues douteuses.",
+    "bestFor": "Explorer ou compléter si vous voulez un processus détaillé sans vous éloigner d'un corpus relativement plus propre.",
+    "caution": "La fonction « citation recommander » pose une question éthique.",
+    "defaultReason": "Peut monter quand vous voulez un rapport et un processus détaillé avec un peu moins de revues douteuses.",
+    "url": "https://getliner.com/",
+    "accent": "#0e8b8d",
+    "corpus": "Semantic Scholar",
+    "synthesis": "Oui (10+)",
+    "studiesFound": "15+",
+    "interaction": "Peu",
+    "ragScope": "Métadonnées",
+    "outputs": [
+      "Liste de documents",
+      "Rapport de synthèse"
+    ],
+    "doubtfulReviews": "Peu",
+    "recommendedUses": [
+      "Explorer",
+      "Compléter"
+    ],
+    "institutionalLicense": false,
+    "licensedContentSafe": false,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "other"
+    ],
+    "capabilities": [
+      "document_discovery",
+      "synthesis_report"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "leapspace",
+    "name": "LeapSpace",
+    "category": "Métadonnées + synthèse",
+    "tagline": "Outil de découverte et de synthèse sur corpus scientifique, couvrant plusieurs disciplines avec un accès sans téléversement.",
+    "bestFor": "Explorer un sujet et obtenir une synthèse sans avoir à téléverser de documents, avec un bon respect des conditions de licence.",
+    "caution": "Vérifiez les conditions d'utilisation et la provenance du corpus interrogé avant de l'utiliser comme source principale.",
+    "defaultReason": "Monte quand vous voulez une synthèse à partir d'un corpus scientifique sans risque lié au téléversement de documents.",
+    "url": "https://leapspace.ai/",
+    "accent": "#3d7ebf",
+    "corpus": "Corpus scientifique multidisciplinaire",
+    "synthesis": "Oui",
+    "studiesFound": "Variable",
+    "interaction": "Oui",
+    "ragScope": "Métadonnées",
+    "outputs": [
+      "Liste de documents",
+      "Rapport de synthèse"
+    ],
+    "doubtfulReviews": "Non précisé",
+    "recommendedUses": [
+      "Explorer",
+      "Compléter"
+    ],
+    "institutionalLicense": true,
+    "licenseLabel": "IA accessible avec la licence UdeM",
+    "institutionalAccessNote": "Requiert l’accès via le proxy des bibliothèques. Certaines fonctionnalités peuvent aussi demander un compte lié à votre adresse umontreal.ca.",
+    "licensedContentSafe": true,
+    "disciplines": [
+      "multidisciplinary",
+      "health_life_sciences",
+      "social_humanities",
+      "chemistry",
+      "law",
+      "other"
+    ],
+    "capabilities": [
+      "document_discovery",
+      "synthesis_report"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "cairn_sophia",
+    "name": "CAIRN SophIA",
+    "category": "Recherche sémantique (SHS francophones)",
+    "tagline": "Moteur de recherche en langage naturel sur le corpus Cairn.info, ciblé sciences humaines et sociales francophones, basé sur une architecture RAG qui expose les extraits originaux plutôt que de générer une synthèse.",
+    "bestFor": "Repérer des passages pertinents dans la littérature SHS francophone en langage naturel, avec un renvoi direct aux extraits originaux plutôt qu'un texte généré.",
+    "caution": "Expose des extraits originaux plutôt qu'une synthèse : ne convient pas si vous cherchez un rapport généré à partir du corpus.",
+    "defaultReason": "Monte pour une recherche en SHS francophone quand la traçabilité vers l'extrait original prime sur une synthèse générée.",
+    "url": "https://www.cairn.info/",
+    "accent": "#a6642c",
+    "corpus": "Cairn.info (SHS francophone)",
+    "synthesis": "Non",
+    "studiesFound": "Variable",
+    "interaction": "Oui",
+    "ragScope": "Extraits originaux (RAG)",
+    "outputs": [
+      "Liste de documents"
+    ],
+    "doubtfulReviews": "Non précisé",
+    "recommendedUses": [
+      "Explorer",
+      "Compléter"
+    ],
+    "institutionalLicense": true,
+    "licenseLabel": "IA accessible avec la licence UdeM",
+    "institutionalAccessNote": "Requiert l’accès via le proxy des bibliothèques. Certaines fonctionnalités peuvent aussi demander un compte lié à votre adresse umontreal.ca.",
+    "licensedContentSafe": false,
+    "disciplines": [
+      "social_humanities"
+    ],
+    "capabilities": [
+      "document_discovery"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "jstor_ai",
+    "name": "JSTOR AI",
+    "category": "Texte intégral",
+    "tagline": "Outil de complément qui vérifie la pertinence dans le texte intégral, un document à la fois, avec une grande capacité de rappel.",
+    "bestFor": "Compléter une recherche si vous voulez vérifier la pertinence de résultats directement dans le texte intégral de chaque document sélectionné.",
+    "caution": "Produit parfois du bruit et ne fournit pas de vraie synthèse. Il reste pensé pour compléter, pas pour tout faire.",
+    "defaultReason": "Très bon signal si vous voulez ratisser large puis vérifier finement dans le texte intégral.",
+    "url": "https://www.jstor.org/",
+    "accent": "#3b5b8a",
+    "corpus": "JSTOR",
+    "synthesis": "Non",
+    "studiesFound": "1000+",
+    "interaction": "Non précisée",
+    "ragScope": "Sur le texte intégral, un document à la fois",
+    "outputs": [
+      "Liste de documents"
+    ],
+    "doubtfulReviews": "Non",
+    "recommendedUses": [
+      "Compléter"
+    ],
+    "institutionalLicense": true,
+    "licenseLabel": "IA accessible avec la licence UdeM",
+    "institutionalAccessNote": "Requiert l’accès via le proxy des bibliothèques. Certaines fonctionnalités peuvent aussi demander un compte lié à votre adresse umontreal.ca.",
+    "licensedContentSafe": false,
+    "disciplines": [
+      "multidisciplinary",
+      "social_humanities",
+      "law",
+      "other"
+    ],
+    "capabilities": [
+      "document_discovery"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "scifinder_ai",
+    "name": "Scifinder AI",
+    "category": "Disciplinaire",
+    "tagline": "Outil sur corpus Scifinder, pertinent surtout si votre terrain disciplinaire correspond à cette base spécialisée.",
+    "bestFor": "Explorer ou compléter une recherche en chimie lorsque le corpus Scifinder colle vraiment à votre domaine de travail.",
+    "caution": "Dans sa version gratuite, aucun rapport de synthèse n'apparaît. L'outil est surtout pertinent si son corpus spécialisé correspond à votre sujet.",
+    "defaultReason": "Monte surtout sur des besoins disciplinaires en chimie, pas comme choix universel tous domaines confondus.",
+    "url": "https://www.cas.org/",
+    "accent": "#4056b0",
+    "corpus": "Scifinder",
+    "synthesis": "Non",
+    "studiesFound": "10+",
+    "interaction": "Oui",
+    "ragScope": "Métadonnées",
+    "outputs": [
+      "Liste de documents"
+    ],
+    "doubtfulReviews": "Non",
+    "recommendedUses": [
+      "Explorer",
+      "Compléter"
+    ],
+    "institutionalLicense": true,
+    "licenseLabel": "IA accessible avec la licence UdeM",
+    "institutionalAccessNote": "Requiert l’accès via le proxy des bibliothèques. Certaines fonctionnalités peuvent aussi demander un compte lié à votre adresse umontreal.ca.",
+    "licensedContentSafe": false,
+    "disciplines": [
+      "chemistry"
+    ],
+    "capabilities": [
+      "document_discovery"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "lexis_ai",
+    "name": "Lexis+ AI (protégé)",
+    "category": "Juridique (accès institutionnel)",
+    "tagline": "Outil de recherche juridique IA de LexisNexis, pertinent surtout pour le droit. Accès institutionnel requis.",
+    "bestFor": "Rechercher et synthétiser de la jurisprudence et de la doctrine juridique quand vous avez accès à LexisNexis via votre institution.",
+    "caution": "Accès protégé (licence institutionnelle requise). Non recommandé pour des domaines hors droit.",
+    "defaultReason": "Monte fortement si votre besoin est juridique et que vous avez accès à LexisNexis.",
+    "url": "https://plus.lexis.com/",
+    "accent": "#c41230",
+    "corpus": "LexisNexis",
+    "synthesis": "Oui",
+    "studiesFound": "Variable",
+    "interaction": "Oui",
+    "ragScope": "Texte intégral",
+    "outputs": [
+      "Liste de documents",
+      "Rapport de synthèse"
+    ],
+    "doubtfulReviews": "Non",
+    "recommendedUses": [
+      "Explorer",
+      "Compléter"
+    ],
+    "institutionalLicense": true,
+    "licenseLabel": "IA accessible avec la licence UdeM",
+    "institutionalAccessNote": "Requiert l’accès via le proxy des bibliothèques. Certaines fonctionnalités peuvent aussi demander un compte lié à votre adresse umontreal.ca.",
+    "licensedContentSafe": true,
+    "disciplines": [
+      "law"
+    ],
+    "capabilities": [
+      "document_discovery",
+      "synthesis_report"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  },
+  {
+    "id": "canlii",
+    "name": "CanLII Recherche Plus",
+    "category": "Juridique (accès libre)",
+    "tagline": "Base de données juridique canadienne avec fonctions de recherche IA, accès libre, centrée sur le droit canadien.",
+    "bestFor": "Rechercher de la jurisprudence et de la législation canadiennes avec des outils de recherche assistés par IA.",
+    "caution": "Limité au droit canadien. Non recommandé pour des domaines hors droit ou pour de la recherche internationale.",
+    "defaultReason": "Monte fortement si votre besoin est juridique canadien, avec un accès libre et sans risque de licence.",
+    "url": "https://www.canlii.org/",
+    "accent": "#8b1a1a",
+    "corpus": "CanLII (jurisprudence et législation canadiennes)",
+    "synthesis": "Non",
+    "studiesFound": "Variable",
+    "interaction": "Peu",
+    "ragScope": "Texte intégral",
+    "outputs": [
+      "Liste de documents"
+    ],
+    "doubtfulReviews": "Non",
+    "recommendedUses": [
+      "Explorer",
+      "Compléter"
+    ],
+    "institutionalLicense": false,
+    "licensedContentSafe": false,
+    "disciplines": [
+      "law"
+    ],
+    "capabilities": [
+      "document_discovery"
+    ],
+    "requiresUpload": false,
+    "acceptsUpload": false
+  }
+]

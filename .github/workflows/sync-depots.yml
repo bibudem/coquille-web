@@ -1,0 +1,83 @@
+# Copie les sites statiques des dépôts ddia et radar-ia dans static/ et ouvre une PR vers main.
+#
+# Déclenché par les dépôts sources (repository_dispatch, type « sync-depot ») à chaque push
+# sur leur branche main, ou à la main depuis l'onglet Actions. On passe par une PR parce que
+# main et production ne reçoivent jamais de poussée directe.
+name: Synchroniser les dépôts statiques
+
+on:
+  repository_dispatch:
+    types: [sync-depot]
+  workflow_dispatch:
+    inputs:
+      depot:
+        description: Dépôt source à synchroniser
+        required: true
+        type: choice
+        options: [ddia, radar-ia]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# Deux pushes rapprochés sur le même dépôt : le second remplace le premier.
+concurrency:
+  group: sync-${{ github.event.client_payload.depot || inputs.depot }}
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Résoudre le dossier de destination
+        id: cible
+        env:
+          DEPOT: ${{ github.event.client_payload.depot || inputs.depot }}
+        # Liste fermée : le nom du dépôt vient d'un événement externe, on ne l'utilise
+        # jamais tel quel dans un chemin.
+        run: |
+          case "$DEPOT" in
+            ddia)     echo "dossier=ddia" >> "$GITHUB_OUTPUT" ;;
+            radar-ia) echo "dossier=radaria" >> "$GITHUB_OUTPUT" ;;
+            *) echo "Dépôt non autorisé : $DEPOT" >&2; exit 1 ;;
+          esac
+          echo "depot=$DEPOT" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/checkout@v4
+        with:
+          repository: bibudem/${{ steps.cible.outputs.depot }}
+          ref: main
+          path: _source
+
+      - name: Copier le site dans static/
+        env:
+          DOSSIER: ${{ steps.cible.outputs.dossier }}
+        # Seuls les fichiers servis au public sont copiés : pas de documentation, de tests
+        # ni de configuration npm.
+        run: |
+          rsync -a --delete \
+            --exclude .git --exclude .github --exclude .gitignore \
+            --exclude README.md --exclude LICENSE \
+            --exclude package.json --exclude package-lock.json \
+            --exclude node_modules --exclude tests \
+            _source/ "static/$DOSSIER/"
+          echo "sha=$(git -C _source rev-parse --short HEAD)" >> "$GITHUB_ENV"
+          rm -rf _source
+
+      - name: Ouvrir ou mettre à jour la PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: sync/${{ steps.cible.outputs.dossier }}
+          base: main
+          add-paths: static/${{ steps.cible.outputs.dossier }}
+          commit-message: "content(${{ steps.cible.outputs.dossier }}): synchroniser avec bibudem/${{ steps.cible.outputs.depot }}@${{ env.sha }}"
+          title: "content(${{ steps.cible.outputs.dossier }}): synchroniser avec bibudem/${{ steps.cible.outputs.depot }}"
+          body: |
+            Copie automatique de [bibudem/${{ steps.cible.outputs.depot }}@${{ env.sha }}](https://github.com/bibudem/${{ steps.cible.outputs.depot }}/commit/${{ env.sha }}) dans `static/${{ steps.cible.outputs.dossier }}/`.
+
+            Le site sera servi à `/${{ steps.cible.outputs.dossier }}/` après le déploiement de `main`.
+          delete-branch: true
