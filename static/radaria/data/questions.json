@@ -1,0 +1,88 @@
+[
+  {
+    "id": "discipline_focus",
+    "title": "Vous recherchez des documents dans quel domaine disciplinaire ?",
+    "description": "Le corpus interrogé par chaque outil varie selon la discipline. Choisissez le profil le plus proche de votre terrain.",
+    "options": [
+      {
+        "id": "multidisciplinary",
+        "label": "Multidisciplinaire",
+        "description": "Sujet transversal ou recherche générale qui traverse plusieurs disciplines."
+      },
+      {
+        "id": "health_life_sciences",
+        "label": "Sciences de la santé et de la vie",
+        "description": "Médecine, sciences infirmières, biologie, santé publique, sciences de la vie, etc."
+      },
+      {
+        "id": "social_humanities",
+        "label": "Sciences sociales et humaines",
+        "description": "Sociologie, histoire, philosophie, littérature, sciences politiques, etc."
+      },
+      {
+        "id": "chemistry",
+        "label": "Chimie",
+        "description": "Chimie organique, inorganique, analytique ou corpus très spécialisé."
+      },
+      {
+        "id": "law",
+        "label": "Droit",
+        "description": "Sciences juridiques, jurisprudence, doctrine."
+      },
+      {
+        "id": "other",
+        "label": "Autres",
+        "description": "Tout domaine non couvert par les catégories précédentes (informatique, éducation, arts, etc.)."
+      }
+    ]
+  },
+  {
+    "id": "desired_use",
+    "title": "Quelle utilisation voulez-vous faire ?",
+    "description": "Les outils se distinguent d'abord par ce qu'ils produisent : une liste de documents, une synthèse scientifique ou une réponse générée à partir du web.",
+    "options": [
+      {
+        "id": "find_documents",
+        "label": "Repérer des documents scientifiques",
+        "description": "Je veux surtout obtenir une liste de références pertinentes à partir d'un corpus bibliographique."
+      },
+      {
+        "id": "generate_synthesis_corpus",
+        "label": "Générer une synthèse à partir d'un corpus de documents scientifiques",
+        "description": "Je veux qu'un outil parcoure un corpus scientifique et me produise un rapport de synthèse."
+      },
+      {
+        "id": "web_search_synthesis",
+        "label": "Chercher de l'information et générer une synthèse à travers le Web",
+        "description": "Je veux chercher de l'information sur le web et obtenir une réponse ou un texte synthétisé."
+      }
+    ]
+  },
+  {
+    "id": "upload_intent",
+    "title": "Est-ce que vous avez l'intention de téléverser des contenus dans l'outil ?",
+    "description": "Certains outils acceptent des fichiers en entrée. La nature des documents que vous comptez téléverser a des implications sur le plan des droits.",
+    "options": [
+      {
+        "id": "library_license",
+        "label": "Oui, documents sous licence des bibliothèques",
+        "description": "J'ai l'intention d'utiliser des documents auxquels j'accède via la licence institutionnelle des bibliothèques."
+      },
+      {
+        "id": "public_domain",
+        "label": "Oui, documents du domaine public ou dont je détiens les droits",
+        "description": "Mes propres manuscrits, des textes libres de droits ou en libre accès."
+      },
+      {
+        "id": "unknown_nature",
+        "label": "Je ne connais pas la nature exacte des documents",
+        "description": "Je ne suis pas certain·e du statut de licence des documents que je compte téléverser."
+      },
+      {
+        "id": "no_upload",
+        "label": "Non, je ne compte téléverser aucun document",
+        "description": "Je veux un outil qui recherche dans son propre corpus, sans téléversement de ma part."
+      }
+    ]
+  }
+]
