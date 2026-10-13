@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 // import { navigate } from 'gatsby'
-import { useTheme } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
 import AccordionsContext from '@/components/AccordionsContext'
 
 /**

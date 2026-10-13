@@ -10,7 +10,7 @@ const StyledTable = styled('table')(({ theme }) => ({
   overflow: 'hidden',
   border: `1px solid ${theme.palette?.divider || '#c3ccd5'}`,
   margin: '1.5rem 0',
-  fontFamily: theme.typography?.fontFamily || '"Figtree", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif',
+  fontFamily: theme.typography?.fontFamily || '"Figtree", "Figtree Fallback", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif',
   fontSize: theme.typography?.body2?.fontSize || '0.875rem',
   fontWeight: theme.typography?.fontWeightMedium || 500,
   color: theme.palette?.text?.primary || '#0b113a',

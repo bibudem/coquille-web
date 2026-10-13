@@ -1,0 +1,96 @@
+{
+  "rules": [
+    {
+      "id": "licensed_content",
+      "priority": 100,
+      "relaxable": false,
+      "badge": "Documents sous licence",
+      "when": {
+        "questionId": "upload_intent",
+        "optionIds": ["library_license", "unknown_nature"]
+      },
+      "require": {
+        "type": "flagTrue",
+        "field": "licensedContentSafe"
+      },
+      "reason": "Cet outil est admissible pour des documents sous licence des bibliothèques ou de nature incertaine.",
+      "rejection": "Écarté car son usage avec des documents sous licence des bibliothèques (ou de nature incertaine) n'est pas garanti par ses conditions d'utilisation.",
+      "summary": "Seuls les outils compatibles avec des documents sous licence des bibliothèques sont retenus."
+    },
+    {
+      "id": "upload_required",
+      "priority": 90,
+      "relaxable": false,
+      "badge": "Aucun téléversement prévu",
+      "when": {
+        "questionId": "upload_intent",
+        "optionIds": ["no_upload"]
+      },
+      "require": {
+        "type": "flagFalse",
+        "field": "requiresUpload"
+      },
+      "reason": "Ne nécessite aucun document téléversé : fonctionne à partir de son propre corpus.",
+      "rejection": "Écarté car cet outil ne fonctionne qu'à partir de documents que vous lui téléversez.",
+      "summary": "Les outils qui exigent un téléversement de documents sont écartés."
+    },
+    {
+      "id": "usage_capability",
+      "priority": 60,
+      "relaxable": true,
+      "badge": "Type de résultat demandé",
+      "when": {
+        "questionId": "desired_use",
+        "optionIds": ["find_documents", "generate_synthesis_corpus", "web_search_synthesis"]
+      },
+      "require": {
+        "type": "listIncludesValue",
+        "field": "capabilities",
+        "valueByOption": {
+          "find_documents": "document_discovery",
+          "generate_synthesis_corpus": "synthesis_report",
+          "web_search_synthesis": "web_synthesis"
+        }
+      },
+      "reasonByOption": {
+        "find_documents": "Sait repérer des documents pertinents dans son corpus.",
+        "generate_synthesis_corpus": "Sait produire un rapport de synthèse à partir d'un corpus de documents scientifiques.",
+        "web_search_synthesis": "Sait chercher de l'information sur le web et en produire une synthèse."
+      },
+      "rejectionByOption": {
+        "find_documents": "Écarté car il ne repère pas de documents dans un corpus documentaire.",
+        "generate_synthesis_corpus": "Écarté car il ne produit pas de rapport de synthèse à partir d'un corpus scientifique.",
+        "web_search_synthesis": "Écarté car il n'est pas conçu pour chercher sur le web et en synthétiser le contenu."
+      },
+      "summaryByOption": {
+        "find_documents": "Seuls les outils capables de repérer des documents sont retenus.",
+        "generate_synthesis_corpus": "Seuls les outils capables de générer une synthèse à partir d'un corpus sont retenus.",
+        "web_search_synthesis": "Seuls les outils capables de synthétiser une recherche web sont retenus."
+      }
+    },
+    {
+      "id": "discipline_coverage",
+      "priority": 50,
+      "relaxable": true,
+      "badge": "Couverture disciplinaire",
+      "when": {
+        "questionId": "discipline_focus",
+        "optionIds": [
+          "multidisciplinary",
+          "health_life_sciences",
+          "social_humanities",
+          "chemistry",
+          "law",
+          "other"
+        ]
+      },
+      "require": {
+        "type": "listIncludesOption",
+        "field": "disciplines"
+      },
+      "reason": "Son corpus couvre la discipline indiquée.",
+      "rejection": "Écarté car son corpus ne couvre pas la discipline indiquée.",
+      "summary": "Seuls les outils dont le corpus couvre la discipline indiquée sont retenus."
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { styled, useTheme } from '@mui/material'
+import { styled, useTheme } from '@mui/material/styles'
 import Fade from '@mui/material/Fade'
 
 const CardContainer = styled('div')(({ theme, image }) => ({

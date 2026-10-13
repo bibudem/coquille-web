@@ -1,4 +1,6 @@
-import { CardMedia, Typography, useTheme } from '@mui/material'
+import CardMedia from '@mui/material/CardMedia'
+import Typography from '@mui/material/Typography'
+import { useTheme } from '@mui/material/styles'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardActionArea from '@mui/material/CardActionArea'

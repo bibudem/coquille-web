@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react'
 import { styled } from '@mui/material/styles'
-import { Box, Breadcrumbs as MuiBreadcrumbs, IconButton, Link, Menu, MenuItem } from '@mui/material'
+import Box from '@mui/material/Box'
+import MuiBreadcrumbs from '@mui/material/Breadcrumbs'
+import IconButton from '@mui/material/IconButton'
+import Link from '@mui/material/Link'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
 import { usePopupState, bindTrigger, bindMenu } from 'material-ui-popup-state/hooks'
-import { DotsThreeCircleIcon, HouseLineIcon } from '@phosphor-icons/react'
+import { DotsThreeCircleIcon } from '@phosphor-icons/react/dist/csr/DotsThreeCircle'
+import { HouseLineIcon } from '@phosphor-icons/react/dist/csr/HouseLine'
 import { SecondaryNav } from '../SecondaryNav/SecondaryNavSm'
 import { useSmall } from '@/hooks/use-small'
 import secondaryNavData from '../../../../public/site-navigation.json'
@@ -127,7 +133,7 @@ function Breadcrumb({ data, isRoot, isLeaf }) {
   const { pathname, label, siblings } = data
 
   if (isLeaf) {
-    return <span>{label}</span>
+    return <span aria-current="page">{label}</span>
   }
 
   return (

@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { Container } from '@mui/material'
+import Container from '@mui/material/Container'
 import SEO from '@/components/_layout/SEO'
 import Debug from '@/components/_layout/Debug'
 

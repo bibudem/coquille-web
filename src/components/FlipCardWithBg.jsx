@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { styled, useTheme } from '@mui/material'
+import { styled, useTheme } from '@mui/material/styles'
 import Card from '@mui/material/Card'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'

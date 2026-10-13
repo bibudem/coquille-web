@@ -1,6 +1,8 @@
-import { Box, IconButton, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
 import { useTheme } from '@mui/material/styles'
-import { X as CloseIcon } from '@phosphor-icons/react'
+import { X as CloseIcon } from '@phosphor-icons/react/dist/csr/X'
 import { BurgerIcon } from '@/components/CustomIcons'
 
 /**

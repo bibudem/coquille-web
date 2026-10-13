@@ -1,0 +1,23 @@
+---
+title: Horaires et lieux
+description: Heures d'ouverture en direct, adresses, contacts et réservation de salles des bibliothèques, centres de conservation et points de service de l'Université de Montréal.
+# Version de présentation de la nouvelle page Horaires : exclue des moteurs
+# de recherche et de la recherche interne (noindex), du sitemap
+# (gatsby-config.mjs) et de la navigation secondaire (hidden). Aucune page
+# n'y renvoie. Volontairement absente de robots.txt, qui est public.
+noindex: true
+secondaryNav:
+  hidden: true
+# Mise en page de premier niveau, comme /horaires/ : pleine largeur, sans
+# colonne de navigation secondaire (voir PageTemplate.jsx).
+lvl: 1
+---
+
+import CarteHoraires from '@/components/CarteHoraires'
+
+<SuperHero2
+  title="Horaires et lieux"
+  imageName="horaires-bib"
+/>
+
+<CarteHoraires />

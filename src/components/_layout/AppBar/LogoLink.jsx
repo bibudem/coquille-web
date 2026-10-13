@@ -1,4 +1,5 @@
-import { Box, Divider } from '@mui/material'
+import Box from '@mui/material/Box'
+import Divider from '@mui/material/Divider'
 import LogoUdeM from './logo-udem.svg'
 
 export default function LogoLink({ trigger }) {

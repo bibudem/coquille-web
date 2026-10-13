@@ -1,0 +1,32 @@
+/*
+ * Polices de repli ajustées aux dimensions de Figtree et de Lora.
+ *
+ * Les polices Web s'affichent en `font-display: swap` : le texte apparaît
+ * d'abord dans une police système, puis bascule vers Figtree/Lora une fois
+ * téléchargées. Sans ajustement, cette bascule change la largeur et la
+ * hauteur des lignes et décale la page (CLS mesuré jusqu'à 1,0 sur mobile).
+ * Ces @font-face redimensionnent une police locale (Arial, Georgia) pour
+ * qu'elle occupe le même espace que la police Web : la bascule ne déplace
+ * plus rien.
+ *
+ * Valeurs calculées avec les métriques de @capsizecss/metrics (méthode de
+ * next/font) : size-adjust = rapport des largeurs moyennes des caractères,
+ * puis ascent/descent/line-gap de la police Web divisés par ce rapport.
+ */
+@font-face {
+  font-family: 'Figtree Fallback';
+  src: local('Arial');
+  size-adjust: 100.72%;
+  ascent-override: 94.32%;
+  descent-override: 24.82%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Lora Fallback';
+  src: local('Georgia');
+  size-adjust: 104.98%;
+  ascent-override: 95.83%;
+  descent-override: 26.1%;
+  line-gap-override: 0%;
+}

@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { Box, useTheme } from '@mui/material'
+import Box from '@mui/material/Box'
+import { useTheme } from '@mui/material/styles'
 import Grid from '@mui/material/Grid2'
-import { IconContext } from '@phosphor-icons/react'
+import { IconContext } from '@phosphor-icons/react/dist/lib/context'
 
 import TopAppBar from '@/components/_layout/AppBar/TopAppBar'
 import TopAppBarSm from '@/components/_layout/AppBar/TopAppBarSm'
@@ -23,46 +24,94 @@ import { SecondaryNav } from '@/components/_layout/SecondaryNav/SecondaryNav'
 import commonComponents from './commonComponents'
 import SuperHero from '@/components/_layout/SuperHero/SuperHeroLvl2'
 
-function getCurrentPageLevel(location) {
-  return location.pathname.split('/').filter((item) => item).length
-}
-
 export default function PageTemplate({ pageContext, children, data, location }) {
   const isSmall = useSmall('md')
   const isMedium = useSmall('lg')
   const theme = useTheme()
-  const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
-  const [lvl, setLvl] = useState(getCurrentPageLevel(location))
+  // Calculé au build à partir du `path` de la page (voir gatsby-node.mjs) et
+  // fourni via `pageContext.lvl` : un simple const dérivé ici, identique côté
+  // serveur et client dès le premier rendu, contrairement à l'ancien calcul
+  // client-only (`useState`/`useEffect` sur `location.pathname`) qui faisait
+  // que le HTML statique ne contenait jamais le menu de navigation secondaire.
+  //
+  // Une page peut imposer son niveau par `lvl` dans son frontmatter (ex. une
+  // page de présentation rangée sous /horaires/test/ mais mise en page comme
+  // une page de premier niveau : pleine largeur, sans navigation secondaire
+  // ni fil d'Ariane). Lu dans le frontmatter, donc toujours identique au SSR.
+  const lvl = pageContext.frontmatter?.lvl ?? pageContext.lvl
+  const hasSecondaryNav = lvl > 1
 
   // Déterminer si on est sur la page d'accueil
   const isHomePage = location.pathname === '/' || location.pathname === ''
 
   const { superHero } = pageContext.frontmatter
 
+  // Gestion du scroll vers les ancres : on recorrige la position tant que
+  // la page bouge encore (images qui chargent, contenu injecté après une
+  // redirection, etc.), en s'arrêtant dès que la personne scrolle elle-même.
   useEffect(() => {
-    setLvl(getCurrentPageLevel(location))
-  }, [location])
+    if (!location.hash || typeof window === 'undefined') return undefined
 
-  useEffect(() => {
-    setHasSecondaryNav(lvl > 1)
-  }, [lvl])
+    const id = location.hash.substring(1)
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  // NOUVEAU : Gestion du scroll vers les ancres
-  useEffect(() => {
-    if (location.hash) {
-      // Petit délai pour s'assurer que le DOM est complètement chargé
-      const timer = setTimeout(() => {
-        const element = document.getElementById(location.hash.substring(1))
-        if (element) {
-          element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          })
-        }
-      }, 100)
+    const RESIZE_DEBOUNCE = 100
+    const IDLE_TIMEOUT = 3000
+    const MAX_DURATION = 15000 // filet de sécurité absolu
 
-      return () => clearTimeout(timer)
+    let stopped = false
+    let debounceTimer
+    let idleTimer
+
+    const scrollToTarget = () => {
+      const element = document.getElementById(id)
+      if (element) {
+        element.scrollIntoView({
+          behavior: prefersReducedMotion ? 'auto' : 'smooth',
+          block: 'start',
+        })
+      }
     }
+
+    const stop = () => {
+      if (stopped) return
+      stopped = true
+      clearTimeout(debounceTimer)
+      clearTimeout(idleTimer)
+      clearTimeout(initialTimer)
+      clearTimeout(maxTimer)
+      resizeObserver.disconnect()
+      window.removeEventListener('wheel', stop)
+      window.removeEventListener('touchstart', stop)
+      window.removeEventListener('keydown', stop)
+    }
+
+    const scheduleIdleStop = () => {
+      clearTimeout(idleTimer)
+      idleTimer = setTimeout(stop, IDLE_TIMEOUT)
+    }
+
+    const initialTimer = setTimeout(() => {
+      scrollToTarget()
+      scheduleIdleStop()
+    }, 50)
+
+    const resizeObserver = new ResizeObserver(() => {
+      if (stopped) return
+      clearTimeout(debounceTimer)
+      debounceTimer = setTimeout(scrollToTarget, RESIZE_DEBOUNCE)
+      scheduleIdleStop()
+    })
+    resizeObserver.observe(document.body)
+
+    // La personne garde la priorité : un geste de scroll manuel arrête tout.
+    window.addEventListener('wheel', stop, { passive: true })
+    window.addEventListener('touchstart', stop, { passive: true })
+    window.addEventListener('keydown', stop)
+
+    const maxTimer = setTimeout(stop, MAX_DURATION)
+
+    return stop
   }, [location.hash, location.pathname])
 
   if (typeof window !== 'undefined') {

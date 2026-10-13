@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Box, Container, useTheme, useMediaQuery } from '@mui/material'
+import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import { useTheme } from '@mui/material/styles'
 import { secondaryColors } from '../../plugins/gatsby-plugin-bib-theme/tokens/tokens.js'
 
 const baseStyles = {

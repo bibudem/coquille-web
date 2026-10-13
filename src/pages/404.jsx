@@ -1,7 +1,11 @@
 import * as React from "react"
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link, useLocation } from "gatsby"
-import { Box, Button, Typography, useTheme, useMediaQuery } from "@mui/material"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Typography from "@mui/material/Typography"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import { useTheme } from "@mui/material/styles"
 import notFoundImage from "@/images/404/im_um_404.png"
 import TopAppBar from '@/components/_layout/AppBar/TopAppBar'
 import TopAppBarSm from '@/components/_layout/AppBar/TopAppBarSm'

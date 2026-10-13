@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { styled, Typography, useTheme } from '@mui/material'
+import Typography from '@mui/material/Typography'
+import { styled, useTheme } from '@mui/material/styles'
 
 const CardContainer = styled('div')(({ theme, image }) => ({
   position: 'relative',

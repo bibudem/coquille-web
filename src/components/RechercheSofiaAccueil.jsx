@@ -1,6 +1,9 @@
 import { useRef } from 'react'
-import { Container, Paper, IconButton, InputBase } from '@mui/material'
-import { MagnifyingGlassIcon } from '@phosphor-icons/react'
+import Container from '@mui/material/Container'
+import Paper from '@mui/material/Paper'
+import IconButton from '@mui/material/IconButton'
+import InputBase from '@mui/material/InputBase'
+import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/csr/MagnifyingGlass'
 import { inlineOffset } from '@/components/SuperHero'
 import { useSmall } from '@/hooks/use-small'
 

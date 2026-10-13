@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
-import { styled } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import useSWR from 'swr'
-import { ClockCountdown } from '@phosphor-icons/react'
+import { ClockCountdown } from '@phosphor-icons/react/dist/csr/ClockCountdown'
 import Link from '@/components/Link'
 import Button from '@/components/Button'
 import Div from '@/components/utils/Div'
@@ -105,7 +105,7 @@ export default function HoraireAujourdhui({ codeBib, ...rest }) {
         ))}
         {biblioInfo && (
           <div>
-            <ALink href={`/horaires#${biblioInfo.ancre}`}>
+            <ALink href={`/horaires/#${biblioInfo.ancre}`}>
               Tous les horaires
             </ALink>
           </div>

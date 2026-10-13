@@ -1,5 +1,5 @@
 import { useState, Children,useEffect } from 'react'
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
 import Typography from '@mui/material/Typography'

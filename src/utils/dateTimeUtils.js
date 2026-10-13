@@ -1,5 +1,10 @@
-import { addDays, addWeeks, format, getDay as dateFnsGetDay, isSunday, previousSunday } from 'date-fns'
-import { frCA } from 'date-fns/locale'
+import { addDays } from 'date-fns/addDays'
+import { addWeeks } from 'date-fns/addWeeks'
+import { format } from 'date-fns/format'
+import { getDay as dateFnsGetDay } from 'date-fns/getDay'
+import { isSunday } from 'date-fns/isSunday'
+import { previousSunday } from 'date-fns/previousSunday'
+import { frCA } from 'date-fns/locale/fr-CA'
 
 function toDate(date) {
 

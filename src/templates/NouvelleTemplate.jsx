@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { Container, useTheme } from '@mui/material'
-import { IconContext } from '@phosphor-icons/react'
+import Container from '@mui/material/Container'
+import { useTheme } from '@mui/material/styles'
+import { IconContext } from '@phosphor-icons/react/dist/lib/context'
 
 import TopAppBar from '@/components/_layout/AppBar/TopAppBar'
 import TopAppBarSm from '@/components/_layout/AppBar/TopAppBarSm'
@@ -13,6 +13,7 @@ import SkipTo from '@/components/_layout/SkipTo'
 import Debug from '@/components/_layout/Debug'
 import RetroactionUsager from '@/components/RetroactionUsager'
 import ConditionalWrapper from '@/components/utils/ConditionalWrapper'
+import LayoutContainer from '@/components/utils/LayoutContainer'
 import { Head as HtmlHead } from '../components/_layout/HtmlHead'
 
 import { useSmall } from '@/hooks/use-small'
@@ -20,26 +21,16 @@ import { useSmall } from '@/hooks/use-small'
 import commonComponents from './commonComponents'
 import SuperHero from '@/components/_layout/SuperHero/SuperHeroLvl2'
 
-function getCurrentPageLevel(location) {
-  return location.pathname.split('/').filter((item) => item).length
-}
-
 export default function NouvelleTemplate({ pageContext, children, data, location }) {
   const isSmall = useSmall('md')
   const isMedium = useSmall('lg')
   const theme = useTheme()
-  const [hasSecondaryNav, setHasSecondaryNav] = useState(false)
-  const [lvl, setLvl] = useState(getCurrentPageLevel(location))
+  // Voir PageTemplate.jsx : `lvl` vient du build (gatsby-node.mjs), plus de
+  // calcul côté client.
+  const lvl = pageContext.lvl
+  const hasSecondaryNav = lvl > 1
 
   const { superHero } = pageContext.frontmatter
-
-  useEffect(() => {
-    setLvl(getCurrentPageLevel(location))
-  }, [location])
-
-  useEffect(() => {
-    setHasSecondaryNav(lvl > 1)
-  }, [lvl])
 
   if (typeof window !== 'undefined') {
     window.bib = window.bib || {}
@@ -129,8 +120,7 @@ function convertTZ(date) {
 export function Head(props) {
   const { pageContext, location } = props
   const { frontmatter = {} } = pageContext
-  const { date, title, newsUrl, authors, noIndex } = frontmatter
-  const { pathname } = location
+  const { date, title, authors } = frontmatter
   const d = convertTZ(date)
 
   const jsonld = {

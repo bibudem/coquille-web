@@ -28,12 +28,59 @@ const nouvelleTemplate = resolve('./src/templates/NouvelleTemplate.jsx')
 // Entrées accumulées pour l'index de recherche du site, écrites dans public/search-index.json
 const searchEntries = []
 
+// ---------------------------------------------------------------------------
+// Libellés de fil d'Ariane personnalisés (voir aussi src/components/_layout/
+// Breadcrumbs/Breadcrumbs.jsx).
+//
+// gatsby-plugin-breadcrumb (useAutoGen) construit un fil d'Ariane à partir des
+// segments de l'URL : sans configuration, le libellé de chaque maillon est le
+// segment d'URL lui-même (ex. « formulaire-reserve »), pas un texte lisible.
+// Une page peut définir `crumbLabel` dans son frontmatter pour remplacer ce
+// segment par un mot ou une expression arbitraire ; en son absence, le slug
+// reste utilisé tel quel (comportement actuel, inchangé).
+//
+// On accumule ici un index { chemin: libellé } à partir de TOUTES les pages
+// (content/pages et content/nouvelles), puisqu'un maillon du fil d'Ariane
+// d'une page peut correspondre à une page ANCÊTRE différente (ex. le maillon
+// « Enseignement » sur la page /enseignement/formulaire-reserve/ correspond
+// à la page /enseignement/, pas à la page courante) — cet index doit donc
+// couvrir le site au complet, pas seulement la page en cours de création.
+// Écrit dans public/crumb-labels.json (même principe que site-navigation.json
+// pour la nav secondaire) et lu tel quel côté client/SSR par Breadcrumbs.jsx.
+const crumbLabelOverrides = {}
+
+// gatsby-plugin-breadcrumb n'ajoute pas de slash final aux chemins de ses
+// maillons (option `trailingSlashes` non activée dans gatsby-config.mjs) alors
+// que nos `path` de page en ont toujours un : on normalise donc les deux côtés
+// de la même façon avant de les faire correspondre.
+function stripTrailingSlash(path) {
+  return path.replace(/\/+$/, '') || '/'
+}
+
+function recordCrumbLabel(path, crumbLabel) {
+  if (!crumbLabel) return
+  crumbLabelOverrides[stripTrailingSlash(path)] = crumbLabel
+}
+
+// Niveau d'une page dans l'arborescence du site, à partir de son `path` final
+// (ex: `/obtenir/` → 1, `/obtenir/numerisation/` → 2). Calculé ici, une seule
+// fois par page au moment du build, et propagé aux templates via `context.lvl`
+// (voir PageTemplate/DocTemplate/NouvelleTemplate) : ces derniers en dérivaient
+// auparavant une copie chacun à partir de `location.pathname`, côté client
+// uniquement (`useState`/`useEffect`), ce qui rendait le HTML statique généré
+// par le SSR incohérent avec le rendu obtenu après hydratation (le menu de
+// navigation secondaire, entre autres, n'apparaissait jamais dans le HTML
+// statique).
+function getPageLevel(path) {
+  return path.split('/').filter(Boolean).length
+}
+
 // Pages utilitaires/démo à ne jamais exposer dans la recherche du site
 const SEARCH_EXCLUDED_DIR_PREFIXES = ['dev', 'consent']
 const SEARCH_EXCLUDED_NAMES = ['tests', 'fiche-personnel', 'widget-horaire']
 
 // N'indexer que le contenu réellement destiné au grand public : en plus des
-// dossiers/fichiers de démo ci-dessus, on exclut toute page marquée `noIndex`
+// dossiers/fichiers de démo ci-dessus, on exclut toute page marquée `noindex`
 // (ou `noindex`, la casse est incohérente selon les fichiers de contenu) —
 // ce champ existant sert déjà à dire aux moteurs de recherche externes de ne
 // pas indexer la page (voir HtmlHead.jsx) ; la recherche interne du site doit
@@ -47,7 +94,7 @@ function isSearchExcluded(node) {
     return true
   }
   const frontmatter = node.childMdx?.frontmatter
-  return Boolean(frontmatter?.noIndex || frontmatter?.noindex)
+  return Boolean(frontmatter?.noindex)
 }
 
 // Motifs identifiant une ligne entièrement composée de code JS/JSX (pas de texte à en tirer)
@@ -98,6 +145,66 @@ function makeExcerpt(rawBody, length = 200) {
 }
 
 /**
+ * Déclare `crumbLabel` comme champ optionnel du frontmatter MDX. Sans ça, la
+ * requête GraphQL qui le lit ci-dessous échouerait tant qu'aucune page du
+ * site ne l'utilise réellement : le schéma de `MdxFrontmatter` est inféré à
+ * partir des données présentes, un champ absent partout n'existe pas.
+ * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
+ */
+export function createSchemaCustomization({ actions }) {
+  actions.createTypes(`
+    type MdxFrontmatter {
+      crumbLabel: String
+    }
+  `)
+}
+
+/**
+ * En `gatsby develop`, Gatsby désactive les groupes de découpage par défaut de
+ * webpack (`default` et `defaultVendors`). Chaque gabarit de page MDX
+ * (`PageTemplate.jsx?__contentFilePath=…`) devient alors un chunk qui embarque
+ * sa propre copie de tout ce qu'il importe (mise en page, MUI, MiniSearch…).
+ * Webpack génère et met en cache ce code une fois par page : le cache
+ * .cache/webpack atteignait plusieurs Go après un seul démarrage à froid, et
+ * sa sérialisation occupait une bonne part du temps de démarrage.
+ *
+ * Même chose pour `develop-html` : sans DEV_SSR, Gatsby compile quand même le
+ * moteur de rendu SSR complet (tous les gabarits de page) pour produire la
+ * seule coquille .cache/develop-html/index.html servie en développement.
+ *
+ * On regroupe donc, en développement seulement, les modules partagés par au
+ * moins deux pages dans un chunk commun. Le build de production n'est pas
+ * touché.
+ *
+ * En production (`build-javascript`), Gatsby génère des source maps complètes
+ * pour tout le JavaScript du site. Personne ne s'en sert hors débogage, et
+ * elles coûtent du temps de build et de l'espace dans public/. On les désactive
+ * ; `BUILD_SOURCEMAPS=1 npm run build` les rétablit au besoin (ex. analyser le
+ * contenu des chunks). Celles du moteur SSR (`build-html`) restent : elles
+ * donnent les numéros de ligne des erreurs de rendu au build.
+ * @type {import('gatsby').GatsbyNode['onCreateWebpackConfig']}
+ */
+export function onCreateWebpackConfig({ stage, getConfig, actions }) {
+  if (stage === 'build-javascript') {
+    if (!process.env.BUILD_SOURCEMAPS) actions.setWebpackConfig({ devtool: false })
+    return
+  }
+  if (stage !== 'develop' && stage !== 'develop-html') return
+
+  const config = getConfig()
+  config.optimization.splitChunks.cacheGroups.devShared = {
+    chunks: 'async',
+    minChunks: 2,
+    name: 'dev-shared',
+    priority: 20, // sous `framework` et `styles` (40), qui gardent la priorité
+    reuseExistingChunk: true,
+    enforce: true,
+    test: module => module.type !== 'css/mini-extract',
+  }
+  actions.replaceWebpackConfig(config)
+}
+
+/**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
 export async function createPages(api) {
@@ -106,6 +213,7 @@ export async function createPages(api) {
   indexBibliotheques() // alimente searchEntries avec la section "Bibliothèques"
   await doIndexPersonnel(api) // alimente searchEntries avec la section "Personnel"
   await writeSearchIndex(api.reporter) // écrit le tout dans public/search-index.json
+  await writeCrumbLabels(api.reporter) // écrit crumbLabelOverrides dans public/crumb-labels.json
 }
 
 /**
@@ -179,6 +287,12 @@ async function writeSearchIndex(reporter) {
   reporter.info(`[search] Index de recherche généré avec ${searchEntries.length} entrées`)
 }
 
+async function writeCrumbLabels(reporter) {
+  await mkdir('public', { recursive: true })
+  await writeFile('public/crumb-labels.json', JSON.stringify(crumbLabelOverrides), 'utf-8')
+  reporter.info(`[breadcrumb] ${Object.keys(crumbLabelOverrides).length} libellé(s) de fil d'Ariane personnalisé(s)`)
+}
+
 // Note pour l'index de recherche : le champ 'body' ci-dessous (MDX brut, sans
 // frontmatter) est volontairement utilisé au lieu du champ 'excerpt' du plugin
 // MDX. Ce dernier recompile toute la page (retraitement des images compris)
@@ -204,8 +318,8 @@ async function doCreatePages({ graphql, actions, reporter }) {
               slug
               title
               template
-              noIndex
               noindex
+              crumbLabel
               secondaryNav {
                 hidden
                 title
@@ -239,6 +353,8 @@ async function doCreatePages({ graphql, actions, reporter }) {
     const slugPart = (node.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')
     const path = `${basePath}/${slugPart}`.replace(/\/+$/, '') + '/'
 
+    recordCrumbLabel(path, node.childMdx?.frontmatter?.crumbLabel)
+
     createPage({
       // As mentioned above you could also query something else like frontmatter.title above and use a helper function
       // like slugify to create a slug
@@ -247,7 +363,7 @@ async function doCreatePages({ graphql, actions, reporter }) {
       component: `${templateFullPath}?__contentFilePath=${node.absolutePath}`,
       // You can use the values in this context in
       // our page layout component
-      context: { id: node.id }
+      context: { id: node.id, lvl: getPageLevel(path) }
     })
 
     // On alimente l'index de recherche ici (plutôt que dans une passe séparée)
@@ -296,8 +412,8 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
               title
               template
               type
-              noIndex
               noindex
+              crumbLabel
             }
             body
           }
@@ -327,6 +443,8 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
     const rawSlug = (node.childMdx?.frontmatter?.slug ?? slugify(node.name)).replace(/index$/i, '')
     const path = `${basePath}/${rawSlug}`.replace(/\/+$/, '') + '/'
 
+    recordCrumbLabel(path, node.childMdx?.frontmatter?.crumbLabel)
+
     createPage({
       // As mentioned above you could also query something else like frontmatter.title above and use a helper function
       // like slugify to create a slug
@@ -335,7 +453,7 @@ async function doCreateNouvelles({ graphql, actions, reporter }) {
       component: `${templateFullPath}?__contentFilePath=${node.absolutePath}`,
       // You can use the values in this context in
       // our page layout component
-      context: { id: node.id }
+      context: { id: node.id, lvl: getPageLevel(path) }
     })
 
     // Même principe que dans doCreatePages : on réutilise le `path` déjà calculé.

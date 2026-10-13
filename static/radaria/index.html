@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Radar IA</title>
+    <meta
+      name="description"
+      content="Questionnaire interactif pour recommander des outils d'IA utiles à la recherche universitaire."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Aller directement au questionnaire et aux résultats</a>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-brand">
+          <a class="hero-logo-link" href="https://bib.umontreal.ca/" aria-label="Accueil des bibliothèques UdeM">
+            <img
+              class="hero-logo"
+              src="logobib.svg"
+              alt=""
+              width="156"
+              height="43"
+            />
+          </a>
+        </div>
+        <div class="hero-copy">
+          <h1>Radar IA</h1>
+          <p class="hero-text">
+            Questionnaire sur les outils d’IA génératives spécialisées pour la recherche universitaire.
+          </p>
+        </div>
+      </header>
+
+      <main class="layout" id="main-content" tabindex="-1">
+        <section class="panel questionnaire-panel" aria-labelledby="questionnaire-title">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Zone questionnaire</p>
+              <h2 id="questionnaire-title">Réglage progressif de la recommandation</h2>
+            </div>
+            <p class="section-note" id="questionnaire-status" role="status" aria-live="polite" aria-atomic="true">
+              Chargement des données…
+            </p>
+          </div>
+
+          <div class="questionnaire-shell">
+            <div class="questionnaire-rail">
+              <div
+                class="progress-track"
+                id="questionnaire-progress"
+                role="progressbar"
+                aria-label="Progression du questionnaire"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <div class="progress-fill" id="progress-fill"></div>
+              </div>
+
+              <div class="steps" id="steps"></div>
+            </div>
+
+            <div class="questionnaire-main">
+              <div class="question-stage" id="questionnaire"></div>
+
+            </div>
+          </div>
+        </section>
+
+        <section class="panel recommendations-panel" aria-labelledby="recommendations-title">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Zone recommandations</p>
+              <h2 id="recommendations-title">Classement des outils</h2>
+            </div>
+            <div class="recommendations-actions">
+              <button type="button" class="ghost-button" id="edit-answers-btn">Modifier mes réponses</button>
+              <button type="button" class="ghost-button" id="restart-btn">Recommencer</button>
+            </div>
+          </div>
+
+          <p class="selection-summary" id="selection-summary" role="status" aria-live="polite"></p>
+          <div class="criteria-badges" id="criteria-badges"></div>
+          <div class="relaxation-notice" id="relaxation-notice" role="status" aria-live="polite" hidden></div>
+
+          <div class="recommendations-shell">
+            <div class="recommendations-empty" id="recommendations-empty" aria-live="polite"></div>
+
+            <div class="recommendations-cards">
+              <h3 class="cards-section-title" id="primary-heading">Recommandations principales</h3>
+              <div class="cards-grid" id="cards-grid"></div>
+
+              <div class="secondary-section" id="secondary-section" hidden>
+                <h3 class="cards-section-title cards-section-title-secondary" id="secondary-heading">Autres outils à considérer</h3>
+                <div class="cards-grid cards-grid-secondary" id="secondary-grid"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Radar IA - Bibliothèques de l’Université de Montréal - 2026</p>
+        <nav class="footer-links" aria-label="Liens utiles">
+          <a href="https://bib.umontreal.ca/" target="_blank" rel="noreferrer">
+            Bibliothèques de l’Université de Montréal
+            <span class="sr-only">, ouvre dans un nouvel onglet</span>
+          </a>
+          <a href="https://boite-outils.bib.umontreal.ca/trouver-evaluer/iag" target="_blank" rel="noreferrer">
+            Guide sur l’IA générative
+            <span class="sr-only">, ouvre dans un nouvel onglet</span>
+          </a>
+          <a href="https://github.com/bibudem/radar-ia" target="_blank" rel="noreferrer">
+            Code source sur GitHub
+            <span class="sr-only">, ouvre dans un nouvel onglet</span>
+          </a>
+        </nav>
+      </footer>
+    </div>
+
+    <noscript>
+      <div class="noscript-banner">
+        Cette interface a besoin de JavaScript pour charger les données et calculer les scores.
+      </div>
+    </noscript>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

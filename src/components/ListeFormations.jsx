@@ -1,10 +1,19 @@
-import { Box, List, ListItem, ListItemButton, Skeleton, Typography, useTheme } from '@mui/material'
+import Box from '@mui/material/Box'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
+import Skeleton from '@mui/material/Skeleton'
+import Typography from '@mui/material/Typography'
+import { useTheme } from '@mui/material/styles'
 import Grid from '@mui/material/Grid2'
 import useSWR from 'swr'
 import Button from '@/components/Button'
 import Link from '@/components/Link'
 import { ArrowRightCircleIcon } from '@/components/CustomIcons'
-import { CalendarBlankIcon, ClockCountdownIcon, MapPinSimpleAreaIcon, ArrowUpRight } from '@phosphor-icons/react'
+import { CalendarBlankIcon } from '@phosphor-icons/react/dist/csr/CalendarBlank'
+import { ClockCountdownIcon } from '@phosphor-icons/react/dist/csr/ClockCountdown'
+import { MapPinSimpleAreaIcon } from '@phosphor-icons/react/dist/csr/MapPinSimpleArea'
+import { ArrowUpRight } from '@phosphor-icons/react/dist/csr/ArrowUpRight'
 
 const FETCH_TIMEOUT = 2000
 
@@ -294,9 +303,19 @@ export default function ListeFormations({ id, service = 'https://api.bib.umontre
             key={i}
             url={url}
             imageVedette={
-              <img
+              // width/height : les images vedettes des formations sont des
+              // carrés de 300 px. Ces attributs donnent au navigateur leurs
+              // proportions avant le téléchargement : il réserve la place et le
+              // contenu ne saute plus à leur arrivée (le rendu, lui, reste réglé
+              // par le style). Sans image, on n'affiche rien plutôt qu'un
+              // <img> vide.
+              imageVedette && <img
                 src={imageVedette}
                 alt=""
+                width="300"
+                height="300"
+                loading="lazy"
+                decoding="async"
                 style={{
                   width: '100%',
                   height: 'auto',

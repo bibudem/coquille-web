@@ -1,4 +1,4 @@
-import { List } from '@mui/material'
+import List from '@mui/material/List'
 import GridOffset from './utils/GridOffset'
 
 export default function ListRich({ offset = 0.5, children }) {

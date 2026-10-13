@@ -1,4 +1,5 @@
-import { SwipeableDrawer, useTheme } from '@mui/material'
+import SwipeableDrawer from '@mui/material/SwipeableDrawer'
+import { useTheme } from '@mui/material/styles'
 import { appBarHeight } from '../AppBar/TopAppBarSm'
 
 export default function SideNavSm({ children, ...props }) {

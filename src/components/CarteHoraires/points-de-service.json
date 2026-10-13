@@ -1,0 +1,672 @@
+[
+  {
+    "id": "pret-entre-bibliotheques",
+    "name": "Prêt entre bibliothèques",
+    "aliases": [
+      "PEB"
+    ],
+    "zone": "service",
+    "codeBib": "pb"
+  },
+  {
+    "id": "amenagement",
+    "name": "Bibliothèque d'aménagement",
+    "zone": "library",
+    "addr": "Pavillon de la Faculté de l'aménagement, 2940 chemin de la Côte-Sainte-Catherine, salle 1162",
+    "pavillon": "Pavillon de la Faculté de l'aménagement",
+    "lat": 45.504475,
+    "lng": -73.620621,
+    "codeBib": "am",
+    "contact": [
+      {
+        "label": "Comptoir de prêt, réserve de cours",
+        "phone": "514 343-6111, poste 2737",
+        "email": "pret-amenagement@bib.umontreal.ca"
+      },
+      {
+        "label": "Bureau de référence",
+        "phone": "514 343-6111, poste 39837",
+        "email": "amenagement@bib.umontreal.ca"
+      }
+    ],
+    "staffFragment": "amenagement",
+    "reservations": [
+      {
+        "label": "Salle de travail en équipe",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Cabine",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      }
+    ]
+  },
+  {
+    "id": "campus-de-laval",
+    "name": "Bibliothèque du campus de l'UdeM à Laval",
+    "zone": "library",
+    "addr": "Campus de l'UdeM à Laval, 1700 rue Jacques-Tétreault, salle 2200",
+    "pavillon": "Campus de l'UdeM à Laval",
+    "lat": 45.55873,
+    "lng": -73.721038,
+    "codeBib": "laval",
+    "contact": [
+      {
+        "label": "Comptoir de prêt",
+        "phone": "514 343-6111, poste 45161",
+        "email": "pret-laval@bib.umontreal.ca"
+      },
+      {
+        "label": "Bureau de référence",
+        "phone": "514 343-6111, poste 45160",
+        "email": "refepcaml@bib.umontreal.ca"
+      }
+    ],
+    "spaces": [
+      {
+        "label": "Didacthèque",
+        "url": "https://calendrier.bib.umontreal.ca/space/17823"
+      }
+    ],
+    "staffFragment": "laval",
+    "reservations": [
+      {
+        "label": "Salle de travail individuelle",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Salle de travail en équipe",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Didacthèque pour les sciences de l'éducation",
+        "url": "https://calendrier.bib.umontreal.ca/space/17823"
+      },
+      {
+        "label": "Cabine",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      }
+    ]
+  },
+  {
+    "id": "centre-de-conservation-lionel-groulx",
+    "name": "Centre de conservation Lionel-Groulx",
+    "zone": "conservation",
+    "addr": "Pavillon Lionel-Groulx, 3150 rue Jean-Brillant, salle C-1017-16 (porte C-1059)",
+    "pavillon": "Pavillon Lionel-Groulx",
+    "lat": 45.499267,
+    "lng": -73.618308,
+    "codeBib": "conservation",
+    "contact": [
+      {
+        "label": "Accueil et prêt",
+        "phone": "514 343-6111, poste 42680",
+        "email": "pret-conservation@bib.umontreal.ca"
+      }
+    ],
+    "staffFragment": "conservation"
+  },
+  {
+    "id": "centre-de-conservation-101-boul-marcel-laurin",
+    "name": "Centre de conservation – 101, boul. Marcel-Laurin",
+    "zone": "conservation",
+    "addr": "101 boul. Marcel-Laurin, suite 150, Saint-Laurent — sur rendez-vous",
+    "pavillon": "101, boul. Marcel-Laurin",
+    "lat": 45.503789,
+    "lng": -73.670906,
+    "codeBib": "marcel-laurin",
+    "contact": [
+      {
+        "label": "Accueil et prêt",
+        "phone": "514 343-6111, poste 42680",
+        "email": "pr101ml@bib.umontreal.ca"
+      }
+    ],
+    "staffFragment": "marcel-laurin",
+    "note": "L'emprunt se fait par réservation dans Sofia ou par numérisation d'article ou de chapitre de livre. Délai de livraison : 3 à 9 jours pour les documents imprimés. Consultation sur place possible sur rendez-vous seulement."
+  },
+  {
+    "id": "droit",
+    "name": "Bibliothèque de droit",
+    "zone": "library",
+    "addr": "Pavillon Maximilien-Caron, 3101 chemin de la Tour, 4e étage, salle 4433",
+    "pavillon": "Pavillon Maximilien-Caron",
+    "lat": 45.498692,
+    "lng": -73.616975,
+    "codeBib": "dr",
+    "contact": [
+      {
+        "label": "Comptoir de prêt",
+        "phone": "514 343-6111, poste 3790",
+        "email": "pret-droit@bib.umontreal.ca"
+      },
+      {
+        "label": "Bureau de référence",
+        "phone": "514 343-6111, poste 3756",
+        "email": "droit@bib.umontreal.ca"
+      }
+    ],
+    "spaces": [
+      {
+        "label": "Salles de travail pour les cycles supérieurs"
+      }
+    ],
+    "staffFragment": "droit",
+    "reservations": [
+      {
+        "label": "Salle de travail en équipe",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Cabine",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      }
+    ]
+  },
+  {
+    "id": "hubert-reeves",
+    "name": "Bibliothèque Hubert-Reeves",
+    "aliases": [
+      "Bibliothèque des sciences",
+      "sciences"
+    ],
+    "zone": "library",
+    "addr": "Complexe des sciences, Campus MIL, 1375 avenue Thérèse-Lavoie-Roux, salle A-150",
+    "pavillon": "Complexe des sciences, Campus MIL",
+    "lat": 45.5231141,
+    "lng": -73.6222354,
+    "codeBib": "sciences",
+    "contact": [
+      {
+        "label": "Accueil et prêt",
+        "phone": "514-343-6111, poste 5038",
+        "email": "pret-hr@bib.umontreal.ca"
+      },
+      {
+        "label": "Bureau de référence",
+        "email": "sciences@bib.umontreal.ca"
+      }
+    ],
+    "spaces": [
+      {
+        "label": "Cartothèque"
+      },
+      {
+        "label": "Atelier de fabrication",
+        "url": "https://studio.bib.umontreal.ca/espaces/ateliers/"
+      },
+      {
+        "label": "Studio balado audio",
+        "url": "https://studio.bib.umontreal.ca/espaces/studiosbaladoaudio/"
+      },
+      {
+        "label": "Laboratoire de visualisation",
+        "url": "https://studio.bib.umontreal.ca/espaces/visualisation/"
+      },
+      {
+        "label": "Salle Accessibilité",
+        "url": "/service-accessibilite/#salle-adaptee-a-la-bibliotheque-hubert-reeves"
+      }
+    ],
+    "staffFragment": "Hubert-reeves",
+    "reservations": [
+      {
+        "label": "Salle de travail en équipe",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      }
+    ]
+  },
+  {
+    "id": "kinesiologie",
+    "name": "Bibliothèque de kinésiologie",
+    "zone": "library",
+    "addr": "CEPSUM, 2100 boul. Édouard-Montpetit, 8e étage, salle 8259",
+    "pavillon": "CEPSUM",
+    "lat": 45.508257,
+    "lng": -73.612766,
+    "codeBib": "ki",
+    "contact": [
+      {
+        "label": "Accueil et prêt",
+        "phone": "514 343-6111, poste 3792",
+        "email": "pret-kinesiologie@bib.umontreal.ca"
+      },
+      {
+        "label": "Référence",
+        "email": "sante@bib.umontreal.ca"
+      }
+    ],
+    "staffFragment": "kinesiologie",
+    "reservations": [
+      {
+        "label": "Salle de travail en équipe",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      }
+    ]
+  },
+  {
+    "id": "lettres-et-sciences-humaines",
+    "name": "Bibliothèque des lettres et sciences humaines (BLSH)",
+    "aliases": [
+      "BLSH",
+      "LSH"
+    ],
+    "zone": "library",
+    "addr": "Pavillon Samuel-Bronfman, 3000 rue Jean-Brillant, salle 1030",
+    "pavillon": "Pavillon Samuel-Bronfman",
+    "lat": 45.499427,
+    "lng": -73.616554,
+    "codeBib": "ss",
+    "contact": [
+      {
+        "label": "Comptoir de prêt, réserve de cours",
+        "phone": "514 343-7336",
+        "email": "pret-lsh@bib.umontreal.ca"
+      },
+      {
+        "label": "Bureau de référence",
+        "phone": "514 343-6111, poste 2655",
+        "email": "lsh@bib.umontreal.ca"
+      }
+    ],
+    "spaces": [
+      {
+        "label": "Amphithéâtre",
+        "url": "https://studio.bib.umontreal.ca/espaces/amphitheatre"
+      },
+      {
+        "label": "Atelier de zines",
+        "url": "https://studio.bib.umontreal.ca/espaces/zines"
+      },
+      {
+        "label": "Studio balado vidéo",
+        "url": "https://studio.bib.umontreal.ca/espaces/studiobaladovideo/"
+      },
+      {
+        "label": "Studio vidéo",
+        "url": "https://studio.bib.umontreal.ca/espaces/studiovideo/"
+      },
+      {
+        "label": "Salles Accessibilité",
+        "url": "/service-accessibilite/#acces-a-des-salles-de-travail-adaptees"
+      }
+    ],
+    "staffFragment": "lsh",
+    "reservations": [
+      {
+        "label": "Salle de travail en équipe",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Salle individuelle pour les étudiants des cycles supérieurs",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Cabine",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      }
+    ]
+  },
+  {
+    "id": "livres-rares-et-collections-speciales",
+    "name": "Bibliothèque des livres rares et collections spéciales",
+    "aliases": [
+      "BLRCS",
+      "LRCS"
+    ],
+    "zone": "library",
+    "addr": "Pavillon Samuel-Bronfman, 3000 rue Jean-Brillant, salle 4030",
+    "pavillon": "Pavillon Samuel-Bronfman",
+    "lat": 45.499627,
+    "lng": -73.616354,
+    "codeBib": "cs",
+    "contact": [
+      {
+        "label": "Accueil et prêt",
+        "phone": "514 343-6111, poste 39836",
+        "email": "livresrares@bib.umontreal.ca"
+      }
+    ],
+    "spaces": [
+      {
+        "label": "Salle de séminaire",
+        "url": "https://calendrier.bib.umontreal.ca/space/34702"
+      }
+    ],
+    "staffFragment": "lrcs"
+  },
+  {
+    "id": "marguerite-d-youville",
+    "name": "Bibliothèque Marguerite-d'Youville",
+    "aliases": [
+      "MY"
+    ],
+    "zone": "library",
+    "addr": "Pavillon Marguerite-d'Youville, 2375 chemin de la Côte-Sainte-Catherine, salle 2120",
+    "pavillon": "Pavillon Marguerite-d'Youville",
+    "lat": 45.509365,
+    "lng": -73.618392,
+    "codeBib": "pa",
+    "contact": [
+      {
+        "label": "Accueil et prêt",
+        "phone": "514 343-6111, poste 1895",
+        "email": "pret-my@bib.umontreal.ca"
+      },
+      {
+        "label": "Bureau de référence",
+        "email": "marguerite-d-youville@bib.umontreal.ca"
+      }
+    ],
+    "staffFragment": "marguerite-d-youville",
+    "reservations": [
+      {
+        "label": "Salle de travail en équipe",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Cabine",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Salle nécessitant une approbation",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      }
+    ]
+  },
+  {
+    "id": "mathematiques-et-informatique",
+    "name": "Bibliothèque de mathématiques et informatique",
+    "aliases": [
+      "Math-info",
+      "Mathinfo"
+    ],
+    "zone": "library",
+    "addr": "Pavillon André-Aisenstadt, 2920 chemin de la Tour, salle 2405",
+    "pavillon": "Pavillon André-Aisenstadt",
+    "lat": 45.501009,
+    "lng": -73.615778,
+    "codeBib": "mi",
+    "contact": [
+      {
+        "label": "Accueil et prêt",
+        "phone": "514 343-6111, poste 1982",
+        "email": "pret-mi@bib.umontreal.ca"
+      },
+      {
+        "label": "Référence",
+        "email": "sciences@bib.umontreal.ca"
+      }
+    ],
+    "spaces": [
+      {
+        "label": "Atelier de fabrication",
+        "url": "https://studio.bib.umontreal.ca/espaces/ateliers/"
+      },
+      {
+        "label": "Studio balado audio",
+        "url": "https://studio.bib.umontreal.ca/espaces/studiosbaladoaudio/"
+      },
+      {
+        "label": "Studio d'innovation et de créativité"
+      }
+    ],
+    "staffFragment": "math-info",
+    "reservations": [
+      {
+        "label": "Salle de travail en équipe",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Cabine",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Salle nécessitant une approbation",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      }
+    ]
+  },
+  {
+    "id": "medecine-veterinaire",
+    "name": "Bibliothèque de médecine vétérinaire",
+    "zone": "library",
+    "addr": "Campus de Saint-Hyacinthe, 1500 rue des Vétérinaires, salle 1541",
+    "pavillon": "Campus de Saint-Hyacinthe",
+    "lat": 45.620922,
+    "lng": -72.9650018,
+    "codeBib": "mv",
+    "contact": [
+      {
+        "label": "Comptoir de prêt",
+        "phone": "450 773-8521, poste 8136 ou 514 343-6111, poste 8136",
+        "email": "pret-mv@bib.umontreal.ca"
+      },
+      {
+        "label": "Bureau de référence",
+        "phone": "450 773-8521, poste 8368",
+        "email": "medecine-veterinaire@bib.umontreal.ca"
+      }
+    ],
+    "staffFragment": "medecine-veterinaire",
+    "reservations": [
+      {
+        "label": "Salle de travail individuelle",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Salle de travail en équipe",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Cabine",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      }
+    ]
+  },
+  {
+    "id": "musique",
+    "name": "Bibliothèque de musique",
+    "zone": "library",
+    "addr": "Pavillon de la Faculté de musique, 200 avenue Vincent-d'Indy, salle B-287",
+    "pavillon": "Pavillon de la Faculté de musique",
+    "lat": 45.509273,
+    "lng": -73.60857,
+    "codeBib": "mu",
+    "contact": [
+      {
+        "label": "Accueil",
+        "phone": "514-343-6432"
+      },
+      {
+        "label": "Comptoir de prêt",
+        "phone": "514 343-6111, poste 39838",
+        "email": "pret-musique@bib.umontreal.ca"
+      },
+      {
+        "label": "Bureau de référence",
+        "phone": "514-343-6111, poste 4702",
+        "email": "musique@bib.umontreal.ca"
+      }
+    ],
+    "staffFragment": "musique",
+    "reservations": [
+      {
+        "label": "Salle de travail en équipe",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Cabine",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      }
+    ]
+  },
+  {
+    "id": "parc",
+    "name": "Bibliothèque du Parc",
+    "aliases": [
+      "7077",
+      "Antenne paramédicale"
+    ],
+    "zone": "library",
+    "addr": "Pavillon 7077, avenue du Parc, salle U-529",
+    "pavillon": "Pavillon 7077, avenue du Parc",
+    "lat": 45.529968,
+    "lng": -73.620079,
+    "codeBib": "antenne-paramedicale",
+    "contact": [
+      {
+        "label": "Accueil et prêt",
+        "phone": "514 343-6111, poste 39833",
+        "email": "7077duParc@bib.umontreal.ca"
+      }
+    ],
+    "staffFragment": "parc",
+    "reservations": [
+      {
+        "label": "Salle de travail en équipe",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      }
+    ]
+  },
+  {
+    "id": "sante",
+    "name": "Bibliothèque de la santé",
+    "zone": "library",
+    "addr": "Pavillon Roger-Gaudry, 2900 boul. Édouard-Montpetit, 6e étage, salle L-623",
+    "pavillon": "Pavillon Roger-Gaudry",
+    "lat": 45.50273,
+    "lng": -73.615076,
+    "codeBib": "sa",
+    "contact": [
+      {
+        "label": "Comptoir de prêt",
+        "phone": "514 343-6111, poste 3544",
+        "email": "pret-sante@bib.umontreal.ca"
+      },
+      {
+        "label": "Bureau de référence",
+        "phone": "514 343-6111, poste 6826",
+        "email": "sante@bib.umontreal.ca"
+      }
+    ],
+    "staffFragment": "sante",
+    "reservations": [
+      {
+        "label": "Salle de travail individuelle",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Salle de travail en équipe",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      }
+    ]
+  },
+  {
+    "id": "therese-gouin-decarie",
+    "name": "Bibliothèque Thérèse-Gouin-Décarie",
+    "aliases": [
+      "TGD",
+      "ÉPC"
+    ],
+    "zone": "library",
+    "addr": "Pavillon Marie-Victorin, 90 avenue Vincent-d'Indy, salle G-205",
+    "pavillon": "Pavillon Marie-Victorin",
+    "lat": 45.510687,
+    "lng": -73.61158,
+    "codeBib": "ed",
+    "contact": [
+      {
+        "label": "Accueil",
+        "phone": "514 343-7242"
+      },
+      {
+        "label": "Comptoir de prêt",
+        "phone": "514 343-6111, poste 1705",
+        "email": "pret-tgd@bib.umontreal.ca"
+      },
+      {
+        "label": "Bureau de référence",
+        "phone": "514 343-6111, poste 1706",
+        "email": "refepcaml@bib.umontreal.ca"
+      }
+    ],
+    "spaces": [
+      {
+        "label": "Didacthèque",
+        "url": "https://calendrier.bib.umontreal.ca/space/19189"
+      },
+      {
+        "label": "Atelier de fabrication",
+        "url": "https://studio.bib.umontreal.ca/espaces/ateliers/"
+      },
+      {
+        "label": "Studio vidéo",
+        "url": "https://studio.bib.umontreal.ca/espaces/studiovideo/"
+      },
+      {
+        "label": "Cocon de micro-sieste",
+        "url": "https://calendrier.bib.umontreal.ca/space/23805"
+      }
+    ],
+    "staffFragment": "tgd",
+    "reservations": [
+      {
+        "label": "Salle de travail en équipe",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Cabine",
+        "url": "https://calendrier.bib.umontreal.ca/r"
+      },
+      {
+        "label": "Didacthèque",
+        "url": "https://calendrier.bib.umontreal.ca/space/19189"
+      },
+      {
+        "label": "Cocon de micro-sieste",
+        "url": "https://calendrier.bib.umontreal.ca/space/23805"
+      }
+    ]
+  },
+  {
+    "id": "jardin-botanique",
+    "name": "Point de service Jardin botanique",
+    "aliases": [
+      "Espace pour la vie"
+    ],
+    "zone": "points-service",
+    "addr": "4101 rue Sherbrooke Est, Montréal",
+    "lat": 45.5569529,
+    "lng": -73.5565181,
+    "contact": [
+      {
+        "label": "Téléphone",
+        "phone": "514 872-1824"
+      }
+    ],
+    "note": "Horaire distinct de celui de l'UdeM, géré par Espace pour la vie. Vérifiez avant de vous déplacer.",
+    "noteLink": {
+      "label": "Horaire de la bibliothèque du Jardin botanique",
+      "url": "https://espacepourlavie.ca/bibliotheque-du-jardin-botanique"
+    }
+  },
+  {
+    "id": "brossard",
+    "name": "Point de service Brossard",
+    "zone": "points-service",
+    "addr": "2000 rue de l'Éclipse, Brossard",
+    "lat": 45.4471805,
+    "lng": -73.432246,
+    "note": "Permet de récupérer ou retourner des documents. Vérifiez l'horaire avant de vous déplacer."
+  },
+  {
+    "id": "place-dupuis",
+    "name": "Point de service Place Dupuis",
+    "zone": "points-service",
+    "addr": "845 rue Sainte-Catherine Est, Montréal",
+    "lat": 45.5162259,
+    "lng": -73.559243,
+    "note": "Accès réservé aux personnes autorisées à la Faculté de médecine, Place Dupuis."
+  }
+]

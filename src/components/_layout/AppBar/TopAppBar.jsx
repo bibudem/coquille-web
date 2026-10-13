@@ -1,7 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
-import { AppBar, Box, Button, Stack, Toolbar, useScrollTrigger } from '@mui/material'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Stack from '@mui/material/Stack'
+import Toolbar from '@mui/material/Toolbar'
+import useScrollTrigger from '@mui/material/useScrollTrigger'
 import { styled, useTheme } from '@mui/material/styles'
-import { ArrowRightIcon } from '@phosphor-icons/react'
+import { ArrowRightIcon } from '@phosphor-icons/react/dist/csr/ArrowRight'
 
 import Link from '@/components/Link'
 import SideNav from '@/components/_layout/SideNav/SideNav'
@@ -9,7 +14,8 @@ import SideNavContent from '@/components/_layout/SideNav/SideNavContent'
 import MenuBurger from './MenuBurger'
 import LogoLink from './LogoLink'
 import SearchButton from './SearchButton'
-import SearchOverlay, { isSearchOverlayOpenInUrl } from './SearchOverlay'
+import LazySearchOverlay from './LazySearchOverlay'
+import { isSearchOverlayOpenInUrl } from './search-overlay-url'
 import pages from './menu'
 import { useLocation } from '@reach/router'
 
@@ -174,7 +180,7 @@ export default function TopAppBar({ lvl, location: propLocation = {} }) {
       >
         <SideNavContent onClose={toggleDrawer(false)} />
       </SideNav>
-      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <LazySearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   )
 }

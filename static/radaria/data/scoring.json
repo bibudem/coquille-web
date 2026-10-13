@@ -1,0 +1,1096 @@
+{
+  "rules": [
+    {
+      "questionId": "discipline_focus",
+      "optionId": "multidisciplinary",
+      "effects": [
+        {
+          "toolId": "google_scholar_labs",
+          "delta": 100,
+          "reason": "Google Scholar Labs couvre bien un terrain multidisciplinaire via le texte intégral."
+        },
+        {
+          "toolId": "elicit",
+          "delta": 100,
+          "reason": "Elicit est bien adapté aux sujets transversaux via Semantic Scholar."
+        },
+        {
+          "toolId": "scispace",
+          "delta": 100,
+          "reason": "SciSpace combine plusieurs bases utiles dans des recherches générales."
+        },
+        {
+          "toolId": "consensus",
+          "delta": 100,
+          "reason": "Consensus.app couvre plusieurs sources adaptées aux sujets multidisciplinaires."
+        },
+        {
+          "toolId": "undermind",
+          "delta": 100,
+          "reason": "Undermind monte sur des besoins transversaux grâce à Semantic Scholar + OSF."
+        },
+        {
+          "toolId": "asta_paper_finder",
+          "delta": 100,
+          "reason": "Asta Paper finder reste adapté à une recherche large dans Semantic Scholar."
+        },
+        {
+          "toolId": "asta_generate_report",
+          "delta": 100,
+          "reason": "Asta Generate report reste adapté à une recherche large dans Semantic Scholar."
+        },
+        {
+          "toolId": "platform",
+          "delta": 100,
+          "reason": "Platform tire parti de Semantic Scholar + Crossref utile hors domaines très nichés."
+        },
+        {
+          "toolId": "liner",
+          "delta": 100,
+          "reason": "Liner reste pertinent sur des besoins généralistes portés par Semantic Scholar."
+        },
+        {
+          "toolId": "leapspace",
+          "delta": 100,
+          "reason": "LeapSpace couvre bien un terrain multidisciplinaire."
+        },
+        {
+          "toolId": "jstor_ai",
+          "delta": 100,
+          "reason": "JSTOR AI peut aussi servir sur des sujets larges, surtout côté SHS."
+        },
+        {
+          "toolId": "cairn_sophia",
+          "delta": 25,
+          "reason": "CAIRN SophIA reste centré SHS francophone, moins pertinent hors ce terrain précis."
+        },
+        {
+          "toolId": "scifinder_ai",
+          "delta": 25,
+          "reason": "Scifinder AI est moins pertinent pour une recherche multidisciplinaire hors chimie."
+        },
+        {
+          "toolId": "perplexity",
+          "delta": 25,
+          "reason": "Perplexity reste peu adapté à la recherche documentaire scientifique rigoureuse."
+        },
+        {
+          "toolId": "lexis_ai",
+          "delta": 10,
+          "reason": "Lexis+ AI est peu pertinent hors contexte juridique."
+        },
+        {
+          "toolId": "canlii",
+          "delta": 10,
+          "reason": "CanLII est peu pertinent hors contexte juridique canadien."
+        },
+        {
+          "toolId": "claude",
+          "delta": 25,
+          "reason": "Claude reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "chatgpt",
+          "delta": 25,
+          "reason": "ChatGPT reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "copilot",
+          "delta": 25,
+          "reason": "Copilot reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "gemini",
+          "delta": 25,
+          "reason": "Gemini reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "gemini_notebook",
+          "delta": 25,
+          "reason": "Gemini Notebook n'a pas de corpus propre, il dépend des documents téléversés."
+        }
+      ]
+    },
+    {
+      "questionId": "discipline_focus",
+      "optionId": "health_life_sciences",
+      "effects": [
+        {
+          "toolId": "google_scholar_labs",
+          "delta": 100,
+          "reason": "Google Scholar Labs couvre bien les sciences de la santé et de la vie."
+        },
+        {
+          "toolId": "elicit",
+          "delta": 100,
+          "reason": "Elicit est fort en sciences de la vie grâce à son ancrage PubMed et Semantic Scholar."
+        },
+        {
+          "toolId": "scispace",
+          "delta": 100,
+          "reason": "SciSpace couvre bien les sciences de la santé et de la vie via son corpus large."
+        },
+        {
+          "toolId": "consensus",
+          "delta": 100,
+          "reason": "Consensus.app est bien placé pour des questions en sciences de la santé et de la vie."
+        },
+        {
+          "toolId": "undermind",
+          "delta": 100,
+          "reason": "Undermind couvre bien les sciences de la vie via Semantic Scholar."
+        },
+        {
+          "toolId": "asta_paper_finder",
+          "delta": 100,
+          "reason": "Asta Paper finder fonctionne bien sur des sujets en sciences de la santé et de la vie."
+        },
+        {
+          "toolId": "asta_generate_report",
+          "delta": 100,
+          "reason": "Asta Generate report fonctionne bien sur des sujets en sciences de la santé et de la vie."
+        },
+        {
+          "toolId": "platform",
+          "delta": 100,
+          "reason": "Platform couvre bien les sciences de la santé et de la vie via Semantic Scholar + Crossref."
+        },
+        {
+          "toolId": "liner",
+          "delta": 100,
+          "reason": "Liner couvre bien les sciences de la vie via son corpus Semantic Scholar."
+        },
+        {
+          "toolId": "leapspace",
+          "delta": 100,
+          "reason": "LeapSpace couvre bien les sciences de la santé et de la vie."
+        },
+        {
+          "toolId": "jstor_ai",
+          "delta": 25,
+          "reason": "JSTOR AI est moins centré sur les sciences de la vie que sur les SHS."
+        },
+        {
+          "toolId": "cairn_sophia",
+          "delta": -50,
+          "reason": "CAIRN SophIA est centré SHS francophone, pas sur les sciences de la santé."
+        },
+        {
+          "toolId": "scifinder_ai",
+          "delta": 50,
+          "reason": "Scifinder AI peut servir pour certaines sciences de la vie, mais son corpus est plus ciblé chimie."
+        },
+        {
+          "toolId": "perplexity",
+          "delta": 25,
+          "reason": "Perplexity reste peu adapté à la recherche documentaire scientifique rigoureuse."
+        },
+        {
+          "toolId": "lexis_ai",
+          "delta": -100,
+          "reason": "Lexis+ AI n'est pas adapté aux sciences de la santé et de la vie."
+        },
+        {
+          "toolId": "canlii",
+          "delta": -100,
+          "reason": "CanLII n'est pas adapté aux sciences de la santé et de la vie."
+        },
+        {
+          "toolId": "claude",
+          "delta": 25,
+          "reason": "Claude reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "chatgpt",
+          "delta": 25,
+          "reason": "ChatGPT reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "copilot",
+          "delta": 25,
+          "reason": "Copilot reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "gemini",
+          "delta": 25,
+          "reason": "Gemini reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "gemini_notebook",
+          "delta": 25,
+          "reason": "Gemini Notebook n'a pas de corpus propre, il dépend des documents téléversés."
+        }
+      ]
+    },
+    {
+      "questionId": "discipline_focus",
+      "optionId": "social_humanities",
+      "effects": [
+        {
+          "toolId": "google_scholar_labs",
+          "delta": 100,
+          "reason": "Google Scholar Labs couvre bien les SHS via le texte intégral."
+        },
+        {
+          "toolId": "elicit",
+          "delta": 75,
+          "reason": "Elicit peut couvrir les SHS mais est moins optimisé que pour les sciences."
+        },
+        {
+          "toolId": "scispace",
+          "delta": 75,
+          "reason": "SciSpace peut couvrir les SHS mais est moins optimisé que pour les sciences."
+        },
+        {
+          "toolId": "consensus",
+          "delta": 75,
+          "reason": "Consensus.app peut couvrir les SHS mais est moins optimisé que pour les sciences."
+        },
+        {
+          "toolId": "undermind",
+          "delta": 100,
+          "reason": "Undermind couvre bien les SHS via Semantic Scholar."
+        },
+        {
+          "toolId": "asta_paper_finder",
+          "delta": 100,
+          "reason": "Asta Paper finder fonctionne bien sur des sujets SHS via Semantic Scholar."
+        },
+        {
+          "toolId": "asta_generate_report",
+          "delta": 100,
+          "reason": "Asta Generate report fonctionne bien sur des sujets SHS via Semantic Scholar."
+        },
+        {
+          "toolId": "platform",
+          "delta": 100,
+          "reason": "Platform couvre bien les SHS via Semantic Scholar + Crossref."
+        },
+        {
+          "toolId": "liner",
+          "delta": 100,
+          "reason": "Liner couvre bien les SHS via Semantic Scholar."
+        },
+        {
+          "toolId": "leapspace",
+          "delta": 100,
+          "reason": "LeapSpace couvre bien les sciences sociales et humaines."
+        },
+        {
+          "toolId": "jstor_ai",
+          "delta": 100,
+          "reason": "JSTOR AI devient naturellement très pertinent sur un terrain SHS / JSTOR."
+        },
+        {
+          "toolId": "cairn_sophia",
+          "delta": 100,
+          "reason": "CAIRN SophIA est spécialisé SHS francophone : c'est son terrain de prédilection."
+        },
+        {
+          "toolId": "perplexity",
+          "delta": 25,
+          "reason": "Perplexity reste peu adapté à la recherche documentaire scientifique rigoureuse."
+        },
+        {
+          "toolId": "lexis_ai",
+          "delta": 25,
+          "reason": "Lexis+ AI peut couvrir certains sujets SHS de droit, mais reste limité."
+        },
+        {
+          "toolId": "canlii",
+          "delta": 25,
+          "reason": "CanLII peut couvrir certains sujets SHS de droit canadien, mais reste limité."
+        },
+        {
+          "toolId": "claude",
+          "delta": 25,
+          "reason": "Claude reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "chatgpt",
+          "delta": 25,
+          "reason": "ChatGPT reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "copilot",
+          "delta": 25,
+          "reason": "Copilot reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "gemini",
+          "delta": 25,
+          "reason": "Gemini reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "gemini_notebook",
+          "delta": 25,
+          "reason": "Gemini Notebook n'a pas de corpus propre, il dépend des documents téléversés."
+        }
+      ]
+    },
+    {
+      "questionId": "discipline_focus",
+      "optionId": "chemistry",
+      "effects": [
+        {
+          "toolId": "google_scholar_labs",
+          "delta": 50,
+          "reason": "Google Scholar Labs peut servir en appoint sur du texte intégral hors corpus spécialisé."
+        },
+        {
+          "toolId": "elicit",
+          "delta": 50,
+          "reason": "Elicit peut couvrir la chimie, mais son corpus n'est pas aussi ciblé que Scifinder."
+        },
+        {
+          "toolId": "scispace",
+          "delta": 50,
+          "reason": "SciSpace peut couvrir la chimie via Semantic Scholar, mais sans le corpus Scifinder."
+        },
+        {
+          "toolId": "consensus",
+          "delta": 50,
+          "reason": "Consensus.app peut couvrir la chimie, mais sans corpus aussi spécialisé que Scifinder."
+        },
+        {
+          "toolId": "undermind",
+          "delta": 50,
+          "reason": "Undermind peut couvrir la chimie via Semantic Scholar, mais sans corpus Scifinder."
+        },
+        {
+          "toolId": "asta_paper_finder",
+          "delta": 50,
+          "reason": "Asta Paper finder peut couvrir la chimie via Semantic Scholar."
+        },
+        {
+          "toolId": "asta_generate_report",
+          "delta": 50,
+          "reason": "Asta Generate report peut couvrir la chimie via Semantic Scholar."
+        },
+        {
+          "toolId": "platform",
+          "delta": 50,
+          "reason": "Platform peut couvrir la chimie via Semantic Scholar + Crossref."
+        },
+        {
+          "toolId": "liner",
+          "delta": 50,
+          "reason": "Liner peut couvrir la chimie via Semantic Scholar."
+        },
+        {
+          "toolId": "leapspace",
+          "delta": 50,
+          "reason": "LeapSpace couvre partiellement la chimie."
+        },
+        {
+          "toolId": "scifinder_ai",
+          "delta": 100,
+          "reason": "Scifinder AI monte fortement quand la chimie est le domaine central."
+        },
+        {
+          "toolId": "perplexity",
+          "delta": 25,
+          "reason": "Perplexity reste peu adapté à la recherche documentaire scientifique rigoureuse."
+        },
+        {
+          "toolId": "lexis_ai",
+          "delta": -100,
+          "reason": "Lexis+ AI n'est pas adapté à la chimie."
+        },
+        {
+          "toolId": "canlii",
+          "delta": -100,
+          "reason": "CanLII n'est pas adapté à la chimie."
+        },
+        {
+          "toolId": "claude",
+          "delta": 25,
+          "reason": "Claude reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "chatgpt",
+          "delta": 25,
+          "reason": "ChatGPT reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "copilot",
+          "delta": 25,
+          "reason": "Copilot reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "gemini",
+          "delta": 25,
+          "reason": "Gemini reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "gemini_notebook",
+          "delta": 25,
+          "reason": "Gemini Notebook n'a pas de corpus propre, il dépend des documents téléversés."
+        }
+      ]
+    },
+    {
+      "questionId": "discipline_focus",
+      "optionId": "law",
+      "effects": [
+        {
+          "toolId": "liner",
+          "delta": 50,
+          "reason": "Liner peut partiellement couvrir des sujets juridiques via Semantic Scholar."
+        },
+        {
+          "toolId": "leapspace",
+          "delta": 50,
+          "reason": "LeapSpace peut partiellement couvrir des sujets juridiques."
+        },
+        {
+          "toolId": "jstor_ai",
+          "delta": 35,
+          "reason": "JSTOR AI couvre certaines revues juridiques et reste une option partielle pour le droit."
+        },
+        {
+          "toolId": "cairn_sophia",
+          "delta": 10,
+          "reason": "CAIRN SophIA reste centré SHS francophone, moins pertinent pour du droit pur."
+        },
+        {
+          "toolId": "perplexity",
+          "delta": 25,
+          "reason": "Perplexity reste peu adapté à la recherche documentaire juridique rigoureuse."
+        },
+        {
+          "toolId": "lexis_ai",
+          "delta": 100,
+          "reason": "Lexis+ AI devient très pertinent pour la recherche juridique avec LexisNexis."
+        },
+        {
+          "toolId": "canlii",
+          "delta": 100,
+          "reason": "CanLII Recherche Plus devient très pertinent pour la recherche juridique canadienne."
+        },
+        {
+          "toolId": "claude",
+          "delta": 25,
+          "reason": "Claude reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "chatgpt",
+          "delta": 25,
+          "reason": "ChatGPT reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "copilot",
+          "delta": 25,
+          "reason": "Copilot reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "gemini",
+          "delta": 25,
+          "reason": "Gemini reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "gemini_notebook",
+          "delta": 25,
+          "reason": "Gemini Notebook n'a pas de corpus propre, il dépend des documents téléversés."
+        }
+      ]
+    },
+    {
+      "questionId": "discipline_focus",
+      "optionId": "other",
+      "effects": [
+        {
+          "toolId": "google_scholar_labs",
+          "delta": 100,
+          "reason": "Google Scholar Labs couvre bien un large éventail de disciplines."
+        },
+        {
+          "toolId": "elicit",
+          "delta": 100,
+          "reason": "Elicit couvre bien un large éventail de disciplines via Semantic Scholar."
+        },
+        {
+          "toolId": "scispace",
+          "delta": 100,
+          "reason": "SciSpace couvre bien un large éventail de disciplines."
+        },
+        {
+          "toolId": "consensus",
+          "delta": 100,
+          "reason": "Consensus.app couvre bien un large éventail de disciplines."
+        },
+        {
+          "toolId": "undermind",
+          "delta": 100,
+          "reason": "Undermind couvre bien un large éventail de disciplines."
+        },
+        {
+          "toolId": "asta_paper_finder",
+          "delta": 100,
+          "reason": "Asta Paper finder couvre bien un large éventail de disciplines via Semantic Scholar."
+        },
+        {
+          "toolId": "asta_generate_report",
+          "delta": 100,
+          "reason": "Asta Generate report couvre bien un large éventail de disciplines via Semantic Scholar."
+        },
+        {
+          "toolId": "platform",
+          "delta": 100,
+          "reason": "Platform couvre bien un large éventail de disciplines."
+        },
+        {
+          "toolId": "liner",
+          "delta": 100,
+          "reason": "Liner couvre bien un large éventail de disciplines via Semantic Scholar."
+        },
+        {
+          "toolId": "leapspace",
+          "delta": 100,
+          "reason": "LeapSpace couvre bien un large éventail de disciplines."
+        },
+        {
+          "toolId": "jstor_ai",
+          "delta": 50,
+          "reason": "JSTOR AI est plus limité dans sa couverture de domaines autres que SHS."
+        },
+        {
+          "toolId": "cairn_sophia",
+          "delta": 25,
+          "reason": "CAIRN SophIA reste centré SHS francophone, moins pertinent hors ce terrain."
+        },
+        {
+          "toolId": "scifinder_ai",
+          "delta": 25,
+          "reason": "Scifinder AI est peu pertinent hors chimie."
+        },
+        {
+          "toolId": "perplexity",
+          "delta": 25,
+          "reason": "Perplexity reste peu adapté à la recherche documentaire scientifique rigoureuse."
+        },
+        {
+          "toolId": "lexis_ai",
+          "delta": 10,
+          "reason": "Lexis+ AI est peu pertinent hors contexte juridique."
+        },
+        {
+          "toolId": "canlii",
+          "delta": 10,
+          "reason": "CanLII est peu pertinent hors contexte juridique canadien."
+        },
+        {
+          "toolId": "claude",
+          "delta": 25,
+          "reason": "Claude reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "chatgpt",
+          "delta": 25,
+          "reason": "ChatGPT reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "copilot",
+          "delta": 25,
+          "reason": "Copilot reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "gemini",
+          "delta": 25,
+          "reason": "Gemini reste peu adapté comme moteur principal de recherche documentaire."
+        },
+        {
+          "toolId": "gemini_notebook",
+          "delta": 25,
+          "reason": "Gemini Notebook n'a pas de corpus propre, il dépend des documents téléversés."
+        }
+      ]
+    },
+    {
+      "questionId": "desired_use",
+      "optionId": "find_documents",
+      "effects": [
+        {
+          "toolId": "google_scholar_labs",
+          "delta": 100,
+          "reason": "Google Scholar Labs est surtout utile pour repérer des documents via le texte intégral."
+        },
+        {
+          "toolId": "elicit",
+          "delta": 100,
+          "reason": "Elicit peut produire une bonne liste de documents exploitable."
+        },
+        {
+          "toolId": "scispace",
+          "delta": 100,
+          "reason": "SciSpace garde de la valeur si la liste de documents est votre sortie principale."
+        },
+        {
+          "toolId": "consensus",
+          "delta": 100,
+          "reason": "Consensus.app fournit une liste de documents pertinente."
+        },
+        {
+          "toolId": "undermind",
+          "delta": 100,
+          "reason": "Undermind reste utile si vous voulez surtout repérer des documents."
+        },
+        {
+          "toolId": "asta_paper_finder",
+          "delta": 100,
+          "reason": "Asta Paper finder est spécialisé dans le repérage de documents pertinents."
+        },
+        {
+          "toolId": "asta_generate_report",
+          "delta": 100,
+          "reason": "Asta Generate report permet aussi de repérer des documents avant de générer une synthèse."
+        },
+        {
+          "toolId": "platform",
+          "delta": 100,
+          "reason": "Platform garde un intérêt si votre sortie principale reste la liste de documents."
+        },
+        {
+          "toolId": "liner",
+          "delta": 100,
+          "reason": "Liner continue à bien fonctionner si vous voulez surtout des documents."
+        },
+        {
+          "toolId": "leapspace",
+          "delta": 100,
+          "reason": "LeapSpace permet de repérer efficacement des documents scientifiques."
+        },
+        {
+          "toolId": "jstor_ai",
+          "delta": 100,
+          "reason": "JSTOR AI est très fort pour repérer des documents dans son corpus avec un grand rappel."
+        },
+        {
+          "toolId": "cairn_sophia",
+          "delta": 100,
+          "reason": "CAIRN SophIA repère des extraits pertinents dans le corpus Cairn.info en langage naturel."
+        },
+        {
+          "toolId": "scifinder_ai",
+          "delta": 60,
+          "reason": "Scifinder AI peut repérer des documents, mais dans un format plus spécialisé."
+        },
+        {
+          "toolId": "perplexity",
+          "delta": 50,
+          "reason": "Perplexity peut aider à trouver des documents, mais reste un outil généraliste."
+        },
+        {
+          "toolId": "lexis_ai",
+          "delta": 100,
+          "reason": "Lexis+ AI est fort pour repérer des documents juridiques dans LexisNexis."
+        },
+        {
+          "toolId": "canlii",
+          "delta": 100,
+          "reason": "CanLII Recherche Plus est fort pour repérer des documents juridiques canadiens."
+        },
+        {
+          "toolId": "claude",
+          "delta": 25,
+          "reason": "Claude n'est pas un moteur bibliographique : ses références peuvent être inexactes."
+        },
+        {
+          "toolId": "chatgpt",
+          "delta": 25,
+          "reason": "ChatGPT n'est pas un moteur bibliographique : ses références peuvent être inexactes."
+        },
+        {
+          "toolId": "copilot",
+          "delta": 25,
+          "reason": "Copilot n'est pas un moteur bibliographique : ses références peuvent être inexactes."
+        },
+        {
+          "toolId": "gemini",
+          "delta": 25,
+          "reason": "Gemini n'est pas un moteur bibliographique : ses références peuvent être inexactes."
+        },
+        {
+          "toolId": "gemini_notebook",
+          "delta": 25,
+          "reason": "Gemini Notebook n'a pas de corpus propre pour trouver des documents."
+        }
+      ]
+    },
+    {
+      "questionId": "desired_use",
+      "optionId": "generate_synthesis_corpus",
+      "effects": [
+        {
+          "toolId": "google_scholar_labs",
+          "delta": -100,
+          "reason": "Google Scholar Labs n'est pas un outil de synthèse à partir d'un corpus."
+        },
+        {
+          "toolId": "elicit",
+          "delta": 100,
+          "reason": "Elicit produit des mini-synthèses efficaces à partir d'un corpus de documents scientifiques."
+        },
+        {
+          "toolId": "scispace",
+          "delta": 100,
+          "reason": "SciSpace reste bien adapté si vous attendez surtout une synthèse à partir du corpus."
+        },
+        {
+          "toolId": "consensus",
+          "delta": 100,
+          "reason": "Consensus.app remonte naturellement quand la mini-synthèse à partir du corpus compte beaucoup."
+        },
+        {
+          "toolId": "undermind",
+          "delta": 100,
+          "reason": "Undermind prend de la valeur si un rapport de synthèse est attendu."
+        },
+        {
+          "toolId": "asta_paper_finder",
+          "delta": -100,
+          "reason": "Asta Paper finder est conçu pour la découverte, pas pour générer une synthèse."
+        },
+        {
+          "toolId": "asta_generate_report",
+          "delta": 100,
+          "reason": "Asta Generate report monte quand le rapport de synthèse devient la sortie la plus utile."
+        },
+        {
+          "toolId": "platform",
+          "delta": 100,
+          "reason": "Platform tient bien un besoin de rapport de synthèse à partir d'un corpus scientifique."
+        },
+        {
+          "toolId": "liner",
+          "delta": 100,
+          "reason": "Liner reste pertinent si vous voulez surtout un rapport de synthèse depuis un corpus."
+        },
+        {
+          "toolId": "leapspace",
+          "delta": 100,
+          "reason": "LeapSpace permet de générer une synthèse à partir d'un corpus scientifique."
+        },
+        {
+          "toolId": "jstor_ai",
+          "delta": -100,
+          "reason": "JSTOR AI est pensé pour vérifier des documents, pas pour générer une synthèse de corpus."
+        },
+        {
+          "toolId": "cairn_sophia",
+          "delta": -100,
+          "reason": "CAIRN SophIA expose des extraits originaux plutôt qu'un rapport de synthèse généré."
+        },
+        {
+          "toolId": "scifinder_ai",
+          "delta": -100,
+          "reason": "Scifinder AI n'offre pas de rapport de synthèse dans sa version gratuite."
+        },
+        {
+          "toolId": "perplexity",
+          "delta": 50,
+          "reason": "Perplexity peut synthétiser des informations, mais reste un outil généraliste non bibliographique."
+        },
+        {
+          "toolId": "lexis_ai",
+          "delta": 100,
+          "reason": "Lexis+ AI peut générer des synthèses à partir d'un corpus juridique."
+        },
+        {
+          "toolId": "canlii",
+          "delta": -100,
+          "reason": "CanLII Recherche Plus ne génère pas de synthèse de corpus."
+        }
+      ]
+    },
+    {
+      "questionId": "desired_use",
+      "optionId": "web_search_synthesis",
+      "effects": [
+        {
+          "toolId": "google_scholar_labs",
+          "delta": -100,
+          "reason": "Google Scholar Labs est pensé pour un corpus académique, pas pour le web généraliste."
+        },
+        {
+          "toolId": "elicit",
+          "delta": -100,
+          "reason": "Elicit est conçu pour les corpus bibliographiques, pas pour le web généraliste."
+        },
+        {
+          "toolId": "scispace",
+          "delta": -100,
+          "reason": "SciSpace perd de la pertinence si vous ne voulez pas partir d'un vrai corpus bibliographique."
+        },
+        {
+          "toolId": "consensus",
+          "delta": -100,
+          "reason": "Consensus.app vaut surtout pour la littérature scientifique, pas pour un usage web large."
+        },
+        {
+          "toolId": "undermind",
+          "delta": -100,
+          "reason": "Undermind est pensé pour un vrai corpus bibliographique, pas pour le web."
+        },
+        {
+          "toolId": "asta_paper_finder",
+          "delta": -100,
+          "reason": "Asta Paper finder est conçu pour les corpus académiques, pas pour le web."
+        },
+        {
+          "toolId": "asta_generate_report",
+          "delta": -100,
+          "reason": "Asta Generate report est conçu pour les corpus académiques, pas pour le web."
+        },
+        {
+          "toolId": "platform",
+          "delta": -100,
+          "reason": "Platform est plus fort dans un cadre bibliographique que web."
+        },
+        {
+          "toolId": "liner",
+          "delta": -100,
+          "reason": "Liner reste plus bibliographique que franchement web."
+        },
+        {
+          "toolId": "leapspace",
+          "delta": -100,
+          "reason": "LeapSpace est conçu pour les corpus scientifiques, pas pour le web généraliste."
+        },
+        {
+          "toolId": "jstor_ai",
+          "delta": -100,
+          "reason": "JSTOR AI vaut pour son corpus et son plein texte académique, pas pour le web général."
+        },
+        {
+          "toolId": "cairn_sophia",
+          "delta": -100,
+          "reason": "CAIRN SophIA vaut pour son corpus Cairn.info, pas pour le web généraliste."
+        },
+        {
+          "toolId": "scifinder_ai",
+          "delta": -100,
+          "reason": "Scifinder AI vaut surtout via son corpus spécialisé, pas via le web."
+        },
+        {
+          "toolId": "perplexity",
+          "delta": 100,
+          "reason": "Perplexity est un moteur de réponse web, particulièrement adapté à la synthèse en ligne."
+        },
+        {
+          "toolId": "lexis_ai",
+          "delta": -100,
+          "reason": "Lexis+ AI est conçu pour les corpus juridiques, pas pour le web généraliste."
+        },
+        {
+          "toolId": "canlii",
+          "delta": -100,
+          "reason": "CanLII est conçu pour les corpus juridiques canadiens, pas pour le web généraliste."
+        },
+        {
+          "toolId": "claude",
+          "delta": 100,
+          "reason": "Claude est un outil généraliste web conçu pour chercher et synthétiser de l'information."
+        },
+        {
+          "toolId": "chatgpt",
+          "delta": 100,
+          "reason": "ChatGPT est un outil généraliste web conçu pour chercher et synthétiser de l'information."
+        },
+        {
+          "toolId": "copilot",
+          "delta": 100,
+          "reason": "Copilot est un outil généraliste web conçu pour chercher et synthétiser de l'information."
+        },
+        {
+          "toolId": "gemini",
+          "delta": 100,
+          "reason": "Gemini est un outil généraliste web conçu pour chercher et synthétiser de l'information."
+        },
+        {
+          "toolId": "gemini_notebook",
+          "delta": 50,
+          "reason": "Gemini Notebook peut synthétiser depuis le web mais n'est pas son mode principal."
+        }
+      ]
+    },
+    {
+      "questionId": "upload_intent",
+      "optionId": "library_license",
+      "effects": [
+        {
+          "toolId": "copilot",
+          "delta": 100,
+          "reason": "Copilot est couvert par la licence institutionnelle : son usage avec des documents sous licence des bibliothèques est admissible."
+        },
+        {
+          "toolId": "undermind",
+          "delta": 100,
+          "reason": "Undermind recherche dans son propre corpus : aucun téléversement requis, aucun risque de licence."
+        },
+        {
+          "toolId": "consensus",
+          "delta": 100,
+          "reason": "Consensus.app recherche dans son propre corpus : aucun téléversement requis, aucun risque de licence."
+        },
+        {
+          "toolId": "leapspace",
+          "delta": 100,
+          "reason": "LeapSpace recherche dans son propre corpus : aucun téléversement requis, aucun risque de licence."
+        },
+        {
+          "toolId": "lexis_ai",
+          "delta": 100,
+          "reason": "Lexis+ AI est couvert par la licence institutionnelle LexisNexis, compatible avec des documents sous licence."
+        }
+      ]
+    },
+    {
+      "questionId": "upload_intent",
+      "optionId": "unknown_nature",
+      "effects": [
+        {
+          "toolId": "copilot",
+          "delta": 100,
+          "reason": "Copilot reste admissible même si la nature exacte des documents est incertaine, grâce à la licence institutionnelle."
+        },
+        {
+          "toolId": "undermind",
+          "delta": 100,
+          "reason": "Undermind recherche dans son propre corpus : pas de téléversement nécessaire, aucun risque lié aux droits."
+        },
+        {
+          "toolId": "consensus",
+          "delta": 100,
+          "reason": "Consensus.app recherche dans son propre corpus : pas de téléversement nécessaire même si la nature des documents est incertaine."
+        },
+        {
+          "toolId": "leapspace",
+          "delta": 100,
+          "reason": "LeapSpace recherche dans son propre corpus : pas de téléversement nécessaire, aucun risque lié aux droits."
+        },
+        {
+          "toolId": "lexis_ai",
+          "delta": 100,
+          "reason": "Lexis+ AI peut être utilisé même si la nature des documents est incertaine, sous couvert de la licence institutionnelle."
+        }
+      ]
+    },
+    {
+      "questionId": "upload_intent",
+      "optionId": "public_domain",
+      "effects": [
+        {
+          "toolId": "elicit",
+          "delta": 100,
+          "reason": "Elicit peut être utilisé avec des documents du domaine public sans risque de droits."
+        },
+        {
+          "toolId": "scispace",
+          "delta": 100,
+          "reason": "SciSpace peut être utilisé avec des documents du domaine public sans risque de droits."
+        },
+        {
+          "toolId": "consensus",
+          "delta": 100,
+          "reason": "Consensus.app peut être utilisé avec des documents du domaine public sans risque de droits."
+        },
+        {
+          "toolId": "google_scholar_labs",
+          "delta": 100,
+          "reason": "Google Scholar Labs peut être utilisé sans risque avec des documents du domaine public."
+        },
+        {
+          "toolId": "undermind",
+          "delta": 100,
+          "reason": "Undermind recherche dans son corpus : compatible avec une démarche ouverte."
+        },
+        {
+          "toolId": "asta_paper_finder",
+          "delta": 100,
+          "reason": "Asta Paper finder peut être utilisé avec des documents du domaine public sans risque de droits."
+        },
+        {
+          "toolId": "asta_generate_report",
+          "delta": 100,
+          "reason": "Asta Generate report peut être utilisé avec des documents du domaine public sans risque de droits."
+        },
+        {
+          "toolId": "platform",
+          "delta": 100,
+          "reason": "Platform peut être utilisé avec des documents du domaine public sans risque de droits."
+        },
+        {
+          "toolId": "liner",
+          "delta": 100,
+          "reason": "Liner peut être utilisé avec des documents du domaine public sans risque de droits."
+        },
+        {
+          "toolId": "leapspace",
+          "delta": 100,
+          "reason": "LeapSpace est compatible avec des documents du domaine public ou libres de droits."
+        },
+        {
+          "toolId": "jstor_ai",
+          "delta": 100,
+          "reason": "JSTOR AI peut être utilisé sans risque particulier avec des documents du domaine public."
+        },
+        {
+          "toolId": "cairn_sophia",
+          "delta": 100,
+          "reason": "CAIRN SophIA peut être utilisé sans risque avec des documents du domaine public."
+        },
+        {
+          "toolId": "scifinder_ai",
+          "delta": 100,
+          "reason": "Scifinder AI peut être utilisé sans risque avec des documents du domaine public."
+        },
+        {
+          "toolId": "lexis_ai",
+          "delta": 100,
+          "reason": "Lexis+ AI peut être utilisé avec des documents du domaine public ou libres de droits."
+        },
+        {
+          "toolId": "canlii",
+          "delta": 100,
+          "reason": "CanLII peut être utilisé sans risque avec des documents du domaine public."
+        },
+        {
+          "toolId": "perplexity",
+          "delta": 100,
+          "reason": "Perplexity peut traiter des documents du domaine public sans risque de droits."
+        },
+        {
+          "toolId": "claude",
+          "delta": 100,
+          "reason": "Claude peut traiter des documents du domaine public sans risque de violation de droits."
+        },
+        {
+          "toolId": "chatgpt",
+          "delta": 100,
+          "reason": "ChatGPT peut traiter des documents du domaine public sans risque de violation de droits."
+        },
+        {
+          "toolId": "copilot",
+          "delta": 100,
+          "reason": "Copilot peut traiter des documents du domaine public sans risque de violation de droits."
+        },
+        {
+          "toolId": "gemini",
+          "delta": 100,
+          "reason": "Gemini peut traiter des documents du domaine public sans risque de violation de droits."
+        },
+        {
+          "toolId": "gemini_notebook",
+          "delta": 100,
+          "reason": "Gemini Notebook peut analyser des documents du domaine public ou libres de droits sans risque."
+        }
+      ]
+    },
+    {
+      "questionId": "upload_intent",
+      "optionId": "no_upload",
+      "effects": []
+    }
+  ]
+}

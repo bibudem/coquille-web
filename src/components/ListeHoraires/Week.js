@@ -1,5 +1,8 @@
-import { addDays, addWeeks, format, isToday } from 'date-fns'
-import { frCA } from 'date-fns/locale'
+import { addDays } from 'date-fns/addDays'
+import { addWeeks } from 'date-fns/addWeeks'
+import { format } from 'date-fns/format'
+import { isToday } from 'date-fns/isToday'
+import { frCA } from 'date-fns/locale/fr-CA'
 import { getFirstDayOfWeekDate } from '@/utils/dateTimeUtils'
 
 export default class Week {

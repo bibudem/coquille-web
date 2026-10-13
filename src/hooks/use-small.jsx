@@ -1,4 +1,5 @@
-import { useMediaQuery, useTheme } from '@mui/material'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import { useTheme } from '@mui/material/styles'
 
 export function useSmall(breakpoint = 'sm') {
   const theme = useTheme()
