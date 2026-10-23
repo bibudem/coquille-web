@@ -72,7 +72,7 @@ export default function Card2({ title, Icon, href, ...rest }) {
         borderRadius: theme.shape.corner.small,
         color: getContrastColor(_color.bg, '#fff', '#111'),
         boxShadow: 'none',
-        minWidth: '250px',
+        minWidth: 0,
         maxWidth: '400px',
         height: '100%',
         flex: '1 1 0',

@@ -3,115 +3,34 @@ title: Nous joindre
 crumbLabel: Nous joindre
 ---
 
-import Bibliotheques from '../../bibliotheques/bibliotheques.mdx'
 import SuperHero2 from '@/components/SuperHero2'
-import GridOffset from '@/components/utils/GridOffset'
 import { BookOpenTextIcon } from '@phosphor-icons/react/dist/csr/BookOpenText'
 import { ChatIcon } from '@phosphor-icons/react/dist/csr/Chat'
+import { MapPinIcon } from '@phosphor-icons/react/dist/csr/MapPin'
 import { PencilSimpleIcon } from '@phosphor-icons/react/dist/csr/PencilSimple'
 import { UsersFourIcon } from '@phosphor-icons/react/dist/csr/UsersFour'
-import { EnvelopeIcon } from '@phosphor-icons/react/dist/csr/Envelope'
-import { PhoneIcon } from '@phosphor-icons/react/dist/csr/Phone'
-import { MapTrifoldIcon } from '@phosphor-icons/react/dist/csr/MapTrifold'
-import { ArrowSquareOutIcon } from '@phosphor-icons/react/dist/csr/ArrowSquareOut'
 
-<SuperHero2
-  title="Nous joindre"
-  subTitle={
-    <>
-      <Typography component='div' variant='subtitle1'> </Typography>
-      <Typography component='div' variant='subtitle1'> </Typography>
-    </>
-  }
-  imageName="default"
-  size="small"
-/>
+<SuperHero2 title="Nous joindre" imageName="default" size="small" />
 
-<Section bg='bleu100' marginTop='3rem'>
-
-  <Grid container spacing=".62rem" sx={{ margin:'4rem 0', alignItems: 'stretch'}}>
-    <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-      <Card2
-      id='a'
-        title="Nous écrire"
-        Icon={PencilSimpleIcon}
-        href="../nous-joindre/nous-ecrire"
-      />
-    </Grid>
-    <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-      <Card2
-      id='b'
-        title="Clavarder"
-        Icon={ChatIcon}
-        href="../nous-joindre/clavarder"
-      />
-    </Grid>
-    <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-      <Card2
-        title="Consulter le répertoire"
-        Icon={UsersFourIcon}
-        href="../nous-joindre/notre-equipe"
-      />
-    </Grid>
-    <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-      <Card2
-        title="Faire une suggestion d'achat"
-        Icon={BookOpenTextIcon}
-        href="../nous-joindre/suggestion-achat/"
-      />
-    </Grid>
-  </Grid>
+<Section bg="bleu100" marginTop="3rem">
+  <Box
+    sx={{
+      display: 'grid',
+      gridTemplateColumns: {
+        xs: 'minmax(0, 1fr)',
+        sm: 'repeat(2, minmax(0, 1fr))',
+        md: 'repeat(3, minmax(0, 1fr))',
+      },
+      '@media (min-width: 1440px)': { gridTemplateColumns: 'repeat(5, minmax(0, 1fr))' },
+      gap: { xs: '1.5rem', md: '2rem' },
+      margin: '4rem 0',
+      alignItems: 'stretch',
+    }}
+  >
+    <Card2 title="Nous écrire" Icon={PencilSimpleIcon} href="/nous-joindre/nous-ecrire/" />
+    <Card2 title="Clavarder" Icon={ChatIcon} href="/nous-joindre/clavarder/" />
+    <Card2 title="Consulter le répertoire" Icon={UsersFourIcon} href="/nous-joindre/notre-equipe/" />
+    <Card2 title="Faire une suggestion d'achat" Icon={BookOpenTextIcon} href="/nous-joindre/suggestion-achat/" />
+    <Card2 title="Horaires et lieux" Icon={MapPinIcon} href="/horaires/" />
+  </Box>
 </Section>
-<Section>
-<Typography component="h2" variant="h2" id="liste-bibliotheques" sx={{ marginTop: '1em', marginBottom: '1em' }}> Services</Typography>
-
-<GridOffset offset={1}>
-  <AccordionGroup sx={{outline: '1px solid red', width: '100%'}}>
-    <Accordion id="mon-accordeon">
-      <AccordionSummary>Service Accessibilité</AccordionSummary>
-      <AccordionDetails>
-<div style={{ display: 'flex', alignItems: 'center', gap: '0.5em', paddingBottom:'0.7em' }}>
-  <EnvelopeIcon size={24} color="var(--bleuPrincipal)" />
-  <Link to="mailto:accessibilite@bib.umontreal.ca">accessibilite@bib.umontreal.ca</Link>
-  </div>
-<div style={{ display: 'flex', alignItems: 'center', gap: '0.5em', paddingBottom:'0.7em'  }}>
-  <PhoneIcon size={24} color="var(--bleuPrincipal)" />
-  <Link to="tel:514-343-2135">514 343-2135</Link>
-</div>
-<div style={{ display: 'flex', alignItems: 'start', gap: '0.5em' }}>
-  <MapTrifoldIcon size={24} color="var(--bleuPrincipal)" />
-  <div>
-    <Typography>Pavillon Samuel-Bronfman <br />
-      3000, rue Jean-Brillant <br />
-      1er étage, salle 1085 </Typography>
-    <Link 
-      to="https://www.google.com/maps/place/Pavillon+Samuel-Bronfman,+3000+Jean+Brillant+St,+Montreal,+QC+H3T+1N7,+Canada/@45.499427,-73.616554,4251m/data=!3m1!1e3!4m6!3m5!1s0x4cc919f3c6b6c4fd:0x1783a82167c956!8m2!3d45.4994274!4d-73.6165537!16s%2Fg%2F1tftqq4m?hl=en&entry=ttu&g_ep=EgoyMDI1MDQwOC4wIKXMDSoASAFQAw%3D%3D"
-      Icon={ArrowSquareOutIcon}
-    >
-      Voir l'itinéraire
-    </Link>
-  </div>
-</div>
-</AccordionDetails>
-    </Accordion>
-
-    <Accordion>
-      <AccordionSummary>Prêt entre bibliothèques</AccordionSummary>
-      <AccordionDetails>
-<div style={{ display: 'flex', alignItems: 'center', gap: '0.5em', paddingBottom:'0.7em'  }}>
-  <EnvelopeIcon size={24} color="var(--bleuPrincipal)" />
-  <Link to="mailto:peb@bib.umontreal.ca">peb@bib.umontreal.ca</Link>
-</div>
-<div style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
-  <PhoneIcon size={24} color="var(--bleuPrincipal)" />
-  <Link to="tel:514-343-6903">514 343-6903</Link>
-</div>
-    </AccordionDetails>
-    </Accordion>
-  </AccordionGroup>
-  </GridOffset>
-
-<Typography component="h2" variant="h2" id="liste-bibliotheques" sx={{ marginTop: '1em', marginBottom: '1em' }}> Bibliothèques et points de service</Typography>
-
-<Bibliotheques />
-  </Section>

@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import { ArrowRightIcon } from '@phosphor-icons/react/dist/csr/ArrowRight'
 import { useTheme } from '@mui/material/styles'
 import { useInView } from 'react-intersection-observer'
 import { hasStudioSpace, haversine } from './horaires'
@@ -10,9 +12,14 @@ import { hasStudioSpace, haversine } from './horaires'
 const MTL_REF = { lat: 45.5045407, lng: -73.6138466 } // BLSH
 const FOCUS_MAX_KM = 30
 const RADIUS = 8
+const MONTREAL_LAVAL = { south: 45.46, north: 45.62, west: -73.78, east: -73.5 }
 
 function isFocused(lieu) {
   return haversine(MTL_REF.lat, MTL_REF.lng, lieu.lat, lieu.lng) <= FOCUS_MAX_KM
+}
+
+function isInMontrealLaval(lieu) {
+  return lieu.lat >= MONTREAL_LAVAL.south && lieu.lat <= MONTREAL_LAVAL.north && lieu.lng >= MONTREAL_LAVAL.west && lieu.lng <= MONTREAL_LAVAL.east
 }
 
 // Les lieux d'un même pavillon (la BLSH et les Livres rares, au pavillon
@@ -28,10 +35,21 @@ function groupByBuilding(lieux) {
   return [...groups.values()]
 }
 
-function fitTo(map, lieux, extra = []) {
-  const focused = lieux.filter(isFocused)
+function fitTo(map, lieux, filter, extra = []) {
+  const focused = lieux.filter(filter === 'all' ? isInMontrealLaval : isFocused)
   const points = (focused.length ? focused : lieux).map((l) => [l.lat, l.lng]).concat(extra)
   if (points.length) map.fitBounds(points, { padding: [24, 24], maxZoom: 16 })
+}
+
+function outsideView(lieux, filter) {
+  const focused = lieux.filter(filter === 'all' ? isInMontrealLaval : isFocused)
+  return focused.length ? lieux.filter((lieu) => !focused.includes(lieu)) : []
+}
+
+function outsideName(lieu) {
+  if (!lieu.pavillon?.startsWith('Campus de ')) return lieu.name
+  const ville = lieu.pavillon.replace(/^Campus de /, '')
+  return lieu.name.toLocaleLowerCase('fr').includes(ville.toLocaleLowerCase('fr')) ? lieu.name : `${lieu.name} (${ville})`
 }
 
 // La feuille de style de Leaflet vient de jsDelivr, comme les composants
@@ -67,20 +85,10 @@ function loadLeafletCss(version) {
 export default function CarteLeaflet({ lieux, visibleIds, filter, userPos, focus, onSelect }) {
   const theme = useTheme()
   const containerRef = useRef(null)
-  // On n'observe la carte qu'une fois la page entièrement chargée : avant
-  // l'arrivée de la photo du SuperHero et des polices, la page est plus
-  // courte et la carte passerait un instant dans la zone visible.
-  const [pageLoaded, setPageLoaded] = useState(false)
-  useEffect(() => {
-    if (document.readyState === 'complete') {
-      setPageLoaded(true)
-      return undefined
-    }
-    const onLoad = () => setPageLoaded(true)
-    window.addEventListener('load', onLoad, { once: true })
-    return () => window.removeEventListener('load', onLoad)
-  }, [])
-  const { ref: inViewRef, inView } = useInView({ triggerOnce: true, skip: !pageLoaded })
+  // Commencer le téléchargement avant que la carte entre à l'écran évite
+  // d'afficher longuement son fond vide, sans charger Leaflet sur une page
+  // où la personne ne descend jamais jusqu'à cette section.
+  const { ref: inViewRef, inView } = useInView({ triggerOnce: true, rootMargin: '600px 0px' })
   const setContainer = (node) => {
     containerRef.current = node
     inViewRef(node)
@@ -177,7 +185,7 @@ export default function CarteLeaflet({ lieux, visibleIds, filter, userPos, focus
         markersRef.current[group.key] = marker
       })
 
-      fitTo(map, lieux)
+      fitTo(map, lieux, 'all')
       mapRef.current = map
       setReady(true)
       // Le conteneur peut avoir changé de taille pendant le chargement.
@@ -213,7 +221,7 @@ export default function CarteLeaflet({ lieux, visibleIds, filter, userPos, focus
       marker.setPopupContent(popupForRef.current(map, group, shown))
       visible.push(group)
     })
-    fitTo(map, visible, userPos ? [[userPos.lat, userPos.lng]] : [])
+    fitTo(map, visible, filter, userPos ? [[userPos.lat, userPos.lng]] : [])
   }, [ready, groups, visibleIds, filter, userPos])
 
   // Position de la personne.
@@ -243,11 +251,22 @@ export default function CarteLeaflet({ lieux, visibleIds, filter, userPos, focus
     marker.openPopup()
   }, [ready, focus, groupOf])
 
+  const visibleLieux = lieux.filter((lieu) => visibleIds.has(lieu.id))
+  const horsVue = outsideView(visibleLieux, filter)
+  const focusOutside = (lieu) => {
+    const map = mapRef.current
+    const marker = markersRef.current[groupOf[lieu.id]?.key]
+    if (!map || !marker) return
+    map.setView(marker.getLatLng(), 13)
+    marker.openPopup()
+  }
+
   return (
-    <Box
-      ref={setContainer}
-      role="region"
-      aria-label="Carte des bibliothèques. La liste qui suit donne les mêmes renseignements."
+    <Box sx={{ position: 'relative' }}>
+      <Box
+        ref={setContainer}
+        role="region"
+        aria-label="Carte des bibliothèques. La liste qui suit donne les mêmes renseignements."
       sx={(theme) => ({
         height: { xs: 400, md: 560 },
         width: '100%',
@@ -278,6 +297,57 @@ export default function CarteLeaflet({ lieux, visibleIds, filter, userPos, focus
           borderRadius: theme.shape.corner['extra-small'],
         },
       })}
-    />
+      />
+      {horsVue.length > 0 && (
+        <Box
+          sx={(theme) => ({
+            mt: { xs: 2, md: 0 },
+            p: 2,
+            maxWidth: { md: '20rem' },
+            border: '1px solid',
+            borderColor: 'divider',
+            borderRadius: theme.shape.corner.small,
+            backgroundColor: 'common.white',
+            boxShadow: { md: theme.shadows[2] },
+            position: { md: 'absolute' },
+            left: { md: 16 },
+            bottom: { md: 16 },
+            zIndex: { md: 1 },
+          })}
+        >
+          <Typography component="h3" sx={{ fontSize: '1rem', fontWeight: 600, mb: 1 }}>
+            Autres lieux hors de la zone affichée
+          </Typography>
+          <Box sx={{ display: 'grid', gap: 0.5 }}>
+            {horsVue.map((lieu) => (
+              <Box
+                component="button"
+                type="button"
+                key={lieu.id}
+                onClick={() => focusOutside(lieu)}
+                sx={{
+                  border: 0,
+                  p: 0.5,
+                  background: 'none',
+                  color: 'bleuPrincipal.main',
+                  font: 'inherit',
+                  fontWeight: 600,
+                  textAlign: 'left',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: 1,
+                  '&:hover': { textDecoration: 'underline' },
+                }}
+              >
+                <span>{outsideName(lieu)}</span>
+                <ArrowRightIcon aria-hidden="true" size={18} style={{ flex: '0 0 18px' }} />
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      )}
+    </Box>
   )
 }

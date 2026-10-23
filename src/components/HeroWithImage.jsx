@@ -26,13 +26,15 @@ const StyledImage = styled('img')(({ theme }) => ({
  *   Avec ces deux valeurs, le navigateur réserve la place de l'image avant
  *   son téléchargement : le contenu en dessous ne saute plus quand elle
  *   arrive (décalage de mise en page, CLS).
+ * @param {number} [props.offset=0.5] - Retrait de chaque côté, en colonnes.
+ *   Avec 0, le bloc s'aligne sur les carrousels et les titres de section.
  *
  * @throws {Error} Si la propriété `align` n'est pas 'left' ou 'right'.
  * @throws {Error} Si la propriété `Image` n'est pas fournie.
  *
  * @returns {JSX.Element} Le composant HeroWithImage rendu.
  */
-export default function HeroWithImage({ align = 'left', footer, Image, imageWidth, imageHeight, ...rest }) {
+export default function HeroWithImage({ align = 'left', footer, Image, imageWidth, imageHeight, offset = 0.5, ...rest }) {
   if (!['left', 'right'].includes(align)) {
     throw new Error(`Invalid align property: ${align}. Muse be one of: \`left\` (default) or \`right\``)
   }
@@ -71,22 +73,23 @@ export default function HeroWithImage({ align = 'left', footer, Image, imageWidt
     )
   }
 
-  return (
-    <GridOffset offset={0.5}>
-      <Grid
-        container
-        spacing={0}
-        direction={{ xs: 'column', md: 'row' }}
-        gap={{ xs: '2.5rem', md: 0 }}
-        sx={{
-          alignItems: 'center',
-          ...sx,
-        }}
-        {...rest}
-      >
-        {columns}
-        {isSmall && footer && <Grid size={12}>{footer}</Grid>}
-      </Grid>
-    </GridOffset>
+  const grille = (
+    <Grid
+      container
+      spacing={0}
+      direction={{ xs: 'column', md: 'row' }}
+      gap={{ xs: '2.5rem', md: 0 }}
+      sx={{
+        alignItems: 'center',
+        ...sx,
+      }}
+      {...rest}
+    >
+      {columns}
+      {isSmall && footer && <Grid size={12}>{footer}</Grid>}
+    </Grid>
   )
+
+  // GridOffset donnerait une largeur nulle avec un retrait de 0
+  return offset ? <GridOffset offset={offset}>{grille}</GridOffset> : grille
 }

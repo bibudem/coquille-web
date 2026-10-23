@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Typography from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import Box from '@mui/material/Box'
-import { useTheme } from '@mui/material/styles'
+import { alpha, useTheme } from '@mui/material/styles'
 import Grid from '@mui/material/Grid2'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
@@ -83,7 +83,7 @@ const DEFAULT_CONTEXT = {
  * @param {string} size - Taille de la section: 'default' ou 'small' (défaut: 'default')
  * @returns {JSX.Element} A hero section with gradient overlay and text content
  */
-export default function SuperHero2({ title, subTitle, imageName, alt = '', lvl, children, size = 'default', ...rest }) {
+export default function SuperHero2({ title, subTitle, imageName, alt = '', objectPosition = '50% 50%', lvl, children, size = 'default', ...rest }) {
   // Validation des props requises
   if (typeof title === 'undefined') {
     throw new Error('title prop is required')
@@ -205,19 +205,23 @@ export default function SuperHero2({ title, subTitle, imageName, alt = '', lvl, 
               height: '100%',
               objectFit: 'cover',
             }}
+            imgStyle={{ objectPosition }}
             loading="eager"
           />
 
           {/* Overlay sombre - même dimensions que l'image */}
           <Box
-            sx={{
+            sx={(theme) => ({
               position: 'absolute',
               top: 0,
               left: 0,
               width: '100%',
               height: '100%',
-              background: `rgba(0, 0, 0, 0.50)`,
-            }}
+              background: {
+                xs: alpha(theme.palette.common.black, 0.5),
+                md: `linear-gradient(90deg, ${alpha(theme.palette.common.black, 0.6)} 0%, ${alpha(theme.palette.common.black, 0.55)} 60%, ${alpha(theme.palette.common.black, 0)} 80%)`,
+              },
+            })}
           />
         </Box>
 
@@ -246,9 +250,9 @@ export default function SuperHero2({ title, subTitle, imageName, alt = '', lvl, 
                 React.cloneElement(subTitle, {
                   sx: {
                     mt: {
-                      xs: 1,
-                      sm: 1.5,
-                      md: 2,
+                      xs: size === 'small' ? 0.5 : 1,
+                      sm: size === 'small' ? 0.75 : 1.5,
+                      md: size === 'small' ? 1 : 2,
                     },
                   },
                 })}

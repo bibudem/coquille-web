@@ -92,7 +92,7 @@ const quickLinks = [
   { label: 'Réserver une salle', href: 'https://calendrier.bib.umontreal.ca/r', icon: DoorOpenIcon },
   { label: 'Mon dossier', href: 'https://umontreal.account.worldcat.org/account', icon: FolderOpenIcon },
   { label: 'Calendrier des formations', href: 'https://calendrier.bib.umontreal.ca/calendar?cid=7690&t=m&d=0000-00-00&cal=7690&inc=0', icon: CalendarDotsIcon },
-  { label: 'Horaires', href: '/horaires', icon: ClockCountdownIcon },
+  { label: 'Horaires et lieux', href: '/horaires', icon: ClockCountdownIcon },
   { label: 'Nous joindre', href: '/nous-joindre/', icon: AddressBookIcon },
   { label: 'À propos', href: '/a-propos/', icon: InfoIcon },
 ]

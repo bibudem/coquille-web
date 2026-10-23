@@ -148,7 +148,7 @@ export function QuickLinks() {
             <ListItemIcon>
               <ClockCountdown color="#fff" size={24} />
             </ListItemIcon>
-            <ListItemText trigger={trigger}>Horaires</ListItemText>
+            <ListItemText trigger={trigger}>Horaires et lieux</ListItemText>
           </MenuItem>
           <MenuItem component={Link} to="https://calendrier.bib.umontreal.ca/r">
             <ListItemIcon>
@@ -225,7 +225,7 @@ export function QuickLinksSm() {
         <IconButton component={Link} to="https://umontreal.on.worldcat.org/discovery?lang=fr" aria-label="Sofia">
           <SofiaIcon color="#fff" fontSize="40px" />
         </IconButton>
-        <IconButton component={Link} to="/horaires" aria-label="Horaires">
+        <IconButton component={Link} to="/horaires" aria-label="Horaires et lieux">
           <ClockCountdown color="#fff" size={40} />
         </IconButton>
         <IconButton component={Link} to="https://calendrier.bib.umontreal.ca/r" aria-label="Réserver une salle">

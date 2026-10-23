@@ -4,11 +4,13 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
 import InputAdornment from '@mui/material/InputAdornment'
+import IconButton from '@mui/material/IconButton'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import { ClockIcon } from '@phosphor-icons/react/dist/csr/Clock'
 import { CrosshairIcon } from '@phosphor-icons/react/dist/csr/Crosshair'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/csr/MagnifyingGlass'
+import { InfoIcon } from '@phosphor-icons/react/dist/csr/Info'
 import LayoutContainer from '@/components/utils/LayoutContainer'
 import Link from '@/components/Link'
 import CarteLeaflet from './CarteLeaflet'
@@ -109,7 +111,22 @@ export default function CarteHoraires() {
   const [highlighted, setHighlighted] = useState(null)
   const [mapFocus, setMapFocus] = useState(null)
   const mapSectionRef = useRef(null)
+  const privacyButtonRef = useRef(null)
+  const privacyPopoverRef = useRef(null)
   const highlightTimer = useRef(null)
+
+  const positionPrivacyPopover = () => {
+    requestAnimationFrame(() => {
+      const button = privacyButtonRef.current
+      const popover = privacyPopoverRef.current
+      if (!button || !popover?.matches(':popover-open')) return
+      const rect = button.getBoundingClientRect()
+      const wide = window.matchMedia('(min-width: 600px)').matches
+      popover.style.top = `${rect.bottom + 8}px`
+      popover.style.left = wide ? `${Math.min(rect.left, window.innerWidth - 352 - 16)}px` : '16px'
+      popover.style.right = wide ? 'auto' : '16px'
+    })
+  }
 
   useEffect(() => {
     const tick = () => setNow(montrealNow())
@@ -254,6 +271,36 @@ export default function CarteHoraires() {
           >
             {userPos ? 'Mettre à jour ma position' : 'Me localiser'}
           </Button>
+          <IconButton
+            ref={privacyButtonRef}
+            popovertarget="confidentialite-position"
+            aria-label="Confidentialité de votre position"
+            onClick={positionPrivacyPopover}
+            sx={{ width: 44, height: 44, border: '1px solid', borderColor: 'bleuPrincipal.main', color: 'bleuPrincipal.main', flex: '0 0 auto' }}
+          >
+            <InfoIcon aria-hidden="true" size={24} />
+          </IconButton>
+          <Box
+            ref={privacyPopoverRef}
+            component="div"
+            id="confidentialite-position"
+            popover="auto"
+            sx={(theme) => ({
+              m: 0,
+              p: 2,
+              width: { sm: 'min(22rem, calc(100vw - 32px))' },
+              maxWidth: 'calc(100vw - 32px)',
+              border: '1px solid',
+              borderColor: 'divider',
+              borderRadius: theme.shape.corner.small,
+              boxShadow: theme.shadows[3],
+              backgroundColor: 'background.paper',
+              color: 'text.primary',
+              lineHeight: 1.5,
+            })}
+          >
+            Votre position sert uniquement à calculer les distances dans votre navigateur. Elle n’est ni enregistrée ni transmise.
+          </Box>
           <Autocomplete
             freeSolo
             options={LIEUX}
@@ -304,9 +351,6 @@ export default function CarteHoraires() {
           />
           <Typography role="status" variant="body2" sx={{ flexBasis: '100%', color: 'text.secondary', minHeight: '1.5em', '&:empty': { display: 'none' } }}>
             {locateState.message}
-          </Typography>
-          <Typography variant="body2" component="p" sx={{ flexBasis: '100%', color: 'text.secondary', mt: -1 }}>
-            Votre position sert uniquement à calculer les distances dans votre navigateur. Elle n’est ni enregistrée ni transmise.
           </Typography>
         </Box>
 
