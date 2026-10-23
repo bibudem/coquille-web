@@ -52,11 +52,14 @@ const StyledMoreText = styled('div')({
  * @param {string} props.moreText - Le texte affiché au-dessus de l'icône de flèche
  * @param {string} props.href - L'URL pour le lien de la carte (interne ou externe)
  * @param {boolean} [props.small=false] - Indique s'il faut utiliser les dimensions réduites de la carte
+ * @param {boolean} [props.fullWidth=false] - La carte prend la largeur de sa cellule au lieu d'une
+ *   largeur fixe, avec des textes un peu plus petits. L'élargissement au survol revient alors au
+ *   conteneur (voir la section « Mille et une façons d'apprendre » de l'accueil).
  * @throws {Error} Lorsque la propriété href n'est pas une chaîne de caractères
  * @returns {React.ReactElement} Un composant Card MUI stylisé
  */
 
-export default function CardWithIcon({ title, Icon, color = 'bleuPrincipal', moreText, href, small = false, ...rest }) {
+export default function CardWithIcon({ title, Icon, color = 'bleuPrincipal', moreText, href, small = false, fullWidth = false, ...rest }) {
   const { sx, ...props } = rest
   const linkProps = {}
   const theme = useTheme()
@@ -140,30 +143,40 @@ export default function CardWithIcon({ title, Icon, color = 'bleuPrincipal', mor
     linkProps.rel = 'noopener'
   }
 
+  // Fige la largeur des textes pour qu'ils ne se recomposent pas pendant que
+  // la carte s'élargit au survol. Quand la carte suit la largeur de sa
+  // cellule (fullWidth), cette largeur change avec la fenêtre : on la
+  // recalcule alors à chaque redimensionnement.
   useEffect(() => {
-    if (titleRef) {
-      titleRef.current.style.maxWidth = `${titleRef.current.offsetWidth}px`
+    const figer = () => {
+      for (const el of [titleRef.current, moreTextRef.current]) {
+        if (!el) continue
+        el.style.maxWidth = ''
+        el.style.maxWidth = `${el.offsetWidth}px`
+      }
     }
-  }, [titleRef])
-
-  useEffect(() => {
-    if (moreTextRef) {
-      moreTextRef.current.style.maxWidth = `${moreTextRef.current.offsetWidth}px`
-    }
-  }, [moreTextRef])
+    figer()
+    if (!fullWidth) return
+    window.addEventListener('resize', figer)
+    return () => window.removeEventListener('resize', figer)
+  }, [fullWidth])
 
   return (
     <Card
       sx={(theme) => ({
         borderRadius: theme.shape.corner.small,
         boxShadow: 'none',
-        marginRight: '15px',
-        width: cardSize.width,
         height: cardSize.height,
-        transition: `width ${theme.transitions.duration.md3.medium1}ms ${theme.transitions.easing.md3.emphasized}`,
-        '&:hover': {
-          width: cardSize.width * HOVER_WIDTH_FACTOR,
-        },
+        ...(fullWidth
+          ? { width: '100%' }
+          : {
+              marginRight: '15px',
+              width: cardSize.width,
+              transition: `width ${theme.transitions.duration.md3.medium1}ms ${theme.transitions.easing.md3.emphasized}`,
+              '&:hover': {
+                width: cardSize.width * HOVER_WIDTH_FACTOR,
+              },
+            }),
         ...sx,
       })}
       {...props}
@@ -179,6 +192,7 @@ export default function CardWithIcon({ title, Icon, color = 'bleuPrincipal', mor
           display: 'flex',
           padding: '1.6667rem',
           backgroundColor: _color.bg,
+          transition: `background-color ${theme.transitions.duration.md3.medium2}ms ${theme.transitions.easing.md3.standard}`,
           '&:hover': {
             backgroundColor: _color.hoverBg,
           },
@@ -212,7 +226,7 @@ export default function CardWithIcon({ title, Icon, color = 'bleuPrincipal', mor
             <Icon color={_color.iconColor} size={55} />
           </Row>
           <Row sx={{ flexGrow: 1 }}>
-            <StyledTitle ref={titleRef}>{title}</StyledTitle>
+            <StyledTitle ref={titleRef} sx={fullWidth ? { fontSize: '1.5rem' } : undefined}>{title}</StyledTitle>
           </Row>
           <Row sx={{ height: '55px' }}>
             <Grid
@@ -225,10 +239,10 @@ export default function CardWithIcon({ title, Icon, color = 'bleuPrincipal', mor
               }}
             >
               <Grid size="grow">
-                <StyledMoreText ref={moreTextRef}>{moreText}</StyledMoreText>
+                <StyledMoreText ref={moreTextRef} sx={fullWidth ? { fontSize: '.9375rem' } : undefined}>{moreText}</StyledMoreText>
               </Grid>
               <Grid size="auto">
-                <StyledLinkIcon weight="light" />
+                <StyledLinkIcon weight="light" aria-hidden="true" />
               </Grid>
             </Grid>
           </Row>

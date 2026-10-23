@@ -4,7 +4,6 @@ import { format } from 'date-fns/format'
 import { isValid } from 'date-fns/isValid'
 import { frCA } from 'date-fns/locale/fr-CA'
 import Box from '@mui/material/Box'
-import Divider from '@mui/material/Divider'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -15,26 +14,29 @@ import Grid from '@mui/material/Grid2'
 import { CalendarBlankIcon } from '@phosphor-icons/react/dist/csr/CalendarBlank'
 import Button from '@/components/Button'
 import { isInternalLink } from '@/utils/link'
-import { useSmall } from '@/hooks/use-small'
 import { ArrowRightCircleIcon, ArrowUpRightCircleIcon } from '@/components/CustomIcons'
+import { ITEM_HEIGHT, ITEM_GAP, ITEM_PADDING_TOP, ITEM_PADDING_BOTTOM, clampLines } from '@/utils/quoi-de-neuf'
 
-const FETCH_TIMEOUT = 3_000
+// Le flux du calendrier UdeM met 2 à 3 s à répondre (100 événements, aucun
+// cache côté serveur) : avec 3 s, il expirait souvent sur un réseau lent.
+// On laisse donc 10 s par tentative, et une seconde tentative en cas d'échec.
+const FETCH_TIMEOUT = 10_000
+const FETCH_ATTEMPTS = 2
 const FALLBACK_IMAGE = '/images/fallback.jpg'
+// Vignette carrée : la section Quoi de neuf partage la largeur en trois colonnes.
+const IMG_SIZE = '5.5rem'
 
 const Img = styled('img')(({ theme }) => ({
   objectFit: 'cover',
   objectPosition: 'center',
   borderRadius: theme.shape.corner.medium,
-  width: '15.8125rem',
-  height: '10.5625rem',
-  [theme.breakpoints.up('md')]: {
-    width: '10.8125rem',
-    height: '10.5625rem',
-  },
+  display: 'block',
+  width: IMG_SIZE,
+  height: IMG_SIZE,
 }))
 
-function fetcher(...args) {
-  return fetch(...args, { signal: AbortSignal.timeout(FETCH_TIMEOUT) })
+function fetchRss(url) {
+  return fetch(url, { signal: AbortSignal.timeout(FETCH_TIMEOUT) })
     .then(async (res) => {
       if (!res.ok) {
         throw new Error(`Erreur HTTP! statut: ${res.status}`)
@@ -55,23 +57,36 @@ function fetcher(...args) {
       
       return data
     })
-    .catch(error => {
-      console.error('Erreur lors de la récupération du flux RSS:', error)
-      throw error
-    })
+}
+
+// Les nouvelles tentatives se font ici plutôt qu'avec celles de SWR : SWR
+// expose l'erreur dès le premier échec (et attend 5 s avant de réessayer),
+// alors qu'on veut garder le squelette de chargement jusqu'au bout.
+async function fetcher(url) {
+  for (let tentative = 1; ; tentative++) {
+    try {
+      return await fetchRss(url)
+    } catch (error) {
+      console.error(`Erreur lors de la récupération du flux RSS (tentative ${tentative}/${FETCH_ATTEMPTS}) :`, error)
+      if (tentative >= FETCH_ATTEMPTS) throw error
+    }
+  }
 }
 
 function Title({ children }) {
   return (
     <Box
-      sx={{
-        fontFamily: '"Lora", "Lora Fallback", Georgia, serif',
-        fontSize: '1.75rem',
+      sx={(theme) => ({
+        // Même taille que les titres des nouvelles (body1)
+        fontFamily: theme.typography.fontFamily,
+        fontSize: theme.typography.body1.fontSize,
         fontWeight: 500,
-        lineHeight: 1.5,
-        paddingTop: '1.5rem',
+        lineHeight: theme.typography.body1.lineHeight,
         color: 'var(--_title-color)',
-      }}
+        // Laisse la place à la flèche, ancrée en bas à droite de l'élément
+        paddingRight: '2.75rem',
+        ...clampLines(),
+      })}
     >
       {children}
     </Box>
@@ -86,6 +101,7 @@ function Upper({ children }) {
         display: 'flex',
         alignItems: 'center',
         gap: '.5em',
+        minHeight: '1.25rem',
         fontSize: '0.875rem',
         fontWeight: 400,
         lineHeight: 1,
@@ -103,39 +119,32 @@ function Lower({ url }) {
   return (
     <Box
       sx={{
+        position: 'absolute',
+        right: 0,
+        bottom: '1rem',
         display: 'flex',
-        alignItems: 'center',
-        fontSize: '1rem',
-        fontWeight: 400,
-        lineHeight: 1.5,
-        letterSpacing: '.00875rem',
         color: 'var(--_lower-color)',
       }}
     >
-      <Box
-        sx={{
-          display: 'flex',
-          flexGrow: 1,
-          justifyContent: 'flex-end',
-        }}
-      >
-        {isInternalLink(url) ? 
-          <ArrowRightCircleIcon color="var(--_lower-color)" fontSize={50} /> : 
-          <ArrowUpRightCircleIcon color="var(--_lower-color)" fontSize={50} />
-        }
-      </Box>
+      {isInternalLink(url) ? 
+        <ArrowRightCircleIcon color="var(--_lower-color)" fontSize={36} /> : 
+        <ArrowUpRightCircleIcon color="var(--_lower-color)" fontSize={36} />
+      }
     </Box>
   )
 }
 
+// Même structure que les colonnes Nouvelles et Revue de presse de la section
+// Quoi de neuf : en-tête, liste qui occupe la hauteur libre, bouton en bas,
+// pour que les trois colonnes restent alignées.
 function ListeEvenementsContainer({ title, id, moreText, moreLink, children, sx }) {
   return (
-    <Grid container spacing="1.25rem" size={12} direction="column">
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%', height: '100%' }}>
       <Typography
         component="h3"
         id={id}
         sx={{
-          fontSize: '32px',
+          fontSize: '1.75rem',
           fontWeight: 500,
           lineHeight: 1.2,
         }}
@@ -146,7 +155,7 @@ function ListeEvenementsContainer({ title, id, moreText, moreLink, children, sx 
         sx={(theme) => ({
           display: 'flex',
           flexDirection: 'column',
-          gap: '.5rem',
+          flexGrow: 1,
           transition: `color ${theme.transitions.duration.md3.short4}ms ${theme.transitions.easing.md3.emphasized}`,
           '*': {
             transition: `color ${theme.transitions.duration.md3.short4}ms ${theme.transitions.easing.md3.emphasized}`,
@@ -166,50 +175,58 @@ function ListeEvenementsContainer({ title, id, moreText, moreLink, children, sx 
             },
           }}
         >
-          <Button primary href={moreLink} target="_blank" rel="noopener noreferrer">
+          <Button secondary href={moreLink} target="_blank" rel="noopener noreferrer">
             {moreText}
           </Button>
         </Box>
       )}
-    </Grid>
+    </Box>
   )
 }
 
 function ListeEvenementsItem({ imageVedette, upper, title, lower, url, ...rest }) {
   const { sx, ...props } = rest
-  const isSmall = useSmall('lg')
 
   return (
     <>
-      <ListItem {...props} alignItems="flex-start" disableGutters sx={{ ...sx }}>
+      <ListItem
+        {...props}
+        alignItems="flex-start"
+        disableGutters
+        disablePadding
+        sx={(theme) => ({
+          height: ITEM_HEIGHT,
+          boxSizing: 'border-box',
+          borderBottom: `1px solid ${theme.palette.bleu200.main}`,
+          ...sx,
+        })}
+      >
         <ListItemButton 
           component="a" 
           href={url} 
           target="_blank" 
           rel="noopener noreferrer"
           disableGutters 
-          sx={{ '--bib-palette-action-hover': 'none' }}
+          sx={{ '--bib-palette-action-hover': 'none', paddingBlock: 0, height: '100%', alignItems: 'flex-start' }}
         >
-          <Grid container spacing="1.5rem" sx={{ width: '100%' }} direction={{ xs: 'column', md: 'row' }}>
-            {isSmall && <Grid>{upper}</Grid>}
-            <Grid size="fill">{imageVedette}</Grid>
+          <Grid container spacing="1rem" wrap="nowrap" sx={{ width: '100%', paddingTop: ITEM_PADDING_TOP, paddingBottom: ITEM_PADDING_BOTTOM }}>
+            <Grid>{imageVedette}</Grid>
             <Grid
               size="grow"
               container
               direction="column"
-              spacing="1rem"
+              spacing=".5rem"
               sx={{
                 justifyContent: 'flex-start',
               }}
             >
-              {!isSmall && <Grid>{upper}</Grid>}
+              <Grid>{upper}</Grid>
               <Grid>{title}</Grid>
               <Grid>{lower}</Grid>
             </Grid>
           </Grid>
         </ListItemButton>
       </ListItem>
-      <Divider component="li" aria-hidden="true" sx={{ borderColor: 'bleu200.main', margin: '0' }} />
     </>
   )
 }
@@ -251,8 +268,7 @@ export default function ListeEvenements({
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
-    shouldRetryOnError: true,
-    retryCount: 2
+    shouldRetryOnError: false,
   })
 
   const theme = useTheme()
@@ -355,14 +371,15 @@ export default function ListeEvenements({
     }
   }, [rss, validatedLimit, imageErrors])
 
-  if (error) {
+  // Message pour les visiteurs ; le détail technique reste dans la console.
+  // Le bouton « Tous nos événements » reste affiché : le calendrier, lui,
+  // est sans doute accessible.
+  if (error && !isValidating) {
     return (
-      <ListeEvenementsContainer title={title} id={id}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <Typography color="error">
-            Erreur lors du chargement des événements: {error.message}
-          </Typography>
-          <Button onClick={() => mutate()} sx={{ alignSelf: 'flex-start' }}>
+      <ListeEvenementsContainer title={title} id={id} moreLink={validatedMoreLink} moreText={moreText}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '1rem' }}>
+          <Typography>Les événements ne sont pas disponibles pour le moment.</Typography>
+          <Button secondary onClick={() => mutate()}>
             Réessayer
           </Button>
         </Box>
@@ -373,7 +390,7 @@ export default function ListeEvenements({
   if (isValidating) {
     return (
       <ListeEvenementsContainer title={title} id={id} moreLink={validatedMoreLink} moreText={moreText}>
-        <List>
+        <List sx={{ padding: 0, display: 'flex', flexDirection: 'column', gap: ITEM_GAP }}>
           {Array(validatedLimit).fill().map((_, i) => (
             <ListeEvenementsItem
               key={i}
@@ -382,18 +399,14 @@ export default function ListeEvenements({
                   variant="rectangular"
                   sx={{
                     borderRadius: theme.shape.corner.small,
-                    width: '15.8125rem',
-                    height: '10.5625rem',
-                    [theme.breakpoints.up('md')]: {
-                      width: '10.8125rem',
-                      height: '10.5625rem',
-                    },
+                    width: IMG_SIZE,
+                    height: IMG_SIZE,
                   }}
                 />
               }
               upper={<Skeleton sx={{ fontSize: '1.25rem' }} width={115} />}
-              title={<Skeleton sx={{ fontSize: '2.1667rem' }} />}
-              lower={<Skeleton sx={{ fontSize: '1.6667rem', lineHeight: 1.5 }} width={175} />}
+              title={<Skeleton sx={{ fontSize: '1.25rem' }} />}
+              lower={null}
             />
           ))}
         </List>
@@ -413,7 +426,7 @@ export default function ListeEvenements({
       }}
     >
       {events?.length ? (
-        <List sx={{ padding: 0 }}>
+        <List sx={{ padding: 0, display: 'flex', flexDirection: 'column', gap: ITEM_GAP }}>
           {events.map(({ url, imageVedette, date, title, debut }, i) => (
             <ListeEvenementsItem
               key={i}

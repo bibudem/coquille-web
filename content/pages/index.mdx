@@ -9,10 +9,10 @@ import Typography from '@mui/material/Typography'
 import CardActionArea from '@mui/material/CardActionArea'
 import SuperHero from '@/components/SuperHero'
 import RechercheSofiaAccueil from '@/components/RechercheSofiaAccueil'
-import ListeFormations from '@/components/ListeFormations'
+import ListeFormationsAccueil from '@/components/ListeFormationsAccueil'
+import QuoiDeNeuf from '@/components/QuoiDeNeuf/QuoiDeNeuf'
 import ListeEvenements from '@/components/ListeEvenements'
 import ListeNouvellesAccueil from '@/components/ListeNouvellesAccueil'
-import LayoutGrid from  '@/components/utils/LayoutGrid'
 
 import { BookmarkSimpleIcon } from '@phosphor-icons/react/dist/csr/BookmarkSimple'
 import { PersonSimpleCircleIcon } from '@phosphor-icons/react/dist/csr/PersonSimpleCircle'
@@ -46,55 +46,82 @@ import imageEngagement from './images/engagement-accueil.webp'
 
   ## Quoi de neuf
 
-  <LayoutGrid sx={{marginTop: '2rem'}}>
-    <Grid container spacing='2.25rem' size={{ sm: 12, md: 6, lg: 7 }}>
-      <ListeEvenements id="evenements" />
-    </Grid>
-    <Grid container spacing='2.25rem' size={{ sm: 12, md: 6, lg: 5 }}>
-      <ListeNouvellesAccueil title="Nouvelles" id="nouvelles" />
-    </Grid>
-  </LayoutGrid>
+  {/* Trois colonnes sur grand écran, des onglets sur mobile */}
+  <QuoiDeNeuf onglets={[
+    { id: 'evenements', label: 'Événements' },
+    { id: 'nouvelles', label: 'Nouvelles' },
+    { id: 'formations', label: 'Formations' },
+  ]}>
+    <ListeEvenements id="evenements" limit={4} />
+    <ListeNouvellesAccueil title="Nouvelles" id="nouvelles" limit={4} />
+    <ListeFormationsAccueil id="formations" limit={4} />
+  </QuoiDeNeuf>
 
 </Section>
 
-<Section bg='bleu100'>
+<Section bg='bleu100' sx={{ pt: { xs: '40px', md: '48px', lg: '64px' } }}>
 
-  <Carousel1
-    title="Mille et une façons d’apprendre"
-    description="Quels que soient vos besoins, vous découvrirez ici de multiples méthodes d’apprentissage facilement accessibles. Trouvez celle qui vous convient!"
-    moreLink="/etudes/"
-    moreText="Découvrir les services pour la communauté étudiante"
-  >
+  <Typography component='h2' variant='h2' sx={{ mt: 0 }}>Mille et une façons d’apprendre</Typography>
+
+  Quels que soient vos besoins, vous découvrirez ici de multiples méthodes d’apprentissage facilement accessibles. Trouvez celle qui vous convient!
+
+  {/* Quatre cartes : pas besoin de carrousel. Sur grand écran, la carte
+      survolée s'élargit et les autres se resserrent, comme l'élargissement
+      des carrousels, sans sortir de la largeur de la section. */}
+  <Box sx={(theme) => ({
+    display: 'grid',
+    gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+    gap: '1.5rem',
+    marginTop: '2.5rem',
+    '& > *': {
+      flex: '1 1 0',
+      minWidth: 0,
+      transition: `flex-grow ${theme.transitions.duration.md3.medium1}ms ${theme.transitions.easing.md3.emphasized}`,
+    },
+    [theme.breakpoints.up('lg')]: {
+      display: 'flex',
+      '& > *:hover, & > *:focus-within': { flexGrow: 1.15 },
+    },
+  })}>
+    <Box>
       <CardWithIcon
+        fullWidth
         title="Ressources et conseils préparés par nos spécialistes"
         Icon={BookmarkSimpleIcon}
         moreText="Voir la boîte à outils"
         href="https://boite-outils.bib.umontreal.ca"
       />
+    </Box>
+    <Box>
       <CardWithIcon
+        fullWidth
         title="Capsules vidéos et webinaires"
         Icon={VideoIcon}
         moreText="Accéder à YouTube"
         href="https://www.youtube.com/user/BibliothequesUdeM"
       />
+    </Box>
+    <Box>
       <CardWithIcon
+        fullWidth
         title="Service Accessibilité"
         Icon={PersonSimpleCircleIcon}
-        moreText="En savoir plus sur le Service Accessibilié"
+        moreText="En savoir plus sur le Service Accessibilité"
         href="service-accessibilite"
       />
+    </Box>
+    <Box>
       <CardWithIcon
+        fullWidth
         title="Soutien personnalisé avec nos spécialistes"
         Icon={UsersIcon}
         moreText="Prendre rendez-vous"
         href="./nous-joindre/notre-equipe"
       />
-  </Carousel1>
-</Section>
+    </Box>
+  </Box>
 
-<Section>
-  <Typography component='h2' variant='h2'>Nos formations</Typography>
-  <ListeFormations moreText="Toutes nos formations" moreLink="https://calendrier.bib.umontreal.ca/calendar?cid=7690&t=m&d=0000-00-00&cal=7690&inc=0" />
+  <Button primary href="/etudes/" sx={{ marginTop: '2.5rem' }}>Découvrir les services pour la communauté étudiante</Button>
 </Section>
 
 <Section bg='vertFonce'>
