@@ -1,0 +1,141 @@
+---
+title: Bibliothèque des livres rares et collections spéciales
+slug: index
+crumbLabel: Livres rares et collections spéciales
+description: Près de 175 000 documents anciens, rares ou précieux à explorer, consulter sur place et utiliser pour la recherche, l’enseignement et la création.
+lvl: 1
+---
+
+import { BooksIcon } from '@phosphor-icons/react/dist/csr/Books'
+import { GraduationCapIcon } from '@phosphor-icons/react/dist/csr/GraduationCap'
+import { ScrollIcon } from '@phosphor-icons/react/dist/csr/Scroll'
+import EquipeBibliotheque from '@/components/personnel/EquipeBibliotheque'
+import VideoYouTube from '@/components/VideoYouTube'
+import rayonnages from './images/rayonnages-livres-anciens.webp'
+import carteSanson from './images/carte-sanson-nouvelle-france.webp'
+import vitrineReliures from './images/vitrine-reliures.webp'
+import reliuresCuir from './images/reliures-cuir.webp'
+
+{/* Page reprise de la vitrine /espaces/blrcs/ de bibudem-bibweb. Rangée
+    sous /espaces/ mais mise en page comme une page de premier niveau
+    (`lvl: 1` : pleine largeur, sans navigation secondaire ni fil d'Ariane) ;
+    sa sous-page « Nos fonds et collections » garde la mise en page de
+    deuxième niveau. */}
+
+<Box>
+<SuperHero2 title="Bibliothèque des livres rares et collections spéciales" imageName="blrcs" size="small" />
+
+{/* La petite bannière remonte la suite de 4rem (marge basse négative) : la
+    marge haute ci-dessous compense, sinon le titre colle à la photo */}
+<Section sx={{ pt: { xs: 'calc(4rem + 24px)', md: 'calc(4rem + 32px)', lg: 'calc(4rem + 40px)' }, pb: { xs: 3, md: 4, lg: 5 } }}>
+  <HeroWithImage Image={rayonnages} imageWidth={1600} imageHeight={1068}>
+    <Typography component="h2" variant="h2">Près de 175 000 documents à explorer</Typography>
+    <Typography component="p">
+      La Bibliothèque des livres rares et collections spéciales de l’Université de Montréal donne accès à près de 175 000 documents couvrant une multitude de disciplines. Comprenant notamment de remarquables ensembles Canadiana et Americana, elle se compose aussi d’un riche patrimoine documentaire en français : un ancrage dans l’histoire d’ici qui contribue à la singularité de la bibliothèque.
+    </Typography>
+  </HeroWithImage>
+</Section>
+
+<Section bg="bleu100" sx={{ py: { xs: 3, md: 4, lg: 5 } }}>
+  <HeroWithImage Image={carteSanson} imageWidth={1600} imageHeight={1101} align="right">
+    <Typography component="h2" variant="h2">Un laboratoire de recherche vivant</Typography>
+    <Typography component="p">
+      Manuscrits, livres, images et autres formes d’expression nous invitent à suivre des trajectoires : celles des personnes, des communautés et des idées, mais aussi celles des documents qui ont circulé, changé de mains et traversé les époques. Ils ouvrent des perspectives sur les identités et les rapports aux territoires. Les étudier, c’est découvrir ce qu’ils racontent, mieux comprendre les contextes dans lesquels ils ont été produits et transmis, et porter attention à la diversité des points de vue qu’ils donnent à voir, comme aux voix moins présentes.
+    </Typography>
+    <Typography component="p">
+      La bibliothèque aspire à être un laboratoire de recherche vivant, ouvert aux échanges entre disciplines, savoirs et communautés. Elle souhaite notamment approfondir ce travail avec les Premiers Peuples, dans le respect de leurs savoirs et de leurs protocoles. Son équipe accompagne la communauté universitaire et les personnes curieuses de découvrir ses collections dans leur exploration, leur consultation sur place et leur utilisation pour des projets de recherche, d’enseignement, de création et de mise en valeur.
+    </Typography>
+    <Typography component="p" sx={{ color: 'text.secondary', fontSize: '0.875rem' }}>
+      Image : Nicolas Sanson d’Abbeville, <em>Le Canada, ou Nouvelle France</em>, carte gravée et coloriée à la main, XVII<sup>e</sup> siècle. Collections Canadiana et Americana.
+    </Typography>
+  </HeroWithImage>
+</Section>
+
+{/* Tuiles à ajouter quand leur page existera : Nouvelles acquisitions (sur
+    Collections spéciales), Visites, expositions et activités, Initiatives
+    Premiers Peuples, Affiches de guerre. */}
+<Section sx={{ py: { xs: 3, md: 4, lg: 5 } }}>
+  <Carousel1 title={<Typography component="h2" variant="h2">À découvrir à la bibliothèque</Typography>}>
+    <CardWithIcon title="Plateforme Collections spéciales" Icon={ScrollIcon} moreText="Explorer la plateforme" href="https://collections-speciales.bib.umontreal.ca/" />
+    <CardWithIcon title="Nos fonds et collections" Icon={BooksIcon} moreText="Liste des fonds et collections" href="/espaces/blrcs/fonds-collections/" />
+    <CardWithIcon title="Bourses" Icon={GraduationCapIcon} moreText="Découvrir les bourses" href="/nouvelles/2026/bourses-blrcs/" />
+  </Carousel1>
+</Section>
+
+<Section bg="rose100" sx={{ py: { xs: 3, md: 4, lg: 5 } }}>
+  <Typography component="h2" variant="h2" sx={{ mb: 3 }}>Une histoire de cœur</Typography>
+  <Box sx={{ maxWidth: '56rem', mx: 'auto' }}>
+    <VideoYouTube id="YA-fMF0TLWM" titre="Un trésor culturel méconnu accessible à tous (Radio-Canada Info)" />
+  </Box>
+</Section>
+
+<Section bg="bleu100" sx={{ py: { xs: 3, md: 4, lg: 5 } }}>
+  <HeroWithImage
+    Image={vitrineReliures}
+    imageWidth={1600}
+    imageHeight={1068}
+    align="right"
+   
+    footer={<Button primary href="/nouvelles/">Consulter la revue de presse</Button>}
+  >
+    <Typography component="h2" variant="h2">On parle de nous</Typography>
+    <Typography component="p">
+      Les collections, les acquisitions et les projets de la bibliothèque suscitent l’intérêt bien au-delà du campus. Découvrez les articles, entrevues et reportages sur nos documents et projets, et les recherches qu’ils inspirent.
+    </Typography>
+    <Typography component="p">
+      Vous travaillez dans les médias et souhaitez réaliser un reportage sur la bibliothèque, découvrir ses collections ou rencontrer un membre de notre équipe? Communiquez avec l’<Link to="https://nouvelles.umontreal.ca/a-propos">équipe des relations avec les médias de l’Université de Montréal</Link>.
+    </Typography>
+  </HeroWithImage>
+</Section>
+
+<Section bg="vertFonce" sx={{ py: { xs: 3, md: 4, lg: 5 }, color: 'common.white', '& h2': { color: 'inherit' } }}>
+  <HeroWithImage
+    Image={reliuresCuir}
+    imageWidth={1600}
+    imageHeight={1066}
+   
+    footer={
+      <Button href="https://boite-outils.bib.umontreal.ca/trouver-evaluer/livres-rares-collections-speciales" sx={{ backgroundColor: 'common.white', color: 'vertFonce.main', '&:hover': { backgroundColor: 'bleu100.main' } }}>
+        Consulter le guide Livres rares et collections spéciales
+      </Button>
+    }
+  >
+    <Typography component="h2" variant="h2">Ressources complémentaires</Typography>
+    <Typography component="p" sx={{ color: 'inherit' }}>
+      Vous souhaitez poursuivre votre exploration des collections ou préparer une visite à la bibliothèque? Le guide Livres rares et collections spéciales présente notre offre de services ainsi que des ressources numériques et des outils spécialisés. Il vous aide à repérer des documents, à explorer les fonds et à approfondir vos recherches dans le cadre de vos études, de votre enseignement ou de vos travaux de recherche.
+    </Typography>
+  </HeroWithImage>
+</Section>
+
+{/* Comme le bloc « personnel » de bibweb : « Nous joindre » à gauche (un
+    tiers dès md), l'équipe à droite en rangées de trois, séparées par un
+    filet. Les deux répondent à la même question (à qui s'adresser). Sous md,
+    les coordonnées passent au-dessus. */}
+<Section sx={{ py: { xs: 3, md: 4, lg: 5 } }}>
+  <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'minmax(0, 1fr)', md: 'minmax(0, 1fr) minmax(0, 2fr)' }, gap: { xs: 5, md: 6 } }}>
+    <Box sx={{ overflowWrap: 'anywhere' }}>
+      <Typography component="h2" variant="h2" sx={{ mt: 0 }}>Nous joindre</Typography>
+      <Typography component="p">
+        <Link to="/horaires/#livres-rares-et-collections-speciales">Bibliothèque des livres rares et collections spéciales</Link><br />
+        Pavillon Samuel-Bronfman<br />
+        3000, rue Jean-Brillant, 4<sup>e</sup> étage, salle 4030
+      </Typography>
+      <Typography component="p">
+        <Link to="tel:+15143436111,39836">514 343-6111, poste 39836</Link><br />
+        <Link to="mailto:livresrares@bib.umontreal.ca">livresrares@bib.umontreal.ca</Link>
+      </Typography>
+      <Box sx={{ mt: 3 }}>
+        <Button primary href="/horaires/#livres-rares-et-collections-speciales">Voir la fiche de la bibliothèque</Button>
+      </Box>
+    </Box>
+    <Box sx={{ pl: { md: 6 }, borderLeft: { md: 1 }, borderColor: { md: 'divider' } }}>
+      <Typography component="h2" variant="h2" sx={{ mt: 0, mb: 3 }}>Notre équipe</Typography>
+      <EquipeBibliotheque
+        bibliotheque="Bibliothèque des livres rares et collections spéciales"
+        ordre={['Maryna Beaulieu', 'Danny Létourneau', 'Éric Bouchard', 'Mathieu Thomas', 'Diane Moreau', 'Marie-Josée Lapalme']}
+        colonnes={3}
+      />
+    </Box>
+  </Box>
+</Section>
+</Box>
