@@ -151,7 +151,12 @@ Que ce soit en participant à vos cours par des formations ou par une implicatio
 
   <HeroWithImage
     Image={imageCollections} imageWidth={613} imageHeight={658}
-    footer={<Button primary href='/a-propos/nos-collections/nos-collections-speciales'>Explorer les collections spéciales</Button>}
+    footer={
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+        <Button primary href='https://collections-speciales.bib.umontreal.ca/'>Explorer les collections spéciales</Button>
+        <Button variant='outlined' href='/espaces/blrcs/' sx={{ borderColor: 'bleuFonce.main' }}>Découvrir la Bibliothèque des livres rares et collections spéciales</Button>
+      </Box>
+    }
   >
 
     <Typography component='h2' variant='h2'>Découvrez nos pièces uniques</Typography>
