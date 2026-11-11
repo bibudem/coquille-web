@@ -720,42 +720,6 @@
     "acceptsUpload": false
   },
   {
-    "id": "scifinder_ai",
-    "name": "Scifinder AI",
-    "category": "Disciplinaire",
-    "tagline": "Outil sur corpus Scifinder, pertinent surtout si votre terrain disciplinaire correspond à cette base spécialisée.",
-    "bestFor": "Explorer ou compléter une recherche en chimie lorsque le corpus Scifinder colle vraiment à votre domaine de travail.",
-    "caution": "Dans sa version gratuite, aucun rapport de synthèse n'apparaît. L'outil est surtout pertinent si son corpus spécialisé correspond à votre sujet.",
-    "defaultReason": "Monte surtout sur des besoins disciplinaires en chimie, pas comme choix universel tous domaines confondus.",
-    "url": "https://www.cas.org/",
-    "accent": "#4056b0",
-    "corpus": "Scifinder",
-    "synthesis": "Non",
-    "studiesFound": "10+",
-    "interaction": "Oui",
-    "ragScope": "Métadonnées",
-    "outputs": [
-      "Liste de documents"
-    ],
-    "doubtfulReviews": "Non",
-    "recommendedUses": [
-      "Explorer",
-      "Compléter"
-    ],
-    "institutionalLicense": true,
-    "licenseLabel": "IA accessible avec la licence UdeM",
-    "institutionalAccessNote": "Requiert l’accès via le proxy des bibliothèques. Certaines fonctionnalités peuvent aussi demander un compte lié à votre adresse umontreal.ca.",
-    "licensedContentSafe": false,
-    "disciplines": [
-      "chemistry"
-    ],
-    "capabilities": [
-      "document_discovery"
-    ],
-    "requiresUpload": false,
-    "acceptsUpload": false
-  },
-  {
     "id": "lexis_ai",
     "name": "Lexis+ AI (protégé)",
     "category": "Juridique (accès institutionnel)",

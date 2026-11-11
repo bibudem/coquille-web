@@ -65,11 +65,6 @@
           "reason": "CAIRN SophIA reste centré SHS francophone, moins pertinent hors ce terrain précis."
         },
         {
-          "toolId": "scifinder_ai",
-          "delta": 25,
-          "reason": "Scifinder AI est moins pertinent pour une recherche multidisciplinaire hors chimie."
-        },
-        {
           "toolId": "perplexity",
           "delta": 25,
           "reason": "Perplexity reste peu adapté à la recherche documentaire scientifique rigoureuse."
@@ -174,11 +169,6 @@
           "toolId": "cairn_sophia",
           "delta": -50,
           "reason": "CAIRN SophIA est centré SHS francophone, pas sur les sciences de la santé."
-        },
-        {
-          "toolId": "scifinder_ai",
-          "delta": 50,
-          "reason": "Scifinder AI peut servir pour certaines sciences de la vie, mais son corpus est plus ciblé chimie."
         },
         {
           "toolId": "perplexity",
@@ -300,107 +290,6 @@
           "toolId": "canlii",
           "delta": 25,
           "reason": "CanLII peut couvrir certains sujets SHS de droit canadien, mais reste limité."
-        },
-        {
-          "toolId": "claude",
-          "delta": 25,
-          "reason": "Claude reste peu adapté comme moteur principal de recherche documentaire."
-        },
-        {
-          "toolId": "chatgpt",
-          "delta": 25,
-          "reason": "ChatGPT reste peu adapté comme moteur principal de recherche documentaire."
-        },
-        {
-          "toolId": "copilot",
-          "delta": 25,
-          "reason": "Copilot reste peu adapté comme moteur principal de recherche documentaire."
-        },
-        {
-          "toolId": "gemini",
-          "delta": 25,
-          "reason": "Gemini reste peu adapté comme moteur principal de recherche documentaire."
-        },
-        {
-          "toolId": "gemini_notebook",
-          "delta": 25,
-          "reason": "Gemini Notebook n'a pas de corpus propre, il dépend des documents téléversés."
-        }
-      ]
-    },
-    {
-      "questionId": "discipline_focus",
-      "optionId": "chemistry",
-      "effects": [
-        {
-          "toolId": "google_scholar_labs",
-          "delta": 50,
-          "reason": "Google Scholar Labs peut servir en appoint sur du texte intégral hors corpus spécialisé."
-        },
-        {
-          "toolId": "elicit",
-          "delta": 50,
-          "reason": "Elicit peut couvrir la chimie, mais son corpus n'est pas aussi ciblé que Scifinder."
-        },
-        {
-          "toolId": "scispace",
-          "delta": 50,
-          "reason": "SciSpace peut couvrir la chimie via Semantic Scholar, mais sans le corpus Scifinder."
-        },
-        {
-          "toolId": "consensus",
-          "delta": 50,
-          "reason": "Consensus.app peut couvrir la chimie, mais sans corpus aussi spécialisé que Scifinder."
-        },
-        {
-          "toolId": "undermind",
-          "delta": 50,
-          "reason": "Undermind peut couvrir la chimie via Semantic Scholar, mais sans corpus Scifinder."
-        },
-        {
-          "toolId": "asta_paper_finder",
-          "delta": 50,
-          "reason": "Asta Paper finder peut couvrir la chimie via Semantic Scholar."
-        },
-        {
-          "toolId": "asta_generate_report",
-          "delta": 50,
-          "reason": "Asta Generate report peut couvrir la chimie via Semantic Scholar."
-        },
-        {
-          "toolId": "platform",
-          "delta": 50,
-          "reason": "Platform peut couvrir la chimie via Semantic Scholar + Crossref."
-        },
-        {
-          "toolId": "liner",
-          "delta": 50,
-          "reason": "Liner peut couvrir la chimie via Semantic Scholar."
-        },
-        {
-          "toolId": "leapspace",
-          "delta": 50,
-          "reason": "LeapSpace couvre partiellement la chimie."
-        },
-        {
-          "toolId": "scifinder_ai",
-          "delta": 100,
-          "reason": "Scifinder AI monte fortement quand la chimie est le domaine central."
-        },
-        {
-          "toolId": "perplexity",
-          "delta": 25,
-          "reason": "Perplexity reste peu adapté à la recherche documentaire scientifique rigoureuse."
-        },
-        {
-          "toolId": "lexis_ai",
-          "delta": -100,
-          "reason": "Lexis+ AI n'est pas adapté à la chimie."
-        },
-        {
-          "toolId": "canlii",
-          "delta": -100,
-          "reason": "CanLII n'est pas adapté à la chimie."
         },
         {
           "toolId": "claude",
@@ -560,11 +449,6 @@
           "reason": "CAIRN SophIA reste centré SHS francophone, moins pertinent hors ce terrain."
         },
         {
-          "toolId": "scifinder_ai",
-          "delta": 25,
-          "reason": "Scifinder AI est peu pertinent hors chimie."
-        },
-        {
           "toolId": "perplexity",
           "delta": 25,
           "reason": "Perplexity reste peu adapté à la recherche documentaire scientifique rigoureuse."
@@ -669,11 +553,6 @@
           "toolId": "cairn_sophia",
           "delta": 100,
           "reason": "CAIRN SophIA repère des extraits pertinents dans le corpus Cairn.info en langage naturel."
-        },
-        {
-          "toolId": "scifinder_ai",
-          "delta": 60,
-          "reason": "Scifinder AI peut repérer des documents, mais dans un format plus spécialisé."
         },
         {
           "toolId": "perplexity",
@@ -782,11 +661,6 @@
           "reason": "CAIRN SophIA expose des extraits originaux plutôt qu'un rapport de synthèse généré."
         },
         {
-          "toolId": "scifinder_ai",
-          "delta": -100,
-          "reason": "Scifinder AI n'offre pas de rapport de synthèse dans sa version gratuite."
-        },
-        {
           "toolId": "perplexity",
           "delta": 50,
           "reason": "Perplexity peut synthétiser des informations, mais reste un outil généraliste non bibliographique."
@@ -866,11 +740,6 @@
           "toolId": "cairn_sophia",
           "delta": -100,
           "reason": "CAIRN SophIA vaut pour son corpus Cairn.info, pas pour le web généraliste."
-        },
-        {
-          "toolId": "scifinder_ai",
-          "delta": -100,
-          "reason": "Scifinder AI vaut surtout via son corpus spécialisé, pas via le web."
         },
         {
           "toolId": "perplexity",
@@ -1039,11 +908,6 @@
           "toolId": "cairn_sophia",
           "delta": 100,
           "reason": "CAIRN SophIA peut être utilisé sans risque avec des documents du domaine public."
-        },
-        {
-          "toolId": "scifinder_ai",
-          "delta": 100,
-          "reason": "Scifinder AI peut être utilisé sans risque avec des documents du domaine public."
         },
         {
           "toolId": "lexis_ai",
